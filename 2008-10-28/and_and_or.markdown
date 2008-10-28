@@ -1,3 +1,6 @@
+and and or
+===
+
 In a comment on [Ruby Stylista](http://www.pathf.com/blogs/2008/10/ruby-stylista/), I mentioned how I use the `and` and `or` keywords in Ruby. To refresh, `and` and `or` work just like `&&` and `||`, only with very low precedence. For example:
 
 	foo = 5 && 10; foo
@@ -31,3 +34,7 @@ Again putting the first thing first. I normally only do this if both clauses are
 	raise 'fubar' unless something?
 
 The predicate seems less important than the consequent, which suggests that it should come second even though the test is performed first.
+
+---
+
+[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
