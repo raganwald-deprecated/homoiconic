@@ -12,7 +12,7 @@ For example, given a class, here are all of the classes and superclasses that im
 	
 	end
 
-The little idea here is that you don't have to write a loop of some sort climbing the class tree and accumulating an array of classes that respond to `#foo` as you go. This expresses teh same idea in terms of operations on a collection.
+The little idea here is that you don't have to write a loop of some sort climbing the class tree and accumulating an array of classes that respond to `#foo` as you go. This expresses the same idea in terms of operations on a collection.
 
 **Git it**
 

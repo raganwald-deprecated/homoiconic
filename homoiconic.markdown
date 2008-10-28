@@ -1,8 +1,8 @@
-Well, I said I was [retiring from blogging](http://weblog.raganwald.com/2008/07/brief-history-of-dangerous-ideas.html"A Brief History of Dangerous Ideas") and I am with a new blog. What's going on?
+Well, I said I was [retiring from blogging](http://weblog.raganwald.com/2008/07/brief-history-of-dangerous-ideas.html"A Brief History of Dangerous Ideas") and here I am with what looks like a new blog. What's going on?
 
 **Homoiconic**
 
-This is a kind of blog, if you define blog as 'something published on the internet with an RSS feed.' But no, this is not a blog in the sense that [weblog.raganwald.com](http://weblog.raganwald.com) was a blog. [Homoiconic](http://github.com/raganwald/homoiconic/tree/master) is an experiment in publishing code and words about code on a small scale.
+This *is* a kind of blog, if you define blog as 'something published on the internet with an RSS feed.' But no, this is not a blog in the sense that [weblog.raganwald.com](http://weblog.raganwald.com) was a blog. [Homoiconic](http://github.com/raganwald/homoiconic/tree/master) is an experiment in publishing code and words about code on a small scale.
 
 My writing used to be heavily philosophical, with lots of advocacy and questioning. I still consider the _why_ of things much more meaningful than the how, but it's time to focus on the how rather than the why. I'm making this little writing place a "no trolling zone." I will try to avoid preaching, and the obvious corollary is that I will also avoid worrying about whether people agree or disagree. Instead, I will try to simply share little pieces of code as it comes to me.
 
