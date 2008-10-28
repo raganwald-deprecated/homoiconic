@@ -23,4 +23,4 @@ The code for unfold is at [unfold.rb](unfold.rb). To use it in a Rails project, 
 
 ---
 
-[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
+[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub") <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
