@@ -9,7 +9,7 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic "Combinato
 
 Although this was originally called the "K Combinator," it is more popularly named a Kestrel following the lead established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
 
-Kestrels are to be found in Ruby. You may be more familiar with their Ruby 1.9 name, `#tap`. Let's say you have a line like `address = Person.find(...).address` and you wish to log the person instance. With `tap`, you can inject some logging into the expression without messy temporary variables:
+Kestrels are to be found in Ruby. You may be familiar with their Ruby 1.9 name, `#tap`. Let's say you have a line like `address = Person.find(...).address` and you wish to log the person instance. With `tap`, you can inject some logging into the expression without messy temporary variables:
 
 	address = Person.find(...).tap { |p| logger.log "person #{p} found" }.address
 
@@ -46,7 +46,9 @@ Can be rewritten using `returning`:
 	
 It is obvious from the first line what will be returned and it eliminates an annoying error when the programmer neglects to make `person` the last line of the method.
 
-The Kestrel has also been sighted in the form of *initializer blocks*. Consider this example using [Struct](http://blog.grayproductions.net/articles/all_about_struct"All about Struct"):
+**object initializer blocks**
+
+The Kestrel has also been sighted in the form of *object initializer blocks*. Consider this example using [Struct](http://blog.grayproductions.net/articles/all_about_struct"All about Struct"):
 
 	Contact = Struct.new(:first, :last, :email) do
 	  def to_hash
@@ -82,13 +84,57 @@ The pattern of wanting a Kestrel/returning/tap when you create a new object is s
 	  end
 	end
 
-In Rails, `returning` is not necessary when creating ActiveRecord instances.
+In Rails, `returning` is not necessary when creating instances your model classes, thanks to ActiveRecord's built-in object initializer blocks.
+
+**a variation on the kestrel**
+
+When we discussed `Struct` above, we noted that its initializer block has a slightly different behaviour than `tap` or `returning`. It takes an initializer block, but it doesn't pass the new class to the block as a parameter, it evaluates the block in the context of the new class.
+
+Putting this into implementation terms, it evaluates the block with `self` set to the new class. This is not the same as `returning` or `tap`, both of which leave `self` untouched. We can write our own version of `returning` with the same semantics. We will call it `inside`:
+
+	module Kernel
+  
+	  def inside(value, &block)
+	    value.instance_eval(&block)
+	    value
+	  end
+  
+	end
+	
+You can use this variation on a Kestrel just like `returning`, only you do not need to specify a parameter:
+
+	inside [1, 2, 3] do
+	  uniq!
+	end
+	  => [1, 2, 3]
+
+This isn't particularly noteworthy. Of more interest is your access to private methods and instance variables:
+
+	sna = Struct.new('Fubar') do
+	  attr_reader :fu
+	end.new
+
+	inside(sna) do
+	  @fu = 'bar'
+	end
+	  => <struct Struct::Fubar >
+
+	sna.fu
+	  => 'bar'
+
+`inside` is a Kestrel just like `returning`. No matter what value its block generates, it returns its primary argument. The only difference between the two is the evaluation environment of the block.
 
 So what have we learned?
 
-1. `tap` and `returning` are useful;
+1. `tap`, `returning`, and `inside` are useful;
 2. "Impractical" Computer Science isn't, and;
-2. [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422) belongs on your bookshelf if it isn't there already. The Kestrel is just one bird. Imagine what code you could write with a forest of them at your fingertips!
+3. [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422) belongs on your bookshelf if it isn't there already. The Kestrel is just one bird. Imagine what code you could write with a forest of them at your fingertips!
+
+**post scriptum**
+
+* `returning` is part of Ruby on Rails. `tap` is part of Ruby 1.9. It is available for Ruby 1.8 as part of the [andand gem](http://andand.rubyforge.org). `sudo gem install andand`.
+* [inside.rb](http:inside.rb): If you are using Rails, drop it in `config/initializers` to make it available in your project.
+* [You keep using that idiom](http:you_keep_using_that_idiom.markdown). I do not think it means what you think it means.
 
 ---
 
