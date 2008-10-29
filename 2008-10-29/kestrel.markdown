@@ -7,11 +7,11 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), a Kestre
 	kestrel.call(:foo).call(x)
 	  => :foo
 
-Although its formal name is the "K Combinator," it is more popularly named a Kestrel following the lead established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
+Although its formal name is the "K Combinator," it is more popularly named a Kestrel following the lead established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.  
+  
 
-
-<center>[![Kestrel (c) 2006 Ian Turk, some rights reserved](http://farm1.static.flickr.com/99/298991569_911a900738.jpg)](http://www.flickr.com/photos/ianturk/298991569/)</center>
-
+[![Kestrel (c) 2006 Ian Turk, some rights reserved](http://farm1.static.flickr.com/99/298991569_911a900738.jpg)](http://www.flickr.com/photos/ianturk/298991569/)  
+  
 
 Kestrels are to be found in Ruby. You may be familiar with their Ruby 1.9 name, `#tap`. Let's say you have a line like `address = Person.find(...).address` and you wish to log the person instance. With `tap`, you can inject some logging into the expression without messy temporary variables:
 
