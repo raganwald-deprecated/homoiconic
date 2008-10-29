@@ -1,7 +1,7 @@
 You keep using that idiom. I do not think it means what you think it means.
 ---
 
-From time to time `returning` is misused:
+From time to time `returning` _seems_ to violate the so-called principle of least surprise:
 
 	returning([]) do |arr|
 	  arr += [:foo, :bar]
