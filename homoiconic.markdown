@@ -7,7 +7,7 @@ Well, I said I was [retiring from blogging](http://weblog.raganwald.com/2008/07/
 
 This is really simple: snippets of code and words about the code. No words by themselves. And the words exist to amplify and explain the code, rather than the code existing to illustrate the words. This is the opposite of most of the posts you find on traditional (circa 2004) blogs.
 
-If you want to see what else you can read, it's all on the ([homoiconic](http://github.com/raganwald/homoiconic/) home 'page.'
+If you want to see what else you can read, it's all on the [homoiconic](http://github.com/raganwald/homoiconic/) home 'page.'
 
 **how to read it**
 
