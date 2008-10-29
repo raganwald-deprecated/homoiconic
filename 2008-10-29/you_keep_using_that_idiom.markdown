@@ -1,7 +1,7 @@
 You keep using that idiom. I do not think it means what you think it means.
 ---
 
-From time to time `returning` _seems_ to violate the so-called principle of least surprise:
+From time to time `returning` seems to violate the so-called _principle of least surprise_:
 
 	returning([]) do |arr|
 	  arr += [:foo, :bar]
