@@ -82,7 +82,7 @@ The pattern of wanting a Kestrel/returning/tap when you create a new object is s
 	end
 	
 	def registered_person(params = {})
-	  Person.new(params.merge(:registered => true) do |person|
+	  Person.new(params.merge(:registered => true)) do |person|
 	    Registry.register(person)
 	    person.send_email_notification
 	  end
