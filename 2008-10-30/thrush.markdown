@@ -83,3 +83,15 @@ We have seen two formulations of the Thrush combinator, `#into` and `let`. One i
 If you are using Rails, drop these in config/initializers to make them available in your project. `let` is also available as part of the [ick](http://ick.rubyforge.org/) gem, along with a more powerful variation, `lets`.
 
 `sudo gem install ick`
+
+---
+
+[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub") <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a><script src="http://feeds.feedburner.com/~s/raganwald?i=http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown" type="text/javascript" charset="utf-8"></script>
+		<script language="JavaScript" type="text/javascript" src="http://pub44.bravenet.com/counter/code.php?id=382140&usernum=3754613835&cpv=2">
+		</script>
+		<script type="text/javascript" src="http://www.assoc-amazon.com/s/link-enhancer?tag=raganwald001-20">
+		</script>
+		<noscript>
+			<img src="http://www.assoc-amazon.com/s/noscript?tag=raganwald001-20" alt="" />
+		</noscript>
+	</div>
