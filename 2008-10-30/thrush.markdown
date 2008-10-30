@@ -5,10 +5,14 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the thru
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.  
 
+
+[![Spotted Laughing Thrush (c) 2008 Jim Frazee, some rights reserved](http://farm4.static.flickr.com/3064/2639231972_261d092e5a.jpg)](http://flickr.com/photos/12530381@N07/2639231972/ "Spotted Laughing Thrush (c) 2008 Jim Frazee, some rights reserved")  
+  
+
 The Thrush is written `Txy = yx`. It _reverses_ evaluation. In Ruby terms,
 
 	thrush.call(a_value, a_proc)
-	  => a.proc.call(a_value)
+	  => a_proc.call(a_value)
 
 In [No Detail Too Small](http://weblog.raganwald.com/2008/01/no-detail-too-small.html), I defined `Object#into`, an implementation of the Thrush as a Ruby method:
 
@@ -36,8 +40,10 @@ But we are not interested in theory. `#into` may be equivalent to what we can ac
 
 `Object#into` defines the Thrush as a method that takes a block, lambda, or anything that can become a block or lambda as its argument. There is another way to formulate a Thrush:
 
-	def let it
-	  yield it
+	class Kernel
+	  def let it
+	    yield it
+	  end
 	end
 
 It's remarkably simple, so simple that it appears to be less useful than `#into`. The example above would look like this if we used `let`:
@@ -80,9 +86,7 @@ We have seen two formulations of the Thrush combinator, `#into` and `let`. One i
 * [into.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/into.rb)
 * [let.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/let.rb)
 
-If you are using Rails, drop these in config/initializers to make them available in your project. `let` is also available as part of the [ick](http://ick.rubyforge.org/) gem, along with a more powerful variation, `lets`.
-
-`sudo gem install ick`
+If you are using Rails, drop these in config/initializers to make them available in your project. `let` is also available as part of the [ick](http://ick.rubyforge.org/) gem, along with a more powerful variation, `lets`. To get it, simply `sudo gem install ick`.
 
 ---
 
