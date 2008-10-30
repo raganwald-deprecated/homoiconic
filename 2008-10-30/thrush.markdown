@@ -5,6 +5,10 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the thru
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.  
 
+
+[![Spotted Laughing Thrush (c) 2008 Jim Frazee, some rights reserved](http://farm4.static.flickr.com/3064/2639231972_261d092e5a.jpg)](http://flickr.com/photos/12530381@N07/2639231972/ "Spotted Laughing Thrush (c) 2008 Jim Frazee, some rights reserved")  
+  
+
 The Thrush is written `Txy = yx`. It _reverses_ evaluation. In Ruby terms,
 
 	thrush.call(a_value, a_proc)
