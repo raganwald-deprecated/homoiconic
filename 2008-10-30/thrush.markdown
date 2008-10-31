@@ -1,4 +1,4 @@
-The thrush
+The Thrush
 ---
 
 In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the thrush is a _permuting_ combinator, it alters the normal order of evaluation.
