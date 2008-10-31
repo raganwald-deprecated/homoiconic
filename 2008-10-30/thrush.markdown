@@ -1,4 +1,4 @@
-The Thrush
+The thrush
 ---
 
 In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the thrush is a _permuting_ combinator, it alters the normal order of evaluation.
@@ -9,12 +9,12 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the thru
 [![Spotted Laughing Thrush (c) 2008 Jim Frazee, some rights reserved](http://farm4.static.flickr.com/3064/2639231972_261d092e5a.jpg)](http://flickr.com/photos/12530381@N07/2639231972/ "Spotted Laughing Thrush (c) 2008 Jim Frazee, some rights reserved")  
   
 
-The Thrush is written `Txy = yx`. It _reverses_ evaluation. In Ruby terms,
+The thrush is written `Txy = yx`. It _reverses_ evaluation. In Ruby terms,
 
 	thrush.call(a_value).call(a_proc)
 	  => a_proc.call(a_value)
 
-In [No Detail Too Small](http://weblog.raganwald.com/2008/01/no-detail-too-small.html), I defined `Object#into`, an implementation of the Thrush as a Ruby method:
+In [No Detail Too Small](http://weblog.raganwald.com/2008/01/no-detail-too-small.html), I defined `Object#into`, an implementation of the thrush as a Ruby method:
 
 	class Object
 	  def into expr = nil
@@ -38,7 +38,7 @@ But we are not interested in theory. `#into` may be equivalent to what we can ac
 
 **another thrush**
 
-`Object#into` defines the Thrush as a method that takes a block, lambda, or anything that can become a block or lambda as its argument. There is another way to formulate a Thrush:
+`Object#into` defines the thrush as a method that takes a block, lambda, or anything that can become a block or lambda as its argument. There is another way to formulate a Thrush:
 
 	class Kernel
 	  def let it
@@ -81,7 +81,7 @@ Although Ruby 1.8 does not enforce this behaviour, it can be useful to write cod
 
 **summary**
 
-We have seen two formulations of the Thrush combinator, `#into` and `let`. One is useful for making expressions more consistent and easier to read, the other for signaling the scope of block-local variables.
+We have seen two formulations of the thrush combinator, `#into` and `let`. One is useful for making expressions more consistent and easier to read, the other for signaling the scope of block-local variables.
 
 * [into.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/into.rb)
 * [let.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/let.rb)
