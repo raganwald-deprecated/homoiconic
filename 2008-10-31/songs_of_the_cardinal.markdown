@@ -115,7 +115,7 @@ Therefore we can define a thrush with:
 
 As you can see, once you have a defined a cardinal, you can create an infinite variety of methods that have thrush-like syntax--a method that applies a value to a block--but you can modify or augment the _semantics_ of the block in any you want.
 
-In Ruby terms, you are meta-programming. In Smullyan's terms, you are now *Listening to the Songs of the Cardinal*.
+In Ruby terms, you are meta-programming. In Smullyan's terms, you are *Listening to the Songs of the Cardinal*.
 
 * [cardinal.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/cardinal.rb)
 * [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown)
