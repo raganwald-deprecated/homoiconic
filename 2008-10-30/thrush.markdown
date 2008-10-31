@@ -11,7 +11,7 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the thru
 
 The Thrush is written `Txy = yx`. It _reverses_ evaluation. In Ruby terms,
 
-	thrush.call(a_value, a_proc)
+	thrush.call(a_value).call(a_proc)
 	  => a_proc.call(a_value)
 
 In [No Detail Too Small](http://weblog.raganwald.com/2008/01/no-detail-too-small.html), I defined `Object#into`, an implementation of the Thrush as a Ruby method:
