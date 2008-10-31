@@ -54,20 +54,20 @@ It's remarkably simple, so simple that it appears to be less useful than `#into`
 
 How does that help? I'll let you in on a secret: Ruby 1.9 changes the game. In Ruby 1.8, `x` is local to the surrounding method, so it doesn't help. But in Ruby 1.9, `x` is a *block local variable*, meaning that it does not clobber an existing variable. So in Ruby 1.8:
 
-	def say_the_sum_of_the_odd_squares(x)
+	def say_the_square_of_the_sum_of_the_odd_numbers(x)
 		sotos = let (1..x).select(&:odd?).inject(&:+) do |x| 
 			x * x
 		end
-		"The sum of the odd squares from 1..#{x} is #{sotos}"
+		"The square of the sum of the odd numbers from 1..#{x} is #{sotos}"
 	end
 	
-	say_the_sum_of_the_odd_squares(10)
-	 => "The sum of the odd squares from 1..25 is 625"
+	say_the_square_of_the_sum_of_the_odd_numbers(10)
+	 => "The square of the sum of the odd numbers from 1..25 is 625"
 	
 `1..25`!? What happened here is that the `x` inside the block clobbered the value of the `x` parameter. Not good. In Ruby 1.9:
 
-	say_the_sum_of_the_odd_squares(10)
-	 => "The sum of the odd squares from 1..10 is 625"
+	say_the_square_of_the_sum_of_the_odd_numbers(10)
+	 => "The square of the sum of the odd numbers from 1..10 is 625"
 
 Much better, Ruby 1.9 creates a new scope inside the block and `x` is local to that block, _shadowing_ the `x` parameter. Now we see a use for `let`:
 
