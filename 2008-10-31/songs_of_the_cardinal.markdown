@@ -118,6 +118,8 @@ As you can see, once you have a defined a cardinal, you can create an infinite v
 * [cardinal.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/cardinal.rb)
 * [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown)
 
+p.s. There's more to come: Next time we'll look at the role of combinatorial logic's _Queer Bird_ in constructing methods like [andand](http://andand.rubyforge.org).
+
 ---
 
 [homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub") <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a><script src="http://feeds.feedburner.com/~s/raganwald?i=http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown" type="text/javascript" charset="utf-8"></script>
