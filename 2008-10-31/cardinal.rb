@@ -23,7 +23,7 @@
 # 
 # http://www.opensource.org/licenses/mit-license.php
   
-def cardinal_define name, &proc_over_proc
+def cardinal_define(name, &proc_over_proc)
   define_method_taking_block(name) do |a_value, a_proc|
     proc_over_proc.call(a_proc).call(a_value)
   end

@@ -54,7 +54,7 @@ The next chunk of code works around the fact that Ruby 1.8 can't define a proc t
 
 With _that_ out of the way, we can write our cardinal:
 
-	def cardinal_define name, &proc_over_proc
+	def cardinal_define(name, &proc_over_proc)
 	  define_method_taking_block(name) do |a_value, a_proc|
 	      proc_over_proc.call(a_proc).call(a_value)
 	  end
