@@ -64,17 +64,17 @@ Now we can write our cardinal:
 Ready to try it? Here's a familiar example. We'll need a `proc_over_proc`, our proc that modifies another proc. Because we're trying to be Ruby-ish, we'll write it out as a block:
 
 	do |a_proc|
-  	lambda { |a_value|
-			a_proc.call(a_value) unless a_value.nil?
-		}
+  	  lambda { |a_value|
+	    a_proc.call(a_value) unless a_value.nil?
+	  }
 	end
 
 This takes a `a_proc` and returns a brand new proc that only calls `a_proc` if the value you pass it is not nil. Now let's use our cardinal to define a new method:
 
 	cardinal_define(:maybe) do |a_proc|
-  	lambda { |a_value|
-			a_proc.call(a_value) unless a_value.nil?
-		}
+	  lambda { |a_value|
+	    a_proc.call(a_value) unless a_value.nil?
+	  }
 	end
 
 Let's try it out:
@@ -87,29 +87,29 @@ Let's try it out:
 If we're using Rails, we can make a more idiomatic version of `maybe`:
 
 	cardinal_define(:unless_blank) do |a_proc|
-  	lambda { |a_value|
-			a_proc.call(a_value) unless a_value.blank?
-		}
+  	  lambda { |a_value|
+	    a_proc.call(a_value) unless a_value.blank?
+	  }
 	end
 
 	unless_blank(Person.find(...).name) do |name|
-		register_name_on_title(name)
+	  register_name_on_title(name)
 	end
 	
 Remember we said the cardinal can be used to define a thrush? Let's try our Ruby cardinal out to do the same thing. Recall that expressing the identity bird as a block is:
 
 	do |a_proc|
-		a_proc
+	  a_proc
 	end
 
 Therefore we can define a thrush with:
 
 	cardinal_define(:let) do |a_proc|
-		a_proc
+	  a_proc
 	end
 	
 	let((1..10).select { |n| n % 2 == 1 }.inject { |mem, var| mem + var }) do |x| 
-		x * x
+	  x * x
 	end
 	  => 625
 
@@ -120,7 +120,7 @@ In Ruby terms, you are meta-programming. In Smullyan's terms, you are *Listening
 * [cardinal.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/cardinal.rb)
 * [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown)
 
-p.s. There's more to come: Next time we'll look at the role of combinatorial logic's _Queer Bird_ in constructing methods like [andand](http://andand.rubyforge.org).
+p.s. There's more to come: Next time we'll look at the role of combinatorial logic's _Queer_ and _Quirky_ birds in constructing methods like [andand](http://andand.rubyforge.org).
 
 ---
 
