@@ -117,7 +117,7 @@ As you can see, once you have a defined a cardinal, you can create an infinite v
 In Ruby terms, you are meta-programming. In Smullyan's terms, you are *Listening to the Songs of the Cardinal*.
 
 * [cardinal.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/cardinal.rb)
-* [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown)
+* _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), and [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown).
 
 p.s. There's more to come: Next time we'll look at the role of combinatorial logic's _Queer_ and _Quirky_ birds in constructing methods like [andand](http://andand.rubyforge.org).
 
