@@ -24,18 +24,15 @@
 # http://www.opensource.org/licenses/mit-license.php
   
 def cardinal_define name, &proc_over_proc
-  define_method_taking_block(
-    name,
-    lambda { |a_value, a_proc|
-      proc_over_proc.call(a_proc).call(a_value)
-    }
-  )
+  define_method_taking_block(name) do |a_value, a_proc|
+    proc_over_proc.call(a_proc).call(a_value)
+  end
 end
 
 # method_body_proc should expect (a_value, a_proc)
 # see http://coderrr.wordpress.com/2008/10/29/using-define_method-with-blocks-in-ruby-18/
-def define_method_taking_block(name, method_body_proc)
-  self.class.send :define_method, "__cardinal_helper_#{name}__", &method_body_proc
+def define_method_taking_block(name, &method_body_proc)
+  self.class.send :define_method, "__cardinal_helper_#{name}__", method_body_proc
   eval <<-EOM
     def #{name}(a_value, &a_proc)
       __cardinal_helper_#{name}__(a_value, a_proc)
