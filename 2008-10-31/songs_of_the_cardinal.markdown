@@ -119,8 +119,6 @@ In Ruby terms, you are meta-programming. In Smullyan's terms, you are *Listening
 * [cardinal.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/cardinal.rb)
 * _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), and [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown).
 
-p.s. There's more to come: Next time we'll look at the role of combinatorial logic's _Queer_ and _Quirky_ birds in constructing methods like [andand](http://andand.rubyforge.org).
-
 ---
 
 [homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub") <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a><script src="http://feeds.feedburner.com/~s/raganwald?i=http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown" type="text/javascript" charset="utf-8"></script>
