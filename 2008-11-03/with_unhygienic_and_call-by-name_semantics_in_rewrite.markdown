@@ -112,10 +112,11 @@ Here's an example of rewrite working directly with s-expressions. It's an excerp
           exp.clear
         end
       end
+    end
 
-Lovely stuff.
+Lovely stuff, that.
 
-Unhygienic and `called_by_name` are both a level above the AST implementation. They both work by defining rewrites in Ruby code, and of course they do it in different ways. So, Rewrite provides a low-level, implementation-specific way to rewrite code. Unhygienic and `called_by_name` are built on top of rewrite and provide a higher level of abstraction.
+Unhygienic and `called_by_name` are both a level above that kind of direct manipulation of the Abstract Syntax Tree. They both work by defining rewrites in Ruby code, and of course they do it in different ways. So, Rewrite provides a low-level, implementation-specific way to rewrite code. Unhygienic and `called_by_name` are built on top of rewrite and provide a higher level of abstraction.
 
 **unhygienic**
 
