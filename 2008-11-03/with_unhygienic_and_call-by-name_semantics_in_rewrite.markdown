@@ -153,8 +153,8 @@ And we could use it like this:
 And you will get:
 
 	begin
-		# ...
-		if temp = MyActiveRecordModel.find(:first, ...)
+	  # ...
+	  if temp = MyActiveRecordModel.find(:first, ...)
 	      something_something()
 	  else
 	      temp
@@ -169,7 +169,7 @@ That's why the example above uses `temp`. Had we written it as:
 	Unhygienic.from(:x, :y) {
 		our_and(x, y)
 	}.to {
-	  if temp = x
+	  if x
 	      y
 	  else
 	      x
