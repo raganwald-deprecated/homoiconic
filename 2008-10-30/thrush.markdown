@@ -1,7 +1,7 @@
 The Thrush
 ---
 
-In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the thrush is a _permuting_ combinator, it alters the normal order of evaluation.
+In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the thrush is an extremely simple _permuting_ combinator, it reverses the normal order of evaluation.
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.  
 
@@ -87,6 +87,8 @@ We have seen two formulations of the thrush combinator, `#into` and `let`. One i
 * [let.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/let.rb)
 
 If you are using Rails, drop these in config/initializers to make them available in your project. `let` is also available as part of the [ick](http://ick.rubyforge.org/) gem, along with a more powerful variation, `lets`. To get it, simply `sudo gem install ick`.
+
+_Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), and [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown).
 
 ---
 
