@@ -1,0 +1,222 @@
+Quirky Birds and Meta-Syntactic Programming
+---
+
+In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the Queer Birds are a family of combinators which both parenthesize and permute. The matriarch of the family is the Queer Bird itself. One member of the Queer Bird family, the *Quirky Bird*, has interesting implications for Ruby.
+
+> As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
+
+The quirky bird is written `Q`<sub>3</sub>`xyz = z(xy)`. In Ruby:
+
+	quirky.call(value_proc).call(a_value).call(a_proc)
+	  => a_proc.call(value_proc.call(a_value))
+	
+Like the cardinal, the quirky bird reverses the order of application. But where the cardinal modifies the function that is applied to a value, the quirky bird modifies the value itself. Let's compare how cardinals and quirky birds work.
+
+**a cardinals refresher**
+
+The cardinal is defined in its simplest Ruby form as:
+
+	cardinal.call(proc_over_proc).call(a_value).call(a_proc)
+	  => proc_over_proc.call(a_proc).call(a_value)
+	
+From that definition, we wrote a method called `cardinal_define` that writes methods in idiomatic Ruby. For example, here's how we used `cardinal_define` to generate the `maybe` method:
+
+	cardinal_define(:maybe) do |a_proc|
+	  lambda { |a_value|
+	    a_proc.call(a_value) unless a_value.nil?
+	  }
+	end
+
+	maybe(1) { |x| x + 1 }
+	  => 2
+	maybe(nil) { |x| x + 1 }
+	  => nil
+
+Now we are not looking at the source code for `maybe`, but from the definition of a cardinal above we know that any method defined by `cardinal_define` will look roughly like:
+
+	def defined_by_a_cardinal(a_value, &a_proc)
+		proc_over_proc.call(a_proc).call(a_value)
+	end
+
+Or in our case:
+
+	def maybe(a_value, &a_proc)
+		lambda do |a_proc|
+		  lambda { |a_value|
+		    a_proc.call(a_value) unless a_value.nil?
+		  }
+		end.call(a_proc).call(a_value)
+	end
+
+**and now to the quirky bird**
+
+From the definition for the quirky bird, we expect that if we write `quirky_bird_define`, the methods it generates will look roughly like:
+
+	def defined_by_a_quirky_bird(a_value, &a_proc)
+		a_proc.call(value_proc.call(a_value))
+	end
+
+So, are we ready to write `quirky_bird_define`? This seems too easy. Just copy the `cardinal_define` code, make a few changes, and we're done:
+
+	def quirky_bird_define(name, &value_proc)
+	  define_method_taking_block(name) do |a_value, a_proc|
+	    a_proc.call(value_proc.call(a_value))
+	  end
+	end
+
+	# method_body_proc should expect (a_value, a_proc)
+	# see http://coderrr.wordpress.com/2008/10/29/using-define_method-with-blocks-in-ruby-18/
+	def define_method_taking_block(name, &method_body_proc)
+	  self.class.send :define_method, "__quirky_bird_helper_#{name}__", method_body_proc
+	  eval <<-EOM
+	    def #{name}(a_value, &a_proc)
+	      __quirky_bird_helper_#{name}__(a_value, a_proc)
+	    end
+	  EOM
+	end
+
+Ok, let's try it out on something really trivial:
+
+	quirky_bird_define(:square_first) do |a_value|
+		a value * a_value
+	end
+	
+	square_first(1) { |n| n + 1 }
+		=> 2
+	
+	square_first(2) { |n| n + 1 }
+		=> 5
+	
+It works, good. Now let's define `maybe` using the quirky bird we just wrote. Just so we're clear, I want to write:
+
+	quirky_bird_define(:maybe) do |a_value|
+		# ... something goes here ...
+	end
+	
+	maybe(1) { |n| n + 1 }
+		=> 2
+	
+	maybe(nil) { |n| n + 1 }
+		=> nil
+
+Scheisse! Figuring out what to put in the block to make `maybe` work is indeed queer and quirky!!
+
+Now, the simple truth is, I know of no way to use a quirky bird to cover all of the possible blocks you could use with `maybe` so that it works exactly like the version of `maybe` we built with a cardinal. However, I have found that sometimes it is interesting to push an incomplete idea along if it is incomplete in interesting ways. "Maybe" we can learn something in the process.
+
+**a limited interpretation of the quirky bird in Ruby**
+
+Let's solve `maybe` any-which-way-we-can and see how it goes. When we used a cardinal, we wanted a proc that would modify another proc to such that if it was passed `nil`, it would answer `nil` without evaluating its contents.
+
+Now we want to modify a value such that if it is `nil`, it responds `nil` to the method `+`. This is doable, with the help of the `BlankSlate` class, also called a `BasicObject`. You'll find `BlankSlate` and `BasicObject` classes in various frameworks and Ruby 1.9, and there's one at blank\_slate.rb you can use.
+
+`BlankSlate` is a class with no methods, which is very different from the base class `Object`. That's because `Object` in Ruby is *heavyweight*, it has lots of useful stuff.  But we don't want useful stuff, because our mission is to answer a value that responds `nil` to any method you send it.
+
+The Ruby way to handle any method is with `method_missing`. Here's a really simple expression that answers an object that responds `nil` to any method:
+
+    returning(BlankSlate.new) do |it|
+      def it.method_missing(*args)
+        nil
+      end
+    end
+
+Hmmm. What about:
+
+	quirky_bird_define(:maybe) do |value|
+	  if value.nil?
+	    returning(BlankSlate.new) do |it|
+	      def it.method_missing(*args)
+	        nil
+	      end
+	    end
+	  else
+	    value
+	  end
+	end
+
+Let's try it:
+	
+	maybe(1) { |n| n + 1 }
+		=> 2
+	
+	maybe(nil) { |n| n + 1 }
+		=> nil
+
+Now, this is *very* flawed. here are two counter-cases:
+
+	maybe(nil) { |n| n + 1 + 1 }
+  		=> NoMethodError: undefined method `+' for nil:NilClass
+	maybe(nil) { |n| 1 + n }
+  		=> TypeError: coerce must return [x, y]
+
+The basic problem here is that we only control the value we pass in. We cant modify how other objects respond to it, nor can we control what happens to any objects we return from methods called on it. So, the quirky bird turns out to be useful in the case where (a) the value is the receiver of a method, and (b) there is only one method being called, not a chain of methods.
+
+Hmmm again.
+
+**embracing the quirky bird's nature**
+
+Maybe we shouldn't be generating methods that deal with arbitrary blocks and procedures. One way to scale this down is to deal only with single method invocations. For example, what if instead of `maybe(nil) { |n| n + 1 }` or `maybe(1) { |n| n + 1 }`, we write `nil.maybe + 1` or `1.maybe + 1`?
+
+In that case, `maybe` becomes a method on the object class that applies `value_proc` to its receiver rather than being a method that takes a value and a block. So, this becomes very simple:
+
+	def quirky_bird_extend(name, &value_proc)
+	  Object.send(:define_method, name) do
+	    value_proc.call(self)
+	  end
+	end
+
+Now let's use it with exactly the same block we used with `quirky_bird_define`:
+
+	require 'quirky_bird'
+	require 'blank_slate'
+	require 'returning'
+
+	quirky_bird_extend(:maybe) do |value|
+	  if value.nil?
+	    returning(BlankSlate.new) do |it|
+	      def it.method_missing(*args)
+	        nil
+	      end
+	    end
+	  else
+	    value
+	  end
+	end
+	
+	nil.maybe + 1
+	  => nil
+	1.maybe + 1
+	  => 2
+
+This looks familiar! Only better. Instead of a one-off handy-dandy, we have created a method that creates similar methods. Let's try it again, this time emulating Chris Wanstrath's `try`:
+
+	quirky_bird_extend(:try) do |value|
+	  returning(BlankSlate.new) do |it|
+	    def it.__value__=(arg)
+	       @value = arg
+	    end
+	    def it.method_missing(name, *args)
+	      if @value.respond_to?(name)
+	        @value.send(name, *args)
+	      end
+	    end
+	    it.__value__ = value
+	  end
+	end
+	
+	nil.try + 1
+	  => nil
+	1.try + 1
+	  => 2
+	1.try.ordinalize
+	  => nil
+
+As you can see, we can used the quirky bird to create a whole family of methods that modify the receiver in some way to produce new semantics. I can't show you the source code, but here is something from a proprietary Rails application:
+
+	Account.without_requiring_authorization.create!(...)
+	
+In this case, `without_requiring_authorization` follows the quirky bird pattern, only instead of taking an instance and producing a version that handles certain methods specially, this one takes a class and produces a version that doesn't enforce authorization for use in test cases.
+
+**so what have we learned?**
+
+* The quirky bird is superficially similar to the cardinal, however it can be used to generate syntax that is a little more method-oriented rather than function-oriented.
+* What's better than a handy method like andand? A method for defining such methods.
