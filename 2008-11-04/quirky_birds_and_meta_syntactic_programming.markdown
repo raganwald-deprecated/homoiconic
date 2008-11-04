@@ -9,7 +9,7 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the Quee
 [![happy pride (c) 2008 penguincakes, some rights reserved reserved](http://farm4.static.flickr.com/3035/2891197379_556f528536.jpg)](http://www.flickr.com/photos/penguincakes/2891197379/ "happy pride (c) 2008 penguincakes, some rights reserved")  
 
 
-The quirky bird is written `Q`<sub>3</sub>`xyz = z(xy)`. In Ruby:
+The quirky bird is written `Q`<sub>`3`</sub>`xyz = z(xy)`. In Ruby:
 
 	quirky.call(value_proc).call(a_value).call(a_proc)
 	  => a_proc.call(value_proc.call(a_value))
