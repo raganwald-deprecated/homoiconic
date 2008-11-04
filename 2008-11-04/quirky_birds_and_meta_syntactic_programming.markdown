@@ -5,6 +5,10 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the Quee
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
 
+
+[![happy pride (c) 2008 penguincakes, some rights reserved reserved](http://farm4.static.flickr.com/3035/2891197379_556f528536.jpg)](http://www.flickr.com/photos/penguincakes/2891197379/ "happy pride (c) 2008 penguincakes, some rights reserved")  
+
+
 The quirky bird is written `Q`<sub>3</sub>`xyz = z(xy)`. In Ruby:
 
 	quirky.call(value_proc).call(a_value).call(a_proc)
@@ -107,7 +111,7 @@ Now, the simple truth is, I know of no way to use a quirky bird to cover all of 
 
 Let's solve `maybe` any-which-way-we-can and see how it goes. When we used a cardinal, we wanted a proc that would modify another proc to such that if it was passed `nil`, it would answer `nil` without evaluating its contents.
 
-Now we want to modify a value such that if it is `nil`, it responds `nil` to the method `+`. This is doable, with the help of the `BlankSlate` class, also called a `BasicObject`. You'll find `BlankSlate` and `BasicObject` classes in various frameworks and Ruby 1.9, and there's one at blank\_slate.rb you can use.
+Now we want to modify a value such that if it is `nil`, it responds `nil` to the method `+`. This is doable, with the help of the `BlankSlate` class, also called a `BasicObject`. You'll find `BlankSlate` and `BasicObject` classes in various frameworks and Ruby 1.9, and there's one at [blank\_slate.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/blank_slate.rb "2008-11-04/blank_slate.rb at master from raganwald's homoiconic &mdash; GitHub") you can use.
 
 `BlankSlate` is a class with no methods, which is very different from the base class `Object`. That's because `Object` in Ruby is *heavyweight*, it has lots of useful stuff.  But we don't want useful stuff, because our mission is to answer a value that responds `nil` to any method you send it.
 
@@ -218,5 +222,10 @@ In this case, `without_requiring_authorization` follows the quirky bird pattern,
 
 **so what have we learned?**
 
-* The quirky bird is superficially similar to the cardinal, however it can be used to generate syntax that is a little more method-oriented rather than function-oriented.
-* What's better than a handy method like andand? A method for defining such methods.
+The quirky bird is superficially similar to the cardinal, however it can be used to generate syntax that is a little more method-oriented rather than function-oriented. And what's better than a handy method like andand? A method for defining such methods, of course.
+
+* [blank_slate.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/blank_slate.rb "")
+* [returning.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/returning.rb "")
+* [quirky_bird.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_bird.rb "")
+* [quirky_songs.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_songs.rb "")
+* _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), and [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown).
