@@ -27,7 +27,7 @@ require 'quirky_bird'
 require 'blank_slate'
 require 'returning'
 
-quirky_bird_define(:maybe) do |value|
+quirky_bird_extend(:maybe) do |value|
   if value.nil?
     returning(BlankSlate.new) do |it|
       def it.method_missing(*args)
