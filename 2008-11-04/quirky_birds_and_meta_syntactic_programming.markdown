@@ -14,7 +14,7 @@ The quirky bird is written `Q`<sub>`3`</sub>`xyz = z(xy)`. In Ruby:
 	quirky.call(value_proc).call(a_value).call(a_proc)
 	  => a_proc.call(value_proc.call(a_value))
 	
-Like the cardinal, the quirky bird reverses the order of application. But where the cardinal modifies the function that is applied to a value, the quirky bird modifies the value itself. Let's compare how cardinals and quirky birds work.
+Like the [cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/cardinal.rb "Songs of the Cardinal"), the quirky bird reverses the order of application. But where the cardinal modifies the function that is applied to a value, the quirky bird modifies the value itself. Let's compare how cardinals and quirky birds work.
 
 **a cardinals refresher**
 
@@ -191,7 +191,7 @@ Now let's use it with exactly the same block we used with `quirky_bird_define`:
 	1.maybe + 1
 	  => 2
 
-This looks familiar! Only better. Instead of a one-off handy-dandy, we have created a method that creates similar methods. Let's try it again, this time emulating Chris Wanstrath's `try`:
+This looks familiar! We have defined our own version of [andand](http://github.com/raganwald/andand/tree "sudo gem install andand"), only **better**. Instead of a one-off handy-dandy, we have created a method that creates similar methods. Let's try it again, this time emulating Chris Wanstrath's `try`:
 
 	quirky_bird_extend(:try) do |value|
 	  returning(BlankSlate.new) do |it|
