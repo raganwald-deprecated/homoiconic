@@ -1,7 +1,7 @@
 Quirky Birds and Meta-Syntactic Programming
 ---
 
-In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the Queer Birds are a family of combinators which both parenthesize and permute. The matriarch of the family is the Queer Bird itself. One member of the Queer Bird family, the *Quirky Bird*, has interesting implications for Ruby.
+In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the Queer Birds are a family of combinators which both parenthesize and permute. One member of the family, the *Quirky Bird*, has interesting implications for Ruby.
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
 
@@ -137,6 +137,8 @@ Hmmm. What about:
 	  end
 	end
 
+This is saying, "Let's define a quirky bird method based on a `value_proc` as usual. Our `value_proc` will take a value, and if the value is `nil` we will return an object that responds with `nil` to any method. But if the value is not nil, our `value_proc` will respond with the object."
+
 Let's try it:
 	
 	maybe(1) { |n| n + 1 }
@@ -145,10 +147,11 @@ Let's try it:
 	maybe(nil) { |n| n + 1 }
 		=> nil
 
-Now, this is *very* flawed. here are two counter-cases:
+Now, I admit this is *very* flawed:
 
 	maybe(nil) { |n| n + 1 + 1 }
   		=> NoMethodError: undefined method `+' for nil:NilClass
+
 	maybe(nil) { |n| 1 + n }
   		=> TypeError: coerce must return [x, y]
 
@@ -158,15 +161,21 @@ Hmmm again.
 
 **embracing the quirky bird's nature**
 
-Maybe we shouldn't be generating methods that deal with arbitrary blocks and procedures. One way to scale this down is to deal only with single method invocations. For example, what if instead of `maybe(nil) { |n| n + 1 }` or `maybe(1) { |n| n + 1 }`, we write `nil.maybe + 1` or `1.maybe + 1`?
+Maybe we shouldn't be generating methods that deal with arbitrary blocks and procedures. One way to scale this down is to deal only with single method invocations. For example, what if instead of designing our new version of `maybe` so that we invoke it by writing `maybe(nil) { |n| n + 1 }` or `maybe(1) { |n| n + 1 }`, we design it so that we write `nil.maybe + 1` or `1.maybe + 1` instead?
 
-In that case, `maybe` becomes a method on the object class that applies `value_proc` to its receiver rather than being a method that takes a value and a block. So, this becomes very simple:
+In that case, `maybe` becomes a method on the object class that applies `value_proc` to its receiver rather than being a method that takes a value and a block. Getting down to business, we are going to open the core `Object` class and add a new method to it. The body of that method will be our `value_proc`:
 
 	def quirky_bird_extend(name, &value_proc)
 	  Object.send(:define_method, name) do
 	    value_proc.call(self)
 	  end
 	end
+
+Just as we said, we are defining a new method in the `Object` class.
+
+> We are using `define_method` and a block rather than the `def` keyword. The reason is that when we use `define_method` and a block, the body of the method executes in the context of the block, not the context of the object itself. Blocks are closures in Ruby, which means that the block has access to `value_proc`, the parameter from our `quirky_bird_extend` method. 
+
+> Had we used `def`, Ruby would try to evaluate `value_proc` in the context of the object itself. So our parameter would be lost forever. Performance wonks and compiler junkies will be interested in this behaviour, as it has very serious implications for garbage collection and memory leaks.
 
 Now let's use it with exactly the same block we used with `quirky_bird_define`:
 
@@ -188,10 +197,13 @@ Now let's use it with exactly the same block we used with `quirky_bird_define`:
 	
 	nil.maybe + 1
 	  => nil
+
 	1.maybe + 1
 	  => 2
 
-This looks familiar! We have defined our own version of [andand](http://github.com/raganwald/andand/tree "sudo gem install andand"), only **better**. Instead of a one-off handy-dandy, we have created a method that creates similar methods. Let's try it again, this time emulating Chris Wanstrath's `try`:
+It works. And it looks familiar! We have defined our own version of [andand](http://github.com/raganwald/andand/tree "sudo gem install andand"), only this is much more **interesting**. Instead of a one-off handy-dandy, we have created a method that creates similar methods.
+
+Let's try it again, this time emulating Chris Wanstrath's `try`:
 
 	quirky_bird_extend(:try) do |value|
 	  returning(BlankSlate.new) do |it|
@@ -209,8 +221,10 @@ This looks familiar! We have defined our own version of [andand](http://github.c
 	
 	nil.try + 1
 	  => nil
+
 	1.try + 1
 	  => 2
+
 	1.try.ordinalize
 	  => nil
 
