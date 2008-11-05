@@ -56,3 +56,11 @@ There is similar behaviour with things like `returning('') do ...`, any time you
 The principles behind this code are much more basic than `returning`, it's really a question of understanding values, references, and which Ruby methods are destructive and which are constructive. I note that it is not part of the Ruby culture to disambiguate them. For example, `!` is used in the standard library for destructive methods, but only when a constructive version of the same method already exists.
 
 It is a matter of wonder why ordering arrays is handled with `sort` and `sort!`, but catenation is handled with `+` and `concat`.
+
+---
+
+[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
+	
+Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
+
+<a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
