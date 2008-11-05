@@ -245,7 +245,7 @@ The quirky bird is superficially similar to the cardinal, however it can be used
 
 _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), and [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown). By the way, did anybody spot the [Kestrel]((http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown) in today's post?
 
-p.s. Please vote for this post on [ruby.reddit.com](http://www.reddit.com/r/ruby/comments/7bhsh/quirky_birds_and_metasyntactic_programming/)!
+p.s. Please vote for this post on [ruby.reddit.com](http://www.reddit.com/r/ruby/comments/7bhsh/quirky_birds_and_metasyntactic_programming/) and [hacker news](http://news.ycombinator.com/item?id=354660)!
 
 ---
 
