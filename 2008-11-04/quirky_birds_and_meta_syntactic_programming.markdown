@@ -203,7 +203,7 @@ Now let's use it with exactly the same block we used with `quirky_bird_define`:
 
 It works. And it looks familiar! We have defined our own version of [andand](http://github.com/raganwald/andand/tree "sudo gem install andand"), only this is much more **interesting**. Instead of a one-off handy-dandy, we have created a method that creates similar methods.
 
-Let's try it again, this time emulating Chris Wanstrath's `try`:
+Let's try it again, this time emulating Chris Wanstrath's [try](http://ozmm.org/posts/try.html):
 
 	quirky_bird_extend(:try) do |value|
 	  returning(BlankSlate.new) do |it|
