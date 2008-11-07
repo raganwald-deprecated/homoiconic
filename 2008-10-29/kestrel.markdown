@@ -139,7 +139,7 @@ So what have we learned?
 * `returning` is part of Ruby on Rails. `tap` is part of Ruby 1.9. It is available for Ruby 1.8 as part of the [andand gem](http://andand.rubyforge.org). `sudo gem install andand`.
 * [inside.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/inside.rb): If you are using Rails, drop it in `config/initializers` to make it available in your project.
 * [You keep using that idiom](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/you_keep_using_that_idiom.markdown). I do not think it means what you think it means.
-* _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), and [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown).
+* _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown), and [From Birds that Compose to Meta-Object Protocols](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown).
 
 ---
 
