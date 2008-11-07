@@ -142,7 +142,13 @@ Using a before method signals exactly what you are trying to accomplish. And bes
 
 **the queer bird**
 
-That looks handy. But what if we want an _after method_, a way to compose methods in the other order? Good news, the queer bird combinator is exactly what we want. Written `Qxyz = y(xz)`, the Ruby equivalent is:
+That looks handy. But what if we want an _after method_, a way to compose methods in the other order? Good news, the queer bird combinator is exactly what we want. 
+
+
+[![happy pride (c) 2008 penguincakes, some rights reserved reserved](http://farm4.static.flickr.com/3035/2891197379_556f528536.jpg)](http://www.flickr.com/photos/penguincakes/2891197379/ "happy pride (c) 2008 penguincakes, some rights reserved")  
+
+
+Written `Qxyz = y(xz)`, the Ruby equivalent is:
 
 	queer_bird.call(something).call(stuff_to_do_after_we_do_stuff).call(value)
 		=> stuff_to_do_after_we_do_stuff.call(something.call(value))
