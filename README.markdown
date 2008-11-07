@@ -5,7 +5,7 @@ Homoiconic
 
 When I write, I will add files to the [homoiconic](http://github.com/raganwald/homoiconic/) git repository, organized by date. Code will be included in the posts and also in the folder with the posts that discuss them, so it's easy to download what you like. You can even download the entire thing as an archive if you want.
 
-I will be tagging new 'posts' in [del.icio.us](http://delicious.com/raganwald/homoiconic "Homoiconic Bookmarks on Delicious"). You can subscribe to [an RSS feed that will alert you when I manually tag a new post](http://feeds.delicious.com/v2/rss/raganwald/homoiconic "Homoiconic Bookmarks Feed"). If you do this, you will need to manually check posts for updates, or come back here to the [home page](http://github.com/raganwald/homoiconic "Homoiconic on GitHub").
+I will be tagging new 'posts' in [del.icio.us](http://delicious.com/raganwald/homoiconic "Homoiconic Bookmarks on Delicious"). You can subscribe to [an RSS feed that will alert you when I manually tag a new post](http://feeds.feedburner.com/raganwald "Homoiconic Bookmarks Feed"). If you do this, you will need to manually check posts for updates, or come back here to the [home page](http://github.com/raganwald/homoiconic "Homoiconic on GitHub").
 
 If you're into git and like fine-grained updates, you can follow [homoiconic](http://github.com/raganwald/homoiconic) here on GitHub or [subscribe to commit messages](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic") letting you know what I've added or updated in your feed reader. The latter option is likely to be moderate volume, as I like to make edits and corrections as I go.
 
