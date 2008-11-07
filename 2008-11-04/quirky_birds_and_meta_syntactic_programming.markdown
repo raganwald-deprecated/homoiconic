@@ -6,7 +6,7 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the Quee
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
 
 
-[![happy pride (c) 2008 penguincakes, some rights reserved reserved](http://farm4.static.flickr.com/3035/2891197379_556f528536.jpg)](http://www.flickr.com/photos/penguincakes/2891197379/ "happy pride (c) 2008 penguincakes, some rights reserved")  
+[![Crazy Birds (c) 2008 Ross Lauderdale, some rights reserved](http://farm4.static.flickr.com/3164/2394551333_f0d5ce2e35_b.jpg)](http://www.flickr.com/photos/rosslauderdale/2394551333/ "Crazy Birds (c) 2008 Ross Lauderdale, some rights reserved")  
 
 
 The quirky bird is written `Q`<sub>`3`</sub>`xyz = z(xy)`. In Ruby:
