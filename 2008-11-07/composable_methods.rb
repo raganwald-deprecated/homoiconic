@@ -129,31 +129,3 @@ module ComposableMethods
   end
   
 end
-
-	class SuperFoo
-
-	  def one_parameter(x)
-	    x + 1
-	  end
-  
-	end
-
-	class Foo < SuperFoo
-
-	  include ComposableMethods
-
-	  after :one_parameter do |x|
-	    x * 2
-	  end
-
-	end
-	
-	class Bar < Foo
-
-	  def one_parameter(x)
-	    x + 100
-	  end
-	  
-  end
-
-p Bar.new.one_parameter(1)
