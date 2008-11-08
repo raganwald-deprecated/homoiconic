@@ -27,15 +27,39 @@
 #
 # http://github.com/up_the_irons/immutable/tree/master
 # http://blog.jayfields.com/2006/12/ruby-alias-method-alternative.html
+# http://eigenclass.org/hiki.rb?bounded+space+instance_exec
 #
 # And a heaping side of http://blog.grayproductions.net/articles/all_about_struct
 
-module ComposableMethods 
+module BeforeAndAfterAdvice 
   
   # Random ID changed at each interpreter load
   UNIQ = "_#{object_id}"
   
   Compositions = Struct.new(:before, :between, :after)
+  
+  module InstanceExecHelper; end
+  
+  module InstanceMethods
+    
+    def instance_exec(*args, &block)
+      begin
+        old_critical, Thread.critical = Thread.critical, true
+        n = 0
+        n += 1 while respond_to?(mname="__instance_exec#{n}")
+        InstanceExecHelper.module_eval{ define_method(mname, &block) }
+      ensure
+        Thread.critical = old_critical
+      end
+      begin
+        ret = send(mname, *args)
+      ensure
+        InstanceExecHelper.module_eval{ remove_method(mname) } rescue nil
+      end
+      ret
+    end
+    
+  end
   
   module ClassMethods
     
@@ -44,7 +68,7 @@ module ComposableMethods
       if ancestral_composer
         ancestral_composer.instance_variable_get(:@__composed_methods__)
       else
-        @__composed_methods__ ||= Hash.new { |hash, method_sym| hash[method_sym] = ComposableMethods::Compositions.new([], self.instance_method(method_sym), []) }
+        @__composed_methods__ ||= Hash.new { |hash, method_sym| hash[method_sym] = BeforeAndAfterAdvice::Compositions.new([], self.instance_method(method_sym), []) }
       end
     end
     
@@ -60,6 +84,14 @@ module ComposableMethods
       __rebuild_method__(method_sym)
     end
     
+    def reset_befores_and_afters(*method_symbols)
+      method_symbols.each do |method_sym|
+        __composed_methods__[method_sym].before = []
+        __composed_methods__[method_sym].after = []
+        __rebuild_method__(method_sym)
+      end
+    end
+    
     def method_added(method_sym)
       unless instance_variable_get("@#{UNIQ}_in_method_added")
         __safely__ do
@@ -72,43 +104,41 @@ module ComposableMethods
     
     def __rebuild_method__(method_sym)
       __safely__ do
-        old_method = __composed_methods__[method_sym].between
-        __composed_methods__[method_sym].before.each do |block|
-          __before__(method_sym, old_method, block)
-          old_method = self.instance_method(method_sym)
-        end
-        __composed_methods__[method_sym].after.each do |block|
-          __after__(method_sym, old_method, block)
-          old_method = self.instance_method(method_sym)
+        composition = __composed_methods__[method_sym]
+        if composition.before.empty? and composition.after.empty?
+          if old_method.arity == 0
+            define_method(method_sym) { old_method.bind(self).call }
+          else
+            define_method(method_sym) { |*params| old_method.bind(self).call(*params) }
+          end
+        else
+          old_method = composition.between
+          arity = old_method.arity
+          if old_method.arity == 0
+            define_method(method_sym) do
+              composition.before.each do |block|
+                self.instance_eval(&block)
+              end
+              composition.after.inject(old_method.bind(self).call) do |ret_val, block|
+                self.instance_eval(&block)
+              end
+            end
+          else
+            define_method(method_sym) do |*params|
+              composition.after.inject(
+                old_method.bind(self).call(
+                  *composition.before.inject(params) do |acc_params, block|
+                    self.instance_exec(*acc_params, &block)
+                  end
+                )
+              ) do |ret_val, block|
+                self.instance_exec(ret_val, &block)
+              end
+            end
+          end
         end
       end
     end
-    
-    def __before__(method_sym, old_method, block)
-      if old_method.arity == 0
-        define_method(method_sym) do
-          block.call
-          old_method.bind(self).call
-        end
-      else
-        define_method(method_sym) do |*params|
-          old_method.bind(self).call(*block.call(*params))
-        end
-      end
-    end 
-    
-    def __after__(method_sym, old_method, block)
-      if old_method.arity == 0
-        define_method(method_sym) do
-          old_method.bind(self).call
-          block.call
-        end
-      else
-        define_method(method_sym) do |*params|
-          block.call(*old_method.bind(self).call(*params))
-        end
-      end
-    end 
     
     def __safely__
       was = instance_variable_get("@#{UNIQ}_in_method_added")
@@ -124,6 +154,8 @@ module ComposableMethods
   
   def self.included(receiver)
     receiver.extend         ClassMethods
+    receiver.send :include, InstanceExecHelper
+    receiver.send :include, InstanceMethods
     receiver.instance_variable_set("@#{UNIQ}_in_method_added", false)
     receiver.instance_variable_set(:@old_method_added, receiver.public_method_defined?(:method_added) && receiver.instance_method(:method_added))
   end

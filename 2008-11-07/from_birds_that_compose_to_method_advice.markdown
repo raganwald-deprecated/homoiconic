@@ -166,7 +166,7 @@ We can copy, paste and modify our bluebird code for the before methods. But befo
 1. If you define before and after methods in any order, the final result should be that all of the before methods are run before the main method, then all of the after methods. This is not part of combinatory logic, but it's the standard behaviour people expect from before and after methods.
 2. If you override the main method, the before and after methods should still work.
 
-[That should keep you busy for a few minutes](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/composable_methods.rb "composable_methods.rb"). Have fun!
+[before_and_after_advice.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/before_and_after_advice.rb "before_and_after_advice.rb"). As you can see, the basic pattern of composing methods is still there, however it is now surrounded by a lot of extra moving parts. If you are comfortable with the [na&iuml;ve implementation of before advice](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/naive_before_advice.rb), the mechanism is easy to understand.
 
 _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown), and [From Birds that Compose to Meta-Object Protocols](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown).
 

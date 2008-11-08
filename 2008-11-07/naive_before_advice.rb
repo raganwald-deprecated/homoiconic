@@ -30,7 +30,7 @@
 #
 # And a heaping side of http://blog.grayproductions.net/articles/all_about_struct
 
-module NaiveBeforeMethods
+module NaiveBeforeAdvice
 
   module ClassMethods
   
