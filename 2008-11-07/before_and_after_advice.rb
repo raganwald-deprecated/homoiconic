@@ -74,13 +74,13 @@ module BeforeAndAfterAdvice
     
     def before(method_sym, &block)
       old_method = self.instance_method(method_sym)
-      __composed_methods__[method_sym].before << block
+      __composed_methods__[method_sym].before.unshift(block)
       __rebuild_method__(method_sym)
     end
     
     def after(method_sym, &block)
       old_method = self.instance_method(method_sym)
-      __composed_methods__[method_sym].after << block
+      __composed_methods__[method_sym].after.push(block)
       __rebuild_method__(method_sym)
     end
     
@@ -105,6 +105,7 @@ module BeforeAndAfterAdvice
     def __rebuild_method__(method_sym)
       __safely__ do
         composition = __composed_methods__[method_sym]
+        old_method = composition.between
         if composition.before.empty? and composition.after.empty?
           if old_method.arity == 0
             define_method(method_sym) { old_method.bind(self).call }
@@ -112,7 +113,6 @@ module BeforeAndAfterAdvice
             define_method(method_sym) { |*params| old_method.bind(self).call(*params) }
           end
         else
-          old_method = composition.between
           arity = old_method.arity
           if old_method.arity == 0
             define_method(method_sym) do
