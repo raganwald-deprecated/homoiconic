@@ -1,4 +1,4 @@
-Aspect-Oriented Programming in Ruby Using Combinator Birds
+Aspect-Oriented Programming in Ruby using Combinator Birds
 ---
 
 In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the bluebird is one of the most important and fundamental combinators, because the bluebird *composes* two other combinators. Although this is usually discussed as part of [functional programming style](http://weblog.raganwald.com/2007/03/why-why-functional-programming-matters.html "Why Why Functional Programming Matters Matters"), it is just as valuable when writing object-oriented programs. In this post, we will develop an aspect-oriented programming module that adds before methods and after methods to Ruby programs, with the implementation inspired by the bluebird. 
