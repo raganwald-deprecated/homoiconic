@@ -1,7 +1,7 @@
-From Birds that Compose to Method Advice
+Aspect-Oriented Programming in Ruby Using Combinator Birds
 ---
 
-In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the bluebird is one of the most important and fundamental combinators, because the bluebird *composes* two other combinators. Although this is of great interest when we are writing programs in a functional style, it is just as valuable when writing object-oriented programs. In this post, we will develop a simple aspect-oriented programming module that adds before methods and after methods to Ruby programs, with the implementation inspired by the bluebird combinator. 
+In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the bluebird is one of the most important and fundamental combinators, because the bluebird *composes* two other combinators. Although this is usually discussed as part of [functional programming style](http://weblog.raganwald.com/2007/03/why-why-functional-programming-matters.html "Why Why Functional Programming Matters Matters"), it is just as valuable when writing object-oriented programs. In this post, we will develop an aspect-oriented programming module that adds before methods and after methods to Ruby programs, with the implementation inspired by the bluebird. 
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
 
@@ -31,7 +31,14 @@ So with a bluebird you can chain functions together in series, while if you didn
 
 We're not actually going to [Greenspun](http://en.wikipedia.org/wiki/Greenspun%27s_Tenth_Rule "Greenspun's Tenth Rule - Wikipedia, the free encyclopedia") an entire aspect-oriented layer on top of Ruby, but we will add a simple feature, we are going to add *before and after methods*. You already know what a normal method is. A before method simply specifies some behaviour you want executed before the method is called, while an after method specifies some behaviour you wnat executed after the method is called. In [Aspect-Oriented Programming](http://en.wikipedia.org/wiki/Aspect-oriented_programming ""), before and after methods are called "advice."
 
-Let's start with before methods. Here's the syntax we want:
+Ruby on Rails programmers are familiar with method advice. if you have ever written any of the following, you were using Rails' built-in aspect-oriented programming support:
+
+	after_save
+	validates_each
+	alias_method_chain
+	before_filter
+
+These and other features of Rails implement method advice, albeit in a very specific way tuned to portions of the Rails framework. We're going to implement method advice in a module that you can use in any of your classes, on any method or methods you choose. We'll start with before methods. Here's the syntax we want:
 
 	def something(parameter)
 		# do stuff...
