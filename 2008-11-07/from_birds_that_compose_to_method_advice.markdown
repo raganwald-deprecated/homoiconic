@@ -1,7 +1,7 @@
 From Birds that Compose to Method Advice
 ---
 
-In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the bluebird is one of the most important and fundamental combinators, because the bluebird *composes* two other combinators. Almost all of the reasoning we can do about programs is based on the axiom that if `x` and `y` are meaningful operations, the composition of `x` and `y` is also meaningful. The existence of a bluebird guarantees this axiom.
+In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the bluebird is one of the most important and fundamental combinators, because the bluebird *composes* two other combinators. Although this is of great interest when we are writing programs in a functional style, it is just as valuable when writing object-oriented programs. In this post, we will develop a simple aspect-oriented programming module that adds before methods and after methods to Ruby programs, with the implementation inspired by the bluebird combinator. 
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
 
@@ -27,13 +27,11 @@ The answer is:
 	
 So with a bluebird you can chain functions together in series, while if you didn't have a bluebird all you could do is write functions that transform other functions. Not that there's anything wrong with that, we used that to great effect with [cardinals](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown) and [quirky birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown).
 
-**meta-object protocols and method advice**
+**giving methods advice**
 
-A [meta-object protocol](http://en.wikipedia.org/wiki/Metaobject) or MOP is a fancy word for the way objects and classes work together in an object-oriented program. In some languages, like Java and Ruby, the MOP is built in. You can layer a few ideas on top of things, but for example it is challenging to add multiple inheritance to Java or to [add pattern matching to Ruby](http://etorreborre.blogspot.com/2007/04/pattern-matching-with-ruby.html "Pattern matching with Ruby") (A few languages, like Common Lisp, flexible MOPs that are written as libraries in the language themselves rather than buried in the implementation).
+We're not actually going to [Greenspun](http://en.wikipedia.org/wiki/Greenspun%27s_Tenth_Rule "Greenspun's Tenth Rule - Wikipedia, the free encyclopedia") an entire aspect-oriented layer on top of Ruby, but we will add a simple feature, we are going to add *before and after methods*. You already know what a normal method is. A before method simply specifies some behaviour you want executed before the method is called, while an after method specifies some behaviour you wnat executed after the method is called. In [Aspect-Oriented Programming](http://en.wikipedia.org/wiki/Aspect-oriented_programming ""), before and after methods are called "advice."
 
-We're not actually going to [Greenspun](http://en.wikipedia.org/wiki/Greenspun%27s_Tenth_Rule "Greenspun's Tenth Rule - Wikipedia, the free encyclopedia") an entire MOP in Ruby, but we will add a simple feature to Ruby's MOP, we are going to add *before methods*. You already know what a normal method is. A before method simply specifies some behaviour you want executed before the method is called. In [Aspect-Oriented Programming](http://en.wikipedia.org/wiki/Aspect-oriented_programming ""), a before method is called "before advice."
-
-Here's the syntax we want:
+Let's start with before methods. Here's the syntax we want:
 
 	def something(parameter)
 		# do stuff...
@@ -47,7 +45,7 @@ Here's the syntax we want:
 		# stuff to do BEFORE stuff to do BEFORE we do stuff...
 	end
 
-So as we can see, the before methods get chained together before the method. To keep this nice and clean, we are going to make them work just like composable functions: whatever our before method's block returns will be passed as a parameter up the chain. We also won't fool around with altering the order of before methods, we'll just take them as they come.
+As we can see, the before methods get chained together before the method. To keep this nice and clean, we are going to make them work just like composable functions: whatever our before method's block returns will be passed as a parameter up the chain. We also won't fool around with altering the order of before methods, we'll just take them as they come.
 
 This is really simple, we are composing methods. To compare to the bluebird above, we are writing `before`, then the name of a method, then a function. I'll rewrite it like this:
 
@@ -58,7 +56,7 @@ Now we can see that this newfangled aspect-oriented programming stuff was figure
 
 Okay, enough history, let's get started. First, we are not going to write any C, so there is no way to actually force the Ruby VM to call our before methods. So instead, we are going to have to rewrite our method. We'll use [a trick I found on Jay Fields' blog](http://blog.jayfields.com/2006/12/ruby-alias-method-alternative.html "Jay Fields' Thoughts: Ruby: Alias method alternative"):
 
-	module ComposableMethods
+	module NaiveBeforeMethods
   
 	  module ClassMethods
     
@@ -98,13 +96,13 @@ Okay, enough history, let's get started. First, we are not going to write any C,
 
 	class Foo < SuperFoo
 
-	  include ComposableMethods
+	  include NaiveBeforeMethods
 
-	  before(:one_parameter) do |x|
+	  before :one_parameter do |x|
 	    x * 2
 	  end
 
-	  before(:two_parameters) do |x, y|
+	  before :two_parameters do |x, y|
 	    [x + y, x - y]
 	  end
 
@@ -116,9 +114,9 @@ Okay, enough history, let's get started. First, we are not going to write any C,
 	Foo.new.two_parameters(3,1)
 		=> 8
 
-As you can see, we have a special case for methods with no parameters, and when we have a method with multiple parameters, our before method must answer an array of parameters. That's it, a bluebird in Ruby. And what a useful little creature!
+As you can see, we have a special case for methods with no parameters, and when we have a method with multiple parameters, our before method must answer an array of parameters. And the implementation relies on a "flock of bluebirds:" Our before methods and the underlying base method are composed with each other to define the method that is actually executed at run time.
 
-It could be even more useful if it supported methods with blocks. Adventurous readers may want to combine this code with the tricks in [cardinal.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/cardinal.rb) and see if they can build a version of `before` that supports methods that take blocks.
+> This could be even more useful if it supported methods with blocks. Adventurous readers may want to combine this code with the tricks in [cardinal.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/cardinal.rb) and see if they can build a version of `before` that supports methods that take blocks.
 
 **the super keyword, perhaps you've heard of it?**
 
@@ -142,7 +140,7 @@ Using a before method signals exactly what you are trying to accomplish. And bes
 
 **the queer bird**
 
-That looks handy. But what if we want an _after method_, a way to compose methods in the other order? Good news, the queer bird combinator is exactly what we want. 
+That looks handy. But we also want an _after method_, a way to compose methods in the other order. Good news, the queer bird combinator is exactly what we want. 
 
 
 [![happy pride (c) 2008 penguincakes, some rights reserved reserved](http://farm4.static.flickr.com/3035/2891197379_556f528536.jpg)](http://www.flickr.com/photos/penguincakes/2891197379/ "happy pride (c) 2008 penguincakes, some rights reserved")  
@@ -163,7 +161,7 @@ Which is, of course:
 		# stuff to do AFTER we do stuff...
 	end
 
-Now, we can do some copy and paste reuse of our bluebird code for the before methods. But before you rush off to implement that, you might want to think about a few interesting "real world" requirements:
+We can copy, paste and modify our bluebird code for the before methods. But before you rush off to implement that, you might want to think about a few interesting "real world" requirements:
 
 1. If you define before and after methods in any order, the final result should be that all of the before methods are run before the main method, then all of the after methods. This is not part of combinatory logic, but it's the standard behaviour people expect from before and after methods.
 2. If you override the main method, the before and after methods should still work.
