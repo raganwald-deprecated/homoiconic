@@ -89,6 +89,10 @@ Okay, enough history, let's get started. First, we are not going to write any C,
   
 	end
 
+As you can see, we have a special case for methods with no parameters, and when we have a method with multiple parameters, our before method must answer an array of parameters. And the implementation relies on a "flock of bluebirds:" Our before methods and the underlying base method are composed with each other to define the method that is actually executed at run time.
+
+Using it is very easy:
+
 	class SuperFoo
 
 	  def one_parameter(x)
@@ -120,8 +124,6 @@ Okay, enough history, let's get started. First, we are not going to write any C,
 	
 	Foo.new.two_parameters(3,1)
 		=> 8
-
-As you can see, we have a special case for methods with no parameters, and when we have a method with multiple parameters, our before method must answer an array of parameters. And the implementation relies on a "flock of bluebirds:" Our before methods and the underlying base method are composed with each other to define the method that is actually executed at run time.
 
 > This could be even more useful if it supported methods with blocks. Adventurous readers may want to combine this code with the tricks in [cardinal.rb](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/cardinal.rb) and see if they can build a version of `before` that supports methods that take blocks.
 
@@ -168,12 +170,31 @@ Which is, of course:
 		# stuff to do AFTER we do stuff...
 	end
 
-We can copy, paste and modify our bluebird code for the before methods. But before you rush off to implement that, you might want to think about a few interesting "real world" requirements:
+We _could_ copy, paste and modify our bluebird code for the before methods to create after methods. But before you rush off to implement that, you might want to think about a few interesting "real world" requirements:
 
 1. If you define before and after methods in any order, the final result should be that all of the before methods are run before the main method, then all of the after methods. This is not part of combinatory logic, but it's the standard behaviour people expect from before and after methods.
 2. If you override the main method, the before and after methods should still work.
+3. The blocks provided should execute in the receiver's scope, like method bodies.
 
-Here's one implementation meeting these requirements: [before\_and\_after\_advice.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/before_and_after_advice.rb "before_and_after_advice.rb"). As you can see, the basic pattern of composing methods is still there, however it is now surrounded by a lot of extra moving parts, which is why we looked at supporting just before methods first. If you are comfortable with the [na&iuml;ve implementation of before advice](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/naive_before_advice.rb), the mechanism is easy to understand.
+One implementation meeting these requirements is here: [before\_and\_after\_advice.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/before_and_after_advice.rb "before_and_after_advice.rb"). Embedded in a lot of extra moving parts, the basic pattern of composing methods is still evident:
+
+	# ...
+	define_method(method_sym) do |*params|
+	  composition.after.inject(
+	    old_method.bind(self).call(
+	      *composition.before.inject(params) do |acc_params, block|
+	        self.instance_exec(*acc_params, &block)
+	      end
+	    )
+	  ) do |ret_val, block|
+	    self.instance_exec(ret_val, &block)
+	  end
+	end
+	# ...
+
+That is why we looked at supporting just before methods first. If you are comfortable with the [na&iuml;ve implementation of before advice](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/naive_before_advice.rb) discussed above, the mechanism is easy to understand. The complete version is considerably more powerful. As mentioned, it supports before and after advice. It also uses `instance_exec` to evaluate the blocks in the receiver's scope, providing access to private methods and instance variables. And it works properly even when you override the method being advised.
+
+Please give it a try and let me know what you think.
 
 _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown), and [From Birds that Compose to Meta-Object Protocols](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown).
 
