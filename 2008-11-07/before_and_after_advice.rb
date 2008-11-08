@@ -72,14 +72,18 @@ module BeforeAndAfterAdvice
       end
     end
     
-    def before(method_sym, &block)
-      __composed_methods__[method_sym].before.unshift(block)
-      __rebuild_method__(method_sym)
+    def before(*method_symbols, &block)
+      method_symbols.each do |method_sym|
+        __composed_methods__[method_sym].before.unshift(block)
+        __rebuild_method__(method_sym)
+      end
     end
     
-    def after(method_sym, &block)
-      __composed_methods__[method_sym].after.push(block)
-      __rebuild_method__(method_sym)
+    def after(*method_symbols, &block)
+      method_symbols.each do |method_sym|
+        __composed_methods__[method_sym].after.push(block)
+        __rebuild_method__(method_sym)
+      end
     end
     
     def reset_befores_and_afters(*method_symbols)
