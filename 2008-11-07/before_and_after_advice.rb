@@ -73,13 +73,11 @@ module BeforeAndAfterAdvice
     end
     
     def before(method_sym, &block)
-      old_method = self.instance_method(method_sym)
       __composed_methods__[method_sym].before.unshift(block)
       __rebuild_method__(method_sym)
     end
     
     def after(method_sym, &block)
-      old_method = self.instance_method(method_sym)
       __composed_methods__[method_sym].after.push(block)
       __rebuild_method__(method_sym)
     end
