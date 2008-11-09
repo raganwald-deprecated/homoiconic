@@ -1,7 +1,7 @@
 Aspect-Oriented Programming in Ruby using Combinator Birds
 ---
 
-In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the bluebird is one of the most important and fundamental combinators, because the bluebird *composes* two other combinators. Although this is usually discussed as part of [functional programming style](http://weblog.raganwald.com/2007/03/why-why-functional-programming-matters.html "Why Why Functional Programming Matters Matters"), it is just as valuable when writing object-oriented programs. In this post, we will develop an aspect-oriented programming module that adds before methods and after methods to Ruby programs, with the implementation inspired by the bluebird. 
+In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the bluebird is one of the most important and fundamental combinators, because the bluebird *composes* two other combinators. Although this is usually discussed as part of [functional programming style](http://weblog.raganwald.com/2007/03/why-why-functional-programming-matters.html "Why Why Functional Programming Matters Matters"), it is just as valuable when writing object-oriented programs. In this post, we will develop an [aspect-oriented programming](http://en.wikipedia.org/wiki/Aspect-oriented_programming "") (or "AOP") module that adds before methods and after methods to Ruby programs, with the implementation inspired by the bluebird. 
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
 
@@ -29,7 +29,7 @@ So with a bluebird you can chain functions together in series, while if you didn
 
 **giving methods advice**
 
-We're not actually going to [Greenspun](http://en.wikipedia.org/wiki/Greenspun%27s_Tenth_Rule "Greenspun's Tenth Rule - Wikipedia, the free encyclopedia") an entire aspect-oriented layer on top of Ruby, but we will add a simple feature, we are going to add *before and after methods*. You already know what a normal method is. A before method simply specifies some behaviour you want executed before the method is called, while an after method specifies some behaviour you wnat executed after the method is called. In [Aspect-Oriented Programming](http://en.wikipedia.org/wiki/Aspect-oriented_programming ""), before and after methods are called "advice."
+We're not actually going to [Greenspun](http://en.wikipedia.org/wiki/Greenspun%27s_Tenth_Rule "Greenspun's Tenth Rule - Wikipedia, the free encyclopedia") an entire aspect-oriented layer on top of Ruby, but we will add a simple feature, we are going to add *before and after methods*. You already know what a normal method is. A before method simply specifies some behaviour you want executed before the method is called, while an after method specifies some behaviour you wnat executed after the method is called. In AOP, before and after methods are called "advice."
 
 Ruby on Rails programmers are familiar with method advice. if you have ever written any of the following, you were using Rails' built-in aspect-oriented programming support:
 
@@ -59,7 +59,7 @@ This is really simple, we are composing methods. To compare to the bluebird abov
 	bluebird.call(something).call(stuff_to_do_before_we_do_stuff).call(value)
 		=> something.call(stuff_to_do_before_we_do_stuff.call(value))
 
-Now we can see that this newfangled aspect-oriented programming stuff was figured out nearly a century ago by people like Alonzo Church.
+Now we can see that this newfangled aspect-oriented programming stuff was figured out nearly a century ago by people like [Alonzo Church](http://en.wikipedia.org/wiki/Alonzo_Church).
 
 Okay, enough history, let's get started. First, we are not going to write any C, so there is no way to actually force the Ruby VM to call our before methods. So instead, we are going to have to rewrite our method. We'll use [a trick I found on Jay Fields' blog](http://blog.jayfields.com/2006/12/ruby-alias-method-alternative.html "Jay Fields' Thoughts: Ruby: Alias method alternative"):
 
