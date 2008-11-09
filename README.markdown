@@ -21,4 +21,4 @@ Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwa
 
 <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
 
-<a href="http://technorati.com/claim/h447mh7bsw" rel="me">My Technorati Profile</a>
+<a href="http://technorati.com/claim/5am4yd35mg" rel="me">Technorati Profile</a>
