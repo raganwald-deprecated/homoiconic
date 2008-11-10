@@ -42,27 +42,7 @@ module BeforeAndAfterAdvice
   
   Compositions = Struct.new(:before, :between, :after)
   
-  module InstanceExecHelper; end
-  
-  module InstanceMethods
-    
-    def instance_exec(*args, &block)
-      begin
-        old_critical, Thread.critical = Thread.critical, true
-        n = 0
-        n += 1 while respond_to?(mname="__instance_exec#{n}")
-        InstanceExecHelper.module_eval{ define_method(mname, &block) }
-      ensure
-        Thread.critical = old_critical
-      end
-      begin
-        ret = send(mname, *args)
-      ensure
-        InstanceExecHelper.module_eval{ remove_method(mname) } rescue nil
-      end
-      ret
-    end
-    
+  module MethodAdvice
   end
   
   module ClassMethods
@@ -77,15 +57,17 @@ module BeforeAndAfterAdvice
     end
     
     def before(*method_symbols, &block)
+      options = method_symbols[-1].kind_of?(Hash) ? method_symbols.pop : {}
       method_symbols.each do |method_sym|
-        __composed_methods__[method_sym].before.unshift(block)
+        __composed_methods__[method_sym].before.unshift(__unbound_method__(block, options[:name]))
         __rebuild_method__(method_sym)
       end
     end
     
     def after(*method_symbols, &block)
+      options = method_symbols[-1].kind_of?(Hash) ? method_symbols.pop : {}
       method_symbols.each do |method_sym|
-        __composed_methods__[method_sym].after.push(block)
+        __composed_methods__[method_sym].after.push(__unbound_method__(block, options[:name]))
         __rebuild_method__(method_sym)
       end
     end
@@ -108,49 +90,61 @@ module BeforeAndAfterAdvice
       end
     end
     
+    def __rebuild_without_advice__(method_sym, old_method)
+      if old_method.arity == 0
+        define_method(method_sym) { old_method.bind(self).call }
+      else
+        define_method(method_sym) { |*params| old_method.bind(self).call(*params) }
+      end
+    end
+    
+    def __rebuild_advising_no_parameters__(method_sym, old_method, befores, afters)
+      define_method(method_sym) do
+        befores.each do |before_advice_method|
+          before_advice_method.bind(self).call
+        end
+        afters.inject(old_method.bind(self).call) do |ret_val, after_advice_method|
+          after_advice_method.bind(self).call
+        end
+      end
+    end
+    
+    def __rebuild_advising_with_parameters__(method_sym, old_method, befores, afters)
+      define_method(method_sym) do |*params|
+        afters.inject(
+          old_method.bind(self).call(
+            *befores.inject(params) do |acc_params, before_advice_method|
+              if before_advice_method.arity == 0
+                before_advice_method.bind(self).call
+                acc_params
+              else
+                before_advice_method.bind(self).call(*acc_params)
+              end
+            end
+          )
+        ) do |ret_val, after_advice_method|
+          if after_advice_method.arity == 0
+            after_advice_method.bind(self).call
+            ret_val
+          else
+            after_advice_method.bind(self).call(ret_val)
+          end
+        end
+      end
+    end
+    
     def __rebuild_method__(method_sym)
       __safely__ do
         composition = __composed_methods__[method_sym]
         old_method = composition.between
         if composition.before.empty? and composition.after.empty?
-          if old_method.arity == 0
-            define_method(method_sym) { old_method.bind(self).call }
-          else
-            define_method(method_sym) { |*params| old_method.bind(self).call(*params) }
-          end
+          __rebuild_without_advice__(method_sym, old_method)
         else
           arity = old_method.arity
           if old_method.arity == 0
-            define_method(method_sym) do
-              composition.before.each do |block|
-                self.instance_eval(&block)
-              end
-              composition.after.inject(old_method.bind(self).call) do |ret_val, block|
-                self.instance_eval(&block)
-              end
-            end
+            __rebuild_advising_no_parameters__(method_sym, old_method, composition.before, composition.after)
           else
-            define_method(method_sym) do |*params|
-              composition.after.inject(
-                old_method.bind(self).call(
-                  *composition.before.inject(params) do |acc_params, block|
-                    if block.arity == 0
-                      self.instance_exec(&block)
-                      acc_params
-                    else
-                      self.instance_exec(*acc_params, &block)
-                    end
-                  end
-                )
-              ) do |ret_val, block|
-                if block.arity == 0
-                  self.instance_exec(&block)
-                  retval
-                else
-                  self.instance_exec(ret_val, &block)
-                end
-              end
-            end
+            __rebuild_advising_with_parameters__(method_sym, old_method, composition.before, composition.after)
           end
         end
       end
@@ -166,12 +160,27 @@ module BeforeAndAfterAdvice
       end 
     end
     
+    def __unbound_method__(a_proc, name_prefx = nil)
+      begin
+        old_critical, Thread.critical = Thread.critical, true
+        n = 0
+        n += 1 while respond_to?(mname="#{name_prefx || '__method_advice'}_#{n}")
+        MethodAdvice.module_eval{ define_method(mname, &a_proc) }
+      ensure
+        Thread.critical = old_critical
+      end
+      begin
+        MethodAdvice.instance_method(mname)
+      ensure
+        MethodAdvice.module_eval{ remove_method(mname) } unless name_prefx rescue nil
+      end
+    end
+    
   end
   
   def self.included(receiver)
     receiver.extend         ClassMethods
-    receiver.send :include, InstanceExecHelper
-    receiver.send :include, InstanceMethods
+    receiver.send :include, MethodAdvice
     receiver.instance_variable_set("@#{UNIQ}_in_method_added", false)
     receiver.instance_variable_set(:@old_method_added, receiver.public_method_defined?(:method_added) && receiver.instance_method(:method_added))
   end
