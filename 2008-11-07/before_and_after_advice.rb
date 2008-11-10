@@ -23,11 +23,15 @@
 # 
 # http://www.opensource.org/licenses/mit-license.php
 
+# See:
+#
+#   http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown
+#
 # This code contains ideas snarfed from:
 #
-# http://github.com/up_the_irons/immutable/tree/master
-# http://blog.jayfields.com/2006/12/ruby-alias-method-alternative.html
-# http://eigenclass.org/hiki.rb?bounded+space+instance_exec
+#   http://github.com/up_the_irons/immutable/tree/master
+#   http://blog.jayfields.com/2006/12/ruby-alias-method-alternative.html
+#   http://eigenclass.org/hiki.rb?bounded+space+instance_exec
 #
 # And a heaping side of http://blog.grayproductions.net/articles/all_about_struct
 
