@@ -26,3 +26,23 @@ Let's try it:
 	=> -1
 
 I guess I need to find another way of detecting a proc with no argument declarations. At least until [known issue 574](http://redmine.ruby-lang.org/projects/ruby/issues?format=pdf "Ruby Issues [PDF]") is resolved.
+
+**update**
+
+I thought I'd have a look at method arity as well:
+
+	class Foo
+  
+	  def no_args
+	  end
+  
+	end
+
+	Foo.module_eval { define_method :no_args_2 do; end }
+
+	Foo.instance_method(:no_args).arity
+	  => 0
+	Foo.instance_method(:no_args_2).arity
+	  => -1
+
+It seems that if you explicitly define a method taking no parameters, you get the correct arity. However, if you use `define_method` and a block, you get the bug again.
