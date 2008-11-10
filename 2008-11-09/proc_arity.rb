@@ -1,7 +1,7 @@
-Lost in Translation: The real behaviour of Proc#arity
+Proc#arity in Ruby 1.8
 ---
 
-Obviously, something must have been lost when translating the docs to English. [For example](http://ruby-doc.org/core/classes/Proc.html#M001577 "Proc#arity"):
+[The docs for Proc#arity](http://ruby-doc.org/core/classes/Proc.html#M001577) state:
 
 > `prc.arity → fixnum`: Returns the number of arguments that would not be ignored. If the block is declared to take no arguments, returns 0. If the block is known to take exactly n arguments, returns n. If the block has optional arguments, return -n-1, where n is the number of mandatory arguments. **A proc with no argument declarations is the same a block declaring || as its arguments.**
 
