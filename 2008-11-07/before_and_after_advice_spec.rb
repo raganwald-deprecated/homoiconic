@@ -23,6 +23,9 @@
 # 
 # http://www.opensource.org/licenses/mit-license.php
 
+require 'rubygems'
+require 'spec'
+
 require File.expand_path(File.join(File.dirname(__FILE__), 'before_and_after_advice.rb'))
 
 class Parent
@@ -51,15 +54,15 @@ describe BeforeAndAfterAdvice do
     
     before(:each) do
       class Child
-
-    	  before :one do |x|
-    	    x * 2
-    	  end
-
-    	  before :two do |x, y|
-    	    [x + y, x - y]
-    	  end
-	  
+  
+        before :one do |x|
+          x * 2
+        end
+  
+        before :two do |x, y|
+          [x + y, x - y]
+        end
+      
       end
     end
     
@@ -70,6 +73,29 @@ describe BeforeAndAfterAdvice do
     
     it "should handle a case with two parameters" do
       Child.new.two(3,1).should == 8
+    end
+    
+  end
+  
+  describe "side-effects only" do
+    
+    before(:each) do
+      class Child
+
+    	  before :one, :two do ||
+    	    # nothing
+    	  end
+	  
+      end
+    end
+    
+    it "should handle a case with one parameter" do
+      Child.new.one(5).should == 6
+    end
+    
+    
+    it "should handle a case with two parameters" do
+      Child.new.two(3,1).should == 3
     end
     
   end

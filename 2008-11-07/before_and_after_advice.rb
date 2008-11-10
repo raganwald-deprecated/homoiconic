@@ -130,11 +130,21 @@ module BeforeAndAfterAdvice
               composition.after.inject(
                 old_method.bind(self).call(
                   *composition.before.inject(params) do |acc_params, block|
-                    self.instance_exec(*acc_params, &block)
+                    if block.arity == 0
+                      self.instance_exec(&block)
+                      acc_params
+                    else
+                      self.instance_exec(*acc_params, &block)
+                    end
                   end
                 )
               ) do |ret_val, block|
-                self.instance_exec(ret_val, &block)
+                if block.arity == 0
+                  self.instance_exec(&block)
+                  retval
+                else
+                  self.instance_exec(ret_val, &block)
+                end
               end
             end
           end

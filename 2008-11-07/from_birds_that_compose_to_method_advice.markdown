@@ -143,9 +143,45 @@ Of course, Ruby provides a means of 'decorating' methods like this by overriding
 
 	end
 	
-On a trivial example, the two techniques seem equivalent, so why bother with the extra baggage? The answer is that using `super` is a little low level. When you see a method definition in a language like Ruby, you don't know whether you are defining a new method, overriding an existing method with entirely new functionality, or "decorating" a method with before advice.
+On a trivial example, the two techniques seem equivalent, so why bother with the extra baggage? The answer is that using `super` is a little low level. When you see a method definition in a language like Ruby, you don't know whether you are defining a new method, overriding an existing method with entirely new functionality, or "decorating" a method with before advice. Using advice can be useful when you want to signal exactly what you are trying to accomplish.
 
-Using a before method signals exactly what you are trying to accomplish. And besides, before methods also work with methods defined in modules and the current class, not just superclasses. So in some ways they are even more flexible than Ruby's built-in meta-object protocol allows.
+Another reason to prefer method advice is when you want to share some functionality:
+
+	class LoggingFoo < SuperFoo
+
+	  def one_parameter(x)
+			log_entry
+	    super
+			log_exit
+	  end
+
+	  def two_parameters(x, y)
+			log_entry
+	    super
+			log_exit
+	  end
+
+	end
+
+This could be written as:
+
+	class LoggingFoo < SuperFoo
+
+	  include NaiveBeforeMethods
+
+	  before :one_parameter, :two_parameters do
+	    log_entry
+	  end
+
+	  after :one_parameter, :two_parameters do
+	    log_exit
+	  end
+
+	end
+
+This cleanly separates the concern of logging from the mechanism of what teh methods actually do
+
+> Although this is not the main benefit, method advice also works with methods defined in modules and the current class, not just superclasses. So in some ways it is even more flexible than Ruby's `super` keyword.
 
 **the queer bird**
 
@@ -166,15 +202,19 @@ Which is, of course:
 		# do stuff...
 	end
 	
-	after :something do |parameter|
+	after :something do |return_value|
 		# stuff to do AFTER we do stuff...
 	end
+
+The difference between before and after advice is that after advice is consumes and transforms whatever the method returns, while before advice consumes and transforms the parameters to the method.
 
 We _could_ copy, paste and modify our bluebird code for the before methods to create after methods. But before you rush off to implement that, you might want to think about a few interesting "real world" requirements:
 
 1. If you define before and after methods in any order, the final result should be that all of the before methods are run before the main method, then all of the after methods. This is not part of combinatory logic, but it's the standard behaviour people expect from before and after methods.
-2. If you override the main method, the before and after methods should still work.
-3. The blocks provided should execute in the receiver's scope, like method bodies.
+2. You should be able to apply the same advice to more than one method, for example by writing `after :foo, :bar do ... end`
+3. If you declare parameters for before advice, whatever it returns will be used by the next method, just like the example above. If you do not declare parameters for before advice, whatever it returns should be ignored. The same goes for after advice.
+4. If you override the main method, the before and after methods should still work.
+5. The blocks provided should execute in the receiver's scope, like method bodies.
 
 One implementation meeting these requirements is here: [before\_and\_after\_advice.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/before_and_after_advice.rb "before_and_after_advice.rb"). Embedded in a lot of extra moving parts, the basic pattern of composing methods is still evident:
 
