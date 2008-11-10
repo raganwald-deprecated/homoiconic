@@ -238,7 +238,7 @@ That is why we looked at supporting just before methods first. If you are comfor
 
 Please give it a try and let me know what you think.
 
-p.s. If the sample code gives an error, it could be [a known bug in Ruby 1.8](http://github.com/raganwald/homoiconic/tree/master/2008-11-09/proc_arity.rb "Proc#arity"). Try declaring your advice with an empty parameter list, e.g. `do || ... end`.
+p.s. If the sample code gives an error, it could be [a known bug in Ruby 1.8](http://github.com/raganwald/homoiconic/tree/master/2008-11-09/proc_arity.markdown "Proc#arity"). Try declaring your advice with an empty parameter list, e.g. `do || ... end`.
 
 _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown), and [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown).
 
