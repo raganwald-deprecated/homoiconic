@@ -149,17 +149,19 @@ Another reason to prefer method advice is when you want to share some functional
 
 	class LoggingFoo < SuperFoo
 
-	  def one_parameter(x)
+		def one_parameter(x)
 			log_entry
-	    super
-			log_exit
-	  end
+			returning(super) do
+				log_exit
+			end
+		end
 
-	  def two_parameters(x, y)
+		def two_parameters(x, y)
 			log_entry
-	    super
-			log_exit
-	  end
+			returning(super) do
+				log_exit
+			end
+		end
 
 	end
 
@@ -169,7 +171,7 @@ This could be written as:
 
 	  include NaiveBeforeMethods
 
-	  before :one_parameter, :two_parameters do
+	  before :one_parameter, :two_parameters do # see below
 	    log_entry
 	  end
 
@@ -179,7 +181,7 @@ This could be written as:
 
 	end
 
-This cleanly separates the concern of logging from the mechanism of what teh methods actually do
+This cleanly separates the concern of logging from the mechanism of what the methods actually do
 
 > Although this is not the main benefit, method advice also works with methods defined in modules and the current class, not just superclasses. So in some ways it is even more flexible than Ruby's `super` keyword.
 
@@ -235,6 +237,8 @@ One implementation meeting these requirements is here: [before\_and\_after\_advi
 That is why we looked at supporting just before methods first. If you are comfortable with the [na&iuml;ve implementation of before advice](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/naive_before_advice.rb) discussed above, the mechanism is easy to understand. The complete version is considerably more powerful. As mentioned, it supports before and after advice. It also uses `instance_exec` to evaluate the blocks in the receiver's scope, providing access to private methods and instance variables. And it works properly even when you override the method being advised.
 
 Please give it a try and let me know what you think.
+
+p.s. If the sample code gives an error, it could be a known bug in Ruby 1.8. Try declaring your advice with an empty parameter list, e.g. `do || ... end`.
 
 _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown), and [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown).
 
