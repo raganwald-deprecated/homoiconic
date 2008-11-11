@@ -40,21 +40,21 @@ Which was then converted to a block. Essentially, our code became:
 	[ [1,2,2], [3,3,4] ].map { |o, *a| o.send(:uniq, *a) }
 		=> NoMethodError: undefined method ‘uniq’ for 1:Fixnum
 
-Ruby helpfully assumes that when you pass an array as a single parameter to a method with an arity that accepts multiple parameters, you must want to deconstruct the array and send each element as a a separate parameter. n other words, you tried to call:
+Ruby helpfully assumes that when we pass an array as a single parameter to a method with an arity that accepts multiple parameters, we must want to deconstruct the array and send each element as a separate parameter. In other words, we tried to call:
 
 	proc { |o, *a| o.send(:uniq, *a) }.call(1, 2, 2)
 		=> NoMethodError: undefined method ‘uniq’ for 1:Fixnum
 
-Which is not what you want. You really wanted:
+Which is not what we wanted. We really wanted:
 
 	proc { |o, *a| o.send(:uniq, *a) }.call([1, 2, 2])
 		=> [1, 2]
 		
-And I don't know how to do that with the way `Symbol#to_proc` is currently written. You just have to live with it. Forewarned is forearmed!
+And I don't know how to do that with the way `Symbol#to_proc` is currently written. I just have to live with it. Forewarned is forearmed!
 
 **String#to_proc**
 
-Adventurous readers may want to try [`String#to_proc`](http://weblog.raganwald.com/2007/10/stringtoproc.html "String#to_proc") instead. `String#to_proc` uses a completely different way to disambiguate methods that take one and two parameters, so you can write:
+Adventurous readers may want to try [`String#to_proc`](http://weblog.raganwald.com/2007/10/stringtoproc.html "String#to_proc") instead. `String#to_proc` uses a completely different way to disambiguate methods that take one and two parameters, so we can write:
 
 	[ [1,2,2], [3,3,4] ].map(&'.uniq')
 		=> [[1, 2], [3, 4]]
