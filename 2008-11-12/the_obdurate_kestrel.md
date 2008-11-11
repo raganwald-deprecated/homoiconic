@@ -97,6 +97,8 @@ But what about methods that take parameters and blocks?
 
 If you want to try `Object#dont`, or want to use `Object#tap` with Ruby 1.8, `sudo gem install andand`. Enjoy!
 
+_Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown), [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown), and [The Obdurate Kestrel](http://github.com/raganwald/homoiconic/tree/master/2008-11-12/the_obdurate_kestrel.md).
+
 ---
 
 [homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
