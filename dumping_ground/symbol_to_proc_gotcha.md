@@ -1,6 +1,8 @@
 Symbol#to_proc gotcha
 ---
 
+**WARNING: Only applies to very old versions of Symbol#to\_proc, please disregard!!!**
+
 In Ruby on Rails and in Ruby 1.9, `Symbol#to_proc` is defined as:
 
 	class Symbol
