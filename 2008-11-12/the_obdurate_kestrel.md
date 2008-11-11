@@ -1,7 +1,7 @@
-Using #tap with Symbol#to\_proc and the obdurate kestrel #dont
+The obdurate kestrel
 ---
 
-In [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), we looked at `#tap` from Ruby 1.9 and `returning` from Ruby on Rails. Here are a few more tips for working with kestrels in Ruby.
+In [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), we looked at `#tap` from Ruby 1.9. Before we get to an amusing variation of `Object#tap`, here's a brief review of `#tap` along with a trick I've found useful.
 
 **using #tap with Symbol#to\_proc**
 
@@ -54,9 +54,9 @@ That might be a problem. For example:
 	[1,2,3,4,5].tap(&:uniq!).sort!
 		=> [1,2,3,4,5]
 
-So there's a tip: Use `Object#tap` (along with `Symbol#to_proc` for simple cases) when you want to chain several methods to a receiver, but the methods do not return the receiver.
+So that's the tip: Use `Object#tap` (along with `Symbol#to_proc` for simple cases) when you want to chain several methods to a receiver, but the methods do not return the receiver.
 
-**the obdurate kestrel #dont**
+**the obdurate kestrel**
 
 The [andand gem](http://github.com/raganwald/andand/tree "raganwald's andand") includes `Object#tap` for Ruby 1.8. It also includes another kestrel called `#dont`. Which does what it says, or rather *doesn't* do what it says.
 
@@ -93,7 +93,7 @@ But what about methods that take parameters and blocks?
 		# ...
 	end
 
-`Object#dont` is the Ruby-semantic equivalent of commenting out a method call, only it can be inserted inside of an existing expression. That's why it's called the *obdurate kestrel*.
+`Object#dont` is the Ruby-semantic equivalent of commenting out a method call, only it can be inserted inside of an existing expression. That's why it's called the *obdurate kestrel*. It refuses to do anything!
 
 If you want to try `Object#dont`, or want to use `Object#tap` with Ruby 1.8, `sudo gem install andand`. Enjoy!
 
