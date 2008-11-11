@@ -1,4 +1,4 @@
-The obdurate kestrel
+The Obdurate Kestrel
 ---
 
 In [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), we looked at `#tap` from Ruby 1.9. Before we get to an amusing variation of `Object#tap`, here's a brief review of `#tap` along with a trick I've found useful.
