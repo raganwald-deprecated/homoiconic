@@ -21,16 +21,16 @@ We can write:
 
 I often use this in production code with array methods that sometimes do what you expect and sometimes don't. My most hated example is [`Array#uniq!`](http://ruby-doc.org/core/classes/Array.html#M002238 "Class: Array"):
 
-  arr = [1,2,3,3,4,5]
+	arr = [1,2,3,3,4,5]
 	arr.uniq, arr
 		=> [1,2,3,4,5], [1,2,3,3,4,5]
-  arr = [1,2,3,3,4,5]
+	arr = [1,2,3,3,4,5]
 	arr.uniq!, arr
 		=> [1,2,3,4,5], [1,2,3,4,5]
-  arr = [1,2,3,4,5]
+	arr = [1,2,3,4,5]
 	arr.uniq, arr
 		=> [1,2,3,4,5], [1,2,3,4,5]
-  arr = [1,2,3,4,5]
+	arr = [1,2,3,4,5]
 	arr.uniq!, arr
 		=> nil, [1,2,3,4,5]
 
