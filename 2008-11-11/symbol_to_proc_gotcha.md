@@ -79,7 +79,7 @@ And even:
 	(1..100).select(&'8923630195 % _ == 1')
 		=> [2, 3, 6, 9, 18, 27, 29, 54, 58, 81, 87]
 
-To use it, grab [`string_to_proc.rb`](http://github.com/raganwald/homoiconic/tree/master/2008-11-11/string_to_proc.rb ""). Rails users can place it in `config/initializers` and it will just work.
+To use it, grab [string_to_proc.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-11/string_to_proc.rb ""). Rails users can place it in `config/initializers` and it will just work.
 
 ---
 
