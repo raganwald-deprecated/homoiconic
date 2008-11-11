@@ -1,7 +1,7 @@
 Symbol#to_proc gotcha
 ---
 
-In Ruby on Rails and in Runy 1.9, `Symbol#to_proc` is defined as:
+In Ruby on Rails and in Ruby 1.9, `Symbol#to_proc` is defined as:
 
 	class Symbol
 	  def to_proc
