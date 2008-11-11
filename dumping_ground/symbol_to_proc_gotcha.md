@@ -47,7 +47,12 @@ Ruby helpfully assumes that when we pass an array as a single parameter to a met
 	proc { |o, *a| o.send(:uniq, *a) }.call(1, 2, 2)
 		=> NoMethodError: undefined method ‘uniq’ for 1:Fixnum
 
-Which is not what we wanted. We really wanted:
+Which is roughly the same as:
+
+	1.uniq(2, 2)
+		=> NoMethodError: undefined method ‘uniq’ for 1:Fixnum
+
+Not what we wanted. Not at all. We really wanted:
 
 	proc { |o, *a| o.send(:uniq, *a) }.call([1, 2, 2])
 		=> [1, 2]
@@ -76,7 +81,7 @@ And even:
 	(1..100).select(&'8923630195 % _ == 1')
 		=> [2, 3, 6, 9, 18, 27, 29, 54, 58, 81, 87]
 
-To use it, grab [`string_to_proc.rb`](http://github.com/raganwald/homoiconic/tree/master/2008-11-11/string_to_proc.rb ""). Rails users can place it in `config/initializers` and it will just work.
+To use it, grab [string_to_proc.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-11/string_to_proc.rb ""). Rails users can place it in `config/initializers` and it will just work.
 
 ---
 
