@@ -42,20 +42,54 @@ module BeforeAndAfterAdvice
   
   Compositions = Struct.new(:before, :between, :after)
   
-  module MethodAdvice
-  end
+  module MethodAdvice; end
   
   module ClassMethods
     
-    def __composed_methods__
-      ancestral_composer = ancestors.detect { |ancestor| ancestor.instance_variable_defined?(:@__composed_methods__) }
-      if ancestral_composer
-        ancestral_composer.instance_variable_get(:@__composed_methods__)
-      else
-        @__composed_methods__ ||= Hash.new { |hash, method_sym| hash[method_sym] = BeforeAndAfterAdvice::Compositions.new([], self.instance_method(method_sym), []) }
-      end
-    end
-    
+    # Example:
+    #
+    #   before :foo, :bar do
+    #     # ...
+    #   end
+    #
+    # This executes the body of the block before the #foo and #bar instance methods
+    # for side effects without modifying the parameters (if any) passed to #foo
+    # and #bar
+    #
+    #   before :fizz, :buzz do |p1, p2|
+    #     # ...
+    #     [p1, p2]
+    #   end
+    #
+    # This executes the body of the block before the #foo and #bar instance methods
+    # for side efects, AND determines what is passed along as parameters. If the block
+    # takes parameters, it acts as a filter, transforming the parameters.
+    #
+    # It is possible to chain #before advice, and you can add more advice in subclasses:
+    #
+    #   class Foo
+    #     def foo(bar); end
+    #   end
+    #
+    #   class Bar < Foo
+    #     include MethodAdvice
+    #
+    #     before :foo do
+    #       # ...
+    #     end
+    #
+    #   end
+    #
+    #   class Blitz < Bar
+    #     include MethodAdvice
+    #
+    #     before :foo do |bar|
+    #       # ...
+    #       bar
+    #     end
+    #
+    #   end
+    #
     def before(*method_symbols, &block)
       options = method_symbols[-1].kind_of?(Hash) ? method_symbols.pop : {}
       method_symbols.each do |method_sym|
@@ -64,6 +98,49 @@ module BeforeAndAfterAdvice
       end
     end
     
+    # Example:
+    #
+    #   after :foo, :bar do
+    #     # ...
+    #   end
+    #
+    # This executes the body of the block after the #foo and #bar instance methods
+    # for side effects without modifying the return values of the #foo and #bar methods
+    #
+    #   after :fizz, :buzz do |r|
+    #     # ...
+    #     r
+    #   end
+    #
+    # This executes the body of the block after the #foo and #bar instance methods
+    # for side efects, AND determines what is returned from the call. If the block
+    # takes parameters, it acts as a filter, transforming the return value.
+    #
+    # It is possible to chain #after advice, and you can add more advice in subclasses:
+    #
+    #   class Foo
+    #     def foo(bar); end
+    #   end
+    #
+    #   class Bar < Foo
+    #     include MethodAdvice
+    #
+    #     after :foo do
+    #       # ...
+    #     end
+    #
+    #   end
+    #
+    #   class Blitz < Bar
+    #     include MethodAdvice
+    #
+    #     after :foo do |r|
+    #       # ...
+    #       r
+    #     end
+    #
+    #   end
+    #
     def after(*method_symbols, &block)
       options = method_symbols[-1].kind_of?(Hash) ? method_symbols.pop : {}
       method_symbols.each do |method_sym|
@@ -72,6 +149,8 @@ module BeforeAndAfterAdvice
       end
     end
     
+    # Removes all advice from the named methods. Intended for testing.
+    #
     def reset_befores_and_afters(*method_symbols)
       method_symbols.each do |method_sym|
         __composed_methods__[method_sym].before = []
@@ -80,6 +159,36 @@ module BeforeAndAfterAdvice
       end
     end
     
+    # Modified to re-apply advice when a method is overridden. So:
+    #
+    #   class Foo
+    #     def foo(bar); end
+    #   end
+    #
+    #   class Bar < Foo
+    #     include MethodAdvice
+    #
+    #     after :foo do
+    #       # ...
+    #     end
+    #
+    #   end
+    #
+    #   class Blitz < Bar
+    #     include MethodAdvice
+    #
+    #     def foo(bar)
+    #       # ...
+    #     end
+    #
+    #   end
+    #
+    # In this case the class Blitz overrides the method #foo, but the advice in
+    # class Bar is still applied, the override happens ONLY on the inner method,
+    # not the advice.
+    #
+    # Note well that super has undefined behaviour in this situation.
+    #
     def method_added(method_sym)
       unless instance_variable_get("@#{UNIQ}_in_method_added")
         __safely__ do
@@ -87,6 +196,15 @@ module BeforeAndAfterAdvice
           @old_method_added and @old_method_added.call(method_sym)
           __rebuild_method__(method_sym)
         end
+      end
+    end
+    
+    def __composed_methods__
+      ancestral_composer = ancestors.detect { |ancestor| ancestor.instance_variable_defined?(:@__composed_methods__) }
+      if ancestral_composer
+        ancestral_composer.instance_variable_get(:@__composed_methods__)
+      else
+        @__composed_methods__ ||= Hash.new { |hash, method_sym| hash[method_sym] = BeforeAndAfterAdvice::Compositions.new([], self.instance_method(method_sym), []) }
       end
     end
     
