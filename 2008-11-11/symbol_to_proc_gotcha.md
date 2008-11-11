@@ -45,7 +45,12 @@ Ruby helpfully assumes that when we pass an array as a single parameter to a met
 	proc { |o, *a| o.send(:uniq, *a) }.call(1, 2, 2)
 		=> NoMethodError: undefined method ‘uniq’ for 1:Fixnum
 
-Which is not what we wanted. We really wanted:
+Which is roughly the same as:
+
+	1.uniq(2, 2)
+		=> NoMethodError: undefined method ‘uniq’ for 1:Fixnum
+
+Not what we wanted. Not at all. We really wanted:
 
 	proc { |o, *a| o.send(:uniq, *a) }.call([1, 2, 2])
 		=> [1, 2]
