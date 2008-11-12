@@ -58,6 +58,8 @@ So that's the tip: Use `Object#tap` (along with `Symbol#to_proc` for simple case
 
 **the obdurate kestrel**
 
+[![Kestrel (c) 2007 The Hounds of Shadow](http://farm3.static.flickr.com/2402/2115973156_f4fcfca811.jpg)](http://flickr.com/photos/thehoundsofshadow/2115973156/"Kestrel (c) 2007 The Hounds of Shadow")
+
 The [andand gem](http://github.com/raganwald/andand/tree "raganwald's andand") includes `Object#tap` for Ruby 1.8. It also includes another kestrel called `#dont`. Which does what it says, or rather *doesn't* do what it says.
 
 	:foo.tap { p 'bar' }
