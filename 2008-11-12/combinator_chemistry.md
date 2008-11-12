@@ -1,4 +1,4 @@
-Combinator Chemistry
+Bruno Marchal's Combinator Chemistry
 ---
 
 ![Bruno Marchal](http://iridia.ulb.ac.be/~marchal/courses/Saturday_20070602_LNash/t_blackboard_1.png)
