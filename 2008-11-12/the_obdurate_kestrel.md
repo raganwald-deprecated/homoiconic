@@ -1,3 +1,8 @@
+The Enchaining and Obdurate Kestrels
+===
+
+Wherein we look at an interesting way to implement method chaining and meet a new Ruby kestrel.
+
 The Enchaining Kestrel
 ---
 
