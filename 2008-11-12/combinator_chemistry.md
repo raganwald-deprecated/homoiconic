@@ -14,7 +14,7 @@ Bruno Marchal's Combinator Chemistry
 7. [COMBINATORS VI (sequel)](http://www.mail-archive.com/everything-list@eskimo.com/msg05958.html)
 8. [COMBINATORS VIII](http://www.mail-archive.com/everything-list@eskimo.com/msg05959.html)
 
-*The first post text is reproduced below with Bruno's permission. I have added some wikipedia links to the introduction. Any brilliance is his, any errors are mine. I will post more as I find time.*
+*The first and second post texts are reproduced below with Bruno's permission. I have added some wikipedia links to the introduction. Any brilliance is his, any errors are mine. I will post more as I find time.*
 
 The Chemistry of COMBINATORS
 ---
@@ -49,29 +49,29 @@ Now if (K X) comes to interact with some other molecules Y giving ((K X) Y) you 
 
 So for example:
 
-K is stable  
-(K K) is stable  
-(K (K K)) is stable  
-((K K) K) is unstable, indeed it matches the law "1)", with X = K, and Y = K, so the reaction is trigged giving K.
+	K is stable  
+	(K K) is stable  
+	(K (K K)) is stable  
+	((K K) K) is unstable, indeed it matches the law "1)", with X = K, and Y = K, so the reaction is trigged giving K.
 
-((K (K K)) (K K)) gives (K K), ok?
+	((K (K K)) (K K)) gives (K K), ok?
 
 
 
 Well the price of having a conceptually very simple syntax (static) is that the notation can be very quickly a little bit cumbersome. The tradition is to neglect the left parenthesis abbreviating
 (((a b) c) d) by abcd. The laws becomes:
 
-KXY = X  
-SXYZ = XZ(YZ)
+	KXY = X  
+	SXYZ = XZ(YZ)
 
 The examples becomes
 
-K is stable  
-KK is stable  
-K(KK) is stable  
-KKK is unstable and "decays" into K, and finally
+	K is stable  
+	KK is stable  
+	K(KK) is stable  
+	KKK is unstable and "decays" into K, and finally
 
-K(KK)(KK) gives (KK) ok?
+	K(KK)(KK) gives (KK) ok?
 
 What gives S(KK)(KK) ? Solution: it remains S(KK)(KK). It is stable because S needs "three" molecules to trigger its dynamic. So S(KK)(KK)(KK) gives KK(KK)(KK(KK)), as SKKK gives KK(KK) which is still unstable and gives K.
 
@@ -79,27 +79,27 @@ Exercises (Taken from the course "My First Everything Theory" Primary school Yea
 
 Evaluate:
 
-(SS)KKK = ?  
-KKK(SS) = ?  
-(KK)(KK)(KK) = ?  
-(KKK)(KKK)(KKK) = ?
+	(SS)KKK = ?  
+	KKK(SS) = ?  
+	(KK)(KK)(KK) = ?  
+	(KKK)(KKK)(KKK) = ?
 
 Evaluate:
 
-K  
-KK  
-KKK  
-KKKK  
-KKKKK  
-KKKKKK  
-KKKKKKK  
-KKKKKKKK  
-KKKKKKKKK  
-KKKKKKKKKK
+	K  
+	KK  
+	KKK  
+	KKKK  
+	KKKKK  
+	KKKKKK  
+	KKKKKKK  
+	KKKKKKKK  
+	KKKKKKKKK  
+	KKKKKKKKKK
 
 A little more advanced exerciaes: is there a molecule, let us called it I, having the following dynamic: (X refers to any molecule).
 
-IX = X
+	IX = X
 
 So a solution is some molecule made up from K and S which applied on any molecule give as result of the reaction that very molecule unchanged.
 
@@ -107,6 +107,136 @@ For example KXS is not a solution, although it gives X, it is not of the shape (
 
 
 Of course you can learn a lot by searching "combinators" or "lambda calcul" on the net. Two samples: For those "who knows", [here is a paper on Kolmogorov Complexity viewed through the combinators](http://homepages.cwi.nl/~tromp/cl/CL.pdf). It can be used as a quick introduction to combinators.
+
+COMBINATORS II (solution of exercises)
+---
+
+I recall all you need to know:
+
+
+	Kxy = x  
+	Sxyz = xz(yz)
+
+
+That's all! (Well you are supposed to remember also that abc is an abbreviation of ((ab)c), and a(bc) is an abbreviation for (a(bc)).
+
+I recall the exercices taken from "My First Everything Theory" Primary school Year 2127 :) Solution are below. Evaluate:
+
+	(SS)KKK =  
+	KKK(SS) = ?  
+	(KK)(KK)(KK) = ?  
+	(KKK)(KKK)(KKK) = ?
+
+
+Evaluate:
+
+
+	K  
+	KK  
+	KKK  
+	KKKK  
+	KKKKK  
+	KKKKKK  
+	KKKKKKK  
+	KKKKKKKK  
+	KKKKKKKKK  
+	KKKKKKKKKK  
+
+
+A little more advanced exercices: is there a molecule, let us called it I, having the following dynamic: (X refers to any molecule).
+
+	IX = X    I = ?
+
+
+(Note I will use in this context the words molecules, birds, combinators, programs as synonymous).
+
+SOLUTIONS:
+---
+
+	(SS)KKK = SK(KK)K = KK(KKK) = K
+	KKK(SS) = K(SS)
+	(KK)(KK)(KK) = KK(KK)(KK) = K(KK)
+	(KKK)(KKK)(KKK) = KKK = K
+
+
+Note that the passage (KK)(KK)(KK) = KK(KK)(KK) comes just from a use of the parentheses abbreviation rule which help to see the match with the dynamic of K : Kxy = x, and indeed KK(KK), when occuring at a beginning, matches Kxy with x = K and y = (KK) = KK.
+
+
+	K    =  K
+	KK    =  KK
+	KKK    =  K
+	KKKK   =  KK
+	KKKKK    =  K
+	KKKKKK   =  KK
+	KKKKKKK    =  K
+	KKKKKKKK   =  KK
+	KKKKKKKKK    =  K
+	KKKKKKKKKK   =  KK
+
+
+ok? (this was easy! if you have not succeed it means you are imagining difficulties). The next exercise is slightly less easy, we are to program some identity operator.
+
+
+	Ix = x    I = ?
+
+
+We must find a program (that is a combinator, that is a combination of K and S) which applied on any X gives that X. We want for example that
+
+
+	I(KK) = (KK)
+	I(SSS) = SSS etc.
+
+
+So we want that for all x Ix = x. But only Kxy is able to give x so x = Kx? and we want Kx? matching the rule for S (we have only this one), it is easy because whatever ? represents, Kx? gives x. So we can take ? = (K x) or (S x) or etc.
+
+This gives x = Kx(Kx) (or x = Kx(Sx) ) so that the rule S can be applied so that
+
+
+	x = Kx(Kx) = SKKx     (or x = Kx(Sx) = SKS)
+
+
+Thus SKKx = x, and so a solution is
+
+	I = SKK
+
+
+It is our first program! Another one is I = SKS (actually SK&lt;anything stable&gt; would work).
+
+
+Let us verify. i.e. let us test SKK and SKS on KK:
+
+
+	SKK(KK) = K(KK)(K(KK)) = KK
+	SKS(KK) = K(KK)(S(KK)) = KK
+
+
+more general verification:
+
+	SKKx = Kx(Kx) = x
+
+
+Any problem?  You see that programming is really inverse-executing.
+
+
+New programming exercises:
+---
+
+
+Find combinators M, B, W, L, T such that
+
+
+	Mx = xx   (Hint: use your "subroutine" I, as a "macro" for SKK)
+
+	Bxyz = x(yz)
+
+	Wxy = xyy
+
+	Lxy = x(yy)
+
+	Txy = yx
+
+
+Bruno
 
 *(c) 2005-2008, Bruno Marchal.*
 
