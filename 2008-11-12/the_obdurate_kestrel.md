@@ -1,9 +1,7 @@
-The Enchaining and Obdurate Kestrels
+The Enchaining Kestrel
 ---
 
-In [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), we looked at `#tap` from Ruby 1.9 and `returning` from Ruby on Rails. Today we're going to look at another use for `tap` and an unusual kestrel that is useful specifically because it doesn't actually do anything.
-
-**the enchaining kestrel**
+In [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), we looked at `#tap` from Ruby 1.9 and `returning` from Ruby on Rails. Today we're going to look at another use for `tap`.
 
 [![Kestrel Composite (c) 2007 Mark Kilner](http://farm3.static.flickr.com/2165/1902016010_6f007bf3f0.jpg)](http://flickr.com/photos/markkilner/1902016010/"Kestrel Composite (c) 2007 Mark Kilner")
 
@@ -79,7 +77,8 @@ So there's another use for `#tap` (along with `Symbol#to_proc` for simple cases)
 
 > In Ruby 1.9, `#tap` works exactly as described above. Ruby 1.8 does not have `#tap`, but you can obtain it by installing the andand gem. This version of `#tap` also works like a [quirky bird](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown ""), so you can write things like `HardDrive.new.tap.capacity(150)` for enchaining methods that take parameters and/or blocks. To get andand, `sudo gem install andand`. Rails users can also drop [andand.rb](http:andand.rb) in `config/initializers`.
 
-**the obdurate kestrel**
+The Obdurate Kestrel
+---
 
 [![Kestrel (c) 2007 The Hounds of Shadow](http://farm3.static.flickr.com/2402/2115973156_f4fcfca811.jpg)](http://flickr.com/photos/thehoundsofshadow/2115973156/"Kestrel (c) 2007 The Hounds of Shadow")
 
