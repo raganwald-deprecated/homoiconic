@@ -31,6 +31,8 @@ So with a bluebird you can chain functions together in series, while if you didn
 
 We're not actually going to [Greenspun](http://en.wikipedia.org/wiki/Greenspun%27s_Tenth_Rule "Greenspun's Tenth Rule - Wikipedia, the free encyclopedia") an entire aspect-oriented layer on top of Ruby, but we will add a simple feature, we are going to add *before and after methods*. You already know what a normal method is. A before method simply specifies some behaviour you want executed before the method is called, while an after method specifies some behaviour you want executed after the method is called. In AOP, before and after methods are called "advice."
 
+> There is an unwritten rule that says every Ruby programmer must, at some point, write his or her own AOP implementation --Avdi Grimm
+
 Ruby on Rails programmers are familiar with method advice. If you have ever written any of the following, you were using Rails' built-in aspect-oriented programming support:
 
 	after_save
