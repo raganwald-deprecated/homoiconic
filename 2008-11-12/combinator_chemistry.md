@@ -447,7 +447,7 @@ I mean the sets:
 
 generates by composition the same set of birds. Later we will see those sets are maximal. They generate all the birds. It is two equiavlent presentations of the same "everything theory". The first has two primitive bird, the second has 4 primitives birds (because it can be shown you cannot define W from B C K, nor B from W C K, etc.)
 
-To show the sets {S K} and {W B C K} generate the same combinators (birds) we must show how to define W, B, C and K from {S K}. But this has been done (see previous post), for exemple W = SS(KI), B = S(KS)K and C = S(BBS)(KK).
+To show the sets {S K} and {W B C K} generate the same combinators (birds) we must show how to define W, B, C and K from {S K}. But this has been done (see previous post), for example W = SS(KI), B = S(KS)K and C = S(BBS)(KK).
 
 So it remains to show inversely that S can be defined from W, B, and C (and K except S does not eliminate any input and it is thus doubtless we need K).
 
@@ -528,9 +528,9 @@ To sum up: S = B(BW)(BBC) because
 
 Of course the original exercise I gave was harder: program S from B, W and C. It consisted in finding that B(BW)(BBC) or something similar. But how could we have found such _expression_? A nice thing is that the verification above, which just use the dynamics of B, C and W gives us the answer: just copy the execution above in the reverse order (cf programming here is inverse execution). I do it and I comment:
 
-	?xyz = < B, C, ...>xyz = xz(yz)
+	?xyz = &lt; B, C, ...&gt;xyz = xz(yz)
 
-xz(yz) so this is what we want as the result of B C W application on xyz. So we must transform xz(yz) as <B,C ..>xyz, that is get those final "x)y)z)", or xyz in fully abb. form.
+xz(yz) so this is what we want as the result of B C W application on xyz. So we must transform xz(yz) as &lt;B,C ..&gt;xyz, that is get those final "x)y)z)", or xyz in fully abb. form.
 
 Cx(yz)z what a clever move! we are at once close to xyz, except that we have two parentheses too much, and one z to much. To suppress one z we will isolate it by moving the right parenthesis to the left. That's the inversion of the B-rule, so we arrive at:
 
