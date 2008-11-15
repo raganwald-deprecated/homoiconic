@@ -3,9 +3,19 @@ Bruno Marchal's Combinator Chemistry
 
 ![Bruno Marchal](http://iridia.ulb.ac.be/~marchal/courses/Saturday_20070602_LNash/t_blackboard_1.png)
 
-[Bruno Marchal](http://iridia.ulb.ac.be/~marchal/ "Bruno Marchal&rsquo;s Home Page") wrote up a concise and challenging introduction to combinatory logic, in the form of a series of emails. The texts are reproduced below with Bruno's permission. I have added some wikipedia links to the introduction. Any brilliance is his, any errors are mine. I will post more as I find time.
+[Bruno Marchal](http://iridia.ulb.ac.be/~marchal/ "Bruno Marchal&rsquo;s Home Page") wrote up a concise and challenging introduction to combinatory logic, in the form of a series of emails:
 
-Links to the original posts are provided below.
+1. [COMBINATORS I](http://www.mail-archive.com/everything-list@eskimo.com/msg05920.html)
+2. [COMBINATORS II](http://www.mail-archive.com/everything-list@eskimo.com/msg05949.html)
+3. [COMBINATORS III](http://www.mail-archive.com/everything-list@eskimo.com/msg05953.html)
+4. [COMBINATORS IV](http://www.mail-archive.com/everything-list@eskimo.com/msg05954.html)
+5. [COMBINATORS V](http://www.mail-archive.com/everything-list@eskimo.com/msg05955.html)
+6. [COMBINATORS VI](http://www.mail-archive.com/everything-list@eskimo.com/msg05957.html)
+7. [COMBINATORS VIII](http://www.mail-archive.com/everything-list@eskimo.com/msg05959.html)
+
+(There is no VII, to the best of my knowledge, it was combined with VI.)
+
+The texts are reproduced below with Bruno's permission. I have added some wikipedia links to the introduction. Any brilliance is his, any errors are mine. I will post more as I find time.
 
 [COMBINATORS I](http://www.mail-archive.com/everything-list@eskimo.com/msg05920.html): The Chemistry of Combinators
 ---
@@ -22,7 +32,7 @@ There is no "Schoenfinkel thesis" nor any "Curry thesis", as opposed to "Church 
 
 Actually Combinatory Logic can "easily" be shown rich enough to represent the partial recursive function, so that the combinators gives a nice and pleasant computer programming language. (And indeed LISP and functionnal programming languages are all descendants or cousins of the combinators/lambda calculus). But at some fundamental level combinatory logic is much more than a programming language: it is really a possible road to tackle the problem of the nature of mathematics, and with comp: the nature of reality. Also, combinatory logic is very fine grained, and this will enable us to introduce at a very cheap price important nuances.
 
-Here is a short descrition of combinatory logic (beware: in the preceding post I made a typo error):
+Here is a short description of combinatory logic (beware: in the preceding post I made a typo error):
 
 STATIC:
 
