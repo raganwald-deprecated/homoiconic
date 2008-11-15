@@ -3,20 +3,11 @@ Bruno Marchal's Combinator Chemistry
 
 ![Bruno Marchal](http://iridia.ulb.ac.be/~marchal/courses/Saturday_20070602_LNash/t_blackboard_1.png)
 
-[Bruno Marchal](http://iridia.ulb.ac.be/~marchal/ "Bruno Marchal&rsquo;s Home Page") wrote up a concise and challenging introduction to combinatory logic, in the form of a series of emails:
+[Bruno Marchal](http://iridia.ulb.ac.be/~marchal/ "Bruno Marchal&rsquo;s Home Page") wrote up a concise and challenging introduction to combinatory logic, in the form of a series of emails. The texts are reproduced below with Bruno's permission. I have added some wikipedia links to the introduction. Any brilliance is his, any errors are mine. I will post more as I find time.
 
-1. [COMBINATORS I](http://www.mail-archive.com/everything-list@eskimo.com/msg05920.html)
-2. [COMBINATORS II](http://www.mail-archive.com/everything-list@eskimo.com/msg05949.html)
-3. [COMBINATORS III](http://www.mail-archive.com/everything-list@eskimo.com/msg05953.html)
-4. [COMBINATORS IV](http://www.mail-archive.com/everything-list@eskimo.com/msg05954.html)
-5. [COMBINATORS V](http://www.mail-archive.com/everything-list@eskimo.com/msg05955.html)
-6. [COMBINATORS VI](http://www.mail-archive.com/everything-list@eskimo.com/msg05957.html)
-7. [COMBINATORS VI (sequel)](http://www.mail-archive.com/everything-list@eskimo.com/msg05958.html)
-8. [COMBINATORS VIII](http://www.mail-archive.com/everything-list@eskimo.com/msg05959.html)
+Links to the original posts are provided below.
 
-*The first through fourth texts are reproduced below with Bruno's permission. I have added some wikipedia links to the introduction. Any brilliance is his, any errors are mine. I will post more as I find time.*
-
-The Chemistry of COMBINATORS
+[COMBINATORS I](http://www.mail-archive.com/everything-list@eskimo.com/msg05920.html): The Chemistry of Combinators
 ---
 
 Hi,
@@ -108,7 +99,7 @@ For example KXS is not a solution, although it gives X, it is not of the shape (
 
 Of course you can learn a lot by searching "combinators" or "lambda calcul" on the net. Two samples: For those "who knows", [here is a paper on Kolmogorov Complexity viewed through the combinators](http://homepages.cwi.nl/~tromp/cl/CL.pdf). It can be used as a quick introduction to combinators.
 
-COMBINATORS II (solution of exercises)
+[COMBINATORS II](http://www.mail-archive.com/everything-list@eskimo.com/msg05949.html) (solution of exercises)
 ---
 
 I recall all you need to know:
@@ -234,7 +225,7 @@ Find combinators M, B, W, L, T such that
 	Txy = yx
 
 
-COMBINATORS III
+[COMBINATORS III](http://www.mail-archive.com/everything-list@eskimo.com/msg05953.html)
 ---
 
 Resume:
@@ -300,7 +291,7 @@ To sum up our work:
 
 Try to find W, with Wxy = xyy, L, with Lxy = x(yy), T with Txy = yx, C with Cxyz = xzy, and INFINITY, with INFINITY dynamically transform into INFINITY itself. No question? Soon (that is after we solve the last problems) we will have enough to make precise some nuances between "mind" and "matter". Already!
 
-COMBINATORS IV
+[COMBINATORS IV](http://www.mail-archive.com/everything-list@eskimo.com/msg05954.html)
 ---
 
 Resume:
@@ -432,6 +423,212 @@ We have seen how to program the blue bird B, the cardinal C and the Warbler W wi
 	Sxyz = xz(yz)
 	     = Cx(yz)z
 			 = ...
+
+[COMBINATORS V](http://www.mail-archive.com/everything-list@eskimo.com/msg05955.html)
+---
+
+We have seen how to program the blue bird B, the cardinal C and the Warbler W with the kestrel K and the starling S. Could you define the starling S from B, W and C? It is not so simple. Now if we succeed, this will give us a second equivalent theory.
+
+I mean the sets:
+
+	{S K}
+
+	{W B C K}
+
+generates by composition the same set of birds. Later we will see those sets are maximal. They generate all the birds. It is two equiavlent presentations of the same "everything theory". The first has two primitive bird, the second has 4 primitives birds (because it can be shown you cannot define W from B C K, nor B from W C K, etc.)
+
+To show the sets {S K} and {W B C K} generate the same combinators (birds) we must show how to define W, B, C and K from {S K}. But this has been done (see previous post), for exemple W = SS(KI), B = S(KS)K and C = S(BBS)(KK).
+
+So it remains to show inversely that S can be defined from W, B, and C (and K except S does not eliminate any input and it is thus doubtless we need K).
+
+I gave you the first line:
+
+	Sxyz = xz(yz) 
+	     = Cx(yz)z 
+	
+Ah someone asks me why? Recall Cxyz= xzy, with x y z arbitrary combinators, thus Cx(yz)z = xz(yz) (the first argument of C was x, the second was (yz) and the third was z).
+
+Oops students are coming. I let you do the following more easy exercise:
+
+Verify that S = B(BW)(BBC). That is verify that B(BW)(BBC)xyz = xz(yz). This should be much easier.
+
+[COMBINATORS VI](http://www.mail-archive.com/everything-list@eskimo.com/msg05957.html)
+---
+
+I will provide a detailed solution of the last problem for those who have perhaps missed the beginning.
+
+Verify that S = B(BW)(BBC). That is verify that B(BW)(BBC)xyz = xz(yz) This should be much easier.
+
+One awful solution would be, reminding that B = S(KS)K, and that W = SS(KI) and that C = S(BBS)(KK), that is S((S(KS)K)(S(KS)K)S)(KK), to substitute those the occurence of B, W and C by they SK-programs, giving:
+
+	S = B(BW)(BBC) = 
+	S(KS)K((S(KS)K)SS(K(SKK)))((S(KS)K)(S(KS)K)(S((S(KS)K)(S(KS)K)S)(KK)))
+
+... and then applying that _expression_ on xyz.
+
+Obviously we have not programmed the elementary compositor B, the elementary permutator C and the elementary duplicator W for not using them. Yet this gave an interesting definition of S in term of itself and this rises the question if there is not some general recursion phenomenon there and indeed there will be a very general such phenomenon captured by a combinator which is neither an eliminator, nor a permutator, nor a duplicator, nor even an identificator (like Ix = x) and which was called the paradoxical combinators by Curry and Feys and is known today as the fixed point combinator but that's for later.
+
+So I recall:
+
+	Bxyz = x(yz)
+	Wxy = xyy
+	Cxyz = xzy
+
+And 'course:
+
+	Kxy = x
+	Sxyz = xz(yz)
+
+And let us verify that S = B(BW)(BBC) I recall "=" means "act similarly"; thus we must show that:
+
+	B(BW)(BBC)xyz = Sxyz = xz(yz)
+
+Well Bxyz = x(yz) and please remember that Bxyz abbreviates (((B x) y) z) and in particular
+
+B(BW)(BBC)x abbreviates (((B (BW)) (BBC)) x) and that that matches!
+
+Another practical way (more practical than by adding the left parenthesis!) is to fully abbreviate the _expression_ (like I do usually) and remember that B (here) is trigged by its dynamic when presented with three arguments and that argument are *arbitrary* combinators:
+
+so the _expression_ B(BW)(BBC)xyz is
+
+	B (BW) (BBC) x y z
+	   1     2   3
+
+and you can write the dynamic of B by B123 = 1(23), meaning that 1 denotes its first argument (BW), 2 its second (BBC) and 3 denotes x, so that
+
+	B(BW)(BBC)x gives (BW)((BBC)x) that is (fully abbreviated)
+
+	BW(BBCx). We must yet apply it to y and then z:
+
+	BW(BBCx)y
+
+Oh! here we have a choice! Indeed the B-dynamic match the first occurrence of B and the second one. A famous result, known as Church Rosser Theorem tells us that as far as thereduction will converge on some stable molecule, the path, and thus those choice does not matter: we will get the same stable molecule. Soon or later we will come back on this, but let us just choose the leftmost reduction (another theorem will make some advertising for that strategy, but things will appear to be non trivial though ...). So we apply the B-rule on leftmost B in: B W (BBCx) y giving W((BBCx)y) that is (fully abbrev.) W(BBCxy), and now we have also a choice: either we apply W(BBCxy) directly on z, or we reduce it further. You could verify those alternate path as exercise; let us apply W(BBCxy) directly on z. This gives W(BBCxy)z (and Wab = abb) thus W(BBCxy)z gives (BBCxy)zz = (fully abbrev.) BBCxyzz, and this gives by the B-rule B123 = 1(23), (where 1, the first argument of B is B itself, and 2 is C and 3 is x) B(Cx)yzz which by the B rule again (with 1 = (Cx), 2 = y, 3 = z) gives (Cx)(yz)z, which by the C-rule C123= 132 (with 1 = x, 2 = (yz) 3 = z gives xz(yz). That's Sxyz and so we have shown that B(BW)(BBC) behaves like S.
+
+To sum up: S = B(BW)(BBC) because
+
+	B(BW)(BBC)xyz
+	= BW(BBCx)yz
+	= W(BBCxy)z
+	= (BBCxy)zz
+	= B(Cx)yzz
+	= Cx(yz)z
+	= xz(yz) which what Sxyz gives.
+
+
+
+Of course the original exercise I gave was harder: program S from B, W and C. It consisted in finding that B(BW)(BBC) or something similar. But how could we have found such _expression_? A nice thing is that the verification above, which just use the dynamics of B, C and W gives us the answer: just copy the execution above in the reverse order (cf programming here is inverse execution). I do it and I comment:
+
+	?xyz = < B, C, ...>xyz = xz(yz)
+
+xz(yz) so this is what we want as the result of B C W application on xyz. So we must transform xz(yz) as <B,C ..>xyz, that is get those final "x)y)z)", or xyz in fully abb. form.
+
+Cx(yz)z what a clever move! we are at once close to xyz, except that we have two parentheses too much, and one z to much. To suppress one z we will isolate it by moving the right parenthesis to the left. That's the inversion of the B-rule, so we arrive at:
+
+B(Cx)yzz and applying again the B-rule, we get
+
+(BBCxy)zz I let some left parenthesis so that the W-rule applicability is highlightened
+
+W(BBCxy)z And now there just remains a right parenthesis we would like to push on the left, which we can do by two successive inverse B rule: The first gives (with 1 = W, 2 = (BBCx) and 3 = y:
+
+BW(BBCx)yz the second gives with 1 = (BW), 2 = (BBC) and 3 = x:
+
+	B(BW)(BBC)xyz we got what we wanted: S = B(BW)(BBC).
+
+Both gives xz(yz) when given x y and z (in that order!).
+
+COMBINATORS VI (sequel)
+---
+
+*Question*: is there a systematic method such that giving any behavior like
+
+	Xxyztuv = x(yx)(uvut) (or what you want)
+
+can generate systematically a corresponding SK or BWCK -combinator? The answer is yes. I let you meditate the question. (This point will be made clear when we will meet the terrible little cousins of the combinators which are the *lambda _expression_*, (and which in our context will just abbreviate complex combinators), but I propose to progress and make sure that the SK combinator are Turing Universal.
+
+I am not yet decided when I really should introduce you to the paradoxical combinators, which are rather crazy. Smullyan call them wise birds, but I guess it is an euphemism!
+
+Mmhhh... Showing turing-universality through the use of some paradoxical combinator is easy (once we have defined the numbers), but there is a risk you take bad habits! Actually we don't need the paradoxical combinators to prove the turing universality of the SK forest, mmmmh...
+
+Well actually I will be rather busy so I give you the definition of a paradoxical combinator and I let you search one.
+
+First show that for any combinator A there is a combinator B such that AB = B. B is called a fixed point of A. (like the center of a wheel C is a fixed point of the rotations of the wheel: RC = C). It is a bit amazing that all combinators have a fixed point and that is what I propose you try to show. Here are hints for different arguments. 1) Show how to find a fixed point of A (Arbitrary combinator) using just B, M and A. (Mx = xx I recall). 2) The same using just the Lark L (Lxy = x(yy) I recall). Now, a paradoxical combinator Y is just a combinator which applied on that A will give the fixed point of A; that is YA will give a B such that AB = B, that is A(YA) gives YA, or more generally Y is a combinator satisfying Yx = x(Yx).
+
+[COMBINATORS VIII](http://www.mail-archive.com/everything-list@eskimo.com/msg05959.html)
+---
+
+Be sure you have understood the preceding posts before reading this one. For archives and even better archives, see the links below.
+
+**The Paradoxical combinators**
+
+I recall that a combinator X is a fixed point of a combinator Z if ZX = X. For example, all combinators (birds) are fixed point of the identity combinator, given that for any x Ix = x. Curiously enough in many forest all combinators have a fixed point.
+
+The "paradoxical combinator", or "fixed point combinator" is a combinator which find that fixed point of any given combinators.
+
+
+PROPOSITION 1: *if a forest contains a bluebird B, where Bxyz = x(yz), and a MockingBird M, that is Mx = xx, then ALL birds have indeed a fixed point P.*
+
+Proof: All bird x have BxM(BxM) as a fixed point, that is BxM(BxM) is always a fixed point of x, indeed:
+
+	BxM(BxM) = x(M(BxM)) = x(BxM(BxM)). OK?
+
+
+PROPOSITION 2: *If a forest contains a lark L, i.e. Lxy = x(yy), then again ALL birds will have a fixed point. Indeed all birds x have Lx(Lx) as a fixed point:*
+
+	Lx(Lx) = x(Lx(Lx)) (directly from the dynamic of L). OK?
+
+
+Saying that all birds in a forest have a fixed point is not the same as saying that there is, in the forest a bird capable of finding that fixed point. Let us show that if the forest contains a starling and a lark, then there is such a bird (called a paradoxical combinator, or a fixed point combinator. raymond called them "wise bird", and I was used to call them "crazy bird" given that they can have some crazy behavior).
+
+To find a fixed point combinator, it is enough, for example, to find a bird which on x will generate Lx(Lx).
+
+But Lx(Lx) is just SLLx
+
+And thus SLL is a fixed point combinator. SLLx = x(SLLx) given that SLLx = Lx(Lx). OK?
+
+(Of course SLL is an abbreviated name for combinator 
+
+	S(S(S(KS)K)(KS(SKK)(SKK)))(S(S(KS)K)(KS(SKK)(SKK))) 
+
+given that we have shown L = SB(KM); and B = S(KS)K, and M = SI I= S(SKK)(SKK) cf solution 2 in COMBINATORS IV (see links below).
+
+Obviously, a forest which contains S and K, like our current "everything theory", contains L (or a B and a M) and, thus, is such that all birds have a fixed point. Such a forest also contains fixed point combinators. Some day we will justify why any SK-forest contains really all possible birds.
+
+
+**WHAT'S the USE of PARADOXICAL combinators?**
+
+Well, you should be able to solve an exercise like finding a combinator A such that its dynamics is described by Axyz = y(yx)zz. Some other day we will make this precise by giving an *algorithm* for solving such problem (which solutions exist in all "sufficiently rich forest like the SK or BWCK forest). With the fixed point combinators you should be able to solve "recursive equations" like: find a A such that its dynamics is described recursively by Axyz = xxA(Ayy)z. How? Just find a B such that Baxyz = xxa(ayy)z (A has been replaced by a variable a). This is a traditional (non recursive) exercise. Then YB gives the solution of the recursive equation. (Y is the traditional name for a paradoxical combinator). Exercise: why?
+
+
+**EXERCISES**:
+
+Find an infinite eliminator E, that is a bird which eliminates all its variables: Ex = E, Exy = E, etc. Find an perpetual permutator, that is a bird which forever permutes its two inputs: its dynamics is as follow: Pxy =: Pyx =: Pxy =: Pyx etc. (I recall "=:" is the reduction symbol of the dynamics; it is the left to right reading of the "dynamics"). Etc. I mean: solve the following equations (little letters like x, y z are put for any combinator, A is put for the precise combinator we are ask searching for):
+
+	Ax = A
+	Ax = xA
+	Axy = Ayx
+	Ax = AAx
+	A = AA
+	Ax = AA
+	Ax = x(Ax)
+
+Obviously, Y is useful for the recursive programming. This will be illustrate when when we will do some logic and some arithmetic (soon on a screen near you). After that you should be able to program any function with a combinator. And after that we will make a move enabling us to come back to our basic problems: where does mind and matter come from, ..., how to put a reasonable measure on the set of all computations, ...
+
+Summary:
+
+1. [COMBINATORS I](http://www.mail-archive.com/everything-list@eskimo.com/msg05920.html)
+2. [COMBINATORS II](http://www.mail-archive.com/everything-list@eskimo.com/msg05949.html)
+3. [COMBINATORS III](http://www.mail-archive.com/everything-list@eskimo.com/msg05953.html)
+4. [COMBINATORS IV](http://www.mail-archive.com/everything-list@eskimo.com/msg05954.html)
+5. [COMBINATORS V](http://www.mail-archive.com/everything-list@eskimo.com/msg05955.html)
+6. [COMBINATORS VI](http://www.mail-archive.com/everything-list@eskimo.com/msg05957.html)
+7. [COMBINATORS VIII](http://www.mail-archive.com/everything-list@eskimo.com/msg05959.html)
+
+(There is no VII, to the best of my knowledge, it was combined with VI.) Also:
+
+* abc abbreviates ((a b) c)
+* Kxy = x 
+* Sxyz = xz(yz)
+* Combinators combine.
 
 Bruno
 
