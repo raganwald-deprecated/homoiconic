@@ -14,7 +14,7 @@ Bruno Marchal's Combinator Chemistry
 7. [COMBINATORS VI (sequel)](http://www.mail-archive.com/everything-list@eskimo.com/msg05958.html)
 8. [COMBINATORS VIII](http://www.mail-archive.com/everything-list@eskimo.com/msg05959.html)
 
-*The first and second post texts are reproduced below with Bruno's permission. I have added some wikipedia links to the introduction. Any brilliance is his, any errors are mine. I will post more as I find time.*
+*The first through fourth texts are reproduced below with Bruno's permission. I have added some wikipedia links to the introduction. Any brilliance is his, any errors are mine. I will post more as I find time.*
 
 The Chemistry of COMBINATORS
 ---
@@ -150,8 +150,7 @@ A little more advanced exercices: is there a molecule, let us called it I, havin
 
 (Note I will use in this context the words molecules, birds, combinators, programs as synonymous).
 
-SOLUTIONS:
----
+**SOLUTIONS:**
 
 	(SS)KKK = SK(KK)K = KK(KKK) = K
 	KKK(SS) = K(SS)
@@ -218,8 +217,7 @@ more general verification:
 Any problem?  You see that programming is really inverse-executing.
 
 
-New programming exercises:
----
+**New programming exercises:**
 
 
 Find combinators M, B, W, L, T such that
@@ -235,6 +233,205 @@ Find combinators M, B, W, L, T such that
 
 	Txy = yx
 
+
+COMBINATORS III
+---
+
+Resume:
+
+	Kxy = x
+	Sxyz = xz(yz)
+
+That's all. (You are supposed to remember also that abc is an abbreviation of ((ab)c), and a(bc) is an abbreviation for (a(bc)), so Kxy is put for ((K x) y), and Sxyz is put for (((S x) y) z), and xz(yz) is put for ((x z)(y z)). We just don't write the left parentheses).
+
+I recall the last exercises:
+
+Find combinators M, B, W, L, T and C such that Mx = xx (Hint: use your "subroutine" I, as a "macro" for SKK)
+
+	Bxyz = x(yz)
+	Wxy = xyy
+	Lxy = x(yy)
+	Txy = yx
+	Cxyz = xzy  (I add this one)
+
+I solve the two firsts one: M and B:
+
+I recall we have already program the identity combinator I, which is such that Ix = x for any combinators x. it is I = SKK, and we can use it as a "subroutine".
+
+1) We want find a combinator M such that Mx = xx.
+
+We reason again by inverse-execution. We must transform xx in a way such that it matches the right part of the dynamic of K or S. The simplest way is by using I. Indeed xx = Ix(Ix), and this match the S rule.
+
+Thus:
+
+	Mx = Ix(Ix)
+	   = SIIx
+
+and thus:
+	M = SII
+	  = S(SKK)(SKK).
+
+2) We want to find a combinator B such that Bxyz = x(yz)
+
+We need to find an expression equal (by the dynamic rule) to something matching the right part of the S dynamic. We can use I, M or K and S. Here K and S will be enough. Indeed
+
+	Bxyz = x(yz)
+         = (Kxz)(yz)     because x = Kxz
+         = S(Kx)yz       verify with all the parentheses if you don't see it.
+         = KSx(Kx)yz    because S = (KSx)
+         = S(KS)Kxyz
+
+Thus:
+	B = S(KS)K
+	
+All right?
+
+Note to understand what will follow it is not really necessary to develop skills in the art of finding those programs, but you should be able to verify them if you want to have the needed passive knowledge. Let us verify B on any x y z:
+
+	Bxyz = S(KS)Kxyz = KSx(Kx)yz = S(Kx)yz = Kxz(yz) =x(yz).  OK?
+
+Nevertheless I give you time (for the fun) to try to find W, L, T and C. Could you find a combinator called INFINITY which is perpetually unstable? That is INFINITY gives INFINITY, which gives INFINITY etc. (by the K S dynamical rule).
+
+To sum up our work:
+
+	I = SKK
+	M = SII = S(SKK)(SKK)
+	B = S(KS)K
+
+Try to find W, with Wxy = xyy, L, with Lxy = x(yy), T with Txy = yx, C with Cxyz = xzy, and INFINITY, with INFINITY dynamically transform into INFINITY itself. No question? Soon (that is after we solve the last problems) we will have enough to make precise some nuances between "mind" and "matter". Already!
+
+COMBINATORS IV
+---
+
+Resume:
+
+	Kxy = x
+	Sxyz = xz(yz)
+
+That's all. (You are supposed to remember also that abc is an abbreviation of ((ab)c), and a(bc) is an abbreviation for (a(bc)), so Kxy is put for ((K x) y), and Sxyz is put for (((S x) y) z), and xz(yz) is put for ((x z)(y z)). We just don't write the left parentheses).
+
+We have seen:
+
+	Ix = x,   a solution for I is I = SKK
+	Mx = xx,  a solution for M is M = SII = S(SKK)(SKK)
+	Bxyz = x(yz), a solution for B is B = S(KS)K
+
+I recall the last exercises:
+
+Find combinators W, L, T, C and INFINITY such that
+
+	Wxy = xyy
+	Lxy = x(yy)
+	Txy = yx
+	Cxyz = xzy
+	INFINITY gives INFINITY (by the dynamical rules for K and S).
+
+SOLUTIONS:
+
+One:
+
+	Wxy = xyy
+    	= (xy)y      because xyy abbreviates xyy   
+    	= (xy)(Iy)    because y = Iy   
+    	= SxIy        dynamics of S   
+    	= (SxI)y        abbrev.   
+    	= Sx(KIx)y    because I = KIx   
+    	= (Sx(KIx))y  abbrev.   
+    	= (SS(KI)x)y    dynamics of S   
+    	= SS(KI)xy    abbrev.   
+
+Thus:
+
+	W = SS(KI) = SS(K(SKK))
+
+Two:
+
+	Lxy = x(yy)
+      = x(My)   because My = yy (Mx = xx).
+      = BxMy  dynamics of B
+      = Bx(KMx)y  'cause KMx = M
+      = SB(KM)xy  dyn. of S, on ((Bx)((KM)x)
+
+Thus:
+
+	L = SB(KM) = S(S(KS)K)(KS(SKK)(SKK))
+
+Of course SB(KM) is a better presentation, giving that we know already B and M. But I give the (abbreviated) combinator (in term of S and K) to be sure you see it is indeed a combinator (a combination of S and K).
+
+3)
+
+	Txy = yx
+	    = y(Kxy) 'cause x = Kxy
+	    = (Iy)(Kxy) 'cause y = (Iy)
+	    = SI(Kx)y dyn. of S (which explain the transformation just above btw)
+	    = B(SI)Kxy dyn. of B
+
+Thus:
+
+	T = B(SI)K = S(KS)K(S(SKK))K
+
+4)  
+
+	Cxyz = xzy
+	     = xz(Kyz)
+	     = Sx(Ky)z
+	     = B(Sx)Kyz
+	     = BBSxKyz
+	     = BBSx(KKx)yz
+	     = (BBS)x(KKx)yz
+	     = S(BBS)(KK)xyz
+
+Thus:
+
+	C = S(BBS)(KK)
+	  = S((S(KS)K)(S(KS)K)S)(KK)    cf B = S(KS)K
+
+5) INFINITY   Well this one is easy!
+
+	Mx = xx, thus MM gives MM which gives MM, etc.
+
+Thus:
+
+	INFINITY = MM = SII(SII) = S(SKK)(SKK)(S(SKK)(SKK))
+
+It is a simple example of a perpetually unstable molecule.
+
+All right so far? To find those programs, the heuristic has been to use K and I to change some combination of variables (like xzy) into a form such that a known dynamic can be used (in general the one of S, or of B). B, for example, is useful to shift parentheses on the left. Such exercises need a bit of training and a taste for programming or puzzles. I hope that you are able to verify (at least) a solution. Let us verify that L admits another solution based on the use of C:
+
+	L = CBM  (by which I mean CBM behaves like it is aked for L to behave, i.e. Lxy = x(yy)
+
+Indeed:
+
+	CBMxy = BxMy (because Cabc=acb, or Cxyz = xzy)
+	      = x(My)
+				= x(yy).
+
+Such a sequence of application of the dynamical rules will be what I mean by the term "computation". This will be justify when we will see that the combinators are Turing-equivalent. Any program can be matched by a combinator.
+
+Note also this. We see that SB(KM) and CBM are two different programs computing L. But SB(KM), that is S(S(KS)K)(KS(SKK)(SKK)), and CBM, that is S((S(KS)K)(S(KS)K)S)(KK)(S(KS)K)(S(SKK)(SKK)) are different combinators doing the same things. We will use the (extensionality) rule which identifies the combinators which have the same behavior. When two combinators are syntactically identical, we will use the expression "strictly identical" (written ==). A (more simple) example is:
+
+	I = SKK = SKS = SK(KK) = ....
+
+They all give an identity combinator. But none can be obtained from this other by a reduction, i.e. an application of the dynamical rule from left to right (like in a computation).
+
+Finally, because the combinators we have met so far will play some persisting role in the sequel, they deserve names. I give you the (birdy) terminology of Smullyan:
+
+* K is the kestrel. It is "the" eliminator. K(KK)(SSS) eliminates (SSS) for example.
+* S is the starling. S does many things at once: it duplicates, composes, and permutates its arguments: Sxyz = xz(yz). Look carefully.
+* T is the trush. It is a crude permutator. It permutates its arguments: Txy = yx.
+* M is the mocking bird itself! It is just a crude duplicator: Mx = xx.
+* C is the cardinal. C is called the elementary or regular permutator. It is less crude than the trush. Much more easy to use, like in general the regular combinators, which by definition are those combinators which leaves unchanged they first argument. All combinators seen so far are regular except the trush.
+* W is the warbler. It is the elementary duplicator (less crude than the mocking bird!).
+* B is the elementary compositor. Bxyz = x(yz). Suppose that f = log, and g = sin, then Bfgx = log(sin x), so that Bfg gives f * g. That is the composition of the functions f and g. I forget to say that B is called the blue bird.
+* L is the lark: it is an hybrid of a warbler or a mocking bird and a compositor.
+
+Exercise:
+
+We have seen how to program the blue bird B, the cardinal C and the Warbler W with the kestrel K and the starling S. Could you define the starling S from B, W and C? I give you the first line:
+
+	Sxyz = xz(yz)
+	     = Cx(yz)z
+			 = ...
 
 Bruno
 
