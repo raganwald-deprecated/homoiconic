@@ -40,7 +40,7 @@ There are many, many more. Infinitely more, in fact. We only have names for some
 
 (Warblers are actually in a whole 'nother family of birds that introduce *duplication*. Other members of that family include the Mockingbird and Starling. They're incredibly useful for introducing ideas like iteration and recursion.)
 
-You could say that combinators take a string of symbols (like x, y, z, w,, and so forth), then they introduce some erasing, some duplication, some permutation, and add some parentheses. That they work to rearrange our string of symbols.
+You could say that combinators take a string of symbols (like x, y, z, w, and so forth), then they introduce some erasing, some duplication, some permutation, and add some parentheses. That they work to rearrange our string of symbols.
 
 We have seen that parentheses are allowed, and that some combinators introduce parentheses. Before you say that the combinators introduce new symbols, remember that parentheses are *punctuation*. If you think of the symbols as words and the parentheses as punctuation, you see that the combinators simply rearrange the words and change the punctuation without introducing new words.
 
@@ -101,15 +101,15 @@ Let me rewrite things vertically:
 
 This looks familiar. Have you ever written a program in [Postscript](http://en.wikipedia.org/wiki/PostScript "PostScript - Wikipedia, the free encyclopedia")? Or [Forth](http://en.wikipedia.org/wiki/Forth_(programming_language)? What if instead of using a thrush we used a word called `swap`? Or instead of a mockingbird we used a word called `dup`?
 
-Concatenative programming languages--like Postscript, Forth, [Factor](http://www.factorcode.org/ "Factor programming language"), and [Joy](http://www.latrobe.edu.au/philosophy/phimvt/joy/j00ovr.htmll)--are almost direct representations of combinatorial logic. Words permute the stack, and items on the stack can be words or even programs.
+Concatenative (or stack-based) programming languages--like Postscript, Forth, [Factor](http://www.factorcode.org/ "Factor programming language"), and [Joy](http://www.latrobe.edu.au/philosophy/phimvt/joy/j00ovr.htmll)--are almost direct representations of combinatorial logic. There is a list of things, words or combinators permute the list of things, and the things can be anything: data, other combinators, or even programs. These languages care called concatenative languages because the primary way to compose programs and combinators with each other is to concatenate them together, like we did with the bluebird and thrush above.
 
-You have probably heard that it is a good idea to learn a new programming language every year. Is a stack-based language on your list of languages to learn? No? Well, here is a secret reason to learn a modern stack-based language: *You will learn to think using combinatorial logic*. For example, the Y Combinator is expressed in Joy as:
+You have probably heard that it is a good idea to learn a new programming language every year. Is a concatenative language on your list of languages to learn? No? Well, here is the reason to learn a concatenative language: *You will learn to think using combinatorial logic*. For example, the Y Combinator is expressed in Joy as:
 
 	[dup cons] swap concat dup cons i
 	
-Where `dup` is a mockingbird, `swap` is a thrush, `i` is an idiot bird, and `cons` and `concat` are likewise two other combinators. In every other programming language, combinatorial logic is an underpinning. It helps us explain and prove certain things, It inspires us to invent certain things. It is behind everything we do.
+Where `dup` is a mockingbird, `swap` is a thrush, `i` is an idiot bird, and `cons` and `concat` are likewise two other combinators. Writing in Joy is writing directly in combinators.
 
-But in a concatenative language, it is not an underpinning or behind a curtain. It is right out there in front of you. And learning to program in a stack-based language means learning to think in combinators.
+In other programming languages, combinatorial logic is an underpinning. It helps us explain and prove certain things, It inspires us to invent certain things. It is behind everything we do. That's good. But in a concatenative language, it is not an underpinning or behind a curtain. It is right out there in front of you. And learning to program in a concatenative language means learning to think in combinators.
 
 **what's next?**
 
