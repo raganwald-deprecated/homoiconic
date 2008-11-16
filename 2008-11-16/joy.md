@@ -75,32 +75,28 @@ This is easy. What about the Thrush?
 
 Now let's pause for a moment. Imagine we had an entire programming language devoted to this style of programming. The primary thing it does is define combinators that take a list of symbols and recombine them. Since it works with lists and we are thinking about combinatory logic, we will represent our expressions as lists:
 
-	[bluebird, :x, :y, :z]
-		=> [:x, [:y, :z]]
+	mockingbird :x
+		=> :x :x
 
 and:
 
-	[thrush, :x, :y]
-		=> [:y, :x]
+	bluebird :x :y :z
+		=> :x [:y :z]
 
 and:
 
-	[mockingbird, :x]
-		=> [:x, :x]
+	thrush :x :y
+		=> :y :x
 
 Wait! Do not shout Lisp! Just because we have lists of things does not mean we are programming in Lisp!! Let's keep going, and you will see in the next example that I do not mean Lisp:
 
-	[bluebird, thrush, :x, :y, :z]
-		=> [thrush, [:x, :y], :z]
-		=> [:z, [:x, :y]]
+	bluebird thrush :x :y :z
+		=> thrush [:x :y] :z
+		=> :z [:x :y]
 
-Let me rewrite things vertically:
+And therefore in our fictitious language we can write:
 
-	bluebird  =>  thrush  =>  :z
-	thrush        [ :x        [ :x
-	:x              :y ]        :y ]
-	:y            :z
-	:z
+	quirky = bluebird thrush
 
 This looks familiar. Have you ever written a program in [Postscript](http://en.wikipedia.org/wiki/PostScript "PostScript - Wikipedia, the free encyclopedia")? Or [Forth](http://en.wikipedia.org/wiki/Forth_(programming_language)? What if instead of using a thrush we used a word called `swap`? Or instead of a mockingbird we used a word called `dup`?
 
