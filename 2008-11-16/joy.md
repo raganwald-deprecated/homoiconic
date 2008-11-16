@@ -6,10 +6,7 @@ Finding Joy in Combinators
 
 In previous posts, we have looked at a few interesting combinators and some Ruby code inspired by them. Today we'll review the definition of a combinator, and from there we'll learn something intriguing about an entire family of programming languages, the [concatenative languages](http://en.wikipedia.org/wiki/Concatenative_programming_language "Concatenative programming language - Wikipedia, the free encyclopedia").
 
-What is a combinator?
----
-
-[![Double-barred Finches (c) 2008 aaardvaark, some rights reserved](http://farm2.static.flickr.com/1341/1353993093_57128dd3ab.jpg)](http://flickr.com/photos/ozjulian/1353993093// "Double-barred Finches (c) 2008 aaardvaark, some rights reserved")  
+Let's start at the beginning: What is a combinator? 
 
 One definition of a combinator is *a function with no free variables*. Another way to put it is that a combinator is a function that takes one or more arguments and produces a result without introducing anything new. In Ruby terms, we are talking about blocks, lambdas or methods that do not call anything except what has been passed in.
 
@@ -26,6 +23,8 @@ Easy, and yet... Where is our vaunted simplicity? Working with Ruby's lambdas an
 
 Languages for combinatorial logic
 ---
+
+[![Double-barred Finches (c) 2008 aaardvaark, some rights reserved](http://farm2.static.flickr.com/1341/1353993093_57128dd3ab.jpg)](http://flickr.com/photos/ozjulian/1353993093// "Double-barred Finches (c) 2008 aaardvaark, some rights reserved") 
 
 Combinatorial logicians use a much simpler, direct syntax for writing expressions:
 
