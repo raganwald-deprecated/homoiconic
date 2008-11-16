@@ -1,9 +1,6 @@
 Finding Joy in Combinators
 ===
 
-> For me the purpose of life is partly to have joy. Programmers often feel joy when they can concentrate on the creative side of programming, So Ruby is designed to make programmers happy.
---Yukihiro Matsumoto
-
 In previous posts, we have looked at a few interesting combinators and some Ruby code inspired by them. Today we'll review the definition of a combinator, and from there we'll learn something intriguing about an entire family of programming languages, the [concatenative languages](http://en.wikipedia.org/wiki/Concatenative_programming_language "Concatenative programming language - Wikipedia, the free encyclopedia").
 
 Let's start at the beginning: What is a combinator? 
@@ -109,6 +106,9 @@ Concatenative languages
 [![Hooded Warbler (c) 2008 birdfreak.com, some rights reserved](http://farm3.static.flickr.com/2095/2490084287_06e4ac8380_d.jpg)](http://flickr.com/photos/birdfreak/2490084287/ "Hooded Warbler (c) 2008 birdfreak.com, some rights reserved")  
 
 Concatenative (or stack-based) programming languages--like Postscript, Forth, [Factor](http://www.factorcode.org/ "Factor programming language"), and [Joy](http://www.latrobe.edu.au/philosophy/phimvt/joy/j00ovr.htmll)--are almost direct representations of combinatorial logic. There is a list of things, words or combinators permute the list of things, and the things can be anything: data, other combinators, or even programs. These languages care called concatenative languages because the primary way to compose programs and combinators with each other is to concatenate them together, like we did with the bluebird and thrush above.
+
+> For me the purpose of life is partly to have joy. Programmers often feel joy when they can concentrate on the creative side of programming, So Ruby is designed to make programmers happy.
+--Yukihiro Matsumoto
 
 You have probably heard that it is a good idea to learn a new programming language every year. Is a concatenative language on your list of languages to learn? No? Well, here is the reason to learn a concatenative language: *You will learn to think using combinatorial logic*. For example, the Y Combinator is expressed in Joy as:
 
