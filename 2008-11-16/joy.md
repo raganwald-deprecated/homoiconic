@@ -75,15 +75,14 @@ This is easy. What about the Thrush?
 
 Now let's pause for a moment. Imagine we had an entire programming language devoted to this style of programming. The primary thing it does is define combinators that take a list of symbols and recombine them. Since it works with lists and we are thinking about combinatory logic, we will represent our expressions as lists:
 
+	idiot :x
+		=> :x
+
 	mockingbird :x
 		=> :x :x
 
-and:
-
 	bluebird :x :y :z
 		=> :x [:y :z]
-
-and:
 
 	thrush :x :y
 		=> :y :x
