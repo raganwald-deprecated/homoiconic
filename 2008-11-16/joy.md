@@ -4,9 +4,12 @@ Finding Joy in Combinators
 > For me the purpose of life is partly to have joy. Programmers often feel joy when they can concentrate on the creative side of programming, So Ruby is designed to make programmers happy.
 --Yukihiro Matsumoto
 
-In previous commits, I have written about various combinators and shared some Ruby code inspired by them. Let's take a step back for a moment and look at combinators, and from there we'll see something surprising about an entir efamily of programming languages, the [concatenative languages](http://en.wikipedia.org/wiki/Concatenative_programming_language "Concatenative programming language - Wikipedia, the free encyclopedia").
+In previous commits, I have written about various combinators and shared some Ruby code inspired by them. Let's take a step back for a moment and look at combinators, and from there we'll see something surprising about an entire family of programming languages, the [concatenative languages](http://en.wikipedia.org/wiki/Concatenative_programming_language "Concatenative programming language - Wikipedia, the free encyclopedia").
 
-**what is a combinator?**
+What is a combinator?
+---
+
+[![Double-barred Finches (c) 2008 aaardvaark, some rights reserved](http://farm2.static.flickr.com/1341/1353993093_57128dd3ab.jpg)](http://flickr.com/photos/ozjulian/1353993093// "Double-barred Finches (c) 2008 aaardvaark, some rights reserved")  
 
 One definition of a combinator is *a function with no free variables*. Another way to put it is that a combinator is a function that takes one or more arguments and produces a result without introducing anything new. In Ruby terms, we are talking about blocks, lambdas or methods that do not call anything except what has been passed in.
 
@@ -111,7 +114,10 @@ Where `dup` is a mockingbird, `swap` is a thrush, `i` is an idiot bird, and `con
 
 In other programming languages, combinatorial logic is an underpinning. It helps us explain and prove certain things, It inspires us to invent certain things. It is behind everything we do. That's good. But in a concatenative language, it is not an underpinning or behind a curtain. It is right out there in front of you. And learning to program in a concatenative language means learning to think in combinators.
 
-**what's next?**
+What's next?
+---
+	
+[![Hooded Warbler (c) 2008 birdfreak.com, some rights reserved](http://farm3.static.flickr.com/2095/2490084287_06e4ac8380_d.jpg)](http://flickr.com/photos/birdfreak/2490084287/ "Hooded Warbler (c) 2008 birdfreak.com, some rights reserved")  
 
 The combinators we've discussed in depth so far are all fascinating, however as a basis for writing programs they are incomplete. You cannot represent every possible program using kestrels, thrushes, cardinals, quirky birds, bluebirds, and queer birds. To represent all possible programs, we need to have at least one combinator that duplicates symbols, like a mockingbird or another from its family.
 
