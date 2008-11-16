@@ -4,7 +4,7 @@ Finding Joy in Combinators
 > For me the purpose of life is partly to have joy. Programmers often feel joy when they can concentrate on the creative side of programming, So Ruby is designed to make programmers happy.
 --Yukihiro Matsumoto
 
-In previous commits, I have written about various combinators and shared some Ruby code inspired by them. Let's take a step back for a moment and look at combinators, and from there we'll see something surprising about an entire family of programming languages, the [concatenative languages](http://en.wikipedia.org/wiki/Concatenative_programming_language "Concatenative programming language - Wikipedia, the free encyclopedia").
+In previous posts, we have looked at a few interesting combinators and some Ruby code inspired by them. Today we'll review the definition of a combinator, and from there we'll see learn something intriguing about an entire family of programming languages, the [concatenative languages](http://en.wikipedia.org/wiki/Concatenative_programming_language "Concatenative programming language - Wikipedia, the free encyclopedia").
 
 What is a combinator?
 ---
