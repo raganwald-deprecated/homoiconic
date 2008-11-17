@@ -1,15 +1,9 @@
 Finding Joy in Combinators
 ===
 
-> For me the purpose of life is partly to have joy. Programmers often feel joy when they can concentrate on the creative side of programming, So Ruby is designed to make programmers happy.
---Yukihiro Matsumoto
-
 In previous posts, we have looked at a few interesting combinators and some Ruby code inspired by them. Today we'll review the definition of a combinator, and from there we'll learn something intriguing about an entire family of programming languages, the [concatenative languages](http://en.wikipedia.org/wiki/Concatenative_programming_language "Concatenative programming language - Wikipedia, the free encyclopedia").
 
-What is a combinator?
----
-
-[![Double-barred Finches (c) 2008 aaardvaark, some rights reserved](http://farm2.static.flickr.com/1341/1353993093_57128dd3ab.jpg)](http://flickr.com/photos/ozjulian/1353993093// "Double-barred Finches (c) 2008 aaardvaark, some rights reserved")  
+Let's start at the beginning: What is a combinator? 
 
 One definition of a combinator is *a function with no free variables*. Another way to put it is that a combinator is a function that takes one or more arguments and produces a result without introducing anything new. In Ruby terms, we are talking about blocks, lambdas or methods that do not call anything except what has been passed in.
 
@@ -22,11 +16,18 @@ Then you know that `finch` is a combinator because the effect it produces is mad
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.  
 
-Easy, and yet... Where is our vaunted simplicity? Working with lambdas and braces and calls gets in the way. Combinatorial logicians use a much simpler syntax:
+Easy, and yet... Where is our vaunted simplicity? Working with Ruby's lambdas and braces and calls gets in our way. We can learn a lot from combinatorial logic to help our Ruby programming, but Ruby is a terrible language for actually learning about combinatorial logic.
+
+Languages for combinatorial logic
+---
+
+[![Double-barred Finches (c) 2008 aaardvaark, some rights reserved](http://farm2.static.flickr.com/1341/1353993093_57128dd3ab.jpg)](http://flickr.com/photos/ozjulian/1353993093// "Double-barred Finches (c) 2008 aaardvaark, some rights reserved") 
+
+Combinatorial logicians use a much simpler, direct syntax for writing expressions:
 
 	Fabc => abc
 
-That's it! Whenever you write `abc`, you mean `a.call(b).call(c)`. Note that like Ruby, precedence is to the left, so `a.call(b).call(c)` is equivalent to `(a.call(b)).call(c)`.
+Whenever you write `abc`, you mean `a.call(b).call(c)`. Note that like Ruby, precedence is to the left, so `a.call(b).call(c)` is equivalent to `(a.call(b)).call(c)`.
 
 This is much simpler. And much easier to work with. Here's another look at the combinators we've met in this series:
 
@@ -37,7 +38,7 @@ This is much simpler. And much easier to work with. Here's another look at the c
 	Bxyz = x(yz)
 	Qxyz = y(xz) # Q is shorthand for the Queer bird
 
-There are many, many more. Infinitely more, in fact. We only have names for some of the most useful. For example, the Warbler Twice Removed, or `W**` is written:
+There are many, many more combinators, of course. Infinitely more, in fact. We only have names for some of the most useful. For example, the Warbler Twice Removed, or `W**` is written:
 
 	W**xyzw => xyzww
 
@@ -99,7 +100,15 @@ And therefore in our fictitious language we can write:
 
 This looks familiar. Have you ever written a program in [Postscript](http://en.wikipedia.org/wiki/PostScript "PostScript - Wikipedia, the free encyclopedia")? Or [Forth](http://en.wikipedia.org/wiki/Forth_(programming_language)? What if instead of using a thrush we used a word called `swap`? Or instead of a mockingbird we used a word called `dup`?
 
+Concatenative languages
+---
+	
+[![Hooded Warbler (c) 2008 birdfreak.com, some rights reserved](http://farm3.static.flickr.com/2095/2490084287_06e4ac8380_d.jpg)](http://flickr.com/photos/birdfreak/2490084287/ "Hooded Warbler (c) 2008 birdfreak.com, some rights reserved")  
+
 Concatenative (or stack-based) programming languages--like Postscript, Forth, [Factor](http://www.factorcode.org/ "Factor programming language"), and [Joy](http://www.latrobe.edu.au/philosophy/phimvt/joy/j00ovr.htmll)--are almost direct representations of combinatorial logic. There is a list of things, words or combinators permute the list of things, and the things can be anything: data, other combinators, or even programs. These languages care called concatenative languages because the primary way to compose programs and combinators with each other is to concatenate them together, like we did with the bluebird and thrush above.
+
+> For me the purpose of life is partly to have joy. Programmers often feel joy when they can concentrate on the creative side of programming, So Ruby is designed to make programmers happy.
+--Yukihiro Matsumoto
 
 You have probably heard that it is a good idea to learn a new programming language every year. Is a concatenative language on your list of languages to learn? No? Well, here is the reason to learn a concatenative language: *You will learn to think using combinatorial logic*. For example, the Y Combinator is expressed in Joy as:
 
@@ -108,11 +117,6 @@ You have probably heard that it is a good idea to learn a new programming langua
 Where `dup` is a mockingbird, `swap` is a thrush, `i` is an idiot bird, and `cons` and `concat` are likewise two other combinators. Writing in Joy is writing directly in combinators.
 
 In other programming languages, combinatorial logic is an underpinning. It helps us explain and prove certain things, It inspires us to invent certain things. It is behind everything we do. That's good. But in a concatenative language, it is not an underpinning or behind a curtain. It is right out there in front of you. And learning to program in a concatenative language means learning to think in combinators.
-
-What's next?
----
-	
-[![Hooded Warbler (c) 2008 birdfreak.com, some rights reserved](http://farm3.static.flickr.com/2095/2490084287_06e4ac8380_d.jpg)](http://flickr.com/photos/birdfreak/2490084287/ "Hooded Warbler (c) 2008 birdfreak.com, some rights reserved")  
 
 The combinators we've discussed in depth so far are all fascinating, however as a basis for writing programs they are incomplete. You cannot represent every possible program using kestrels, thrushes, cardinals, quirky birds, bluebirds, and queer birds. To represent all possible programs, we need to have at least one combinator that duplicates symbols, like a mockingbird or another from its family.
 
