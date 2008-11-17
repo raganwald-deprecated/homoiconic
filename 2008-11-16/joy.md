@@ -27,9 +27,9 @@ Combinatorial logicians use a much simpler, direct syntax for writing expression
 
 	Fabc => abc
 
-Whenever you write `abc`, you mean `a.call(b).call(c)`. Note that like Ruby, precedence is to the left, so `a.call(b).call(c)` is equivalent to `(a.call(b)).call(c)`.
+Whenever a logician writes `abc`, he means the same thing as when a Rubyist writes `a.call(b).call(c)`. Note that like Ruby, the precedence in combinatorial logic is to the left, so `abc` is equivalent to `(ab)c` just as in Ruby `a.call(b).call(c)` is equivalent to `(a.call(b)).call(c)`.
 
-This is much simpler. And much easier to work with. Here's another look at the combinators we've met in this series:
+I think you'll agree that `abc` is much simpler than `a.call(b).call(c)`. Here's another look at the combinators we've met in this series, using the simpler syntax:
 
 	Kxy => x
 	Txy => yx
