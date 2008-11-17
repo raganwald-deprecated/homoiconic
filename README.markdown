@@ -11,6 +11,8 @@ If you're into git and like fine-grained updates, you can follow [homoiconic](ht
 
 I am [Reg Braithwaite](http://reginald.braythwayt.com/). You can reach me by email. My first name is `reg`, and that works fine for sending email to `braythwayt.com`. I look forward to hearing from you.
 
+<a href="http://friendfeed.com/raganwald"><img alt="View my FriendFeed" style="border:0;" src="http://friendfeed.com/embed/widget/raganwald/v-2/format-png/width-400" /></a>
+
 p.s. Here's a little more background about [homoiconic](http://github.com/raganwald/homoiconic/tree/master/homoiconic.markdown).
 
 ---
