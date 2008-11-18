@@ -25,7 +25,7 @@ Languages for combinatorial logic
 
 Combinatorial logicians use a much simpler, direct syntax for writing expressions:
 
-	Fabc => abc
+	Fabc => cba
 
 Whenever a logician writes `abc`, he means the same thing as when a Rubyist writes `a.call(b).call(c)`. Note that like Ruby, the precedence in combinatorial logic is to the left, so `abc` is equivalent to `(ab)c` just as in Ruby `a.call(b).call(c)` is equivalent to `(a.call(b)).call(c)`.
 
@@ -56,7 +56,7 @@ This is more interesting! Now we can see that in our notation, adding parenthese
 
 Now what we can say is this: The bluebird takes a list of three symbols and answers a list of one symbol and a sublist of two symbols. In Ruby:
 
-	def bluebird = lambda { |*args|
+	bluebird = lambda { |*args|
 		x, y, z = args
 		[x, [y, z]]
 	}
@@ -98,6 +98,11 @@ And therefore in our fictitious language we can write:
 
 	quirky = bluebird thrush
 
+And thus:
+
+	quirky :x :y :z
+		=> :z [:x :y]
+
 This looks familiar. Have you ever written a program in [Postscript](http://en.wikipedia.org/wiki/PostScript "PostScript - Wikipedia, the free encyclopedia")? Or [Forth](http://en.wikipedia.org/wiki/Forth_(programming_language)? What if instead of using a thrush we used a word called `swap`? Or instead of a mockingbird we used a word called `dup`?
 
 Concatenative languages
@@ -120,9 +125,9 @@ In other programming languages, combinatorial logic is an underpinning. It helps
 
 The combinators we've discussed in depth so far are all fascinating, however as a basis for writing programs they are incomplete. You cannot represent every possible program using kestrels, thrushes, cardinals, quirky birds, bluebirds, and queer birds. To represent all possible programs, we need to have at least one combinator that duplicates symbols, like a mockingbird or another from its family.
 
-If you are interested in the ideas behind complete sets of combinators, I can't recommend [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422) too highly. There you will find explanations of why using B,T, M, and I as a basis (bluebirds, thrushes, mockingbirds, and idiots) is equivalent to using B, C, W and I (bluebirds, cardinals, warblers, and idiots), and of course why S and K (starlings and kestrels) make for the smallest possible basis.
-
 In an upcoming post, we'll look at duplicative birds and we'll look at a very practical example of a recursive combinator taken from Joy.
+
+> If you are interested in the ideas behind sets of combinators that form a basis for reasoning about programs, I can't recommend [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422) too highly. There you will find explanations of why using B,T, M, and I as a basis (bluebirds, thrushes, mockingbirds, and idiots) is equivalent to using B, C, W and I (bluebirds, cardinals, warblers, and idiots), and of course why S and K (starlings and kestrels) make for the smallest possible basis.
 
 _Our aviary so far_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown), [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown), [The Enchaining and Obdurate Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-11-12/the_obdurate_kestrel.md), and an observation: [Finding Joy in Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-16/joy.md).
 
