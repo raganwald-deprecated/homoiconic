@@ -98,6 +98,11 @@ And therefore in our fictitious language we can write:
 
 	quirky = bluebird thrush
 
+And thus:
+
+	quirky :x :y :z
+		=> :z [:x :y]
+
 This looks familiar. Have you ever written a program in [Postscript](http://en.wikipedia.org/wiki/PostScript "PostScript - Wikipedia, the free encyclopedia")? Or [Forth](http://en.wikipedia.org/wiki/Forth_(programming_language)? What if instead of using a thrush we used a word called `swap`? Or instead of a mockingbird we used a word called `dup`?
 
 Concatenative languages
