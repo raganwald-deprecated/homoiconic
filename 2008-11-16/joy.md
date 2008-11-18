@@ -25,7 +25,7 @@ Languages for combinatorial logic
 
 Combinatorial logicians use a much simpler, direct syntax for writing expressions:
 
-	Fabc => abc
+	Fabc => cba
 
 Whenever a logician writes `abc`, he means the same thing as when a Rubyist writes `a.call(b).call(c)`. Note that like Ruby, the precedence in combinatorial logic is to the left, so `abc` is equivalent to `(ab)c` just as in Ruby `a.call(b).call(c)` is equivalent to `(a.call(b)).call(c)`.
 
