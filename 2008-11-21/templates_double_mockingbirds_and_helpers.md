@@ -27,33 +27,33 @@ So there you have it: Template methods help us separate the basic steps of a gen
 
 Let's whistle up an example. The template we're going to use is called [Divide and Conquer](http://www.cs.berkeley.edu/~vazirani/algorithms/chap2.pdf). It's a general algorithm for solving problems by breaking them up into sub-problems. In Ruby, we might write:
   
-  def process_list(value)
-    if divisible?(value)
-      recombine(
-        divide(value).map { |sub_value| divide_and_conquer(sub_value) }
-      )
-    else
-      conquer(value)
-    end
-  end
- 
-  private
- 
-  def divisible?(value)
-    raise 'implement me'
-  end
- 
-  def conquer(value)
-    raise 'implement me'
-  end
- 
-  def divide(value)
-    raise 'implement me'
-  end
- 
-  def recombine(list)
-    raise 'implement me'
-  end
+	def process_list(value)
+	  if divisible?(value)
+	    recombine(
+	      divide(value).map { |sub_value| divide_and_conquer(sub_value) }
+	    )
+	  else
+	    conquer(value)
+	  end
+	end
+
+	private
+
+	def divisible?(value)
+	  raise 'implement me'
+	end
+
+	def conquer(value)
+	  raise 'implement me'
+	end
+
+	def divide(value)
+	  raise 'implement me'
+	end
+
+	def recombine(list)
+	  raise 'implement me'
+	end
 
 The general form of the algorithm is laid out to see. When given a value, we first check to see if it is divisible using the abstract method `#divisible?`. If it is, we use `#divide` to divide it into smaller pieces, then call `#divide_and_conquer` on the pieces. We then use `#recombine` to put the pieces back together again. If the value is not divisible, we use `#conquer` to directly compute a value.
 
