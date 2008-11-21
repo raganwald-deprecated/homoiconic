@@ -17,7 +17,9 @@ Words become unwieldy when you need a lot of them to get the job done. That's wh
 
 I think it's perfectly fine to want to write Ruby code that looks like English. And if you aren't writing "The fourteenth day of the sixth month of the year one thousand, nine hundred, and sixty-two" but rather "The fourth item of this list," it's no big whup to me if you prefer `#fourth` to `[3]`.
 
-So why did I ask the question? I guess I was trying to provoke people into doing something other than arguing about whether David had just moved their cheese. While it's fine to say you like `#fourth`, I think it's also fine to say "Fine, but what would be *really* useful is..." 
+So why did I ask the question? I guess I was trying to provoke people into doing something other than arguing about whether David had just moved their cheese. While it's fine to say you like `#fourth`, I think it's also even better to say "Ok, but what would be *really* useful is..." 
+
+That's all.
 
 p.s. If you press me to give a firm opinion, I choose [blue in green](http://bikeshed.com) :-)
 
