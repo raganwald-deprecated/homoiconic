@@ -26,38 +26,34 @@ One popular pattern in object-oriented programming is the [Template Method](http
 So there you have it: Template methods help us separate the basic steps of a general algorithm from the concrete steps of a specific algorithm. With a template method, we build a template or framework method with holes in it, then "fill in the blanks" by implementing methods for concrete steps.
 
 Let's whistle up an example. The template we're going to use is called [Divide and Conquer](http://www.cs.berkeley.edu/~vazirani/algorithms/chap2.pdf). It's a general algorithm for solving problems by breaking them up into sub-problems. In Ruby, we might write:
-
-	module TemplateMethod
   
-	  def divide_and_conquer(value)
-	    if divisible?(value)
-	      recombine(
-	        divide(value).map { |sub_value| divide_and_conquer(sub_value) }
-	      )
-	    else
-	      conquer(value)
-	    end
-	  end
-  
-	  private
-  
-	  def divisible?(value)
-	    raise 'implement me'
-	  end
-  
-	  def conquer(value)
-	    raise 'implement me'
-	  end
-  
-	  def divide(value)
-	    raise 'implement me'
-	  end
-  
-	  def recombine(list)
-	    raise 'implement me'
-	  end
-  
-	end
+  def process_list(value)
+    if divisible?(value)
+      recombine(
+        divide(value).map { |sub_value| divide_and_conquer(sub_value) }
+      )
+    else
+      conquer(value)
+    end
+  end
+ 
+  private
+ 
+  def divisible?(value)
+    raise 'implement me'
+  end
+ 
+  def conquer(value)
+    raise 'implement me'
+  end
+ 
+  def divide(value)
+    raise 'implement me'
+  end
+ 
+  def recombine(list)
+    raise 'implement me'
+  end
 
 The general form of the algorithm is laid out to see. When given a value, we first check to see if it is divisible using the abstract method `#divisible?`. If it is, we use `#divide` to divide it into smaller pieces, then call `#divide_and_conquer` on the pieces. We then use `#recombine` to put the pieces back together again. If the value is not divisible, we use `#conquer` to directly compute a value.
 
@@ -79,7 +75,7 @@ This allows us to use various divide and conquer algorithms. It's easiest to see
 	  list.inject() { |x,y| x + y }
 	end
 
-	divide_and_conquer([1, 2, 3, [[4,5], 6], [[[7]]]])
+	process_list([1, 2, 3, [[4,5], 6], [[[7]]]])
 		=> 140
 
 Or rotating a square matrix:
@@ -110,7 +106,7 @@ Or rotating a square matrix:
 	  upper_left.zip(lower_left).map { |l,r| l + r }
 	end
 
-	divide_and_conquer([[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]])
+	process_list([[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]])
 		=> [[4, 8, 12, 16], [3, 7, 11, 15], [2, 6, 10, 14], [1, 5, 9, 13]]
 
 Let's look at what the rotation does. The basic algorithm is this: To rotate a square matrix of size 2**n, divide the square into four smaller squares and rotate each of them. When recombining the rotated squares, move each into a new, rotated place:
@@ -301,7 +297,7 @@ Neat-o. But all this work just to suggest using helper methods? Honestly?? Well,
 
 Instead of writing a `#rotate` method and calling a helper. But if you're looking for an insight about helper methods, it's this: *Parameterizing a helper method with functions lets us re-use the general form of algorithms and specialize the concrete steps without a lot of extra inheritance baggage*.
 
-You get another win as well: When we wrote our generic template method, we only knew it was a divide and conquer algorithm because we named it `divide_and_conquer`. In an actual code base, its name would bear very little resemblance to its form. Furthermore, developers would have to deduce that it is a divide and conquer algorithm through examination and painstaking review. This is sometimes difficult with a recursive algorithm. By creating a `divide_and_conquer` helper method, we document every method that uses it, whether they be called `sum_squares` or `rotate`. And furthermore, the most difficult part to understand, the recursion mechanism, is clearly separated from the specific concrete steps. It is a very fine example of abstraction.
+You get another win as well: When we wrote our generic template method, we only knew it was a divide and conquer algorithm because we said it was. In an actual code base, its name would bear very little resemblance to its form, because we try to name things by what they do, not how they work. Furthermore, developers would have to deduce that it is a divide and conquer algorithm through examination and painstaking review. This is sometimes difficult with a recursive algorithm. By creating a `divide_and_conquer` helper method, we document every method that uses it, whether they be called `sum_squares` or `rotate`. And furthermore, the most difficult part to understand, the recursion mechanism, is clearly separated from the specific concrete steps. It is a very fine example of abstraction.
 
 So there we have it: given a general-purpose algorithm like divide and conquer, both template methods and paramaterizing helper methods with functions allow us to separate the re-usable general form of the algorithm from the specific concrete steps. The template method does not give us re-use of the general form for each method sharing the same general algorithm, but it does make it easy to specialize the concrete steps in a polymorphic way. Paramaterizing a helper method with functions does allow us to abstract and re-use the same general algorithm across multiple methods but does not support specializing the concrete steps in a polymorphic way.
 
