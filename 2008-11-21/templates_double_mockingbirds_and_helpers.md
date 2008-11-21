@@ -221,18 +221,6 @@ You can work this out one line at a time. But the result is pleasing:
 
 The double mocking bird does two things: First, because it incorporates `x.call(y)`, it allows us to break an algorithm into two separate concrete steps. Second, because it takes the resulting function and calls the function with itself, the function can call itself recursively. There are more elegant ways to accomplish recursion, but for our purposes, the important thing is that we can accomplish it without cluttering up the namespace. All we needed was a combinator that (a) duplicated its arguments so we could build a recursive function, and (b) had more than one argument so that we could break an algorithm up into separate steps.
 
-Now combinatorial logic was not invented specifically to help us rotate matrices or sum the squares of numbers. But I promised that we would look at a very practical example of a recursive combinator. Eugene Lazutkin's article on [Using recursion combinators in JavaScript](http://lazutkin.com/blog/2008/jun/30/using-recursion-combinators-javascript/ "") shows how to use combinators to build divide and conquer algorithms in Javascript:
-
-	var fib0 = function(n){
-	    return n <= 1 ? 1 :
-	        arguments.callee.call(this, n - 1) +
-	            arguments.callee.call(this, n - 2);
-	};
-
-	var fib1 = binrec("<= 1", "1", "[[n - 1], [n - 2]]", "+");
-
-(`binrec` is a version of the divide and conquer general algorithm specialized to divide its argument into two values rather than an arbitrary list.)
-
 Building a recursive function like a divide and conquer algorithm is feasible with combinators, but that making it recurse anonymously adds some accidental complexity we do not need for things like summing squares or rotating matrices. But there's something there worth using on a day-to-day basis: What if instead of building a template method from the top down by specializing the concrete steps, we construct the method from the bottom up using a helper method that works like a combinator?
 
 	def divide_and_conquer(steps)
@@ -318,6 +306,20 @@ You get another win as well: When we wrote our generic template method, we only 
 So there we have it: given a general-purpose algorithm like divide and conquer, both template methods and paramaterizing helper methods with functions allow us to separate the re-usable general form of the algorithm from the specific concrete steps. The template method does not give us re-use of the general form for each method sharing the same general algorithm, but it does make it easy to specialize the concrete steps in a polymorphic way. Paramaterizing a helper method with functions does allow us to abstract and re-use the same general algorithm across multiple methods but does not support specializing the concrete steps in a polymorphic way.
 
 Have fun!
+
+*p.s. Recursive combinators are definitely found in the wild: Eugene Lazutkin's article on [Using recursion combinators in JavaScript](http://lazutkin.com/blog/2008/jun/30/using-recursion-combinators-javascript/ "") shows how to use combinators to build divide and conquer algorithms in Javascript:*
+
+	var fib0 = function(n){
+	    return n <= 1 ? 1 :
+	        arguments.callee.call(this, n - 1) +
+	            arguments.callee.call(this, n - 2);
+	};
+
+	var fib1 = binrec("<= 1", "1", "[[n - 1], [n - 2]]", "+");
+
+*`binrec` is a version of the divide and conquer general algorithm specialized to divide its argument into two values rather than an arbitrary list.*
+
+---
 
 _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown), [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown), [The Enchaining and Obdurate Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-11-12/the_obdurate_kestrel.md), [Finding Joy in Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-16/joy.md), and [Template Methods, Double Mockingbirds, and Helpers](http://github.com/raganwald/homoiconic/tree/master/2008-11-21%2Ftemplates_double_mockingbirds_and_helpers.md).
 
