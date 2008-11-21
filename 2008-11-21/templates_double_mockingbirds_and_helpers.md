@@ -279,25 +279,25 @@ Neat-o. But all this work just to suggest using helper methods? Honestly?? Well,
 	
 	def_divide_and_conquer(
 		:rotate,
-    :divisible? => lambda { |value| value.kind_of?(Enumerable) && value.size > 1 },
-    :conquer => lambda { |value| value },
-    :divide => lambda do |square|
-  	  half_sz = square.size / 2
-  	  sub_square = lambda do |row, col|
-  	    square.slice(row, half_sz).map { |a_row|a_row.slice(col, half_sz) }
-  	  end
-  	  upper_left = sub_square.call(0,0)
-  	  lower_left = sub_square.call(half_sz,0)
-  	  upper_right = sub_square.call(0,half_sz)
-  	  lower_right = sub_square.call(half_sz,half_sz)
-  	  [upper_left, lower_left, upper_right, lower_right]
-    end,
-    :recombine => lambda do |list|
-  	  upper_left, lower_left, upper_right, lower_right = list
-  	  upper_right.zip(lower_right).map { |l,r| l + r } +
-  	  upper_left.zip(lower_left).map { |l,r| l + r }
-    end
-  )
+	  :divisible? => lambda { |value| value.kind_of?(Enumerable) && value.size > 1 },
+	  :conquer => lambda { |value| value },
+	  :divide => lambda do |square|
+		  half_sz = square.size / 2
+		  sub_square = lambda do |row, col|
+		    square.slice(row, half_sz).map { |a_row|a_row.slice(col, half_sz) }
+		  end
+		  upper_left = sub_square.call(0,0)
+		  lower_left = sub_square.call(half_sz,0)
+		  upper_right = sub_square.call(0,half_sz)
+		  lower_right = sub_square.call(half_sz,half_sz)
+		  [upper_left, lower_left, upper_right, lower_right]
+	  end,
+	  :recombine => lambda do |list|
+		  upper_left, lower_left, upper_right, lower_right = list
+		  upper_right.zip(lower_right).map { |l,r| l + r } +
+		  upper_left.zip(lower_left).map { |l,r| l + r }
+	  end
+	)
 
 Instead of writing a `#rotate` method and calling a helper. But if you're looking for an insight about helper methods, it's this: *Parameterizing a helper method with functions lets us re-use the general form of algorithms and specialize the concrete steps without a lot of extra inheritance baggage*.
 
