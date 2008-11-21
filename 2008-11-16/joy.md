@@ -25,7 +25,7 @@ Languages for combinatorial logic
 
 Combinatorial logicians use a much simpler, direct syntax for writing expressions:
 
-	Fabc => abc
+	Fabc => cba
 
 Whenever a logician writes `abc`, he means the same thing as when a Rubyist writes `a.call(b).call(c)`. Note that like Ruby, the precedence in combinatorial logic is to the left, so `abc` is equivalent to `(ab)c` just as in Ruby `a.call(b).call(c)` is equivalent to `(a.call(b)).call(c)`.
 
@@ -56,7 +56,7 @@ This is more interesting! Now we can see that in our notation, adding parenthese
 
 Now what we can say is this: The bluebird takes a list of three symbols and answers a list of one symbol and a sublist of two symbols. In Ruby:
 
-	def bluebird = lambda { |*args|
+	bluebird = lambda { |*args|
 		x, y, z = args
 		[x, [y, z]]
 	}
@@ -97,6 +97,11 @@ Wait! Do not shout Lisp! Just because we have lists of things does not mean we a
 And therefore in our fictitious language we can write:
 
 	quirky = bluebird thrush
+
+And thus:
+
+	quirky :x :y :z
+		=> :z [:x :y]
 
 This looks familiar. Have you ever written a program in [Postscript](http://en.wikipedia.org/wiki/PostScript "PostScript - Wikipedia, the free encyclopedia")? Or [Forth](http://en.wikipedia.org/wiki/Forth_(programming_language)? What if instead of using a thrush we used a word called `swap`? Or instead of a mockingbird we used a word called `dup`?
 

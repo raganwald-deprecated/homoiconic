@@ -419,7 +419,7 @@ Finally, because the combinators we have met so far will play some persisting ro
 
 * K is the kestrel. It is "the" eliminator. K(KK)(SSS) eliminates (SSS) for example.
 * S is the starling. S does many things at once: it duplicates, composes, and permutates its arguments: Sxyz = xz(yz). Look carefully.
-* T is the trush. It is a crude permutator. It permutates its arguments: Txy = yx.
+* T is the thrush. It is a crude permutator. It permutates its arguments: Txy = yx.
 * M is the mocking bird itself! It is just a crude duplicator: Mx = xx.
 * C is the cardinal. C is called the elementary or regular permutator. It is less crude than the trush. Much more easy to use, like in general the regular combinators, which by definition are those combinators which leaves unchanged they first argument. All combinators seen so far are regular except the trush.
 * W is the warbler. It is the elementary duplicator (less crude than the mocking bird!).
