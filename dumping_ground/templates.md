@@ -63,8 +63,6 @@ The general form of the algorithm is laid out to see. When given a value, we fir
 
 This allows us to use various divide and conquer algorithms. It's easiest to see it in action on a problem where the data being processed closely resembles the form of the algorithm, like summing the squares of a nested list of numbers:
 
-	include TemplateMethod
-
 	def divisible?(value)
 	  value.kind_of?(Enumerable)
 	end
@@ -113,4 +111,79 @@ Or rotating a square matrix:
 	end
 
 	divide_and_conquer([[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]])
-		=> 
+		=> [[4, 8, 12, 16], [3, 7, 11, 15], [2, 6, 10, 14], [1, 5, 9, 13]]
+
+Let's look at what the rotation does. The basic algorithm is this: To rotate a square matrix of size 2**n, divide the square into four smaller squares and rotate each of them. When recombining the rotated squares, move each into a new, rotated place:
+
+	UL | UR      UR | LR
+	-------  =>  -------
+	LL | LR      UL | LL
+
+The example starts with a square matrix of size 4:
+
+	[
+		[  1,  2,  3,  4], 
+		[  5,  6,  7,  8], 
+		[  9, 10, 11, 12], 
+		[ 13, 14, 15, 16]
+	]
+
+And divides it into four smaller matrixes:
+
+	[            [
+		[  1,  2],   [  3,  4], 
+		[  5,  6]    [  7,  8]
+	]            ]
+
+	[            [
+		[  9, 10],   [ 11, 12], 
+		[ 13, 14]    [ 15, 16]
+	]            ]
+
+Then it divides those into sixteen smaller matrices. I won't bother to show them, because each is just one number. It can't subdivide those, and rotating them is a simple identity operation, so it then starts to recombine them. And that's where the rotation takes place. Each of the squares is rotated ninety degrees counter-clockwise:
+
+	[            [
+		[  2,  6],   [  4,  8], 
+		[  1,  5]    [  3,  7]
+	]            ]
+
+	[            [
+		[ 10, 14],   [ 12, 16], 
+		[  9, 13]    [ 11, 15]
+	]            ]
+	
+Then the entire square is rotated:
+
+	[            [
+		[  4,  8],   [ 12, 16], 
+		[  3,  7]    [ 11, 15]
+	]            ]
+
+	[            [
+		[  2,  6],   [ 10, 14],
+		[  1,  5]    [  9, 13]
+	]
+
+And smooshed (that is the technical term) back together:
+
+	[
+		[  4,  8,  12, 16], 
+		[  3,  7,  11, 15],
+		[  2,  6,  10, 14],
+		[  1,  5,   9, 13]
+	]
+
+Okay, that was fun, now we completely "get" the concept of a divide and conquer algorithm. How does a template method help us?
+
+First, when you are using polymorphism, the template method comes into its own. When you want a subclass to have slightly different semantics, you override just the concrete steps that matter for that subclass. In ActiveRecord, you can think of implementing callback methods like [`#validate`](http://api.rubyonrails.com/classes/ActiveRecord/Validations.html#M001629 "") or [`#before_save`](http://api.rubyonrails.com/classes/ActiveRecord/Callbacks.html#M001610 "") as writing concrete steps for a larger template method.
+
+However, it is not as useful when you want to DRY up your code by separating a common algorithm like divide and conquer from several different implementations. If you happened to need rotating matrices and summing elements of nested lists in the same application, you would have to write out two different templates. To DRY it up, you might have to do some Java-esque push-ups by making a `DivideAndConquerStrategy` class.
+
+Naturally, there's an easier way in Ruby, and once again it involves a combinator.
+
+Starlings
+---
+
+As mentioned above, Starlings have a duplicative effect: `Sxyz = xz(yz)`. The great benefit from a theoretical perspective is that combinators that duplicate an argument can be used to introduce recursion without names, scopes, bindings, and other things that clutter things up. being able to introduce anonymous recursion is very elegant, and [there are times when it is useful in its own right](http://www.eecs.harvard.edu/~cduan/technical/ruby/ycombinator.shtml "A Use of the Y Combinator in Ruby").
+
+But instead of celebrating the elegance of anonymous recursion, let's take a look at the practical benefits of using a combinator to generate divide and conquer methods. In the example above, we saw that a divide-and-conquer algorithm has 
