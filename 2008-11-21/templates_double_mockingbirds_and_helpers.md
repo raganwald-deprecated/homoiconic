@@ -217,6 +217,9 @@ You can work this out one line at a time. But the result is pleasing:
 
 The double mocking bird does two things: First, because it incorporates `x.call(y)`, it allows us to break an algorithm into two separate concrete steps. Second, because it takes the resulting function and calls the function with itself, the function can call itself recursively. There are more elegant ways to accomplish recursion, but for our purposes, the important thing is that we can accomplish it without cluttering up the namespace. All we needed was a combinator that (a) duplicated its arguments so we could build a recursive function, and (b) had more than one argument so that we could break an algorithm up into separate steps.
 
+Helpers
+---
+
 Building a recursive function like a divide and conquer algorithm is feasible with combinators, but that making it recurse anonymously adds some accidental complexity we do not need for things like summing squares or rotating matrices. But there's something there worth using on a day-to-day basis: What if instead of building a template method from the top down by specializing the concrete steps, we construct the method from the bottom up using a helper method that works like a combinator?
 
 	def divide_and_conquer(steps)
