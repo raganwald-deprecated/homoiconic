@@ -7,7 +7,7 @@ I quipped:
 
 > Would anyone prefer methods like caddr?
 
-I'd better clear something up. I have never written a method like `#fourth` for myself, but I am not rabidly opposed to their inclusion in Rails or Ruby itself. My opinion on opening core classes is that it is not sustainable in the long run, but at the same time I'm not losing sleep over the idea that upgrading to Edge Rails will break some piece of code where I've defined the method `#second` as meaning an instance of array seconds the nomination of another model object for speaker of the house.
+I'd better clear something up. I have never written a method like `#fourth` for myself, but I am not rabidly opposed to their inclusion in Rails or Ruby either. My opinion on opening core classes is that it is not sustainable in the long run, but at the same time I'm not losing sleep over the idea that upgrading to Edge Rails will break some piece of code where I've defined the method `#second` as meaning an instance of array seconds the nomination of another model object for speaker of the house.
 
 If it isn't going to break my code, or if people using it isn't going to make their code unreadable... It's hard for me to get worked up about it.
 
