@@ -13,11 +13,13 @@ If it isn't going to break my code, or if people using it isn't going to make th
 
 When I asked if people would prefer `caddr`, I was absolutely not suggesting that `#fourth` was clearly superior because it's English. Lisp's `c(a|d)+r` methods are like specialized tools. They are readable to professional Lisp programmers because (a) they are a standard part of the language, and (b) they are more powerful than `#fourth` because they can reach into any arbitrary nested list and extract a node.
 
-Words become unwieldy when you need a lot of them to get the job done. That's why I don't write "The fourteenth day of the sixth month of the year one thousand, nine hundred, and sixty-two" when people ask me my birth date, and that's why terser tools are important parts of programming. if you had to reach into a nested list, you might find `.fourth.last.first.third` a little cumbersome.
+Words become unwieldy when you need a lot of them to get the job done. That's why I don't write "The fourteenth day of the sixth month of the year one thousand, nine hundred, and sixty-two" when people ask me my birth date, and that's why terser tools are important parts of programming. If you had to reach into a nested list, you might find `.fourth.last.first.third` a little cumbersome.
 
 I think it's perfectly fine to want to write Ruby code that looks like English. And if you aren't writing "The fourteenth day of the sixth month of the year one thousand, nine hundred, and sixty-two" but rather "The fourth item of this list," it's no big whup to me if you prefer `#fourth` to `[3]`.
 
 So why did I ask the question? I guess I was trying to provoke people into doing something other than arguing about whether David had just moved their cheese. While it's fine to say you like `#fourth`, I think it's also fine to say "Fine, but what would be *really* useful is..." 
+
+p.s. If you press me to give a firm opinion, I choose [blue in green](http://bikeshed.com) :-)
 
 ---
 
