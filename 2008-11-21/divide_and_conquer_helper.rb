@@ -23,29 +23,29 @@
 # 
 # http://www.opensource.org/licenses/mit-license.php
 
-def divide_and_conquer(steps)
-  lambda do |value|
-    if steps[:divisible?].call(value)
-      steps[:recombine].call(
-        steps[:divide].call(value).map { |sub_value| divide_and_conquer(steps).call(sub_value) }
-      )
-    else
-      steps[:conquer].call(value)
-    end
+def divide_and_conquer(value, steps)
+  if steps[:divisible?].call(value)
+    steps[:recombine].call(
+      steps[:divide].call(value).map { |sub_value| divide_and_conquer(sub_value, steps) }
+    )
+  else
+    steps[:conquer].call(value)
   end
 end
 
 def sum_squares(list)
   divide_and_conquer(
+    list,
     :divisible? => lambda { |value| value.kind_of?(Enumerable) },
     :conquer    => lambda { |value| value ** 2 },
     :divide     => lambda { |value| value },
     :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
-  ).call(list)
+  )
 end
 
 def rotate(square)
   divide_and_conquer(
+    square,
     :divisible? => lambda { |value| value.kind_of?(Enumerable) && value.size > 1 },
     :conquer => lambda { |value| value },
     :divide => lambda do |square|
@@ -64,5 +64,7 @@ def rotate(square)
   	  upper_right.zip(lower_right).map { |l,r| l + r } +
   	  upper_left.zip(lower_left).map { |l,r| l + r }
     end
-  ).call(square)
+  )
 end
+
+p rotate([[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]])

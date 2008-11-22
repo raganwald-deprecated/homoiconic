@@ -5,25 +5,11 @@ In previous commits, we have met some of [Combinatory Logic](http://en.wikipedia
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
 
-The thrush, cardinal, quirky bird and bluebird all either permute or group their arguments. Although they do change the structure of their arguments, they conserve them: if you pass `xyz` to a bluebird, you get one `x`, one `y`, and one `z` back, exactly what you passed in. The only difference is, you get `x(yz)` back, so they have been grouped for you. But nothing has been added and nothing has been taken away. Alone amongst the combinators we've examined, the kestrel does not conserve its arguments. It *erases* one. If you pass `xy` to a kestrel, you only get `x` back. The `y` is erased. The kestrel comes from a different family of combinators than the others.
-
-Today we are going to meet another combinator that does not conserve its arguments, the Double Mockingbird. Where a kestrel erases one of its arguments, the double mockingbird *duplicates* both of its arguments. In logic notation, `M`<sub>2</sub>`xy = xy(xy)`. Or in Ruby:
-
-	double_mockingbird.call(x).call(y)
-		=> x.call(y).call(x.call(y))
-
-The double mockingbird is not the only combinator that duplicates one or more of its arguments. Logicians have also found important uses for many other duplicating combinators like the ordinary Mockingbird (`Mx = xx`), which is the simplest duplicating combinator, the Starling (`Sxyz = xz(yz)`), which is one half of the [SK combinator calculus](http://en.wikipedia.org/wiki/SKI_combinator_calculus "SKI combinator calculus - Wikipedia, the free encyclopedia"), and the Turing Bird (`Uxy = y(xxy)`), which is named after [its discoverer](http://www.alanturing.net/turing_archive/index.html "Alan Turing (1912-1954)").
-
-Before we figure out what duplicating combinators can do for us, let's review a popular object-oriented "pattern:"
-
-Template Methods
----
-
 One popular pattern in object-oriented programming is the [Template Method](http://en.wikipedia.org/wiki/Template_method_pattern "Template method pattern - Wikipedia, the free encyclopedia"):
 
 > In object-oriented programming, first a class is created that provides the basic steps of an algorithm design. These steps are implemented using abstract methods. Later on, subclasses change the abstract methods to implement real actions. Thus the general algorithm is saved in one place but the concrete steps may be changed by the subclasses.
 
-So there you have it: Template methods help us separate the basic steps of a general algorithm from the concrete steps of a specific algorithm. With a template method, we build a template or framework method with holes in it, then "fill in the blanks" by implementing methods for concrete steps.
+Template methods help us separate the basic steps of a general algorithm from the concrete steps of a specific algorithm. With a template method, we build a template or framework method with holes in it, then "fill in the blanks" by implementing methods for concrete steps.
 
 Let's whistle up an example. The template we're going to use is called [Divide and Conquer](http://www.cs.berkeley.edu/~vazirani/algorithms/chap2.pdf). It's a general algorithm for solving problems by breaking them up into sub-problems. In Ruby, we might write:
   
@@ -180,9 +166,18 @@ Naturally, there's an easier way in Ruby, and once again it involves a combinato
 Double Mockingbirds
 ---
 
-As mentioned above, double mockingbirds have a duplicative effect: `M`<sub>2</sub>`xy = xy(xy)`. The great benefit of duplicative combinators from a *theoretical* perspective is that combinators that duplicate an argument can be used to introduce recursion without names, scopes, bindings, and other things that clutter things up. Being able to introduce anonymous recursion is very elegant, and [there are times when it is useful in its own right](http://www.eecs.harvard.edu/~cduan/technical/ruby/ycombinator.shtml "A Use of the Y Combinator in Ruby").
+Almost all of the combinators we've seen so far conserve their arguments. For example, if you pass `xyz` to a bluebird, you get one `x`, one `y`, and one `z` back, exactly what you passed in. You get `x(yz)` back, so they have been grouped for you. But nothing has been added and nothing has been taken away. Likewise the thrush reverses its arguments, but again it answers back the same number arguments you passed to it.
 
-Nice as that is, we aren't going to celebrate the elegance of anonymous recursion. But let's quickly review how it works before we take a look at the practical benefits of using a combinator to generate divide and conquer methods. Let's start by writing a double mockingbird in Ruby:
+Alone amongst the combinators we've examined, the kestrel does not conserve its arguments. It *erases* one. If you pass `xy` to a kestrel, you only get `x` back. The `y` is erased. Kestrels do not conserve their arguments. Today we are going to meet another combinator that does not conserve its arguments, the Double Mockingbird. Where a kestrel erases one of its arguments, the double mockingbird *duplicates* both of its arguments. In logic notation, `M`<sub>2</sub>`xy = xy(xy)`. Or in Ruby:
+
+	double_mockingbird.call(x).call(y)
+		=> x.call(y).call(x.call(y))
+
+The double mockingbird is not the only combinator that duplicates one or more of its arguments. Logicians have also found important uses for many other duplicating combinators like the ordinary Mockingbird (`Mx = xx`), which is the simplest duplicating combinator, the Starling (`Sxyz = xz(yz)`), which is one half of the [SK combinator calculus](http://en.wikipedia.org/wiki/SKI_combinator_calculus "SKI combinator calculus - Wikipedia, the free encyclopedia"), and the Turing Bird (`Uxy = y(xxy)`), which is named after [its discoverer](http://www.alanturing.net/turing_archive/index.html "Alan Turing (1912-1954)").
+
+> The great benefit of duplicative combinators from a *theoretical* perspective is that combinators that duplicate an argument can be used to introduce recursion without names, scopes, bindings, and other things that clutter things up. Being able to introduce anonymous recursion is very elegant, and [there are times when it is useful in its own right](http://www.eecs.harvard.edu/~cduan/technical/ruby/ycombinator.shtml "A Use of the Y Combinator in Ruby").
+
+Let's write a double mockingbird in Ruby:
 
 	m2 = lambda do |x|
 	  lambda do |y|
@@ -190,13 +185,15 @@ Nice as that is, we aren't going to celebrate the elegance of anonymous recursio
 	  end
 	end
 
-Ok, let's try it with our summing the values in a nested list example from above. Now a double mockingbird only has two parameters, and our template method has four concrete steps, so we are going to have to combine elements together. We'll start with `conquer_if_divisible`:
+We'll use it to sum the squares of a nested list. We're going to construct an algorithm using a divide and conquer strategy, but to keep the code clear we'll make things a little simpler than the template method example above. Instead of four separate concrete steps, we'll use just two: One to "conquer" a value if possible and another to divide the value up, recursively attempt to conquer the sub-values, and recombine them together.
+
+Here's the first of our two steps, `conquer_if_divisible`:
 
 	conquer_if_divisible = lambda do |value|
 	  value ** 2 unless value.kind_of?(Enumerable)
 	end
 
-As you can see, it combines the `divisible?` and `conquer` methods from above. Now we'll write a function that incorporates the rest of our divide and conquer strategy: `divide` and `recombine` along with some ceremony for recursion:
+And here's the second of our two steps, a function that incorporates the rest of our divide and conquer strategy: `divide` and `recombine` along with some ceremony for recursion:
 
 	conquer_or_divide_and_try_again = lambda do |conquer_if_divisible|
 	  lambda do |myself|
@@ -215,22 +212,22 @@ You can work this out one line at a time. But the result is pleasing:
 	sum_the_squares.call([1, 2, 3, [[4,5], 6], [[[7]]]])
 		=> 140
 
-The double mocking bird does two things: First, because it incorporates `x.call(y)`, it allows us to break an algorithm into two separate concrete steps. Second, because it takes the resulting function and calls the function with itself, the function can call itself recursively. There are more elegant ways to accomplish recursion, but for our purposes, the important thing is that we can accomplish it without cluttering up the namespace. All we needed was a combinator that (a) duplicated its arguments so we could build a recursive function, and (b) had more than one argument so that we could break an algorithm up into separate steps.
+The double mocking bird does two things: First, because it incorporates `x.call(y)`, it allows us to break an algorithm into two separate concrete steps. Second, because it takes the resulting function and calls the function with itself, the function can call itself recursively.
+
+There are more elegant ways to accomplish recursion, but for our purposes, the important thing is that we can accomplish it without cluttering up the namespace. The double mockingbird provides a simple way of building divide and conquer algorithms out of one function that handles division, recursion, and recombination, and another function that handles conquering.
 
 Helpers
 ---
 
 Building a recursive function like a divide and conquer algorithm is feasible with combinators, but that making it recurse anonymously adds some accidental complexity we do not need for things like summing squares or rotating matrices. But there's something there worth using on a day-to-day basis: What if instead of building a template method from the top down by specializing the concrete steps, we construct the method from the bottom up using a helper method that works like a combinator?
 
-	def divide_and_conquer(steps)
-	  lambda do |value|
-	    if steps[:divisible?].call(value)
-	      steps[:recombine].call(
-	        steps[:divide].call(value).map { |sub_value| divide_and_conquer(steps).call(sub_value) }
-	      )
-	    else
-	      steps[:conquer].call(value)
-	    end
+	def divide_and_conquer(value, steps)
+	  if steps[:divisible?].call(value)
+	    steps[:recombine].call(
+	      steps[:divide].call(value).map { |sub_value| divide_and_conquer(sub_value, steps) }
+	    )
+	  else
+	    steps[:conquer].call(value)
 	  end
 	end
 	
@@ -238,11 +235,12 @@ Now you can build any method you like using it:
 
 	def sum_squares(list)
 	  divide_and_conquer(
+	    list,
 	    :divisible? => lambda { |value| value.kind_of?(Enumerable) },
 	    :conquer    => lambda { |value| value ** 2 },
 	    :divide     => lambda { |value| value },
 	    :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
-	  ).call(list)
+	  )
 	end
 	
 	sum_squares([1, 2, 3, [[4,5], 6], [[[7]]]])
@@ -250,6 +248,7 @@ Now you can build any method you like using it:
 	
 	def rotate(square)
 	  divide_and_conquer(
+	    square,
 	    :divisible? => lambda { |value| value.kind_of?(Enumerable) && value.size > 1 },
 	    :conquer => lambda { |value| value },
 	    :divide => lambda do |square|
@@ -268,13 +267,13 @@ Now you can build any method you like using it:
 	  	  upper_right.zip(lower_right).map { |l,r| l + r } +
 	  	  upper_left.zip(lower_left).map { |l,r| l + r }
 	    end
-	  ).call(square)
+	  )
 	end
 
 	rotate([[1,2,3,4], [5,6,7,8], [9,10,11,12], [13,14,15,16]])
 		=> [[4, 8, 12, 16], [3, 7, 11, 15], [2, 6, 10, 14], [1, 5, 9, 13]]
 
-Neat-o. But all this work just to suggest using helper methods? Honestly?? Well, if you're enthusiastic about meta-programming, by all means use some of the techniques discussed in posts like [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown) so you can write something like:
+Neat-o. But all this work just to suggest using helper methods? Honestly?? Well, if you're enthusiastic about meta-programming, by all means use some of the techniques discussed in posts like [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown) so that instead of writing a `#rotate` method and calling a helper, you can write something like:
 	
 	def_divide_and_conquer(
 		:rotate,
@@ -298,11 +297,11 @@ Neat-o. But all this work just to suggest using helper methods? Honestly?? Well,
 	  end
 	)
 
-Instead of writing a `#rotate` method and calling a helper. But if you're looking for an insight about helper methods, it's this: *Parameterizing a helper method with functions lets us re-use the general form of algorithms and specialize the concrete steps without a lot of extra inheritance baggage*.
+But if you're looking for an insight about helper methods, it's this: *Parameterizing a helper method with functions lets us re-use the general form of algorithms and specialize the concrete steps without a lot of extra inheritance baggage*.
 
-You get another win as well: When we wrote our generic template method, we only knew it was a divide and conquer algorithm because we said it was. In an actual code base, its name would bear very little resemblance to its form, because we try to name things by what they do, not how they work. Furthermore, developers would have to deduce that it is a divide and conquer algorithm through examination and painstaking review. This is sometimes difficult with a recursive algorithm. By creating a `divide_and_conquer` helper method, we document every method that uses it, whether they be called `sum_squares` or `rotate`. And furthermore, the most difficult part to understand, the recursion mechanism, is clearly separated from the specific concrete steps. It is a very fine example of abstraction.
+You get another win as well: When we wrote our generic template method, we only knew it was a divide and conquer algorithm because we said it was. In an actual code base, its name would bear very little resemblance to its form, because we try to name things by what they do, not how they work. Furthermore, developers would have to deduce that it is a divide and conquer algorithm through examination and painstaking review. This is sometimes difficult with a recursive algorithm. By creating a `divide_and_conquer` helper method, we document every method that uses it, whether they be called `sum_squares` or `rotate`. And furthermore, the most difficult part to understand, the recursion mechanism, is clearly separated from the specific concrete steps. It is an example of abstraction.
 
-So there we have it: given a general-purpose algorithm like divide and conquer, both template methods and paramaterizing helper methods with functions allow us to separate the re-usable general form of the algorithm from the specific concrete steps. The template method does not give us re-use of the general form for each method sharing the same general algorithm, but it does make it easy to specialize the concrete steps in a polymorphic way. Paramaterizing a helper method with functions does allow us to abstract and re-use the same general algorithm across multiple methods but does not support specializing the concrete steps in a polymorphic way.
+Given a general-purpose algorithm like divide and conquer, both template methods and paramaterizing helper methods with functions allow us to separate the re-usable general form of the algorithm from the specific concrete steps. The template method does not give us re-use of the general form for each method sharing the same general algorithm, but it does make it easy to specialize the concrete steps in a polymorphic way. Paramaterizing a helper method with functions does allow us to abstract and re-use the same general algorithm across multiple methods but does not support specializing the concrete steps in a polymorphic way.
 
 Have fun!
 
