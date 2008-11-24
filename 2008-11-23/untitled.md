@@ -1,6 +1,8 @@
 What combinators teach us about refactoring methods
 ===
 
+<font color="red">This is a work-in-progress</font>
+
 Consider the method `#sum_sqaures`: It sums the squares of a tree of numbers, represented as a nested list.
 
 	def sum_squares(value)
@@ -281,3 +283,5 @@ With recursive algorithms, when we identify a high-level abstraction like "divid
 My second reason for preferring the refactored version is that it separates the implementation from the specification. We could rewrite `#divide_and_conquer` to use multiple threads if we liked, and there would be no need to rewrite `#rotate_3`. The mechanics of recursing have been separated from the specifics of rotating square matrices.
 
 Let's look some examples supporting a this second argument. In our examples above, there is an assumption that when we divide a problem into sub-problems, the subproblems might be trivial or they might need further subdivision. This general strategy handles all divide and conquer problems. For example, a merge sort:
+
+<font color="red">This is a work-in-progress</font>
