@@ -23,51 +23,6 @@
 # 
 # http://www.opensource.org/licenses/mit-license.php
 
-public
-
-def merge_sort(list)
-  divide_and_conquer(
-    list,
-    :divisible? => lambda { |list| list.length > 1 },
-    :conquer    => lambda { |list| list },
-    :divide     => lambda do |list|
-      half_index = (list.length / 2) - 1
-      [ list[0..half_index], list[(half_index + 1)..-1] ]
-    end,
-    :recombine  => lambda { |pair| merge_two_sorted_lists(pair.first, pair.last) }
-  )
-end
-
-private
-
-def merge_two_sorted_lists(*pair)
-  divide_and_conquer(
-    pair,
-    :divisible? => lambda { |pair| !pair.first.empty? && !pair.last.empty? },
-    :conquer => lambda do |pair|
-      if pair.first.empty? && pair.last.empty?
-        []
-      elsif pair.first.empty?
-        pair.last
-      else
-        pair.first
-      end
-    end,
-    :divide => lambda do |pair|
-      preceding, following = case pair.first.first <=> pair.last.first
-        when -1: [pair.first, pair.last]
-        when 0:  [pair.first, pair.last]
-        when 1:  [pair.last, pair.first]
-      end
-      [
-        [[preceding.first], []],
-        [preceding[1..-1], following]
-      ]
-    end,
-    :recombine => lambda { |pair| pair.first + pair.last }
-  )
-end
-
 def divide_and_conquer(value, steps)
   if steps[:divisible?].call(value)
     steps[:recombine].call(
@@ -78,4 +33,16 @@ def divide_and_conquer(value, steps)
   end
 end
 
-p merge_sort([8, 3, 10, 1, 9, 5, 7, 4, 6, 2])
+def linear_recursion(value, steps)
+  if steps[:divisible?].call(value)
+    trivial_part, sub_problem = steps[:divide].call(value)
+    steps[:recombine].call(
+      trivial_part, linear_recursion(sub_problem, steps)
+    )
+  else
+    steps[:conquer].call(value)
+  end
+end
+
+alias :multirec :divide_and_conquer
+alias :linrec   :linear_recursion

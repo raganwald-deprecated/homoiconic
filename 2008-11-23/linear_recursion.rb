@@ -41,7 +41,7 @@ end
 private
 
 def merge_two_sorted_lists(*pair)
-  divide_and_conquer(
+  linear_recursion(
     pair,
     :divisible? => lambda { |pair| !pair.first.empty? && !pair.last.empty? },
     :conquer => lambda do |pair|
@@ -59,12 +59,9 @@ def merge_two_sorted_lists(*pair)
         when 0:  [pair.first, pair.last]
         when 1:  [pair.last, pair.first]
       end
-      [
-        [[preceding.first], []],
-        [preceding[1..-1], following]
-      ]
+      [ preceding.first, [preceding[1..-1], following] ]
     end,
-    :recombine => lambda { |pair| pair.first + pair.last }
+    :recombine => lambda { |trivial_bit, divisible_bit| [trivial_bit] + divisible_bit }
   )
 end
 
@@ -72,6 +69,17 @@ def divide_and_conquer(value, steps)
   if steps[:divisible?].call(value)
     steps[:recombine].call(
       steps[:divide].call(value).map { |sub_value| divide_and_conquer(sub_value, steps) }
+    )
+  else
+    steps[:conquer].call(value)
+  end
+end
+
+def linear_recursion(value, steps)
+  if steps[:divisible?].call(value)
+    trivial_part, sub_problem = steps[:divide].call(value)
+    steps[:recombine].call(
+      trivial_part, linear_recursion(sub_problem, steps)
     )
   else
     steps[:conquer].call(value)
