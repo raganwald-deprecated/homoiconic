@@ -1,6 +1,8 @@
 Template Methods, Double Mockingbirds, and Helpers
 ===
 
+<font color="red">NOTE: The material from this post is being extensively revised and will appear in an upcoming rewrite.</font>
+
 In previous commits, we have met some of [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic)'s most interesting combinators like the [Kestrel](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown "Songs of the Cardinal"), [Quirky Bird](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown "Quirky Birds and Meta-Syntactic Programming"), and [Bluebird](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown "Aspect-Oriented Programming in Ruby using Combinator Birds"). Today we are going to learn how combinators can help us separate the general form of an algorithm like "divide and conquer" from its specific concrete steps.
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
@@ -304,6 +306,8 @@ You get another win as well: When we wrote our generic template method, we only 
 Given a general-purpose algorithm like divide and conquer, both template methods and paramaterizing helper methods with functions allow us to separate the re-usable general form of the algorithm from the specific concrete steps. The template method does not give us re-use of the general form for each method sharing the same general algorithm, but it does make it easy to specialize the concrete steps in a polymorphic way. Paramaterizing a helper method with functions does allow us to abstract and re-use the same general algorithm across multiple methods but does not support specializing the concrete steps in a polymorphic way.
 
 Have fun!
+
+<font color="red">NOTE: The material from this post is being extensively revised and will appear in an upcoming rewrite.</font>
 
 *p.s. Recursive combinators are definitely found in the wild: Eugene Lazutkin's article on [Using recursion combinators in JavaScript](http://lazutkin.com/blog/2008/jun/30/using-recursion-combinators-javascript/ "") shows how to use combinators to build divide and conquer algorithms in Javascript:*
 
