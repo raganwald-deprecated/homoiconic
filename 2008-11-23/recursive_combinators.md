@@ -1,7 +1,11 @@
 What Combinators Teach Us About Refactoring Methods
 ===
 
-Consider the method `#sum_sqaures`: It sums the squares of a tree of numbers, represented as a nested list.
+In previous commits, we have met some of [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic)'s most interesting combinators like the [Kestrel](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown "Songs of the Cardinal"), [Quirky Bird](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown "Quirky Birds and Meta-Syntactic Programming"), and [Bluebird](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown "Aspect-Oriented Programming in Ruby using Combinator Birds"). Today we are going to learn how combinators can help us separate the general form of an algorithm like "divide and conquer" from its specific concrete steps.
+
+> As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
+
+Consider the method `#sum_squares`: It sums the squares of a tree of numbers, represented as a nested list.
 
 	def sum_squares(value)
 	  if value.kind_of?(Enumerable)
@@ -45,7 +49,9 @@ Looking at the two methods, there are no lines of code that are so obviously ide
 Divide and Conquer
 ---
 
-Both of these methods use the [Divide and Conquer](http://www.cs.berkeley.edu/~vazirani/algorithms/chap2.pdf) strategy. As described, there are two parts to each divide and conquer algorithm. We'll start with conquer: you need a way to decide if the problem is simple enough to solve in a trivial manner, and a trivial solution. You'll also need a way to divide the problem into sub-problems if it's too complex for the trivial solution, and a way to recombine the pieces back into the solution. The entire process is carried our recursively.
+Both of these methods use the [Divide and Conquer](http://www.cs.berkeley.edu/~vazirani/algorithms/chap2.pdf) strategy.
+
+As described, there are two parts to each divide and conquer algorithm. We'll start with conquer: you need a way to decide if the problem is simple enough to solve in a trivial manner, and a trivial solution. You'll also need a way to divide the problem into sub-problems if it's too complex for the trivial solution, and a way to recombine the pieces back into the solution. The entire process is carried our recursively.
 
 For example, here's how `#rotate` rotated the square. We started with a square matrix of size 4:
 
