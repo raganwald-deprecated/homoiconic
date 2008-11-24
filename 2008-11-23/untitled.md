@@ -242,7 +242,7 @@ The Merge Sort
 
 The merge sort algorithm has a distinguished pedigree: It was invented by John Von Neumann in 1945. 
 
-> Von Neumann was a brilliant and fascinating individual. he is most famous amongst Computer Scientists for formalizing the computer architecture which now bears his name. he also worked on game theory, and it was no game to him: He hoped to use math to advise the United States whether an when to launch a thermonuclear war on the USSR. [Prisoner's Dilemma](http://www.amazon.com/gp/product/038541580X?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=038541580X "Amazon.com: Prisoner's Dilemma: William Poundstone: Books")![](http://www.assoc-amazon.com/e/ir?t=raganwald001-20&l=as2&o=1&a=038541580X) is a very fine book about both game theory and one of the great minds of modern times.
+> Von Neumann was a brilliant and fascinating individual. he is most famous amongst Computer Scientists for formalizing the computer architecture which now bears his name. he also worked on game theory, and it was no game to him: He hoped to use math to advise the United States whether an when to launch a thermonuclear war on the USSR. [Prisoner's Dilemma](http://www.amazon.com/gp/product/038541580X?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=038541580X "Amazon.com: Prisoner's Dilemma: William Poundstone: Books")![amazon](http://www.assoc-amazon.com/e/ir?t=raganwald001-20&l=as2&o=1&a=038541580X) is a very fine book about both game theory and one of the great minds of modern times.
 
 Conceptually, a merge sort works as follows:
 
