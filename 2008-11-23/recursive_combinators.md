@@ -384,7 +384,7 @@ Using combinators like `#divide_and_conquer` simplifies things: You only need to
 
 For these reasons, I strongly encourage the use of recursion combinators, either those supplied here or ones you write for yourself.
 
-p.s. If you want to try `#divide_and_conquer`/`#multirec` or `#linear_recursion`/`#linrec`, grab [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-23%2Frecursive_combinators.rb). Rails users can drop recursive\_combinators.rb in `config/initializers`.
+p.s. If you want to try `#divide_and_conquer`/`#multirec` or `#linear_recursion`/`#linrec`, grab [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.rb). Rails users can drop recursive\_combinators.rb in `config/initializers`.
 
 ---
 
