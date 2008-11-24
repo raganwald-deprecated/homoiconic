@@ -111,7 +111,12 @@ And smooshed (that is the technical term) back together:
 
 And Voila! There is your rotated square matrix.
 
-Both rotation and summing the squares of a tree combine the four steps of a divide and conquer strategy: Deciding whether the problem is divisible into smaller pieces or can be solved trivially, a trivial solution, a way to divide a non-trivial problem up, and a way to piece it back together.
+Both rotation and summing the squares of a tree combine the four steps of a divide and conquer strategy:
+
+1.	Deciding whether the problem is divisible into smaller pieces or can be solved trivially,
+1.	A solution fro the trivial case,
+1.	A way to divide a non-trivial problem up,
+1.	And a way to piece it back together.
 
 Here are the two methods re-written to highlight the common strategy. First, `#sum_squares_2`:
 
@@ -379,7 +384,7 @@ Using combinators like `#divide_and_conquer` simplifies things: You only need to
 
 For these reasons, I strongly encourage the use of recursion combinators, either those supplied here or ones you write for yourself.
 
-p.s. If you want to try `#divide_and_conquer`/`#multirec` or `#linear_recursion`/`#linrec`, grab [recursive\_combinators.rb](http:recursive_combinators.rb). Rails users can drop recursive\_combinators.rb in `config/initializers`.
+p.s. If you want to try `#divide_and_conquer`/`#multirec` or `#linear_recursion`/`#linrec`, grab [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-23%2Frecursive_combinators.rb). Rails users can drop recursive\_combinators.rb in `config/initializers`.
 
 ---
 
