@@ -59,8 +59,6 @@ module RecursiveCombinators
   define_method :multirec do |value, *steps|
     multirec_recursor.call(value, *four_steps.call(steps))
   end
-
-  alias :divide_and_conquer :multirec
   
   define_method :linrec do |value, *steps|
     cond_proc, then_proc, before_proc, after_proc = four_steps.call(steps)
@@ -72,9 +70,9 @@ module RecursiveCombinators
     trivial_parts.unshift(then_proc.call(sub_problem))
     trivial_parts.inject { |recombined, trivial_part| after_proc.call(trivial_part, recombined) }
   end
-  
+
+  alias :divide_and_conquer :multirec
   alias :linear_recursion :linrec
-    
   module_function :multirec, :divide_and_conquer, :linrec, :linear_recursion
 
 end
