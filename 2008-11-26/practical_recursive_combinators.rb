@@ -78,16 +78,3 @@ module RecursiveCombinators
   module_function :multirec, :divide_and_conquer, :linrec, :linear_recursion
 
 end
-
-def merge_sort(list)
-  RecursiveCombinators.multirec(
-    list,
-    :divisible? => lambda { |list| list.length > 1 },
-    :conquer    => lambda { |list| list },
-    :divide     => lambda do |list|
-      half_index = (list.length / 2) - 1
-      [ list[0..half_index], list[(half_index + 1)..-1] ]
-    end,
-    :recombine  => lambda { |pair| merge_two_sorted_lists(pair.first, pair.last) }
-  )
-end
