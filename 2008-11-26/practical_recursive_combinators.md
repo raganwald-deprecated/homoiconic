@@ -1,6 +1,8 @@
 Practical Recursive Combinators
 ===
 
+THIS IS A WORK-IN-PROGRESS!
+
 In [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md), we saw how recursive combinators like `#divide_and_conquer` and `#linear_recursion` are abstraction wins. They make recursive code much easier to read, because you know the general form of the algorithm and don't need to pick through it to discover the individual steps.
 
 We also saw that by separating the recursion implementation from the declaration of how to perform the steps of an algorithm like `#rotate`, we leave ourselves the opportunity to improve the performance of our implementation without the risk of adding bugs to our declaration. And today we're going to do just that, along with a few tweaks for usability.
@@ -77,4 +79,6 @@ First, a little organization. Here are the [original examples](http://github.com
 		
 Now these were fine for illustration, but I have a few questions for the author(!) First, note that every single time we call a method like `merge_sort`, we create four new lambdas from scratch. This seems wasteful, especially since the lambdas never change. Why create some objects just to throw them away?
 
-Second, `linrec` 
+Second, `linrec` ...
+
+THIS IS A WORK-IN-PROGRESS!
