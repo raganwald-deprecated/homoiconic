@@ -57,27 +57,6 @@ module RecursiveCombinators
     end
   end
 
-=begin
-  define_method :linrec do |*args|
-    cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
-worker_proc = lambda do |value|
-  if cond_proc.call(value)
-    then_proc.call(value)
-  else
-    trivial_part, sub_problem = before_proc.call(value)
-    after_proc.call(
-      trivial_part, worker_proc.call(sub_problem)
-    )
-  end
-end
-    if optional_value.nil?
-      worker_proc
-    else
-      worker_proc.call(optional_value)
-    end
-  end
-=end
-
   define_method :linrec do |*args|
     cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
     worker_proc = lambda do |value|
