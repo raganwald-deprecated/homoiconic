@@ -5,6 +5,8 @@ In [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/
 
 We also saw that by separating the recursion implementation from the declaration of how to perform the steps of an algorithm like `#rotate`, we leave ourselves the opportunity to improve the performance of our implementation without the risk of adding bugs to our declaration. And today we're going to do just that, along with a few tweaks for usability.
 
+In this post, we're going to optimize our combinators' performance and make them a little easier to use with goodies like `string_to_proc`. To do that, we're going to work with closures, defining methods with `define_method`, and implement functional programming's partial application. We'll wrap up by converting `linrec` from a recursive to an iterative implementation.
+
 First, a little organization. Here are the [original examples](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.rb). I've placed them in a module and named the combinators `multirec` and `linrec` in conformance with common practice:
 
 	module RecursiveCombinators
@@ -179,22 +181,22 @@ Instead, we will switch the arguments to `multirec` ourselves, so it now works l
 
 The drawback with this approach is that we lose a little of Ruby's syntactic sugar, the ability to fake named parameters by passing hash arguments without `{}` if they are the last parameter. And now, let's give it the ability to partially apply itself. You can do some stuff with allowing multiple arguments and counting the number of arguments, but we're going to make the wild assumption that you never attempt a recursive combinator on `nil`. Here's `multirec`, you can infer the implementation for `linrec`:
 
-  def multirec(steps, optional_value = nil)
-    worker_proc = lambda do |value|
-      if steps[:divisible?].call(value)
-        steps[:recombine].call(
-          steps[:divide].call(value).map { |sub_value| worker_proc.call(sub_value) }
-        )
-      else
-        steps[:conquer].call(value)
-      end
-    end
-    if optional_value.nil?
-      worker_proc
-    else
-      worker_proc.call(optional_value)
-    end
-  end
+	def multirec(steps, optional_value = nil)
+	  worker_proc = lambda do |value|
+	    if steps[:divisible?].call(value)
+	      steps[:recombine].call(
+	        steps[:divide].call(value).map { |sub_value| worker_proc.call(sub_value) }
+	      )
+	    else
+	      steps[:conquer].call(value)
+	    end
+	  end
+	  if optional_value.nil?
+	    worker_proc
+	  else
+	    worker_proc.call(optional_value)
+	  end
+	end
 
 Notice that you get the same correct result whether you write:
 
