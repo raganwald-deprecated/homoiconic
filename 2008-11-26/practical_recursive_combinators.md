@@ -253,7 +253,7 @@ Now we know how to build our lambda:
 	Practicum.new.sum_squares([1, 2, 3, [[4,5], 6], [[[7]]]])
 		=> 140
 
-You can verify for yourself that no matter how many times you call `sum_squares`, you do not build those lambdas again.
+You can verify for yourself that no matter how many times you call `sum_squares`, you do not build those lambdas again. What we have just done is added partial application to `multirec` and `linrec`, which in turn allows us to ensure that he cost of constructing lambdas for our methods is only done when the method is defined, not every time it is called.
 
 Building on a legacy
 ---
@@ -284,7 +284,7 @@ Things look very similar with the new scheme for now:
   
 	end
 
-Okay, let's get serious.
+All right, now our combinators will look familiar to functional programmers, and even better when we look at functional programs using recursive combinators we will understand them at a glance. Okay, let's get serious and work on making our combinators easy to use and our code easy to read.
 
 Seriously
 ---
@@ -362,7 +362,9 @@ And here is [the code that makes it work](http:recursive_combinaors.rb):
 	  module_function :multirec, :linrec
 
 	end
-	
+
+Now when we have trivial lambdas, we can use nice syntactic sugar to express them. `string_to_proc` is **not** part of our recursive combinators, but making recursive combinators flexible, we make it "play well with others," which is a win for our code.	
+
 Separating Implementation from Declaration
 ---
 
