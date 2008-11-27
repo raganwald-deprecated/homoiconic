@@ -148,15 +148,15 @@ I have something in mind. To see what it is, let's start by transforming our met
 	
 As you probably know, any method taking a block can take a lambda using the `&` operator, so:
 
-  define_method :sum_squares, &(lambda do |list|
-    multirec(
-      list, 
-	   :divisible? => lambda { |value| value.kind_of?(Enumerable) },
-	   :conquer    => lambda { |value| value ** 2 },
-	   :divide     => lambda { |value| value },
-	   :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
-	  )
-  end)
+	define_method :sum_squares, &(lambda do |list|
+	  multirec(
+	    list, 
+	  :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	  :conquer    => lambda { |value| value ** 2 },
+	  :divide     => lambda { |value| value },
+	  :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+	 )
+	end)
 
 This is useful, because now we can express what we want: a lambda taking one argument that in turn calls `multirec` with the other arguments filled in. Functional programmers call this [Partial Application](http://ejohn.org/blog/partial-functions-in-javascript/ "Partial Application in JavaScript"). The idea is that if you have a function or method taking two arguments, if you only give it one argument you get a function back that takes the other. So:
 
@@ -199,37 +199,37 @@ The drawback with this approach is that we lose a little of Ruby's syntactic sug
 Notice that you get the same correct result whether you write:
 
 	RecursiveCombinators.multirec(
-    :divisible? => lambda { |value| value.kind_of?(Enumerable) },
-    :conquer    => lambda { |value| value ** 2 },
-    :divide     => lambda { |value| value },
-    :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
-  ).call([1, 2, 3, [[4,5], 6], [[[7]]]])
+	  :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	  :conquer    => lambda { |value| value ** 2 },
+	  :divide     => lambda { |value| value },
+	  :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+	).call([1, 2, 3, [[4,5], 6], [[[7]]]])
 		=> 140
 
 Or:
 
 	RecursiveCombinators.multirec(
 		{
-	    :divisible? => lambda { |value| value.kind_of?(Enumerable) },
-	    :conquer    => lambda { |value| value ** 2 },
-	    :divide     => lambda { |value| value },
-	    :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+		   :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+		   :conquer    => lambda { |value| value ** 2 },
+		   :divide     => lambda { |value| value },
+		   :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
 		},
-    [1, 2, 3, [[4,5], 6], [[[7]]]]
-  )
+		[1, 2, 3, [[4,5], 6], [[[7]]]]
+	)
 		=> 140
 
 Let's go back to what we were trying to do with `&`:
 
-  define_method :sum_squares, &(lambda do |list|
-    multirec(
-      list, 
-	   :divisible? => lambda { |value| value.kind_of?(Enumerable) },
-	   :conquer    => lambda { |value| value ** 2 },
-	   :divide     => lambda { |value| value },
-	   :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
-	  )
-  end)
+	define_method :sum_squares, &(lambda do |list|
+	  multirec(
+	    list, 
+	  :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	  :conquer    => lambda { |value| value ** 2 },
+	  :divide     => lambda { |value| value },
+	  :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+	 )
+	end)
 
 Now we know how to build our lambda:
 
