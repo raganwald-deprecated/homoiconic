@@ -26,37 +26,37 @@
 module PartialApplicationRecursiveCombinators
 
   def multirec(steps, optional_value = nil)
-    recursor = lambda do |value|
+    worker_proc = lambda do |value|
       if steps[:divisible?].call(value)
         steps[:recombine].call(
-          steps[:divide].call(value).map { |sub_value| recursor.call(sub_value) }
+          steps[:divide].call(value).map { |sub_value| worker_proc.call(sub_value) }
         )
       else
         steps[:conquer].call(value)
       end
     end
     if optional_value.nil?
-      recursor
+      worker_proc
     else
-      recursor.call(optional_value)
+      worker_proc.call(optional_value)
     end
   end
 
   def linrec(steps, optional_value = nil)
-    recursor = lambda do |value|
+    worker_proc = lambda do |value|
       if steps[:divisible?].call(value)
         trivial_part, sub_problem = steps[:divide].call(value)
         steps[:recombine].call(
-          trivial_part, recursor.call(sub_problem)
+          trivial_part, worker_proc.call(sub_problem)
         )
       else
         steps[:conquer].call(value)
       end
     end
     if optional_value.nil?
-      recursor
+      worker_proc
     else
-      recursor.call(optional_value)
+      worker_proc.call(optional_value)
     end
   end
 

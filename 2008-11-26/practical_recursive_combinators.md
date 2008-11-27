@@ -180,19 +180,19 @@ Instead, we will switch the arguments to `multirec` ourselves, so it now works l
 The drawback with this approach is that we lose a little of Ruby's syntactic sugar, the ability to fake named parameters by passing hash arguments without `{}` if they are the last parameter. And now, let's give it the ability to partially apply itself. You can do some stuff with allowing multiple arguments and counting the number of arguments, but we're going to make the wild assumption that you never attempt a recursive combinator on `nil`. Here's `multirec`, you can infer the implementation for `linrec`:
 
   def multirec(steps, optional_value = nil)
-    recursor = lambda do |value|
+    worker_proc = lambda do |value|
       if steps[:divisible?].call(value)
         steps[:recombine].call(
-          steps[:divide].call(value).map { |sub_value| recursor.call(sub_value) }
+          steps[:divide].call(value).map { |sub_value| worker_proc.call(sub_value) }
         )
       else
         steps[:conquer].call(value)
       end
     end
     if optional_value.nil?
-      recursor
+      worker_proc
     else
-      recursor.call(optional_value)
+      worker_proc.call(optional_value)
     end
   end
 
@@ -322,38 +322,38 @@ And here is [the code that makes it work](http:recursive_combinaors.rb):
 
 	  define_method :multirec do |*args|
 	    cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
-	    recursor = lambda do |value|
+	    worker_proc = lambda do |value|
 	      if cond_proc.call(value)
 	        then_proc.call(value)
 	      else
 	        after_proc.call(
-	          before_proc.call(value).map { |sub_value| recursor.call(sub_value) }
+	          before_proc.call(value).map { |sub_value| worker_proc.call(sub_value) }
 	        )
 	      end
 	    end
 	    if optional_value.nil?
-	      recursor
+	      worker_proc
 	    else
-	      recursor.call(optional_value)
+	      worker_proc.call(optional_value)
 	    end
 	  end
 
 	  define_method :linrec do |*args|
 	    cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
-	    recursor = lambda do |value|
+	    worker_proc = lambda do |value|
 	      if cond_proc.call(value)
 	        then_proc.call(value)
 	      else
 	        trivial_part, sub_problem = before_proc.call(value)
 	        after_proc.call(
-	          trivial_part, recursor.call(sub_problem)
+	          trivial_part, worker_proc.call(sub_problem)
 	        )
 	      end
 	    end
 	    if optional_value.nil?
-	      recursor
+	      worker_proc
 	    else
-	      recursor.call(optional_value)
+	      worker_proc.call(optional_value)
 	    end
 	  end
 
@@ -363,6 +363,75 @@ And here is [the code that makes it work](http:recursive_combinaors.rb):
 	
 Separating Implementation from Declaration
 ---
+
+In [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md), we read the claim that by separating the recursion implementation from the declaration of how to perform the steps of an algorithm like `#rotate`, we leave ourselves the opportunity to improve the performance of our implementation without the risk of adding bugs to our declaration.
+
+In other words, we can optimize `linrec` if we want to. Well, we want to. So what we're going to do is optimize its performance by trading time for space. Let's have a quick look at the `worker_proc` lambda inside of `linrec`:
+
+	worker_proc = lambda do |value|
+	  if cond_proc.call(value)
+	    then_proc.call(value)
+	  else
+	    trivial_part, sub_problem = before_proc.call(value)
+	    after_proc.call(
+	      trivial_part, worker_proc.call(sub_problem)
+	    )
+	  end
+	end
+
+As you can see, it is recursive, it calls itself to solve each sub-problem. And here is an iterative replacement:
+
+	worker_proc = lambda do |value|
+	  trivial_parts, sub_problem = [], value
+	  while !cond_proc.call(sub_problem)
+	    trivial_part, sub_problem = before_proc.call(sub_problem)
+	    trivial_parts.unshift(trivial_part)
+	  end
+	  trivial_parts.unshift(then_proc.call(sub_problem))
+	  trivial_parts.inject do |recombined, trivial_part|
+	    after_proc.call(trivial_part, recombined)
+	  end
+	end
+
+This version doesn't call itself. Instead, it uses an old-fashioned loop, accumulating the results in an array. In a certain sense, this uses more explicit memory than the recursive implementation. However, we both know that the recursive version uses memory for its stack, so that's a bit of a wash. However, the Ruby stack is limited while arrays can be much larger, so this version can handle much larger data sets.
+
+If you drop the new version of `worker_proc` into the `linrec` definition, each and every method you define using `linrec` gets the new implementation, for free. This works because we separated the implementation of recursive divide and conquer algorithms from the declaration of the steps each particular algorithm. Here's our new version of `linrec`:
+
+	define_method :linrec do |*args|
+	  cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
+	  worker_proc = lambda do |value|
+	    trivial_parts, sub_problem = [], value
+	    while !cond_proc.call(sub_problem)
+	      trivial_part, sub_problem = before_proc.call(sub_problem)
+	      trivial_parts.unshift(trivial_part)
+	    end
+	    trivial_parts.unshift(then_proc.call(sub_problem))
+	    trivial_parts.inject do |recombined, trivial_part|
+	      after_proc.call(trivial_part, recombined)
+	    end
+	  end
+	  if optional_value.nil?
+	    worker_proc
+	  else
+	    worker_proc.call(optional_value)
+	  end
+	end
 	
-Bonus Pattern: Unobtrusive Module Helpers
+Summary
 ---
+
+[recursive\_combinators.rb](http:recursive_combinators.rb) contains the final, practical implementation of `multirec` and `linrec`. It's leaner and faster than the naive implementations shown in [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md). Rails users can drop it into `config/initializers` and use it in their projects.
+	
+p.s. In an upcoming post, we'll talk about why `multirec` and `linrec` are implemented using `define_method` instead of the `def` keyword.
+
+---
+
+_More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown), [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown), [The Enchaining and Obdurate Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-11-12/the_obdurate_kestrel.md), [Finding Joy in Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-16/joy.md), [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md), and [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md).
+
+---
+
+[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
+	
+Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
+
+<a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>

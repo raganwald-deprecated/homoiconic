@@ -26,37 +26,37 @@
 module LegacyRecursiveCombinators
 
   def multirec(steps, optional_value = nil)
-    recursor = lambda do |value|
+    worker_proc = lambda do |value|
       if steps[:cond].call(value)
         steps[:then].call(value)
       else
         steps[:after].call(
-          steps[:before].call(value).map { |sub_value| recursor.call(sub_value) }
+          steps[:before].call(value).map { |sub_value| worker_proc.call(sub_value) }
         )
       end
     end
     if optional_value.nil?
-      recursor
+      worker_proc
     else
-      recursor.call(optional_value)
+      worker_proc.call(optional_value)
     end
   end
 
   def linrec(steps, optional_value = nil)
-    recursor = lambda do |value|
+    worker_proc = lambda do |value|
       if steps[:cond].call(value)
         steps[:then].call(value)
       else
         trivial_part, sub_problem = steps[:before].call(value)
         steps[:after].call(
-          trivial_part, recursor.call(sub_problem)
+          trivial_part, worker_proc.call(sub_problem)
         )
       end
     end
     if optional_value.nil?
-      recursor
+      worker_proc
     else
-      recursor.call(optional_value)
+      worker_proc.call(optional_value)
     end
   end
 

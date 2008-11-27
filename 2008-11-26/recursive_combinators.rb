@@ -41,57 +41,63 @@ module RecursiveCombinators
 
   define_method :multirec do |*args|
     cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
-    recursor = lambda do |value|
+    worker_proc = lambda do |value|
       if cond_proc.call(value)
         then_proc.call(value)
       else
         after_proc.call(
-          before_proc.call(value).map { |sub_value| recursor.call(sub_value) }
+          before_proc.call(value).map { |sub_value| worker_proc.call(sub_value) }
         )
       end
     end
     if optional_value.nil?
-      recursor
+      worker_proc
     else
-      recursor.call(optional_value)
+      worker_proc.call(optional_value)
     end
   end
 
+=begin
   define_method :linrec do |*args|
     cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
-    recursor = lambda do |value|
-      if cond_proc.call(value)
-        then_proc.call(value)
-      else
-        trivial_part, sub_problem = before_proc.call(value)
-        after_proc.call(
-          trivial_part, recursor.call(sub_problem)
-        )
+worker_proc = lambda do |value|
+  if cond_proc.call(value)
+    then_proc.call(value)
+  else
+    trivial_part, sub_problem = before_proc.call(value)
+    after_proc.call(
+      trivial_part, worker_proc.call(sub_problem)
+    )
+  end
+end
+    if optional_value.nil?
+      worker_proc
+    else
+      worker_proc.call(optional_value)
+    end
+  end
+=end
+
+  define_method :linrec do |*args|
+    cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
+    worker_proc = lambda do |value|
+      trivial_parts, sub_problem = [], value
+      while !cond_proc.call(sub_problem)
+        trivial_part, sub_problem = before_proc.call(sub_problem)
+        trivial_parts.unshift(trivial_part)
+      end
+      trivial_parts.unshift(then_proc.call(sub_problem))
+      trivial_parts.inject do |recombined, trivial_part|
+        after_proc.call(trivial_part, recombined)
       end
     end
     if optional_value.nil?
-      recursor
+      worker_proc
     else
-      recursor.call(optional_value)
+      worker_proc.call(optional_value)
     end
   end
 
   module_function :multirec, :linrec
 
 end
-
-=begin
-
-  define_method :linrec do |value, *steps|
-    cond_proc, then_proc, before_proc, after_proc = four_steps.call(steps)
-    trivial_parts, sub_problem = [], value
-    while !cond_proc.call(sub_problem)
-      trivial_part, sub_problem = before_proc.call(sub_problem)
-      trivial_parts.unshift(trivial_part)
-    end
-    trivial_parts.unshift(then_proc.call(sub_problem))
-    trivial_parts.inject { |recombined, trivial_part| after_proc.call(trivial_part, recombined) }
-  end
-  
-=end
-
