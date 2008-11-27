@@ -91,12 +91,12 @@ First, note that every single time we call a method like `merge_sort`, we create
 On the other hand, it's nice to be able to use create algorithms without having to define a method by name. Although I probably wouldn't do a merge sort anonymously, when I need a one-off quickie, I might like to write something like:
 
 	RecursiveCombinators.multirec(
-    [1, 2, 3, [[4,5], 6], [[[7]]]],
-    :divisible? => lambda { |value| value.kind_of?(Enumerable) },
-    :conquer    => lambda { |value| value ** 2 },
-    :divide     => lambda { |value| value },
-    :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
-  )
+	  [1, 2, 3, [[4,5], 6], [[[7]]]],
+	  :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	  :conquer    => lambda { |value| value ** 2 },
+	  :divide     => lambda { |value| value },
+	  :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+	)
 		=> 140
 
 But when I want a permanent sum of the squares method, I **don't** want to write:
