@@ -25,41 +25,63 @@
 
 module RecursiveCombinators
   
-  four_steps = lambda do |steps|
-    if steps.length == 4
-      steps.map { |step| step.to_proc }
+  separate_args = lambda do |args|
+    if ![1,2,4,5].include?(args.length)
+      raise ArgumentError
+    elsif args.length <= 2
+      steps = [:cond, :then, :before, :after].map { |k| args.first[k].to_proc }
+      steps.push(args[1]) unless args[1].nil?
+      steps
     else
-      named_params = steps.first
-      [
-        if named_params[:divisible?]
-            divisible_q = named_params[:divisible?].to_proc
-            lambda { |value| !divisible_q.call(value) }
-          else
-            named_params[:cond].to_proc
-          end,
-        (named_params[:conquer] || named_params[:then]).to_proc,
-        (named_params[:divide] || named_params[:before]).to_proc,
-        (named_params[:recombine] || named_params[:after]).to_proc
-      ]
+      steps = args[0..3].map { |arg| arg.to_proc }
+      steps.push(args[4]) unless args[4].nil?
+      steps
     end
   end
 
-  multirec_recursor = lambda do |value, cond_proc, then_proc, before_proc, after_proc|
-    if cond_proc.call(value)
-      then_proc.call(value)
+  define_method :multirec do |*args|
+    cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
+    recursor = lambda do |value|
+      if cond_proc.call(value)
+        then_proc.call(value)
+      else
+        after_proc.call(
+          before_proc.call(value).map { |sub_value| recursor.call(sub_value) }
+        )
+      end
+    end
+    if optional_value.nil?
+      recursor
     else
-      after_proc.call(
-        before_proc.call(value).map do |sub_value|
-           multirec_recursor.call(sub_value, cond_proc, then_proc, before_proc, after_proc)
-        end
-      )
+      recursor.call(optional_value)
     end
   end
 
-  define_method :multirec do |value, *steps|
-    multirec_recursor.call(value, *four_steps.call(steps))
+  define_method :linrec do |*args|
+    cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
+    recursor = lambda do |value|
+      if cond_proc.call(value)
+        then_proc.call(value)
+      else
+        trivial_part, sub_problem = before_proc.call(value)
+        after_proc.call(
+          trivial_part, recursor.call(sub_problem)
+        )
+      end
+    end
+    if optional_value.nil?
+      recursor
+    else
+      recursor.call(optional_value)
+    end
   end
-  
+
+  module_function :multirec, :linrec
+
+end
+
+=begin
+
   define_method :linrec do |value, *steps|
     cond_proc, then_proc, before_proc, after_proc = four_steps.call(steps)
     trivial_parts, sub_problem = [], value
@@ -70,9 +92,6 @@ module RecursiveCombinators
     trivial_parts.unshift(then_proc.call(sub_problem))
     trivial_parts.inject { |recombined, trivial_part| after_proc.call(trivial_part, recombined) }
   end
+  
+=end
 
-  alias :divide_and_conquer :multirec
-  alias :linear_recursion :linrec
-  module_function :multirec, :divide_and_conquer, :linrec, :linear_recursion
-
-end

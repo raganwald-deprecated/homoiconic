@@ -1,13 +1,11 @@
 Practical Recursive Combinators
 ===
 
-THIS IS A WORK-IN-PROGRESS!
-
 In [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md), we saw how recursive combinators like `#divide_and_conquer` and `#linear_recursion` are abstraction wins. They make recursive code much easier to read, because you know the general form of the algorithm and don't need to pick through it to discover the individual steps.
 
 We also saw that by separating the recursion implementation from the declaration of how to perform the steps of an algorithm like `#rotate`, we leave ourselves the opportunity to improve the performance of our implementation without the risk of adding bugs to our declaration. And today we're going to do just that, along with a few tweaks for usability.
 
-First, a little organization. Here are the [original examples](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.rb). I've placed them in a module and named the combinators `multirec` and `linrec` in conformance with common practice. And since they are also module functions, you can include them in a class or call them using `RecursiveCombinators.multirec` or `RecursiveCombinators.linrec`:
+First, a little organization. Here are the [original examples](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.rb). I've placed them in a module and named the combinators `multirec` and `linrec` in conformance with common practice:
 
 	module RecursiveCombinators
 
@@ -36,6 +34,8 @@ First, a little organization. Here are the [original examples](http://github.com
 
 	end
 
+Since they are also module functions, call them by sending a message to the module:
+
 	def merge_sort(list)
 	  RecursiveCombinators.multirec(
 	    list,
@@ -49,8 +49,12 @@ First, a little organization. Here are the [original examples](http://github.com
 	  )
 	end
 
+Or you can include the `RecursiveCombinators` module and call either method directly:
+
+	include RecursiveCombinators
+
 	def merge_two_sorted_lists(*pair)
-	  RecursiveCombinators.linrec(
+	  linrec(
 	    pair,
 	    :divisible? => lambda { |pair| !pair.first.empty? && !pair.last.empty? },
 	    :conquer => lambda do |pair|
@@ -77,8 +81,288 @@ First, a little organization. Here are the [original examples](http://github.com
 	merge_sort([8, 3, 10, 1, 9, 5, 7, 4, 6, 2])
 		=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 		
-Now these were fine for illustration, but I have a few questions for the author(!) First, note that every single time we call a method like `merge_sort`, we create four new lambdas from scratch. This seems wasteful, especially since the lambdas never change. Why create some objects just to throw them away?
+Ok, we're ready for some slightly more substantial work. These methods were fine for illustration, but I have a few questions for the author(!)
 
-Second, `linrec` ...
+Spicing things up
+---
 
-THIS IS A WORK-IN-PROGRESS!
+First, note that every single time we call a method like `merge_sort`, we create four new lambdas from scratch. This seems wasteful, especially since the lambdas never change. Why create some objects just to throw them away?
+
+On the other hand, it's nice to be able to use create algorithms without having to define a method by name. Although I probably wouldn't do a merge sort anonymously, when I need a one-off quickie, I might like to write something like:
+
+	RecursiveCombinators.multirec(
+    [1, 2, 3, [[4,5], 6], [[[7]]]],
+    :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+    :conquer    => lambda { |value| value ** 2 },
+    :divide     => lambda { |value| value },
+    :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+  )
+		=> 140
+
+But when I want a permanent sum of the squares method, I **don't** want to write:
+
+	def sum_squares(list)
+	  RecursiveCombinators.multirec(
+	    list,
+	    :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	    :conquer    => lambda { |value| value ** 2 },
+	    :divide     => lambda { |value| value },
+	    :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+	  )
+	end
+
+...because that would create four lambdas every time I call the function. There are a couple of ways around this problem. First, our "recipe" for summing squares is a simple hash. We could extract that from the method into a constant:
+
+	SUM_SQUARES_RECIPE = {
+	   :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	   :conquer    => lambda { |value| value ** 2 },
+	   :divide     => lambda { |value| value },
+	   :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+	}
+	
+	def sum_squares(list)
+	  RecursiveCombinators.multirec(list, SUM_SQUARES_RECIPE)
+	end
+
+That (and the isomorphic solution where the constant `SUM_SQUARES_RECIPE` is instead a private helper method `#sum_squares_recipe`) is nice if you have some reason you wish to re-use the recipe elsewhere. But we don't, so this merely clutters our class up and separates the method definition from its logic.
+
+I have something in mind. To see what it is, let's start by transforming our method definition from using the `def` keyword to using the `define_method` private class method. This obviously needs a module or class to work:
+
+	class Practicum
+  
+	  include RecursiveCombinators
+  
+	  define_method :sum_squares do |list|
+	    multirec(
+	      list, 
+		   :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+		   :conquer    => lambda { |value| value ** 2 },
+		   :divide     => lambda { |value| value },
+		   :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+		  )
+	  end
+  
+	end
+
+	Practicum.new.sum_squares([1, 2, 3, [[4,5], 6], [[[7]]]])
+	
+As you probably know, any method taking a block can take a lambda using the `&` operator, so:
+
+  define_method :sum_squares, &(lambda do |list|
+    multirec(
+      list, 
+	   :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	   :conquer    => lambda { |value| value ** 2 },
+	   :divide     => lambda { |value| value },
+	   :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+	  )
+  end)
+
+This is useful, because now we can express what we want: a lambda taking one argument that in turn calls `multirec` with the other arguments filled in. Functional programmers call this [Partial Application](http://ejohn.org/blog/partial-functions-in-javascript/ "Partial Application in JavaScript"). The idea is that if you have a function or method taking two arguments, if you only give it one argument you get a function back that takes the other. So:
+
+	multirec(x).call(y)
+		=> multirec(x,y)
+
+Now the drawback with this "standard" implementation of partial application is that we would pass a list to `multirec` and get back a function taking a hash of declarations. That isn't what we want. We could partially apply things *backwards* so that `multirec(x).call(y) => multirec(y,x)` (if Ruby was a concatenative language, we would be concatenating the multirec combinator with a thrush). The trouble with that is it is the reverse of how partial application works in every other [programming language](http://www.haskell.org/ "HaskellWiki") and [functional programming library](https://github.com/osteele/functional-javascript/tree).
+
+Instead, we will switch the arguments to `multirec` ourselves, so it now works like this:
+
+	multirec(
+		{
+			:divisible? => lambda { |value| value.kind_of?(Enumerable) },
+			:conquer    => lambda { |value| value ** 2 },
+			:divide     => lambda { |value| value },
+			:recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+		},
+		list
+	)
+
+The drawback with this approach is that we lose a little of Ruby's syntactic sugar, the ability to fake named parameters by passing hash arguments without `{}` if they are the last parameter. And now, let's give it the ability to partially apply itself. You can do some stuff with allowing multiple arguments and counting the number of arguments, but we're going to make the wild assumption that you never attempt a recursive combinator on `nil`. Here's `multirec`, you can infer the implementation for `linrec`:
+
+  def multirec(steps, optional_value = nil)
+    recursor = lambda do |value|
+      if steps[:divisible?].call(value)
+        steps[:recombine].call(
+          steps[:divide].call(value).map { |sub_value| recursor.call(sub_value) }
+        )
+      else
+        steps[:conquer].call(value)
+      end
+    end
+    if optional_value.nil?
+      recursor
+    else
+      recursor.call(optional_value)
+    end
+  end
+
+Notice that you get the same correct result whether you write:
+
+	RecursiveCombinators.multirec(
+    :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+    :conquer    => lambda { |value| value ** 2 },
+    :divide     => lambda { |value| value },
+    :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+  ).call([1, 2, 3, [[4,5], 6], [[[7]]]])
+		=> 140
+
+Or:
+
+	RecursiveCombinators.multirec(
+		{
+	    :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	    :conquer    => lambda { |value| value ** 2 },
+	    :divide     => lambda { |value| value },
+	    :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+		},
+    [1, 2, 3, [[4,5], 6], [[[7]]]]
+  )
+		=> 140
+
+Let's go back to what we were trying to do with `&`:
+
+  define_method :sum_squares, &(lambda do |list|
+    multirec(
+      list, 
+	   :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	   :conquer    => lambda { |value| value ** 2 },
+	   :divide     => lambda { |value| value },
+	   :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+	  )
+  end)
+
+Now we know how to build our lambda:
+
+	require 'partial_application_recursive_combinators'
+
+	class Practicum
+  
+	  extend PartialApplicationRecursiveCombinators   # so we can call multirec in class scope
+  
+	  define_method :sum_squares, &multirec(
+	   :divisible? => lambda { |value| value.kind_of?(Enumerable) },
+	   :conquer    => lambda { |value| value ** 2 },
+	   :divide     => lambda { |value| value },
+	   :recombine  => lambda { |list| list.inject() { |x,y| x + y } }
+	  )
+  
+	end
+
+	Practicum.new.sum_squares([1, 2, 3, [[4,5], 6], [[[7]]]])
+		=> 140
+
+You can verify for yourself that no matter how many times you call `sum_squares`, you do not build those lambdas again.
+
+Building on a legacy
+---
+
+We have already renamed `divide_and_conquer` and `linear_recursion` to bring them into line with standard practice and other programming languages. Now it's time for us to bring the parameters--the declarative lambdas--into line with standard practice.
+
+The four arguments to both methods are normally called `cond`, `then`, `before`, and `after`:
+
+*	`cond` is the logical inverse of `divisible?` So if `cond(value)` evaluates to true, then we do not need to subdivide the problem.
+*	`then` is exactly the same as `conquer`, *if* cond *then* then. That's the way I think of it.
+*	`before` is the same as `divide`.
+*	`after` is the same as `recombine`.
+
+Things look very similar with the new scheme for now:
+
+	require 'legacy_recursive_combinators'
+
+	class Practicum
+  
+	  extend LegacyRecursiveCombinators   # so we can call multirec in class scope
+  
+	  define_method :sum_squares, &multirec(
+	   :cond   => lambda { |value| value.kind_of?(Numeric) }, # the only change right now
+	   :then   => lambda { |value| value ** 2 },
+	   :before => lambda { |value| value },
+	   :after  => lambda { |list| list.inject() { |x,y| x + y } }
+	  )
+  
+	end
+
+Okay, let's get serious.
+
+Seriously
+---
+
+As long as you're writing these lambdas out, writing `:cond =>` isn't a hardship. And in an explanatory article like this, it can help at first. However, what if you find a way to abbreviate things? For example, you might [alias `lambda` to `L`](http://github.com/gilesbowkett/archaeopteryx/tree/master "gilesbowkett's archaeopteryx"). Or you might want to use [string\_to\_proc](http:string_to_proc.rb).
+
+So we should support passing the declarative arguments by position as well as by 'name.' And with a final twist, if any of the declarative arguments aren't already lambdas, we'll try to create lambdas by sending them the message `to_proc`. So our goal is to write what we wrote above or either of the following and have it "just work:"
+
+	define_method :sum_squares, &multirec(
+		lambda { |value| value.kind_of?(Numeric) }, # the only change right now
+		lambda { |value| value ** 2 },
+		lambda { |value| value },
+		lambda { |list| list.inject() { |x,y| x + y } }
+	)
+	
+	include 'string-to_proc'
+
+	define_method :sum_squares, &multirec("value.kind_of?(Numeric)", "value ** 2","value","value.inject(&'+')")
+
+And here is [the code that makes it work](http:recursive_combinaors.rb):
+
+	module RecursiveCombinators
+  
+	  separate_args = lambda do |args|
+	    if ![1,2,4,5].include?(args.length)
+	      raise ArgumentError
+	    elsif args.length <= 2
+	      steps = [:cond, :then, :before, :after].map { |k| args.first[k].to_proc }
+	      steps.push(args[1]) unless args[1].nil?
+	      steps
+	    else
+	      steps = args[0..3].map { |arg| arg.to_proc }
+	      steps.push(args[4]) unless args[4].nil?
+	      steps
+	    end
+	  end
+
+	  define_method :multirec do |*args|
+	    cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
+	    recursor = lambda do |value|
+	      if cond_proc.call(value)
+	        then_proc.call(value)
+	      else
+	        after_proc.call(
+	          before_proc.call(value).map { |sub_value| recursor.call(sub_value) }
+	        )
+	      end
+	    end
+	    if optional_value.nil?
+	      recursor
+	    else
+	      recursor.call(optional_value)
+	    end
+	  end
+
+	  define_method :linrec do |*args|
+	    cond_proc, then_proc, before_proc, after_proc, optional_value = separate_args.call(args)
+	    recursor = lambda do |value|
+	      if cond_proc.call(value)
+	        then_proc.call(value)
+	      else
+	        trivial_part, sub_problem = before_proc.call(value)
+	        after_proc.call(
+	          trivial_part, recursor.call(sub_problem)
+	        )
+	      end
+	    end
+	    if optional_value.nil?
+	      recursor
+	    else
+	      recursor.call(optional_value)
+	    end
+	  end
+
+	  module_function :multirec, :linrec
+
+	end
+	
+Separating Implementation from Declaration
+---
+	
+Bonus Pattern: Unobtrusive Module Helpers
+---
