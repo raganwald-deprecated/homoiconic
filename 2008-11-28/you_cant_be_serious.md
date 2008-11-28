@@ -29,9 +29,11 @@ String#to\_proc
 
 `String#to_proc` adds the `#to_proc` method to the `String` class in Ruby. This allows you to write certain simple lambdas as strings instead of using the `lambda` keyword, the `proc` keyword, or `Proc.new`. The reason why you'd bother is that `String#to_proc` provides some shortcuts that get rid of the noise.
 
-**`->`**
+**gives**
 
-`String#to_proc` provides several key abbreviations: First,	`->` syntax for lambdas in Ruby 1.8. So instead of `lambda { |x,y| x + y }`, you can write `'x,y -> x + y'` This gets rid of the noisy `lambda` keyword and is much closer to Ruby 1.9 syntax. So our example above could be written:
+`String#to_proc` provides several key abbreviations: First,	`->` syntax for lambdas in Ruby 1.8. So instead of `lambda { |x,y| x + y }`, you can write `'x,y -> x + y'`. I read this out loud as "*x and y gives x plus y*." 
+
+This syntax gets rid of the noisy `lambda` keyword and is much closer to Ruby 1.9 syntax. And frankly, reading it out loud makes much more sense than reading lambdas aloud. Our example above could be written:
 
 	multirec(
 	  'x -> x.kind_of?(Numeric)',
