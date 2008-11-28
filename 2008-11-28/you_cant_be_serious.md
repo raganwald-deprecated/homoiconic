@@ -61,7 +61,7 @@ Second, `String#to_proc` adds inferred parameters: If you do not use `->`, `Stri
 
 **it**
 
-The third abbreviation is a special case. If there is only one parameter, you can use `_` (the underscore) without naming it. This is often called the "hole" or pronounced "it." If you use "it," then `Strig#to_proc` doesn't try to infer any more parameters, so this can help you write things like:
+The third abbreviation is a special case. If there is only one parameter, you can use `_` (the underscore) without naming it. This is often called the "hole" or pronounced "it." If you use "it," then `String#to_proc` doesn't try to infer any more parameters, so this can help you write things like:
 
 	multirec(
 	  '_.kind_of?(Numeric)',
@@ -74,7 +74,7 @@ Admittedly, use of "it"/the hole is very much a matter of taste.
 
 **point-free**
 
-`String#to_proc` has a fourth and even more extreme abbreviation up its sleeve, [point-free style](http://blog.plover.com/prog/haskell/ "The Universe of Discourse : Note on point-free programming style"): "Function points" are what programmers usually call parameters. Point-free style consists of describing how functions are composed together rather than describing what happens with their arguments. So, let's say that I want a function that combines `.inject` with `+`. One way to say that is to say that I want a new function that takes its argument and applies an `inject` to it, and the inject takes another function with two arguments and applies a `+` to them:
+`String#to_proc` has a fourth and even more extreme abbreviation up its sleeve, [point-free style](http://blog.plover.com/prog/haskell/ "The Universe of Discourse : Note on point-free programming style"): "Function points" are what functional programmers usually call parameters. Point-free style consists of describing how functions are composed together rather than describing what happens with their arguments. So, let's say that I want a function that combines `.inject` with `+`. One way to say that is to say that I want a new function that takes its argument and applies an `inject` to it, and the inject takes another function with two arguments and applies a `+` to them:
 
 	lambda { |z| z.inject { |sum, n| sum + n } }
 	
@@ -82,9 +82,9 @@ The other way is to say that I want to compose `.inject` and `+` together. Witho
 
 	".inject(&'+')"
 	
-Meaning "I want a new lambda that does an inject using plus." Point-free style does require a new way of thinking about some things, but it is a clear win for simple cases. Proof positive of this is the fact that Ruby on Rails and Ruby 1.9 have both embraced point-free style with `Symbol#to_proc`. That's exactly how [`(1..100).inject(&:+)`](http://weblog.raganwald.com/2008/02/1100inject.html "(1..100).inject(&:+)") works!
+Meaning "*I want a new lambda that does an inject using plus*." Point-free style does require a new way of thinking about some things, but it is a clear win for simple cases. Proof positive of this is the fact that Ruby on Rails and Ruby 1.9 have both embraced point-free style with `Symbol#to_proc`. That's exactly how [`(1..100).inject(&:+)`](http://weblog.raganwald.com/2008/02/1100inject.html "(1..100).inject(&:+)") works!
 
-`Strng#to_proc` supports fairly simple cases where you are sending a message or using a binary operator. So if we wanted to go all out, we could write our example as:
+`String#to_proc` supports fairly simple cases where you are sending a message or using a binary operator. So if we wanted to go all out, we could write our example as:
 
 	multirec('.kind_of?(Numeric)', '** 2', 'x', ".inject(&'+')")
 
