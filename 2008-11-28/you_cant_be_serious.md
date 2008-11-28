@@ -1,7 +1,9 @@
-`String#to_proc`: You can't be serious!?
+You can't be serious!?
 ===
 
-In [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md), we enhanced `multirec` (a/k/a "Divide and Conquer") and `linrec` ("Linear Recursion") to accept as arguments any object that supports the `#to_proc` method. Now since lambdas simply return themselves, we can write:
+In [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md), we enhanced `multirec` (a/k/a "Divide and Conquer") and `linrec` ("Linear Recursion") to accept as arguments any object that supports the `#to_proc` method. Today we're going demonstrate why: We will look at how removing the ceremony around lambdas makes using combinators like `multirec` more valuable for code we share with others.
+
+Since lambdas simply return themselves, to define how to sum the squares of a nested list of numbers we can write:
 
 	multirec(
 	  lambda { |x| x.kind_of?(Numeric) },
@@ -10,7 +12,7 @@ In [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree
 	  lambda { |x| x.inject { |sum, n| sum + n } }
 	)
 
-To define how to sum the squares of a nested list of numbers. The trouble with this--to quote [a seasonally appropriate character](http://www.amazon.com/gp/product/B000HA4WDY?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B000HA4WDY "Amazon.com: Dr. Seuss' How the Grinch Stole Christmas! (50th Birthday Deluxe Remastered Edition)")--is the noise, noise, Noise, NOISE! All those lambdas and parameter declarations outweigh the actual logic we are declaring, so much so that declaring this function using our abstraction is longer and may seem more obscure than declaring it without the abstraction.
+The trouble with this--to quote [a seasonally appropriate character](http://www.amazon.com/gp/product/B000HA4WDY?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B000HA4WDY "Amazon.com: Dr. Seuss' How the Grinch Stole Christmas! (50th Birthday Deluxe Remastered Edition)")--is the noise, noise, Noise, NOISE! All those lambdas and parameter declarations outweigh the actual logic we are declaring, so much so that declaring this function using our abstraction is longer and may seem more obscure than declaring it without the abstraction.
 
 This whole thing reminds me of languages where the keywords must be in UPPER CASE. Reading code in such languages is like listening to a poetry reading where the author shouts the punctuation:
 
@@ -156,7 +158,12 @@ For a method like this, I would write:
 
 And be assured that months from now if I wanted to support rotating rectangular matrices of arbitrary size, I could modify `:cond`, `:before`, and `:after` with confidence that the basic method was not being broken.
 
-And yes, I'm very serious :-)
+The Message
+---
+
+The message here is that taken by themselves, tools like recursive combinators or `String#to_proc` just look strange. But when we use them together, they reinforce each other and the sum becomes much greater than the sum of the parts. In the case of `String#to_proc`, it looks like frivolity to most Ruby programmers, because they don't use that many lambdas: Why should they when the existing syntax makes writing combinators hard to use? But when we have combinators in our hand, we see how `String#to_proc` can make them a win. So two things that look weird on their own are a useful tool when used in conjunction.
+
+Seriously.
 
 ---
 
