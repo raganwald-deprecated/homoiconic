@@ -173,6 +173,10 @@ The Message
 
 The message here is that taken by themselves, tools like recursive combinators or `String#to_proc` just look strange. But when we use them together, they reinforce each other and the sum becomes much greater than the sum of the parts. In the case of `String#to_proc`, it looks like frivolity to most Ruby programmers, because they don't use that many lambdas: Why should they when the existing syntax makes writing combinators hard to use? But when we have combinators in our hand, we see how `String#to_proc` can make them a win. So two things that look weird on their own are a useful tool when used in conjunction.
 
+Our final example ended up being slightly longer than a naive version, however it is longer in ways that matter rather than longer in a mindless ceremonial way like some languages.
+
+And that's the point of languages like Ruby: **You** have the tools to decide which portions of you code matter more than others, and to make the parts that matter stand out and the parts that don't go away. You may disagree with my choice of what matters for a recursive divide and conquer algorithm, but I hope we can agree that it's valuable to be able to make that choice for yourself or your team.
+
 Seriously.
 
 ---
