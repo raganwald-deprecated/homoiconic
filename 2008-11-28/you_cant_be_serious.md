@@ -29,6 +29,8 @@ String#to\_proc
 
 `String#to_proc` adds the `#to_proc` method to the `String` class in Ruby. This allows you to write certain simple lambdas as strings instead of using the `lambda` keyword, the `proc` keyword, or `Proc.new`. The reason why you'd bother is that `String#to_proc` provides some shortcuts that get rid of the noise.
 
+**`->`**
+
 `String#to_proc` provides several key abbreviations: First,	`->` syntax for lambdas in Ruby 1.8. So instead of `lambda { |x,y| x + y }`, you can write `'x,y -> x + y'` This gets rid of the noisy `lambda` keyword and is much closer to Ruby 1.9 syntax. So our example above could be written:
 
 	multirec(
@@ -40,9 +42,7 @@ String#to\_proc
 
 This is a lot better than the version with lambdas, and if the `->` seems foreign, it is only because `->` is in keeping with modern functional languages and mathematical notation, while `lambda` is in keeping with Lisp and lambda calculus notation without the ability to use a single lambda character unicode.
 
-> I have good news and bad news about inferred parameters and `String#to_proc` in general. It uses regular expressions to do its thing, which means that complicated things often don't work. For example, nesting `->` only works when writing functions that return functions. So `'x -> y -> x + y'` is a function that takes an `x` and returns a function that takes a `y` and returns `x + y`. That works. But `'z -> z.inject(&"sum, n -> sum + n")'` does NOT work.
-
-> I considered fixing this with more sophisticated parsing, however the simple truth is this: `String#to_proc` is not a replacement for `lambda`, it's a tool to be used when what you're doing is so simple that `lambda` is overkill. If `String#to_proc` doesn't work for something, it probably isn't ridiculously simple any more.
+**inferred parameters**
 
 Second, `String#to_proc` adds inferred parameters: If you do not use `->`, `String#to_proc` attempts to infer the parameters. So if you write `'x + y'`, `String#to_proc` treats it as `x,y -> x + y`. There are certain expressions where this doesn't work, and you have to use `->`, but for really simple cases it works just fine. And frankly, for really simple cases you don't need the extra scaffolding. Here's our example with the first three lambdas using inferred parameters:
 
@@ -53,6 +53,12 @@ Second, `String#to_proc` adds inferred parameters: If you do not use `->`, `Stri
 	  'z -> z.inject { |sum, n| sum + n }'
 	)
 
+> I have good news and bad news about inferred parameters and `String#to_proc` in general. It uses regular expressions to do its thing, which means that complicated things often don't work. For example, nesting `->` only works when writing functions that return functions. So `'x -> y -> x + y'` is a function that takes an `x` and returns a function that takes a `y` and returns `x + y`. That works. But `'z -> z.inject(&"sum, n -> sum + n")'` does NOT work.
+
+> I considered fixing this with more sophisticated parsing, however the simple truth is this: `String#to_proc` is not a replacement for `lambda`, it's a tool to be used when what you're doing is so simple that `lambda` is overkill. If `String#to_proc` doesn't work for something, it probably isn't ridiculously simple any more.
+
+**it**
+
 The third abbreviation is a special case. If there is only one parameter, you can use `_` (the underscore) without naming it. This is often called the "hole" or pronounced "it." If you use "it," then `Strig#to_proc` doesn't try to infer any more parameters, so this can help you write things like:
 
 	multirec(
@@ -62,7 +68,9 @@ The third abbreviation is a special case. If there is only one parameter, you ca
 	  '_.inject { |sum, n| sum + n }'
 	)	
 
-The use of "it"/the hole is very much a matter of taste.
+Admittedly, use of "it"/the hole is very much a matter of taste.
+
+**point-free**
 
 `String#to_proc` has a fourth and even more extreme abbreviation up its sleeve, [point-free style](http://blog.plover.com/prog/haskell/ "The Universe of Discourse : Note on point-free programming style"): "Function points" are what programmers usually call parameters. Point-free style consists of describing how functions are composed together rather than describing what happens with their arguments. So, let's say that I want a function that combines `.inject` with `+`. One way to say that is to say that I want a new function that takes its argument and applies an `inject` to it, and the inject takes another function with two arguments and applies a `+` to them:
 
@@ -80,7 +88,7 @@ Meaning "I want a new lambda that does an inject using plus." Point-free style d
 
 > There's no point-free magic for the identity function, although this example tempts me to special case the empty string!
 
-Now the question is, *When should we use all these tricks?*
+**When should we use all these tricks?**
 
 `String#to_proc` provides these options so that you as a programmer can choose your level of ceremony around writing functions. But of course, you have to use the tool wisely. My *personal* rules of thumb are:
 
@@ -90,7 +98,7 @@ Now the question is, *When should we use all these tricks?*
 1.	Embrace `->` notation for extremely simple cases where I want to give the parameters a descriptive name.
 1.	Use lambdas for everything else.
 
-So *I* would write:
+So I would write:
 
 	multirec( '_.kind_of?(Numeric)', '** 2', '_', "_.inject(&'+')")
 
