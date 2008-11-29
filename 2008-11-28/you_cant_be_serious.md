@@ -5,6 +5,8 @@ In [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree
 
 Using [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb) to define how to sum the squares of a nested list of numbers, we can write:
 
+	require 'recursive_combinators'
+
 	include RecursiveCombinators
 
 	multirec(
@@ -36,6 +38,8 @@ String#to\_proc
 `String#to_proc` provides several key abbreviations: First,	`->` syntax for lambdas in Ruby 1.8. So instead of `lambda { |x,y| x + y }`, you can write `'x,y -> x + y'`. I read this out loud as "*x and y gives x plus y*." 
 
 This syntax gets rid of the noisy `lambda` keyword and is much closer to Ruby 1.9 syntax. And frankly, reading it out loud makes much more sense than reading lambdas aloud. Our example above could be written:
+
+	require 'string_to_proc'
 
 	multirec(
 	  'x -> x.kind_of?(Numeric)',
