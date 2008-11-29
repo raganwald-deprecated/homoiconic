@@ -5,6 +5,8 @@ In [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree
 
 Using [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb) to define how to sum the squares of a nested list of numbers, we can write:
 
+	include RecursiveCombinators
+
 	multirec(
 	  lambda { |x| x.kind_of?(Numeric) },
 	  lambda { |x| x ** 2 },
