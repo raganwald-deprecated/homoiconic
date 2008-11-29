@@ -167,8 +167,7 @@ For a method like this, I would write:
 	  end,
 	  :after => lambda do |list|
 		  upper_left, lower_left, upper_right, lower_right = list
-		  upper_right.zip(lower_right).map { |l,r| l + r } +
-		  upper_left.zip(lower_left).map { |l,r| l + r }
+		  upper_right.zip(lower_right).map(&'+') + upper_left.zip(lower_left).map(&'+')
 	  end
 	end
 
