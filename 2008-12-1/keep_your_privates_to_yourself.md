@@ -322,7 +322,7 @@ One approach is to create lambdas local to a method:
 
 This makes it very clear that they are not to be used elsewhere. However, you are creating new lambdas every time you call `#fubar`. This probably doesn't matter, however no matter how insignificant the time or memory overhead relative to database queries and the rest of the method, it is difficult to get such code through an inspection without someone trying to score points off you by complaining about the 'excessive' object creation.
 
-Also, you may be accused of having learned programming back when Borland Pascal was all the rage. Nested procedures are very Lisp and Pascal. You would think that being Lisp-like is a good thing in a language its creator nicknamed "MatzLisp," but you will often find the real world of Ruby programmers surprising.
+> If you program in this style, you may be accused of having learned programming back when real programmers wore mountain boots in the machine room. Nested procedures are very Lispy. You would think that writing Lisp-like code is a good thing in a language its creator nicknamed "MatzLisp," but you will often find the real world of Ruby programmers surprising.
 
 So performance and preserving your reputation are not at risk, this is another solution suitable for the case where the helper is only used by one method. If creating the extra lambdas is inappropriate, you can fall back to the solution given above:
 
