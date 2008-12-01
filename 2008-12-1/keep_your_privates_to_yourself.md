@@ -6,7 +6,7 @@ Keep Your Privates To Yourself
 Problem Statement: Subdividing a Class
 ---
 
-In some architectures, model classes are extremely heavyweight. This is especially the case with database-backed models in legacy schema. Sometimes, the pain of refactoring and migrating the databse is so large that developers are reluctatnt to institute [small classes and short methods](http://binstock.blogspot.com/2008/04/perfecting-oos-small-classes-and-short.html "Perfecting OO's Small Classes and Short Methods").
+In some architectures, model classes are extremely heavyweight. This is especially the case with database-backed models in legacy schema. Sometimes, the pain of refactoring and migrating the database is so large that developers are reluctant to institute [small classes and short methods](http://binstock.blogspot.com/2008/04/perfecting-oos-small-classes-and-short.html "Perfecting OO's Small Classes and Short Methods").
 
 Scope is an issue: if you break subclasses `C1`, `C1`, and `C3` out of class `C`, you may not actually want `C1`, `C1`, and `C3` to be part of the global scope. You can embed them in `C`, but now `C::C1`, `C::C2`, and `C::C3` are part of `C`'s API. The exact same reasoning holds for breaking functionality out into modules `M1`, `M2`, and `M3`: You don't want them to be part of global scope, nor do you want `C::M1`, `C::M2`, and `C::M3` to be part of `C`'s API.
 
