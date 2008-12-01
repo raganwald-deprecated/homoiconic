@@ -426,7 +426,7 @@ Summary
 
 [recursive\_combinators.rb](http:recursive_combinators.rb) contains the final, practical implementation of `multirec` and `linrec`. It's leaner and faster than the naive implementations shown in [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md). Rails users can drop it into `config/initializers` and use it in their projects.
 	
-p.s. In [Keep Your Privates To Yourself](http://github.com/raganwald/homoiconic/tree/master/2008-12-1/keep_your_privates_to_yourself.md), we look at about why `multirec` and `linrec` are implemented using `define_method` instead of the `def` keyword.
+p.s. In an upcoming post, we'll talk about why `multirec` and `linrec` are implemented using `define_method` instead of the `def` keyword.
 
 ---
 
@@ -438,6 +438,6 @@ _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/ma
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 
-**NEW: [Hire Reg Braithwaite!](http://reginald/braythwayt.com/RegBraithwaiteGH1208_en_US.pdf)**
+**NEW: [Hire Reg Braithwaite!](http://reginald.braythwayt.com/RegBraithwaiteGH1208_en_US.pdf)**
 
 <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
