@@ -15,71 +15,71 @@ What we want is to be able to create a 'private' subdivision of a class, such as
 No Embedded Modules
 ---
 
-	class Foo
+  class Foo
   
-	  module Bar
-	    def bar
-	      'bar'
-	    end
-	  end
+    module Bar
+      def bar
+        'bar'
+      end
+    end
   
-	  include Bar
+    include Bar
   
-	end
-	
-	class Fizz
-	
-		include Foo::Bar
-	
-	end
-	
-	Fizz.new.bar
-		=> 'bar
-		
+  end
+  
+  class Fizz
+  
+    include Foo::Bar
+  
+  end
+  
+  Fizz.new.bar
+    => 'bar
+    
 As mentioned above, simply embedding `Bar` in `Foo` does not make it private, it is part of `Foo`'s API. When you write this code, you are telling every developer they are free to use `Foo::Bar`. We'll have to try something else.
 
 No Private Modules
 ---
 
-	class Foo
+  class Foo
   
-	  private
+    private
   
-	  module Bar
-	    def bar
-	      'bar'
-	    end
-	  end
+    module Bar
+      def bar
+        'bar'
+      end
+    end
   
-	  include Bar
+    include Bar
   
-	end
-	
-	obj = Object.new
-	obj.extend Foo::Bar
-	obj.bar
-	
-		=> 'bar
+  end
+  
+  obj = Object.new
+  obj.extend Foo::Bar
+  obj.bar
+  
+    => 'bar
 
 Nogoodnik, the `private` keyword does not apply to modules.
 
 Solution: Anonymous Modules
 ---
 
-	class Foo
+  class Foo
   
-	  include(Module.new do
-	    def bar
-	      'bar'
-	    end
-	  end)
+    include(Module.new do
+      def bar
+        'bar'
+      end
+    end)
   
-	end
+  end
 
-	Foo.new.bar
-		=> 'bar'
-	Foo.ancestors
-		=> [Foo, #<Module:0x213cc>, Object, Kernel]
+  Foo.new.bar
+    => 'bar'
+  Foo.ancestors
+    => [Foo, #<Module:0x213cc>, Object, Kernel]
 
 This works. if we want to group several methods and declarations together, we can create an anonymous module inside of a class. It is one of `Foo`'s ancestors, but it is not part of `Foo`'s API. Now we have a recipe for breaking classes into private parts.
 
@@ -88,58 +88,58 @@ More about Anonymous Modules
 
 The recipe for creating anonymous modules within a class is useful for breaking large classes up into chunks of related methods. However, all methods within those anonymous modules are mixed into the base class. Consider the case where you have two related methods, `fubar` and `snafu`:
 
-	class Acronym
+  class Acronym
   
-	  include(Module.new do
+    include(Module.new do
     
-	    def fubar
-	      'fu' + 'bar'
-	    end
+      def fubar
+        'fu' + 'bar'
+      end
     
-	    def snafu
-	      'sna' + 'fu'
-	    end
-	
-	  end)
+      def snafu
+        'sna' + 'fu'
+      end
   
-	end
+    end)
+  
+  end
 
-	Acronym.instance_methods - Object.instance_methods
-		=> ["fubar", "snafu"]
+  Acronym.instance_methods - Object.instance_methods
+    => ["fubar", "snafu"]
 
 Let's [extract a helper method](http://www.refactoring.com/catalog/extractMethod.html "Refactoring: 
 Extract Method"):
 
-	class Acronym
+  class Acronym
   
-	  include(Module.new do
+    include(Module.new do
     
-	    def fubar
-	      fu() + 'bar'
-	    end
+      def fubar
+        fu() + 'bar'
+      end
     
-	    def snafu
-	      'sna' + fu()
-	    end
+      def snafu
+        'sna' + fu()
+      end
     
-	    private
+      private
     
-	    def fu
-	      'fu'
-	    end
+      def fu
+        'fu'
+      end
     
-	  end)
+    end)
   
-	  def arnie_sez
-	    fu() + ', _'
-	  end
+    def arnie_sez
+      fu() + ', _'
+    end
   
-	end
+  end
 
-	Acronym.instance_methods - Object.instance_methods
-		=> ["fubar", "snafu"]
-	Acronym.new.arnie_sez
-		=> "fu, _"
+  Acronym.instance_methods - Object.instance_methods
+    => ["fubar", "snafu"]
+  Acronym.new.arnie_sez
+    => "fu, _"
 
 As you can see, you can declare private methods in a module (whether anonymous or not), and those methods remain private. However, they are mixed into the class just as the public methods are mixed into the class. Which means they are part of `Acronym`'s *internal* API.
 
@@ -153,34 +153,34 @@ Solution: Closures and `define_method`
 
 One way to accomplish this is to eschew the `def` keyword and use `define_method` with a block. That works because the block is a closure and has access to the local variables in the environment where it was created, while the body of a `def` keyword does not:
 
-	class Acronym
+  class Acronym
   
-	  include(Module.new do
+    include(Module.new do
     
-	    fu = lambda do
-	      'fu'
-	    end
+      fu = lambda do
+        'fu'
+      end
     
-	    define_method :fubar do
-	      fu.call + 'bar'
-	    end
+      define_method :fubar do
+        fu.call + 'bar'
+      end
     
-	    define_method :snafu do
-	      'sna' + fu.call
-	    end
+      define_method :snafu do
+        'sna' + fu.call
+      end
     
-	  end)
+    end)
   
-	  def arnie_sez
-	    fu.call + ', _'
-	  end
+    def arnie_sez
+      fu.call + ', _'
+    end
   
-	end
+  end
 
-	p Acronym.new.snafu
-		=> "snafu"
-	p Acronym.new.arnie_sez
-		=> NameError: undefined local variable or method ‘fu’ for #<Acronym:0x20d64>
+  p Acronym.new.snafu
+    => "snafu"
+  p Acronym.new.arnie_sez
+    => NameError: undefined local variable or method ‘fu’ for #<Acronym:0x20d64>
 
 If `fu` was not already bound to a local variable, it ceases to exist after the module definition is complete. Even if it was, `#arnie_sez` is defined using the `def` keyword, and the body of a method defined with `def` cannot access local variables from the environment of the class' definition. (If you try really hard, you can take advantage of a known problem that is fixed in Ruby 1.9 to break this in Ruby 1.8, but that is not a fatal flaw).
 
@@ -189,94 +189,94 @@ Some Sugar
 
 If you find `include(Module.new do...end)` looks awkward, we can fix that:
 
-	class Module
+  class Module
   
-	  def anonymous_module(&block)
-	    self.send :include, Module.new(&block)
-	  end
+    def anonymous_module(&block)
+      self.send :include, Module.new(&block)
+    end
   
-	end
+  end
 
-	class Acronym
+  class Acronym
   
-	  anonymous_module do
-	
-			def fubar
-				'fubar'
-			end
+    anonymous_module do
   
-	    def snafu
-	      'snafu'
-	    end
+      def fubar
+        'fubar'
+      end
   
-	  end
+      def snafu
+        'snafu'
+      end
   
-	end
+    end
+  
+  end
 
 Another use for closures in an anonymous module
 ---
 
 What if you would like to create a class variable that should be "local" to a module becuase it is only used by a method or methods in the module:
 
-	class Acronym
+  class Acronym
 
-	  anonymous_module do
+    anonymous_module do
 
-			def fubar
-				@@effed_up ||= 0
-				@@effed_up += 1
-				"You effed up #{@@effed_up} times"
-			end
+      def fubar
+        @@effed_up ||= 0
+        @@effed_up += 1
+        "You effed up #{@@effed_up} times"
+      end
 
-	  end
+    end
 
-	end
+  end
 
-	Acronym.new.fubar
-		=> "You effed up 1 times"
-	Acronym.new.fubar
-		=> "You effed up 2 times"
-	Acronym.new.fubar
-		=> "You effed up 3 times"
+  Acronym.new.fubar
+    => "You effed up 1 times"
+  Acronym.new.fubar
+    => "You effed up 2 times"
+  Acronym.new.fubar
+    => "You effed up 3 times"
 
 What happens when another method in the `Acronym` class wants to use `@@effed_up`?
 
-	class Acronym
+  class Acronym
   
-	  def snafu
-			@@effed_up ||= 0
-			@@effed_up += 1
-			"You effed up #{@@effed_up} times"
-		end
-	
-	end
+    def snafu
+      @@effed_up ||= 0
+      @@effed_up += 1
+      "You effed up #{@@effed_up} times"
+    end
+  
+  end
     
-	Acronym.new.snafu
-		=> "You effed up 4 times"
+  Acronym.new.snafu
+    => "You effed up 4 times"
 
 It seems that class variables are not private to a module. However, we can use local variables and closures for more than just lambdas:
 
-	class Acronym
+  class Acronym
 
-	  anonymous_module do
+    anonymous_module do
     
-	    effed_up = 0
+      effed_up = 0
 
-			define_method :fubar do
-				effed_up += 1
-				"You effed up #{effed_up} times"
-			end
+      define_method :fubar do
+        effed_up += 1
+        "You effed up #{effed_up} times"
+      end
 
-	  end
+    end
 
-	end 
+  end 
 
-	Acronym.new.fubar
-		=> "You effed up 1 times"
-	Acronym.new.fubar
-		=> "You effed up 2 times"
-	Acronym.new.fubar
-		=> "You effed up 3 times"
+  Acronym.new.fubar
+    => "You effed up 1 times"
+  Acronym.new.fubar
+    => "You effed up 2 times"
+  Acronym.new.fubar
+    => "You effed up 3 times"
 
 You can use local variables and `define_method` to create the effect of class variables that are strictly local to the module and private from other methods in the class.
 
@@ -285,43 +285,43 @@ Problem Statement: Organizing Large Methods
 
 Quite often you need to break a method up into smaller methods. The traditional procedural solution are private helper methods:
 
-	class Acronym
+  class Acronym
   
-	  def fubar
-	    'fu' + 'bar'
-	  end
+    def fubar
+      'fu' + 'bar'
+    end
   
-	  private
+    private
   
-	  def fu
-	    'fu'
-	  end
+    def fu
+      'fu'
+    end
   
-	  def bar
-	    'bar'
-	  end
+    def bar
+      'bar'
+    end
   
-	end
+  end
 
-	Acronym.new.fubar
-		=> "fubar"
+  Acronym.new.fubar
+    => "fubar"
 
-But as we saw above, it is not obvious that the	`#fu` and `#bar` methods are really private to `#fubar` and not meant to be used by any method in the `Acronym` class.
+But as we saw above, it is not obvious that the  `#fu` and `#bar` methods are really private to `#fubar` and not meant to be used by any method in the `Acronym` class.
 
 Local lambdas create extra objects
 ---
 
 One approach is to create lambdas local to a method:
 
-	class Acronym
+  class Acronym
   
-	  def fubar
-	    fu = lambda { 'fu' }
-	    bar = lambda { 'bar' }
-	    fu.call + bar.call
-	  end
+    def fubar
+      fu = lambda { 'fu' }
+      bar = lambda { 'bar' }
+      fu.call + bar.call
+    end
   
-	end
+  end
 
 This makes it very clear that they are not to be used elsewhere. However, you are creating new lambdas every time you call `#fubar`. This probably doesn't matter, however no matter how insignificant the time or memory overhead relative to database queries and the rest of the method, it is difficult to get such code through an inspection without someone trying to score points off you by complaining about the 'excessive' object creation.
 
@@ -329,20 +329,20 @@ Also, you may be accused of having learned programming back when Borland Pascal 
 
 So performance and preserving your reputation are not at risk, this is another solution suitable for the case where the helper is only used by one method. If creating the extra lambdas is inappropriate, you can fall back to the solution given above:
 
-	class Acronym
+  class Acronym
   
-	  include(Module.new do
+    include(Module.new do
     
-	    fu = lambda { 'fu' }
-	    bar = lambda { 'bar' }
+      fu = lambda { 'fu' }
+      bar = lambda { 'bar' }
   
-	    define_method :fubar do
-	      fu.call + bar.call
-	    end
+      define_method :fubar do
+        fu.call + bar.call
+      end
   
-	  end)
+    end)
   
-	end
+  end
 
 Conclusion and a Tip
 ---
@@ -351,13 +351,13 @@ In conclusion, for those times you do not want to break a class into completely 
 
 And a tip: *Using local variables and `defne_method` to create private helpers and variables local to a module is not restricted to anonymous modules, you can use it with any module you like.*
 
-*	[anonymous\_method.rb](http:anonymous_method.rb)
+*  [anonymous\_method.rb](http:anonymous_method.rb)
 * An example of this recipe in action: The `separate_args` lambda from [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb)
 
 ---
 
 [homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
-	
+  
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 
 <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
