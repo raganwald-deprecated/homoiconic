@@ -83,6 +83,32 @@ Solution: Anonymous Modules
 
 This works. if we want to group several methods and declarations together, we can create an anonymous module inside of a class. It is one of `Foo`'s ancestors, but it is not part of `Foo`'s API. Now we have a recipe for breaking classes into private parts.
 
+If you find `include(Module.new do...end)` looks awkward, we can fix that:
+
+	class Module
+	
+	  def anonymous_module(&block)
+	    self.send :include, Module.new(&block)
+	  end
+	
+	end
+
+	class Acronym
+	
+	  anonymous_module do
+	
+	    def fubar
+	      'fubar'
+	    end
+	
+	    def snafu
+	      'snafu'
+	    end
+	
+	  end
+	
+	end
+
 More about Anonymous Modules
 ---
 
@@ -183,35 +209,6 @@ One way to accomplish this is to eschew the `def` keyword and use `define_method
 	  => NameError: undefined local variable or method ‘fu’ for #<Acronym:0x20d64>
 
 If `fu` was not already bound to a local variable, it ceases to exist after the module definition is complete. Even if it was, `#arnie_sez` is defined using the `def` keyword, and the body of a method defined with `def` cannot access local variables from the environment of the class' definition. (If you try really hard, you can take advantage of a known problem that is fixed in Ruby 1.9 to break this in Ruby 1.8, but that is not a fatal flaw).
-
-Some Sugar
----
-
-If you find `include(Module.new do...end)` looks awkward, we can fix that:
-
-	class Module
-	
-	  def anonymous_module(&block)
-	    self.send :include, Module.new(&block)
-	  end
-	
-	end
-
-	class Acronym
-	
-	  anonymous_module do
-	
-	    def fubar
-	      'fubar'
-	    end
-	
-	    def snafu
-	      'snafu'
-	    end
-	
-	  end
-	
-	end
 
 Another use for closures in an anonymous module
 ---
