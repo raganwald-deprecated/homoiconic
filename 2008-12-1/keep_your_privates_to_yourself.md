@@ -182,42 +182,9 @@ One way to accomplish this is to eschew the `def` keyword and use `define_method
 	p Acronym.new.arnie_sez
 		=> NameError: undefined local variable or method ‘fu’ for #<Acronym:0x20d64>
 
-If `fu` was not already bound to a local variable, it ceases to exist after the module definition is complete. Even if it was, `#arnie_sez` is defined using the `def` keyword, and the body of a method defined with `def` cannot access local variables from the environment of the class' definition. if you work really hard, you can take advantage of a known problem that is fixed in Ruby 1.9:
+If `fu` was not already bound to a local variable, it ceases to exist after the module definition is complete. Even if it was, `#arnie_sez` is defined using the `def` keyword, and the body of a method defined with `def` cannot access local variables from the environment of the class' definition. (If you try really hard, you can take advantage of a known problem that is fixed in Ruby 1.9 to break this in Ruby 1.8, but that is not a fatal flaw).
 
-	class Acronym
-  
-	  fu = nil
-  
-	  include(Module.new do
-    
-	    fu = lambda do
-	      'fu'
-	    end
-    
-	    define_method :fubar do
-	      fu.call + 'bar'
-	    end
-    
-	    define_method :snafu do
-	      'sna' + fu.call
-	    end
-    
-	  end)
-  
-	  define_method :arnie_sez do
-	    fu.call + ', _'
-	  end
-  
-	end
-
-	p Acronym.new.snafu
-		=> "snafu"
-	p Acronym.new.arnie_sez
-		=> "fu, _"
-
-IMO, this recipe is more than an idle curiosity. The example above shows how to chunk related functionality together, and how to create functionality private to the chunk.
-
-But there is another good use for this recipe:
+IMO, this recipe is more than an idle curiosity. The example above shows how to chunk related functionality together, and how to create functionality private to the chunk. And there is another good use for this recipe:
 
 Problem Statement: Organizing Large Methods
 ---
