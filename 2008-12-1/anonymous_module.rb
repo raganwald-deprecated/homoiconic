@@ -33,3 +33,22 @@ class Module
   end
   
 end
+
+class Acronym
+
+  anonymous_module do
+    
+    effed_up = 0
+
+		define_method :fubar do
+			effed_up += 1
+			"You effed up #{effed_up} times"
+		end
+
+  end
+
+end    
+
+p Acronym.new.fubar
+p Acronym.new.fubar
+p Acronym.new.fubar
