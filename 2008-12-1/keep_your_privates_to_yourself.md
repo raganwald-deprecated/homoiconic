@@ -83,7 +83,7 @@ Solution: Anonymous Modules
 
 This works. if we want to group several methods and declarations together, we can create an anonymous module inside of a class. It is one of `Foo`'s ancestors, but it is not part of `Foo`'s API. Now we have a recipe for breaking classes into private parts.
 
-Digression: Private Private Bits
+More about Anonymous Modules
 ---
 
 The recipe for creating anonymous modules within a class is useful for breaking large classes up into chunks of related methods. However, all methods within those anonymous modules are mixed into the base class. Consider the case where you have two related methods, `fubar` and `snafu`:
@@ -184,7 +184,101 @@ One way to accomplish this is to eschew the `def` keyword and use `define_method
 
 If `fu` was not already bound to a local variable, it ceases to exist after the module definition is complete. Even if it was, `#arnie_sez` is defined using the `def` keyword, and the body of a method defined with `def` cannot access local variables from the environment of the class' definition. (If you try really hard, you can take advantage of a known problem that is fixed in Ruby 1.9 to break this in Ruby 1.8, but that is not a fatal flaw).
 
-IMO, this recipe is more than an idle curiosity. The example above shows how to chunk related functionality together, and how to create functionality private to the chunk. And there is another good use for this recipe:
+Some Sugar
+---
+
+If you find `include(Module.new do...end)` looks awkward, we can fix that:
+
+	class Module
+  
+	  def anonymous_module(&block)
+	    self.send :include, Module.new(&block)
+	  end
+  
+	end
+
+	class Acronym
+  
+	  anonymous_module do
+	
+			def fubar
+				'fubar'
+			end
+  
+	    def snafu
+	      'snafu'
+	    end
+  
+	  end
+  
+	end
+
+Another use for closures in an anonymous module
+---
+
+What if you would like to create a class variable that should be "local" to a module becuase it is only used by a method or methods in the module:
+
+	class Acronym
+
+	  anonymous_module do
+
+			def fubar
+				@@effed_up ||= 0
+				@@effed_up += 1
+				"You effed up #{@@effed_up} times"
+			end
+
+	  end
+
+	end
+
+	Acronym.new.fubar
+		=> "You effed up 1 times"
+	Acronym.new.fubar
+		=> "You effed up 2 times"
+	Acronym.new.fubar
+		=> "You effed up 3 times"
+
+What happens when another method in the `Acronym` class wants to use `@@effed_up`?
+
+	class Acronym
+  
+	  def snafu
+			@@effed_up ||= 0
+			@@effed_up += 1
+			"You effed up #{@@effed_up} times"
+		end
+	
+	end
+    
+	Acronym.new.snafu
+		=> "You effed up 4 times"
+
+It seems that class variables are not private to a module. However, we can use local variables and closures for more than just lambdas:
+
+	class Acronym
+
+	  anonymous_module do
+    
+	    effed_up = 0
+
+			define_method :fubar do
+				effed_up += 1
+				"You effed up #{effed_up} times"
+			end
+
+	  end
+
+	end 
+
+	Acronym.new.fubar
+		=> "You effed up 1 times"
+	Acronym.new.fubar
+		=> "You effed up 2 times"
+	Acronym.new.fubar
+		=> "You effed up 3 times"
+
+You can use local variables and `define_method` to create the effect of class variables that are strictly local to the module and private from other methods in the class.
 
 Problem Statement: Organizing Large Methods
 ---
@@ -250,35 +344,12 @@ So performance and preserving your reputation are not at risk, this is another s
   
 	end
 
-Conclusion and Some Sugar
+Conclusion and a Tip
 ---
 
-If you find `include(Module.new do...end)` looks awkward, we can fix that:
-
-	class Module
-  
-	  def anonymous_module(&block)
-	    self.send :include, Module.new(&block)
-	  end
-  
-	end
-
-	class Acronym
-  
-	  anonymous_module do
-    
-	    fu = lambda { 'fu' }
-	    bar = lambda { 'bar' }
-  
-	    define_method :fubar do
-	      fu.call + bar.call
-	    end
-  
-	  end
-  
-	end
-
 In conclusion, for those times you do not want to break a class into completely separate modules and classes, you can use anonymous modules to subdivide a class without extending its API. Within an anonymous module, you can use `define_method`, lambdas, and local variables to create helpers that are truly private to the module. This is handy for behaviour shared by methods in the module or for making helpers for a single method.
+
+And a tip: *Using local variables and `defne_method` to create private helpers and variables local to a module is not restricted to anonymous modules, you can use it with any module you like.*
 
 *	[anonymous\_method.rb](http:anonymous_method.rb)
 * An example of this recipe in action: The `separate_args` lambda from [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb)
