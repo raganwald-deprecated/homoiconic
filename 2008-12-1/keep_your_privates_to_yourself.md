@@ -1,7 +1,7 @@
 Keep Your Privates To Yourself
 ===
 
-> Wherein we examine a way to break large classes into private modules and furthermore find a way to make methods private to a module and not to its downstream dependants.
+> Wherein we examine a way to break large classes into private modules and furthermore find a way to make methods private to a module and not to its downstream dependents.
 
 Problem Statement: Subdividing a Class
 ---
@@ -38,7 +38,7 @@ No Embedded Modules
 	  
 As mentioned above, simply embedding `Bar` in `Foo` does not make it private, it is part of `Foo`'s API. When you write this code, you are telling every developer they are free to use `Foo::Bar`. We'll have to try something else.
 
-No Private Modules
+Modules Can't Be Private
 ---
 
 	class Foo
@@ -356,5 +356,7 @@ And a tip: *Using local variables and `defne_method` to create private helpers a
 [homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
+
+**NEW: [Hire Reg Braithwaite!](http://reginald.braythwayt.com/RegBraithwaiteGH1208_en_US.pdf)**
 
 <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
