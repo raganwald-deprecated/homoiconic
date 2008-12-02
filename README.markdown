@@ -9,11 +9,13 @@ I will be tagging new 'posts' in [del.icio.us](http://delicious.com/raganwald/ho
 
 If you're into git and like fine-grained updates, you can follow [homoiconic](http://github.com/raganwald/homoiconic) here on GitHub or [subscribe to commit messages](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic") letting you know what I've added or updated in your feed reader. The latter option is likely to be moderate volume, as I like to make edits and corrections as I go.
 
+Spotted a typo? Do you have a suggestion? [Clone homoiconic](git://github.com/raganwald/homoiconic.git), make the change, and send me a pull request. It's easy!
+
+---
+
 I am [Reg Braithwaite](http://reginald.braythwayt.com/). You can reach me by email. My first name is `reg`, and that works fine for sending email to `braythwayt.com`. I look forward to hearing from you.
 
 <a href="http://friendfeed.com/raganwald"><img alt="View my FriendFeed" style="border:0;" src="http://friendfeed.com/embed/widget/raganwald/v-2/format-png/width-400" /></a>
-
-p.s. Here's a little more background about [homoiconic](http://github.com/raganwald/homoiconic/tree/master/homoiconic.markdown).
 
 ---
 
