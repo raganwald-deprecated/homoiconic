@@ -227,7 +227,7 @@ Quite often you need to break a method up into smaller methods. The traditional 
 	class Acronym
   
 	  def fubar
-	    'fu' + 'bar'
+	    fu + bar
 	  end
   
 	  private
