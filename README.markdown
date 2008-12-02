@@ -13,11 +13,7 @@ Spotted a typo? Do you have a suggestion? [Clone homoiconic](git://github.com/ra
 
 ---
 
-I am [Reg Braithwaite](http://reginald.braythwayt.com/). You can reach me by email. My first name is `reg`, and that works fine for sending email to `braythwayt.com`. I look forward to hearing from you.
-
 <a href="http://friendfeed.com/raganwald"><img alt="View my FriendFeed" style="border:0;" src="http://friendfeed.com/embed/widget/raganwald/v-2/format-png/width-400" /></a>
-
----
 
 [homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
