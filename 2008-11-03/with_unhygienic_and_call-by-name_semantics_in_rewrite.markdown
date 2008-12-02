@@ -230,8 +230,6 @@ Although rewrite can do a lot more than `called_by_name`, I have found that most
 As a example, things like [andand](http://github.com/raganwald/andand/tree "raganwald's andand at master &mdash; GitHub") become trivial if you have called-by-name semantics for method calls. YMMV.
 
 ---
-
-[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 

@@ -44,8 +44,6 @@ I originally set up a blog at homoiconic.com, but I spotted [David Baldwin's blo
 I am [Reg Braithwaite](http://reginald.braythwayt.com/). You can reach me by email. My first name is `reg`, and that works fine for sending email to `braythwayt.com`. I look forward to hearing from you.
 
 ---
-
-[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 

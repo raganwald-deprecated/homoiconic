@@ -26,8 +26,6 @@
 Very correct, and when time permits we could look at a messier but faster solution for Ruby 1.8. I also think this problem goes away in Ruby 1.9.
 
 ---
-
-[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 

@@ -58,8 +58,6 @@ The principles behind this code are much more basic than `returning`, it's reall
 It is a matter of wonder why ordering arrays is handled with `sort` and `sort!`, but catenation is handled with `+` and `concat`.
 
 ---
-
-[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 

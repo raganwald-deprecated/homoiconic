@@ -175,8 +175,6 @@ When you want to convert any object to a block, pass it to a method expecting a 
 p.s. *This post originally appeared on [weblog.raganwald.com](http://weblog.raganwald.com/2008/06/what-does-do-when-used-as-unary.html "The unary ampersand in Ruby")*
 
 ---
-
-[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 

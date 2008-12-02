@@ -352,8 +352,6 @@ And a tip: *Using local variables and `defne_method` to create private helpers a
 * An example of this recipe in action: The `separate_args` lambda from [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb)
 
 ---
-
-[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 

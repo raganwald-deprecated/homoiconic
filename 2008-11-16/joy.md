@@ -134,8 +134,6 @@ _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/ma
 p.s. Just published: [Combinatory Logic](http://plato.stanford.edu/entries/logic-combinatory/) in the Stanford Encyclopedia of Philosophy.
 
 ---
-
-[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 

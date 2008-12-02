@@ -248,8 +248,6 @@ _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/ma
 p.s. Please vote for this post on [ruby.reddit.com](http://www.reddit.com/r/ruby/comments/7bhsh/quirky_birds_and_metasyntactic_programming/) and [hacker news](http://news.ycombinator.com/item?id=354660)!
 
 ---
-
-[homoiconic](http://github.com/raganwald/homoiconic/tree/master "Homoiconic on GitHub")
 	
 Subscribe here to [a constant stream of updates](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic"), or subscribe here to [new posts and daily links only](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 
