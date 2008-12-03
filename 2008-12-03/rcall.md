@@ -1,4 +1,4 @@
-`rcall`, A Really Simple Recursive Combinator
+A Really Simple Recursive Combinator
 ===
 
 In [Recursive Lambdas in Ruby using Object#tap](http://ciaranm.wordpress.com/2008/11/30/recursive-lambdas-in-ruby-using-objecttap/ ""), Ciaran McCreesh explained how he used `#tap` to write a recursive function without cluttering the scope up with an unneeded variable. (If you would like a refresher, `Object#tap` is explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown)).
