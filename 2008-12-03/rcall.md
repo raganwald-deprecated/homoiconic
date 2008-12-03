@@ -1,4 +1,4 @@
-`rcall`, A Really Simple Recursive Combinator
+A Really Simple Recursive Combinator
 ===
 
 In [Recursive Lambdas in Ruby using Object#tap](http://ciaranm.wordpress.com/2008/11/30/recursive-lambdas-in-ruby-using-objecttap/ ""), Ciaran McCreesh explained how he used `#tap` to write a recursive function without cluttering the scope up with an unneeded variable. (If you would like a refresher, `Object#tap` is explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown)).
@@ -69,7 +69,7 @@ Well, we start with `lambda { |r, *args| ... }`. But if we are to call `r.call(n
 	lambda { |r, n| n < 2 ? 1 : n * r.call(n-1) }.rcall(5)
 		=> 120
 
-And that's it, we've accomplished recursion without using any untyped lambda calculus constructs. It may look at first glance like we're using a recursive combinator, but we aren't. We're actually taking advantage of Ruby's `self` variable, so `#rcall` does not really implement anonymous recursion, it just lets us write recursive lambdas without explicitly binding them to a variable.
+And that's it, we've accomplished recursion without using any untyped lambda calculus constructs. It may look at first glance like we're using an anonymous recursive combinator like [Y](http://www.ece.uc.edu/~franco/C511/html/Scheme/ycomb.html "The Y Combinator"), but we aren't. We're actually taking advantage of Ruby's `self` variable, so `#rcall` does not really implement anonymous recursion, it just lets us write recursive lambdas without explicitly binding them to a variable.
 
 And our new method, `#rcall`, returns a value from our recursion and doesn't force us to remember to pass our lambda to itself when making a recursive call.
 
