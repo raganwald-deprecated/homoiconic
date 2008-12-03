@@ -73,7 +73,7 @@ And that's it, we've accomplished recursion without using any untyped lambda cal
 
 And our new method, `#rcall`, returns a value from our recursion and doesn't force us to remember to pass our lambda to itself when making a recursive call.
 
-Cheers!the 
+Cheers!
 
 *	[proc\_rcall.rb](http:proc_rcall.rb)
 
