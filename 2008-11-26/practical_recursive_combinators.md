@@ -304,7 +304,7 @@ So we should support passing the declarative arguments by position as well as by
 
 	define_method :sum_squares, &multirec("value.kind_of?(Numeric)", "value ** 2","value","value.inject(&'+')")
 
-And here is [the code that makes it work](http:recursive_combinaors.rb):
+And here is [the code that makes it work](http:recursive_combinators.rb):
 
 	module RecursiveCombinators
   
