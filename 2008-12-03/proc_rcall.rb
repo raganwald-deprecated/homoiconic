@@ -26,7 +26,10 @@
 class Proc
 
   def rcall(*args)
-    call(lambda { |*args| self.rcall(*args) }, *args)
+    rcaller = nil
+    r = lambda { |*args| rcaller.call(*args) }
+    rcaller = lambda { |*args| self.call(r, *args) }
+    rcaller.call(*args)
   end
 
 end

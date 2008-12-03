@@ -73,9 +73,14 @@ And that's it, we've accomplished recursion without using any untyped lambda cal
 
 And our new method, `#rcall`, returns a value from our recursion and doesn't force us to remember to pass our lambda to itself when making a recursive call.
 
-Cheers!
+Cheers!the 
 
 *	[proc\_rcall.rb](http:proc_rcall.rb)
+
+Post Scriptum
+---
+
+If you've been following along with the techniques in [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md) and [Keep Your Privates To Yourself](http://github.com/raganwald/homoiconic/tree/master/2008-12-1/keep_your_privates_to_yourself.md), you may have noticed that our implementation of `#recall` naively creates a new lambda every time it is called. Don't worry, the version included in [proc\_rcall.rb](http:proc_rcall.rb) fixes this performance issue.
 
 ---
 	
