@@ -6,12 +6,12 @@ In [Recursive Lambdas in Ruby using Object#tap](http://ciaranm.wordpress.com/200
 Ciaran's final solution was:
 
 	lambda do | recurse, spec |
-		case spec
-			when AllDepSpec, ConditionalDepSpec
-				spec.each { | child | recurse.call(recurse, child) }
-			when SimpleURIDepSpec
-				puts spec
-		end
+	  case spec
+	    when AllDepSpec, ConditionalDepSpec
+	      spec.each { | child | recurse.call(recurse, child) }
+	    when SimpleURIDepSpec
+	      puts spec
+	  end
 	end.tap { | r | r.call(r, id.homepage_key.value) } if id.homepage_key
 
 There are two great things about this solution. First, Ciaran doesn't need to calculate a result, he is just performing this computation for its side-effect, `puts`. Therefore, using a kestrel like `#tap` signals that he is not interested in the result. Second, he is using an off-the-shelf component and not writing a "horrid untyped lambda calculus construct" to get the job done. Fewer moving parts is a laudable goal.
@@ -80,7 +80,7 @@ Cheers!
 Post Scriptum
 ---
 
-If you've been following along with the techniques in [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md) and [Keep Your Privates To Yourself](http://github.com/raganwald/homoiconic/tree/master/2008-12-1/keep_your_privates_to_yourself.md), you may have noticed that our implementation of `#recall` naively creates a new lambda every time it is called. There are ways to fix this. WHy not fork homoiconic and optimize `Proc#rcall` for yourself? Send me a pull request when you're done!
+If you've been following along with the techniques in [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md) and [Keep Your Privates To Yourself](http://github.com/raganwald/homoiconic/tree/master/2008-12-1/keep_your_privates_to_yourself.md), you may have noticed that our implementation of `#recall` naively creates a new lambda every time it is called. There are ways to fix this. Why not fork homoiconic and optimize `Proc#rcall` for yourself? Send me a pull request when you're done!
 
 ---
 	

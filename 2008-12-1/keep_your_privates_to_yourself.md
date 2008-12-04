@@ -217,7 +217,7 @@ If `fu` was not already bound to a local variable, it ceases to exist after the 
 Another use for closures in an anonymous module
 ---
 
-What if you would like to create a class variable that should be "local" to a module becuase it is only used by a method or methods in the module:
+What if you would like to create a class variable that should be "local" to a module because it is only used by a method or methods in the module:
 
 	class Acronym
 
