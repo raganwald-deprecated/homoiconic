@@ -329,4 +329,4 @@ _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/ma
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
 
-**NEW: [Hire Reg Braithwaite!](http://reginald.braythwayt.com/RegBraithwaiteGH1208_en_US.pdf)**
+My personal home page: [http://reginald.braythwayt.com](http://reginald.braythwayt.com "Reginald Braithwaite")
