@@ -350,9 +350,9 @@ Conclusion and a Tip
 
 In conclusion, for those times you do not want to break a class into completely separate modules and classes, you can use anonymous modules to subdivide a class without extending its API. Within an anonymous module, you can use `define_method`, lambdas, and local variables to create helpers that are truly private to the module. This is handy for behaviour shared by methods in the module or for making helpers for a single method.
 
-And a tip: *Using local variables and `defne_method` to create private helpers and variables local to a module is not restricted to anonymous modules, you can use it with any module you like.*
+And a tip: *Using local variables and `define_method` to create private helpers and variables local to a module is not restricted to anonymous modules, you can use it with any module you like.*
 
-*  [anonymous\_method.rb](http:anonymous_method.rb)
+* [anonymous\_method.rb](http://github.com/raganwald/homoiconic/tree/master/2008-12-01/anonymous_method.rb)
 * An example of this recipe in action: The `separate_args` lambda from [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb)
 
 ---
