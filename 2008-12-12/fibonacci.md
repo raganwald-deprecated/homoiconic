@@ -150,7 +150,24 @@ We're done!
 
 p.s. No, this isn't [the fastest implementation](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/194815 "Fast Fibonacci method") by far. But it beats the pants off of a naive iterative implementation. See [fibonacci.rb](http:fibonacci.rb) for details.
 
----
+Another option would be to decompose 
+
+	A = [ 1 1 ]
+	    [ 1 0 ]
+
+into along its eigenspace (eigenvalues \lambda_{1,2}=-\frac{1\pm\sqrt{5}}{2} = -\frac{1}{2}\mp\frac{\sqrt{5}{2}}) to get
+
+	A = Q^t [ \lambda_1 0         ] Q
+			[ 0         \lambda_2 ]
+
+where Q is the orthonormal matrix of the normated eigenvectors with QQ^t = I (see also [Wikipedia](http://en.wikipedia.org/wiki/Symmetric_matrix#Properties)). Now it's easy to take powers of A
+
+    A^n = Q^t D^n D
+
+where D is the above diagonal matrix with the eigenvalues \lambda_{1,2}. The only difficulty is, that in order to avoid floating point arithmetic one would have to do the powers in the field \mathbb{Q}[\sqrt{5}] - this would ask for a custom datatype with overloading of addition and multiplication (the part needed for this exercise). 
+
+
+----
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
 
