@@ -150,6 +150,8 @@ We're done!
 
 p.s. No, this isn't [the fastest implementation](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/194815 "Fast Fibonacci method") by far. But it beats the pants off of a naive iterative implementation. See [fibonacci.rb](http:fibonacci.rb) for details.
 
+p.p.s. Christoph Temmel[forked homoiconic](http://github.com/kar8nga/homoiconic/tree "kar8nga's homoiconic at master &mdash; GitHub") and added these observations:
+
 Another option would be to decompose 
 
 	A = [ 1 1 ]
