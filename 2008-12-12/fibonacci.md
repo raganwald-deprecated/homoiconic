@@ -104,11 +104,8 @@ Now we only need three operations compared to seven. Of course, we left out how 
 Now we can write our complete fibonacci function:
 
 	def fib(n)
-	  if n <= 2
-	    1
-	  else
-	    power([1,1,0], n - 1).first
-	  end
+	  return n if n < 2
+	  power([1,1,0], n - 1).first
 	end
 
 And dress things up in idiomatic Ruby using the anonymous module pattern:
