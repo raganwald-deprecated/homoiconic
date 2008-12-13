@@ -1,7 +1,7 @@
 A program to compute the nth Fibonacci number
 ===
 
-Since [I'm looking for a job](http://reginald.braythwayt.com/RegBraithwaiteGH1208_en_US.pdf "Reginald Braithwaite's Resume") and people often like to ask for a "[fizzbuzz](http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html "Don't Overthink FizzBuzz") program to weed out the folks who can't string together a few lines of code, I thought I'd write up a program to compute the nth Fibonacci number. There's an intriguing bit of matrix math involved, so I learned something while implementing it.
+Since [I'm looking for a job](http://reginald.braythwayt.com/RegBraithwaiteGH1208_en_US.pdf "Reginald Braithwaite's Resume") and people often like to ask for a [fizzbuzz](http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html "Don't Overthink FizzBuzz") program to weed out the folks who can't string together a few lines of code, I thought I'd write up a program to compute the nth Fibonacci number. There's an intriguing bit of matrix math involved, so I learned something while implementing it.
 
 Recently I was having lunch with [some of Toronto's most interesting Ruby developers](http://unspace.ca), and the subject of interview questions came up. Specifically, writing a program to compute the nth Fibonacci number. Unsurprisingly, we agreed it might be useful as a screener for weeding out the people who were completely delusional about their prospects as a professional programmer. You know, the type of person who stares blankly at the screen and has no idea where to start, even when told that all we wanted was a program that correctly prints an answer. No tests, no specs, no shouldas, no passengers, no CSS, just prove you actually can write something, anything.
 
@@ -14,9 +14,9 @@ Here we go...
 Enter The Matrix
 ---
 
-One problem with calculating a Finonacci number is that naive algorithms require O_n_ multiplications. There are some interesting things we can do to improve on this. One way is to transform _n_ multiplications into raising something to the power of n.
+One problem with calculating a Finonacci number is that naive algorithms require _n_ addition operations. There are some interesting things we can do to improve on this. One way is to transform _n_ additions into raising something to the power of *n*. This turns _n_ additions into _n_ multiplications. That seems retrograde, but hold on to your disbelief.
 
-This is nice, because there is a trick about raising something to the power of n that we can exploit. But first things first. As explained in [Sum of Fibonacci numbers?](http://expertvoices.nsdl.org/cornell-cs322/2008/03/25/sum-of-fibonacci-numbers/), we can express the Fibonacci number `F(n)` using a 2x2 matrix:
+This is actually nice, because there is a trick about raising something to a power that we can exploit. But first things first. As explained in [Sum of Fibonacci numbers?](http://expertvoices.nsdl.org/cornell-cs322/2008/03/25/sum-of-fibonacci-numbers/), we can express the Fibonacci number `F(n)` using a 2x2 matrix:
 
 	[ 1 1 ] n      [ F(n+1) F(n)   ]
 	[ 1 0 ]    =   [ F(n)   F(n-1) ]
