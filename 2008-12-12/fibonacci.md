@@ -155,16 +155,20 @@ Another option would be to decompose
 	A = [ 1 1 ]
 	    [ 1 0 ]
 
-into along its eigenspace (eigenvalues \lambda_{1,2}=-\frac{1\pm\sqrt{5}}{2} = -\frac{1}{2}\mp\frac{\sqrt{5}{2}}) to get
+into along its eigenspace (eigenvalues \lambda\_{1,2}=-\frac{1\pm\sqrt{5}}{2} = -\frac{1}{2}\mp\frac{\sqrt{5}{2}}) to get
 
-	A = Q^t [ \lambda_1 0         ] Q
-			[ 0         \lambda_2 ]
+	A = Q^t D
 
-where Q is the orthonormal matrix of the normated eigenvectors with QQ^t = I (see also [Wikipedia](http://en.wikipedia.org/wiki/Symmetric_matrix#Properties)). Now it's easy to take powers of A
+and 
+
+	D = [ \lambda_1 0         ]
+        [ 0         \lambda_2 ]
+
+where Q is the orthonormal matrix of the normated eigenvectors with QQ^t = I and D is the above diagonal matrix with the eigenvalues \lambda\_{1,2} (see also [Wikipedia](http://en.wikipedia.org/wiki/Symmetric_matrix#Properties)). Now it's easy to take powers of A
 
     A^n = Q^t D^n D
 
-where D is the above diagonal matrix with the eigenvalues \lambda_{1,2}. The only difficulty is, that in order to avoid floating point arithmetic one would have to do the powers in the field \mathbb{Q}[\sqrt{5}] - this would ask for a custom datatype with overloading of addition and multiplication (the part needed for this exercise). 
+The only difficulty is, that in order to avoid floating point arithmetic one would have to do the powers in the field \mathbb{Q}[\sqrt{5}] - this would ask for a custom datatype with overloading of addition and multiplication (the part needed for this exercise). 
 
 
 ----
