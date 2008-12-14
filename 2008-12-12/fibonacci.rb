@@ -14,7 +14,7 @@ class Integer
     times = lambda do |*ems|
       ems.inject do |product, matrix|
       	a,b,c = product; d,e,f = matrix
-      	[a*d + b*e, b*d + c*e, b*e + c*f]
+      	[a*d + b*e, a*e + b*f, b*e + c*f]
       end
     end
     

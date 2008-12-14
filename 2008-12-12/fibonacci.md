@@ -21,21 +21,26 @@ This is actually nice, because there is a trick about raising something to a pow
 	[ 1 1 ] n      [ F(n+1) F(n)   ]
 	[ 1 0 ]    =   [ F(n)   F(n-1) ]
 
-Multiplying a matrix by itself is a little interesting if you have never seen it before:
+[Multiplying two matrices](http://www.maths.surrey.ac.uk/explore/emmaspages/option1.html "Matrices and Determinants") is a little interesting if you have never seen it before:
 
-	[ a b ]       [ d e ]   [ ad + be  bd + ce ]
+	[ a b ]       [ e f ]   [ ae + bg  af + bh ]
+	[ c d ] times [ g h ] = [ ce + dg  cf + dh ]
+
+Our matrices always have diagonal symmetry, so we can simplify the calculation because _c_ is always equal to _b_:
+
+	[ a b ]       [ d e ]   [ ad + be  ae + bf ]
 	[ b c ] times [ e f ] = [ bd + ce  be + cf ]
 
-(Note that this formula takes advantage of the fact that in our matrix, the lower left and upper right numbers are always the same). We can simplify this by turning it into an array with three elements:
+We can make things easy for our calculations by turning each matrix into an array with three elements:
 
-	[a, b, c] times [d, e, f] = [ad + be, bd + ce, be + cf]
+	[a, b, c] times [d, e, f] = [ad + be, ae + bf, be + cf]
 
 We can write it like this:
 
 	def times(*ems)
 	  ems.inject do |product, matrix|
 	  	a,b,c = product; d,e,f = matrix
-	  	[a*d + b*e, b*d + c*e, b*e + c*f]
+	  	[a*d + b*e, a*e + b*f, b*e + c*f]
 	  end
 	end
 
@@ -117,7 +122,7 @@ And dress things up in idiomatic Ruby using the anonymous module pattern:
 	    times = lambda do |*ems|
 	      ems.inject do |product, matrix|
 	      	a,b,c = product; d,e,f = matrix
-	      	[a*d + b*e, b*d + c*e, b*e + c*f]
+	      	[a*d + b*e, a*e + b*f, b*e + c*f]
 	      end
 	    end
     
