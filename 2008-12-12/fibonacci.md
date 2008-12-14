@@ -31,11 +31,23 @@ Our matrices always have diagonal symmetry, so we can simplify the calculation b
 	[ a b ]       [ d e ]   [ ad + be  ae + bf ]
 	[ b c ] times [ e f ] = [ bd + ce  be + cf ]
 
-We can make things easy for our calculations by turning each matrix into an array with three elements:
+Now we are given that we are multiplying two matrices with diagonal symmetry. Will the result have diagonal symmetry? In other words, will `ae + bf` always be equal to `bd + ce`? Remember that `a = b + c` at all times and `d = e + f` provided that each is a power of `[[1,1], [1,0]]`. Therefore:
+
+	ae + bf = (b + c)e + bf
+	        = be + ce + bf
+	bd + ce = b(e + f) + ce
+	        = be + bf + ce
+	
+That simplifies things for us, we can say:
+
+[ a b ]       [ d e ]   [ ad + be  ae + bf ]
+[ b c ] times [ e f ] = [ ae + bf  be + cf ]
+
+And thus, we can always work with three elements instead of four. Let's express this as operations on arrays:
 
 	[a, b, c] times [d, e, f] = [ad + be, ae + bf, be + cf]
 
-We can write it like this:
+Which we can code in Ruby:
 
 	def times(*ems)
 	  ems.inject do |product, matrix|
