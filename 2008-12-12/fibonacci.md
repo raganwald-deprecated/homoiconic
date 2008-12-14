@@ -40,8 +40,8 @@ Now we are given that we are multiplying two matrices with diagonal symmetry. Wi
 	
 That simplifies things for us, we can say:
 
-[ a b ]       [ d e ]   [ ad + be  ae + bf ]
-[ b c ] times [ e f ] = [ ae + bf  be + cf ]
+	[ a b ]       [ d e ]   [ ad + be  ae + bf ]
+	[ b c ] times [ e f ] = [ ae + bf  be + cf ]
 
 And thus, we can always work with three elements instead of four. Let's express this as operations on arrays:
 
