@@ -1,7 +1,7 @@
 And I for one welcome our new insect overlords
 ===
 
-Rails 2.2 is out, and one of the new features is that [Chris Wanstrath's `#try`](http://ozmm.org/posts/try.html) is baked into ActiveSupport. What this means is that for people writing Ruby on Rails applications, the debate over nil handling is **over**.
+Rails v2.3/3.0 includes [Chris Wanstrath's `#try`](http://ozmm.org/posts/try.html) baked into ActiveSupport. What this means is that for people writing Ruby on Rails applications, the debate over nil handling is **over**.
 
 That's right, the debate is over. No [andand](http://github.com/raganwald/andand/tree/master "raganwald's andand at master &mdash; GitHub"), no [turtles](http://chalain.livejournal.com/66798.html "chalain: Turtles!"), no [ergo](http://facets.rubyforge.org/doc/api/core/classes/Kernel.html#M000368), no `rescue nil`.
 
