@@ -62,6 +62,8 @@ Share and enjoy!
 
 *	[another\_fibonacci.rb](http:another_fibonacci.rb)
 
+p.s. *Another* post on Fibonacci? *Dude, WTF!?* My response is to paraphrase [Dijkstra](http://thinkexist.com/quotation/computer_science_is_no_more_about_computers_than/334131.html "Edsger Dijkstra quotes"): "This post is no more about Arithmetic than Astronomy is about telescopes." I'm just trying to share with you my appreciation for composing alternate approaches to solving the same problem and for working out what the imperfect trade-offs the approaches may entail.
+
 ----
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
