@@ -23,64 +23,47 @@
 # 
 # http://www.opensource.org/licenses/mit-license.php
 
-class Integer
-
-  def iter_fib
-    return self if self < 2
-    oldest, newest = 1, 1
-    (self-2).times do
-      oldest, newest = newest, oldest + newest
-    end
-    newest
-  end
+module Fibonacci
   
-  include(Module.new do
+  Matrix = Struct.new(:a, :b, :c) do
     
-    FibMatrix = Struct.new(:a, :b, :c) do
-      
-      alias :d :a
-      alias :e :b
-      alias :f :c
-      
-      def * other
-        FibMatrix.new(
-          self.a * other.d + self.b * other.e, 
-          self.a * other.e + self.b * other.f,
-          self.b * other.e + self.c * other.f
-        )
-      end
-      
-      def ^ n
-        if n == 1
-          self
-        elsif n == 2
-          self * self
-        elsif n > 2
-          if n % 2 == 0
-            self ^ (n / 2) ^ 2
-          else
-            (self ^ (n / 2) ^ 2) * self
-          end
+    alias :d :a
+    alias :e :b
+    alias :f :c
+    
+    def * other
+      Matrix.new(
+        self.a * other.d + self.b * other.e, 
+        self.a * other.e + self.b * other.f,
+        self.b * other.e + self.c * other.f
+      )
+    end
+    
+    def ^ n
+      if n == 1
+        self
+      elsif n == 2
+        self * self
+      elsif n > 2
+        if n % 2 == 0
+          self ^ (n / 2) ^ 2
+        else
+          (self ^ (n / 2) ^ 2) * self
         end
       end
-      
     end
     
-    define_method :matrix_fib do
-      return self if self < 2
-      (FibMatrix.new(1,1,0) ^ (self - 1)).a
-    end
-    
-  end)
+  end
+  
+  def self.[] n
+    return n if n < 2
+    (Matrix.new(1,1,0) ^ (n - 1)).a
+  end
   
 end
 
-(0..20).map { |n| n.matrix_fib } # => [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765]
+(0..20).map { |n| Fibonacci[n] } # => [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765]
 
 start = Time.now
-100000.iter_fib
-Time.now - start # => 2.907674
-
-start = Time.now
-100000.matrix_fib
-x = (Time.now - start) # => 0.310135
+Fibonacci[100000]
+x = (Time.now - start) # => 0.321296
