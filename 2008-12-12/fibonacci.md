@@ -165,29 +165,33 @@ And dress things up in idiomatic Ruby using the anonymous module pattern:
 
 We're done!
 
-p.s. No, this isn't [the fastest implementation](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/194815 "Fast Fibonacci method") by far. But it beats the pants off of a naive iterative implementation. See [fibonacci.rb](http:fibonacci.rb) for details.
+p.s. No we're not done: [Another program to compute the nth Fibonacci number](http://github.com/raganwald/homoiconic/tree/master/2008-12-17/another_fibonacci.md).
 
-p.p.s. Christoph Temmel[forked homoiconic](http://github.com/kar8nga/homoiconic/tree "kar8nga's homoiconic at master &mdash; GitHub") and added these observations:
+p.p.s. No, this isn't [the fastest implementation](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/194815 "Fast Fibonacci method") by far. But it beats the pants off of a naive iterative implementation. See [fibonacci.rb](http:fibonacci.rb) for details.
 
-Another option would be to decompose 
+---
+
+Christoph Temmel [forked homoiconic](http://github.com/kar8nga/homoiconic/tree "kar8nga's homoiconic at master &mdash; GitHub") and added these observations:
+
+*Another option would be to decompose *
 
 	A = [ 1 1 ]
 	    [ 1 0 ]
 
-into along its eigenspace (eigenvalues \lambda\_{1,2}=-\frac{1\pm\sqrt{5}}{2} = -\frac{1}{2}\mp\frac{\sqrt{5}{2}}) to get
+*into along its eigenspace (eigenvalues \lambda\_{1,2}=-\frac{1\pm\sqrt{5}}{2} = -\frac{1}{2}\mp\frac{\sqrt{5}{2}}) to get*
 
 	A = Q^t D
 
-and 
+*and* 
 
 	D = [ \lambda_1 0         ]
         [ 0         \lambda_2 ]
 
-where Q is the orthonormal matrix of the normated eigenvectors with QQ^t = I and D is the above diagonal matrix with the eigenvalues \lambda\_{1,2} (see also [Wikipedia](http://en.wikipedia.org/wiki/Symmetric_matrix#Properties)). Now it's easy to take powers of A
+*where Q is the orthonormal matrix of the normated eigenvectors with QQ^t = I and D is the above diagonal matrix with the eigenvalues \lambda\_{1,2} (see also [Wikipedia](http://en.wikipedia.org/wiki/Symmetric_matrix#Properties)). Now it's easy to take powers of A*
 
     A^n = Q^t D^n D
 
-The only difficulty is, that in order to avoid floating point arithmetic one would have to do the powers in the field \mathbb{Q}[\sqrt{5}] - this would ask for a custom datatype with overloading of addition and multiplication (the part needed for this exercise). 
+*The only difficulty is, that in order to avoid floating point arithmetic one would have to do the powers in the field \mathbb{Q}[\sqrt{5}] - this would ask for a custom datatype with overloading of addition and multiplication (the part needed for this exercise). *
 
 
 ----
