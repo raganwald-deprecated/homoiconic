@@ -60,7 +60,7 @@ However, defining them as operators means making them methods in Ruby. This is a
 
 Share and enjoy!
 
-*	[another_fibonacci.rb](http:another_fibonacci.rb)
+*	[another\_fibonacci.rb](http:another_fibonacci.rb)
 
 ----
 	
