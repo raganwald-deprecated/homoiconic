@@ -1,7 +1,7 @@
 Another program to compute the nth Fibonacci number
 ===
 
-It has been few days since I wrote [A program to compute the nth Fibonacci number](http://github.com/raganwald/homoiconic/tree/master/2008-12-12/fibonacci.md). Some great job leads have come in, although at this moment [I'm still available](http://reginald.braythwayt.com/RegBraithwaiteGH1208_en_US.pdf "Reginald Braithwaite's Resume"). To those of you who got in touch or passed my name along, thank you. And while I have a ton of stuff on my plate, "All writing is rewriting." So I had another look the Fibonacci program, and I rewrote it.
+It has been few days since I wrote [a program to compute the nth Fibonacci number](http://github.com/raganwald/homoiconic/tree/master/2008-12-12/fibonacci.md). And while I have a ton of stuff on my plate, "All writing is rewriting." So I had another look the Fibonacci program, and I rewrote it.
 
 > Now this is not an advocacy blog, so I will not launch into an essay. But if I can share one little opinion... I think we all agree with Abelson and Sussman that we write programs primarily for humans to read, and secondarily for compilers to execute. Our experience with communicating with people is that we get the best results when we design several alternate approaches and compare them to each other. Designing programs (whether code in the small or architecture in the large) is no different.
 
@@ -50,11 +50,17 @@ The second approach still uses the Matrix algorithm for calculating the _nth_ nu
   
 	end
 
-In this version, `Fibonacci` is an entity in Kernel namespace. You do not call `n.matrix_fib`, you ask for `Fibonacci[n]`. The trade-off there is between naive object-orientation ("Integers should know their own fibonacci watchamacallits") and having a first-class entity. The naive OO interpretation is frankly suspect. If it makes sense for the integer `14` to be responsible for knowing that the fourteenth number of the Fibonacci sequence is `377`, why doesn't it make sense for the integer `14` to also be responsible for knowing which Customer Record has `id = 14`? Why don't we write `14.customer` the ways Rails people write `3.days.ago`?
+In this version, `Fibonacci` is an entity in Kernel namespace. You do not call `n.matrix_fib`, you ask for `Fibonacci[n]`. The trade-off there is between naive object-orientation ("Integers should know their own fibonacci watchamacallits") and having a first-class entity. The naive OO interpretation is frankly suspect. If it makes sense for the integer `14` to be responsible for knowing that the fourteenth number of the Fibonacci sequence is `377`, why doesn't it make sense for the integer `14` to also be responsible for knowing which Customer Record has `id = 14`? Why don't we write `14.customer` the way Rails people write `3.days.ago`?
 
-Also, the class `Fibonacci::Matrix` explicitly defines `*` and `^` so that we can write arithmetic operations on matrices the way we write them on integers. This is one of the prime motivations for languages like Ruby to permit operator overloading. `Fibonacci::Matrix` takes advantage of `Struct`. You can read [all about Struct](http://blog.grayproductions.net/articles/all_about_struct) if you are not familiar with this handy tool. Note that `Struct.new` returns a class, not an instance of a Struct. This is a very handy paradigm for Ruby programs.
+Also, the class `Fibonacci::Matrix` explicitly defines `*` and `^` so that we can write arithmetic operations on matrices the way we write them on integers. This is one of the prime motivations for languages like Ruby to permit operator overloading. A comparison of this point to the first version is inconclusive to my eyes. `*` and `^` are terser than `times` and `power`.
+
+However, defining them as operators means making them methods in Ruby. This is a little suspect because our code isn't truly polymorphic. It's not like we write `x = y * z` and are oblivious to the implementation of `*` that `y` provides at run time. This is a failing of many OO programs: They look like OO, but they are really written procedurally or functionally, however the OO mechanisms hamper rather than support the program. [Not all functions should be object methods](http://weblog.raganwald.com/2007/10/too-much-of-good-thing-not-all.html "Too much of a good thing: not all functions should be object methods"). The original version was blatant about its behaviour: `times` and `power` were written as lambdas, and it was very obvious that they did one thing only without presenting the facade of polymorphism.
+
+`Fibonacci::Matrix` also takes advantage of `Struct`. You can read [all about Struct](http://blog.grayproductions.net/articles/all_about_struct) if you are not familiar with this handy tool. Note that `Struct.new` returns a class, not an instance of a Struct. This is a very handy paradigm for Ruby programs.
 
 Share and enjoy!
+
+*	[another_fibonacci.rb](http:another_fibonacci.rb)
 
 ----
 	
