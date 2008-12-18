@@ -275,7 +275,7 @@ Becomes something like:
 > It goes, boys!
 --Lynn Hill after becoming the first person of either sex to climb The Nose of El Capitan, all free.
 
-As of now, the rewrite gem supports called_by_name. You can write your own functions with call-by-name semantics using called_by_name just as you see here. As is standard with the rewrite gem, only the code in the do... end block is affected by your change.
+As of now, the rewrite gem supports called_by_name. You can write your own functions with call-by-name semantics using `called_by_name` just as you see here. As is standard with the rewrite gem, only the code in the do... end block is affected by your change.
 
 call-by-name, in summary
 ---
@@ -306,13 +306,13 @@ To summarize, with the rewrite gem you can write functions that have call-by-nam
 	    # ...
 	end
 
-This is a win when you don't want your code encumbered with more lambdas than business logic. It may be a matter of taste, but part of what I like about Ruby having a special case for blocks is that they act as a huge hint that an expression is temporary: a block after #map suggests we are only using that expression in one place. Whereas when I see "Proc.new" or "lambda," I expect that the expression will be passed around and used elsewhere.
+This is a win when you don't want your code encumbered with more lambdas than business logic. It may be a matter of taste, but part of what I like about Ruby having a special case for blocks is that they act as a huge hint that an expression is temporary: a block after `#map` suggests we are only using that expression in one place. Whereas when I see `Proc.new` or `lambda`,"I expect that the expression will be passed around and used elsewhere.
 
-Functions with call-by-name semantics communicate the same thing as blocks: the expressions are to be consumed by the function. When I see a lambda being passed to a function, I automatically expect it to be saved and possibly used elsewhere. For that reason, I prefer call-by-name semantics when an expression is not meant to be persisted beyond the function invocation.
+Functions with call-by-name semantics communicate the same thing as blocks: The expressions are to be consumed by the function. When I see a lambda being passed to a function, I automatically expect it to be saved and possibly used elsewhere. For that reason, I prefer call-by-name semantics when an expression is not meant to be persisted beyond the function invocation.
 
-Now, called_by_name is not a replacement for macros. There are lots of things macros can do that called_by_name cannot do (not to mention that there are lots of things code rewriting can do that macros cannot do). But just as Ruby's blocks are a deliberate attempt to make a common case for anonymous functions easy to write, called_by_name makes a common case for macros easy to write and safe from variable capture problems.
+Now, `called_by_name` is not a replacement for macros. There are lots of things macros can do that `called_by_name` cannot do (not to mention that there are lots of things code rewriting can do that macros cannot do). But just as Ruby's blocks are a deliberate attempt to make a common case for anonymous functions easy to write, `called_by_name` makes a common case for macros easy to write and safe from variable capture problems.
 
-Of course, called_by_name does so with lots of anonymous functions, and that is a much more expensive implementation than using a hygienic macro to rewrite code inline. But it feels like a move in an interesting direction: if it is a win to sometimes meta-program Ruby's syntax with DSLs, it ought to also be a win to sometimes meta-program Ruby's semantics with call-by-name functions.
+Of course, `called_by_name` does so with lots of anonymous functions, and that is a much more expensive implementation than using a hygienic macro to rewrite code inline. But it feels like a move in an interesting direction: if it is a win to sometimes meta-program Ruby's syntax with DSLs, it ought to also be a win to sometimes meta-program Ruby's semantics with call-by-name functions.
 
 Update (December 18, 2008)
 ---
