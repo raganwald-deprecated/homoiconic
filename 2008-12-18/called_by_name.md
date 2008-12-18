@@ -154,7 +154,7 @@ We said at the beginning that the reason we cannot use functions and methods to 
 
 Then, when the function needs the value, it can call the lambda. This technique has a name: it is called [thunking](http://en.wikipedia.org/wiki/Thunk).
 
-We could implement our_and as follows:
+We could implement `our_and` as follows:
 
 	our_and = lambda { |x,y|
 	    if temp = x.call
