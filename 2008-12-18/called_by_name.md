@@ -26,7 +26,7 @@ As it happens, if you call `nil.andand.bar(blitz())`, it will return `nil`. But 
 
 What we want is that when we pass `blitz()` to `andand`, it is not evaluated unless the `andand` function uses it. The trouble is, you cannot write an `andand` method in Ruby that delivers these semantics.
 
-Let's hand wave over the difference between methods and functions for a moment and just look at calling functions. We'll consider writing "our_and," a function that emulates the short-circuit evaluation behaviour of Ruby's "&&" and "and" operators. Ruby (and most other languages in use these days) uses [call-by-value](http://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_value) when it passes parameters to functions. In other words, when you write:
+Let's hand wave over the difference between methods and functions for a moment and just look at calling functions. We'll consider writing "our\_and," a function that emulates the short-circuit evaluation behaviour of Ruby's "&&" and "and" operators. Ruby (and most other languages in use these days) uses [call-by-value](http://en.wikipedia.org/wiki/Evaluation_strategy#Call_by_value) when it passes parameters to functions. In other words, when you write:
 
 	our_and(foo(), blitz())
 
@@ -36,7 +36,7 @@ Ruby turns that into something that looks like this:
 	var temp2 = blitz()
 	our_and(temp1, temp2)
 
-It doesn't matter if the function `our_and` uses `blitz()` internally or not, it is evaluated before `our\_and` is called and its value is passed to `our_and`. Whereas our "if" statement in the previous example does not evaluate "blitz()" unless "foo().andand" is not nil.
+It doesn't matter if the function `our_and` uses `blitz()` internally or not, it is evaluated before `our_and` is called and its value is passed to `our_and`. Whereas our "if" statement in the previous example does not evaluate "blitz()" unless "foo().andand" is not nil.
 
 Well, well, well. The inescapable conclusion is that **there are some sequences of expressions in Ruby that cannot be represented as functions or methods**. That's right, functions and methods can't do everything that Ruby code can do.
 
