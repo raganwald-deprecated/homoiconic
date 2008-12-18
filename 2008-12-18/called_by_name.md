@@ -208,7 +208,7 @@ Maybe what we want is a rewriter, but we want an easier way to write rewriters f
 Called by name
 ---
 
-Here's how we could define and use a call-by-name function called "our_and:"
+Here's how we could define and use a call-by-name function:
 
 	with (
 	    called_by_name(:our_and) { |x,y|
