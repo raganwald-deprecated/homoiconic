@@ -272,10 +272,7 @@ Becomes something like:
 	# ...
 
 
-> It goes, boys!
---Lynn Hill after becoming the first person of either sex to climb The Nose of El Capitan, all free.
-
-As of now, the rewrite gem supports called_by_name. You can write your own functions with call-by-name semantics using `called_by_name` just as you see here. As is standard with the rewrite gem, only the code in the do... end block is affected by your change.
+As of now, the rewrite gem supports `called_by_name`. You can write your own functions with call-by-name semantics using `called_by_name` just as you see here. As is standard with the rewrite gem, only the code in the do... end block is affected by your change.
 
 call-by-name, in summary
 ---
