@@ -311,14 +311,14 @@ Now, `called_by_name` is not a replacement for macros. There are lots of things 
 
 Of course, `called_by_name` does so with lots of anonymous functions, and that is a much more expensive implementation than using a hygienic macro to rewrite code inline. But it feels like a move in an interesting direction: if it is a win to sometimes meta-program Ruby's syntax with DSLs, it ought to also be a win to sometimes meta-program Ruby's semantics with call-by-name functions.
 
+*(This material was originally published [June, 2008](http://weblog.raganwald.com/2008/06/macros-hygiene-and-call-by-name-in-ruby.html "Macros, Hygiene, and Call By Name in Ruby on raganwald.com"))*
+
 Update (December 18, 2008)
 ---
 
 I recently discovered that [rewrite](http://github.com/raganwald/rewrite/tree "raganwald's rewrite at master &mdash; GitHub") does not work with the latest versions of [ParseTree](http://rubyforge.org/projects/parsetree/ "RubyForge: ParseTree - ruby parse tree tools: Project Info"), Ruby2Ruby and their dependencies. The underlying representation of ruby code seems to have changed. For example, there are no longer any `:dvar` nodes, just `:lvar` nodes. What fun!
 
 I am fixing this, and my first priority is to make `called_by_name` work again.
-
-*(This material was originally published [June, 2008](http://weblog.raganwald.com/2008/06/macros-hygiene-and-call-by-name-in-ruby.html "Macros, Hygiene, and Call By Name in Ruby on raganwald.com"))*
 
 ----
 	

@@ -206,7 +206,7 @@ One way to accomplish this is to eschew the `def` keyword and use `define_method
 	p Acronym.new.snafu
 	  => "snafu"
 	p Acronym.new.arnie_sez
-	  => NameError: undefined local variable or method ‘fu’ for #<Acronym:0x20d64>
+	  => NameError: undefined local variable or method ‘fu' for #<Acronym:0x20d64>
 
 If `fu` was not already bound to a local variable, it ceases to exist after the module definition is complete. Even if it was, `#arnie_sez` is defined using the `def` keyword, and the body of a method defined with `def` cannot access local variables from the environment of the class' definition. (If you try really hard, you can take advantage of a known problem that is fixed in Ruby 1.9 to break this in Ruby 1.8, but that is not a fatal flaw).
 
