@@ -1,7 +1,7 @@
 The unary ampersand in Ruby
 ---
 
-A marshmallow toasting dragon slayer from Montréal [asked about the unary &.](http://lovehateubuntu.blogspot.com/2008/06/some-neat-things-in-ruby.html "Ubuntu: A Love/Hate Relationship: Some Neat Things in Ruby")
+A marshmallow toasting dragon slayer from Montr&eacute;al [asked about the unary &.](http://lovehateubuntu.blogspot.com/2008/06/some-neat-things-in-ruby.html "Ubuntu: A Love/Hate Relationship: Some Neat Things in Ruby")
 
 I like this question, because when I saw it, I realized immediately that although I've figured out how to use it to accomplish certain things, writing an answer serves the excellent purpose of forcing myself to learn more.
 
@@ -136,7 +136,7 @@ So "&tester" says to Ruby: "Take this object and pass it to a method as a block.
 
 As you can see, our methods don't really know whether they get a block or a `Proc` passed as a block. They just `yield` and all is well. (And yes, you can convert a block to a `Proc` and then the method can convert it right back into another `Proc`.)
 
-**to_proc shakur**
+**to\_proc shakur**
 
 Which leads us to the final piece of the puzzle. How does Ruby convert whatever you pass with "&" into a block? The answer is that if it is not already a `Proc`, it tries to convert the object to a `Proc` by calling the object's `#to_proc` method, and from there it converts the `Proc` into a block.
 
