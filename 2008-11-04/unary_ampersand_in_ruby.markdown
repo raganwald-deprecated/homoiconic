@@ -1,7 +1,7 @@
 The unary ampersand in Ruby
 ---
 
-A marshmallow toasting dragon slayer from Montréal [asked about the unary &.](http://lovehateubuntu.blogspot.com/2008/06/some-neat-things-in-ruby.html "Ubuntu: A Love/Hate Relationship: Some Neat Things in Ruby")
+A marshmallow toasting dragon slayer from Montr&eacute;al [asked about the unary &.](http://lovehateubuntu.blogspot.com/2008/06/some-neat-things-in-ruby.html "Ubuntu: A Love/Hate Relationship: Some Neat Things in Ruby")
 
 I like this question, because when I saw it, I realized immediately that although I've figured out how to use it to accomplish certain things, writing an answer serves the excellent purpose of forcing myself to learn more.
 
