@@ -31,7 +31,7 @@ So, I started [RewriteRails](https://github.com/raganwald/rewrite_rails/tree). T
 
 RewriteRails solves all of these problems I invented that nobody is complaining about.
 
-What is RewriteReails?
+What is RewriteRails?
 ---
 
 RewriteRails rewrites `.rr` files on the fly and produces `.rb` files with standard ruby code in them. If you pull it out of the project, the generated files are all there for you to use as you wish. What's a `.rr` file? A Ruby file with constructs RewriteRails knows how to process. You can inspect the rewriting it does to see what's actually going on. For example, if you create a file called `test.rr` that looks like this:
