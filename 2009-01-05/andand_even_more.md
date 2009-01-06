@@ -32,7 +32,7 @@ Consider this conditional code:
       end
     end
 
-I'm not a big fan. The obvious sin is the pathetic 90s cultural reference. But I'm even more annoyed by having side-effects in the predicate of an `if` clause, in this case assigning something to the variable `my_var`. Although I'm not switching to a purely functional language any time soon, I strongly prefer that when you write `if something`, the "something" does not cause any side effects, ever.
+I'm not a big fan. The obvious sin is the pathetic 90s cultural reference. But I'm even more annoyed by having side-effects in the predicate of an `if` clause, in this case assigning something to the variable `my_var`. Although I'm not switching to a purely functional language any time soon, I strongly prefer that when you write `if something()`, then "something()" should not cause any side effects, ever.
 
 Another problem is that we are obviously creating `my_var` just to use inside the block, but we're declaring it in top-level scope. We could fool around with a [Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown "The Thrush") like `let`, but instead let's use `Object#andand`:
 
