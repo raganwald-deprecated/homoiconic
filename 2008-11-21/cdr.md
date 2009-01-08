@@ -27,4 +27,4 @@ p.s. If you press me to give a firm opinion, I choose [blue in green](http://bik
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
 
-[Hire Reg Braithwaite!](http://reginald.braythwayt.com/RegBraithwaiteGH1208_en_US.pdf "")
+[Hire Reg Braithwaite!](http://reginald.braythwayt.com/RegBraithwaiteGH0109_en_US.pdf "")
