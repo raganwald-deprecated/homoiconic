@@ -265,7 +265,7 @@ This also means if all you're looking for is the public interface, you don't hav
 Another use for closures in an anonymous module
 ---
 
-What if you would like to create a class variable that should be "local" to a module becaase it is only used by a method or methods in the module:
+What if you would like to create a class variable that should be "local" to a module because it is only used by a method or methods in the module:
 
 	class Acronym
 
