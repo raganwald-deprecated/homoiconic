@@ -213,7 +213,7 @@ If `fu` was not already bound to a local variable, it ceases to exist after the 
 Problems with closures and `define_method`
 ---
 
-I see a few problems with the `define_method`-and-lambda approach:
+The `define_method`-and-lambda approach has a few problems:
 
 * RDoc no longer sees the `define_method`'d method, so any comments you wrote for it won't get turned into documentation.
 * Because it's just a lambda bound to a variable, the private helper has to appear before the method that calls it.  This makes the code a bit harder for a client of the module to read, as they have to skip over implementation details to get to the public interface.
@@ -222,7 +222,7 @@ I see a few problems with the `define_method`-and-lambda approach:
 Solutions: wrapper methods and forward declarations
 ----
 
-My inelegant solution to the RDoc problem is to wrap the `define_method` in another, regular method:
+An inelegant solution to the RDoc problem is to wrap the `define_method` in another, regular method:
 
     # Call this to fubar x, y and z
     def fubar(x, y, z)
@@ -238,9 +238,9 @@ However, this solution isn't great for two reasons:
 * now `fubar_wrapped` is part of the module's public interface.
 * the parameter list `x, y, z` has to be mentioned three times.  Making the wrapper take `*args` doesn't help because then RDoc loses the parameter information.
 
-I'd welcome any suggestions that improve on this.
+There's probably a better way to do this.
 
-To allow mutual recursion, I borrowed an idiom from C (admittedly never a good sign): forward declarations.
+To allow mutual recursion, we can borrow an idiom from C (admittedly never a good sign): forward declarations.
 
     # forward declarations
     fu = nil
@@ -260,7 +260,7 @@ To allow mutual recursion, I borrowed an idiom from C (admittedly never a good s
       fu.call
     end
 
-This also means if all you're looking for is the public interface, you don't have to skip over the helper code to get to it, but you do have to skip over the forward declarations, so I'm not sure whether that's a win.  Also, the forward declarations are fugly, but they get the job done.
+This also means if all you're looking for is the public interface, you don't have to skip over the helper code to get to it, but you do have to skip over the forward declarations, so it's not clear whether that's a win.  Also, the forward declarations are fugly, but they get the job done.
 
 Another use for closures in an anonymous module
 ---
