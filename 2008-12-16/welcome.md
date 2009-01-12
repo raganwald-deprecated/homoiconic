@@ -23,6 +23,10 @@ So, if you want to program "The Rails Way," start using `#try`. If "The Rails Wa
 
 You have a choice.
 
+p.s. A must-read: [Try() as you might](http://blog.lawrencepit.com/2009/01/11/try-as-you-might/ ""):
+
+> How wrong could I be when just a few minutes ago I wrote, with apparent misplaced confidence, that I'd accept the danger of anyone actually contributing a different `try` method. They might as well deliver me over to the mad doctor of blood island right now! No point in postponing the horrors that are my fate.
+
 ----
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
