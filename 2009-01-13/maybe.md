@@ -80,7 +80,7 @@ Which is why, to be honest, I prefer the version of `try()` that doesn't have th
 Why NULL is not for me
 ---
 
-One of the most provocative implementations suggested for handling `nil` objects is to give `nil` special semantics, something like `null` in Objective C or `NULL` in SQL. Here's a particularly naive Ruby implementation:
+One of the most provocative implementations suggested for handling `nil` objects is to give `nil` special semantics, something like `nil` in Objective C or `NULL` in SQL. Here's a particularly naive Ruby implementation:
 
     class NilClass
       def method_missing(*args)
