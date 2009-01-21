@@ -5,7 +5,7 @@ I was recently described as being "old." By software development standards, this
 
 [![Mayan Temple (c) 2006 James C. C., some, some rights reserved](http://farm1.static.flickr.com/67/195750078_0777809ce8.jpg)](http://flickr.com/photos/jcchurch/195750078/ "Mayan Temple (c) 2006 James C. C., some rights reserved")  
 
-For starters, there is the obvious thing that when you are old, you have a certain amount of experience. Most people think it works like this: Since I was doing OO programming in Smalltalk in the Eighties and C++ in the Nineties, this means I will be good doing OO programming in Java and Ruby in the Nought-ies (2000-2009).
+For starters, there is the obvious thing that when you are old, you have a certain amount of experience. Most people think it works like this: Since I was already doing OO programming in Smalltalk in the Eighties and C++ in the Nineties, this means I will have an advantage doing OO programming in Java and Ruby in the Nought-ies (2000-2009).
 
 The argument is that since you have seen something that works, you don't have to re-invent the wheel, you re-apply what worked in the old context (Smalltalk, C++) in a new context (Ruby). This happens to be true, and as long as you do not get into the habit of pooh-poohing new things (Ruby? Nothing new there, it's just Perl with a side of Smalltalk and the least important features of Lisp, all served on a bed of poor VM implementation), you can go far.
 
