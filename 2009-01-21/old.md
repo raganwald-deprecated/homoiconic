@@ -31,13 +31,13 @@ This is a key benefit of being "older" and "experienced:" You know about old stu
 A Call to Action
 ---
 
-Today I said some uncharitable things on reddit. I had posted a link to some old research with what I thought were interesting implications, and someone rightly pointed out that the idea was (a) old, and (b) unfinished. I'm afraid I ranted a little, and that is too bad. You catch more flies with honey than vinegar, an old saying that seems to be even more relevant in the age of the INternet.
+Today I said some uncharitable things on reddit. I had posted a link to some old research with what I thought were interesting implications, and someone rightly pointed out that the idea was (a) old, and (b) unfinished. I'm afraid I ranted a little, and that is too bad. You catch more flies with honey than vinegar, an old saying that seems to be even more relevant in the age of the Internet.
 
 But I stand by my interest in old, unfinished ideas. These could be mammals! Why did they die? Who knows, but it is ridiculous to dismiss an idea because its originator did not turn it into millions of downloads and/or dollars. Who invented the first aeroplane? The first automobile? The first personal computer? If you said Wright, Ford, or Gates, you were wrong each time. The people who profited mightily from these inventions were the ones who recognized an unfinished, unsuccessful idea with potential and made it work.
 
 Never mind whether I'm old or not, or whether I'm any good at turning yesterday's failure into today's successes. We all have this same opportunity to see something that has the germ of a good idea but it didn't turn into a success, it didn't become popular. We all have the same opportunity to say, "Things have changed since that failed, if we take the idea and do this and this and this, it may work this time around."
 
-Unfinished idea are opportunities. Old ideas are opportunities. Embrace them.
+Unfinished ideas are opportunities. Old ideas are opportunities. Embrace them.
 
 ----
 	
