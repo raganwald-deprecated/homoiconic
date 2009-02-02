@@ -99,7 +99,7 @@ What about NONE? We gave two examples of updates, one of which was a really bad 
 
 With a little forethought and design, you may be able to construct one or more classes if your application for which all updates to NONE return NONE and have no side effects. But for all others, methods like `#increment_balance` represent a semantic problem with using a hopelessly egocentric nil to represent NONE. We also see a problem with writing a hopelessly egocentric nil to handle UNKNOWN: How does it know which methods are queries and which methods are updates?
 
-Can we use a hopelessly egocentric nil to handle NONE? Even here we have problems. For example:
+If we work really hard and eliminate all possibility of an update to NONE being an error, are there any other issues with using a hopelessly egocentric nil? Let's return to our initial case:
 
     person.name
       => nil
