@@ -1,4 +1,4 @@
-*This item was incorrectly categorized. Please update links and bookmarks to:* [http://github.com/raganwald/homoiconic/tree/master/2008-12-01/keep\_your\_privates\_to\_yourself.md](http://github.com/raganwald/homoiconic/tree/master/2008-12-01/keep_your_privates_to_yourself.md)
+*This item was incorrectly categorized. Please update links and bookmarks to:* [http://github.com/raganwald/homoiconic/tree/master/2008-12-01/keep\_your\_privates\_to\_yourself.md](http://github.com/raganwald/homoiconic/tree/master/2008-12-01/keep_your_privates_to_yourself.md#readme)
 
 ---
 

@@ -1,7 +1,7 @@
 A Really Simple Recursive Combinator
 ===
 
-In [Recursive Lambdas in Ruby using Object#tap](http://ciaranm.wordpress.com/2008/11/30/recursive-lambdas-in-ruby-using-objecttap/ ""), Ciaran McCreesh explained how he used `#tap` to write a recursive function without cluttering the scope up with an unneeded variable. (If you would like a refresher, `Object#tap` is explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown)).
+In [Recursive Lambdas in Ruby using Object#tap](http://ciaranm.wordpress.com/2008/11/30/recursive-lambdas-in-ruby-using-objecttap/ ""), Ciaran McCreesh explained how he used `#tap` to write a recursive function without cluttering the scope up with an unneeded variable. (If you would like a refresher, `Object#tap` is explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown#readme)).
 
 Ciaran's final solution was:
 
@@ -23,7 +23,7 @@ That being said, when solving other problems, this solution may not meet our nee
 
 If we find ourselves needing to work around these limitations, we'll need to go a bit further. Let's use a brutally trivial example, factorial. (The naive implementation of factorial is a *terrible* piece of programming, but it's simple enough that we can focus on how we're implementing recursion and not what we are computing).
 
-We could use one of our existing [recursive combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md) like `linrec`:
+We could use one of our existing [recursive combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme) like `linrec`:
 
 	include 'string-to_proc'
 	
@@ -80,7 +80,7 @@ Cheers!
 Post Scriptum
 ---
 
-If you've been following along with the techniques in [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md) and [Keep Your Privates To Yourself](http://github.com/raganwald/homoiconic/tree/master/2008-12-1/keep_your_privates_to_yourself.md), you may have noticed that our implementation of `#rcall` naively creates a new lambda every time it is called. There are ways to fix this. Why not fork homoiconic and optimize `Proc#rcall` for yourself? Send me a pull request when you're done!
+If you've been following along with the techniques in [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme) and [Keep Your Privates To Yourself](http://github.com/raganwald/homoiconic/tree/master/2008-12-1/keep_your_privates_to_yourself.md#readme), you may have noticed that our implementation of `#rcall` naively creates a new lambda every time it is called. There are ways to fix this. Why not fork homoiconic and optimize `Proc#rcall` for yourself? Send me a pull request when you're done!
 
 ---
 	

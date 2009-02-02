@@ -165,7 +165,7 @@ And dress things up in idiomatic Ruby using the anonymous module pattern:
 
 We're done!
 
-p.s. No we're not done: [Another program to compute the nth Fibonacci number](http://github.com/raganwald/homoiconic/tree/master/2008-12-17/another_fibonacci.md).
+p.s. No we're not done: [Another program to compute the nth Fibonacci number](http://github.com/raganwald/homoiconic/tree/master/2008-12-17/another_fibonacci.md#readme).
 
 p.p.s. No, this isn't [the fastest implementation](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/194815 "Fast Fibonacci method") by far. But it beats the pants off of a naive iterative implementation. See [fibonacci.rb](http:fibonacci.rb) for details.
 

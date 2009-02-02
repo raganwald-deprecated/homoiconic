@@ -1,7 +1,7 @@
 Another program to compute the nth Fibonacci number
 ===
 
-It has been few days since I wrote [a program to compute the nth Fibonacci number](http://github.com/raganwald/homoiconic/tree/master/2008-12-12/fibonacci.md). And while I have a ton of stuff on my plate, "All writing is rewriting." So I had another look the Fibonacci program, and I rewrote it.
+It has been few days since I wrote [a program to compute the nth Fibonacci number](http://github.com/raganwald/homoiconic/tree/master/2008-12-12/fibonacci.md#readme). And while I have a ton of stuff on my plate, "All writing is rewriting." So I had another look the Fibonacci program, and I rewrote it.
 
 > Now this is not an advocacy blog, so I will not launch into an essay. But if I can share one little opinion... I think we all agree with Abelson and Sussman that we write programs primarily for humans to read, and secondarily for compilers to execute. Our experience with communicating with people is that we get the best results when we design several alternate approaches and compare them to each other. Designing programs (whether code in the small or architecture in the large) is no different.
 

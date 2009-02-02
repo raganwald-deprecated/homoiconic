@@ -1,7 +1,7 @@
 You can't be serious!?
 ===
 
-In [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md), we enhanced `multirec` (a/k/a "Divide and Conquer") and `linrec` ("Linear Recursion") to accept as arguments any object that supports the `#to_proc` method. Today we're going demonstrate why: We will look at how removing the ceremony around lambdas makes using combinators like `multirec` more valuable for code we share with others.
+In [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme), we enhanced `multirec` (a/k/a "Divide and Conquer") and `linrec` ("Linear Recursion") to accept as arguments any object that supports the `#to_proc` method. Today we're going demonstrate why: We will look at how removing the ceremony around lambdas makes using combinators like `multirec` more valuable for code we share with others.
 
 Using [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb) to define how to sum the squares of a nested list of numbers, we can write:
 
@@ -189,7 +189,7 @@ Seriously.
 * [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb)
 * [string\_to\_proc.rb](http:string_to_proc.rb)
 
-_More on recursive combinators_: [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md), and [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md).
+_More on recursive combinators_: [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md#readme), and [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme).
 
 ---
 	
