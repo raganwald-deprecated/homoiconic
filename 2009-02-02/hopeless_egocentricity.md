@@ -86,14 +86,18 @@ What this means is that there is an `account_id` column in the `people` table, h
 
     person.update_email('reg@braythwayt.com')
 
-We do not want it to silently ignore the account email update, because we haven't loaded the `account` associated model. We now have four rules about the semantics of NONE and UNKNOWN:
+We do not want it to silently ignore the account email update, because we haven't loaded the `account` associated model. So for UNKNOWN, our two rules are:
+
+1.  Querying UNKNOWN returns UNKNOWN;
+2.  All attempts to update UNKNOWN are errors.
+
+What about NONE? We gave two examples of updates, one of which was a really bad idea,`#increment_balance`, and the other of which was fine `update_attribute(:primary_email, new_email)`. Thus we have three rules for NONE:
 
 1.  Querying NONE returns NONE;
-2.  Updating NONE returns NONE and has no side effects;
-3.  Querying UNKNOWN returns UNKNOWN;
-4.  Attempting to update UNKNOWN is an error.
+2.  Some updates to NONE may return NONE and have no side effects;
+3.  Some updates to NONE may be errors.
 
-Right away we see a problem with writing a hopelessly egocentric nil to handle UNKNOWN: How does it know which methods are queries and which methods are updates? Unknown values are a subtle problem requiring a deep and pervasive approach to typing similar to C++'s `const` keyword.
+With a little forethought and design, you may be able to construct one or more classes if your application for which all updates to NONE return NONE and have no side effects. But for all others, methods like `#increment_balance` represent a semantic problem with using a hopelessly egocentric nil to represent NONE. We also see a problem with writing a hopelessly egocentric nil to handle UNKNOWN: How does it know which methods are queries and which methods are updates?
 
 Can we use a hopelessly egocentric nil to handle NONE? Even here we have problems. For example:
 
@@ -150,6 +154,8 @@ What happens if `person.name` is NONE? What happens if `person.name` is UNKNOWN?
 There is no easy way to do this in Ruby, of course. Not only do we have trouble disambiguating queries from updates, we have trouble disambiguating valid from invalid messages.
 
 For all of these reasons, I am loathe to implement a hopelessly egocentric nil and prefer to use an explicit idiom like `#andand` or `#try`. With explicit idioms, I can deal with the ambiguity between nil meaning NONE and nil meaning UNKNOWN and make sure my code does not violate the rules given here. But what I like about the *idea* of a hopelessly egocentric nil is that thinking the consequences provokes me to really think about the semantics of my data schemas.
+
+Representing NONE and UNKNOWN values is a subtle problem requiring a deep and pervasive approach to typing similar to C++'s `const` keyword and/or writing custom [null objects](http://en.wikipedia.org/wiki/Null_Object_pattern "Null Object pattern - Wikipedia, the free encyclopedia") that understand which methods are safe to respond egocentrically and which are errors.
 
 _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown#readme), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown#readme), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown#readme), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown#readme), [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#readme), [The Enchaining and Obdurate Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-11-12/the_obdurate_kestrel.md#readme), [Finding Joy in Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-16/joy.md#readme), [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md#readme), [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme), and new for 2009: [The Hopelessly Egocentric Blog Post](http://github.com/raganwald/homoiconic/tree/master/2009-02-02/hopeless_egocentricity.md#readme).
 
