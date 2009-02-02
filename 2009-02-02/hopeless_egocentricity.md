@@ -9,6 +9,10 @@ One of his concepts is the Hopelessly Egocentric Bird:
 
 Some folks have proposed that by making nil hopelessly egocentric, we can avoid the need for monadic idioms like `#andand`. Let's examine the idea and see what consequences this has.
 
+
+[![Mirror tunnel (c) 2007 Michael D. Dunn, some rights reserved](http://farm1.static.flickr.com/250/452449500_1f7ab19deb.jpg?v=0)](http://flickr.com/photos/mikedefiant/452449500/ "Mirror tunnel (c) 2007 Michael D. Dunn, some rights reserved") 
+
+
 **object-oriented egocentricity**
 
 One of the tenets of OO programming is that programs consist of *objects* that respond to *messages* they send each other. A hopelessly egocentric object is easy to imagine: No matter what message you send it, the hopelessly egocentric object responds with itself:
@@ -19,9 +23,7 @@ One of the tenets of OO programming is that programs consist of *objects* that r
 
     end
 
-Now you can create a hopelessly egocentric object with `HopelesslyEgocentric.new` and no matter what message you send it, you will get it back in response. And? What good is this? What can it do? Why should we put it in our Zoo?
-
-[![Mirror tunnel (c) 2007 Michael D. Dunn, some rights reserved](http://farm1.static.flickr.com/250/452449500_1f7ab19deb.jpg?v=0)](http://flickr.com/photos/mikedefiant/452449500/ "Mirror tunnel (c) 2007 Michael D. Dunn, some rights reserved")  
+Now you can create a hopelessly egocentric object with `HopelesslyEgocentric.new` and no matter what message you send it, you will get it back in response. And? What good is this? What can it do? Why should we put it in our Zoo? 
 
 In Objective C, nil is hopelessly egocentric. As [Learn Objective-C](http://cocoadevcentral.com/d/learn_objectivec/ "Cocoa Dev Central: Learn Objective-C") puts it, _You usually don't need to check for nil before calling a method on an object. If you call a method on nil that returns an object, you will get nil as a return value._
 
