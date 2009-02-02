@@ -25,9 +25,9 @@ One of the tenets of OO programming is that programs consist of *objects* that r
 
 Now you can create a hopelessly egocentric object with `HopelesslyEgocentric.new` and no matter what message you send it, you will get it back in response. And? What good is this? What can it do? Why should we put it in our Zoo? 
 
-In Objective C, nil is hopelessly egocentric. As [Learn Objective-C](http://cocoadevcentral.com/d/learn_objectivec/ "Cocoa Dev Central: Learn Objective-C") puts it, _You usually don't need to check for nil before calling a method on an object. If you call a method on nil that returns an object, you will get nil as a return value._
+In Objective C, nil is hopelessly egocentric. As [Learn Objective-C](http://cocoadevcentral.com/d/learn_objectivec/ "Cocoa Dev Central: Learn Objective-C") puts it, _You usually don't need to check for nil before calling a method on an object. If you call a method on nil that returns an object, you will get nil as a return value._ The idea here is that instead of getting a `NoMethodError` when we send a message to nil, we get nil back.
 
-The idea here is that instead of getting a `NoMethodError` when we send a message to nil, we get nil back. Or in Smullyan's terms, *nil is hopelessly egocentric* (Speaking of egocentricity, I also like to think of it as *baking [andand](https://github.com/raganwald/andand/tree) into the language*). Some people like this so much they've [composed the same semantics for Ruby](http://rubyenrails.nl/articles/2008/02/29/our-daily-method-18-nilclass-method_missing "NilClass#method_missing"):
+Some people like this so much they've [composed the same semantics for Ruby](http://rubyenrails.nl/articles/2008/02/29/our-daily-method-18-nilclass-method_missing "NilClass#method_missing"):
 
     class NilClass
     
@@ -35,15 +35,7 @@ The idea here is that instead of getting a `NoMethodError` when we send a messag
       
     end
 
-Now instead of writing:
-
-    person && person.name && person.name.upcase
-
-Or:
-
-    person.andand.name.andand.upcase
-    
-You write `person.name.upcase` and either get the person's name in upper case or nil back. Wonderful! Or is it? Let's take a look at what we're trying to accomplish and the limitations of this approach.
+Now instead of writing `person && person.name && person.name.upcase` or `person.andand.name.andand.upcase`, you write `person.name.upcase` and either get the person's name in upper case or nil. Wonderful! Or is it? Let's take a look at what we're trying to accomplish and the limitations of this approach.
 
 **queries**
 
