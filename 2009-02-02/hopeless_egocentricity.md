@@ -3,9 +3,11 @@ The Hopeless Egocentric Blog Post
 
 In Raymond Smullyan's delightful book on Combinatory logic, [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422), Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest.
 
-One of his concepts is the Hopelessly Egocentric bird:
+One of his concepts is the Hopelessly Egocentric Bird:
 
 > We call a bird B _hopelessly egocentric_ if for _every_ bird `x`, `Bx = B`. This means that whatever bird `x` you call out to `B` is irrelevant; it only calls `B` back to you! Imagine that the bird's name is Bertrand. When you call out "Arthur," you get the response "Bertrand"; when you call out "Raymond," you get the response "Bertrand"; when you call out "Ann," you get the response "Bertrand." All this bird can ever think about is itself!
+
+Some folks have proposed that by making `nil` hopelessly egocentric, we can avoid the need for monadic idioms like `#andand`. Let's examine the idea and see what consequences this has.
 
 **object-oriented egocentricity**
 
@@ -18,6 +20,8 @@ One of the tenets of OO programming is that programs consist of *objects* that r
     end
 
 Now you can create a hopelessly egocentric object with `HopelesslyEgocentric.new` and no matter what message you send it, you will get it back in response. And? What good is this? What can it do? Why should we put it in our Zoo?
+
+[![Mirror tunnel (c) 2007 Michael D. Dunn, some rights reserved](http://farm1.static.flickr.com/250/452449500_1f7ab19deb.jpg?v=0)](http://flickr.com/photos/mikedefiant/452449500/ "Mirror tunnel (c) 2007 Michael D. Dunn, some rights reserved")  
 
 In Objective C, `nil` is hopelessly egocentric. As [Learn Objective-C](http://cocoadevcentral.com/d/learn_objectivec/ "Cocoa Dev Central: Learn Objective-C") puts it, _You usually don't need to check for nil before calling a method on an object. If you call a method on nil that returns an object, you will get nil as a return value._
 
