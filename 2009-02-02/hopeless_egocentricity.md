@@ -1,4 +1,4 @@
-The Hopeless Egocentric Blog Post
+The Hopelessly Egocentric Blog Post
 ===
 
 In Raymond Smullyan's delightful book on Combinatory logic, [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422), Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest.
