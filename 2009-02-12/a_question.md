@@ -1,7 +1,7 @@
 Um, I have a question!
 ===
 
-Recently there has been some brouhaha about Test-Driven Development, SOLID, and the people advocating for or against said practices. I haven't jumped into the <strike>flame war</strike> conversation for a couple of reasons. First, I'm trying to be code-centric in my life and this un-blog. The point of Homoiconic is to talk about code, not to talk about talking about code. Talking about people talking about other people talking about how to talk about code would be ridiculous.
+Recently there has been some brouhaha about Test-Driven Development, SOLID, and the people advocating for or against said practices. I haven't jumped into the flamewar^H^H^H^H^H^H^H^H conversation for a couple of reasons. First, I'm trying to be code-centric in my life and this un-blog. The point of Homoiconic is to talk about code, not to talk about talking about code. Talking about people talking about other people talking about how to talk about code would be ridiculous.
 
 > The point of Homoiconic is to talk about code, not to talk about talking about code. Talking about people talking about other people talking about how to talk about code would be ridiculous.
 
@@ -28,11 +28,11 @@ Does Joel Know?
 
 > We all know that knowledge workers work best by getting into "flow", also known as being "in the zone", where they are fully concentrated on their work and fully tuned out of their environment. They lose track of time and produce great stuff through absolute concentration. This is when they get all of their productive work done. Writers, programmers, scientists, and even basketball players will tell you about being in the zone. The trouble is, getting into "the zone" is not easy. When you try to measure it, it looks like it takes an average of 15 minutes to start working at maximum productivity.
 
-[Joel Spolsky makes a strong claim](http://www.joelonsoftware.com/articles/fog0000000043.html "The Joel Test: 12 Steps to Better Code") about working conditions that allow programmers to have productive development time. Or more specifically, he talks about ways to avoid having programmers spend unproductive time trying to get back into "the zone." he makes another point about giving programmers the best tools money can buy so that they aren't knocked out of the zone waiting for their compiler or fiddling with windows when they could see all of their work if they had a bigger screen.
+Joel Spolsky makes a [strong claim](http://www.joelonsoftware.com/articles/fog0000000043.html "The Joel Test: 12 Steps to Better Code") about working conditions that allow programmers to have productive development time. Or more specifically, he talks about ways to avoid having programmers spend unproductive time trying to get back into "the zone." He makes another point about giving programmers the best tools money can buy so that they aren't knocked out of the zone waiting for their compiler or fiddling with windows when they could see all of their work if they had a bigger screen.
 
 Neither of these things says a lot about measuring productivity. They merely talk about giving programmers the very best opportunity to be productive. But measuring whether programmers have quiet working conditions and fast compilers is a little like measuring whether a baker uses the best ingredients: It says nothing about the results.
 
-I am not criticizing Joel's test here: It summarizes some fabulous and valuable experience with software development teams. But I assert that articulating how to measure whether a process ought to produce productive programmers (like scoring a team on a scale of zero to twelve) is not the same thing as articulating how to measure whether a programmer is <u>actually productive</u>.
+I am not criticizing Joel's test here: It summarizes some fabulous and valuable experience with software development teams. But I assert that articulating how to measure whether a process ought to produce productive programmers (like scoring a team on a scale of zero to twelve) is not the same thing as articulating how to measure whether a programmer is *actually* productive.
 
 So when a developer talks about being "more productive," what do they mean? Do they mean having more uninterrupted time to perform activities they think lead to higher productivity? Or do they mean producing more results that can be measured objectively?
 
