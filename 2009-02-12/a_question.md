@@ -19,7 +19,7 @@ Seriously. It's not exactly P=NP, but people have been trying to measure what pr
 
 You read me right. We are fairly good at measuring when entire projects are finished and whether they do what they are supposed to do. And on that basis we can figure out something akin to the productivity of an entire team of programmers, team leads, QA folks, product managers, and everyone else involved. More releases that do what they are supposed to do equals more productivity from the team. But we can only measure that on entire releases. When we try to figure out whether a team is productive or not in the middle of a release, we wind up scratching our heads. Have they written any code? Does that matter? Maybe they're designing architecture. Maybe they're using a really expressive language. We can only reliably measure the productivity of a team on a long scale involving entire releases of software.
 
-Now we zoom in and focus on a single programmer. Measuring productivity seems hopeless! Every time we cook up a metric (function points per iteration divided by the training average number of WTFs per minute in code reviews), we find a convincing case for the metric being meaningless or even inversely correlated with the results of the team as a whole.
+Now we zoom in and focus on a single programmer. Measuring productivity seems hopeless! Every time we cook up a metric (function points per iteration divided by the trailing average number of WTFs per minute in code reviews), we find a convincing case for the metric being meaningless or even inversely correlated with the results of the team as a whole.
 
 So how is it that every programmer seems to know *exactly* when they are being more productive, and why?
 
