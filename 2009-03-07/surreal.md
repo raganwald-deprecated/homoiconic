@@ -11,15 +11,15 @@ But "Being more elegant than C++" is a very low bar to clear. As Paul Graham [no
 
 > The Lisp that McCarthy described in 1960, for example, didn't have numbers. Logically, you don't need to have a separate notion of numbers, because you can represent them as lists: the integer n could be represented as a list of n elements. You can do math this way. It's just unbearably inefficient.
 
-Wow. A language where numbers were represented as lists of *n* elements. The "lists of length *n*" implementation of numbers is really based on two things: The empty list or `[]`, and the operation of adding an element to it, an operation we could call `succ`, `next`, or `++` depending on your preferred programming language. Since we only have one kind of thing, the thing we can add to an empty list is an empty list. Therefore, the number "six" would be represented as `[[], [], [], [], [], []]`, a list of six empty lists.
+Wow. A language where numbers were represented as lists of *n* elements. The "lists of length n" implementation of numbers is really based on two things: The empty list or `[]`, and the operation of adding an element to it, an operation we could call `succ`, `next`, or `++` depending on your preferred programming language. Since we only have one kind of thing, the thing we can add to an empty list is an empty list. Therefore, the number "six" would be represented as `[[], [], [], [], [], []]`, a list of six empty lists.
 
 Is that elegance? I think it does have one component of elegance: It has fewer "things" in it, because you just have lists rather than having lists and integers. Having a smaller set of core things is definitely part of elegance. Just ask anyone who struggles with Java's object/primitive dichotomy if you don't believe me.
 
-But there's another component of elegance that must be considered, the question of *scale*. To see this in action, let's compare "lists of length *n*" to another representation, [Surreal Numbers](http://en.wikipedia.org/wiki/Surreal_number).
+But there's another component of elegance that must be considered, the question of *scale*. To see this in action, let's compare "lists of length n" to another representation, [Surreal Numbers](http://en.wikipedia.org/wiki/Surreal_number).
 
 **Surreal Numbers**
 
-In the "lists of length *n*" representation, numbers know how many times you've incremented the empty list. What if we pick a representation where numbers know something about how they compare to other numbers?
+In the "lists of length n" representation, numbers know how many times you've incremented the empty list. What if we pick a representation where numbers know something about how they compare to other numbers?
 
     class SurrealNumber < Struct.new(:numbers_to_my_left, :numbers_to_my_right)
     end
@@ -84,7 +84,7 @@ For convenience, let's define `#not_to_the_right_of?`:
       other.not_to_the_left_of?(self)
     end
 
-Recursive things and elegant things almost always start with a base or degenerate case and work from there. The "lists of length *n*" implementation of numbers started with an empty list. We have a similarly spartan base case, `[] ^ []`. We will call it *Naught*:
+Recursive things and elegant things almost always start with a base or degenerate case and work from there. The "lists of length n" implementation of numbers started with an empty list. We have a similarly spartan base case, `[] ^ []`. We will call it *Naught*:
 
     NAUGHT = [] ^ []
 
@@ -200,15 +200,15 @@ What is the number `NAUGHT ^ ONE`? Let me give you a hint: `(NAUGHT ^ ONE) + (NA
 
 And if you do some more experimenting, you can derive `1/4`, `3/8`, and so on. These fractions automatically work for the operations we've already defined for integers. That's a bonus!
 
-Amazingly, our number representation goes much further. You can use it to represent the infinities, reals, transfinite ordinals, infinitesimals, and more. So clearly, this representation is much, much more powerful than either "lists of length *n*" or binary numbers.
+Amazingly, our number representation goes much further. You can use it to represent the infinities, reals, transfinite ordinals, infinitesimals, and more. So clearly, this representation is much, much more powerful than either "lists of length n" or binary numbers.
 
 Sweet candy!
 
 **Elegance: "Some Representations Scale, Some Don't"**
 
-Let's think back to the "lists of length *n*" implementation of numbers. It has a very simple implementation, so simple that I haven't even bothered to write it out in Ruby for comparison. And it clearly works for counting things. In fact, it maps directly to our mental model of counting things, so not only is its implementation simple, but when you are counting things, it has very little baggage.
+Let's think back to the "lists of length n" implementation of numbers. It has a very simple implementation, so simple that I haven't even bothered to write it out in Ruby for comparison. And it clearly works for counting things. In fact, it maps directly to our mental model of counting things, so not only is its implementation simple, but when you are counting things, it has very little baggage.
 
-If you desire, you can define addition and subtraction and multiplication and division and so forth with "lists of length *n*." But now the simplicity starts to fall down. Although its base, core case is simple, as you start to do even a little more with it, the result is no longer simple. And it falls down completely when we try to talk about negative numbers, or reals, or just about anything else. We paste special cases onto it and if we dared to try anything ambitious, we end up greenspunning some other representation on top of it.
+If you desire, you can define addition and subtraction and multiplication and division and so forth with "lists of length n." But now the simplicity starts to fall down. Although its base, core case is simple, as you start to do even a little more with it, the result is no longer simple. And it falls down completely when we try to talk about negative numbers, or reals, or just about anything else. We paste special cases onto it and if we dared to try anything ambitious, we end up greenspunning some other representation on top of it.
 
 > Elegance consist of building something out of a small core of representations *that scale well*. It is not enough that they be simple, the complexity of what you build must not grow uncontrollably as you try to solve bigger and more complex problems.
 
@@ -216,7 +216,7 @@ When we talk about algorithmic complexity, we talk about how the cost of derivin
 
 If we think about representations and complexity, we see the same thing in action. As the complexity of what we want to do grows, the complexity of our implementation grows as well. A good representation is one where the complexity of the implementation grows very slowly as the complexity of what we want to do grows.
 
-So comparing our `SurrealNumber` class to "lists of length *n*," we see that although "lists of length *n*" has a much simpler base complexity, its complexity grows very quickly as we try to do more complex things with it. "Lists of length *n*" is like one of those exponential algorithms that cannot scale in any meaningful way. Our `SurrealNumber` class is different. It scales to handle much more complex problems effortlessly. Its initial implementation is less simple, but this is like the constant cost of an algorithm that is "Oh One:" This is irrelevant for all but the trivial cases.
+So comparing our `SurrealNumber` class to "lists of length n," we see that although "lists of length n" has a much simpler base complexity, its complexity grows very quickly as we try to do more complex things with it. "Lists of length n" is like one of those exponential algorithms that cannot scale in any meaningful way. Our `SurrealNumber` class is different. It scales to handle much more complex problems effortlessly. Its initial implementation is less simple, but this is like the constant cost of an algorithm that is "Oh One:" This is irrelevant for all but the trivial cases.
 
 Taking a whack at a long-deceased horse, we see how to respond when people tell us that Java code is easier to read or the equivalent approach of banning "advanced" idioms from a more expressive language leads to easier to understand programs. They are asserting that if you start with a very simple base representation and build up from that, the result will be simple.
 
