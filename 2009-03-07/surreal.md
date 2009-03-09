@@ -228,6 +228,8 @@ This leads me to my personal definition of elegance. Elegance consist of buildin
 
 ---
 
+**Post Scriptum: Where to read more about Surreal Numbers**
+
 [Surreal Numbers](http://mathworld.wolfram.com/SurrealNumber.html) were discovered by [John Horton Conway](http://en.wikipedia.org/wiki/John_Horton_Conway). In addition to representing almost anything we think of as a number, if you drop the validation requirement they generalize to represent games. The term "Surreal Number" was actually coined by Donald Knuth. After Conway explained the concept to Knuth in 1972, Knuth actually published it first in the form of a novel, *Numbers: How Two Ex-Students Turned on to Pure Mathematics and Found Total Happiness*, now simply titled [Surreal Numbers](http://www.amazon.com/gp/product/0201038129?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0201038129 "Amazon.com"). Knuth's book is a classic, entertaining and instructive at the same time.
 
 > "...It is an astonishing feat of legerdemain. An empty hat rests on a table made of a few axioms of standard set theory. Conway waves two simple rules in the air, then reaches into almost nothing and pulls out an infinitely rich tapestry of numbers that form a real and closed field. Every real number is surrounded by a host of new numbers that lie closer to it than any other "real" value does. The system is truly "surreal." --Martin Gardner
