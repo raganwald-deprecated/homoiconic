@@ -3,9 +3,9 @@ Elegance and the Surreals
 
 I joined Joey DeVilla for his third [Coffee and Code](http://www.joeydevilla.com/2009/03/06/coffee-and-code-today-in-toronto-and-irvine-california/ "Coffee and Code Today in Toronto and Irvine, California! — The Adventures of Accordion Guy in the 21st Century") day. Joey recently went to work for an extremely large, highly competitive organization known for its ruthless business practices. He also recently donated an actual Lisp Machine he owned to [hacklab.to](http://hacklab.to/).
 
-The Scheme dialect of Lisp is noted for having *elegant* underpinnings. Lisp started as an almost direct implementation of the [Lambda Calculus](http://en.wikipedia.org/wiki/Lambda_calculus), and while Common Lisp programming can be extraordinarily pragmatic, Lisp and the Lisp culture both encourage elegant solutions to problems. For example, Scheme implementations *must* implement [tail call optimization](http://en.wikipedia.org/wiki/Tail_recursion "Tail recursion"). This in turn means that you can often write a recursive solution to a problem that runs as fast as an iterative solution. And that means you don't have to choose between elegance and performance: You can have your cake and eat it too.
+[![(c) 2008 el benjamin, some rights reserved](http://farm4.static.flickr.com/3099/2921981507_ec9443db22.jpg?v=0)](http://www.flickr.com/photos/thesubstars/2921981507/ "(c) 2008 el benjamin, some rights reserved") 
 
-> Having a smaller set of core things is definitely part of elegance. Just ask anyone who struggles with Java's object/primitive dichotomy if you don't believe me. But there's another component of elegance that must be considered, the question of *scale*.
+The Scheme dialect of Lisp is noted for having *elegant* underpinnings. Lisp started as an almost direct implementation of the [Lambda Calculus](http://en.wikipedia.org/wiki/Lambda_calculus), and while Common Lisp programming can be extraordinarily pragmatic, Lisp and the Lisp culture both encourage elegant solutions to problems. For example, Scheme implementations *must* implement [tail call optimization](http://en.wikipedia.org/wiki/Tail_recursion "Tail recursion"). This in turn means that you can often write a recursive solution to a problem that runs as fast as an iterative solution. And that means you don't have to choose between elegance and performance: You can have your cake and eat it too.
 
 But "Being more elegant than C++" is a very low bar to clear. As Paul Graham [noted](http://www.paulgraham.com/hundred.html "The Hundred-Year Language"):
 
@@ -91,6 +91,8 @@ Recursive things and elegant things almost always start with a base or degenerat
 Let's ask ourselves this question: *Is `NAUGHT` valid?*
 
 This is a really interesting question. The very way it is phrased hints at something deep about the way we think about things and the way we can discover new things. We're asking whether `NAUGHT` is valid, which implies that there is some positive characteristic of numbers we are seeking. But there isn't.
+
+> Having a smaller set of core things is definitely part of elegance. Just ask anyone who struggles with Java's object/primitive dichotomy if you don't believe me. But there's another component of elegance that must be considered, the question of *scale*.
 
 Our rule of validity is really a rule of *invalidity*. If you look at the `#valid?` method, you see that at its heart we have really defined that a number is invalid if any number to its left is not to the left of any number to its right. But `NAUGHT` doesn't have *any* numbers to its left or its right, so it passes this test.
 
@@ -226,11 +228,15 @@ This leads me to my personal definition of elegance. Elegance consist of buildin
 
 ---
 
-Surreal Numbers were discovered by [John Horton Conway](http://en.wikipedia.org/wiki/John_Horton_Conway). In addition to representing almost anything we think of as a number, if you drop the validation requirement they generalize to represent games. The term "Surreal Number" was actually coined by Donald Knuth. After Conway explained the concept to Knuth in 1972, Knuth actually published it first in the form of a novel, *Numbers: How Two Ex-Students Turned on to Pure Mathematics and Found Total Happiness*.
+[Surreal Numbers](http://mathworld.wolfram.com/SurrealNumber.html) were discovered by [John Horton Conway](http://en.wikipedia.org/wiki/John_Horton_Conway). In addition to representing almost anything we think of as a number, if you drop the validation requirement they generalize to represent games. The term "Surreal Number" was actually coined by Donald Knuth. After Conway explained the concept to Knuth in 1972, Knuth actually published it first in the form of a novel, *Numbers: How Two Ex-Students Turned on to Pure Mathematics and Found Total Happiness*, now simply titled [Surreal Numbers](http://www.amazon.com/gp/product/0201038129?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0201038129 "Amazon.com"). Knuth's book is a classic, entertaining and instructive at the same time.
+
+> "...It is an astonishing feat of legerdemain. An empty hat rests on a table made of a few axioms of standard set theory. Conway waves two simple rules in the air, then reaches into almost nothing and pulls out an infinitely rich tapestry of numbers that form a real and closed field. Every real number is surrounded by a host of new numbers that lie closer to it than any other "real" value does. The system is truly "surreal." --Martin Gardner
 
 Conway adopted Knuth's term and published [On Numbers and Games](http://www.amazon.com/gp/product/1568811276?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1568811276 "Amazon.com"), the definitive incredible (although very technical) treatise on the subject. Reading it is like drinking from a fire hose: Everything in this post is found on the first three pages of the book.
 
-I first read about them in Ivars Peterson's [Mathematical Treks: From Surreal Numbers to Magic Circles](http://www.amazon.com/gp/product/0883855372?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0883855372 "Amazon.com"). He also wrote [a column mentioning surreal numbers](http://www.maa.org/mathland/mathland_3_18.html "Ivars Peterson's MathTrek") when a student won a prize for studying "recursive surreal numbers." 
+If you would like to read more on line, I strongly suggest Mark Chu-Carroll's [Introducing the Surreal Numbers](http://scienceblogs.com/goodmath/2007/03/introducing_the_surreal_number_2.php). In a post of roughly the same length as this, he describes integers, arithmetic, the birthdays of the numbers, infinities, and more.
+
+So... If you want a readable and entertaining exposition, read [Knuth](http://www.amazon.com/gp/product/0201038129?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0201038129 "Surreal Numbers"). If you want all of the glory of numbers and games, read [Conway](http://www.amazon.com/gp/product/1568811276?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1568811276 "On Numbers and Games"). If you want a readable but highly provocative exploration, read [Chu-Carroll](http://scienceblogs.com/goodmath/2007/03/introducing_the_surreal_number_2.php "Introducing the Surreal Numbers"). And of course, these are not mutually exclusive. Read them all!
 
 ---
 	
