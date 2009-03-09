@@ -7,15 +7,17 @@ Last Friday I joined Joey DeVilla for [Coffee and Code](http://www.joeydevilla.c
 
 The Scheme dialect of Lisp is noted for its elegance. Lisp started as an almost direct implementation of the [Lambda Calculus](http://en.wikipedia.org/wiki/Lambda_calculus), and while Common Lisp programming can be extraordinarily pragmatic, Lisp and the Lisp culture both encourage elegant solutions to problems. Scheme implementations *must* implement [tail call optimization](http://en.wikipedia.org/wiki/Tail_recursion "Tail recursion"). This in turn means that you can often write a recursive solution to a problem that runs as fast as an iterative solution. And that means you don't have to choose between elegance and performance: You can have your cake and eat it too.
 
-But "Being more elegant than C++" is a very low bar to clear. As Paul Graham [noted](http://www.paulgraham.com/hundred.html "The Hundred-Year Language"):
+> Entia non sunt multiplicanda praeter necessitatem. --John Ponce of Cork, 1639
 
-> The Lisp that McCarthy described in 1960, for example, didn't have numbers. Logically, you don't need to have a separate notion of numbers, because you can represent them as lists: the integer n could be represented as a list of n elements. You can do math this way. It's just unbearably inefficient.
+In Paul Graham's essay [The Hundred-Year Language](http://www.paulgraham.com/hundred.html "The Hundred-Year Language"), he noted that having separate representations for numbers and lists is unnecessary, an idea dating back to 1960: *The Lisp that McCarthy described in 1960, for example, didn't have numbers. Logically, you don't need to have a separate notion of numbers, because you can represent them as lists: the integer n could be represented as a list of n elements. You can do math this way. It's just unbearably inefficient.*
 
-Wow. A language where numbers were represented as lists of *n* elements. The "lists of length n" implementation of numbers is really based on two things: The empty list or `[]`, and the operation of adding an element to it, an operation we could call `succ`, `next`, or `++` depending on your preferred programming language. Since we only have one kind of thing, the thing we can add to an empty list is an empty list. Therefore, the number "six" would be represented as `[[], [], [], [], [], []]`, a list of six empty lists.
+This "lists of length n" implementation of numbers is based on just two things: The empty list or `[]`, and the operation of adding an element to it, an operation we could call #succ, #next, or ++ depending on your preferred programming language. Since we only have one kind of thing, the thing we can add to an empty list is an empty list. Therefore, the number "six" would be represented as a list of six empty lists:
 
-Is that elegance? I think it does have one component of elegance: It has fewer "things" in it, because you just have lists rather than having lists and integers. Having a smaller set of core things is definitely part of elegance. Just ask anyone who struggles with Java's object/primitive dichotomy if you don't believe me.
+    SIX = [ [], [], [], [], [], [] ]
 
-But there's another component of elegance that must be considered, the question of *scale*. To see this in action, let's compare "lists of length n" to another representation, [Surreal Numbers](http://en.wikipedia.org/wiki/Surreal_number).
+Is that elegance? I think it does have one component of elegance: It has fewer "entia" in it, because you just have lists rather than having lists and integers. Having a smaller set of core things is definitely part of elegance. Just ask anyone who struggles with Java's object/primitive dichotomy if you don't believe me.
+
+But there's another component of elegance that must be considered, the question of *scale*. "Lists of length n" do not scale. To see why, let's compare "lists of length n" to another representation using lists, [Surreal Numbers](http://en.wikipedia.org/wiki/Surreal_number). Like our "lists of length n" representation of numbers, Surreal Numbers will be built (conceptually) out of just lists and the empty list. Thus, they have as few "entia" as "lists of length n," so they are a good candidate for comparison.
 
 **Surreal Numbers**
 
@@ -24,7 +26,7 @@ In the "lists of length n" representation, numbers know how many times you've in
     class SurrealNumber < Struct.new(:numbers_to_my_left, :numbers_to_my_right)
     end
 
-If you line up all the numbers in order, each `SurrealNumber` knows of zero or numbers to its *left* and zero or more numbers to its *right*. But its knowledge can be incomplete! Any finite number is greater than an infinite number of numbers and also less than an infinite number of numbers, so our representation could not fit in a finite space if each number actually enumerated *all* of the numbers to its left or its right.
+If you line up all the numbers in order, each Surreal Number knows of zero or numbers to its *left* and zero or more numbers to its *right*. But its knowledge can be incomplete! Any finite number is greater than an infinite number of numbers and also less than an infinite number of numbers, so our representation could not fit in a finite space if each number actually enumerated *all* of the numbers to its left or its right.
 
 If we are going to write out some examples, we will need a simple notation. This being Ruby, we'll blithely monkey-patch core classes to make a kind of DSL:
 
@@ -48,7 +50,7 @@ So you can create a new SurrealNumber by writing out using the `^` operation to 
     
 **Consistency and Inconsistency**
 
-Now right away we can see some potential problems. We haven't figured out how to write a `SurrealNumber` that is equivalent to the integers we are comfortable discussing, but imagining that we can do that, what happens if we write something like `[2] ^ [1, 3]`? We're trying to write a `SurrealNumber` that thinks it is to the right of 2 but also to the left of both 1 and 3. This doesn't make any sense. Or what about `[6] ^ [6]`? What kind of number is to the left and right of six at the same time?
+Now right away we can see some potential problems. We haven't figured out how to write a Surreal Number that is equivalent to the integers we are comfortable discussing, but imagining that we can do that, what happens if we write something like `[2] ^ [1, 3]`? We're trying to write a Surreal Number that thinks it is to the right of 2 but also to the left of both 1 and 3. This doesn't make any sense. Or what about `[6] ^ [6]`? What kind of number is to the left and right of six at the same time?
 
 To sort this out, we'll need a precise definition of the expressions "to the right of" and "to the left of." We've already had plenty of words, so let's express ourselves in Ruby. We start with a single definition:
 
@@ -62,7 +64,7 @@ Meaning, one number is *not to the left of another number* if and only if:
 * If x is not to the left of y, there is no number z  such that z is to the right of x but y is not to the left of z
 * If x is not to the left of y, there is also no number `w` such that `w` is to the left of y but `w` is not to the left of x.
   
-You can now write a simple validation for our `SurrealNumber` class:
+You can now write a simple validation for our SurrealNumber class:
 
     def valid?
       numbers_to_my_left.all? { |left| left.valid? } and
@@ -114,7 +116,7 @@ What is `NAUGHT.not_to_the_left_of?(NAUGHT)`? What is `NAUGHT.not_to_the_right_o
       other.kind_of?(SurrealNumber) && not_to_the_left_of?(other) && not_to_the_right_of?(other)
     end
 
-Note that equality is a *defined relationship*. There is no monkeying around with comparing the identities of our representations in our language's implementation. Two instances of `SurrealNumber` in Ruby can be == each other even if they are not the same instance in memory. Furthermore, two instances of `SurrealNumber` in Ruby can be == each other even if they don't have the exact same representation!
+Note that equality is a *defined relationship*. There is no monkeying around with comparing the identities of our representations in our language's implementation. Two instances of Surreal Number in Ruby can be == each other even if they are not the same instance in memory. Furthermore, two instances of Surreal Number in Ruby can be == each other even if they don't have the exact same representation!
 
 NAUGHT or `[] ^ []` is the simplest possible number to represent. What is the next simplest number? How about `([([]^[])] ^ [])`? Or to put it more simply: `NAUGHT ^ []`. What do we know about this number?
 
@@ -165,7 +167,7 @@ Bzzzzzzzzzt! Wrong!! If `^ []` meant plus one, `MINUS_TWO ^ []` should equal MIN
 
 Hmmmmm. Defining "plus" in terms of plus. Will this work? Taken in isolation, *no*. If this were written as a recursive method, how would it ever terminate? But if you take it in combination with basing our number system on NAUGHT, we see that as we decompose numbers, we eventually reach numbers that have no numbers to their left, no numbers to their right, or in  the case of NAUGHT, no numbers to the left or right. Try working out `NAUGHT + NAUGHT`, `NAUGHT + ONE`, `ONE + NAUGHT`, and `ONE + ONE` to see how it works.
 
-Of course, we like to automate things. Now that we are comfortable the algorithm terminates for our test numbers, we can write a method for our `SurrealNumber` class:
+Of course, we like to automate things. Now that we are comfortable the algorithm terminates for our test numbers, we can write a method for our SurrealNumber class:
 
     def + (other)
       (numbers_to_my_left.map { |left| left + other } | other.numbers_to_my_left.map { |left| left + self }) ^
@@ -214,7 +216,7 @@ When we talk about algorithmic complexity, we talk about how the cost of derivin
 
 If we think about representations and complexity, we see the same thing in action. As the complexity of what we want to do grows, the complexity of our implementation grows as well. A good representation is one where the complexity of the implementation grows very slowly as the complexity of what we want to do grows.
 
-So comparing our `SurrealNumber` class to "lists of length n," we see that although "lists of length n" has a much simpler base complexity, its complexity grows very quickly as we try to do more complex things with it. "Lists of length n" is like one of those exponential algorithms that cannot scale in any meaningful way. Our `SurrealNumber` class is different. It scales to handle much more complex problems effortlessly. Its initial implementation is less simple, but this is like the constant cost of an algorithm that is "Oh One:" This is irrelevant for all but the trivial cases.
+So comparing our SurrealNumber class to "lists of length n," we see that although "lists of length n" has a much simpler base complexity, its complexity grows very quickly as we try to do more complex things with it. "Lists of length n" is like one of those exponential algorithms that cannot scale in any meaningful way. Our SurrealNumber class is different. It scales to handle much more complex problems effortlessly. Its initial implementation is less simple, but this is like the constant cost of an algorithm that is "Oh One:" This is irrelevant for all but the trivial cases.
 
 Taking a whack at a long-deceased horse, we see how to respond when people tell us that Java code is easier to read or the equivalent approach of banning "advanced" idioms from a more expressive language leads to easier to understand programs. They are asserting that if you start with a very simple base representation and build up from that, the result will be simple.
 
