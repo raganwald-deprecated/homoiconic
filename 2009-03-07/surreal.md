@@ -48,7 +48,7 @@ So you can create a new SurrealNumber by writing out using the `^` operation to 
     
 **Consistency and Inconsistency**
 
-Now right away we can see some potential problems. We haven't figured out how to write a `SurrealNumber` that is equivalent to the integers we are comfortable discussing, but imagining that we can do that, what happens if we write something like `[2] ^ [1, 3]`? Were trying to write a `SurrealNumber` that thinks it is to the right of `2` but also to the left of both `1` and `3`. This doesn't make any sense. Or what about `[6] ^ [6]`? What kind of number is to the left and right of six at the same time?
+Now right away we can see some potential problems. We haven't figured out how to write a `SurrealNumber` that is equivalent to the integers we are comfortable discussing, but imagining that we can do that, what happens if we write something like `[2] ^ [1, 3]`? We're trying to write a `SurrealNumber` that thinks it is to the right of 2 but also to the left of both 1 and 3. This doesn't make any sense. Or what about `[6] ^ [6]`? What kind of number is to the left and right of six at the same time?
 
 To sort this out, we'll need a precise definition of the expressions "to the right of" and "to the left of." We've already had plenty of words, so let's express ourselves in Ruby. We start with a single definition:
 
@@ -59,8 +59,8 @@ To sort this out, we'll need a precise definition of the expressions "to the rig
 
 Meaning, one number is *not to the left of another number* if and only if:
 
-* If `x` is not to the left of `y`, there is no number `z`  such that `z` is to the right of `x` but `y` is not to the left of `z`
-* If `x` is not to the left of `y`, there is also no number `w` such that `w` is to the left of `y` but `w` is not to the left of `x`.
+* If x is not to the left of y, there is no number z  such that z is to the right of x but y is not to the left of z
+* If x is not to the left of y, there is also no number `w` such that `w` is to the left of y but `w` is not to the left of x.
   
 You can now write a simple validation for our `SurrealNumber` class:
 
@@ -84,44 +84,44 @@ For convenience, let's define `#not_to_the_right_of?`:
       other.not_to_the_left_of?(self)
     end
 
-Recursive things and elegant things almost always start with a base or degenerate case and work from there. The "lists of length n" implementation of numbers started with an empty list. We have a similarly spartan base case, `[] ^ []`. We will call it *Naught*:
+Recursive things and elegant things almost always start with a base or degenerate case and work from there. The "lists of length n" implementation of numbers started with an empty list. We have a similarly spartan base case, `[] ^ []`. We will call it *NAUGHT*:
 
     NAUGHT = [] ^ []
 
-Let's ask ourselves this question: *Is `NAUGHT` valid?*
+Let's ask ourselves this question: *Is NAUGHT valid?*
 
-This is a really interesting question. The very way it is phrased hints at something deep about the way we think about things and the way we can discover new things. We're asking whether `NAUGHT` is valid, which implies that there is some positive characteristic of numbers we are seeking. But there isn't.
+This is a really interesting question. The very way it is phrased hints at something deep about the way we think about things and the way we can discover new things. We're asking whether NAUGHT is valid, which implies that there is some positive characteristic of numbers we are seeking. But there isn't.
 
 > Having a smaller set of core things is definitely part of elegance. Just ask anyone who struggles with Java's object/primitive dichotomy if you don't believe me. But there's another component of elegance that must be considered, the question of *scale*.
 
-Our rule of validity is really a rule of *invalidity*. If you look at the `#valid?` method, you see that at its heart we have really defined that a number is invalid if any number to its left is not to the left of any number to its right. But `NAUGHT` doesn't have *any* numbers to its left or its right, so it passes this test.
+Our rule of validity is really a rule of *invalidity*. If you look at the `#valid?` method, you see that at its heart we have really defined that a number is invalid if any number to its left is not to the left of any number to its right. But NAUGHT doesn't have *any* numbers to its left or its right, so it passes this test.
 
-One might be inclined to patch over this case, to declare--for example--that `NAUGHT` is invalid, and what we really need is a number `ZERO` where negative one is to its left and one is to its right. However, one might also shrug and continue in the spirit of finding out what happens if we treat `NAUGHT` as a legitimate number.
+One might be inclined to patch over this case, to declare--for example--that NAUGHT is invalid, and what we really need is a number ZERO where negative one is to its left and one is to its right. However, one might also shrug and continue in the spirit of finding out what happens if we treat NAUGHT as a legitimate number.
 
 This is the kind of thinking that allegedly led Einstein to discover Special Relativity. If the speed of light *always* appeared to be constant for any observer, then things appeared to be bad when considering the rate of change in time for various observers. But he shrugged and carried on, wondering if it would all work out in the end. It did all work out in the end, but he learned something shocking about time and observers in motion relative to each other.
 
 This teaches us that like programming languages, theories of physics constrain us to certain ways of thinking about things. Sometimes you need a new approach to provoke fresh thinking.
 
-So by our rules `NAUGHT` *is* a valid number, even though it appears nonsensical, a number with no numbers to its left or right. And indeed, as we carry on we discover that things to work out in the end, but we must abandon certain ideas we think we have about numbers.
+So by our rules NAUGHT *is* a valid number, even though it appears nonsensical, a number with no numbers to its left or right. And indeed, as we carry on we discover that things to work out in the end, but we must abandon certain ideas we think we have about numbers.
 
 Let's see what we get if we ask a few more questions.
 
 **A few more relationships**
 
-What is `NAUGHT.not_to_the_left_of?(NAUGHT)`? What is `NAUGHT.not_to_the_right_of?(NAUGHT)`? What do you infer from this? Correct! Given two numbers `x` and `y`, if `x.not_to_the_left_of?(y) && x.not_to_the_right_of?(y)`, we know that `x == y`!
+What is `NAUGHT.not_to_the_left_of?(NAUGHT)`? What is `NAUGHT.not_to_the_right_of?(NAUGHT)`? What do you infer from this? Correct! Given two numbers x and y, if `x.not_to_the_left_of?(y) && x.not_to_the_right_of?(y)`, we know that `x == y`!
 
     def == (other)
       other.kind_of?(SurrealNumber) && not_to_the_left_of?(other) && not_to_the_right_of?(other)
     end
 
-Note that equality is a *defined relationship*. There is no monkeying around with comparing the identities of our representations in our language's implementation. Two instances of `SurrealNumber` in Ruby can be `==` each other even if they are not the same instance in memory. Furthermore, two instances of `SurrealNumber` in Ruby can be `==` each other even if they don't have the exact same representation!
+Note that equality is a *defined relationship*. There is no monkeying around with comparing the identities of our representations in our language's implementation. Two instances of `SurrealNumber` in Ruby can be == each other even if they are not the same instance in memory. Furthermore, two instances of `SurrealNumber` in Ruby can be == each other even if they don't have the exact same representation!
 
-`NAUGHT` or `[] ^ []` is the simplest possible number to represent. What is the next simplest number? How about `([([]^[])] ^ [])`? Or to put it more simply: `NAUGHT ^ []`. What do we know about this number?
+NAUGHT or `[] ^ []` is the simplest possible number to represent. What is the next simplest number? How about `([([]^[])] ^ [])`? Or to put it more simply: `NAUGHT ^ []`. What do we know about this number?
 
     (NAUGHT ^ []).not_to_the_left_of?(NAUGHT) # => true
     (NAUGHT ^ []) == NAUGHT # => false
 
-Well, if `(NAUGHT ^ [])` is not to the left of `NAUGHT` and it is not equal to `NAUGHT`... It must be to the *right* of naught. Now we have a new relationship we can define, along with its symmetrical twin:
+Well, if `(NAUGHT ^ [])` is not to the left of NAUGHT and it is not equal to NAUGHT... It must be to the *right* of naught. Now we have a new relationship we can define, along with its symmetrical twin:
   
     def to_the_right_of?(other)
       not_to_the_left_of?(other) && !not_to_the_right_of?(other)
@@ -142,11 +142,11 @@ We can name our new number:
     NAUGHT.to_the_left_of?(ONE)  # => true
     NAUGHT.to_the_right_of?(ONE) # => false
     
-If `ONE` is `NAUGHT ^ []`, what is `ONE ^ []`? Correct!
+If `NAUGHT ^ []` is ONE, what is `ONE ^ []`? Correct!
 
     TWO = ONE ^ []
     
-Verify for yourself that the relationships we have defined work for `NAUGHT`, `ONE`, and `TWO`. Make `THREE`, `FOUR`, and `FIVE` if you are so inclined. And what happens if we go the other way? Do we get negative numbers? Yes we do:
+Verify for yourself that the relationships we have defined work for NAUGHT, ONE, and TWO. Make THREE, FOUR, and FIVE if you are so inclined. And what happens if we go the other way? Do we get negative numbers? Yes we do:
 
     MINUS_ONE = [] ^ NAUGHT
     MINUS_TWO = [] ^ MINUS_ONE
@@ -156,16 +156,14 @@ Now we come to an interesting question: *Does the operation `^ []` mean plus one
     MINUS_TWO ^ [] == MINUS_ONE # => false
     MINUS_TWO ^ [] == NAUGHT    # => true
     
-Bzzzzzzzzzt! Wrong!! If `^ []` meant plus one, `MINUS_TWO ^ []` should equal `MINUS_ONE` and it should not equal `FALSE`. `^ []` obviously does not equate to adding one to a number, even though it does help us generate numbers.
+Bzzzzzzzzzt! Wrong!! If `^ []` meant plus one, `MINUS_TWO ^ []` should equal MINUS_ONE, not NAUGHT. `^ []` obviously does not equate to adding one to a number, even though it does help us generate numbers. Let's work addition out from first principles. Our concept of a number works off defining a set of numbers to its left and a set of numbers to its right. If we imagine the relationship `x = y + z`, how can we work out x given y and z? Here are some conclusions we can form:
 
-Let's work things out from first principles. Our concept of a number works off defining a set of numbers to its left and a set of numbers to its right. If we imagine the relationship `x = y + z`, how can we work out `x` given `y` and `z`? Here are some conclusions we can form:
+1.  If some number `y_left` is to the left of y, then `y_left + z` is to the left of x;
+2.  If some number `z_left` is to the left of z, then `z_left + y` is to the left of x;
+3.  If some number `y_right` is to the right of y, then `y_right + z` is to the right of x;
+4.  If some number `z_right` is to the right of z, then `z_right + y` is to the right of x.
 
-1.  If some number `y_left` is to the left of `y`, then `y_left + z` is to the left of `x`;
-2.  If some number `z_left` is to the left of `z`, then `z_left + y` is to the left of `x`;
-3.  If some number `y_right` is to the right of `y`, then `y_right + z` is to the right of `x`;
-4.  If some number `z_right` is to the right of `z`, then `z_right + y` is to the right of `x`.
-
-Hmmmmm. Defining `+` in terms of `+`. Will this work? Taken in isolation, *no*. If this were written as a recursive method, how would it ever terminate? But if you take it in combination with basing our number system on `NAUGHT`, we see that as we decompose numbers, we eventually reach numbers that have no numbers to their left, no numbers to their right, or in  the case of `NAUGHT`, no numbers to the left or right. Try working out `NAUGHT` + `NAUGHT`, `NAUGHT + ONE`, `ONE + NAUGHT`, and `ONE + ONE` to see how it works.
+Hmmmmm. Defining "plus" in terms of plus. Will this work? Taken in isolation, *no*. If this were written as a recursive method, how would it ever terminate? But if you take it in combination with basing our number system on NAUGHT, we see that as we decompose numbers, we eventually reach numbers that have no numbers to their left, no numbers to their right, or in  the case of NAUGHT, no numbers to the left or right. Try working out `NAUGHT + NAUGHT`, `NAUGHT + ONE`, `ONE + NAUGHT`, and `ONE + ONE` to see how it works.
 
 Of course, we like to automate things. Now that we are comfortable the algorithm terminates for our test numbers, we can write a method for our `SurrealNumber` class:
 
@@ -174,15 +172,15 @@ Of course, we like to automate things. Now that we are comfortable the algorithm
         (numbers_to_my_right.map { |right| right + other } | other.numbers_to_my_right.map { |right| right + self })
     end
 
-Let's try our `+` operator:
+Let's try our plus operator:
 
     MINUS_TWO + ONE == MINUS_ONE # => true
     MINUS_TWO + ONE == NAUGHT # => false
 
 Much better! You can verify for yourself that addition works just as you'd expect it for `TWO + TWO == FOUR` and everything else you can try. Let's implement another operator. How does negation work? If we imagine the relationship `x = -y`, we conclude:
 
-1.  If some number `y_left` is to the left of `y`, then `-y_left` is to the *right* of `x`;
-2.  If some number `y_right` is to the right of `y`, then `-y_right` is to the *left* of `x`.
+1.  If some number `y_left` is to the left of y, then `-y_left` is to the *right* of x;
+2.  If some number `y_right` is to the right of y, then `-y_right` is to the *left* of x.
 
 Try it out for yourself, or just use the obvious implementation:
 
@@ -190,15 +188,15 @@ Try it out for yourself, or just use the obvious implementation:
       numbers_to_my_right.map { |r| -r } ^ numbers_to_my_left.map { |l| -l }
     end
     
-I won't write everything out here, but with a little thought you can work out how to perform multiplication, division and every other operation on our numbers. Although the representation looks weird to someone used to thinking in binary or decimal representations, our numbers can do everything a familiar number can do.
+And given plus and negation, subtraction is trivial. I won't write everything out here, but with a little thought you can work out how to perform multiplication, division and every other operation on our numbers. Although the representation looks weird to someone used to thinking in binary or decimal representations, our numbers can do everything a familiar number can do.
 
 And more.
 
 **What lies between and beyond?**
 
-What is the number `NAUGHT ^ ONE`? Let me give you a hint: `(NAUGHT ^ ONE) + (NAUGHT ^ ONE) == ONE`! You can experiment with `NAUGHT ^ ONE`, `-(NAUGHT ^ ONE)`, and various combinations of this number and our existing integers. You will come to the conclusion that `NAUGHT ^ ONE` is the number `1/2` or `HALF`.
+What is the number `NAUGHT ^ ONE`? Let me give you a hint: `(NAUGHT ^ ONE) + (NAUGHT ^ ONE) == ONE`! You can experiment with `NAUGHT ^ ONE`, `-(NAUGHT ^ ONE)`, and various combinations of this number and our existing integers. You will come to the conclusion that `NAUGHT ^ ONE` is the number 1/2.
 
-And if you do some more experimenting, you can derive `1/4`, `3/8`, and so on. These fractions automatically work for the operations we've already defined for integers. That's a bonus!
+And if you do some more experimenting, you can derive 1/4, 3/8, and so on. These fractions automatically work for the operations we've already defined for integers. That's a bonus!
 
 Amazingly, our number representation goes much further. You can use it to represent the infinities, reals, transfinite ordinals, infinitesimals, and more. So clearly, this representation is much, much more powerful than either "lists of length n" or binary numbers.
 
