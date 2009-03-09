@@ -210,7 +210,7 @@ Let's think back to the "lists of length n" implementation of numbers. It has a 
 
 If you desire, you can define addition and subtraction and multiplication and division and so forth with "lists of length n." But now the simplicity starts to fall down. Although its base, core case is simple, as you start to do even a little more with it, the result is no longer simple. And it falls down completely when we try to talk about negative numbers, or reals, or just about anything else. We paste special cases onto it and if we dared to try anything ambitious, we end up greenspunning some other representation on top of it.
 
-> Elegance consist of building something out of a small core of representations *that scale well*. It is not enough that they be simple, the complexity of what you build must not grow uncontrollably as you try to solve bigger and more complex problems.
+> Elegance consists of building something out of a small core of representations *that scale well*. It is not enough that they be simple, the complexity of what you build must not grow uncontrollably as you try to solve bigger and more complex problems.
 
 When we talk about algorithmic complexity, we talk about how the cost of deriving the solution grows with the magnitude of the problem. We say things like "That algorithm is Oh En Squared" to say that when the size of the problem doubles, the cost of solving it quadruples. We also know there is some constant, base cost as well. But we rarely talk about it, because we know that if the cost of deriving a solution grows faster than the size of the problem grows, the constant base cost quickly becomes irrelevant. We only care about it for very trivial problems or for algorithms where the cost of deriving a solution grows extremely slowly (sometimes more slowly than the size of the problem grows).
 
@@ -222,7 +222,7 @@ Taking a whack at a long-deceased horse, we see how to respond when people tell 
 
 This is absolutely true if the simple representation you start with scales well, if the complexity of your implementation grows slowly with  the complexity of the problem you are trying to solve. In the case of Java, we have discovered that it does not scale well to solving more complex problems. The complexity of the implementation grows much faster than the complexity of the problem being solved, and thus the resulting program is much more complex than the requirements would suggest.
 
-This leads me to my personal definition of elegance. Elegance consist of building something out of a small core of representations *that scale well*. It is not enough that they be simple, the complexity of what you build must not grow uncontrollably as you try to solve bigger and more complex problems.
+This leads me to my personal definition of elegance. Elegance consists of building something out of a small core of representations *that scale well*. It is not enough that they be simple, the complexity of what you build must not grow uncontrollably as you try to solve bigger and more complex problems.
 
 *(Is that everything we need to know about choosing representations? That they be maximally elegant? No! I hope to discuss the question of how well representations should or shouldn't map to our mental models in a future post.)*
 
