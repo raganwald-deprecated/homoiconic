@@ -95,7 +95,9 @@ That you should refactor it into this:
 
 [![A Refactored Rails App](http://farm4.static.flickr.com/3440/3348520567_3030b63a31_o.png)](http://www.flickr.com/photos/raganwald/3348520567/ "A Refactored Rails App")
 
-Why? Why not??
+**Why? Why not??**
+
+*Join the discussion*: [Hacker News](http://news.ycombinator.com/item?id=513472); [Proggit](http://www.reddit.com/r/programming/comments/8441o/i_have_a_question_about_organizing_projects/); and [Rails on Reddit](http://www.reddit.com/r/rails/comments/8441z/i_have_a_question_about_organizing_projects/).
 
 ---
 	
