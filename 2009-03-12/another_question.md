@@ -61,7 +61,7 @@ Would you suggest they rewrite things like this?
         ...
       end
       
-      def retrieve
+      def retrieve(identifier)
         ...
       end
       
@@ -79,7 +79,7 @@ Would you suggest they rewrite things like this?
         ...
       end
       
-      def retrieve
+      def retrieve(identifier)
         ...
       end
       
