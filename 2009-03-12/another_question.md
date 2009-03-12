@@ -97,7 +97,7 @@ That you should refactor it into this:
 
 **Why? Why not??**
 
-*Join the discussion*: [Hacker News](http://news.ycombinator.com/item?id=513472); [Proggit](http://www.reddit.com/r/programming/comments/8441o/i_have_a_question_about_organizing_projects/); and [Rails on Reddit](http://www.reddit.com/r/rails/comments/8441z/i_have_a_question_about_organizing_projects/).
+*Join the discussion on [Hacker News](http://news.ycombinator.com/item?id=513472)*.
 
 ---
 	
