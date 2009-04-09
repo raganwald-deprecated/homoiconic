@@ -50,7 +50,7 @@ What we are seeing is the account lying to us about its responsibilities.
 Array#sum
 ---
 
-The other day I was [grousing](http://github.com/raganwald/homoiconic/blob/master/2009-04-08/sick.md#readme "I'm Sick of This Shit") about collisions between different people implementing Array#sum. However, even if you had a good way to implement Array#sum such that various gems don't conflict with each other, I still have objections to implementing Array sum as I've seen it implemented. In short, the Array#sum I've seen works like this:
+The other day I was [grousing](http://github.com/raganwald/homoiconic/blob/master/2009-04-08/sick.md#readme "I'm Sick of This Shit") about collisions between different people implementing Array#sum. However, even if you had a good way to implement Array#sum such that various gems don't conflict with each other, I still have objections to implementing Array#sum as I've seen it implemented. In short, the Array#sum I've seen works like this:
 
     [1,2,3].respond_to?(:sum)
       => true
@@ -71,7 +71,16 @@ That's our code smell. Not all arrays can be summed, but they all claim to respo
 
 What is an Array? A container, nothing more. That's its responsibility, that's what it does. Operations like #inject and #map are part of its responsibility, that's stuff you can do to all containers, and the container itself knows how to implement them. Good.
 
-But what about #sum? This requires knowing something about the contents of a container. Who ought to be responsible for knowing how to do things with the contents of containers? How about the entities that put things into the container and take things out of the container? In short, instead of writing Array#sum, we ought to be writing methods like Client#sum\_account\_balances. Or perhaps the Client entity ought to be injecting a #sum method into some arrays. Not all accounts write cheques, so only some account instances should implement #write\_cheque. Likewise, *not all arrays can be summed, so only some arrays should implement #sum*.
+But what about #sum? This requires knowing something about the contents of a container. Who ought to be responsible for knowing how to do things with the contents of containers? How about the entities that put things into the container and take things out of the container?
+
+Instead of writing Array#sum, we could be writing:
+
+* Methods like Client#sum\_account\_balances.
+* Or perhaps the Client entity ought to be injecting a #sum method into some arrays.
+* Or perhaps we need an ArrayOfBalances class that knows how to sum itself.
+* Or perhaps we could call `ArrayGoodies.sum(an_array)`.
+
+Not all accounts write cheques, so only some account instances should implement #write\_cheque. Likewise, *not all arrays can be summed, so at most some arrays should implement #sum*.
 
 Someone asked wither `an_array_instance.sum()` is really necessary given that we can write a convenience method `sum(an_array_instance)`. Now you know my answer: `sum(an_array_instance)` is a better choice than `an_array_instance.sum()`, however `an_array_instance.map(...)` is a better choice than `map(an_array_instance, ...)`. So to put an final exclamation point on things, *I think it is a smell to implement Array#sum for all arrays, even if it were being added to the standard core libraries and no metaprogramming hijinkery were involved.*
 
