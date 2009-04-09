@@ -47,8 +47,7 @@ If we write:
 
 What we are seeing is the account lying to us about its responsibilities.
 
-Array#sum
----
+**Array#sum**
 
 The other day I was [grousing](http://github.com/raganwald/homoiconic/blob/master/2009-04-08/sick.md#readme "I'm Sick of This Shit") about collisions between different people implementing Array#sum. However, even if you had a good way to implement Array#sum such that various gems don't conflict with each other, I still have objections to implementing Array#sum as I've seen it implemented. In short, the Array#sum I've seen works like this:
 
