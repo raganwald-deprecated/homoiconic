@@ -9,7 +9,7 @@ A colleague mentioned to me that he was having a problem with his Rails project.
 
 But at some point, it stopped working because he was somehow loading a newer version of the gem. To cut a long story short, although he wanted version X of the gem, something else he was loading was loading version Y of the gem where X < Y, and this broke plugin Z, which works with X but not Y.
 
-Confused? Or is this [vomitorium](http://en.wikipedia.org/wiki/Vomitorium) known as "gem dependencies" old hat to you?
+Confused? Or is this [vomitorium](http://www.straightdope.com/columns/read/2421/were-there-really-vomitoriums-in-ancient-rome) known as "gem dependencies" old hat to you?
 
 I ordinarily wouldn't have done anything but try to utter a sympathetic grunt. Talking about someone's gem dependencies is a lot like talking about the perceived shortcomings of a friend's spouse. At a certain point, you realize that the advice to "Just walk away" will *not* be met with a hoarse cry of thanks and grateful pumping of your hand.
 
