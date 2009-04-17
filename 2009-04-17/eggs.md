@@ -5,7 +5,7 @@ We need the eggs
 
 (With apologies to [Woody Allen](http://www.youtube.com/watch?v=W-M3Q2zhGd4 "YouTube - Annie Hall ending"))
 
-A colleague mentioned to me that he was having a problem with his Rails project. His project requires a certain version of a gem. He dutifully uses `config_gem` to load that version of the gem into his project and all was right with the world for a time.
+A colleague mentioned to me that he was having a problem with his Rails project. His project requires a certain version of a gem. He dutifully uses `config.gem` to load that version of the gem into his project and all was right with the world for a time.
 
 But at some point, it stopped working because he was somehow loading a newer version of the gem. To cut a long story short, although he wanted version X of the gem, something else he was loading was loading version Y of the gem where X < Y, and this broke plugin Z, which works with X but not Y.
 
