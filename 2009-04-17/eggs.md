@@ -1,7 +1,7 @@
 We need the eggs
 ===
 
-> It was great programming Ruby again and I realized what a terrific language it was and how much fun it was just knowing it and I thought of that old joke, you know, the, this, this guy goes to a psychiatrist and says, 'Doc, uh, my brother's crazy, he thinks he's a chicken,' and uh, the doctor says, 'well why don't you turn him in?' And the guy says, 'I would, but I need the eggs.' Well, I guess that's pretty much now how I feel about languages. You know, they're totally irrational and crazy and absurd and, but uh, I guess we keep going through it...because...most of us need the eggs.
+> It was great programming Ruby again and I realized what a terrific language it was and how much fun it was just knowing it and I thought of that old joke, you know, the, this, this guy goes to a psychiatrist and says, 'Doc, uh, my brother's crazy, he thinks he's a chicken,' and uh, the doctor says, 'well why don't you turn him in?' And the guy says, 'I would, but I need the eggs.' Well, I guess that's pretty much now how I feel about programming. You know, it's totally irrational and crazy and absurd and, but uh, I guess we keep going through it...because...most of us need the eggs.
 
 (With apologies to [Woody Allen](http://www.youtube.com/watch?v=W-M3Q2zhGd4 "YouTube - Annie Hall ending"))
 
