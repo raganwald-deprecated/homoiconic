@@ -125,7 +125,7 @@ I have previously said that I consider this highly suspect. Numeric is an *imple
 
 And let's face it, you don't *really* think numbers know anything about Scuba, do you? It's just a case of thinking that the DSL reads more clearly writing `33.fsw` instead of `33.extend(FeetSeawater)` or `FeetSeawater.new(33)`. That's a win, and we don't need to pretend it's good OO to do it.
 
-It's okay to like OOP, and it's okay to like DSLs. Sometimes good DSLs are also good OOP. Sometimes they aren't. I personally reconcile their differences by thinking that I want to *implement* a DSL with good OOP, but I don;t necessarily want to write a DSL that actually *is* good OOP.
+It's okay to like OOP, and it's okay to like DSLs. Sometimes good DSLs are also good OOP. Sometimes they aren't. I personally reconcile their differences by thinking that I want to *implement* a DSL with good OOP, but I don't necessarily want to write a DSL that actually *is* good OOP.
 
 **The responsibility side of the coin** 
 
