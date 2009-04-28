@@ -53,7 +53,7 @@ No doubt you were inspired by a popular web development framework. You could wri
 
 Now you have the seeds of a little DSL for writing a scuba planning application. Have fun with m-values, compartments, bubble formation, gradients, and everything else that makes decompression a nerd's paradise :-)
 
-[![Rumpole of the Bailey](http://rumpole.jpg)](http://www.amazon.com/gp/product/014006768X?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=014006768X "Rumpole of the Bailey") 
+[![Rumpole of the Bailey](http:rumpole.jpg)](http://www.amazon.com/gp/product/014006768X?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=014006768X "Rumpole of the Bailey") 
 
 **So what about extension methods?**
 
