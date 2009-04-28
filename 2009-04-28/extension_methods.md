@@ -53,16 +53,16 @@ No doubt you were inspired by a popular web development framework. You could wri
 
 Now you have the seeds of a little DSL for writing a scuba planning application. Have fun with m-values, compartments, bubble formation, gradients, and everything else that makes decompression a nerd's paradise :-)
 
-[![Rumpole of the Bailey](http://github.com/raganwald/homoiconic/raw/master/2009-04-28/rumpole.jpg)](http://www.amazon.com/gp/product/014006768X?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=014006768X "Rumpole of the Bailey") 
-
-**So what about extension methods?**
-
 The known problem with the approach above is that changes to the Numeric class are global. And by global, I mean really, really global. If somebody else writes a gem that implements #fsw or #ata for Numeric, you code is incompatible with their code. You really only need those changes for your code, but classic Ruby meta-programming forces you to make those changes for everybody.
 
 Here are two questions to ask yourself:
 
 * If you think it's a bad idea to write your application with global variables ($foo, $bar), why is it a good idea to write your application with global monkey-patches?
 * If you think that it is a bad idea to write your application using global procedures and functions instead of encapsulating methods in classes, why is it a good idea to write your application with global monkey-patches?
+
+[![Rumpole of the Bailey](http://github.com/raganwald/homoiconic/raw/master/2009-04-28/rumpole.jpg)](http://www.amazon.com/gp/product/014006768X?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=014006768X "Rumpole of the Bailey") 
+
+**So what about extension methods?**
 
 By way of contrast, extension methods allow you to write something roughly like this:
 
@@ -127,9 +127,9 @@ And let's face it, you don't *really* think numbers know anything about Scuba, d
 
 It's okay to like OOP, and it's okay to like DSLs. Sometimes good DSLs are also good OOP. Sometimes they aren't. I personally reconcile their differences by thinking that I want to *implement* a DSL with good OOP, but I don;t necessarily want to write a DSL that actually *is* good OOP.
 
-**The OOP side of the coin** 
+**The responsibility side of the coin** 
 
-Let's take a different view. Instead of thinking of `33.fsw` as a DSL that isn't meant to be canonically good OOP, let's presume we are trying to write canonically good OOP. There are folks who think Numeric ought to know about feet of seawater and days and minutes and (for all I know) gallons of pond water per hour. Let's look at it from their point of view.
+Let's take a different view. Instead of thinking of `33.fsw` as a DSL that isn't meant to be canonically good OOP, let's presume we are trying to write canonically good OOP. There are folks who think Numeric ought to be responsible for knowing about feet of seawater and days and minutes and (for all I know) gallons of pond water per hour. Let's look at it from their point of view.
 
 So we want to have Numeric know how to convert itself to feet of seawater. This seems to do it:
 
@@ -149,9 +149,11 @@ So we want to have Numeric know how to convert itself to feet of seawater. This 
 
 At run time, there is a Numeric class and it knows about conversion to feet of sea water. If you have a Smalltalk-style inspector, your view of the Numeric class is fully reconciled with its behaviour. You can see the methods it implements and the code for each method. Life is good.
 
-However. Ruby is not Smalltalk. In Smalltalk, you primarily interact with your code through the live inspectors at runtime. So there is one canoncial source of information about the Numeric class. Ruby is still very much a text file based language. If we write the above code and stick it in our Scuba Planning application, there are now multiple sources of information about the Numeric class: The standard library, the methods you added, the methods other gems or frameworks added, and anything else that happens at run time. In the above example, the code for Numeric#fsw is ephemeral: it is discarded after it is interpreted and cannot be recovered without [white magic](http://gilesbowkett.blogspot.com/2008/02/activerecord-ruby2ruby-this-is-where.html "Giles Bowkett: ActiveRecord & Ruby2Ruby: This Is Where The Magic Happens").
+However. Ruby is not Smalltalk. In Smalltalk, you primarily interact with your code through the live inspectors at runtime. So there is one canoncial source of information about the Numeric class. Ruby is still very much a text file based language. If we write the above code and stick it in our Scuba Planning application, there are now multiple sources of information about the Numeric class: The standard library, the methods you added, the methods other gems or frameworks added, and anything else that happens at run time.
 
-If you are using Ruby on Rails, the code for Numeric can be found in:
+(In the above example, the code for Numeric#fsw is ephemeral: it is discarded after it is interpreted and cannot be recovered without [white magic](http://gilesbowkett.blogspot.com/2008/02/activerecord-ruby2ruby-this-is-where.html "Giles Bowkett: ActiveRecord & Ruby2Ruby: This Is Where The Magic Happens").)
+
+If you are using Ruby on Rails, you could organize yourself so that the code for Numeric would be found in:
 
 1.  The Standard library
 2.  ActiveSupport::CoreExtensions::Numeric::Bytes
@@ -164,15 +166,27 @@ So we are saying "Numeric is responsible for W and X and Y and Z and so forth," 
 
 This is roughly the same as using composition and delegation. The Numeric class is no longer a nice, clean piece of OOP with a single well-understood responsibility. However, modules like ActiveSupport::CoreExtensions::Numeric::Bytes and ScubaPlanner::CoreExtensions::Numeric::Conversions each have a single, well-understood responsibility. Numeric is now a composite of responsibilities just like an ActiveRecord::Base instance that delegates most of its methods to related models.
 
-This is not inherently bad, it's just that with global scope for changes to Numeric, it all goes pear-shaped when applications start including lots of gems each of which is strongly opinionated about what to aggregate into the same shared global classes.
+This is a valid way to do things, provided you honestly think Numerics need to know about time and conversions to feet of seawater.  Things get interesting when you have cross-cutting concerns. For example, if you want conversions between six different classes (A, B, C, D, E, and F), each of the six classes has to know how to convert itself to the other five classes, creating a monster of coupling dependency at run time.
 
-**Is this OO?**
+The solution for this is evident in the code samples above: By aggregating classes from modules, you can write (A, B, C, D, E, and F) without conversions and move the conversions into separate modules. This is the approach taken by the popular framework. If you are looking at the class at runtime, it is a confusing jumble of methods. For example:
 
-I don't think being OO is in and of itself desirable. But it is useful to know when you are programming to a style and when you are not. Amongst other things, I find programs that are consistent in their application of style are easier to follow than those which might use OO in one place, FP in another, and imperative in yet another. I want to scream "Make up your mind already!" when I see code like that.
+    33.methods.sort
+      => ["%", "&", "*", "**", "+", "+@", "-", "-@", "/", "<", "<<", "<=", "<=>", "==", "===", "=~", ">", ">=", ">>", "JSON", "[]", "^", "__id__", "__send__", "`", "abs", "acts_like?", "ago", "b64encode", "between?", "blank?", "breakpoint", "byte", "bytes", "ceil", "chr", "class", "class_eval", "clone", "coerce", "copy_instance_variables_from", "daemonize", "day", "days", "dclone", "debugger", "decode64", "decode_b", "deep_clone", "denominator", "display", "div", "divmod", "downto", "dup", "duplicable?", "enable_warnings", "encode64", "enum_for", "eql?", "equal?", "even?", "exabyte", "exabytes", "extend", "extend_with_included_modules_from", "extended_by", "floor", "fortnight", "fortnights", "freeze", "from_now", "frozen?", "gcd", "gcdlcm", "gigabyte", "gigabytes", "hash", "hour", "hours", "id", "id2name", "inspect", "instance_eval", "instance_exec", "instance_of?", "instance_values", "instance_variable_defined?", "instance_variable_get", "instance_variable_names", "instance_variable_set", "instance_variables", "integer?", "is_a?", "is_haml?", "j", "jj", "kilobyte", "kilobytes", "kind_of?", "lcm", "load_with_new_constant_marking", "megabyte", "megabytes", "metaclass", "method", "methods", "minute", "minutes", "modulo", "month", "months", "multiple_of?", "next", "nil?", "nonzero?", "numerator", "object_id", "odd?", "ordinalize", "petabyte", "petabytes", "power!", "prec", "prec_f", "prec_i", "present?", "pretty_inspect", "pretty_print", "pretty_print_cycle", "pretty_print_inspect", "pretty_print_instance_variables", "private_methods", "protected_methods", "public_methods", "quo", "rdiv", "remainder", "remove_subclasses_of", "require", "require_association", "require_dependency", "require_library_or_gem", "require_or_load", "respond_to?", "returning", "round", "rpower", "second", "seconds", "send", "silence_stderr", "silence_stream", "silence_warnings", "since", "singleton_method_added", "singleton_methods", "size", "step", "subclasses_of", "succ", "suppress", "taguri", "taguri=", "taint", "tainted?", "tap", "terabyte", "terabytes", "times", "to_a", "to_bn", "to_enum", "to_f", "to_i", "to_int", "to_json", "to_param", "to_query", "to_r", "to_s", "to_sym", "to_utc_offset_s", "to_yaml", "to_yaml_properties", "to_yaml_style", "truncate", "try", "type", "unloadable", "untaint", "until", "upto", "week", "weeks", "with_options", "xchr", "year", "years", "zero?", "|", "~"]
+      
+However, if you are looking at the *source code*, the methods are actually implemented by modules that have much more defined responsibilities:
+
+    33.class.ancestors
+      => [Fixnum, Integer, JSON::Ext::Generator::GeneratorMethods::Integer, ActiveSupport::CoreExtensions::Integer::Time, ActiveSupport::CoreExtensions::Integer::Inflections, ActiveSupport::CoreExtensions::Integer::EvenOdd, Precision, Numeric, ActiveSupport::CoreExtensions::Numeric::Conversions, ActiveSupport::CoreExtensions::Numeric::Bytes, ActiveSupport::CoreExtensions::Numeric::Time, Comparable, Object, JSON::Ext::Generator::GeneratorMethods::Object, PP::ObjectMixin, ActiveSupport::Dependencies::Loadable, InstanceExecMethods, Base64::Deprecated, Base64, Kernel]
+
+So from a responsibility perspective, if you think of objects and classes in Ruby as being aggregates of modules that have well-defined single responsibilities, all is well with this approach. For most people, the only irritation about doing this is that with global scope for changes to Numeric, it all goes pear-shaped when applications start including lots of gems each of which is strongly opinionated about what to aggregate into the same shared global classes.
+
+**Is responsibility all there is to OO?**
 
 The principle we've discussed so far is the Single Responsibility Principle. Another of interest is Encapsulation. Encapsulation often reveals itself in an OO program though Polymorphism. If you send an #in\_ata method to an object and it might divide itself by 33 (feet of seawater) or 34 (feet of fresh water), you have polymorphism, and you have encapsulated the conversion in the object.
 
 The monkey-patching approach above preserves this property of a program: We can easily write a FeetFreshWater module and add a #ffw method to Numeric so that we can handle fresh water dive plans as well as sea water dive plans. Code calling #in\_ata will never know the difference.
+
+Polymorphism is an important property of OO programs, and polymorphism in Ruby comes from method calls.
 
 **So what's wrong with Extension Methods?**
 
