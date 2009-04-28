@@ -180,7 +180,7 @@ However, if you are looking at the *source code*, the methods are actually imple
 
 So from a responsibility perspective, if you think of objects and classes in Ruby as being aggregates of modules that have well-defined single responsibilities, all is well with this approach. For most people, the only irritation about doing this is that with global scope for changes to Numeric, it all goes pear-shaped when applications start including lots of gems each of which is strongly opinionated about what to aggregate into the same shared global classes.
 
-**Is "responsibility" all there is to OO?**
+**Is responsibility all there is to OO?**
 
 The principle we've discussed so far is the Single Responsibility Principle. Another of interest is Encapsulation. Encapsulation often reveals itself in an OO program though Polymorphism. If you send an #in\_ata method to an object and it might divide itself by 33 (feet of seawater) or 34 (feet of fresh water), you have polymorphism, and you have encapsulated the conversion in the object.
 
