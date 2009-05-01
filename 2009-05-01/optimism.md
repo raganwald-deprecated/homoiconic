@@ -93,9 +93,11 @@ Let's think about those three things whenever we look at someone or something. L
 
 And let's do it when we talk about things as well as about people. For example, I can say that *Ruby is a great language, it has changed the world. Mind you, I am not a fan of this or that specific feature of Ruby, and here's what I'm doing to change it, which pretty much demonstrates that I think the problem is temporary.*
 
-Praise the language, criticize the features, then fix them. THAT is optimism, and it's what I hope we will all practice between now and RubyFringe 3.
+**Praise the language, criticize the features, then fix them**. Isn't that the essence of hacking, an optimism that the state of the world is not permanent, that we can change things and we will? That we can invent new and better ways to do things? Optimism is what drives us forward to create and change. The pessimists are the ones who cling to legacy technologies and old ways of doing things. They accept the bad things as permanent and deny themselves the ability to change things, to fix things.
 
-Thank you so much for listening. I'm optimistic that **we**--*pause*--**will continue**--*pause*--to change **the world**.
+But we believe the good things, our curiosity, our ability to tinker and hack and create, we believe those things are permanent and are ours, we believe it is personal and general. And we believe we take those personal and general and permanent hacking and changing skills and apply them to making specific bad things that other people foist on us go away, we make them temporary, we isolate them in specific silos where they don't weigh upon our spirit.
+
+THIS spirit of confidence and change is optimism, and it's what I hope we will all practice between now and when I see you again at RubyFringe 3. Thank you so much for listening. I'm optimistic that **we**--*pause*--**will continue**--*pause*--to change **the world**.
 
 ---
 
