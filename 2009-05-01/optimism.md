@@ -104,6 +104,12 @@ THIS spirit of confidence and change is optimism, and it's what I hope we will a
 *Also, if this sounds vaguely familiar to you, thank you for reading my old blog "raganwald." One of my personal favourite posts was called "[How to use a blunt instrument to sharpen your saw](http://weblog.raganwald.com/2007/10/how-to-use-blunt-instrument-to-sharpen.html "How to use a blunt instrument to sharpen your saw")." The whole point of the article was to approach things with the confidence that you could get something positive out of them. Well, now you know how to have that confidence, it's to be an optimist and to think about the world in an optimistic way, and here's a very specific plan of action for being optimistic.*
 
 ---
+
+*Mike Davenport from Hacker News comments-*
+
+"What I really enjoyed about this essay was that it talked about using research to come to an explicit algorithm for learning optimism. I could never swallow the advice of many optimistic people in my life since they [through no fault of their own, mind you ;)] were not usually hackers. As such, they would explain in broad and nebulous terms how they achieved said happiness, which makes sense, since--according to the essay--they see positives as general and permanent. I would always focus on their seemingly obvious contradictions, without really noticing my own. I'm glad someone finally pointed that out to me."
+
+---
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
 
