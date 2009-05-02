@@ -101,6 +101,11 @@ THIS spirit of confidence and change is optimism, and it's what I hope we will a
 
 ---
 
+*Mike Davenport from Hacker News comments-*
+"What I really enjoyed about this essay was that it talked about using research to come to an explicit algorithm to learn optimism. I could never swallow the advice of many optimistic people in my life since they [through no fault of their own, mind you ;)] were not usually hackers. As such, they would explain in broad and nebulous terms how they achieved said happiness, which makes sense, since--according to the essay--they see positives as general and permanent. I would always focus on their seemingly obvious contradictions, without really noticing my own. I'm glad someone finally pointed that out to me."
+
+---
+
 *Of course, there will not be a RubyFringe 2.o conference, so I am sharing the speech I wrote with you in my unblog. Instead, Pete Forde is curating a different unconference, [FutureRuby](http://futureruby.com/ "FutureRuby"). Check it out!*
 
 ---
