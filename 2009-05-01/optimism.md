@@ -1,8 +1,8 @@
 **Preamble**
 
-*Thank you, thank you. I am really grateful to hear such enthusiastic applause from people I admire so much. And thank you, Curator [Pete Forde](http://www.peteforde.com/ "Pete Forde"), for inviting me back to speak at **RubyFringe 2.0**. Last year I kind of invited myself to give a presentation at [RubyFringe](http://rubyfringe.com/ "RubyFringe: Deep nerd tech with punk rock spirit."), and as I said at the time, I wasn't sure if the conference was about the fringe of Ruby Culture or about the Fringe of Ruby itself.*
+*Thank you, thank you. I am really grateful to hear such enthusiastic applause from people I admire so much. And thank you, Curator [Pete Forde](http://www.peteforde.com/ "Pete Forde"), for inviting me back to speak at **RubyFringe 2.0**. Last year I kind of invited myself to give a presentation at [RubyFringe](http://rubyfringe.com/ "RubyFringe: Deep nerd tech with punk rock spirit."), and as I said at the time, I wasn't sure if the conference was about the fringe of Ruby Culture or about the fringe of Ruby itself.*
 
-*I went with discussing the Fringe of the Ruby Language, namely Ruby that writes Ruby ("[Ruby.rewrite(Ruby)](http://www.infoq.com/presentations/braithwaite-rewrite-ruby "InfoQ: Ruby.rewrite(Ruby)")"). So I think I had pretty much the most boring talk of the conference. And I did so with slides that consisted entirely of screen shots from inside TextMate. On top of that, I didn't get much sleep before my talk and I had to follow [Giles Bowkett](http://gilesbowkett.blogspot.com/ "Giles Bowkett") and [Damien Katz](http://damienkatz.net/ "Damien Katz").*
+*I went with discussing the fringe of the Ruby Language, namely [Ruby.rewrite(Ruby)](http://www.infoq.com/presentations/braithwaite-rewrite-ruby "InfoQ: Ruby.rewrite(Ruby)"). So I think I had pretty much the most boring talk of the conference. And I did so with slides that consisted entirely of screen shots from inside TextMate. On top of that, I didn't get much sleep before my talk and I had to follow [Giles Bowkett](http://gilesbowkett.blogspot.com/ "Giles Bowkett") and [Damien Katz](http://damienkatz.net/ "Damien Katz").*
 
 *After that, I considered myself lucky to get out of the room without having to duck any flying produce, much less be invited back for another round. But here we are, and this time I'm determined to give the most unexciting talk of the conference again. There are no slides, I'm just going to read a speech the old fashioned way.*
 
@@ -19,7 +19,7 @@ Some years ago I was in an especially low point and I happened upon a book that 
 
 **Learned Optimism**
 
-The book is "[Learned Optimism](http://www.amazon.com/gp/product/1400078393?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1400078393 "Amazon.com: Learned Optimism: How to Change Your Mind and Your Life: Martin E. P. Seligman: Books")," by Dr. Martin Seligman. I'm not going to stand here and read the book aloud, you know that. But I am going to simplify it down to a few points, and you might very well think the book is too simplistic to be worth reading. trust me on this one, you should not judge a book solely by whether you like what I said about it. Read it for yourself and decide.
+The book is "[Learned Optimism](http://www.amazon.com/gp/product/1400078393?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1400078393 "Amazon.com: Learned Optimism: How to Change Your Mind and Your Life: Martin E. P. Seligman: Books")," by Dr. Martin Seligman. I'm not going to stand here and read the book aloud, you know that. But I am going to simplify it down to a few points, and you might very well think the book is too simplistic to be worth reading. Trust me on this one, you should not judge a book solely by whether you like what I said about it. Read it for yourself and decide.
 
 So Dr. Seligman did some research on optimism and success, and the results surprised him, and after a lot of back-and-forth with colleagues and more research, he came up with a theory and a side-business of selling tests that predict whether salespeople are going to be successful. I want to emphasize the word **research**, because the plural of anecdote is not data. No matter how many nice people like me tell you something from our experience, it is not the same thing as what Dr. Seligman does to come up with this stuff.
 
@@ -35,7 +35,7 @@ In his book, he explains that when we make up an explanation for things, we have
 
 So how do I explain his not liking my work? If I though there was something inherently wrong with andand, or even more personally, something inherently wrong with me as a developer that I could write something like andand, that's personalizing the explanation. "He didn't like it because **I** something-something-something."
 
-On the other hand, if I explain his not liking my work as reflecting upon him and his values--and I don't mean this in a  negative way--that's depersonalizing the explanation. "He didn't like it because **he** something-something-something." For the record, I depersonalize criticism of andand very easily, so feel free to tell me what you think. Mostly, I think that people who don't like andand have a particular thing they want to do with their code, it is definitely not about me. maybe they just think that [pervasive null checks are a code smell](http://avdi.org/devblog/2008/10/30/self-confident-code/ "Writing Self-Confident Code | Virtuous Code"). hell, *I* think that, sometimes I write [hopelessly egocentric blog posts about the trouble with nil](http://github.com/raganwald/homoiconic/blob/master/2009-02-02/hopeless_egocentricity.md "The Hopelessly Egocentric Blog Post").
+On the other hand, if I explain his not liking my work as reflecting upon him and his values--and I don't mean this in a  negative way--that's depersonalizing the explanation. "He didn't like it because **he** something-something-something." For the record, I depersonalize criticism of andand very easily, so feel free to tell me what you think. Mostly, I think that people who don't like andand have a particular thing they want to do with their code, it is definitely not about me. Maybe they just think that [pervasive null checks are a code smell](http://avdi.org/devblog/2008/10/30/self-confident-code/ "Writing Self-Confident Code | Virtuous Code"). Hell, *I* think that, sometimes I write [hopelessly egocentric](http://github.com/raganwald/homoiconic/blob/master/2009-02-02/hopeless_egocentricity.md "The Hopelessly Egocentric Blog Post") blog posts about the trouble with nil.
 
 So there's the first thing, *personal vs. impersonal*. So are optimists more or less likely to "take things personally?" I'm not going to say what he says just yet, but when I was looking at that, I didn't know what to think. If you read books by self-help gurus, a lot of them talk quite a bit about taking responsibility for everything that happens in your life. It seems they advocate taking everything personally. Yet people who "take things too personally" are often morose, depressed, and defensive.
 
@@ -69,7 +69,7 @@ Do I need to explain that optimists are the opposite, cheerfully inconsistent? T
 
 And if you point out the contradiction in their explanations, they see no contradiction. To them, the bad stuff really isn't about them, it's just that one thing that one time.
 
-The book shocked me, I read it a bunch of times and actually bought copies for other people. besides myself, I knew lots of people who fit Dr. Seligman's pessimist theory, I knew this because they cried on my shoulder about their long-running, personal flaws that affected every part of their lives. They were personal, general, and permanent on the subject of unhappiness. And on the subject of happiness, they were impersonal, specific, and temporary.
+The book shocked me, I read it a bunch of times and actually bought copies for other people. Besides myself, I knew lots of people who fit Dr. Seligman's pessimist theory, I knew this because they cried on my shoulder about their long-running, personal flaws that affected every part of their lives. They were personal, general, and permanent on the subject of unhappiness. And on the subject of happiness, they were impersonal, specific, and temporary.
 
 So there you have it. One predictor of success is this characteristic Dr. Seligman calls optimism, which he measures my testing whether you explain good or bad events as being personal, general, and permanent.
 
@@ -85,8 +85,6 @@ This makes other people feel good, and it gets your point across, and we need to
 
 Honestly, what the fuck? This is a recipe for making people depressed. It's also bad for *us*. When we criticize other people in a general and permanent way, we close ourselves off from learning from them. Saying that so-and-so is a permanent bozo is a subtle way of explaining that your life always has had a bozo in it and always will have a bozo in it. When we criticize that person's specific actions, we are saying that there was something temporary and specific and impersonal in our life, but it's over now. That's a win for ourselves as people.
 
-(If this sounds vaguely familiar to you, thank you for reading my old blog "raganwald." One of my personal favourite posts was called "[How to use a blunt instrument to sharpen your saw](http://weblog.raganwald.com/2007/10/how-to-use-blunt-instrument-to-sharpen.html "How to use a blunt instrument to sharpen your saw")." The whole point of the article was to approach things with the confidence that you could get something positive out of them. Well, now you know how to have that confidence, it's to be an optimist and to think about the world in an optimistic way, and here's a very specific plan of action for being optimistic.)
-
 So here's my specific call to action:
 
 Let's think about those three things whenever we look at someone or something. Let's think of the positives as personal, general, and permanent. Let's think of the negatives as impersonal, specific, and temporary. Let's actually go out of our way to inject these three things into our discussions and debates and flame wars.
@@ -101,7 +99,9 @@ THIS spirit of confidence and change is optimism, and it's what I hope we will a
 
 ---
 
-*Of course, there will not be a RubyFringe 2.o conference, so I am sharing the speech I wrote with you in my unblog. Instead, Pete Forde is curating a different unconference, [FutureRuby](http://futureruby.com/ "FutureRuby"). Check it out!*
+*Of course, there will not be a RubyFringe 2.0 conference, so I am sharing the speech I wrote with you in my unblog. Instead, Pete Forde is curating a different unconference, [FutureRuby](http://futureruby.com/ "FutureRuby"). Check it out!*
+
+*Also, if this sounds vaguely familiar to you, thank you for reading my old blog "raganwald." One of my personal favourite posts was called "[How to use a blunt instrument to sharpen your saw](http://weblog.raganwald.com/2007/10/how-to-use-blunt-instrument-to-sharpen.html "How to use a blunt instrument to sharpen your saw")." The whole point of the article was to approach things with the confidence that you could get something positive out of them. Well, now you know how to have that confidence, it's to be an optimist and to think about the world in an optimistic way, and here's a very specific plan of action for being optimistic.*
 
 ---
 	
