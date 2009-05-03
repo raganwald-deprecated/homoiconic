@@ -67,7 +67,7 @@ The moment this was revealed to me I could guess what came next. I was a *pessim
 
 Do I need to explain that optimists are the opposite, cheerfully inconsistent? That's what Dr. Seligman discovered. Like the pessimists, optimists do not always explain the world the same way. But to an optimist, someone not liking andand is simply one person (impersonal, specific) not liking that one thing (specific again), for their own reasons (impersonal), and it was just a few word in the middle of a long day (extremely temporary). And to the optimist, they're a good athlete (personal, general) and have been all their life (permanent). That one goal was just another scene in their long-playing movie of game highlights.
 
-And if you point out the contradiction in their explanations, they see no contradiction. To them, the bad stuff really isn't about them, it's just that one thing that one time.
+Optimists explain good things as being personal, general, and permanent, and explain away bad things as being impersonal, specific, and temporary. And if you point out the contradiction in their explanations, they see no contradiction. To them, the bad stuff really isn't about them, it's just that one thing that one time.
 
 The book shocked me, I read it a bunch of times and actually bought copies for other people. Besides myself, I knew lots of people who fit Dr. Seligman's pessimist theory, I knew this because they cried on my shoulder about their long-running, personal flaws that affected every part of their lives. They were personal, general, and permanent on the subject of unhappiness. And on the subject of happiness, they were impersonal, specific, and temporary.
 
