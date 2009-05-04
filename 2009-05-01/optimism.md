@@ -71,7 +71,7 @@ Optimists explain good things as being personal, general, and permanent, and exp
 
 The book shocked me, I read it a bunch of times and actually bought copies for other people. Besides myself, I knew lots of people who fit Dr. Seligman's pessimist theory, I knew this because they cried on my shoulder about their long-running, personal flaws that affected every part of their lives. They were personal, general, and permanent on the subject of unhappiness. And on the subject of happiness, they were impersonal, specific, and temporary.
 
-So there you have it. One predictor of success is this characteristic Dr. Seligman calls optimism, which he measures my testing whether you explain good or bad events as being personal, general, and permanent.
+So there you have it. One predictor of success is this characteristic Dr. Seligman calls optimism, which he measures by testing whether you explain good or bad events as being personal, general, and permanent.
 
 (By the way, he goes on to explain how to change your explanations, to become more optimistic, and to become more successful. I don't need to explain that to you now. I've already told you to read the book, so I won't say it again. But if you think it could help you in your life, please buy it. If you can't afford it, get a copy from your library. If that's too much trouble, ask me and I'll loan you a copy. If what I just said resonated with you in a personal way, I hope it can help you as it has helped me.)
 
