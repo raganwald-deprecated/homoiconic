@@ -21,7 +21,7 @@ Or what do we do with someone who uses pushing back on the requirements to displ
 
 And what if, instead, we have decided that the candidate is one of the most charming, intelligent, and talented scientists in history, a Nobel prize winner? [What if he shows you that your question was imprecise](http://www.hebig.org/blogs/archives/main/000962.php "Round Manhole Covers, or: If Richard Feynman applied for a job at Microsoft")? In that case, maybe we will decide that pushing back on requirements is a sign that the question was a dumb one to begin with.
 
-I find it interesting that a relatively unknown fellow gets slammed for his attitude, another fellow writes roundly lauded post condemning technical questions, and the apocryphal story about Richard Feynman routinely draws praise.
+I find it interesting that a relatively unknown fellow gets slammed for his attitude, another fellow writes a roundly lauded post condemning technical questions, and the apocryphal story about Richard Feynman routinely draws praise.
 
 ---
 	
