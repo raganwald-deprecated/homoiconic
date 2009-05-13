@@ -23,6 +23,16 @@ And what if, instead, we have decided that the candidate is one of the most char
 
 I find it interesting that a relatively unknown fellow gets slammed for his attitude, another fellow writes a roundly lauded post condemning technical questions, and the apocryphal story about Richard Feynman routinely draws praise.
 
+*fin*
+
+---
+
+**post scriptum**
+
+Also interesting: My perception is that the above post is about *How to interview people*, not *How to answer technical questions*. I tried very hard to express no opinion about whether someone should respond as he did to a technical question where the interviewer explicitly tells you to make a bunch of assumptions and not think the problem through.
+
+It's too small a sample to draw conclusions about communities and bias, but the early comments on [news.ycombinator.com](http://news.ycombinator.com/item?id=606947 "Hacker News | Tough Crowd") and [programming.reddit.com](http://www.reddit.com/r/programming/comments/8k5em/tough_crowd/ "Tough Crowd : programming") show a sharply different take on the post. One discussion is about how to ask interview questions, the other is about how to answer them.
+
 ---
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
