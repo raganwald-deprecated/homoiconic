@@ -17,9 +17,11 @@ A final point.
 
 Liking or disliking someone's "attitude" is very dangerous ground. What I believe happens is this: You decide whether you like or dislike someone in the [blink](ttp://www.amazon.com/gp/product/0316010669?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0316010669) of an eye. Then you cast everything they say in the light of your prejudices. If you have already decided that the candidate is "Just a technical writer," then his push-back is obviously the sign of a difficult personality who will be grit in the team's vaseline.
 
-But what if, instead, you have decided that the candidate is one of the most charming, intelligent, and talented scientists in history, a Nobel prize winner? [What if he shows you that your question was imprecise](http://www.hebig.org/blogs/archives/main/000962.php "Round Manhole Covers, or: If Richard Feynman applied for a job at Microsoft")? In that case, maybe you will decide that pushing back on requirements is a sign that the question was a dumb one to begin with.
+Or what do we do with someone who uses pushing back on the requirements to display [their contempt for the question](http://exold.com/article/stupid-interview-questions"Stupid Interview Questions")? Is being contemptuous of our interview process a bad sign? Why? Do we only want conformists who will never question us?
 
-I find it interesting that a relatively unknown fellow gets slammed for his attitude, while the apocryphal story about Richard Feynman routinely draws praise.
+And what if, instead, we have decided that the candidate is one of the most charming, intelligent, and talented scientists in history, a Nobel prize winner? [What if he shows you that your question was imprecise](http://www.hebig.org/blogs/archives/main/000962.php "Round Manhole Covers, or: If Richard Feynman applied for a job at Microsoft")? In that case, maybe we will decide that pushing back on requirements is a sign that the question was a dumb one to begin with.
+
+I find it interesting that a relatively unknown fellow gets slammed for his attitude, another fellow writes roundly lauded post condemning technical questions, and the apocryphal story about Richard Feynman routinely draws praise.
 
 ---
 	
