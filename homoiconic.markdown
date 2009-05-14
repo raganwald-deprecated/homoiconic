@@ -1,13 +1,9 @@
 Homoiconic
 ---
 
-Well, I said I was [retiring from blogging](http://weblog.raganwald.com/2008/07/brief-history-of-dangerous-ideas.html "A Brief History of Dangerous Ideas") and here I am with what looks like a new blog. What's going on?
+[Homoiconic](http://github.com/raganwald/homoiconic/) is an experiment in publishing code and words about code on a small scale. When I write, I add files to the homoiconic git repository, organized by date. Code is included in the posts and also in the folder with the posts that discuss them, so it's easy to download what you like. You can even download the entire site as an archive!
 
-[Homoiconic](http://github.com/raganwald/homoiconic/) *is* a kind of blog, if you define blog as 'something published on the internet with an RSS feed.' But no, this is not a blog in the sense that [weblog.raganwald.com](http://weblog.raganwald.com) was a blog. Homoiconic is an experiment in publishing code and words about code on a small scale.
-
-When I write, I will add files to the homoiconic git repository, organized by date. Code will be included in the posts and also in the folder with the posts that discuss them, so it's easy to download what you like. You can even download the entire thing as an archive if you want.
-
-This is really simple: snippets of code and words about the code. I am avoiding words by themselves. And the words exist to amplify and explain the code, rather than the code existing to illustrate the words. This is the opposite of most of the posts you find on traditional (circa 2004) blogs.
+Homoiconic is really simple: *Snippets of code and words about snippets of code*. I am avoiding words by themselves. And the words exist to amplify and explain the code, rather than the code existing to illustrate the words. This is the opposite of most of the posts you find on traditional (circa 2004) blogs.
 
 **what can I read right now?**
 
@@ -19,7 +15,7 @@ Asking me what to read is like asking the chef what's good on the menu. It's all
 
 **how to subscribe**
 
-I will be tagging new 'posts' in [del.icio.us](http://delicious.com/raganwald/homoiconic "Homoiconic Bookmarks on Delicious"). You can subscribe to [an RSS feed that will alert you when I manually tag a new post](http://feeds.delicious.com/v2/rss/raganwald/homoiconic "Homoiconic Bookmarks Feed"). If you do this, you will need to manually check posts for updates, or come back here to the [home page](http://github.com/raganwald/homoiconic "Homoiconic on GitHub").
+I tag new posts in [del.icio.us](http://delicious.com/raganwald/homoiconic "Homoiconic Bookmarks on Delicious"). You can subscribe to [an RSS feed that will alert you when I manually tag a new post](http://feeds.delicious.com/v2/rss/raganwald/homoiconic "Homoiconic Bookmarks Feed").
 
 If you're into git and like fine-grained updates, you can follow [homoiconic](http://github.com/raganwald/homoiconic) here on GitHub or [subscribe to commit messages](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic") letting you know what I've added or updated in your feed reader. The latter option is likely to be moderate volume, as I like to make edits and corrections as I go.
 
