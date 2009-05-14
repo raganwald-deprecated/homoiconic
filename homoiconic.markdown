@@ -9,6 +9,14 @@ This is really simple: snippets of code and words about the code. No words by th
 
 If you want to see what else you can read, it's all on the [homoiconic](http://github.com/raganwald/homoiconic/) home 'page.'
 
+**what can I read right now?**
+
+Asking me what to read is like asking teh chef what's good on the menu. It's all excellent, of course! That being said, I have a few favourites. That doesn't mean they're the bets or the most popular, just the ones that have some personal significance:
+
+* [Optimism](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme)
+* Some posts about combinators with examples in Ruby: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown#readme), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown#readme), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown#readme), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown#readme), [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#readme), [The Enchaining and Obdurate Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-11-12/the_obdurate_kestrel.md#readme), [Finding Joy in Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-16/joy.md#readme), [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md#readme), [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme), and new for 2009: [The Hopelessly Egocentric Blog Post](http://github.com/raganwald/homoiconic/tree/master/2009-02-02/hopeless_egocentricity.md#readme).
+* [Elegance and the Surreals](http://github.com/raganwald/homoiconic/blob/master/2009-03-07/surreal.md#readme)
+
 **how to read it**
 
 When I write, I will add files to the [homoiconic](http://github.com/raganwald/homoiconic/) git repository, organized by date. Code will be included in the posts and also in the folder with the posts that discuss them, so it's easy to download what you like. You can even download the entire thing as an archive if you want.
@@ -33,9 +41,11 @@ The other reason there is no advocacy is that I am invoking the "Transit Cop Cop
 
 I have already said a number of things about [abstractions](http://weblog.raganwald.com/2007/07/abbreviation-accidental-complexity-and.html "Abbreviation, Accidental Complexity, and Abstraction"), [functional programming](http://weblog.raganwald.com/2007/03/why-why-functional-programming-matters.html "Why Why Functional Programming Matters Matters"), [meta-programming](http://weblog.raganwald.com/2008/07/my-analyst-warned-me-but.html "My analyst warned me, but metaprogramming was so beautiful I got another analyst"), [metaprogramming again](http://weblog.raganwald.com/2008/03/spaghetti-western-coding.html "Spaghetti-Western Coding"), [brevity](http://weblog.raganwald.com/2007/12/golf-is-good-program-spoiled.html "Golf is a good program spoiled"), and [much more](http://delicious.com/raganwald/raganwald.popular "Popular posts from weblog.raganwald.com"). But I don't want to say any more on subjects like these until I can think of something *novel*. It may be awhile. In the meantime, share and enjoy.
 
-**no comments**
+**comments?**
 
-At the moment, there are no comments. This is a blog about code, not words. I welcome bug reports and other code-centric feedback by email. I would be delighted to post your snippets and examples.
+At the moment, there are no comments. This is a blog about code, not words. I welcome bug reports and other code-centric feedback by email. I would be delighted to post your snippets and examples. And you know... This is hosted on [Github](http://github.com). So you can always fork my unblog, commit an update, and send me a pull request.
+
+That is a lot more work than just submitting a comment. I'm sorry, it's a trade-off. I lose a lot of good feedback, but I also shed myself of a damaging temptation to pander to the crowd. When blogs become "conversations," they also tend to converge on a common group-think. All I can tell you is that if you have a change you want to make or an observation you want to add, go ahead and make it.
 
 **credit where credit is due**
 
