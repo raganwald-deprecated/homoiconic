@@ -27,23 +27,31 @@ So:
 
 		class Foo < ActiveRecord
 			named_scope :bars, :conditions => { :bar => true }
-			named_scope :yall, lambda {|*args|
-		    args.first || {}
-		  }
-			named_scope :these, lambda {|*ids|
+			named_scope :yall, lambda {|*ids|
 				{:conditions => {:id => ids}}
 			}
+			named_scope :all_yall, lambda {|*args|
+		    args.first || {}
+		  }
 		end
 
-		Foo.yall
+		Foo.yall(1533, ...)
 			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.bars.yall
+		Foo.bars.yall(1533, ...)
 			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.yall.bars
+		Foo.yall(1533, ...).bars
 			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.these(1533, ...)
+		Foo.all_yall
 			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.bars.these(1533, ...)
+		Foo.bars.all_yall
 			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.these(1533, ...).bars
+		Foo.all_yall.bars
 			=> [ #<Foo id: 1533, ... >, ... ]
+
+That is all.
+
+---
+
+Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
+
+Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://reginald.braythwayt.com/RegBraithwaiteGH0109_en_US.pdf ""), [Twitter](http://twitter.com/raganwald)
