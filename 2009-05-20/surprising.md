@@ -35,15 +35,7 @@ So:
 		  }
 		end
 
-		Foo.yall(1533, ...)
-			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.bars.yall(1533, ...)
-			=> [ #<Foo id: 1533, ... >, ... ]
 		Foo.yall(1533, ...).bars
-			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.all_yall
-			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.bars.all_yall
 			=> [ #<Foo id: 1533, ... >, ... ]
 		Foo.all_yall.bars
 			=> [ #<Foo id: 1533, ... >, ... ]
