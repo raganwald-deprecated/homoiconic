@@ -46,7 +46,7 @@ So:
 		Foo.all_yall.bars
 			=> [ #<Foo id: 1533, ... >, ... ]
 
-That is all.
+[That is all](http://github.com/raganwald/homoiconic/blob/master/2009-05-20/all_yall.rb "all_yall.rb").
 
 ---
 
