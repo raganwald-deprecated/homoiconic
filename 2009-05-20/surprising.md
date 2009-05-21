@@ -4,7 +4,9 @@
 In [Rails](http://api.rubyonrails.org/classes/ActiveRecord/NamedScope/ClassMethods.html):
 
 		class Foo < ActiveRecord
+
 			named_scope :bars, :conditions => { :bar => true }
+
 		end
 		
 		Foo.all
@@ -26,13 +28,17 @@ And also:
 So:
 
 		class Foo < ActiveRecord
+
 			named_scope :bars, :conditions => { :bar => true }
+
 			named_scope :yall, lambda {|*ids|
 				{:conditions => {:id => ids}}
 			}
+
 			named_scope :all_yall, lambda {|*args|
-		    args.first || {}
-		  }
+				args.first || {}
+			}
+
 		end
 
 		Foo.yall(1533, ...).bars
