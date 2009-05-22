@@ -9,11 +9,11 @@ In [Rails](http://api.rubyonrails.org/classes/ActiveRecord/NamedScope/ClassMetho
 
 		end
 		
-		Foo.all
+		Foo.all(:limit => 20)
 			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.bars.all
+		Foo.bars.all(:limit => 20)
 			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.all.bars
+		Foo.all(:limit => 20).bars
 			=> NoMethodError: undefined method `bars' for #<Array:0x64b6d28>
 			
 And also:
@@ -31,22 +31,22 @@ So:
 
 			named_scope :bars, :conditions => { :bar => true }
 
-			named_scope :yall, lambda {|*ids|
+			named_scope :with_ids, lambda {|*ids|
 				{:conditions => {:id => ids}}
 			}
 
-			named_scope :all_yall, lambda {|*args|
+			named_scope :with, lambda {|*args|
 				args.first || {}
 			}
 
 		end
 
-		Foo.yall(1533, ...).bars
+		Foo.with_ids(1533, ...).bars
 			=> [ #<Foo id: 1533, ... >, ... ]
-		Foo.all_yall.bars
+		Foo.with(:limit => 20).bars
 			=> [ #<Foo id: 1533, ... >, ... ]
 
-[That is all](http://github.com/raganwald/homoiconic/blob/master/2009-05-20/all_yall.rb "all_yall.rb").
+[That is all](http://github.com/raganwald/homoiconic/blob/master/2009-05-20/all_yall.rb "source code").
 
 ---
 

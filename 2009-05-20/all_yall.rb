@@ -24,14 +24,14 @@
 #
 # all_yall.rb
 #
-# Adds #yall and #all_yall named scopes to ActiveRecord. To use in Rails, place
+# Adds #with_ids and #with named scopes to ActiveRecord. To use in Rails, place
 # this file in config/initializers.
 #
-# #all_yall is a replacement for #all. Since it is a named scope, it cleanly
+# #with is a replacement for #all. Since it is a named scope, it cleanly
 # composed with other named scopes, because it returns a scope proxy instead
 # of an array.
 #
-# #yall is a replacement for #find. Since it is a named scope, it cleanly
+# #with_ids is a replacement for #find's by id mode. Since it is a named scope, it cleanly
 # composed with other named scopes, because it returns a scope proxy instead
 # of an array.
 #
@@ -41,11 +41,11 @@ module ActiveRecord
   
   class Base
     
-    named_scope :yall, lambda {|*ids|
+    named_scope :with_ids, lambda {|*ids|
       {:conditions => {:id => ids}}
     }
 
-    named_scope :all_yall, lambda {|*args|
+    named_scope :with, lambda {|*args|
       args.first || {}
     }
 
