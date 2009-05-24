@@ -8,7 +8,7 @@ The Enchaining Kestrel
 
 In [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown#readme), we looked at `#tap` from Ruby 1.9 and `returning` from Ruby on Rails. Today we're going to look at another use for `tap`.
 
-[![Kestrel Composite (c) 2007 Mark Kilner](http://farm3.static.flickr.com/2165/1902016010_6f007bf3f0.jpg)](http://flickr.com/photos/markkilner/1902016010/"Kestrel Composite (c) 2007 Mark Kilner")
+[![Kestrel Composite (c) 2007 Mark Kilner](http://farm3.static.flickr.com/2165/1902016010_6f007bf3f0.jpg)](http://flickr.com/photos/markkilner/1902016010/ "Kestrel Composite (c) 2007 Mark Kilner")
 
 As already explained, Ruby 1.9 includes the new method `Object#tap`. It passes the receiver to a block, then returns the receiver no matter what the block contains. The canonical example inserts some logging in the middle of a chain of method invocations:
 
@@ -85,7 +85,7 @@ So there's another use for `#tap` (along with `Symbol#to_proc` for simple cases)
 The Obdurate Kestrel
 ---
 
-[![Kestrel (c) 2007 The Hounds of Shadow](http://farm3.static.flickr.com/2402/2115973156_f4fcfca811.jpg)](http://flickr.com/photos/thehoundsofshadow/2115973156/"Kestrel (c) 2007 The Hounds of Shadow")
+[![Kestrel (c) 2007 The Hounds of Shadow](http://farm3.static.flickr.com/2402/2115973156_f4fcfca811.jpg)](http://flickr.com/photos/thehoundsofshadow/2115973156/ "Kestrel (c) 2007 The Hounds of Shadow")
 
 The [andand gem](http://github.com/raganwald/andand/tree "raganwald's andand") includes `Object#tap` for Ruby 1.8. It also includes another kestrel called `#dont`. Which does what it says, or rather *doesn't* do what it says.
 

@@ -52,7 +52,7 @@ It is obvious from the first line what will be returned and it eliminates an ann
 
 **object initializer blocks**
 
-The Kestrel has also been sighted in the form of *object initializer blocks*. Consider this example using [Struct](http://blog.grayproductions.net/articles/all_about_struct"All about Struct"):
+The Kestrel has also been sighted in the form of *object initializer blocks*. Consider this example using [Struct](http://blog.grayproductions.net/articles/all_about_struct "All about Struct"):
 
 	Contact = Struct.new(:first, :last, :email) do
 	  def to_hash
