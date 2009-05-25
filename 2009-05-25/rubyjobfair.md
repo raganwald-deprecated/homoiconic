@@ -3,11 +3,11 @@ Ruby Job Fair
 
 I will be "presenting myself" at Unspace's [Ruby Job Fair](http://rubyjobfair.ca/) on June 6, 2009. No, I am not on my knees begging anyone for employment, nor am I looking to hire a Sith Apprentice to initiate into the dark side of the [Ruby Rewriting](http://github.com/raganwald/rewrite_rails/tree/master "Rewrite Rails") arts. I have a completely different motivation.
 
-The format is like a science fair: You have a "poster" to display your work, and absolutely no computers are allowed. This can be intimidating to people. What do you put on the poster? Here's an idea from Richard Hamming:
+The Ruby Job Fair format is like a science fair: You have a "poster" to display your work, and absolutely no computers are allowed. This can be intimidating to people. What do you put on the poster? Let's read this famous story about Richard Hamming:
 
 > Over on the other side of the dining hall was a chemistry table. I had worked with one of the fellows, Dave McCall; furthermore he was courting our secretary at the time. I went over and said, "Do you mind if I join you?" They can't say no, so I started eating with them for a while. And I started asking, "What are the important problems of your field?" And after a week or so, "What important problems are you working on?" And after some more time I came in one day and said, "If what you are doing is not important, and if you don't think it is going to lead to something important, why are you at Bell Labs working on it?" I wasn't welcomed after that; I had to find somebody else to eat with! That was in the Spring. --Richard Hamming, as I quoted in [You and Your Research](http://weblog.raganwald.com/2005/04/you-and-your-research.html)
 
-So here's a challenge I will put out to all Rubyists in Toronto: Put together a poster that answers the following three "Hamming Questions:"
+Hmmm, there's something to think about: Put together a poster that answers the following three "Hamming Questions:"
 
 1.  What are the important problems of your field?
 2.  What important problems are you working on?
