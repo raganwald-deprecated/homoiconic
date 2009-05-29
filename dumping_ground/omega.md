@@ -7,15 +7,17 @@ Untitled (so far)
     
 > At age 15 I had the idea--anticipated by Leibniz in 1686--of looking at the size of computer programs and of defining a random string of bits to be one for which there is no program for calculating it that is substantially smaller than it is. --Gregory Chaiten, [Meta Math! The Quest for Omega](http://www.amazon.com/gp/product/1400077974?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1400077974)
 
-When writing programs, we do (at least) two things: We think of what the program must do, and we look for the right way to express the program using our tools. "The Right Way" is an awfully slippery concept, it seems that given *N* programmers arguing about the right way to write a given program, the only guarantee is that there will be at least *N* + 1 opinions expressed about the right way to proceed.
+**Introduction**
 
-**Complexification**
+Let's talk about program complexity. To be specific, when talking about programs we shall mean the set of *all* notations or expression that produce the same observable result, not just one unique expression. And expression is the statement or collection of statements
 
-For a moment, let's cast aside all soft considerations and think about program complexity. To be specific, when talking about programs we shall mean the set of all notations or expression that produce the same observable result. Trivially, here are three different expressions that are actually the same program:
+Trivially, here are three different expressions that are actually the same program:
 
     puts '19620614'
     puts %w(1962 06 14).join
     puts 2**1 * 13**1 * 754639**1
+    
+How do we know they all produce the same result? Let's use an empirical method. For any program, we shall define a *test suite* that inspects the program's behaviour. Each test suite shall have one or more tests in it, and if we feed a
 
 Every program has a certain amount of Kolmogorov-Chaitin complexity. Using the definition given above, the Kolmogorov-Chaitin complexity for a program is the size of the most concise expression of the program. Some expressions of a program will be much larger than its Kolmogorov-Chaitin complexity, some only a little larger, and perhaps as few as one will be exactly the Kolmogorov-Chaitin complexity length.
 
@@ -38,13 +40,7 @@ Let's say your expression is of length *L*. What do we mean by length *L*? Chara
 
 Now we can proceed. Count the length of your expression and perform an exhaustive brute-force search of all expressions from 1..(*L*-1) in length. Generate all the possible expressions and feed each one to your test suite. The length of the shortest expression that passes the test suite is the Kolmogorov-Chaitin complexity of your program.
 
-**Digression: Balance and Tension in Jazz Music**
-
-> Try to vary the rhythms somewhat and add or delete notes here and there, to maintain a balance between the expected and the unexpected.--[Elements of the Jazz Language for the Developing Improvisor](http://www.amazon.com/gp/product/157623875X?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=157623875X), Jerry Coker
-
-Jerry Coker is talking about the elusive balance between the expected and the unexpected in music. His model is that as a musician plays, the active listener "plays along" mentally, predicting what will happen next. If the music is too predictable, the listener grows bored. If the music is too unpredictable, the listener is confused and frustrated. But when the correct balance is achieved, the listener will be correct some of the time and surprised some of the time. This produces a pleasant sensation of being fully engaged in the music while being surprised some of the time keeps the listener interested and learning.
-
-The balance between "expected" and "unexpected" is relative to the listener, of course. Most listeners gradually expand their "comprehension" of music just as a musician expands her "vocabulary" with practice and study. Thus, they learn to anticipate a wider variety of styles and devices, and what may be surprising or even chaotic to a less experienced listener may be pleasing or even banal to the highly experienced listener.
+I bring up the complexity for a specific purpose: When looking at different expressions of the same program, we know that they have the exact same amount of complexity. One is not more or less complex than the other. That being said, one expression amy be more readable than the other.
 
 **Readability**
 
@@ -60,15 +56,15 @@ Well, let's start by defining what we mean by "readability."
 
 **Queries, Theories, and Understanding**
 
-I own a charming game called "Queries and Theories." It's a game based on linguistics. A vastly simplified version of Queries and Theories called "Mastermind" was a game craze in the 1970s. Queries and Theories was based on the idea of a language expressed as "sentences" of "words." The words were colored chips, and the sentences were simple strings of chips. A language would have a "vocabulary" consisting of the possible colours of chips, and a "grammar" which would be rules for determining a valid sentence in the language. You can imagine how the game might work by thinking of BNF grammar rules.
+I own a charming game called [Queries and Theories](http://wffnproof.com/inc/sdetail/123 "QUERIES 'N THEORIES: The Game of Science and Language"). It's a game based on linguistics (a related game called [Mastermind](http://tinyurl.com/master-mind-game "Mastermind on Wikipedia") was a game craze in the 1970s). Queries and Theories was based on the idea of a language expressed as "sentences" of "words." The words were colored chips, and the sentences were simple strings of chips. A language would have a "vocabulary" consisting of the possible colours of chips, and a "grammar" which would be rules for determining a valid sentence in the language. You can imagine how the game might work by thinking of BNF grammar rules.
 
-One player would compose a language with a strict limit on the vocabulary and complexity of rules. The other players would then issue queries in the form of candidate sentences. The composer never reveals the rules but indicates whether each sentence is valid or invalid. Eventually, one of the queriers ("a challenger") develops some confidence that they understand the language and issues a challenge.
+One player--the Native--would compose a language with a strict limit on the vocabulary and complexity of rules. The other players would then issue queries in the form of candidate sentences. The Native never reveals the rules but indicates whether each sentence is valid or invalid. Eventually, one of the queriers ("a challenger") develops some confidence that they understand the language and issues a challenge.
 
-The composer then puts three sentences forth and the challenger must correctly determine whether the sentences are valid or invalid. The challenger need not guess the exact rule formation, but rather must simply understand the behaviour of the language well enough to interpret it.
+The Native then puts three sentences forth and the challenger must correctly determine whether the sentences are valid or invalid. The challenger need not guess the exact rule formation, but rather must simply understand the behaviour of the language well enough to interpret it.
 
 This is, of course, very much like learning a language in real life. Many, many people speak a language excellently while being entirely unable to write out a formal grammar for it.
 
-Now let's consider a variation on Queries and Theories. In this variation, the composer composes a language and reveals the grammar to the players. They study it without being able to pose queries, and when a player is confident of his ability to understand the language, he issues a challenge and the composer puts three sentences to the challenger for validation as usual.
+Now let's consider a variation on Queries and Theories. In this variation, the Native composes a language and reveals the grammar to the players. They study it without being able to pose queries, and when a player is confident of his ability to understand the language, he issues a challenge and the Native puts three sentences to the challenger for validation as usual.
 
 In our variation, the players are attempting to deduce the "behaviour" of the language from examining its rules alone. This is very similar to trying to read the expression of a program. And thus, we have a crude mechanism for measuring the readability of a program's expression for a given programmer.
 
@@ -80,9 +76,27 @@ Now we show the program expression to the programmer and ask them to predict whi
 
 Hand waving over the exact procedure, the idea is fairly straightforward: We are claiming that "readability" represents a programmer's ability to predict the behaviour of a program from examining its expression.
 
+**Coupling**
+
+One factor that strongly affects the readability of a program is the amount and style of coupling between its parts. As an anti-example, consider cryptography, the art of making things unreadable. A desirable property of cryptographic algorithms is that changing just one bit of a plaintext message changes an average of 50% of the bits in the encrypted message, and does so in a way that appears to be random: There is no way to predict *which* 50% of the bits will change.
+
+How does this translate to program expressions? Consider the expression to be the plaintext message and consider the test suite results to be the encrypted message. The analogy is not exact because the message is also the algorithm, but imagine a program with the same property: Changing just one symbol anywhere in the program would cause, on average, 50% of the tests to fail. A program with this property would require a lot of effort to understand because any one element of its functionality would depend upon the interaction between approximately 50% of its parts and the programmer cannot reliably know which 50% are affected.
+
+Although it is not certain that the shortest possible expression of a program would exhibit this kind of coupling between its symbols, I conjecture that it is quite likely that an extremely short expression of a program would be highly coupled. Here is my reasoning.
+
+Consider a program where--on average--changing one symbol changes the behaviour of just one test. One way to construct such a program is to break it up such that each test has its own piece of code entirely independent of the other pieces for the other tests. Such a program has certain maintenance difficulties. And each piece might be easy or difficult to understand based on other factors. But all other things being equivalent, an uncoupled expression would have a big advantage over a highly coupled expression: There would be a fixed and small set of symbols responsible for the behaviour of each test.
+
+Now think about a highly coupled expression of the same program. The highly coupled expression can use one symbol for multiple purposes. On average, each symbol is involved in code for 50% of the tests. My conjecture is that if the program has *N* tests, the size of an uncoupled expression will be on the order of *N* and the size of a highly coupled expression will be on the order of log*N*.
+
+So I conjecture that as the expression of a program approaches its Kolmogorov-Chaitin complexity, its coupling increases. Fine. But how does that affect readability?
+
+**Coupling and **
+
+And as its coupling increases, its readability decreases. Note that I say "As the expression of a program approaches its Kolmogorov-Chaitin complexity." applying DRY or Single responsibility to a program expression can make it more readable up to a point. But our search for the Kolmogorov-Chaitin complexity of a program ignores that point and ruthlessly seeks out the most compact expression without regard for semantics.
+
 **Mel**
 
-Consider a the most compact expression of a program, the very shortest one that passes the test suite. One conjecture I have for why it might be unreadable is that it might pass the test suite *by coïncidence*. By this, I mean that although the result of the program is correct, the structure of the program is entirely unrelated to the test suite's structure. As a counter=example, consider business applications. Typically, there are entities (customers, products, accounts, addresses, &c.), relationships between the entities, and operations of some kind on the entities.
+Consider a the most compact expression of a program, the very shortest one that passes the test suite. One conjecture I have for why it might be unreadable is that it might pass the test suite *by coïncidence*. By this, I mean that although the result of the program is correct, the structure of the program is entirely unrelated to the test suite's structure. As a counter-example, consider business applications. Typically, there are entities (customers, products, accounts, addresses, &c.), relationships between the entities, and operations of some kind on the entities.
 
 The test suite for such an application is going to be organized along those lines. For example, you might organize the test suite around operations to create customers, purchase products, deal with overdue accounts, and so forth. But what if the shortest possible expression of the program has no such organization internally?
 
