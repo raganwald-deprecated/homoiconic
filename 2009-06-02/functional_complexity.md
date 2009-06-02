@@ -1,15 +1,17 @@
-Functional Complexity Modulo a Test Suite
+Functional Complexity Modulo a Test Suite (Very Rough Draft)
 ===
 
 *I have been thinking about empirical metrics for readability and maintainability. The concept of functional complexity seems very integral to thinking about the properties of programs, so I thought I'd document my definition.*
 
 **Functionality and Functional Equivalence**
 
-What does it mean for two programs to be *equivalent* to each other? For example, here are three Ruby programs that appear to be equivalent:
+What does it mean for two programs to be *equivalent* to each other? For example, here are three Ruby "programs" that appear to be equivalent:
 
-    puts '19620614'
-    puts %w(1962 06 14).join
-    puts 2**1 * 13**1 * 754639**1
+    def cstr; '19620614';                      end
+    def arry; %w(1962 06 14).join;             end
+    def calc; (2**1 * 13**1 * 754639**1).to_s; end
+    
+(I have written these as methods for simplicity, but the same principle would hold if they were command line programs that wrote to standard out, web services, or just about anything else.)
     
 How do we know that  these three are equivalent? Is there a precise way we can define "equivalence?" Is there an algorithm for determining whether any two (or more) programs are equivalent? The answer is *yes*, provided that we start by defining the *functionality* of each program. Given a program's functionality, we can then define *functional equivalence*.
 
@@ -26,7 +28,22 @@ There is a test suite that contains the set of all possible tests with some orde
 
 Unfortunately, Aleph One is only theoretical. For practical reasoning about programs we need finite test suites. What happens if we work with a test suite containing a finite set of tests? If we pass a program to a finite test suite, we will get a finite number. This is not the absolute functionality of the program, it is the *the functionality of the program modulo the test suite*. Any two programs that have the identical functionality modulo a test suite are *functionally equivalent modulo the test suite*.
 
-For the above three programs, if we imagine a test suite consisting of a single test that inspects the output for the string `19620614`, all three programs are functionally equivalent modulo that test suite because they all produce the number "1".
+For the above three programs, if we imagine a test suite consisting of a single test that inspects the output for the string `19620614`, all three programs are functionally equivalent modulo that test suite because they all produce the number "1":
+
+    def test(program)
+      send(program) == '19620614' ? 1 : 0 rescue 0
+    end
+    
+    def test_suite(program)
+      test(program)
+    end
+    
+    test_suite(:cstr)
+      => 1
+    test_suite(:arry)
+      => 1
+    test_suite(:calc)
+      => 1
 
 **Invalidity**
 
@@ -159,7 +176,51 @@ This is obviously an infinitely large set and quite imaginary. Infinite or not, 
 
 When we have found a program or reached the length of our program of interest, we know that no shorter program is functionally equivalent to our program of interest. The length we have reached is particularly interesting: it is the length of the shortest possible program that is functionally equivalent to our program of interest.
 
-This length is the *functional complexity of our program modulo the test suite*. Two programs with the same functional complexity modulo a test suite have the same observed behaviour in common, no matter how they are written. In a subsequent post, we will look at coupling within a program, at congruence between a program and a test suite, and how these affect program readability.
+This length is the *functional complexity of our program modulo the test suite*. The functional complexity modulo some particular test suite is not a general-purpose metric of complexity for a program's representation, just its behaviour. From above:
+
+    def cstr; '19620614';                      end
+    def arry; %w(1962 06 14).join;             end
+    def calc; (2**1 * 13**1 * 754639**1).to_s; end
+    
+All three programs have the exact same functional complexity modulo:
+
+    def test(program)
+      send(program) == '19620614' ? 1 : 0 rescue 0
+    end
+    
+    def test_suite(program)
+      test(program)
+    end
+
+But their representations vary substantially.
+
+**Input Complexity**
+
+A program's functional complexity modulo a test suite does not actually depend on the number produced by the test suite. It is simply the length of the shortest program producing the same number. For a really degenerate case, consider a program that fails all tests in a suite. What is it's functional complexity modulo that test suite? What is the shortest program that also fails all tests?
+
+But let's take the case where a program satisfies a test suite. It's functional complexity modulo that test suite is the length of the shortest program that also satisfies all tests in the test suite. This is a very interesting measure of complexity, because we can reverse the relationship as follows: Given a test suite, the *satisfaction complexity of the test suite* is the length of the shortest program that satisfies the test suite.
+
+Given a program that satisfies a test suite, we obviously know the satisfaction complexity of that test suite, it's the functional complexity of the program. However, we cannot necessarily find the satisfaction complexity of an arbitrary test suite without a program known to satisfy it. What satisfaction complexity does this test suite have?
+
+    def truthy(program)
+      !!send(program) ? 1 : 0 rescue 0
+    end
+
+    def falsy(program)
+      !send(program) ? 1 : 0 rescue 0
+    end
+    
+    def test_suite(program)
+      truthy(program) * 2 + falsy(program)
+    end
+
+**Wrap Up**
+
+This post has introduced some concepts I am using to work out some ideas about readability and maintainability. In a subsequent post, we will look at coupling within a program, at congruence between a program and a test suite, and how these affect program readability. In the mean time, here are a few things to ponder along with me...
+
+* What is the relationship between the length of a program and its functional complexity modulo a test suite? Are longer programs more readable or more maintainable?
+* The Kolmogorov-Chaitin complexity of a program is the length of the program's shortest description in some fixed universal description language... Programs whose Kolmogorov-Chaitin complexity is small relative to their length are not considered to be complex (adapted from the introduction to Wikipedia's article on [Kolmogorov complexity](http://en.wikipedia.org/wiki/Kolmogorov_complexity)). What is the relationship between a program's Kolmogorov-Chaitin complexity and it's functional complexity modulo a test suite?
+* Test suites are programs too! What is the relationship between a test suite's satisfaction complexity and its own Kolmogorov-Chaitin complexity?
 
 ---
 	
