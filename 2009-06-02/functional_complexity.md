@@ -1,128 +1,150 @@
-Functional Complexity Modulo a Test Suite (Very Rough Draft)
+Functional Complexity Modulo a Test Suite (Extensively Revised)
 ===
 
-*I have been thinking about empirical metrics for readability and maintainability. The concept of functional complexity seems very integral to thinking about the properties of programs, so I thought I'd document my definition.*
+I have a question:
 
-**Functionality and Functional Equivalence**
+What does it mean to discuss the *complexity* of a program? Do we mean the complexity of its representation? The complexity of its run-time behaviour? Or the complexity of its result? For example, here are three Ruby "programs" that appear to have equivalent behaviour (I have written these as methods for simplicity, but the same principle would hold if they were command line programs that wrote to standard out, web services, or just about anything else):
 
-What does it mean for two programs to be *equivalent* to each other? For example, here are three Ruby "programs" that appear to be equivalent:
-
-    def cstr; '19620614';                      end
-    def arry; %w(1962 06 14).join;             end
-    def calc; (2**1 * 13**1 * 754639**1).to_s; end
+    def simple
+      '19620614'
+    end
     
-(I have written these as methods for simplicity, but the same principle would hold if they were command line programs that wrote to standard out, web services, or just about anything else.)
+    def long
+      0b0001.to_s + 0b1001.to_s + 0b0110.to_s + 0b0010.to_s +
+      0b0000.to_s + 0b0110.to_s + 0b0001.to_s + 0b0100.to_s
+    end
     
-How do we know that  these three are equivalent? Is there a precise way we can define "equivalence?" Is there an algorithm for determining whether any two (or more) programs are equivalent? The answer is *yes*, provided that we start by defining the *functionality* of each program. Given a program's functionality, we can then define *functional equivalence*.
+    require 'zlib'
+    
+    def obscure
+      Zlib::Inflate.inflate("x\2343\264432034\001\000\aU\001\236")
+    end
+    
+One is very simple. One is very long but not very complex. The third does ridiculously complex things at run time.
 
-For any program, we shall define a *test suite* that inspects the program's behaviour. Each test suite shall have one or more tests in it.
+**Meaningful programs and tests**
 
-* A test is a function that takes a program as input and produces either a 1 (pass) or 0 (fail).
-* Tests are *consistent*: given the same program, a test always produces 1 or always produces 0.
-* A test suite contains an ordered set of *n* tests.
-* A test suite is a function that takes a program as input and passes the program to each of its *n* tests. This produces an ordered set of 1s and 0s, which we shall take to be a binary number from 0 (all fail) to 2^*n*-1 (all pass).
+To determine a program's functionality, we will *test* it. We're familiar with tests. A test is a single function that takes a program as input and produces either true (pass) or false (fail) as output. Tests are *consistent*: given the same program, a test always produces 1 or always produces 0. We will call a test *meaningful* if there exists at least one program that passes the test and at least one program that fails the test.
 
-Imagine the set of all possible tests. It's infinitely large, so we won't try to give an example. If we had to write it out, we might write a program that methodically generates tests, perhaps by generating every possible representation of a test and throwing out the ones that are syntactically invalid.
+Pop quiz: Given the proposition that for every test there exists the inversion of the test, a test for which if program, P passes one test it must fail the other, show that every program must pass at least one test and every program must fail at least one test.
 
-There is a test suite that contains the set of all possible tests with some ordering. The ordering could be the order that our program generates tests. It's an infinitely large test suite, of course, but let's carry on. We will call this test suite the Aleph One Test Suite. If we give any program to Aleph One, we will get a number as a result. We will call that number the *absolute functionality* of a program. Any two programs with the exact same absolute functionality are *absolute functionally equivalent*.
+For our purposes, we are only considering the behaviour of programs and meaningful tests. Unless we say otherwise, the word "test" implies a meaningful test. Tests and programs outside of this essay may have other properties, but this is what we mean by the words test and program.
 
-Unfortunately, Aleph One is only theoretical. For practical reasoning about programs we need finite test suites. What happens if we work with a test suite containing a finite set of tests? If we pass a program to a finite test suite, we will get a finite number. This is not the absolute functionality of the program, it is the *the functionality of the program modulo the test suite*. Any two programs that have the identical functionality modulo a test suite are *functionally equivalent modulo the test suite*.
-
-For the above three programs, if we imagine a test suite consisting of a single test that inspects the output for the string `19620614`, all three programs are functionally equivalent modulo that test suite because they all produce the number "1":
+Here is an example of a meaningful test:
 
     def test(program)
-      send(program) == '19620614' ? 1 : 0 rescue 0
+      send(program) == '19620614' rescue false
     end
     
-    def test_suite(program)
-      test(program)
-    end
-    
-    test_suite(:cstr)
-      => 1
-    test_suite(:arry)
-      => 1
-    test_suite(:calc)
-      => 1
+    test(:simplest)
+      => true
 
-**Invalidity**
+A digression: Most programming languages have the notion of an invalid representation, something that is not a program. It could be that a text representation of the program has invalid syntax. It could be that while its syntax is valid, there are other errors that prevent it from running *any* tests. Likewise, most systems have the notion of un-handled runtime errors such as division by zero. If such a thing occurs when running a test, we declare that the test fails, always. Tests are also programs of a sort, so naturally a test that is not valid always fails. By definition above, invalid programs cannot be meaningful, and neither can invalid tests.
 
-Most programming languages have the notion of an invalid representation, something that is not a program. It could be that a text representation of the program has invalid syntax. It could be that while its syntax is valid, there are other errors that prevent it from even running tests. In a language like Ruby, there could be semantic errors such as:
+That being said, a partially invalid program may be meaningful. The parts of the program that are valid can be tested, so there could be at least one meaningful test for the program.
 
-    class Foo < Bar
-      # ...
-    end
-      => NameError: uninitialized constant Bar
+**Programs, Test Suites, Satisfaction, and Functionality**
 
-We can consider all such invalid programs to produce the number 0 when fed to any test suite. In other words, if the program is not valid, all tests always fail. Likewise, most systems have the notion of un-handled runtime errors such as division by zero. If such a thing occurs when running a test, we declare that the test returns a zero, always. 
+Consider every set of one or more meaningful tests. If a program passes all of the tests in the set we say that the program *satisfies* the set of tests. A *test suite* is a finite set of meaningful tests where there exists at least one program that satisfies all of the set's tests.
 
-**Why is functional equivalence modulo a test suite useful?**
-
-At first glance, functional equivalence modulo a test suite may seem to have little value. Imagine selecting a program at random and a test suite at random. My conjecture is that the functionality of a random program modulo a random test suite is nearly always going to be 0, meaning that a randomly selected test will nearly always fail for any program. Therefore, nearly every pair of randomly selected programs will be functionally equivalent modulo almost every test suite. So what good is this concept?
-
-My suggestion is that the fact that an infinite number of tests fail for any one program is no more troublesome than the observation that nearly every randomly constructed string of characters is "noise." When reasoning about things that humans deliberately construct, it is useful to restrict ourselves to observing properties that are semantically meaningful to humans.
-
-In the case of test suites, the finite set of tests represents a set of observations we can choose to make about a program. We choose to make observations that reflect our understanding of what the program is intended to do. Of course, our understanding is imperfect. We might construct tests for a program that ignore certain edge cases. For example, consider this test suite:
+Here is an example of a test suite:
 
     def test0(program)
-      send(program, 1) == 1 ? 1 : 0 rescue 0
+      send(program, 1) == 1 rescue false
     end
     
     def test1(program)
-      send(program, 1,2) == 3 ? 1 : 0 rescue 0
+      send(program, 1, 2) == 3 rescue false
     end
     
     def test2(program)
-      send(program, 1, 2, 3) == 6 ? 1 : 0 rescue 0
+      send(program, 1, 2, 3) == 6 rescue false
     end
     
     def test_suite_alpha(program)
-      test0(program) + test1(program) * 2 + test2(program) * 4 
+      test0(program) && test1(program) && test2(program)
     end
-    
-For this program, the functionality modulo test\_suite\_alpha is 7:
+
+And here is a program that satisfies the test suite:
 
     def simple_inject(*list)
       list.inject { |a,b| a + b }
     end
     
     test_suite_alpha(:simple_inject)
-      => 7
+      => true
       
-And this program produces the same result:
+Note that we can easily construct a test suite that is not satisfied by our program:
 
-    def inject_with_default(*list)
-      list.inject(0) { |a,b| a + b }
-    end
-    
-    test_suite_alpha(:inject_with_default)
-      => 7
-
-Therefore, `simple_inject` and `inject_with_default` are functionally equivalent modulo test\_suite\_alpha. We can add a new test and create a new test suite:
-    
     def test3(program)
-      send(program) == 0 ? 1 : 0 rescue 0
+      send(program) == 0 rescue false
     end
-    
+
     def test_suite_beta(program)
-      test0(program) + test1(program) * 2 + test2(program) * 4 + test3(program) * 8
+      test0(program) && test1(program) && test2(program) && test3(program)
     end
     
-Now we get:
-
     test_suite_beta(:simple_inject)
-      => 7
+      => false
 
-    test_suite_beta(:inject_with_default)
-      => 15
+**Satisfaction Complexity**
 
-While our two programs are functionally equivalent modulo test\_suite\_alpha, they are *not* functionally equivalent modulo test\_suite\_beta. If we draw conclusions about the relationship between `simple_inject` and `inject_with_default` based on test\_suite\_alpha, we may be gravely disappointed to discover that they are not absolutely functionally equivalent.
+Before we discuss complexity, we need a way to measure the *length* of programs. There are many debates we can have about how to measure program length, the important thing is to pick a reasonable metric and be consistent. For example, we can count the total number of symbols in a program's representation.
 
-This error comes from imagining that functional equivalence modulo a test suite is an approximation of absolute functional equivalence. Functional equivalence modulo a test suite is no more an approximation of absolute functional equivalence than equality modulo a number is an arithmetic approximation of equality.
+Now let's take a test suite and any one program that satisfies it. We shall call the length of the program *M*. Consider the set of all programs that satisfy our test suite. This is obviously an infinitely large set and quite imaginary. Infinite or not, how would we find the *shortest* program in the set? This is straightforward in practice although time consuming and [impossible in theory](http://en.wikipedia.org/wiki/Halting_problem). We simply generate every possible program by brute force, starting with all programs of length 1 and then all programs of length 2, and so forth growing in size. We take each candidate program and feed it to our test suite until one satisfies it. Quite obviously, we need only search the set of all programs from 1 to the *M*, we know it can never be longer than that.
 
-Given finite space and time, we will always be forced to make a finite number of observations of a program. My thesis is that we do not observe has no meaning. Our notion of functionality modulo a test suite simply formalizes this limit.
+When we have found a program or reached *M*, we know that we have found the length of the shortest possible program that satisfies our test suite. This length is the *satisfaction complexity* of the test suite.
 
-**Does strong type checking affect our thinking?**
+Satisfaction complexity is an important property. A test suite may have an extremely complex representation (especially if written by someone infected with the test framework complexification virus). But regardless of its representation, its *meaning* is the same: Every test suite encodes a description of a program's behaviour. A test suite's satisfaction complexity measures the complexity of the described behaviour.
+
+**Functional Complexity, Congruence, and Equivalence**
+
+To determine satisfaction complexity, we started with a test suite and a program that satisfies it. To determine the functional complexity of a program, we start with a program and a test suite it satisfies. The *functional complexity of a program modulo a test suite* is the satisfaction complexity of that test suite. Obviously, the functional complexity of a program modulo a test suite can never be larger than the program's length.
+
+Every program that satisfies the same test suite has the same functional complexity modulo that test suite. Therefore, we say that if two programs both satisfy the same test suite, they are *congruent modulo a test suite*. Any two or more programs that satisfy the same test suite have the same functional complexity modulo that test suite. As far as we know by observing their behaviour with the test suite, they do the same thing.
+
+And now we can answer the original question. Given:
+
+    def simple
+      '19620614'
+    end
+    
+    def long
+      0b0001.to_s + 0b1001.to_s + 0b0110.to_s + 0b0010.to_s +
+      0b0000.to_s + 0b0110.to_s + 0b0001.to_s + 0b0100.to_s
+    end
+    
+    require 'zlib'
+    
+    def obscure
+      Zlib::Inflate.inflate("x\2343\264432034\001\000\aU\001\236")
+    end
+    
+All three programs are congruent modulo:
+
+    def test(program)
+      send(program) == '19620614' rescue false
+    end
+    
+    def test_suite(program)
+      test(program)
+    end
+
+This is the closest we will come to saying that they are equivalent: Given the observation of our test suite, we observe the same results from them. If they were the only three programs to satisfy our test suite, we would say that the satisfaction complexity of our test suite was equal to the length of `simplest`, and that even though `obscure` has a much more complex representation and a much more elaborate run-time behaviour, its functional complexity modulo our test suite is equal to simplest's length.
+
+**Wrap Up**
+
+This post has introduced some concepts I am using to work out some ideas about readability and maintainability. In a subsequent post, we will look at coupling within a program, at congruence between a program and a test suite, and how these affect program readability. In the mean time, here are a few things to ponder along with me...
+
+* What is the relationship between the length of a program and its functional complexity modulo a test suite? Are longer programs more readable or more maintainable? Why or when is this the case?
+* The Kolmogorov-Chaitin complexity of a program is the length of the program's shortest description in some fixed universal description language... Programs whose Kolmogorov-Chaitin complexity is small relative to their length are not considered to be complex (adapted from the introduction to Wikipedia's article on [Kolmogorov complexity](http://en.wikipedia.org/wiki/Kolmogorov_complexity)). What is the relationship between a program's Kolmogorov-Chaitin complexity and it's functional complexity modulo a test suite?
+* Test suites are programs too! What is the relationship between a test suite's satisfaction complexity and its own Kolmogorov-Chaitin complexity?
+
+Thanks for your patience with my pedantry!
+
+---
+
+*post scriptum*: Does strong type checking affect our thinking?
 
 Consider using a programming language with strong type checking instead of Ruby. The type checker is a kind of test, and one that appears to be far more general than the tests in our test suites. For example, test\_suite\_alpha did not test the empty list case. However, the compiler for a language such as Haskell or OCaml would insist that our program include code to handle the empty list case. What this means in the context of functionality modulo a test case is that Haskell or OCaml programs failing to handle the empty list fail every test because they are invalid.
 
@@ -160,67 +182,9 @@ While the other uses [this encoding](http://github.com/raganwald/homoiconic/blob
     ONE  = ZERO ^ []
     TWO  = ONE  ^ []
     
-The two programs would have entirely different type systems but both would calculate arithmetic correctly. If the type system was always part of the test suite, there would be no way to determine whether the two programs were functionally equivalent modulo a test suite, because each program would fail the other's type system assertions. To compare their arithmetic, we would have to use tests that were independent of the types chosen by the programmer.
+The two programs would have entirely different type systems but both would calculate arithmetic correctly. If the type system was always part of the test suite, there would be no way to determine whether the two programs were congruent modulo a test suite, because each program would fail the other's type system assertions. To compare their arithmetic, we would have to use tests that were independent of the types chosen by the programmer.
 
-That being said, it is possible to imagine the type systems becoming part of a test suite. Given a sufficiently introspective language, you could write tests that assert the existence of types with certain properties. While you might have two programs that are functionally equivalent modulo a test suite that says nothing about types, those same two programs might not be functionally equivalent when types are part of the tests.
-
-As long as we do not require the type system to be part of the tests but treat it as something which may or not be a part of any particular test suite, we can use the same reasoning for untyped and typed languages.
-
-**Functional Complexity Modulo a Test Suite**
-
-Before we discuss complexity, we need a way to measure the *length* of programs. There are many debates we can have about how to measure program length, the important thing is to pick a reasonable metric and be consistent. For example, we can count the total number of symbols in a program's representation.
-
-Now let's take a "program of interest" and a test suite. We can determine program of interest's functionality modulo the test suite using the method above. Consider the set of all programs functionally equivalent to our program of interest modulo our test suite, the set of all programs that produce the same number when passed to the test suite. (Although it is not necessary that our program satisfy the test suite, it can be helpful to think of the program satisfying the test suite, in which case we would be considering the set of all programs that satisfy the test suite.)
-
-This is obviously an infinitely large set and quite imaginary. Infinite or not, how would we find the *shortest* program in the set? This is straightforward in practice although time consuming and [impossible in theory](http://en.wikipedia.org/wiki/Halting_problem). We simply generate every possible program by brute force, starting with all programs of length 1 and then all programs of length 2, and so forth growing in size. We take each candidate program and feed it to our test suite until one produces the same number as our program of interest. Quite obviously, we need only search the set of all programs from 1 to the length of our candidate program.
-
-When we have found a program or reached the length of our program of interest, we know that no shorter program is functionally equivalent to our program of interest. The length we have reached is particularly interesting: it is the length of the shortest possible program that is functionally equivalent to our program of interest.
-
-This length is the *functional complexity of our program modulo the test suite*. The functional complexity modulo some particular test suite is not a general-purpose metric of complexity for a program's representation, just its behaviour. From above:
-
-    def cstr; '19620614';                      end
-    def arry; %w(1962 06 14).join;             end
-    def calc; (2**1 * 13**1 * 754639**1).to_s; end
-    
-All three programs have the exact same functional complexity modulo:
-
-    def test(program)
-      send(program) == '19620614' ? 1 : 0 rescue 0
-    end
-    
-    def test_suite(program)
-      test(program)
-    end
-
-But their representations vary substantially.
-
-**Input Complexity**
-
-A program's functional complexity modulo a test suite does not actually depend on the number produced by the test suite. It is simply the length of the shortest program producing the same number. For a really degenerate case, consider a program that fails all tests in a suite. What is it's functional complexity modulo that test suite? What is the shortest program that also fails all tests?
-
-But let's take the case where a program satisfies a test suite. It's functional complexity modulo that test suite is the length of the shortest program that also satisfies all tests in the test suite. This is a very interesting measure of complexity, because we can reverse the relationship as follows: Given a test suite, the *satisfaction complexity of the test suite* is the length of the shortest program that satisfies the test suite.
-
-Given a program that satisfies a test suite, we obviously know the satisfaction complexity of that test suite, it's the functional complexity of the program. However, we cannot necessarily find the satisfaction complexity of an arbitrary test suite without a program known to satisfy it. What satisfaction complexity does this test suite have?
-
-    def truthy(program)
-      !!send(program) ? 1 : 0 rescue 0
-    end
-
-    def falsy(program)
-      !send(program) ? 1 : 0 rescue 0
-    end
-    
-    def test_suite(program)
-      truthy(program) * 2 + falsy(program)
-    end
-
-**Wrap Up**
-
-This post has introduced some concepts I am using to work out some ideas about readability and maintainability. In a subsequent post, we will look at coupling within a program, at congruence between a program and a test suite, and how these affect program readability. In the mean time, here are a few things to ponder along with me...
-
-* What is the relationship between the length of a program and its functional complexity modulo a test suite? Are longer programs more readable or more maintainable?
-* The Kolmogorov-Chaitin complexity of a program is the length of the program's shortest description in some fixed universal description language... Programs whose Kolmogorov-Chaitin complexity is small relative to their length are not considered to be complex (adapted from the introduction to Wikipedia's article on [Kolmogorov complexity](http://en.wikipedia.org/wiki/Kolmogorov_complexity)). What is the relationship between a program's Kolmogorov-Chaitin complexity and it's functional complexity modulo a test suite?
-* Test suites are programs too! What is the relationship between a test suite's satisfaction complexity and its own Kolmogorov-Chaitin complexity?
+In other words, these two programs are by necessity congruent modulo test suites that ignore their type architecture.
 
 ---
 	
