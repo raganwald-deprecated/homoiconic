@@ -3,6 +3,8 @@ TSTTCPW
 
 The [Satisfaction Complexity](http://github.com/raganwald/homoiconic/blob/master/2009-06-02/functional_complexity.md#readme) of a test suite is defined as being the length of the shortest program that satisfies the test suite. It's a measure of the amount of information in the test suite. It's not just a theoretical concept: We can use the idea to answer the question *How many tests should we write?* as well as to answer the question *what kind of code should we write to satisfy a test suite?*
 
+[![spiral (1839), Shaker Village, Pleasant Hill, Kentucky (c) 2007 Steve Minor, some rights reserved](http://farm1.static.flickr.com/222/445408457_d31c3d3cd0_d.jpg)](http://www.flickr.com/photos/sminor/445408457/ "spiral (1839), Shaker Village, Pleasant Hill, Kentucky (c) 2007 Steve Minor, some rights reserved") 
+
 Consider a typical CRUD application like a Rails web site. I want to keep the examples really short, so let's imagine we are only testing a model class, and for our examples we won't bother with persistence. Here's our test suite:
 
     def test_suite(model_class)
