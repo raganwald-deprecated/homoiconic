@@ -3,6 +3,8 @@ TSTTCPW
 
 The [Satisfaction Complexity](http://github.com/raganwald/homoiconic/blob/master/2009-06-02/functional_complexity.md#readme) of a test suite is defined as being the length of the shortest program that satisfies the test suite. It's a measure of the amount of information in the test suite. It's not just a theoretical concept: We can use the idea to answer the question *How many tests should we write?* as well as to answer the question *what kind of code should we write to satisfy a test suite?*
 
+[![spiral (1839), Shaker Village, Pleasant Hill, Kentucky (c) 2007 Steve Minor, some rights reserved](http://farm1.static.flickr.com/222/445408457_d31c3d3cd0_d.jpg)](http://www.flickr.com/photos/sminor/445408457/ "spiral (1839), Shaker Village, Pleasant Hill, Kentucky (c) 2007 Steve Minor, some rights reserved") 
+
 Consider a typical CRUD application like a Rails web site. I want to keep the examples really short, so let's imagine we are only testing a model class, and for our examples we won't bother with persistence. Here's our test suite:
 
     def test_suite(model_class)
@@ -95,9 +97,9 @@ This class is shorter *and* closer to what we have in mind. The "special case" c
 
 There is a tension between developing test cases and developing software. Neither activity is "free," and we know that while test cases contribute to the software development process, they aren't working software. So we wish to write as few test cases as possible... *But no fewer!*
 
-Our thought experiment suggests how to proceed. First, write enough test cases such that the satisfaction complexity of the test suite is equal to the actual complexity of the requirements. Writing fewer test cases will lead to special cases. If we discover hard-coded special cases, add test suites that break them.
+Our thought experiment suggests how to proceed. First, we wish to write enough test cases such that the satisfaction complexity of the test suite is equal to the actual complexity of the requirements. Writing fewer test cases will lead to special cases. And we know how to do so: Write the cases we think matter and monitor the code. If we discover hard-coded special cases, we know that we need more tests. Add tests that break the special cases and hard-coded bits of cruft.
 
-Second, always attempt to keep the code as minimalist and as simple as possible. People sometimes want to *add the least amount of code* to a program to add new functionality. That isn't the same as changing the program so that it has *the least amount of code that satisfies the test suite*.
+Second, always attempt to keep the working code as minimalist and as simple as possible. People sometimes want to *add the least amount of code* to a program to add new functionality. That isn't the same as changing the program so that it has *the least amount of code that satisfies the test suite*. Prefer the latter to the former.
 
 If there is more code than necessary to satisfy the test suite, consider the possibility that the special cases and duplicated code aren't just crufty but actually reflect the program not performing the desired intent. Search for test cases that will break the special cases. If you can't think of one, perhaps there test cases reflect the requirements and you were wrong about there being more code than necessary. But if you *can* write a test case that breaks the cruft, do so and then refactor the code to get rid of the excess.
 
