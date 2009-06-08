@@ -38,6 +38,8 @@ Let's try it:
       
 I'm thinking this isn't what we want. Before anyone claims this is a strawman argument, that nobody would write code like this in the "real world," let me point out that there is TONS of code lie this in the real world. I am aware of one "Enterprise" application where significant business logic is tied to fields having specific hard-coded strings in them.
 
+> People sometimes want to *add the least amount of code* to a program to add new functionality. That isn't the same as changing the program so that it has *the least amount of code that satisfies the test suite*. Prefer the latter to the former.
+
 Left to their own devices, programmers faced with a specific bug report or a specific feature request will often write some specific, one-off code. Even if this is rare on your team, such one-offs accumulate over time building up technical debt until you refactor.
 
 The fact that a one-off hard-coded special case satisfies our test suite suggests that we aren't describing what we want in enough detail. By definition, *our test suite is lacking some information*. Let's add another test:
@@ -56,15 +58,13 @@ The fact that a one-off hard-coded special case satisfies our test suite suggest
 Now if we were perverse (or perhaps if our software development process was perverse), we might come up with this program that satisfies the test suite:
 
     class ReginaldBraythwayt
-      
-      attr_accessor :first_not_last
   
       def initialize(attributes)
-        self.first_not_last = attributes[:name] == 'Reginald'
+        @is_first = attributes[:name] == 'Reginald'
       end
       
       def name
-        self.first_not_last ? 'Reginald' : 'Braythwayt'
+        @is_first ? 'Reginald' : 'Braythwayt'
       end
   
     end
