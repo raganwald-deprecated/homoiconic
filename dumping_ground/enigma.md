@@ -1,6 +1,40 @@
 Coding Enigmas
 ===
 
+Humans sometimes work very hard on making things difficult to understand. The field devoted to this science is known as *business jargon*. Sorry, that was a terrible joke! The actual field devoted to this science is *cryptography*. One of the important ideas in cryptography is something called a *one-way function*. A one-way function takes an input (called a "message" in cryptography) and computes a number from the message (called a "digest" or "hash" in cryptography). Such functions are called "one-way" when given a desired result number and the function, it is computationally infeasible to construct an input produce the desired result. (Another property of interest to cryptographers but not to us is that it also be computationally infeasible to find any two different messages with the same digest.)
+
+There are lots and lots of functions that take a message and produce a digest. For example, here is [Christopher Sexton's](http://www.codeography.com/2009/05/22/pure-ruby-crc32-adccp-pkzip.html "Pure Ruby CRC-32/ADCCP (CRC-32/PKZIP)") code for generating a checksum:
+
+    def self.crc32adccp(string, crc=0)
+      raise RangeError.new if (crc > 2**128 - 1)
+      string.each_byte do |byte|
+        temp1 = (crc >> 8) & 0x00FFFFFF
+        temp2 = crc_table[(crc ^ byte) & 0xff];
+        crc = temp1 ^ temp2
+      end
+      crc
+    end
+
+    def self.crc_table 
+      [ 0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419, 0x706af48f, 0xe963a535, 0x9e6495a3,
+        # ...
+        0x2a6f2b94, 0xb40bbe37, 0xc30c8ea1, 0x5a05df1b, 0x2d02ef8d ] 
+    end
+
+However, for most of them it is no problem to discover a message that generates any arbitrary digest.
+
+
+
+
+How does this apply to programs? Well, consider the basic premise discussed in [Functional Complexity Modulo a Test Suite](http://github.com/raganwald/homoiconic/blob/master/2009-06-02/functional_complexity.md#readme) that we consider a test suite to be a function that takes a program as its input and returns a collection of passes and fails. We usually ignore the order of individual tests and just think of the entire test suite passing if and only if all of its tests pass.
+
+But what if we apply some arbitrary ordering to the tests? Now we can treat the aggregation of passes and fails as bits in a binary number. We can then transform any test suite from a simple pass or fail into a function that produces a digest.
+
+
+
+A desirable property of cryptographic algorithms is that changing just one bit of a plaintext message changes an average of 50% of the bits in the encrypted message, and does so in a way that appears to be random: We have no way to predict *which* 50% of the bits will change.
+
+
 From [TSTTCPW](http://github.com/raganwald/homoiconic/blob/master/2009-06-05/tsttcpw.md#readme):
 
 > Always attempt to keep the working code as minimalist and as simple as possible. People sometimes want to *add the least amount of code* to a program to add new functionality. That isn't the same as changing the program so that it has *the least amount of code that satisfies the test suite*. Prefer the latter to the former.
@@ -13,7 +47,7 @@ That's interesting. Why would making a program shorter make it more difficult to
 
 **The Enigma**
 
-Humans sometimes work very hard on making things difficult to understand. The field devoted to this science is known as business jargon. No, that was a terrible joke. The actual field devoted to this science is *cryptography*. A desirable property of cryptographic algorithms is that changing just one bit of a plaintext message changes an average of 50% of the bits in the encrypted message, and does so in a way that appears to be random: There appears to be no way to predict *which* 50% of the bits will change.
+
 
 How does this translate to programs? Consider the a programmer puzzling over a program. Perhaps she has a test suite and just one test is failing. Any time she makes even the smallest change somewhere in the program, 50% of the tests in the test suite immediately flip from pass to fail or from fail to pass. Even if she correctly discerns that making that change would flip the failing test to a passing test, the set of changes required to transform a program with just one failing test into a program with no failing tests could be computationally intractable.
 

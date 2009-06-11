@@ -24,7 +24,7 @@ One is very simple. One is very long but not very complex. The third does ridicu
 
 **Meaningful programs and tests**
 
-To determine a program's functionality, we will *test* it. We're familiar with tests. A test is a single function that takes a program as input and produces either true (pass) or false (fail) as output. Tests are *consistent*: given the same program, a test always produces 1 or always produces 0. We will call a test *meaningful* if there exists at least one program that passes the test and at least one program that fails the test.
+To determine a program's functionality, we will *test* it. We're familiar with tests. A test is a single function that takes a program as input and produces either true (pass) or false (fail) as output. Tests can be *consistent*: When given the same program, a consistent test either always passes or always fails. Tests can also be We will call a test *meaningful* if it is has two pif there exists at least one program that passes the test and at least one program that fails the test.
 
 Pop quiz: Given the proposition that for every test there exists the inversion of the test, a test for which if program, P passes one test it must fail the other, show that every program must pass at least one test and every program must fail at least one test.
 
