@@ -17,7 +17,11 @@ I live in the Province of Ontario, where we have rather strict rules about discr
 
 Under the circumstances, if you can't be straight with me and ask questions directly, I really don't trust you to be straight with me as an employer. So if you don't have the courage to say NO HIRE, let me do it for you and say APPLICATION WITHDRAWN. If there's something you want to know, ask. If it seems inappropriate to me, I'll say so and we can have a conversation about it. I'm not young enough to know everything, maybe you can convince me that it's a good question to ask.
 
-In the end, if you want to know something and think it's relevant to my job performance, you can simply ask. If you don't think I would answer truthfully, why Google me? Why not simply write NO HIRE and go with someone you actually trust? But sifting through the internet for personal snippets? Save yourself some trouble. Now that you've read this, recycle the electrons in my resumé and move on to the next candidate.
+In the end, if you want to know something and think it's relevant to my job performance, you can simply ask. If you don't think I would answer truthfully, why Google me? Why not simply write NO HIRE and go with someone you actually trust?
+
+So what do I think of sifting through the internet for personal information about candidates? It isn't performance-based. It is illegal in some jurisdictions. It sets a bad example for employees. And it is only effective with prospects you don't trust, who you shouldn't hire to begin with. Now that you've read this, and if you still want to use my personal life to make a hiring decision, save yourself some trouble: Recycle the electrons in my resumé and move on to the next candidate.
+
+NO HIRE.
 
 ---
 	
