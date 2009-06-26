@@ -1,0 +1,26 @@
+NO HIRE
+===
+
+I have just read that companies routinely review facebook and myspace activity when screening prospective candidates. One allegation is that if your profile is blocked to non-friends, they may ask you to log in in front of them to let them have a look.
+
+This is roughly equivalent to showing up at my home and demanding an opportunity to sift through my trash and check for signs of moral turpitude like blended Scotch or subversive literature like Fahrenheit 451. For the record, I own the complete Prisoner TV series, including "Living in Harmony" that was banned in the US because it featured *pacifism*. That ought to give any employer all the ammunition they need to say NO HIRE: I own subversive videos! I can't possibly be a good development manager!!
+
+So here's my message to employers and clients sifting through my personal life online: I make it quite clear on [my FaceBook profile](http://facebook.com/raganwald) that my activities on FB are personal and not work-related. If one day I am applying for a job or to consult for your corporation and you are sifting through my personal life in contravention of my request that you refrain from same, save yourself some trouble and write NO HIRE on my resumé.
+
+Go no further. *The fact that I openly and publicly disapprove of your hiring practices means that I am culturally incompatible with you*. Even if you hire me, I will never be happy with the fact that you refused to hire my top choice for team lead because you don't approve of her vegan politics, or I will put up a fuss because you try to foist a nice but incompetent junior on my team because he supports your favourite charity.
+
+If you actually read my professional writing about hiring, you will realize that I am very big on hiring based on actual ability. I am not going to give you a complete guide to technical interviewing and selection here, but the bottom line is that if what I have written elsewhere about hiring resonates with you, you probably aren't sifting through my personal life trying to decide if you'd enjoy hanging out with me drinking beer, you're probably trying to figure out how to *test* my abilities objectively and you're probably calling actual references to determine what I have actually accomplished in my career.
+
+But let's say you haven't done that and you still want to poke around my virtual underwear drawer looking for DNA evidence that I'm reprehensible.
+
+I live in the Province of Ontario, where we have rather strict rules about discrimination. For example, it is illegal for you to ask me about my marital status in an interview. This kind of law may irk you, but it is there because companies have abused the privilege of asking this question by discriminating against unmarried women who might "get married and quit to start a family." If you are coming onto FB to find out my status, you are sneaking around behind the law's back. I know you don't want me sneaking around behind *your* rules, so how are you setting a good example for me by sneaking around my jurisdiction's rules?
+
+Under the circumstances, if you can't be straight with me and ask questions directly, I really don't trust you to be straight with me as an employer. So if you don't have the courage to say NO HIRE, let me do it for you and say APPLICATION WITHDRAWN. If there's something you want to know, ask. If it seems inappropriate to me, I'll say so and we can have a conversation about it. I'm not young enough to know everything, maybe you can convince me that it's a good question to ask.
+
+In the end, if you want to know something and think it's relevant to my job performance, you can simply ask. If you don't think I would answer truthfully, why Google me? Why not simply write NO HIRE and go with someone you actually trust? But sifting through the internet for personal snippets? Save yourself some trouble. Now that you've read this, recycle the electrons in my resumé and move on to the next candidate.
+
+---
+	
+Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
+
+Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://reginald.braythwayt.com/RegBraithwaiteGH0109_en_US.pdf ""), [Twitter](http://twitter.com/raganwald)
