@@ -1,4 +1,4 @@
-Returning
+Rewriting Returning in Rails
 ===
 
 One of the most useful tools provided by Ruby on Rails is the #returning method, a simple but very useful implementation of the K Combinator or [Kestrel](http://github.com/raganwald/homoiconic/blob/master/2008-10-29/kestrel.markdown#readme). For example, this:
