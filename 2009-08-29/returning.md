@@ -103,9 +103,7 @@ So I did.
 
 **Rewriting #returning**
 
-The [RewriteRails](http://github.com/raganwald/rewrite_rails/tree/master) plug-in adds syntactic abstractions like [Andand](http://github.com/raganwald/rewrite_rails/tree/master/doc/andand.textile "") and [String to Block](http://github.com/raganwald/rewrite_rails/tree/master/doc/string_to_block.md#readme "") to Rails projects [without monkey-patching](http://avdi.org/devblog/2008/02/23/why-monkeypatching-is-destroying-ruby/ "Monkeypatching is Destroying Ruby"). All of the power and convenience, none of the compatibility woes and head-aches.
-
-RewriteRails now includes its own version of #returning that overrides the #returning shipping with ActiveSupport :-o
+The [RewriteRails](http://github.com/raganwald/rewrite_rails/tree/master) plug-in adds syntactic abstractions like [Andand](http://github.com/raganwald/rewrite_rails/tree/master/doc/andand.textile "") and [String to Block](http://github.com/raganwald/rewrite_rails/tree/master/doc/string_to_block.md#readme "") to Rails projects [without monkey-patching](http://avdi.org/devblog/2008/02/23/why-monkeypatching-is-destroying-ruby/ "Monkeypatching is Destroying Ruby"). RewriteRails now includes its own version of #returning that overrides the #returning shipping with Rails.
 
 When RewriteRails is processing source code, it turns code like this:
 
@@ -138,13 +136,11 @@ Like all processors in RewriteRails, #returning is only rewritten in `.rr` files
 
 **Why is this version of #returning implemented with RewriteRails?**
 
-No special reason. Or perhaps the reason is that "When you're holding a hammer, every problem looks like a thumb." It seemed difficult to implement a version of #returning that respected assignment to the variable without rewriting.
+Perhaps the reason is that "When you're holding a hammer, every problem looks like a thumb." It seemed difficult to implement a version of #returning that respected assignment to the variable without rewriting.
 
 **So tell me again, why bother?**
 
-Curiosity. It's easy to dismiss programmers who accidentally misuse features like #returning. But what if catering to them makes the feature more useful? I plant to try this version of #returning and see if I come up with a useful way to use it.
-
-perhaps it will turn out to be mere novelty. Then again, perhaps it will turn out to be innovation. It's hard to predict without trying it.
+Curiosity. It's easy to dismiss programmers who accidentally misuse features like #returning. But what if catering to them makes the feature more useful? I plant to try this version of #returning and see if I come up with a useful way to use it. Perhaps it will turn out to be mere novelty. Then again, perhaps it will turn out to be innovation. It's hard to predict without trying it.
 
 **More**
 
