@@ -59,7 +59,7 @@ This is the kind of thing that sadistic interviewers use in coding quizzes. The 
 
 This may seem obvious, but in my experience it is a subtle point that causes difficulty. Languages with referential transparency escape the confusion entirely, but OO languages like Ruby have this weird thing where we have to keep track of references and labels on references in our head.
 
-Here's something contrived to look a lot more like production code. Here's a contrived example without #returning:
+Here's something contrived to look a lot more like production code. First, without #returning:
 
     def working_registered_person(params = {})
       person = Person.new(params.merge(:registered => true))
