@@ -13,9 +13,9 @@ For example, instead of `(1..100).map { |x| (1/x)+1 }`, you can write `(1..100).
 
 String#to\_proc does a lot more than just provide anaphors for single parameters in blocks, of course. But it does provide this specific form of anaphora in Ruby.
 
-**Another implementation of the anaphoric parameter**
+**Methodphitamine: Another implementation of the anaphoric parameter**
 
-(I read the following idea in a blog post a few years ago. I can't find the original to cite and praise the author's ingenuity. If you recognize it, please email me or fork homoiconic and add the appropriate citation, Thanks!)
+[Methodphitamine](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips") provides another anaphoric parameters, this one inspired by the Groovy language.
 
 Symbol#to\_proc is the standard way to abbreviate blocks that consist of a single method invocation, typically without parameters. For example if you want the first name of a collection of people records, you might use `Person.all(...).map(&:first_name)`.
 
@@ -55,7 +55,7 @@ If you send messages to an AnaphorProxy, you get another AnaphorProxy that "reco
 
 As you might expect from a hack along these lines, there are all sorts of things to trip us up. `(1..10).map(&it * 2 + 1)` works, but `(1..10).map(&1 + it * 2)` does not. Unexpected things happen if you try to "record" an invocation of #to\_proc. And because of the way parameters are "recorded" when the AnaphorProxy is created rather than looked up when the messages are sent, you might be surprised by its behaviour when side effects are involved.
 
-So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it * 2')`, this hack does not.
+So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it * 2')`, this approach does not. (The code above has been simplified to illustrate the idea. Consult the actual [methodphitamine gem source](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") for details on how it is actually implemented: There are performance optimizations as well as a lightweight Maybe Monad hiding under the covers.)
 
 **Anaphors for conditionals**
 
