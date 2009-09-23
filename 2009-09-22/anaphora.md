@@ -19,7 +19,7 @@ String#to\_proc does a lot more than just provide anaphors for single parameters
 
 Symbol#to\_proc is the standard way to abbreviate blocks that consist of a single method invocation, typically without parameters. For example if you want the first name of a collection of people records, you might use `Person.all(...).map(&:first_name)`.
 
-If you want to do more, such as invoke a method with a parameter, or if you want to chain several methods, you are out of luck. Symbol#to\_proc does not allow you to write `Person.all(...).map(&:first_name[0..3])`. One hack creates the illusion of an anaphor, allowing you to invoke method with parameters and to chain more than one method. Here's some code illustrating the technique:
+If you want to do more, such as invoke a method with a parameter, or if you want to chain several methods, you are out of luck. Symbol#to\_proc does not allow you to write `Person.all(...).map(&:first_name[0..3])`. Methodphitamine uses a proxy object to create the illusion of an anaphor, allowing you to invoke method with parameters and to chain more than one method. Here's some code illustrating the technique:
 
     class AnaphorProxy < BlankSlate
   
