@@ -21,7 +21,7 @@ Symbol#to\_proc is the standard way to abbreviate blocks that consist of a singl
 
 If you want to do more, such as invoke a method with a parameter, or if you want to chain several methods, you are out of luck. Symbol#to\_proc does not allow you to write `Person.all(...).map(&:first_name[0..3])`. One hack creates the illusion of an anaphor, allowing you to invoke method with parameters and to chain more than one method. Here's some code illustrating the technique:
 
-    class AnaphorProxy
+    class AnaphorProxy < BlankSlate
   
       def initialize(proc = lambda { |x| x })
         @proc = proc
