@@ -59,7 +59,7 @@ So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it *
 
 **Anaphors for conditionals**
 
-Many people are familiar with the [andand gem](http://github.com/raganwald/andand "raganwald's andand at master - GitHub"). The rationale goes something like this. Say you want to write some code like this:
+Many people are familiar with the [andand gem](http://github.com/raganwald/andand "raganwald's andand at master - GitHub"). Say you want to write some code like this:
 
     big_long_calculation() && big_long_calculation().foo
 
@@ -71,7 +71,7 @@ That's such a common idiom, #andand gives you a much more succinct way to write 
 
     big_long_calculation().andand.foo
 
-So the idea behind #andand is to express a test for nil and doing something with the result if it is not nil in a very compact way. This is not a new idea. In Paul Graham's book [On Lisp](http://www.paulgraham.com/onlisp.html "On Lisp"), he gives this very example when describing the rationale for [anaphoric macros](http://www.bookshelf.jp/texi/onlisp/onlisp_15.html "Onlisp:  Anaphoric Macros"):
+So the idea behind #andand is to express a test for nil and doing something with the result if it is not nil in a very compact way. This is not a new idea. Paul Graham gives this very example when describing the rationale for [anaphoric macros](http://www.bookshelf.jp/texi/onlisp/onlisp_15.html "Onlisp:  Anaphoric Macros"):
 
 > It's not uncommon in a Lisp program to want to test whether an expression returns a non-nil value, and if so, to do something with the value. If the expression is costly to evaluate, then one must normally do something like this:
 
@@ -170,15 +170,11 @@ It seems on the face of it that it is much harder to write anaphors for conditio
 
 Anaphora have actually been baked into Ruby from its earliest days. Thanks to its Perl heritage, a number of global variables act like anaphora. For example, `$&` is a global variable containing the last successful regular expression match, or nil if the last attempt to match failed. So instead of writing something like:
 
-    if match_data = /reg(inald)?/.match(full_name) then
-      puts match_data[0]
-    end
+    if match_data = /reg(inald)?/.match(full_name) then puts match_data[0] end
     
 You can use $& as an anaphor and avoid creating another explicit temporary variable, just like the anaphor in a conditional:
 
-    if /reg(inald)?/.match(full_name) then
-      puts $&
-    end 
+    if /reg(inald)?/.match(full_name) then puts $& end 
     
 These 'anaphoric' global variables have a couple of advantages. Since they are tied to the use of things like regular expression matching rather than a specific syntactic construct like an if expression, they are more flexible and can be used in more ways. Their behaviour is very well defined.
 
