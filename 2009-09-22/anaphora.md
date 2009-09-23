@@ -96,13 +96,13 @@ Reading about Lisp's anaphoric macros made me wonder whether anaphors for condit
     
 This is relatively easy to accomplish using [rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub"). In the most naïve case, you want to rewrite all of your if statements such that:
 
-    if big_long_calculation() then
+    if big_long_calculation()
       it.foo
     end
     
 Becomes:
 
-    if (it = big_long_calculation()) then
+    if (it = big_long_calculation())
       it.foo
     end
 
@@ -110,7 +110,7 @@ You can embellish such a hypothetical rewriter with optimizations such as not as
 
 The trouble with this idea is that in Ruby, *There Is More Than One Way To Do It* (for any value of "it"). If we implement anaphors for conditionals, we ought to implement them for all of the ways a Ruby programmer might write a conditional. As discussed, we must support:
 
-    if big_long_calculation() then
+    if big_long_calculation()
       it.foo
     end
     
