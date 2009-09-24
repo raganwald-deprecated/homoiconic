@@ -15,7 +15,7 @@ String#to\_proc does a lot more than just provide anaphors for single parameters
 
 **Methodphitamine: Another implementation of the anaphoric parameter**
 
-[Methodphitamine](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips") provides another anaphoric parameters, this one inspired by the Groovy language.
+[Methodphitamine](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips") provides another implementation of anaphoric parameters, this one inspired by the Groovy language.
 
 Symbol#to\_proc is the standard way to abbreviate blocks that consist of a single method invocation, typically without parameters. For example if you want the first name of a collection of people records, you might use `Person.all(...).map(&:first_name)`.
 
