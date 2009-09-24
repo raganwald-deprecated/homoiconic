@@ -164,7 +164,7 @@ We want to write:
 
 This is near and dear to my heart: The name "andand" comes from this exact formulation. #andand doesn't enhance an if expression, it enhances the double ampersand operator. One can see at a glance that implementing support for `big_long_calculation() && it.foo` is fraught with perils. What about `big_long_calculation() + it.foo`? What about `big_long_calculation().bar && it.foo`?
 
-It seems on the face of it that it is much harder to write anaphors for conditionals in Ruby than for conditionals Lisp. This isn't so surprising. Lisp has an extremely regular lack of syntax, so we don't have to concern ourselves with as many cases as we do in Ruby.
+It seems that it is much harder to support anaphors for conditionals in Ruby than it is to support anaphors for conditionals in Lisp. This isn't surprising. Lisp has an extremely regular lack of syntax, so we don't have to concern ourselves with as many cases as we do in Ruby.
 
 **Old school anaphora**
 
