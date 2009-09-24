@@ -194,6 +194,14 @@ To my eyes, "it" is easier to understand because it is a very general, well-unde
 
 Anaphora allow us to abbreviate code, hiding parameters and temporary variables for certain special cases. This can be a win for readability for short code snippets where the extra verbiage is almost as long as what you're trying to express. That being said, implementing anaphora in Ruby is a hard design problem, in part because There Is More Than One Way To Do It, and trying to provide complete support leads to ambiguities, inconsistencies, and conflicts. And  old school anaphora? They are clearly an acquired taste.
 
+**More**
+
+* [String#to\_proc](http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You can't be serious!?") and its original [blog post](http://weblog.raganwald.com/2007/10/stringtoproc.html "String#to_proc").
+* [Methodphitamine](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") and its original [blog post](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips")
+* [Anaphoric macros](http://www.bookshelf.jp/texi/onlisp/onlisp_15.html "Onlisp:  Anaphoric Macros")
+* [rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") contains an improved implementation of String#to\_proc.
+* A [usenet discussion](http://groups.google.com/group/ruby-talk-google/browse_thread/thread/26445dcef22f5a5/1772d0c487d4c570?hl=en&amp;lnk=ol&amp; "Introducing the &quot;it&quot; keyword") about anaphora in Ruby.
+
 ---
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
