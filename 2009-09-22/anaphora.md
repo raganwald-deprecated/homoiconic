@@ -5,11 +5,11 @@ Anaphora in Ruby
 
 **The anaphoric parameter**
 
-Oliver Steele wrote a nice little Javascript library called [Functional Javascript](http://osteele.com/sources/javascript/functional/ "Functional Javascript"). Javascript is a particularly verbose language descended from Lisp. It's syntax for writing anonymous functions is particularly verbose, and Oliver decided that if you wanted to write a lot of anonymous functions, you'd better have a more succinct way to write them. So he added "String Lambdas" to Javascript, and alternate syntax for anonymous functions.
+Oliver Steele wrote a nice little Javascript library called [Functional Javascript](http://osteele.com/sources/javascript/functional/ "Functional Javascript"). Javascript is a particularly verbose language descended from Lisp. It's syntax for writing anonymous functions is awkward, especially for the kind of short functions that are passed to higher-level functions like `map` or `select`. Oliver decided that if you wanted to write a lot of anonymous functions, you'd better have a more succinct way to write them. So he added "String Lambdas" to Javascript, a succinct alternate syntax for anonymous functions.
 
 [String#to\_proc](http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You can't be serious!?") is a port of Oliver's String Lambdas to Ruby. One of the things you can do with String#to\_proc is define a block (or a proc) that takes one parameter with an expression containing an underscore instead of explicitly naming a parameter.
 
-For example, instead of `(1..100).map { |x| (1/x)+1 }`, you can write `(1..100).map(&'(1/_)+1')`. The underscore is an anaphor, it refers back to the block's parameter just as the word "it" in this sentence refers back to the word "anaphor." The win is brevity: You don't have to define a parameter just to use it once.
+For example, instead of `(1..100).map { |x| (1/x)+1 }`, you can write `(1..100).map(&'(1/_)+1')` using String#to\_proc. The underscore is an anaphor, it refers back to the block's parameter just as the word "it" in this sentence refers back to the word "anaphor." The win is brevity: You don't have to define a parameter just to use it once.
 
 String#to\_proc does a lot more than just provide anaphors for single parameters in blocks, of course. But it does provide this specific form of anaphora in Ruby.
 
@@ -19,7 +19,15 @@ String#to\_proc does a lot more than just provide anaphors for single parameters
 
 Symbol#to\_proc is the standard way to abbreviate blocks that consist of a single method invocation, typically without parameters. For example if you want the first name of a collection of people records, you might use `Person.all(...).map(&:first_name)`.
 
-If you want to do more, such as invoke a method with a parameter, or if you want to chain several methods, you are out of luck. Symbol#to\_proc does not allow you to write `Person.all(...).map(&:first_name[0..3])`. Methodphitamine uses a proxy object to create the illusion of an anaphor, allowing you to invoke method with parameters and to chain more than one method. Here's some code illustrating the technique:
+If you want to do more, such as invoke a method with a parameter, or if you want to chain several methods, you are out of luck. Symbol#to\_proc does not allow you to write `Person.all(...).map(&:first_name[0..3])`. With Methodphitamine you can write:
+
+    Person.all(...).map(&it.first_name[0..3])
+    
+Likewise with Symbol#to\_proc you can't write `Person.all(...).map(&:first_name.titlecase)`. You have to write `Person.all(...).map(&:first_name).map(&:titlecase)`. With Methodphitamine you can write:
+
+    Person.all(...).map(&it.first_name.titlecase)
+    
+This is easy to read and does what you expect for simple cases. Methodphitamine uses a proxy object to create the illusion of an anaphor, allowing you to invoke method with parameters and to chain more than one method. Here's some code illustrating the technique:
 
     class AnaphorProxy < BlankSlate
   
@@ -53,9 +61,19 @@ What happens is that "it" is a method that returns an AnaphorProxy. The default 
 
 If you send messages to an AnaphorProxy, you get another AnaphorProxy that "records" the messages you send. So `it * 2 + 1` evaluates to an AnaphorProxy that returns `lambda { |x| lambda { |x| lambda { |x| x }.call(x) * 2 }.call(x) + 1 }`. This is equivalent to `lambda { |x| x * 2 + 1}` but more expensive to compute and dragging with it some closed over variables.
 
-As you might expect from a hack along these lines, there are all sorts of things to trip us up. `(1..10).map(&it * 2 + 1)` works, but `(1..10).map(&1 + it * 2)` does not. Unexpected things happen if you try to "record" an invocation of #to\_proc. And because of the way parameters are "recorded" when the AnaphorProxy is created rather than looked up when the messages are sent, you might be surprised by its behaviour when side effects are involved.
+As you might expect from a hack along these lines, there are all sorts of things to trip us up. `(1..10).map(&it * 2 + 1)` works, however what would you expect from:
 
-So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it * 2')`, this approach does not. (The code above has been simplified to illustrate the idea. Consult the actual [methodphitamine gem source](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") for details on how it is actually implemented: There are performance optimizations as well as a lightweight Maybe Monad hiding under the covers.)
+    (1..10).map(&1 + it * 2) # no!
+    
+This does not work with Methodphitamine, and neither does something like:
+
+    Person.all(...).select(&it.first_name == it.last_name) # no!
+    
+Also, unexpected things happen if you try to "record" an invocation of #to\_proc:
+
+    [:foo, :bar, :blitz].map(&it.to_proc.call(some_object)) # no!
+
+So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it * 2')` or `Person.all(...).select(&'_.first_name == _.last_name')`, this approach does not. (The implementation above has been simplified to illustrate the idea. Consult the actual [methodphitamine gem source](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") for details on how it is actually implemented: There are performance optimizations as well as a lightweight Maybe Monad hiding under the covers.)
 
 **Anaphors for conditionals**
 
