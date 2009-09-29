@@ -3,7 +3,7 @@ Anaphora in Ruby
 
 > In natural language, an anaphor is an expression which refers back in the conversation. The most common anaphor in English is probably "it," as in "Get the wrench and put it on the table." Anaphora are a great convenience in everyday language--imagine trying to get along without them--but they don't appear much in programming languages. For the most part, this is good. Anaphoric expressions are often genuinely ambiguous, and present-day programming languages are not designed to handle ambiguity.  --Paul Graham, [On Lisp](http://www.paulgraham.com/onlisp.html "On Lisp")
 
-**The anaphoric parameter**
+**Block anaphora**
 
 Oliver Steele wrote a nice little Javascript library called [Functional Javascript](http://osteele.com/sources/javascript/functional/ "Functional Javascript"). Javascript is a particularly verbose language descended from Lisp. It's syntax for writing anonymous functions is awkward, especially for the kind of short functions that are passed to higher-level functions like `map` or `select`. Oliver decided that if you wanted to write a lot of anonymous functions, you'd better have a more succinct way to write them. So he added "String Lambdas" to Javascript, a succinct alternate syntax for anonymous functions.
 
@@ -11,11 +11,11 @@ Oliver Steele wrote a nice little Javascript library called [Functional Javascri
 
 For example, instead of `(1..100).map { |x| (1/x)+1 }`, you can write `(1..100).map(&'(1/_)+1')` using String#to\_proc. The underscore is an anaphor, it refers back to the block's parameter just as the word "it" in this sentence refers back to the word "anaphor." The win is brevity: You don't have to define a parameter just to use it once.
 
-String#to\_proc does a lot more than just provide anaphors for single parameters in blocks, of course. But it does provide this specific form of anaphora in Ruby.
+String#to\_proc does a lot more than just provide anaphora for single parameters in blocks, of course. But it does provide this specific anaphor in Ruby.
 
-**Methodphitamine: Another implementation of the anaphoric parameter**
+**Methodphitamine: Another implementation of the block anaphor**
 
-[Methodphitamine](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips") provides another implementation of anaphoric parameters, this one inspired by the Groovy language.
+[Methodphitamine](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips") provides another implementation of block anaphora, this one inspired by the Groovy language.
 
 Symbol#to\_proc is the standard way to abbreviate blocks that consist of a single method invocation, typically without parameters. For example if you want the first name of a collection of people records, you might use `Person.all(...).map(&:first_name)`.
 
@@ -75,9 +75,9 @@ Also, unexpected things happen if you try to "record" an invocation of #to\_proc
 
 So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it * 2')` or `Person.all(...).select(&'_.first_name == _.last_name')`, this approach does not. (The implementation above has been simplified to illustrate the idea. Consult the actual [methodphitamine gem source](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") for details on how it is actually implemented: There are performance optimizations as well as a lightweight Maybe Monad hiding under the covers.)
 
-**UPDATE: Anaphoric parameters in rewrite_rails**
+**UPDATE: Block anaphora in rewrite_rails**
 
-[rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") supports `it`, `its`, or `_` as anaphoric parameters for blocks taking one argument. Similarly to Methodphitamine, you can write:
+[rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") supports `it`, `its`, or `_` as block anaphora for blocks taking one argument. Similarly to Methodphitamine, you can write:
 
     (1..10).map{ it * 2 + 1 } # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
     
@@ -87,6 +87,8 @@ You can also write all of the following:
     Person.all(...).select { its.first_name == its.last_name } # and,
     [:foo, :bar, :blitz].map { it.to_proc.call(some_object) }
     (1..100).map { (1/_)+1 }
+    
+In comparison to String#to\_proc, block anaphora do less (String#to\_proc also supports point-free blocks and named parameters). However, block anaphora looks a little cleaner, you don't have code inside a string, you just have code.
 
 **Anaphors for conditionals**
 
@@ -121,7 +123,7 @@ WIth an anaphoric macro, the anaphor "it" is bound to the result of the if expre
 
 **Anaphors for conditionals in Ruby?**
 
-Reading about Lisp's anaphoric macros made me wonder whether anaphors for conditionals would work in Ruby. I find `(it = big_long_calculation()) && it.foo` cluttered and ugly, but perhaps I could live without #andand if I could write things like:
+Reading about Lisp's anaphoric macros made me wonder whether anaphora for conditionals would work in Ruby. I find `(it = big_long_calculation()) && it.foo` cluttered and ugly, but perhaps I could live without #andand if I could write things like:
 
     if big_long_calculation(): it.foo end
     
@@ -139,7 +141,7 @@ Becomes:
 
 You can embellish such a hypothetical rewriter with optimizations such as not assigning `it` unless there is a variable reference somewhere in the consequent or alternate clauses and so forth, but the basic implementation is straightforward.
 
-The trouble with this idea is that in Ruby, *There Is More Than One Way To Do It* (for any value of "it"). If we implement anaphors for conditionals, we ought to implement them for all of the ways a Ruby programmer might write a conditional. As discussed, we must support:
+The trouble with this idea is that in Ruby, *There Is More Than One Way To Do It* (for any value of "it"). If we implement anaphora for conditionals, we ought to implement them for all of the ways a Ruby programmer might write a conditional. As discussed, we must support:
 
     if big_long_calculation()
       it.foo
@@ -153,7 +155,7 @@ They both are parsed into the exact same abstract syntax tree expression. Good. 
 
     it.foo if big_long_calculation()
     
-That doesn't read properly. The anaphor should follow the subject, not precede it. If we want our anaphors to read sensibly, we really want to write:
+That doesn't read properly. The anaphor should follow the subject, not precede it. If we want our anaphora to read sensibly, we really want to write:
 
     big_long_calculation().foo if it           # or
     big_long_calculation().foo unless it.nil?
@@ -173,7 +175,7 @@ So you would have to have a rule that if the anaphor appears in the test express
       end
     end
     
-This doesn't work as expected because the anaphor would refer forward to its consequent expression `number_of_foobars += 1` rather than backwards to the enclosing test expression `calculation_that_might_return_a_foobar()`. You can try to construct some rules for disambiguating things, but you're going to end up asking programmers to memorize the implementation of how things actually work rather than relying on familiarity with how anaphors work in English.
+This doesn't work as expected because the anaphor would refer forward to its consequent expression `number_of_foobars += 1` rather than backwards to the enclosing test expression `calculation_that_might_return_a_foobar()`. You can try to construct some rules for disambiguating things, but you're going to end up asking programmers to memorize the implementation of how things actually work rather than relying on familiarity with how anaphora work in English.
 
 Another problem with supporting `big_long_calculation().foo unless it.nil?` is that we now need some rules to figure out that the anaphor refers to `big_long_calculation()` and not to `big_long_calculation().foo`. Whatever arbitrary rules we pick are going to introduce ambiguity. What shall we do about:
 
@@ -195,7 +197,7 @@ We want to write:
 
 This is near and dear to my heart: The name "andand" comes from this exact formulation. #andand doesn't enhance an if expression, it enhances the double ampersand operator. One can see at a glance that implementing support for `big_long_calculation() && it.foo` is fraught with perils. What about `big_long_calculation() + it.foo`? What about `big_long_calculation().bar && it.foo`?
 
-It seems that it is much harder to support anaphors for conditionals in Ruby than it is to support anaphors for conditionals in Lisp. This isn't surprising. Lisp has an extremely regular lack of syntax, so we don't have to concern ourselves with as many cases as we do in Ruby.
+It seems that it is much harder to support anaphora for conditionals in Ruby than it is to support anaphora for conditionals in Lisp. This isn't surprising. Lisp has an extremely regular lack of syntax, so we don't have to concern ourselves with as many cases as we do in Ruby.
 
 **Old school anaphora**
 
