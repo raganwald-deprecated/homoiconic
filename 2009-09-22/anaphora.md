@@ -75,6 +75,19 @@ Also, unexpected things happen if you try to "record" an invocation of #to\_proc
 
 So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it * 2')` or `Person.all(...).select(&'_.first_name == _.last_name')`, this approach does not. (The implementation above has been simplified to illustrate the idea. Consult the actual [methodphitamine gem source](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") for details on how it is actually implemented: There are performance optimizations as well as a lightweight Maybe Monad hiding under the covers.)
 
+**UPDATE: Anaphoric parameters in rewrite_rails**
+
+[rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") supports `it`, `its`, or `_` as anaphoric parameters for blocks taking one argument. Similarly to Methodphitamine, you can write:
+
+    (1..10).map{ it * 2 + 1 } # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+    
+You can also write all of the following:
+
+    (1..10).map { 1 + it * 2 }
+    Person.all(...).select { its.first_name == its.last_name } # and,
+    [:foo, :bar, :blitz].map { it.to_proc.call(some_object) }
+    (1..100).map { (1/_)+1 }
+
 **Anaphors for conditionals**
 
 Many people are familiar with the [andand gem](http://github.com/raganwald/andand "raganwald's andand at master - GitHub"). Say you want to write some code like this:
