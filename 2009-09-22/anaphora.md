@@ -234,6 +234,8 @@ Anaphora allow us to abbreviate code, hiding parameters and temporary variables 
 * [Anaphoric macros](http://www.bookshelf.jp/texi/onlisp/onlisp_15.html "Onlisp:  Anaphoric Macros")
 * [rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") contains an improved implementation of String#to\_proc.
 * A [usenet discussion](http://groups.google.com/group/ruby-talk-google/browse_thread/thread/26445dcef22f5a5/1772d0c487d4c570?hl=en&amp;lnk=ol&amp; "Introducing the &quot;it&quot; keyword") about anaphora in Ruby.
+* [@RobertFischer](http://twitter.com/RobertFischer "Robert Fischer") pointed out that Groovy implements Block Anaphora using exactly the same syntax as rewrite\_rails, as well as mentioning that Groovy provides a special operator, `?.`, for the Maybe Monad.
+* Perl has some [anaphora of its own](http://www.wellho.net/mouth/969_Perl-and-.html "Perl - $_ and @_").
 
 ---
 	
