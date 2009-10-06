@@ -1,21 +1,22 @@
 Why Metalinguistic Programming?
 ===
 
-*The following discussion is extracted from a forthcoming talk--"The Revised, Revised Ruby.rewrite(Ruby)" or "R5"to be be delivered at [Stack Overflow Dev Days](http://www.amiando.com/stackoverflowdevdays-toronto-can.html "Stack Overflow Dev Days Toronto - Carsonified"). I apologize for the lack of surrounding context in this format.*
+*The following discussion is extracted from a forthcoming talk--"The Revised, Revised Ruby.rewrite(Ruby)" or "R5"--to be be delivered at [Stack Overflow Dev Days](http://www.amiando.com/stackoverflowdevdays-toronto-can.html "Stack Overflow Dev Days Toronto - Carsonified"). I apologize for the lack of surrounding context in this format.*
 
----
+**metalinguistic programming**
 
-What is Metalinguistic Programming? And why do we care about it? Let's start with what Wikipedia has to say about [Metalinguistic Abstractions](http://en.wikipedia.org/wiki/Metalinguistic_abstraction "Metalinguistic abstraction - Wikipedia, the free encyclopedia"): "In computer science, metalinguistic abstraction is the process of solving complex problems by creating a new language or vocabulary." So the "what" is creating entirely new languages or vocabularies. I'm going to get arbitrary and say that we are only interested in metalinguistic abstractions 
-
-In Ruby, don't we already do this with domain-specific languages" or "DSLs?" Don't we create a new language for solving a complex problem? For example, plug-ins in the Rails ecosystem allow you to write code such as:
+Wikipedia notes that [metalinguistic programming](http://en.wikipedia.org/wiki/Metalinguistic_abstraction "Metalinguistic abstraction - Wikipedia, the free encyclopedia") is "The process of solving complex problems by creating a new language or vocabulary." So metalinguistic abstractions are new languages we create to solve problems. My first reaction is to observe that the Ruby culture strongly embraces the creation of new domain-specific languages" or "DSLs?" For example, [Cucumber](http://cukes.info/ "Cucumber - Making BDD fun") allows you to write code such as:
 
     visit "/login" 
     fill_in("login", :with => login) 
     
-Ruby on Rails itself and plug-ons like Shoulda allow you to write things such as:
+Similarly, [Ruby on Rails](http://rubyonrails.org/ "Ruby on Rails") allows you to write:
 
     has_many :opinions
     validates_presence_of :ego
+
+While [Shoulda](http://www.thoughtbot.com/projects/shoulda "Projects - Shoulda") allows you to write:
+
     should_render_template :show
 
 Aren't these all examples of new languages?
@@ -36,14 +37,8 @@ Here we have new vocabulary. But we have something else as well, *new semantics*
 
 Now to consider a straw man argument against my suggestion. Ruby on Rails and Shoudla are written in Ruby. They don't actually have declarative semantics, they are imperative. They just *fake* declarative semantics. So if you know what's going on behind the scenes, the line `has_many :opinions` might not mean, "There is a has-many relationship between instances of this class and instances of the Opinion class." It might mean instead, "Create the following thirteen methods in this class for manipulating instances of Opinion..."
 
-It's true that these declarative semantics are *implemented* imperatively, but that's true of everything: No matter what programming language you write high up the abstraction tower on general purpose hardware, your program is implemented on a Von Neuman piece of hardware at the bottom of the abstraction tower. If someone wants to ignore the abstraction and think in assembler, that's fine.
+My thought in response is that while it's true that these declarative semantics are *implemented* imperatively, that's true of everything: No matter what programming language you write high up the abstraction tower on general purpose hardware, your program is implemented on a [Von Neumann](http://en.wikipedia.org/wiki/John_von_Neumann "John von Neumann - Wikipedia, the free encyclopedia") piece of hardware at the bottom of the abstraction tower. If someone wants to ignore the abstraction and think in assembler, that does not detract from the value of the abstraction for those who readily accept it.
 
-The Wikipedia definition suggests
+So in summary, my suggestion is that metalinguistic abstractions have two flavours. The first is the creation of a rich vocabulary that is used with Ruby's existing semantics, the second is the creation of a new language with new semantics including but not limited to programming in a declarative way.
 
-Let's start with the canonical explanation given for metalinguistic programming:
-
-> In computer science, metalinguistic abstraction is the process of solving complex problems by creating a new language or vocabulary to better understand the problem space. It is a recurring theme in the seminal MIT textbook, the Structure and Interpretation of Computer Programs, which uses Scheme as a framework for constructing new languages. --[Metalinguistic abstraction](http://en.wikipedia.org/wiki/Metalinguistic_abstraction) in Wikipedia
-
-Grossly oversimplifying, a meta-syntactic variable is a placeholder or stand-in variable used when you are talking about some higher relationship between classes of things rather than specific things. Likewise, a meta-syntactic program is a placeholder or stand-in program  used when you are talking about some higher relationship between classes of programs rather than specific programs.
-
-Examples of meta-syntactic 
+*to be continued...*
