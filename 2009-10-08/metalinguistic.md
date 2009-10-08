@@ -24,6 +24,8 @@ While [Shoulda](http://www.thoughtbot.com/projects/shoulda "Projects - Shoulda")
 
 Aren't these all examples of new languages?
 
+[![The Dirty Hungarian Phrasebook](http://www.pythonline.com/files/pythonline/images/08-hungarian.preview.jpg)](http://www.youtube.com/watch?v=G6D1YI-41ao "The Dirty Hungarian Phrasebook")  
+
 **vocabularies and languages**
 
 Let's start with Webrat. Ruby is an object-oriented language with imperative semantics. You send messages to objects and things happen. State is changed. This is the pervasive metaphor everywhere. Webrat code clearly follows this form: You are telling Webrat to do something, and something will happen as a side effect of the commands you issue. In this case, there is a simulated session in a web application being used for testing.
