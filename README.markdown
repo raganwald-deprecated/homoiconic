@@ -44,7 +44,7 @@ That is a lot more work than just submitting a comment. I'm sorry, it's a trade-
 
 **criticism?**
 
-Criticism of my *ideas* is always welcome and will often get a link or a quote from me. As for criticiasm of me the person based on what I write, here's a comment snarfed from [Reddit](http://www.reddit.com/r/programming/comments/9s5pd/no_i_wouldnt_hire_a_programmer_that_has_no/c0e6ncb "pmf comments on No, I Wouldn't Hire a Programmer That Has No Interest in Programming Outside of Business Hours"):
+Criticism of my *ideas* is always welcome and will often get a link or a quote from me. As for criticism of me the person based on what I write, here's a comment snarfed from [Reddit](http://www.reddit.com/r/programming/comments/9s5pd/no_i_wouldnt_hire_a_programmer_that_has_no/c0e6ncb "pmf comments on No, I Wouldn't Hire a Programmer That Has No Interest in Programming Outside of Business Hours"):
 
 > Hey, I know you! You're that guy who misuses the technical infrastructure provided by github.com for free for a certain use case for the propagation of his vain nonsensical bullshit in a transparent and pathetic attempt to come off as some kind of lo-fi guy who is too modest to consider himself worthy of a real blog.
 
