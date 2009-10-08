@@ -3,7 +3,7 @@ No, I Wouldn't Hire a Programmer That Has No Interest in Programming Outside of 
 
 I read this on [proggit](http://www.reddit.com/r/programming/comments/9s3ww/would_you_hire_a_programmer_that_does_not_write/ "Would you hire a programmer that does not write code recreationally? : programming"):
 
-> A while ago my company interviewed someone who, in the course of some standard question, said that after the 5 o'clock whistle blows, they avoid computers totally.T hey don't have any hobbies involving their PC and often don't turn it on unless they are expecting an important email or need to look up directions. I followed up to ask how they got into programming and they said they took the right courses in college and now has had a few jobs doing it.
+> A while ago my company interviewed someone who, in the course of some standard question, said that after the 5 o'clock whistle blows, they avoid computers totally. They don't have any hobbies involving their PC and often don't turn it on unless they are expecting an important email or need to look up directions. I followed up to ask how they got into programming and they said they took the right courses in college and now has had a few jobs doing it.
 
 > Would you hire a software engineer who isn't a hobbyist programmer? What if they avoid computers totally at home? Does it matter if a candidate has strictly a professional interest in software and just pretends it doesn't exist outside the office?
 
