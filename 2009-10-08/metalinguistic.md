@@ -142,7 +142,7 @@ You could also write:
       # actions...
     end
     
-This separates the declaration of dependancies from the declaration of actions to execute. (Separating "stuff that's part of a task" from "stuff that should be done before a task" and "stuff that should be done after a task" is a very common linguistic abstraction. Lisp added this abstraction several times, most notably as [Flavors](http://en.wikipedia.org/wiki/Flavors_(computer_science)) which evolved into [CLOS](http://en.wikipedia.org/wiki/Common_Lisp_Object_System "Common Lisp Object System").)
+This separates the declaration of dependancies from the declaration of actions to execute. (Separating "stuff that's part of a task" from "stuff that should be done before a task" and "stuff that should be done after a task" is a very common linguistic abstraction. Lisp added this abstraction several times, most notably as [Flavors](http://en.wikipedia.org/wiki/Flavors_(computer_science\)) which evolved into [CLOS](http://en.wikipedia.org/wiki/Common_Lisp_Object_System "Common Lisp Object System").)
 
 In Rails, this is expressed in (at least) two different ways. In its controller methods, you can define before and after filters, and the declaration of which filters apply to which methods is separate from the definition of the controller method themselves. This (amongst other similar things) is implemented with [alias\_method\_chain](http://weblog.rubyonrails.org/2006/4/26/new-in-rails-module-alias_method_chain "Riding Rails: New in Rails: Module#alias_method_chain"), a way of extending a method's functionality separate from the method itself.
 
