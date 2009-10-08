@@ -174,7 +174,7 @@ Let's take AOP for example. Would I really have a single slide somewhere describ
 
 Likewise, would I create slides talking about dependancies between things in my program? If so, my program ought to have an abstraction expressing dependancies. This extends to however you would describe the program when talking to humans. The way you organize your imaginary slides is the way your program should be organized, and you ought to select or build the abstractions necessary to do so.
 
-Likewise, the jargon you use in your presentation must be supported in your program. If you use a consistent set of abstract terms in slides, your program's vocabulary should be complete enough to express those same ideas at the same level of abstraction without dropping down into implementation. If you talk about "teams" in your slides, don't write code for "arrays of employees" in your program.
+The jargon you use in your presentation should be directly supported in your program. If you use a consistent set of abstract terms in slides, your program's vocabulary should be complete enough to express those same ideas at the same level of abstraction without dropping down into implementation. If you talk about "teams" in your slides, don't write code for "arrays of employees" in your program.
 
 **fin**
 
