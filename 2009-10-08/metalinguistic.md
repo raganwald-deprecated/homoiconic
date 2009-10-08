@@ -178,8 +178,6 @@ The jargon you use in your presentation should be directly supported in your pro
 
 **fin**
 
-I hope this post has given you some ideas to think about how and when to choose and write metalinguistic abstractions in Ruby.
-
 > This discussion is extracted from a forthcoming talk--"The Revised, Revised Ruby.rewrite(Ruby)" or "R5"--to be be delivered at [Stack Overflow Dev Days](http://www.amiando.com/stackoverflowdevdays-toronto-can.html "Stack Overflow Dev Days Toronto - Carsonified").
 
 ---
