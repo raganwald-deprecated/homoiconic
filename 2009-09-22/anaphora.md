@@ -221,7 +221,7 @@ To:
 
     if /reg(inald)?/.match(full_name) then puts it[0] end
     
-To my eyes, "it" is easier to understand because it is a very general, well-understood anaphora, matching the test expression, always. We don't have to worry about whether $& is the result of a match or all the text to the left of a match or the command line parameters or what-have-you.
+To my eyes, "it" is easier to understand because it is a very general, well-understood anaphor. "It" always matches the test expression. We don't have to worry about whether `$&` is the result of a match or all the text to the left of a match or the command line parameters or what-have-you.
 
 **Summing up**
 

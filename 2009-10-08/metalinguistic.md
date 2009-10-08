@@ -1,9 +1,9 @@
-Metalinguistic Programming
+Metalinguistic Abstractions in Ruby
 ===
 
 > The following discussion is extracted from a forthcoming talk--"The Revised, Revised Ruby.rewrite(Ruby)" or "R5"--to be be delivered at [Stack Overflow Dev Days](http://www.amiando.com/stackoverflowdevdays-toronto-can.html "Stack Overflow Dev Days Toronto - Carsonified"). I apologize for the lack of surrounding context in this format.
 
-Wikipedia notes that [metalinguistic programming](http://en.wikipedia.org/wiki/Metalinguistic_abstraction "Metalinguistic abstraction - Wikipedia, the free encyclopedia") is "The process of solving complex problems by creating a new language or vocabulary." So metalinguistic abstractions are new languages we create to solve problems. My first reaction is to observe that the Ruby culture strongly embraces the creation of new domain-specific languages" or "DSLs?" For example, [Webrat](http://github.com/brynary/webrat) allows you to write code such as:
+Wikipedia notes that [metalinguistic abstractions](http://en.wikipedia.org/wiki/Metalinguistic_abstraction "Metalinguistic abstraction - Wikipedia, the free encyclopedia") are the idea behind "The process of solving complex problems by creating a new language or vocabulary." So metalinguistic abstractions are new languages we create to solve problems. My first reaction is to observe that the Ruby culture strongly embraces the creation of new domain-specific languages" or "DSLs?" For example, [Webrat](http://github.com/brynary/webrat) allows you to write code such as:
 
     def test_trial_account_sign_up
       visit home_path
@@ -64,7 +64,7 @@ A common example of an incomplete vocabulary is when you see programs that mix w
 
 It is not necessarily poor practice to mix words from different abstraction layers or to deliberately limit a vocabulary's size. Rather, there is a continuum of programming style stretching from naming a few abstractions at one end to creating a metalinguistic abstraction with a complete vocabulary at the other end.
 
-**other semantics**
+**semantics, schmantics**
 
 As noted, popular Ruby frameworks like Rails "fake" declarative semantics in the sense of [worse is better](http://www.jwz.org/doc/worse-is-better.html "The Rise of ``Worse is Better''"). The "worse" issue is that they are a [leaky abstraction](http://www.joelonsoftware.com/articles/LeakyAbstractions.html "The Law of Leaky Abstractions - Joel on Software"). Likewise Ruby itself fakes functional programming and declarative semantics with its own leaky abstractions built on top of objects.
 
@@ -74,21 +74,20 @@ There are other kinds of semantics that can be implemented on top of an existing
       # actions...
     end
     
-    task :prereq1 => [:pre_prereq]
+    task :prereq1 => [:pre_prereq] do |t|
+      # actions...
+    end
     
-    task prereq1 do |t|
+    task :pre_prereq => [:prereq2] do |t|
       # actions...
     end
 
-Behind the scenes, of course, there is an engine that sorts out the prerequisites and runs them in order. But this is a very different set of semantics than Ruby (or most other popular languages). If you want to run `prereq1`and `prereq2` before `do_something`, the Ruby way is to write:
+Behind the scenes, of course, there is an engine that sorts out the prerequisites, runs them in order, and makes sure that each prerequisite is only run once. This is a very different set of semantics than Ruby (or most other popular languages) provides out of the box. If you want to run `prereq1`and `prereq2` before `do_something`, the Ruby way is to write:
 
     def do_something
       prereq1
       prereq2
-      # actions ...
-    end
-    
-There is no way to distinguish "stuff that's part of a task" from "stuff that should be done before a task," nor is there any way to separate the two definitions. And worse, *the Native Ruby Way has the wrong semantics*. Consider this additional code:
+      # actions 
 
     def prereq1
       pre_prereq
@@ -100,29 +99,83 @@ There is no way to distinguish "stuff that's part of a task" from "stuff that sh
       # actions ...
     end
     
-As run in Ruby, `prereq2` is executed twice when you want to execute `do_something`. But if this is a case of only needing it to be run once, before `do_something` and before `prereq1`, the standard semantics are wrong. Rake does things differently. You express your dependencies and it executes them just once, deducing the correct order.
+As run in Ruby, `prereq2` is executed *twice* when you want to execute `do_something`. But if this is a pre-requisite, if we are trying to express a dependancy, `prereq2` should only be run once, not twice. While Rake's semantics express a dependancy relationship in the large, Rails' semantics express an imperative to execute methods before other methods in the small.
 
-The distinction is important. task :prereq1 => [:pre_prereq]` does not mean "execute pre\_prereq before prereq1," it
+And that's why Rake's dependency notation is a metalinguistic abstraction and not just a question of vocabulary, not just a new way to write Ruby's existing OOP imperative semantics.
 
-> There is an unwritten rule that says every Ruby programmer must, at some point, write his or her own AOP implementation --[Avdi Grimm](http://avdi.org)
+**another kind of linguistic abstraction**
 
-Separating "stuff that's part of a task" from "stuff that should be done before a task" and "stuff that should be done after a task" is a very common linguistic abstraction. Lisp added this abstraction several times, most notably as [Flavors](http://en.wikipedia.org/wiki/Flavors_(computer_science) "Flavors (programming language) - Wikipedia, the free encyclopedia") which evolved into [CLOS](http://en.wikipedia.org/wiki/Common_Lisp_Object_System "Common Lisp Object System - Wikipedia, the free encyclopedia").
+> There is an unwritten rule that says every Ruby programmer must, at some point, write his or her own [AOP](http://github.com/raganwald/homoiconic/blob/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#readme "Aspect-Oriented Programming in Ruby using Combinator Birds") implementation --[Avdi Grimm](http://avdi.org)
+
+As described above, Rake's semantics describe dependancies rather than imperatives to execute methods. Rake actually provides another linguistic abstraction. Instead of writing:
+
+    task :do_something => [:prereq1, :prereq2] do |t|
+      # actions...
+    end
+    
+    task :prereq1 => [:pre_prereq] do |t|
+      # actions...
+    end
+    
+    task :pre_prereq => [:prereq2] do |t|
+      # actions...
+    end
+    
+You could also write:
+
+    task :do_something => [:prereq1, :prereq2]
+    task :prereq1 => [:pre_prereq]
+    task :pre_prereq => [:prereq2]
+
+    task :do_something do |t|
+      # actions...
+    end
+    
+    task :prereq1 do |t|
+      # actions...
+    end
+    
+    task :pre_prereq do |t|
+      # actions...
+    end
+    
+This separates the declaration of dependancies from the declaration of actions to execute. (Separating "stuff that's part of a task" from "stuff that should be done before a task" and "stuff that should be done after a task" is a very common linguistic abstraction. Lisp added this abstraction several times, most notably as [Flavors](http://en.wikipedia.org/wiki/Flavors_\(computer_science\)) which evolved into [CLOS](http://en.wikipedia.org/wiki/Common_Lisp_Object_System "Common Lisp Object System").)
 
 In Rails, this is expressed in (at least) two different ways. In its controller methods, you can define before and after filters, and the declaration of which filters apply to which methods is separate from the definition of the controller method themselves. This (amongst other similar things) is implemented with [alias\_method\_chain](http://weblog.rubyonrails.org/2006/4/26/new-in-rails-module-alias_method_chain "Riding Rails: New in Rails: Module#alias_method_chain"), a way of extending a method's functionality separate from the method itself.
 
-Controller method filters and alias\_method\_chain both add new semantics to Ruby, and thus they are both part of a linguistic abstraction built on top of Ruby's core imperative, object-oriented semantics.
+This can be a very useful abstraction. For example, the following line describes authentication requirements in a fictional Rails controller:
 
-So we've seen that metalinguistic programming can add declarative semantics, functional semantics, and dependency semantics to Ruby. Other semantics are possible as well.
+    before_filter :authenticate, :except => [:login, :about_us]
+    
+This says that every method in the controller should call the `authenticate` method except for the `login` and `about_us` methods (which presumably are available to the public). Having a way to declare that without having to tediously write methods such as:
 
-**How and When**
+    def show
+      authenticate
+      # actions ...
+    end
+    
+    def index
+      authenticate
+      # actions ...
+    end
+    
+Is a win because it separates two orthogonal concerns: How to perform a certain action is one concern, how and when to authenticate users is another. Giving methods single responsibilities is a core principle of effective software design, and this linguistic abstraction makes it possible.
 
-Metalinguistic programming usually begins with a problem space and asking yourself, *When describing the problem or the solution, what is the most important thing I'm trying to communicate?*
+**abstractioneering**
 
-That thing, whatever it is, needs prominence in the code you eventually write. If Ruby's existing OO idiom doesn't really give it prominence, if it's drowned out in the accidental complexity of methods and classes, you might want to consider working out its semantics and implementing them. On the other hand, if it is naturally expressed as objects and methods, you might want to focus on the vocabulary and not worry about the semantics.
+To return to the start, metalinguistic abstractions are abstractions that focus on creating a new language based on a new vocabulary or new semantics. This is a part of Ruby culture, and several popular frameworks derive their power from providing metalinguistic abstractions for programmers.
 
-Dependencies are a good example of this. In a web application, when I write a controller method for displaying an entity of some sort:
+But how do we choose an appropriate metalinguistic abstraction? How do we know when it is appropriate to write our own? I have a rule of thumb for choosing or developing metalinguistic abstractions. I apply the "Keynote Test." I think about the problem I am trying to solve and the solution I wish to describe, then I imagine a keynote presentation describing the program.
 
+Let's take AOP for example. Would I really have a single slide somewhere describing in detail every step required to show a foobar record from authentication to transaction? Or would there be a slide talking about foobars, another slide somewhere else talking about authentication, and another slide somewhere else talking about databases and transactions? The imaginary organization of my slides informs the organization of my program, which in turn informs some of the linguistic abstractions I need.
 
+Likewise, would I create slides talking about dependancies between things in my program? If so, my program ought to have an abstraction expressing dependancies. This extends to however you would describe the program when talking to humans. The way you organize your imaginary slides is the way your program should be organized, and you ought to select or build the abstractions necessary to do so.
+
+Likewise, the jargon you use in your presentation must be supported in your program. If you use a consistent set of abstract terms in slides, your program's vocabulary should be complete enough to express those same ideas at the same level of abstraction without dropping down into implementation. If you talk about "teams" in your slides, don't write code for "arrays of employees" in your program.
+
+**fin**
+
+I hope this post has given you some ideas to think about how and when to choose and write metalinguistic abstractions in Ruby.
 
 ---
 	
