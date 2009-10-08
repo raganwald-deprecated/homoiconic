@@ -48,7 +48,7 @@ Criticism of my *ideas* is always welcome and will often get a link or a quote f
 
 > Hey, I know you! You're that guy who misuses the technical infrastructure provided by github.com for free for a certain use case for the propagation of his vain nonsensical bullshit in a transparent and pathetic attempt to come off as some kind of lo-fi guy who is too modest to consider himself worthy of a real blog.
 
-If you're going to get personal, general, and permanent, consider this the standard to reach. See if you can't be more scornful, more insightful, or wittier in your criticism.
+If you're going to get [personal, general, and permanent](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme "Optimism"), consider this the standard to reach. See if you can't be more scornful, more insightful, or wittier in your criticism.
 
 **credit where credit is due**
 
