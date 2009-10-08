@@ -42,6 +42,12 @@ At the moment, there are no comments. This is a blog about code, not words. I we
 
 That is a lot more work than just submitting a comment. I'm sorry, it's a trade-off. I lose a lot of good feedback, but I also shed myself of a damaging temptation to pander to the crowd. When blogs become "conversations," they also tend to converge on a common group-think. All I can tell you is that if you have a change you want to make or an observation you want to add, go ahead and make it.
 
+Hey, here's a comment snarfed from [Reddit](http://www.reddit.com/r/programming/comments/9s5pd/no_i_wouldnt_hire_a_programmer_that_has_no/c0e6ncb "pmf comments on No, I Wouldn't Hire a Programmer That Has No Interest in Programming Outside of Business Hours"):
+
+> Hey, I know you! You're that guy who misuses the technical infrastructure provided by github.com for free for a certain use case for the propagation of his vain nonsensical bullshit in a transparent and pathetic attempt to come off as some kind of lo-fi guy who is too modest to consider himself worthy of a real blog.
+
+Nice!
+
 **credit where credit is due**
 
 I originally set up a blog at homoiconic.com, but I spotted [David Baldwin's blog](http://github.com/bilson/blog/tree/master), and I knew right away that a blog that is about the how of code ought to be hosted on Github.
