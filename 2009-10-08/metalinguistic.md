@@ -164,6 +164,8 @@ This says that every method in the controller should call the `authenticate` met
     
 Is a win because it separates two orthogonal concerns: How to perform a certain action is one concern, how and when to authenticate users is another. Giving methods single responsibilities is a core principle of effective software design, and this linguistic abstraction makes it possible.
 
+So we saw above that a metalinguistic abstraction is a language when it introduces new semantics. Now we see that a metalinguistic abstraction is a language when it introduces new ways to organize Ruby's existing semantics.
+
 **abstractioneering**
 
 To return to the start, metalinguistic abstractions are abstractions that focus on creating a new language based on a new vocabulary or new semantics. This is a part of Ruby culture, and several popular frameworks derive their power from providing metalinguistic abstractions for programmers.
