@@ -1,9 +1,12 @@
 Metalinguistic Abstractions in Ruby
 ===
 
-> The following discussion is extracted from a forthcoming talk--"The Revised, Revised Ruby.rewrite(Ruby)" or "R5"--to be be delivered at [Stack Overflow Dev Days](http://www.amiando.com/stackoverflowdevdays-toronto-can.html "Stack Overflow Dev Days Toronto - Carsonified"). I apologize for the lack of surrounding context in this format.
+Wikipedia notes that [metalinguistic abstractions](http://en.wikipedia.org/wiki/Metalinguistic_abstraction "Metalinguistic abstraction - Wikipedia, the free encyclopedia") are the idea behind "The process of solving complex problems by creating a new language or vocabulary." So metalinguistic abstractions are new languages we create to solve problems. 
 
-Wikipedia notes that [metalinguistic abstractions](http://en.wikipedia.org/wiki/Metalinguistic_abstraction "Metalinguistic abstraction - Wikipedia, the free encyclopedia") are the idea behind "The process of solving complex problems by creating a new language or vocabulary." So metalinguistic abstractions are new languages we create to solve problems. My first reaction is to observe that the Ruby culture strongly embraces the creation of new domain-specific languages" or "DSLs?" For example, [Webrat](http://github.com/brynary/webrat) allows you to write code such as:
+[![The Dirty Hungarian Phrasebook](http://www.pythonline.com/files/pythonline/images/08-hungarian.preview.jpg)](http://www.youtube.com/watch?v=G6D1YI-41ao "The Dirty Hungarian Phrasebook")  
+
+
+My first reaction is to observe that the Ruby culture strongly embraces the creation of new domain-specific languages" or "DSLs?" For example, [Webrat](http://github.com/brynary/webrat) allows you to write code such as:
 
     def test_trial_account_sign_up
       visit home_path
@@ -23,8 +26,6 @@ While [Shoulda](http://www.thoughtbot.com/projects/shoulda "Projects - Shoulda")
     should_render_template :show
 
 Aren't these all examples of new languages?
-
-[![The Dirty Hungarian Phrasebook](http://www.pythonline.com/files/pythonline/images/08-hungarian.preview.jpg)](http://www.youtube.com/watch?v=G6D1YI-41ao "The Dirty Hungarian Phrasebook")  
 
 **vocabularies and languages**
 
@@ -178,6 +179,8 @@ Likewise, the jargon you use in your presentation must be supported in your prog
 **fin**
 
 I hope this post has given you some ideas to think about how and when to choose and write metalinguistic abstractions in Ruby.
+
+> This discussion is extracted from a forthcoming talk--"The Revised, Revised Ruby.rewrite(Ruby)" or "R5"--to be be delivered at [Stack Overflow Dev Days](http://www.amiando.com/stackoverflowdevdays-toronto-can.html "Stack Overflow Dev Days Toronto - Carsonified").
 
 ---
 	
