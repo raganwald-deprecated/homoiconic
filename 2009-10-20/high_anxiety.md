@@ -1,9 +1,9 @@
 High Anxiety
 ===
 
-Last night, a good friend was visiting and she suggested we pass the time playing Go. I own a board but I don't recall ever playing with it. We got the board out and she started to explain how to play, and things went rapidly downhill from there. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all joy out of the room.
+Last night, a good friend was visiting and she suggested we pass the time playing [Go](http://bit.ly/hbUQr "Go (game) - Wikipedia, the free encyclopedia"). I own a board but I don't recall ever playing with it. We got the board out and she started to explain how to play, and things went rapidly downhill from there. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all joy out of the room.
 
-My history with Go is brief and inauspicious. I had heard it was a beautiful game, full of subtleties and marvels. Friends told me how much I would love it. So decades ago, I visited a Go club and explained I would like to learn to play. One of the members puled out a small board, gave me a brief run-down of the rules much as my friend did last night, and invited me to play. he probably gave me a large handicap, I don't remember the details.
+My history with Go is brief and inauspicious. I had heard it was a beautiful game, full of subtleties and marvels. Friends told me how much I would love it. Decades ago, I visited a [Go club](http://senseis.xmp.net/?TorontoGoClub "Sensei's Library: Toronto Go club") and explained I would like to learn to play. One of the members puled out a small board, gave me a brief run-down of the rules much as my friend did last night, and invited me to play. He probably gave me a large handicap, I don't remember the details.
 
 I had no idea what I was doing, and he destroyed me. Read what I just wrote, and if you understand the mind that would take it [personally](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md "Optimism") enough to consider himself destroyed, you can probably stop reading right here. You know it all.
 
@@ -13,7 +13,7 @@ Without any commentary to guide me, I had no idea what I was seeing. I did not s
 
 I went out and bought a book on Go, a book for beginners. I read it cover to cover and I was still blind.
 
-I didn't try playing Go again for years after that. The next time I can remember even talking about Go was with someone I intensely disliked, a person with absolutely no moral centre and a strong interest in being the alpha male of his social group. He made it perfectly clear that he thought he was a good Go player, and invited me to play with him. I found a way to sidle out of that, I had no interest in submitting to him in that manner. Read that line and again you understand a great deal.
+I didn't try playing Go again for years after that. The next time I can remember even talking about Go was with someone I intensely disliked, a person with absolutely no moral centre and a strong interest in being the alpha male of his social group. He made it perfectly clear that he thought he was a good Go player, and invited me to play with him. I found a way to sidle out of that, I had no interest in submitting to him in that manner. Read that line and again you understand a great deal about the baggage I was dragging up to the board.
 
 There was one more chapter in my interest in Go a few years back. Another person I liked wanted to learn to play so I decided I would learn as well. This time I bought a computer game that promised some instruction. I tried playing along, but there were difficulties with my relationship with my friend and I quickly lost interest.
 
@@ -47,18 +47,21 @@ Go is a game. There are people who play passionately, people who dedicate their 
 
 But despite all of that, Go is still only a game. Go didn't make me feel unhappy, I felt unhappy. And Go didn't make me self-centered on the whole, it was just while I was trying and failing to play the game as I understand "playing the game." Go will not always make me unhappy either. This feeling will pass.
 
-I will play Go again, and I will learn enough to actually have an idea of what I want to attempt. I will learn enough to have a rough idea of whether I am doing well or poorly in a game so I can gauge whether my moves are working out or not as I play. But I will not make these things my goal. Instead, I will set myself a goal of enjoying my next game of Go.
+However, **I will play Go again**.
 
-Perhaps not enjoying the game for itself. I have certain fairly hard-wired ideas about what it means to play a game at all, certain fairly hard-wired ideas about what is and isn't enjoyable about the actual play of a game. If I have no idea what to do or why to do it, and if I have no idea whether what I do is helping me win or lose, it's hard to feel any satisfaction from the game itself.
+In time, I may learn enough to actually have an idea of what I want to attempt. I may learn enough to have a rough idea of whether I am doing well or poorly in a game so I can gauge whether my moves are working out or not as I play. But I will not make these things my goal. Instead, I will set myself a goal of *enjoying my next game of Go*.
 
-But I *will* play again, and I will enjoy the social experience. I will drink the Scotch. I will listen to the music. I probably will ignore the game. Perhaps if there are patterns they will manifest themselves when I am not looking for them, something like those 3D pictures that require you to unfocus your vision to see what is going on. But then again, perhaps not. perhaps I will never understand the game, perhaps it will always be a closed book, perhaps I will always play in the dark while others whisper and giggle.
+I absolutely will not research the game. I will not practice in secret against a computer. I will not read everything I can find on the Internet about Go. I have tried to overcome these demons in the past using these tactics. The irony is, competence is not a cure for the fear of incompetence. *The courage to play incompetently* is a cure for fear of incompetence. If you are afraid of dogs, avoiding dog walking parks does not cure you of your fear, and for me learning to play Go well would help me avoid my fear but not cure it.
+
+So I *will* play again, and I will enjoy the social experience. I will drink the Scotch. I will listen to the music. I probably will ignore much of the game. Perhaps if there are patterns they will manifest themselves when I am not looking for them, something like those 3D pictures that require you to unfocus your vision to see what is going on. But then again, perhaps not. perhaps I will never understand the game, perhaps it will always be a closed book, perhaps I will always play in the dark while others whisper and giggle.
 
 It could be that I will never present a challenge to anyone, perhaps I will always lose no matter how many stones I am given. I don't know, but I do know that when I next sit in front of a Go board, I will enjoy myself. I do know I will be ok with playing in the dark. I will be ok with losing. I will not fear the moment when my opponent capitalizes on my blindness and announces that my position is unwinnable. I will not feel shame or fear or anger or resentment.
 
-I may never learn how to judge whether a player's position is improving in Go. But I know a little about judging whether my position is improving in Life. And I know that enjoying a game of Go with a friend would be an improvement.
+I may never learn how to judge whether a player's position is improving in Go. But I know a little about judging whether my position is improving in Life. And I know that enjoying a game of Go with a friend would be an improvement, especially if I do so by overcoming my fear of incompetence rather than avoiding it.
 
-So that's what we're going to do.
+So that's what I'm going to do.
 
+p.s. Yes, there is a blog post in here about learning new programming languages and frameworks. I trust you are able to make the connection for yourselves if you wish to do so.
 
 ----
 	
