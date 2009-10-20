@@ -1,7 +1,7 @@
 High Anxiety
 ===
 
-Last night, a good friend was visiting and she suggested we pass the time playing Go. I own a board but despite loving board games I have never played on it. We got the board out and she started to explain how to play, and things went rapidly downhill from there. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all joy out of the room.
+Last night, a good friend was visiting and she suggested we pass the time playing Go. I own a board but I don't recall ever playing with it. We got the board out and she started to explain how to play, and things went rapidly downhill from there. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all joy out of the room.
 
 My history with Go is brief and inauspicious. I had heard it was a beautiful game, full of subtleties and marvels. Friends told me how much I would love it. So decades ago, I visited a Go club and explained I would like to learn to play. One of the members puled out a small board, gave me a brief run-down of the rules much as my friend did last night, and invited me to play. he probably gave me a large handicap, I don't remember the details.
 
