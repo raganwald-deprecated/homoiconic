@@ -1,7 +1,7 @@
 High Anxiety
 ===
 
-Last night, a good friend was visiting and she suggested we pass the time playing [Go](http://bit.ly/hbUQr "Go (game) - Wikipedia, the free encyclopedia"). I own a board but I don't recall ever playing with it. We got the board out and she started to explain how to play, and things went rapidly downhill from there. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all joy out of the room.
+Last night, a good friend was visiting and she suggested we pass the time playing [Go](http://bit.ly/hbUQr "Go (game) - Wikipedia, the free encyclopedia"). I own a board, but I don't recall ever playing with it. We got the board out and she started to explain how to play. I love games, so you would expect that we had a good time. But no, I fell into a blue funk and things went rapidly downhill. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all the joy out of the room.
 
 My history with Go is brief and inauspicious. I had heard it was a beautiful game, full of subtleties and marvels. Friends told me how much I would love it. Decades ago, I visited a [Go club](http://senseis.xmp.net/?TorontoGoClub "Sensei's Library: Toronto Go club") and explained I would like to learn to play. One of the members puled out a small board, gave me a brief run-down of the rules much as my friend did last night, and invited me to play. He probably gave me a large handicap, I don't remember the details.
 
