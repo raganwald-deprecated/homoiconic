@@ -17,7 +17,7 @@ I didn't try playing Go again for years after that. The next time I can remember
 
 There was one more chapter in my interest in Go a few years back. Another person I liked wanted to learn to play so I decided I would learn as well. This time I bought a computer game that promised some instruction. I tried playing along, but there were difficulties with my relationship with my friend and I quickly lost interest.
 
-So last night I sat down for the fourth chapter in my attempt to learn the game. I felt a great deal of anxiety. I had failed three times to learn to play Go already. Read that last sentence, it says so much again. She would put some stones on the board to explain something, and I would ask a lot of questions, disrupting the flow of her instruction. It frustrated her to have me asking questions about things she was about to explain.
+So last night I sat down for the fourth chapter in my attempt to learn the game. I felt a great deal of anxiety. My friend tried to show me the rules. She would put some stones on the board to explain something, and I would ask a lot of questions, disrupting the flow of her instruction. I was impatient, edgy. Every time she showed me something, I would focus on what she wasn't telling me, afraid that I would miss some critical detail. I'm sure it was frustrating for me to continually ask questions about things she would have demonstrated in a moment had I been patient.
 
 As someone who knows me well and is a keen observer of human nature, she was troubled by how much angst I was obviously experiencing, how much trouble I was having with being incompetent. My word, "incompetent." She doesn't use words like that to describe trying to play maybe the second game in my life.
 
