@@ -3,7 +3,7 @@ High Anxiety
 
 The other night, a good friend was visiting and she suggested we pass the time playing [Go](http://bit.ly/hbUQr "Go (game) - Wikipedia, the free encyclopedia"). I own a board, but I don't recall ever playing with it. We got the board out and she started to explain how to play. I love games, so you would expect that we had a good time. But no, I fell into a blue funk and things went rapidly downhill. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all the joy out of the room.
 
-My involvement with Go has been sporadic and inauspicious. I had heard it was a beautiful game, full of subtleties and marvels. Friends told me how much I would love it. Decades ago, I visited a [club](http://senseis.xmp.net/?TorontoGoClub "Sensei's Library: Toronto Go club") and explained I would like to learn to play. One of the members pulled out a small board, gave me a brief run-down of the rules, and invited me to play. He probably gave me a large handicap, I don't remember the details. I had no idea what I was doing, and he destroyed me. (If you understand the mind that would take losing the first game ever played against an aficionado so [personally](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md "Optimism"), you can probably stop reading right here.) 
+My involvement with Go has been sporadic and inauspicious. I had heard it was a beautiful game, full of subtleties and marvels. Friends told me how much I would love it. Decades ago, I visited a [club](http://senseis.xmp.net/?TorontoGoClub "Toronto Go club") and explained I would like to learn to play. One of the members pulled out a small board, gave me a brief run-down of the rules, and invited me to play. He probably gave me a large handicap, I don't remember the details. I had no idea what I was doing, and he destroyed me. (If you understand the mind that would take losing the first game ever played against an aficionado so [personally](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md "Optimism"), you can probably stop reading right here.) 
 
 I'm sure he was a very nice man who wanted to share his love of the game with me. I do not think he wanted to "destroy" me, he was probably just showing me the natural consequences of actions and reactions in Go, consequences that happened to lead to his armies surrounding nearly all the free territory on the board.
 
@@ -15,7 +15,7 @@ Again, I don't think anyone at the club was trying to exclude me. It's just that
 
 I went out and bought a book on Go, a book for beginners. I read it cover to cover, but I still felt blind. The game seemed out of reach. I have learned many games before and since, and usually there is something I can grasp right away. backgammon appears to be a race at first glance. Later, you learn more about blocking and timing and back games and blitzes and you appreciate that it is rarely just a race. Most other games are similar, there is some obvious thing you are trying to do, and the subtleties come later. Go didn't give me anything so obvious to understand. 
 
-I didn't try playing Go again for years. When friends brought up the game, I changed the subject. I got into Japanese Maples and Koi keeping, yet avoided Go. Then I moved house, and in sorting through my games I pulled out a Go board. i can't even remember buying it. My friend suggested we play, and last night I made another attempt to learn the game.
+I didn't try playing Go again for years. When friends brought up the game, I changed the subject. I got into Japanese Maples and Koi keeping, yet avoided Go. Then I moved house, and in sorting through my games I pulled out a Go board. I can't even remember buying it. My friend suggested we play, and last night I made another attempt to learn the game.
 
 I felt a great deal of anxiety. My friend tried to show me the rules. She would put some stones on the board to explain something, and I would ask a lot of questions, disrupting the flow of her instruction. I was impatient, edgy. Every time she showed me something, I would focus on what she wasn't telling me, afraid that I would miss some critical detail. I'm sure it was frustrating for me to continually ask questions about things she would have demonstrated in a moment had I been patient.
 
@@ -37,7 +37,7 @@ Try something, she encouraged. Succeed, fail, it doesn't matter. Try something a
 
 And I was extremely uncomfortable with having no idea. I feared a non-existent humiliation of playing randomly. She was not playing me for the pleasure of pointing her finger at me and crying "Shame!" Nevertheless, my world was filled with fear of being shamed for incompetence. Eventually, I placed a stone on the board. I think at that point the fear of her disapproval over my diffidence exceeded the fear of making a mistake.
 
-We continued to play. With each stone, I re-enacted that awful feeling of staring at the board and having no idea what to do, no idea why to do it. I tried playing aggressively, and she quickly captured one of my stones. This depressed me. Of course, she meant me no ill will, but in my dark mood I felt I had been punished by fate for making a mistake.
+We continued to play. With each stone, I re-enacted that awful feeling of staring at the board and having no idea what to do, no idea why to do it. I tried playing aggressively, and she quickly captured one of my stones. This depressed me. She meant me no ill will, but in my dark mood I felt I had been punished by fate for making a mistake.
 
 With the loss of my stone, her position suddenly seemed to fill the board with weight and menace. My own seemed inconsequential, consisting of a few stones haphazardly strewn about. I fell deeper into despair. Instead of being motivated by the joy of learning something new, I was motivated by the fear of further punishment and humiliation.
 
@@ -59,15 +59,17 @@ In time, I may learn enough to actually have an idea of what I want to attempt. 
 
 I absolutely will not research the game. I will not practice in secret against a computer. I will not read everything I can find on the Internet about Go. I have tried to overcome these demons in the past using these tactics. The irony is, competence is not a cure for the fear of incompetence. *The courage to play incompetently* is a cure for fear of incompetence. If you are afraid of dogs, avoiding dog walking parks does not cure you of your fear, and for me learning to play Go well would help me avoid my fear but not cure it.
 
-So I *will* play again, and I will enjoy the social experience. I will drink the Scotch. I will listen to the music. I probably will ignore much of the game. Perhaps if there are patterns they will manifest themselves when I am not looking for them, something like those 3D pictures that require you to unfocus your vision to see what is going on. But then again, perhaps not. perhaps I will never understand the game, perhaps it will always be a closed book, perhaps I will always play in the dark while others whisper and giggle.
+So I *will* play again, and I will enjoy the social experience. I will drink the Scotch. I will listen to the music. I probably will ignore much of the game. Perhaps if there are patterns they will manifest themselves when I am not looking for them, something like those 3D pictures that require you to defocus your vision to see what is going on. But then again, perhaps not. perhaps I will never understand the game, perhaps it will always be a closed book, perhaps I will always play in the dark while others whisper and giggle.
 
-It could be that I will never present a challenge to anyone, perhaps I will always lose no matter how many stones I am given. I don't know, but I do know that when I next sit in front of a Go board, I will enjoy myself. I do know I will be ok with playing in the dark. I will be ok with losing. I will not fear the moment when my opponent capitalizes on my blindness and announces that my position is unwinnable. I will not feel shame or fear or anger or resentment.
+It could be that I will never present a challenge to anyone, perhaps I will always lose no matter how many stones I am given. I don't know, but I do know that when I next sit in front of a Go board, I will enjoy myself. I do know I will be ok with playing in the dark. I will be ok with losing. I will not fear the moment when my opponent capitalizes on my blindness and announces that my position is untenable. I will not feel shame or fear or anger or resentment.
 
 I may never learn how to judge whether a player's position is improving in Go. But I know a little about judging whether my position is improving in Life. And I know that enjoying a game of Go with a friend would be an improvement, especially if I do so by overcoming my fear of incompetence rather than avoiding it.
 
 So that's what I'm going to do.
 
-p.s. Yes, there is a blog post in here about learning new programming languages and frameworks. I trust you are able to make the connection for yourselves if you wish to do so.
+---
+
+*I originally wanted to write about learning new things and use this as an example. I had an idea that I would talk about the importance of getting out of a negative space where you fear ridicule and shame for being new. I would talk about having the courage to be new and incompetent leading to learning and growing. But as I wrote, I thought that simply sharing my feelings worked in a certain true, raw, honest way. For now, this story will stand on its own.*
 
 ----
 	
