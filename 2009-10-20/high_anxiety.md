@@ -3,6 +3,9 @@ High Anxiety
 
 The other night, a good friend was visiting and she suggested we pass the time playing [Go](http://bit.ly/hbUQr "Go (game) - Wikipedia, the free encyclopedia"). I own a board, but I don't recall ever playing with it. We got the board out and she started to explain how to play. I love games, so you would expect that we had a good time. But no, I fell into a blue funk and things went rapidly downhill. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all the joy out of the room.
 
+
+[![Go Board (c) 2008 Ralph Unden, some rights reserved](http://farm4.static.flickr.com/3113/2285032267_c1ecd9b66e_d.jpg)](http://www.flickr.com/photos/ralphunden/2285032267/ "Go Board (c) 2008 Ralph Unden, some rights reserved") 
+
 My involvement with Go has been sporadic and inauspicious. I had heard it was a beautiful game, full of subtleties and marvels. Friends told me how much I would love it. Decades ago, I visited a [club](http://senseis.xmp.net/?TorontoGoClub "Toronto Go club") and explained I would like to learn to play. One of the members pulled out a small board, gave me a brief run-down of the rules, and invited me to play. He probably gave me a large handicap, I don't remember the details. I had no idea what I was doing, and he destroyed me. (If you understand the mind that would take losing the first game ever played against an aficionado so [personally](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md "Optimism"), you can probably stop reading right here.) 
 
 I'm sure he was a very nice man who wanted to share his love of the game with me. I do not think he wanted to "destroy" me, he was probably just showing me the natural consequences of actions and reactions in Go, consequences that happened to lead to his armies surrounding nearly all the free territory on the board.
@@ -17,7 +20,7 @@ I went out and bought a book on Go, a book for beginners. I read it cover to cov
 
 I didn't try playing Go again for years. When friends brought up the game, I changed the subject. I got into Japanese Maples and Koi keeping, yet avoided Go. Then I moved house, and in sorting through my games I pulled out a Go board. I can't even remember buying it. My friend suggested we play, and last night I made another attempt to learn the game.
 
-**Relearning Go**
+**Starting Over**
 
 I felt a great deal of anxiety. My friend tried to show me the rules. She would put some stones on the board to explain something, and I would ask a lot of questions, disrupting the flow of her instruction. I was impatient, edgy. Every time she showed me something, I would focus on what she wasn't telling me, afraid that I would miss some critical detail. I'm sure it was frustrating for me to continually ask questions about things she would have demonstrated in a moment had I been patient.
 
@@ -31,7 +34,7 @@ There are many ways to explain my discomfort. Much has been made of [Learned Hel
 
 The feelings of being helpless and incompetent cut me somewhere very deep. It feels a little like being a victim, like I am exposed to being manipulated and hurt by others, like my opponents in a game are going to really hurt me and I will have no defense, I won't even know I am being led to slaughter until they announce "Checkmate" malevolently. And no matter how much I reassure myself that I am playing a *game* with a *friend*, with someone who cares deeply about my feelings and would never want to hurt me, inside me there is a child who fears being hurt by someone who claims to love them, and it is hard to overcome that child's terror, it is hard to feel *safe*.
 
-**Playing Go Again**
+**Playing Again**
 
 We started to play. She gave me three stones on a small board and made the first move. I stared at her stone. What was she doing? Why? What was the threat? How should I respond?? In bridge we used to say that a player would go "into the tank," thinking silently for a long time when faced with a difficult choice. I went into the tank on the very first play. What was I supposed to do? How was I supposed to respond? What was my plan? I had no idea. I still have no idea.
 
