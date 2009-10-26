@@ -13,9 +13,11 @@ Without any commentary to guide me, I had no idea what I was seeing. I did not s
 
 Again, I don't think anyone at the club was trying to exclude me. It's just that they spoke a foreign language and for that matter, they were talking about something with no direct parallel to anything else I had ever seen. I have been told that everyone is deaf, dumb, and blind in Go when they start. I have been told that it is always unfathomable when first encountered. I didn't know that and I assumed that I was defective in some way, that *I* was blind rather than assuming that a game played by two experienced players would be too subtle for a newcomer to grasp. 
 
-I went out and bought a book on Go, a book for beginners. I read it cover to cover, but I still felt blind. The game seemed out of reach. I have learned many games before and since, and usually there is something I can grasp right away. backgammon appears to be a race at first glance. Later, you learn more about blocking and timing and back games and blitzes and you appreciate that it is rarely just a race. Most other games are similar, there is some obvious thing you are trying to do, and the subtleties come later. Go didn't give me anything so obvious to understand. 
+I went out and bought a book on Go, a book for beginners. I read it cover to cover, but I still felt blind. The game seemed out of reach. I have learned many games before and since, and usually there is something I can grasp right away. Backgammon appears to be a race at first glance. Later, you learn more about blocking and timing and back games and blitzes and you appreciate that it is rarely just a race. Most other games are similar, there is some obvious thing you are trying to do, and the subtleties come later. Go didn't give me anything so obvious to understand. 
 
 I didn't try playing Go again for years. When friends brought up the game, I changed the subject. I got into Japanese Maples and Koi keeping, yet avoided Go. Then I moved house, and in sorting through my games I pulled out a Go board. I can't even remember buying it. My friend suggested we play, and last night I made another attempt to learn the game.
+
+**Relearning Go**
 
 I felt a great deal of anxiety. My friend tried to show me the rules. She would put some stones on the board to explain something, and I would ask a lot of questions, disrupting the flow of her instruction. I was impatient, edgy. Every time she showed me something, I would focus on what she wasn't telling me, afraid that I would miss some critical detail. I'm sure it was frustrating for me to continually ask questions about things she would have demonstrated in a moment had I been patient.
 
@@ -28,6 +30,8 @@ Go just didn't seem to work that way for me. The insights haven't come from non-
 There are many ways to explain my discomfort. Much has been made of [Learned Helplessness](http://en.wikipedia.org/wiki/Learned_helplessness "Learned helplessness - Wikipedia, the free encyclopedia"). I felt helpless, unable to affect the outcome of the game in any meaningful way. How could I influence what I could not perceive? Much has also been made of self-expectations and self-criticism. I was rightfully incompetent at a game I had never learned to play, but I was uncomfortable with the thought of being less than competent.
 
 The feelings of being helpless and incompetent cut me somewhere very deep. It feels a little like being a victim, like I am exposed to being manipulated and hurt by others, like my opponents in a game are going to really hurt me and I will have no defense, I won't even know I am being led to slaughter until they announce "Checkmate" malevolently. And no matter how much I reassure myself that I am playing a *game* with a *friend*, with someone who cares deeply about my feelings and would never want to hurt me, inside me there is a child who fears being hurt by someone who claims to love them, and it is hard to overcome that child's terror, it is hard to feel *safe*.
+
+**Playing Go Again**
 
 We started to play. She gave me three stones on a small board and made the first move. I stared at her stone. What was she doing? Why? What was the threat? How should I respond?? In bridge we used to say that a player would go "into the tank," thinking silently for a long time when faced with a difficult choice. I went into the tank on the very first play. What was I supposed to do? How was I supposed to respond? What was my plan? I had no idea. I still have no idea.
 
@@ -47,13 +51,15 @@ At some point I realized that I was eviscerating the evening. I struggled to rem
 
 My realization was too late, the game had soured for both of us. We called an end to it and I crawled inside my skin to suffer.
 
+**The Aftermath and New Beginnings**
+
 I am still struggling with guilt over being so self-centered that my own neuroses would make my friend so uncomfortable. I feel guilty that I ignored her so much. I feel like my behaviour was screaming that I cared very much about playing Go but cared nothing for the experience of playing Go with *her*. Even writing this out, I see myself falling into the pit of my feelings about the game and falling away from my feelings about playing the game with a friend, about the human warmth and camaraderie that games ought to facilitate. How many words am I writing about the interplay of emotions between us, and how many words am I writing about my inner struggle to play Go?
 
 Go is a game. There are people who play passionately, people who dedicate their lives to exploring its mysteries, people who think about it nearly every waking hour. If its culture is anything like Chess or Bridge, there are people who have divorced over their feelings about Go, lost jobs over the choices they made with respect to Go, or even ended their lives over their feelings about Go.
 
 But despite all of that, Go is still only a game. Go didn't make me feel unhappy, I felt unhappy. And Go didn't make me self-centered on the whole, it was just while I was trying and failing to play the game as I understand "playing the game." Go will not always make me unhappy either. This feeling will pass.
 
-However, **I will play Go again**.
+However, *I will play Go again*.
 
 In time, I may learn enough to actually have an idea of what I want to attempt. I may learn enough to have a rough idea of whether I am doing well or poorly in a game so I can gauge whether my moves are working out or not as I play. But I will not make these things my goal. Instead, I will set myself a goal of *enjoying my next game of Go*.
 
