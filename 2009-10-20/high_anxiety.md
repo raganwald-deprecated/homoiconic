@@ -42,7 +42,11 @@ My friend patiently tried to coax me out of the tank and just play. I stated at 
 
 Try something, she encouraged. Succeed, fail, it doesn't matter. Try something and see how it works out. But I sat, paralyzed by fear, paralyzed by indecision. It wasn't that I didn't know which move to play. That phrase suggests that I could see a few plays, had a few ideas of things I wanted to do. But I had no idea what I could be trying to do. I couldn't select a move because I didn't see any moves. Sure, I could place a stone on any vacant intersection, so in a sense I had a list of possible moves. But at any non-trivial level, a move suggests some sort of intention. I had no intentions, I had no idea what I could be trying to do or why.
 
-And I was extremely uncomfortable with having no idea. I feared a non-existent humiliation of playing randomly. She was not playing me for the pleasure of pointing her finger at me and crying "Shame!" Nevertheless, my world was filled with fear of being shamed for incompetence. Eventually, I placed a stone on the board. I think at that point the fear of her disapproval over my diffidence exceeded the fear of making a mistake.
+My friend was gentle, soothing. Although very inexperienced herself, she tried to share her view of the game with me. She compared it to a child learning a language. Toddlers do not learn grammar and spelling and memorize words, they imitate and vocalize and learn through immersion and exposure and trial and error. They don't appear to have goals or embarrassment about how well they speak. They simply talk as best they can.
+
+Toddlers really have no idea how talking works. They don't know that there are different languages, or that there are parts of speech, or even that there are words. They don't have any idea but yet they learn!
+
+She explained this and I suppose my intellectual conscious mind can understand this but all the same I was extremely uncomfortable with having no idea. My adult brain would not let go and let my child brain take over. I feared a non-existent humiliation of playing randomly. She was not playing me for the pleasure of pointing her finger at me and crying "Shame!" Nevertheless, my world was filled with fear of being shamed for incompetence. Eventually, I placed a stone on the board. I think at that point the fear of her disapproval over my diffidence exceeded the fear of making a mistake.
 
 We continued to play. With each stone, I re-enacted that awful feeling of staring at the board and having no idea what to do, no idea why to do it. I tried playing aggressively, and she quickly captured one of my stones. This depressed me. She meant me no ill will, but in my dark mood I felt I had been punished by fate for making a mistake.
 
@@ -75,6 +79,32 @@ It could be that I will never present a challenge to anyone, perhaps I will alwa
 I may never learn how to judge whether a player's position is improving in Go. But I know a little about judging whether my position is improving in Life. And I know that enjoying a game of Go with a friend would be an improvement, especially if I do so by overcoming my fear of incompetence rather than avoiding it.
 
 So that's what I'm going to do.
+
+---
+
+**Selected Tweets and Comments**
+
+> I've taught Go to over fifty people over the years - and i've seen this over and over again: some people have shaking hands putting down the first stone in their first game ever.
+
+> For some reason they assume they ought to be good from the beginning. Even in their first game they try to be original. They're afraid to imitate moves they saw someone else play. It feels like watching someone trying to learn a language by not imitating the sounds they hear when others speak it.
+
+> But those that i saw who became really good, were always on the other end of the spectrum. Those who jump right in and played /really/ bad without any anxiety or pressure (no thinking at all and mostly just stubborn imitation of moves they saw someone else play before) and fast (many many many games, often not even to the end), almost always sticked to the game long enough to learn to appreciate and enjoy it, and sometimes even managed to excel at it.
+
+> There's something magical about the fearlessness of just playing. Pure curiosity, maybe even quite a bit of ambition, but especially the absolute surrender to repeated and premeditated failure. --[enki](http://news.ycombinator.com/item?id=904933 "Hacker News | I've taught Go to over fifty people over the years - and i've seen this over and...")
+
+> Go resembles life in that sense. An infant does not learn to walk by thinking about it. --[tarvaina](http://twitter.com/tarvaina/statuses/5198351345)
+
+> When learning something, there is no substitute for doing it twenty times a day; and that no matter how much you think you have Go figured out, you probably don't. --[randrews](http://news.ycombinator.com/item?id=904913 "Hacker News | When I was eight years old, my father taught me to play Go...")
+
+> Most who learn the game goes through this set of feelings --[seacreature](http://twitter.com/seacreature/statuses/5201724816 "")
+
+> When I approach a new game, I assume it will take many hundreds (or thousands!) of plays to become truly good at it. I assume that I will play poorly for my first N games -- so, it's best to get them out of the way as quickly as possible. I try to think in terms of, "did I learn something from that loss?" -- if the answer is yes, it was still a worthwhile experience.
+
+> Nothing has ever made me feel more incompetent than trying to play Go --[xshay](http://twitter.com/xshay/statuses/5185887866 "")
+
+> I think this is a good lesson for learning anything new. --[Locke](http://news.ycombinator.com/item?id=904987 "Hacker News | I've learned many abstract strategy games.  I play some fairly well, others not ...")
+
+>  I have this kind of anxiety problem all the time, especially when writing new code, because the code I write might be wrong, so I end up just sitting there, not solving the problem, not thinking about the problem, but just staring. --[shrughes](http://news.ycombinator.com/item?id=904851 "Hacker News | I thought it was excellent.  I have this kind of anxiety problem all the time, ...")
 
 ---
 
