@@ -46,9 +46,11 @@ My friend was gentle, soothing. Although very inexperienced herself, she tried t
 
 Toddlers really have no idea how talking works. They don't know that there are different languages, or that there are parts of speech, or even that there are words. They don't have any idea but yet they learn!
 
-She explained this and I suppose my intellectual conscious mind can understand this but all the same I was extremely uncomfortable with having no idea. My adult brain would not let go and let my child brain take over. I feared a non-existent humiliation of playing randomly. She was not playing me for the pleasure of pointing her finger at me and crying "Shame!" Nevertheless, my world was filled with fear of being shamed for incompetence. Eventually, I placed a stone on the board. I think at that point the fear of her disapproval over my diffidence exceeded the fear of making a mistake.
+She explained this and I suppose my intellectual conscious mind can understand this but all the same I was extremely uncomfortable with having no idea. My adult brain would not let go and let my child brain take over. I feared a non-existent humiliation of playing randomly. 
 
-We continued to play. With each stone, I re-enacted that awful feeling of staring at the board and having no idea what to do, no idea why to do it. I tried playing aggressively, and she quickly captured one of my stones. This depressed me. She meant me no ill will, but in my dark mood I felt I had been punished by fate for making a mistake.
+My friend was not playing me for the pleasure of pointing her finger at me and crying "Shame!" Nevertheless, my world was filled with fear of being shamed for incompetence. Eventually, I placed a stone on the board. I think at that point the fear of her disapproval over my diffidence exceeded the fear of making a mistake.
+
+We continued to play. With each stone, I re-enacted that awful feeling of staring at the board and having no idea what to do, no idea why to do it. I tried playing aggressively, and she quickly captured one of my stones. This depressed me. She meant me no ill will, but in my dark mood I felt I had been punished by fate for making a mistake. My friend had captured my stone with an eye to explaining a little about the relationship between the stone you are playing and your stones already on the board, but my mood was too bleak to absorb the lesson.
 
 With the loss of my stone, her position suddenly seemed to fill the board with weight and menace. My own seemed inconsequential, consisting of a few stones haphazardly strewn about. I fell deeper into despair. Instead of being motivated by the joy of learning something new, I was motivated by the fear of further punishment and humiliation.
 
@@ -111,6 +113,9 @@ So that's what I'm going to do.
 <p></p>
 
 >  I have this kind of anxiety problem all the time, especially when writing new code, because the code I write might be wrong, so I end up just sitting there, not solving the problem, not thinking about the problem, but just staring. --[shrughes](http://news.ycombinator.com/item?id=904851 "Hacker News | I thought it was excellent.  I have this kind of anxiety problem all the time, ...")  
+<p></p>
+
+> Let your conscious mind / ego go and lose first 100 games as fast as possible --[jayturley](http://twitter.com/jayturley/statuses/5203232192 "")
 <p></p>
 
 ---
