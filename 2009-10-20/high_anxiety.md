@@ -122,6 +122,8 @@ So that's what I'm going to do.
 
 *I originally wanted to write about learning new things and use this as an example. I had an idea that I would talk about the importance of getting out of a negative space where you fear ridicule and shame for being new. I would talk about having the courage to be new and incompetent leading to learning and growing. But as I wrote, I thought that simply sharing my feelings worked in a certain true, raw, honest way. For now, this story will stand on its own.*
 
+*p.s. If you liked this, you may also like another very personal post from this unblog, [Optimism](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md).*
+
 ----
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
