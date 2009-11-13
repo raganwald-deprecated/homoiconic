@@ -1,12 +1,12 @@
 High Anxiety
 ===
 
-The other night, a good friend was visiting and she suggested we pass the time playing [Go](http://bit.ly/hbUQr "Go (game) - Wikipedia, the free encyclopedia"). I own a board, but I don't recall ever playing with it. We got the board out and she started to explain how to play. I love games, so you would expect that we had a good time. But no, I fell into a blue funk and things went rapidly downhill. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all the joy out of the room.
+The other night, a good friend was visiting and she suggested we pass the time playing [Go](http://bit.ly/hbUQr). I own a board, but I don't recall ever playing with it. We got the board out and she started to explain how to play. I love games, so you would expect that we had a good time. But no, I fell into a blue funk and things went rapidly downhill. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all the joy out of the room.
 
 
 [![Go Board (c) 2008 Ralph Unden, some rights reserved](http://farm4.static.flickr.com/3113/2285032267_c1ecd9b66e_d.jpg)](http://www.flickr.com/photos/ralphunden/2285032267/ "Go Board (c) 2008 Ralph Unden, some rights reserved") 
 
-My involvement with Go has been sporadic and inauspicious. I had heard it was a beautiful game, full of subtleties and marvels. Friends told me how much I would love it. Decades ago, I visited a [club](http://senseis.xmp.net/?TorontoGoClub "Toronto Go club") and explained I would like to learn to play. One of the members pulled out a small board, gave me a brief run-down of the rules, and invited me to play. He probably gave me a large handicap, I don't remember the details. I had no idea what I was doing, and he destroyed me. (If you understand the mind that would take losing the first game ever played against an aficionado so [personally](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md "Optimism"), you can probably stop reading right here.) 
+My involvement with Go has been sporadic and inauspicious. I had heard it was a beautiful game, full of subtleties and marvels. Friends told me how much I would love it. Decades ago, I visited a [club](http://senseis.xmp.net/?TorontoGoClub "Toronto Go club") and explained I would like to learn to play. One of the members pulled out a small board, gave me a brief run-down of the rules, and invited me to play. He probably gave me a large handicap, I don't remember the details. I had no idea what I was doing, and he destroyed me. (If you understand the mind that would take losing the first game ever played against an aficionado so [personally](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme "Optimism"), you can probably stop reading right here.) 
 
 I'm sure he was a very nice man who wanted to share his love of the game with me. I do not think he wanted to "destroy" me, he was probably just showing me the natural consequences of actions and reactions in Go, consequences that happened to lead to his armies surrounding nearly all the free territory on the board.
 
@@ -28,7 +28,7 @@ As someone who knows me well and is a keen observer of human nature, she was tro
 
 She encouraged me to learn Go through playing. I fought against this sullenly. I wanted to believe that when I went to place my first stone I could some idea of what I was doing, some plan. So I peppered her with questions. I stared at each example she laid out for me, hoping that if I turned things over in my mind long enough, that I would get some insight, some Aha! moment, and I would gain some strategy that I could use later.
 
-Go just didn't seem to work that way for me. The insights haven't come from non-playing, and last night was no exception. The more I started, silent and morose at the stones and the board, the less I felt I could see. My friend sat, practically ignored while I tried to work things out. My body language screamed that I was intensely uncomfortable and worse, that interacting with her in a social way was unimportant.
+Go just didn't seem to work that way for me. The insights haven't come from non-playing, and last night was no exception. The more I stared, silent and morose at the stones and the board, the less I felt I could see. My friend sat, practically ignored while I tried to work things out. My body language screamed that I was intensely uncomfortable and worse, that interacting with her in a social way was unimportant.
 
 There are many ways to explain my discomfort. Much has been made of [Learned Helplessness](http://en.wikipedia.org/wiki/Learned_helplessness "Learned helplessness - Wikipedia, the free encyclopedia"). I felt helpless, unable to affect the outcome of the game in any meaningful way. How could I influence what I could not perceive? Much has also been made of self-expectations and self-criticism. I was rightfully incompetent at a game I had never learned to play, but I was uncomfortable with the thought of being less than competent.
 
@@ -122,7 +122,7 @@ So that's what I'm going to do.
 
 *I originally wanted to write about learning new things and use this as an example. I had an idea that I would talk about the importance of getting out of a negative space where you fear ridicule and shame for being new. I would talk about having the courage to be new and incompetent leading to learning and growing. But as I wrote, I thought that simply sharing my feelings worked in a certain true, raw, honest way. For now, this story will stand on its own.*
 
-*p.s. If you liked this, you may also like another very personal post from this unblog, [Optimism](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md).*
+*p.s. If you liked this, you may also like another very personal post from this unblog, [Optimism](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme).*
 
 ----
 	
