@@ -42,6 +42,14 @@ At the moment, there are no comments. This is a blog about code, not words. I we
 
 That is a lot more work than just submitting a comment. I'm sorry, it's a trade-off. I lose a lot of good feedback, but I also shed myself of a damaging temptation to pander to the crowd. When blogs become "conversations," they also tend to converge on a common group-think. All I can tell you is that if you have a change you want to make or an observation you want to add, go ahead and make it.
 
+**can I really use all these insanely clever ideas?**
+
+Whoa, Nellie! Easy with the word "clever." Being interested in some of the things that interest smart people is not the same thing as being smart. Especially in my case. So before rushing off to use each and every technique presented here, be mindful of the fact that programming requires *judgment*, it isn't a perfectly logical process of solving problems using whatever tools, materials, and techniques happen to be within reach. You don't want to provoke responses like this:
+
+> Why do I have a feeling that the professional code you write would be too "clever" for most developers to understand? --[devinus](http://www.reddit.com/user/devinus) 
+
+My goal is to be able to say that thinking about the code and ideas presented here is a useful way to learn and grow, whether you use any of this code or not.
+
 **criticism?**
 
 Criticism of my *ideas* is always welcome and will often get a link or a quote from me. As for criticism of me the person based on what I write, here's a comment snarfed from [Reddit](http://www.reddit.com/r/programming/comments/9s5pd/no_i_wouldnt_hire_a_programmer_that_has_no/c0e6ncb "pmf comments on No, I Wouldn't Hire a Programmer That Has No Interest in Programming Outside of Business Hours"):
@@ -49,14 +57,6 @@ Criticism of my *ideas* is always welcome and will often get a link or a quote f
 > Hey, I know you! You're that guy who misuses the technical infrastructure provided by github.com for free for a certain use case for the propagation of his vain nonsensical bullshit in a transparent and pathetic attempt to come off as some kind of lo-fi guy who is too modest to consider himself worthy of a real blog.
 
 If you're going to get [personal, general, and permanent](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme "Optimism"), consider this the standard to reach. See if you can't be more scornful, more insightful, or wittier in your criticism.
-
-**The sincerest form of flattery**
-
-Before rushing off to use each and every technique presented here, be mindful of the fact that programming requires *judgment*, it isn't a perfectly logical process of solving problems using whatever tools, materials, and techniques happen to be within reach. You don't want to wind up provoking responses like this:
-
-> Why do I have a feeling that the professional code you write would be too "clever" for most developers to understand? --[devinus](http://www.reddit.com/user/devinus) 
-
-My goal is to be able to say that thinking about the code and ideas presented here is a useful way to learn and grow, whether you like or dislike me personally, whether you agree or disagree with the ideas presented here, and especially whether you actually use any of this code or not.
 
 **credit where credit is due**
 
