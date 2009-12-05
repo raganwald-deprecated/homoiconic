@@ -50,6 +50,14 @@ Criticism of my *ideas* is always welcome and will often get a link or a quote f
 
 If you're going to get [personal, general, and permanent](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme "Optimism"), consider this the standard to reach. See if you can't be more scornful, more insightful, or wittier in your criticism.
 
+**The sincerest form of flattery**
+
+Before rushing off to use each and every technique presented here, be mindful of the fact that programming requires *judgment*, it isn't a perfectly logical process of solving problems using whatever tools, materials, and techniques happen to be within reach. You don't want to wind up provoking responses like this:
+
+> Why do I have a feeling that the professional code you write would be too "clever" for most developers to understand? --[devinus](http://www.reddit.com/user/devinus) 
+
+My goal is to be able to say that thinking about the code and ideas presented here is a useful way to learn and grow, whether you like or dislike me personally, whether you agree or disagree with the ideas presented here, and especially whether you actually use any of this code or not.
+
 **credit where credit is due**
 
 I originally set up a blog at homoiconic.com, but I spotted [David Baldwin's blog](http://github.com/bilson/blog/tree/master), and I knew right away that a blog that is about the how of code ought to be hosted on Github.
