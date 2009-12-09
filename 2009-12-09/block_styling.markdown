@@ -1,7 +1,7 @@
 Block Styling
 ===
 
-> There are kinds of programming languages that are unsurprising to the programmer. The first kind has users that say, "Everything about this language is unsurprising." The second has users that say, "Nothing about this language surprises me any more." --after a conversation with [Pete Forde](http://www.peteforde.com/ "Pete Forde")
+> There are two kinds of programming languages that are unsurprising to the programmer. The first kind has users that say, "Everything about this language is unsurprising." The second has users that say, "Nothing about this language surprises me any more." --after a conversation with [Pete Forde](http://www.peteforde.com/ "Pete Forde")
 
 You probably know that Ruby supports writing parameter-less blocks using `begin` and `end`:
 

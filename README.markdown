@@ -42,7 +42,7 @@ At the moment, there are no comments. This is a blog about code, not words. I we
 
 That is a lot more work than just submitting a comment. I'm sorry, it's a trade-off. I lose a lot of good feedback, but I also shed myself of a damaging temptation to pander to the crowd. When blogs become "conversations," they also tend to converge on a common group-think. All I can tell you is that if you have a change you want to make or an observation you want to add, go ahead and make it.
 
-**can I really use all these insanely clever ideas?**
+**cccc**
 
 Whoa, Nellie! Easy with the word "clever." Being interested in some of the things that interest smart people is not the same thing as being smart. Especially in my case. So before rushing off to use each and every technique presented here, be mindful of the fact that programming requires *judgment*, it isn't a perfectly logical process of solving problems using whatever tools, materials, and techniques happen to be within reach. You don't want to provoke responses like this:
 
