@@ -3,9 +3,9 @@ Beautiful Failure
 
 The organizers of [CUSEC 2010](http://2010.cusec.net/ "CUSEC 2010") were kind enough to ask me to give a keynote speech, and I wanted to write out a few of my thoughts that might not be obvious from reviewing the [slides](http://www.flickr.com/photos/raganwald/sets/72157623258073708/ "Beautiful Failure - a set on Flickr").
 
-![Copyright 2008 Emiliano Dominici](http://farm4.static.flickr.com/3014/2712932037_435173fd88.jpg)
-
 My thesis was that when you find yourself successfully scratching an itch, don't stop there. Dig a little deeper and see if your "fix" is obscuring a deeper failure. It's possible that some underlying assumption is holding you back, an if you challenge that assumption, you may make a breakthrough.
+
+![Copyright 2008 Emiliano Dominici](http://farm4.static.flickr.com/3014/2712932037_435173fd88.jpg)
 
 **an old itch**
 
