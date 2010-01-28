@@ -3,7 +3,7 @@ Beautiful Failure
 
 The organizers of [CUSEC 2010](http://2010.cusec.net/ "CUSEC 2010") were kind enough to ask me to give a keynote speech, and I wanted to write out a few of my thoughts that might not be obvious from reviewing the [slides](http://www.flickr.com/photos/raganwald/sets/72157623258073708/ "Beautiful Failure - a set on Flickr").
 
-[![Copyright 2008 Emiliano Dominici](http://farm4.static.flickr.com/3014/2712932037_435173fd88.jpg)](http://www.flickr.com/photos/loungerie/2712932037/ "Copyright 2008 Emiliano Dominici")
+![Copyright 2008 Emiliano Dominici](http://farm4.static.flickr.com/3014/2712932037_435173fd88.jpg)
 
 My thesis was that when you find yourself successfully scratching an itch, don't stop there. Dig a little deeper and see if your "fix" is obscuring a deeper failure. It's possible that some underlying assumption is holding you back, an if you challenge that assumption, you may make a breakthrough.
 
@@ -52,8 +52,6 @@ A Ruby program with extensive metaprogramming is a meta-program that writes a ta
 This musing leads me to a revelation: Monkey-patching and extension methods are not wrong just because they violate the literal interpretation of the single responsibility principle, but the single responsibility principle should not be followed literally. That being said, it should not be ignored either. Wise choices around opening core classes will be organized into small building blocks that have a single responsibility in the implementation domain, such as behaviours for collections of numerics. Meta-programs will consist of small building blocks that have a single responsibility expressed in the problem domain, such as behaviours for collections of financial transactions. Target programs will be assembled out of all these smaller building blocks. At run time, of course, they will groan under the weight of cross-cutting concerns. But that's the interpreter's problem, not ours.
 
 This revelation is why I consider extension methods one of my beautiful failures. Scratching my itch led me to a better understanding of programs and elegance. And this, ultimately, is what makes for a beautiful failure: One that leads us to a deeper understanding.
-
-***
 
 Right Under Our Noses: Why Git is a Failure
 ===
