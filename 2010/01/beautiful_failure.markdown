@@ -1,9 +1,7 @@
 Beautiful Failure
 ===
 
-The organizers of [CUSEC 2010](http://2010.cusec.net/ "CUSEC 2010") were kind enough to ask me to give a keynote speech, and I wanted to write out a few of my thoughts that might not be obvious from reviewing the [slides](http://www.flickr.com/photos/raganwald/sets/72157623258073708/ "Beautiful Failure - a set on Flickr").
-
-My thesis was that when you find yourself successfully scratching an itch, don't stop there. Dig a little deeper and see if your "fix" is obscuring a deeper failure. It's possible that some underlying assumption is holding you back, an if you challenge that assumption, you may make a breakthrough.
+The organizers of [CUSEC 2010](http://2010.cusec.net/ "CUSEC 2010") were kind enough to ask me to give a keynote speech, and I wanted to write out a few of my thoughts that might not be obvious from reviewing the [slides](http://www.flickr.com/photos/raganwald/sets/72157623258073708/ "Beautiful Failure - a set on Flickr"). My thesis was that when you find yourself successfully scratching an itch, don't stop there. Dig a little deeper and see if your "fix" is obscuring a deeper failure. It's possible that some underlying assumption is holding you back. If you challenge that assumption, you may make a breakthrough.
 
 ![Copyright 2008 Emiliano Dominici](http://farm4.static.flickr.com/3014/2712932037_435173fd88.jpg)
 
@@ -84,6 +82,8 @@ We could also swing for the fences and ask ourselves if there are new ways to th
 
 These are just a few of the thoughts I have when I take a moment to look at a tool like version control and think of it as a beautiful failure. You aren't as encumbered by decades of experience thinking that version control is a "best practice." Try thinking of version control as a massive failure. What new ways can you dream up to think of programs and programming that would address the underlying problem rather than papering over the cracks?
 
+p.s. Beautiful Failure on [Hacker News][hn] 
+
 ----
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
@@ -102,3 +102,5 @@ Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://regina
 [dbc]: http://en.wikipedia.org/wiki/Design_by_contract "Design by Contract"
 [acid]: http://en.wikipedia.org/wiki/ACID "ACID - Wikipedia, the free encyclopedia"
 [dry]: http://en.wikipedia.org/wiki/Don't_repeat_yourself "Don't Repeat Yourself"
+
+[hn]: http://news.ycombinator.com/item?id=1084826 "Discuss this essay on Hacker News"
