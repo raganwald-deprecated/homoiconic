@@ -51,7 +51,7 @@ A Ruby program with extensive metaprogramming is a meta-program that writes a ta
 
 This musing leads me to a revelation: Monkey-patching and extension methods are not wrong just because they violate the literal interpretation of the single responsibility principle, but the single responsibility principle should not be followed literally. That being said, it should not be ignored either. Wise choices around opening core classes will be organized into small building blocks that have a single responsibility in the implementation domain, such as behaviours for collections of numerics. Meta-programs will consist of small building blocks that have a single responsibility expressed in the problem domain, such as behaviours for collections of financial transactions. Target programs will be assembled out of all these smaller building blocks. At run time, of course, they will groan under the weight of cross-cutting concerns. But that's the interpreter's problem, not ours.
 
-This revelation is why I consider extension methods one of my beautiful failures. Scratching my itch led me to a better understanding of programs and elegance. And this, ultimately, is what makes for a beautiful failure: One that leads us to a deeper understanding.
+This revelation is why I consider implementing extension methods for Ruby one of my beautiful failures. Scratching my own itch led me to a better understanding of programs and elegance. And this, ultimately, is what makes for a beautiful failure: One that leads us to a deeper understanding.
 
 Right Under Our Noses: Why Git is a Failure
 ===
