@@ -86,7 +86,7 @@ We could also swing for the fences and ask ourselves if there are new ways to th
 
 These are just a few of the thoughts I have when I take a moment to look at a tool like version control and think of it as a beautiful failure. You aren't as encumbered by decades of experience thinking that version control is a "best practice." Try thinking of version control as a massive failure. What new ways can you dream up to think of programs and programming that would address the underlying problem rather than papering over the cracks?
 
-p.s. Beautiful Failure on [Hacker News][hn] 
+p.s. Beautiful Failure on [Hacker News][hn] and [Reddit][r]
 
 ----
 	
@@ -107,4 +107,5 @@ Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://regina
 [acid]: http://en.wikipedia.org/wiki/ACID "ACID - Wikipedia, the free encyclopedia"
 [dry]: http://en.wikipedia.org/wiki/Don't_repeat_yourself "Don't Repeat Yourself"
 
-[hn]: http://news.ycombinator.com/item?id=1084826 "Discuss this essay on Hacker News"
+[hn]: http://news.ycombinator.com/item?id=1084826 "Discuss on Hacker News"
+[r]: http://www.reddit.com/r/programming/comments/avdri/beautiful_failure/ "Discuss on Reddit"
