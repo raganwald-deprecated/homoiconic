@@ -84,6 +84,12 @@ We could also swing for the fences and ask ourselves if there are new ways to th
 
 These are just a few of the thoughts I have when I take a moment to look at a tool like version control and think of it as a beautiful failure. You aren't as encumbered by decades of experience thinking that version control is a "best practice." Try thinking of version control as a massive failure. What new ways can you dream up to think of programs and programming that would address the underlying problem rather than papering over the cracks?
 
+----
+	
+Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
+
+Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://reginald.braythwayt.com/RegBraithwaiteDev0110_en_US.pdf ""), [Twitter](http://twitter.com/raganwald)
+
 [sum]: http://github.com/raganwald/homoiconic/blob/master/2009-04-09/my_objection_to_sum.md#readme "My Objection to Array#Sum"
 [rc]: http://en.wikipedia.org/wiki/Race_condition "Race condition - Wikipedia, the free encyclopedia"
 [classifier]: http://classifier.rubyforge.org/ "Ruby Classifier - Bayesian and LSI classification library"
