@@ -3,7 +3,7 @@ Beautiful Failure
 
 The organizers of [CUSEC 2010](http://2010.cusec.net/ "CUSEC 2010") were kind enough to ask me to give a keynote speech, and I wanted to write out a few of my thoughts that might not be obvious from reviewing the [slides](http://www.flickr.com/photos/raganwald/sets/72157623258073708/ "Beautiful Failure - a set on Flickr"). My thesis was that when you find yourself successfully scratching an itch, don't stop there. Dig a little deeper and see if your "fix" is obscuring a deeper failure. It's possible that some underlying assumption is holding you back. If you challenge that assumption, you may make a breakthrough.
 
-![Copyright 2008 Emiliano Dominici](http://farm4.static.flickr.com/3014/2712932037_435173fd88.jpg)
+![Beautiful Failure](http://farm5.static.flickr.com/4008/4294285244_caa37c9bef.jpg)
 
 **an old itch**
 
@@ -12,6 +12,8 @@ My first example concerned Ruby's open classes. The accepted Ruby practice is to
 The irritating problem with this is when two different pieces of code--such as two separate gems--both attempt to add the same method to the same class. Classes are global in Ruby, so we end up with a [race condition][rc] in our code. And note that this can happen even if we are extremely careful to review our own code for problems: Our code depends on gems, which depend on other gems, and if anything in your dependency tree conflicts with anything else, you have a problem.
 
 The obvious solution is to scope changes to core classes. So when the [Classifier gem][classifier] patches Array, no other code has access to the same patch. This would solve the problem of [two different gems that add their own versions of #sum to Array][sick]: each would only see its own patch. If Ruby worked this way, Rails could patch core classes with ActiveSupport for its own purposes, and you could base your application on Rails without automatically "inheriting" all of its patches. You could require the ones you like and ignore the rest.
+
+![Copyright 2008 Emiliano Dominici](http://farm4.static.flickr.com/3014/2712932037_435173fd88.jpg)
 
 Unfortunately, Ruby doesn't work this way. You create [a feature, wrapped in a kludge, inside a hack][em] to provide some limited scope for patches to core classes. But it's still a hack. That being said, it scratches an itch. So in some sense, it is a modest success. Problem solved.
 
@@ -73,6 +75,8 @@ One of the things we've learned from Lisp is that code is data is code. So if we
 Right now we think of programs as being monolithic. So we change everything all at once, test it extensively, and when everything has been updated to use the new API, we release a new version of the entire program. There's no idea that a single class might have two versions and that some bits of the program depend on the old version and some on the new. Why not? Why isn't live, running code versioned and transactioned so that we can release a patch of a few classes into a running server without taking it down? It should be possible for the old code to handle all of the existing requests and then get garbage collected when it has no further dependencies.
 
 Switching focus, version control histories are full of data that we seem to be ignoring. When I implement a new feature, I might change six files. When I fix a bug, I might change two files. What do the six files have in common that they would all be changed to implement a new feature? What is the relationship between those two files such that I need to change them both to fix a bug?
+
+![Github tells us that our existing idea of a program is flawed](http://farm5.static.flickr.com/4056/4294289164_8f73a17607.jpg)
 
 Should our programs be reorganized? I sometimes wonder if instead of fooling around with ideas like SRP, we should ask ourselves what arrangement of features would produce the same number of commits, but reduce the number of files in each commit and reduce the number of commits in each file. In some weird alternate universe, is there an identical project where ever commit consisted of changes to exactly one file and each commit changed a different file?
 
