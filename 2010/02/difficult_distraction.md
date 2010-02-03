@@ -55,11 +55,11 @@ How about the rewriters themselves? What's my experience now that I've been at i
 
 First, I really, really like [it][anaphora]. Two random examples from actual code:
 
-    .select { its.liberties.size == 1 }
-    
     def dead_stones
       self.dead_groupings.map { it.inject([], &:+) }
     end
+    
+    something.each { other[its.across][its.down].remove }
     
 Here's another that could just as easily be written with Symbol#to_proc or [Methodphitamine][mp]. You can decide whether you prefer it, think it's cute, or detest it:
 
@@ -72,6 +72,15 @@ I really can't look at any of this and say that it's vastly superior to Ruby wit
 I also use [#andand][ra] a lot, as you might expect. The rewrite version doesn't add any methods to Object and corrects some semantics that so far haven't mattered. So all things being said, if you're happy with the [andand gem][andand], rock on.
 
     @game = params[:game_id].andand { Game.find(it) }
+    
+    def go
+      Secret.find_by_secret(params[:secret]).andand do
+        self.current_user = its.user
+        redirect_to :controller => its.target.class.name.underscore,
+                    :action => :show,
+                    :id => its.target.id
+      end or render :status => 404
+    end
 
 As you can see, #andand seems to work really well with anaphora. The thing that bothers me in the back of my mind is that if #andand works well with "it," why can't I use the `and` or `&&` operators with "it?" Going down *that* rabbit-hole would probably consume my entire life, so I haven't done it. But this is what happens when you start playing with languages... You come across a lot of thought-provoking questions.
 
