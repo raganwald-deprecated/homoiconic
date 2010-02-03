@@ -117,6 +117,8 @@ So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, 
 
 *p.s. This progress report was inspired by a rash of posts describing companies that have done large in-house language projects. If the subject interests you, don't miss [Lunascript][ls], [HipHop][hh] and [Wasabi][w].*
 
+*p.p.s. Discuss this post on [here][hn] on Hacker News.*
+
 ----
 	
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
@@ -132,6 +134,7 @@ Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://regina
 [em]: http://github.com/raganwald/rewrite_rails/blob/master/doc/extension_methods.md#readme
 [haml]: http://haml-lang.com/ "Haml and Sass"
 [hh]: http://developers.facebook.com/news.php?blog=1&story=358
+[hn]: http://news.ycombinator.com/item?id=1098773 "A Difficult Distraction on Hacker News"
 [into]: http://github.com/raganwald/rewrite_rails/blob/master/doc/into.md#readme
 [kestrel]: http://github.com/raganwald/homoiconic/blob/master/2008-10-29/kestrel.markdown "Kestrels"
 [ls]: http://www.asana.com/luna
