@@ -115,7 +115,7 @@ One possible project that has been gnawing at me is a way to write some code tha
 
 The use case for this came up while writing a game of Go in a web client. I obviously need to validate moves to make sure they are legal. I have Ruby code to do this. I'd also like to be able to do it in the browser in Javascript. Why write the same thing twice? Furthermore, this is a very common problem, there's a lot of form validation that could be extracted from Model validation and pushed down to the browser.
 
-(This isn't a new idea for me. Some time ago I was writing an application where the subject domain involved deriving a decision tree from a set of rules. I wrote a DSL for expressing the rules that output a decision tree in JSON. I wrote a tree walker in Javascript that validated a set of answers in JSON. And then were able to solve on the client directly in Javascript or on the server by [running the same Javascript in Rhino on the JVM][rhino].)
+(This isn't a new idea for me. Some time ago I was writing an application where the subject domain involved deriving a decision tree from a set of rules. I wrote a DSL for expressing the rules that output a decision tree in JSON. I wrote a tree walker in Javascript that validated a set of answers in JSON. And then were able to solve on the client directly in Javascript or on the server by [running the same Javascript in Rhino on the JVM][rhino]. And if you want some unsolicted career advice, it is this: Be very, very certain of yourself before you propose any [Mouse Trap Architectures][mousetrap]. Amazingly, a company that runs on the most rickety of integrations between message queues and vendor lock-in products might balk at running Javascript on the JVM. It simply isn't done, Old Boy. Not a Best Practice, don't you know.)
 
 So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, more of a "nice but not essential." If I was starting again right now, I might still do it but be very focused on trying to find the simplest, easiest implementation of anaphora and extension methods, then write everything else as extension methods. And I would give a lot more thought to ways that rewriting code can produce a major benefit such as generating functionally equivalent code in another language.
 
@@ -143,6 +143,7 @@ Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://regina
 [kestrel]: http://github.com/raganwald/homoiconic/blob/master/2008-10-29/kestrel.markdown "Kestrels"
 [ls]: http://www.asana.com/luna
 [matz]: http://casperfabricius.com/site/2008/04/02/ruby-fools-matzs-keynote/ "Matz’s keynote"
+[mousetrap]: http://weblog.raganwald.com/2008/02/mouse-trap.html "The Mouse Trap"
 [mp]: http://jicksta.com/posts/the-methodphitamine "The Mthodphitamine"
 [node]: http://nodejs.org/
 [ra]: http://github.com/raganwald/rewrite_rails/blob/master/doc/andand.textile#readme
