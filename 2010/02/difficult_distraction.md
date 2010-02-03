@@ -45,7 +45,7 @@ First, writing rewriters is painful. You basically translate Ruby into its [Abst
 
 Second, my lack of experience writing language implementations is obvious if you examine the plugin. There's a huge glaring bug in that the order of application of rewriters is significant. I ought to rewrite that so that there is a canonical translation from any .rr file to its rewritten .rb file that is not dependent on the order of application of rewriters. But "the cobbler's children have no shoes," and I basically have learned to live with this very leaky abstraction. If some piece of code that uses two or more rewriters doesn't do what I think it ought to do, I get all cargo cult with it and try something else.
 
-All that being said, I repeat that I like a few things about using rewrite\_rails: For starters, debugging is a little more trouble than plain Ruby, but very doable. I get a reference to a line of Ruby code in the rewritten file. This is a very leaky abstraction, of course, I have to figure out how to change the original .rr file to fix teh problem, but that is not impossible.
+All that being said, I repeat that I like a few things about using rewrite\_rails: For starters, debugging is a little more trouble than plain Ruby, but very doable. I get a reference to a line of Ruby code in the rewritten file. This is a very leaky abstraction, of course, I have to figure out how to change the original .rr file to fix the problem, but that is not impossible.
 
 I've considered fiddling with debugging and stack traces to go right back to the .rr file, but I won't do that unless debugging becomes a nightmare. So far, it's reasonable for someone who understands the translations. That makes it a leaky abstraction, but not a nightmare.
 
@@ -61,7 +61,7 @@ First, I really, really like [it][anaphora]. Two random examples from actual cod
       self.dead_groupings.map { it.inject([], &:+) }
     end
     
-Here's another that could just as easily be written with Symbol#to_proc or [Mtehodphitamine][mp]. You can decide whether you prefer it, think it's cute, or detest it:
+Here's another that could just as easily be written with Symbol#to_proc or [Methodphitamine][mp]. You can decide whether you prefer it, think it's cute, or detest it:
 
     def alive?
       self.any? { it.has_liberty? } 
@@ -105,7 +105,7 @@ I haven't used [call by name][cbn] at all. Oh well.
 The big picture observations I make are:
 
 1. All of the stuff I have done has been domain-neutral syntactic meta-programming. None of this stuff is specific to any particular problem space, it's more of a general-purpose Ruby dialect or accent if we push the metaphor.
-2. They payback is in personal pleasure, The items I use the most have very little big bang in terms of time saved.
+2. The payback has been personal pleasure, the items I use the most have very little big bang in terms of time saved.
 
 Given that this is the case, I will probably limit future investment to items that speak to my soul. I don't want to spend a lot of time on a rewriter if it doesn't make my code more of a pleasure for me to read. I also want to challenge myself to do something with more of a potential payback in time saved.
 
