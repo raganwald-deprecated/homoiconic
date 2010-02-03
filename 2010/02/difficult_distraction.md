@@ -128,7 +128,7 @@ The use case for this came up while writing a game of Go in a web client. I obvi
 
 So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, more of a "nice but not essential." If I was starting again right now, I might still do it but be very focused on trying to find the simplest, easiest implementation of anaphora and extension methods, then write everything else as extension methods. And I would give a lot more thought to ways that rewriting code can produce a major benefit such as generating functionally equivalent code in another language.
 
-*p.s. This progress report was inspired by a rash of posts describing companies that have done large in-house language projects. If the subject interests you, don't miss [Lunascript][ls], [HipHop][hh] and [Wasabi][w].*
+*p.s. This progress report was inspired by a rash of posts describing companies that have done large in-house language projects. If the subject interests you, don't miss [Lunascript][ls], [HipHop][hh], [CoffeeScript][cs], [Haml][haml] and [Wasabi][w].*
 
 *p.p.s. Discuss this post on [here][hn] on Hacker News.*
 
@@ -144,6 +144,7 @@ Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://regina
 [bf]: http://github.com/raganwald/homoiconic/blob/master/2010/01/beautiful_failure.markdown "Beautiful Failure"
 [cbn]: http://github.com/raganwald/rewrite_rails/blob/master/doc/call_by_name.md#readme
 [comment]: http://news.ycombinator.com/item?id=1097422
+[cs]: http://jashkenas.github.com/coffee-script/
 [em]: http://github.com/raganwald/rewrite_rails/blob/master/doc/extension_methods.md#readme
 [haml]: http://haml-lang.com/ "Haml and Sass"
 [hh]: http://developers.facebook.com/news.php?blog=1&story=358
