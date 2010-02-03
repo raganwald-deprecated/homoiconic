@@ -109,9 +109,13 @@ The big picture observations I make are:
 
 Given that this is the case, I will probably limit future investment to items that speak to my soul. I don't want to spend a lot of time on a rewriter if it doesn't make my code more of a pleasure for me to read. I also want to challenge myself to do something with more of a potential payback in time saved.
 
+**the once and future rewriter**
+
 One possible project that has been gnawing at me is a way to write some code that executes on the server or the client identically. Obviously, I could switch to [Node.js][node] and that would be that. I could also do a rewriter that takes a subset of Ruby code and outputs some Javascript that is functionally equivalent. This is not the same thing as using Ruby to write Javascript, the Ruby code would be Ruby code that produces Ruby data, and the Javascript would be Javascript code that produces Javascript output.
 
 The use case for this came up while writing a game of Go in a web client. I obviously need to validate moves to make sure they are legal. I have Ruby code to do this. I'd also like to be able to do it in the browser in Javascript. Why write the same thing twice? Furthermore, this is a very common problem, there's a lot of form validation that could be extracted from Model validation and pushed down to the browser.
+
+(This isn't a new idea for me. Some time ago I was writing an application where the subject domain involved deriving a decision tree from a set of rules. I wrote a DSL for expressing the rules that output a decision tree in JSON. I wrote a tree walker in Javascript that validated a set of answers in JSON. And then were able to solve on the client directly in Javascript or on the server by [running the same Javascript in Rhino on the JVM][rhino].)
 
 So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, more of a "nice but not essential." If I was starting again right now, I might still do it but be very focused on trying to find the simplest, easiest implementation of anaphora and extension methods, then write everything else as extension methods. And I would give a lot more thought to ways that rewriting code can produce a major benefit such as generating functionally equivalent code in another language.
 
@@ -145,6 +149,7 @@ Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://regina
 [returning]: http://github.com/raganwald/rewrite_rails/blob/master/doc/returning.md#readme
 [rewrite]: http://rewrite.rubyforge.org/
 [rf]: http://www.infoq.com/presentations/braithwaite-rewrite-ruby "Video of the Ruby.rewrite(Ruby) presentation"
+[rhino]: http://weblog.raganwald.com/2007/07/javascript-on-jvm-in-fifteen-minutes.html "How to Run Javascript on the JVM in Just Fifteen Minutes"
 [rr]: http://github.com/raganwald/rewrite_rails
 [s2p]: http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You Can't be Serious!"
 [thrush]: http://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown#readme "The Thrush"
