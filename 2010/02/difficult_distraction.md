@@ -1,11 +1,13 @@
 A Difficult Distraction
 ===
 
-In July of 2008, I was a speaker at [RubyFringe][rf]. I introduced [rewrite][rewrite], a gem for adding various forms of syntactic meta-programming to the Ruby programming language. Since that time, I've been trying to eat as much of my own dogfood as possible. Here's a brief progress report. Warning: The entire thing is anecdotal, personal opinion.
+In July of 2008, I was a speaker at the RubyFringe conference. In [my talk][rf], I introduced [rewrite][rewrite], a gem for adding various forms of syntactic meta-programming to the Ruby programming language. Since that time, I've been trying to eat as much of my own dogfood as possible. Here's a brief progress report. Warning: The entire thing is anecdotal, personal opinion.
 
-By the way, the title "A Difficult Distraction" was inspired by [an insightful comment][comment] by davidw on a HN discussion about [Lunascript][ls]: "If [in house programming languages] aren't that hard, how come so many never seem to be... well, 'finished'? I think they tend to be a fairly large time sink, especially because it's great fun to work on one. It's exactly the kind of thing that could be very distracting for a startup." 
+By the way, the title "A Difficult Distraction" was inspired by [an insightful comment][comment] by davidw on a HN discussion about [Lunascript][ls]:
 
-Well, guilty as charged on both counts. Rewriting Ruby is hard (for me), it has been fun, and certainly it has been a distracting time sink.
+> If [in house programming languages] aren't that hard, how come so many never seem to be... well, 'finished'? I think they tend to be a fairly large time sink, especially because it's great fun to work on one. It's exactly the kind of thing that could be very distracting for a startup.
+
+Well, guilty as charged on *all* counts. Rewriting Ruby is hard (for me), it has been fun, and certainly it has been a distracting time sink.
 
 **rewrite**
 
@@ -130,7 +132,7 @@ So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, 
 
 *p.s. This progress report was inspired by a rash of posts describing companies that have done large in-house language projects. If the subject interests you, don't miss [Lunascript][ls], [HipHop][hh], [CoffeeScript][cs], [Haml][haml] and [Wasabi][w].*
 
-*p.p.s. Discuss this post on [here][hn] on Hacker News.*
+*p.p.s. Discuss this post [here][proggit] on programming.reddit.com or [here][hn] on Hacker News.*
 
 ----
 	
@@ -156,6 +158,7 @@ Reg Braithwaite: [Home Page](http://reginald.braythwayt.com), [CV](http://regina
 [mousetrap]: http://weblog.raganwald.com/2008/02/mouse-trap.html "The Mouse Trap"
 [mp]: http://jicksta.com/posts/the-methodphitamine "The Mthodphitamine"
 [node]: http://nodejs.org/
+[proggit]: http://www.reddit.com/r/programming/comments/ay2bn/a_difficult_distraction_my_experience_creating_a/
 [ra]: http://github.com/raganwald/rewrite_rails/blob/master/doc/andand.textile#readme
 [returning]: http://github.com/raganwald/rewrite_rails/blob/master/doc/returning.md#readme
 [rewrite]: http://rewrite.rubyforge.org/

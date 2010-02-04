@@ -23,7 +23,7 @@ Although things like Extension Methods can solve the problem, there's a terrible
 
 In short, doesn't all this monkey-patching and DSL-writing and extension methoding violate the [Single Responsibility Principle][srp]? Is everyone doing  this wrong? Or--and I'm leaning this way--does the Single Responsibility Principle need a rethink?
 
-I like small, elegant things with one purpose. It's pretty obvious that arrays that know how to computer their own sum when they happen to contain summable entities are not elegant things with one purpose. Could everything we're doing be wrong? Could the Single Responsibility Principle be wrong? Or perhaps... I am musing here, not dictating... Could the idea of things having single responsibilities be right but in languages like Ruby, those things aren't classes any more?
+I like small, elegant things with one purpose. It's pretty obvious that arrays that know how to compute their own sum when they happen to contain summable entities are not elegant things with one purpose. Could everything we're doing be wrong? Could the Single Responsibility Principle be wrong? Or perhaps... I am musing here, not dictating... Could the idea of things having single responsibilities be right but in languages like Ruby, those things aren't classes any more?
 
 A Ruby program with extensive metaprogramming is a meta-program that writes a target program. The target program may have classes that groan under the weight of monkey patches and cross-cutting concerns. But the meta-program might be divided up into small, clean entities that each have a single responsibility. We see that in Rails programs. For example, you might write a controller class like this:
 
