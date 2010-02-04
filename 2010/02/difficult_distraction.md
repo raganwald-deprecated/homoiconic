@@ -49,7 +49,7 @@ You can't scope things smaller than a source code file. And there is no way to p
 
 So far, I haven't missed any of the fancy stuff that the rewrite gem made theoretically possible. A few observations:
 
-First, writing rewriters is painful. You basically translate Ruby into its [Abstract Syntax Tree][ast], manipulate the AST, then it is translated back to Ruby. So you need to know a lot about Ruby and a lot about the AST. I rewrote the existing prelude and added a few more as I've gone along. I'm not sure if they've saved me enough time to justify the investment, but I am sure I like the peculiar dialect of Ruby that I'm now using to write my own code.
+First, writing rewriters is painful. You basically translate Ruby into its [Abstract Syntax Tree][ast], manipulate the AST, then it is translated back to Ruby. So you need to know a lot about Ruby and a lot about the AST. For example, [this][source] is the source code for the class that implements the block anahora or "it" rewriting). I rewrote the existing prelude and added a few more as I've gone along. I'm not sure if they've saved me enough time to justify the investment, but I am sure I like the peculiar dialect of Ruby that I'm now using to write my own code.
 
 Second, my lack of experience writing language implementations is obvious if you examine the plugin. There's a huge glaring bug in that the order of application of rewriters is significant. I ought to rewrite that so that there is a canonical translation from any .rr file to its rewritten .rb file that is not dependent on the order of application of rewriters. But "the cobbler's children have no shoes," and I basically have learned to live with this very leaky abstraction. If some piece of code that uses two or more rewriters doesn't do what I think it ought to do, I get all cargo cult with it and try something else.
 
@@ -172,5 +172,6 @@ Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "
 [rhino]: http://weblog.raganwald.com/2007/07/javascript-on-jvm-in-fifteen-minutes.html "How to Run Javascript on the JVM in Just Fifteen Minutes"
 [rr]: http://github.com/raganwald/rewrite_rails
 [s2p]: http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You Can't be Serious!"
+[source]: http://github.com/raganwald/rewrite_rails/blob/master/lib/rewrite_rails/block_anaphora.rb "block_anaphora.rb"
 [thrush]: http://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown#readme "The Thrush"
 [w]: http://www.fogcreek.com/FogBugz/blog/post/The-Origin-of-Wasabi.aspx "The Origin of Wasabi"
