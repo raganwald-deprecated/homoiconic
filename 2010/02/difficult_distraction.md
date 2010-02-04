@@ -25,6 +25,12 @@ It also had a few batteries included: There was a "prelude" included with implem
     
 Everything inside the "with(andand) do" block would have what appear to be #andand methods rewritten. Everything outside that block would not. This would solve the global monkey-patch problem: If you rewrote some code with #try, you could also use another implementation of #try (such as the one in ActiveSupport) outside of your block without conflicts.
 
+Although there was no physical file output, the Ruby interpreter would see some code that looked like this:
+
+    first_name = ((__temp1234567__ = Person.find_by_last_name('Braithwaite')) and __temp1234567__.first_name)
+    
+Thus, I could introduce new features to the Ruby language without having to "monkey-patch" core classes. Rewriting code was also superior to monkey patching for semantic reasons becuase you can add new constructs to the language with short-circuit semantics just Ruby's like built-in operators `&&` or `||`.
+
 My experience with rewrite was that while it worked, it suffered from several problems: First, I never used the more dynamic features like scoping different rewriters to different sections of code, but the syntax for applying rewriting to a block was always in use, so it felt like I was paying for something without any benefits.
 
 My next issue was substantially more painful. Because rewrite was so dynamic, there wasn't a definitive way to look at a ruby file foo.rb and say with certainty how it would be rewritten. This meant I couldn't develop a static translator, which meant in turn that the rewriting needed to be done in development and in production. It also meant that there was no way to walk away from rewrite. Compare this to the [sass gem][haml]: Sass generates .css files from .sass files, so if you ever get sick of it, you can throw the .sass files out and remove the gem.
