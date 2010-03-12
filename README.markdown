@@ -7,6 +7,8 @@ Homoiconic is really simple: *Snippets of code and words about snippets of code*
 
 **what can I read right now?**
 
+I tag every post in del.icio.us with "homoiconic," so even though the git interface is horrible, here is [a list of all homoiconic posts with the most recent writing first](http://delicious.com/raganwald/homoiconic?sort=date&amp;order=desc "raganwald's homoiconic Bookmarks   on Delicious").
+
 Asking me what to read is like asking the chef what's good on the menu. It's all excellent, of course! That being said, I have a few personal favourites:
 
 * [Optimism](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme)
@@ -42,7 +44,7 @@ At the moment, there are no comments. This is a blog about code, not words. I we
 
 That is a lot more work than just submitting a comment. I'm sorry, it's a trade-off. I lose a lot of good feedback, but I also shed myself of a damaging temptation to pander to the crowd. When blogs become "conversations," they also tend to converge on a common group-think. All I can tell you is that if you have a change you want to make or an observation you want to add, go ahead and make it.
 
-**cccc**
+**is this code clever?**
 
 Whoa, Nellie! Easy with the word "clever." Being interested in some of the things that interest smart people is not the same thing as being smart. Especially in my case. So before rushing off to use each and every technique presented here, be mindful of the fact that programming requires *judgment*, it isn't a perfectly logical process of solving problems using whatever tools, materials, and techniques happen to be within reach. You don't want to provoke responses like this:
 
