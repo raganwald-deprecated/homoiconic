@@ -3,14 +3,14 @@ Significant Whitespace
 
 I've always been a big fan of Javascript's good parts. But for various reasons, I "disappeared myself" whenever the subject of writing DOM manipulation browser code came up. i did some interesting things, like a complex form with dynamic field generation and a validation engine that ran in the browser and on the server using Rhino (would you believe there was nitpicking over whether this was "J2EE-compliant?") Recently, I decided it was time to get off the couch and embrace the DOM. So, I decided to write a small [Go Server](http://github.com/raganwald/go "raganwald's go at master - GitHub").
 
-The word on the street was that there were a bunch of powerful Javascript libraries kicking around, but the one thing I consistently heard about John Resig's [jQuery](http://jquery.com/ "jQuery: The Write Less, Do More, JavaScript Library") was that it "Changes the way you think about programming." And while I am far from done learning new things, I willa dmit that I have been provoked into wondering whether significant whitespace could be a really good thing.
+The word on the street was that there were a bunch of powerful Javascript libraries kicking around, but the one thing I consistently heard about John Resig's [jQuery](http://jquery.com/ "jQuery: The Write Less, Do More, JavaScript Library") was that it "Changes the way you think about programming." And while I am far from done learning new things, I will admit that I have been provoked into wondering whether significant whitespace could be a really good thing.
 
 let me show you what I am thinking about. One of jQuery's consistent styles is for most 'methods' to return the receiver, which allows you to chain method calls. For example:
 
     message_dialog_instance
-    	.text(text)
-    	.dialog({...})
-    	.dialog('open');
+      .text(text)
+      .dialog({...})
+      .dialog('open');
 
 This code invokes `text` once and `dialog` twice on `message_dialog_instance`. In Javascript, it's exactly the same as writing:
 
@@ -24,89 +24,89 @@ This works because each method does something to its receiver and then returns t
     
 Since DOM manipulation is all about side effects, this is a common case, and jQuery makes it easy. Of course, not all jQuery methods return their receiver. There are a number of selection methods that traverse, filter, or otherwise modify a selection of DOM nodes you want to manipulate. For example:
 
-		$(event.target).parents('body > *').find('.wants_close').trigger(event);
-					
+    $(event.target).parents('body > *').find('.wants_close').trigger(event);
+          
 This code takes the target of an event, rises up in the DOM to the immediate child of the body, does a find for all nodes with the class `wants_close`, then finally triggers the event on all of those nodes. It's used to allow gestures like drawing an "X" to be drawn anywhere on the screen and nodes like a dialog or text bubble can choose to handle the event by hiding themselves. (This may be a terrible design, I'm working this out for myself without studying code written by experienced jQuery developers. Don't make my mistake!)
 
 Anyhoo, the point is that `parents` and `find` do not return the receiver. To keep the logic clear I've been using the following style guideline: When I'm returning the receiver, I do not indent. So as you saw above:
 
     message_dialog_instance
-    	.text(text)
-    	.dialog({...})
-    	.dialog('open');
-    	
+      .text(text)
+      .dialog({...})
+      .dialog('open');
+      
 When I return something else, I increase the level of indent:
 
-		$(event.target)
-		  .parents('body > *')
-		    .find('.wants_close')
-		      .trigger(event);
-		      
+    $(event.target)
+      .parents('body > *')
+        .find('.wants_close')
+          .trigger(event);
+          
 I combine the two for the simplest case of refining a selection and then doing more than one thing with it:
 
     $(selector)
-    	.find('.board')
-    		.bind('gesture_left', function (event) {
-    				return forwards_in_time(this);
-    			})
-    		.bind('gesture_right', function (event) {
-    				return backwards_in_time(this);
-    			})
-    		.bind('gesture_close', function (event) {
-    				return clear_current_play(this);
-    			})
+      .find('.board')
+        .bind('gesture_left', function (event) {
+            return forwards_in_time(this);
+          })
+        .bind('gesture_right', function (event) {
+            return backwards_in_time(this);
+          })
+        .bind('gesture_close', function (event) {
+            return clear_current_play(this);
+          })
 
 But more complex cases require breaking the method invocations up:
 
     var move_data = $('body').data('moves')[target_move_number];
     var next_move = memoized_move(target_move_number + 1);
     var this_move = next_move
-    	.clone(true)
-    	.removeClass()
-    	.addClass('move')
-    	.attr('id', id_by_move_number(target_move_number))
-    	.data('number', target_move_number)
-    	.data('player', move_data.player)
-    	.data('position', move_data.position)
-    	.data('removed', move_data.removed);
+      .clone(true)
+      .removeClass()
+      .addClass('move')
+      .attr('id', id_by_move_number(target_move_number))
+      .data('number', target_move_number)
+      .data('player', move_data.player)
+      .data('position', move_data.position)
+      .data('removed', move_data.removed);
     this_move
-    	.find('.toolbar h1 .playing')
-    		.text('Move ' + target_move_number)
-    		.removeClass()
-    		.addClass('playing');
+      .find('.toolbar h1 .playing')
+        .text('Move ' + target_move_number)
+        .removeClass()
+        .addClass('playing');
     this_move
-    	.find('.board .valid')
-    		.removeClass('valid');
+      .find('.board .valid')
+        .removeClass('valid');
     this_move
-    	.find('h1 .gravatar')
-    		.empty();
+      .find('h1 .gravatar')
+        .empty();
     this_move
-    	.find('.toolbar #heyButton')
-    		.attr('src', '/images/tools/empty-text-green.png');
+      .find('.toolbar #heyButton')
+        .attr('src', '/images/tools/empty-text-green.png');
 
 I don't like this. What I want is to write these methods just like I write my [haml](http://haml-lang.com/) and especially [sass](http://sass-lang.com/ "Sass - Syntactically Awesome Stylesheets") code (Thank you [Hamp](http://hamptoncatlin.com/ "Hampton Catlin | Ruby, Haml, Wikipedia, iPhone Development")!). I'd liek to write something like:
 
     var move_data = $('body').data('moves')[target_move_number];
     var next_move = memoized_move(target_move_number + 1);
     next_move
-    	.clone(true)
-    	.removeClass()
-    	.addClass('move')
-    	.attr('id', id_by_move_number(target_move_number))
-    	.data('number', target_move_number)
-    	.data('player', move_data.player)
-    	.data('position', move_data.position)
-    	.data('removed', move_data.removed)
-    	.find('.toolbar h1 .playing')
-    		.text('Move ' + target_move_number)
-    		.removeClass()
-    		.addClass('playing')
-    	.find('.board .valid')
-    		.removeClass('valid')
-    	.find('h1 .gravatar')
-    		.empty()
-    	.find('.toolbar #heyButton')
-    		.attr('src', '/images/tools/empty-text-green.png');
+      .clone(true)
+      .removeClass()
+      .addClass('move')
+      .attr('id', id_by_move_number(target_move_number))
+      .data('number', target_move_number)
+      .data('player', move_data.player)
+      .data('position', move_data.position)
+      .data('removed', move_data.removed)
+      .find('.toolbar h1 .playing')
+        .text('Move ' + target_move_number)
+        .removeClass()
+        .addClass('playing')
+      .find('.board .valid')
+        .removeClass('valid')
+      .find('h1 .gravatar')
+        .empty()
+      .find('.toolbar #heyButton')
+        .attr('src', '/images/tools/empty-text-green.png');
 
 In other words, I want Javascript to know that when I have multiple invocations at the same level of indentation, I am invoking them on the same receiver. When I indent one more level, I am invoking them on the result of the last method invocation.
 
@@ -132,7 +132,7 @@ Or you can write:
 The semicolon allows you to send multiple messages to the same receiver. I know that Smalltalk code is often more readable with the liberal use of semicolons. I'm now of the opinion that a lot of other languages could use a similar mechanism, generalized to allow arbitrary trees of message invocations.
 
 ----
-	
+  
 Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
 
 [Reg Braithwaite](http://reginald.braythwayt.com): [CV](http://reginald.braythwayt.com/RegBraithwaiteDev0110_en_US.pdf ""), [Twitter](http://twitter.com/raganwald)
