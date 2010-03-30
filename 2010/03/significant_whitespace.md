@@ -44,17 +44,17 @@ When I return something else, I increase the level of indent:
 		      
 I combine the two for the simplest case of refining a selection and then doing more than one thing with it:
 
-		$(selector)
-			.find('.board')
-				.bind('gesture_left', function (event) {
-						return forwards_in_time(this);
-					})
-				.bind('gesture_right', function (event) {
-						return backwards_in_time(this);
-					})
-				.bind('gesture_close', function (event) {
-						return clear_current_play(this);
-					})
+    $(selector)
+    	.find('.board')
+    		.bind('gesture_left', function (event) {
+    				return forwards_in_time(this);
+    			})
+    		.bind('gesture_right', function (event) {
+    				return backwards_in_time(this);
+    			})
+    		.bind('gesture_close', function (event) {
+    				return clear_current_play(this);
+    			})
 
 But more complex cases require breaking the method invocations up:
 
