@@ -7,7 +7,7 @@ But times change and we must change with them. So I decided it was time to get o
 
 The word on the street was that there were a bunch of powerful Javascript libraries kicking around, but the one thing I consistently heard about John Resig's [jQuery](http://jquery.com/ "jQuery: The Write Less, Do More, JavaScript Library") was that it "Changes the way you think about programming." And while I am far from done learning new things, I will admit that I have been provoked into wondering whether significant whitespace could be a really good thing.
 
-let me show you what I am thinking about. One of jQuery's consistent styles is for most 'methods' to return the receiver, which allows you to chain method calls. For example:
+Let me show you what I am thinking about. One of jQuery's consistent styles is for most 'methods' to return the receiver, which allows you to chain method calls. For example:
 
     message_dialog_instance
       .text(text)
