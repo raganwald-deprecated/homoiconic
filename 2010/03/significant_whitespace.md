@@ -112,11 +112,40 @@ I don't like this. What I want is to write these methods just like I write my [h
 
 In other words, I want Javascript to know that when I have multiple invocations at the same level of indentation, I am invoking them on the same receiver. When I indent one more level, I am invoking them on the result of the last method invocation.
 
+As I found out after publishing an earlier version of this post, jQuery does provide some help in the form of [end()](http://api.jquery.com/end). End "undoes" a selection method, restoring the previous selection. So I can now rewrite my code like this:
+
+    var move_data = $('body').data('moves')[target_move_number];
+    var next_move = memoized_move(target_move_number + 1);
+    next_move
+      .clone(true)
+      .removeClass()
+      .addClass('move')
+      .attr('id', id_by_move_number(target_move_number))
+      .data('number', target_move_number)
+      .data('player', move_data.player)
+      .data('position', move_data.position)
+      .data('removed', move_data.removed)
+      .find('.toolbar h1 .playing')
+        .text('Move ' + target_move_number)
+        .removeClass()
+        .addClass('playing')
+        .end()
+      .find('.board .valid')
+        .removeClass('valid')
+        .end()
+      .find('h1 .gravatar')
+        .empty()
+        .end()
+      .find('.toolbar #heyButton')
+        .attr('src', '/images/tools/empty-text-green.png')
+        .end()
+      .end();
+
+This isn't exactly what I want but I'll take it. The final two calls to `end` are unnecessary, but they do make it more consistent and if you re-arrange to code a little you're less likely to omit one.
+
 It may seem like perhaps I should break this up into smaller methods to make it easier to understand. I am thinking that we want to break long functions up into short functions *because our languages don't give us a good way to express a verbose idea clearly in a single function*. We are not talking about 20+ lines of conditional execution here, we are talking about manipulating something that can naturally be expressed as a tree. Why not express the idea in code that looks like a tree?
 
 I like [writing programs for people to read](http://weblog.raganwald.com/2007/04/writing-programs-for-people-to-read.html). Code that resembles what it consumes (sass), what it produces (haml), or what it manipulates (my hypothetical significant whitespace variation of Javascript) is easy to read.
-
-And thus, I admire John Resig for making a smart API design choice that enables me to write code that is more elegant. But I would like a language that gives me a mechanism where the programmer using a method decides how to write her code. In other words, this design choice should be in the programmer's hands, not the API designer's hands.
 
 As it happens, [the last time I asked about a language feature](http://github.com/raganwald/homoiconic/blob/master/2010/01/beautiful_failure.markdown "Beautiful Failure"), I was told that Smalltalk did it in 1981. Well, this time I happen to know that Smalltalk already does this. In Smalltalk, you can write:
 
@@ -132,6 +161,10 @@ Or you can write:
       open
       
 The semicolon allows you to send multiple messages to the same receiver. I know that Smalltalk code is often more readable with the liberal use of semicolons. I'm now of the opinion that a lot of other languages could use a similar mechanism, generalized to allow arbitrary trees of message invocations.
+
+I admire John Resig for making a smart API design choice that enables me to write code that is more elegant. But I would like a language that gives me a mechanism where the programmer using a method decides how to write her code. In other words, this design choice should be in the programmer's hands, not the API designer's hands. I have some other reasons for wanting this in the language that have to do with destructuring assignment, pattern matching, and other uses for code that looks like the data it manipulates.
+
+For now, I'm settling for `end()`.
 
 ----
   
