@@ -142,9 +142,7 @@ So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, 
 
 ----
 	
-Subscribe to [new posts and daily links](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald"><img src="http://feeds.feedburner.com/~fc/raganwald?bg=&amp;fg=&amp;anim=" height="26" width="88" style="border:0" alt="" align="top"/></a>
-
-[Reg Braithwaite](http://reginald.braythwayt.com): [CV](http://reginald.braythwayt.com/RegBraithwaiteDev0110_en_US.pdf ""), [Twitter](http://twitter.com/raganwald)
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald">.
 
 [anaphora]: http://github.com/raganwald/homoiconic/blob/master/2009-09-22/anaphora.md#readme "Anaphora in Ruby"
 [andand]: http://andand.rubyforge.org/ "Object#andand"
