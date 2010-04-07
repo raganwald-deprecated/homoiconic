@@ -80,7 +80,7 @@ iGesture has a demo called [Naughts and Crosses][nc] that demonstrates gestures 
 
 ![Naughts and Crosses][oxox]
 
-The [README][igreadme] explains how all these gestures are supported with essentially six lines of code. I hope you like it.
+The [README][igreadme] explains how all these gestures are supported with essentially six lines of code. And if you want to see how I'm using iGesture in my Go server's iPhone UI, [help yourself][gojs] :-) I hope you like it.
 
 ----
   
@@ -95,3 +95,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [igreadme]: http://github.com/raganwald/iGesture#readme
 [nc]: http://raganwald.github.com/iGesture/naughts_and_crosses.html
 [oxox]: /raganwald/iGesture/raw/master/about/oxox.png  "Naughts and Crosses"
+[gojs]: http://github.com/raganwald/go/blob/master/public/javascripts/application.js "application.js"
