@@ -46,7 +46,7 @@ With jGesture, you ask the gesture for its name and decide what to do based on t
 
     elements.gesture(gesturer);
     
-Like jQTouch, you have to examine what you get to figure out hwat to do. Unlike jQTouch, you get lots more gestures. I quickly decided I wanted to use the "close" gesture to close any dialogs that appeared in my application. (There's also a close button, but I was gesture-happy).
+Like jQTouch, you have to examine what you get to figure out what to do. Unlike jQTouch, you get lots more gestures. I quickly decided I wanted to use the "close" gesture to close any dialogs that appeared in my application. (There's also a close button, but I was gesture-happy).
 
 It took about ten seconds to realize that I didn't like the callback model for this. I wanted events just like jQTouch and, incidentally, just like Javascript usually works, like `mouseup`: You handle that with `.bind`, not by calling a special mouse handling callback registrar.
 
@@ -65,18 +65,20 @@ And presto, every message dialog would handle a `gesture_close` event by closing
 
 As Alan Perlis noted, "Every problem can be solved by creating another layer of abstraction, except for the problem of having too many layers of abstraction."
 
-I contacted Nico Goeminne, the author of jGesture, and he had no problem with my creating a derivative work. Its Apache license obviously permits sch an action, but I contacted Nico: Maybe he was working on the very same idea, maybe he'd want such a thing rolled into jGesture. As it happens, he has moved on to other interesting projects with his students, and he was ok with a new work.
+I contacted Nico Goeminne, the author of jGesture, and he had no problem with my creating a derivative work. Its Apache license obviously permits such an action, but I contacted Nico: Maybe he was working on the very same idea, maybe he'd want such a thing rolled into jGesture. As it happens, he has moved on to other interesting projects with his students, and he was ok with a new work.
 
-This brings me up to date. I have just released [iGesture][ig], a substantial modification of jGesture to generate events "from the ground up." Like jGesture, it's ajQuery plugin. And like my jQTouch, you handle everything with events.
+This brings me up to date. I have just released [iGesture][ig], a substantial modification of jGesture to generate events "from the ground up." Like jGesture, it's a jQuery plugin. And like jQTouch, you handle everything with events.
 
-It goes further, by supporting all of jGestures events plus some new ones. So far, in addition to jGesture's built-in support for swipes in any direction, circles, close, and various combinations of swipes, iGesture also supports:
+It goes further, by having events for each different gesture. So you don't have to handle a swipe and then write a biug set of cascading if statements once you figure out which direction has been swiped. If you want a swipe to the left, you bind your handler to `gesture_left`. iGesture supports all of jGesture's named events plus some new ones. So far, in addition to swipes in any direction, circles, close, and various combinations of consecutive directions, iGesture also supports:
 
-1. Rotation and pinching on Mobile Safari.
-2. "Scrub," a back-and-forth wiping similar to the gesture the Apple Newton used to discard things.
+1. Rotation and pinching on Mobile Safari (`rotate` and `scale`).
+2. `scrub`, a back-and-forth wiping similar to the gesture the Apple Newton used to discard things.
 
-iGesture has a demo called naughts and Crosses that demonstrates gestures on a modern browser or iPhone. Draw an X (see the diagram above) to create a cross, a circle to create a naught, scrub to wipe the board clean, and you can even rotate the board using multi-touch on an iPhone. The [README][igreadme] explains how all these gestures are supported with essentially six lines of code.
+iGesture has a demo called [Naughts and Crosses][nc] that demonstrates gestures on a modern browser or iPhone. Draw an X (see the diagram above) to create a cross, a circle to create a naught, scrub to wipe the board clean, and you can even rotate the board using multi-touch on an iPhone.
 
-I hope you like it.
+![Naughts and Crosses][oxox]
+
+The [README][igreadme] explains how all these gestures are supported with essentially six lines of code. I hope you like it.
 
 ----
   
@@ -89,3 +91,5 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [eventified]: http://github.com/raganwald/go/blob/4562b25a40b3ef2e22aec9811921f622f84a2bff/public/javascripts/jgesture.eventified.js "jgesture.eventified.js"
 [ig]: http://github.com/raganwald/iGesture
 [igreadme]: http://github.com/raganwald/iGesture#readme
+[nc]: http://raganwald.github.com/iGesture/naughts_and_crosses.html
+[oxox]: /raganwald/iGesture/raw/master/about/oxox.png  "Naughts and Crosses"
