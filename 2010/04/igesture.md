@@ -1,4 +1,4 @@
-Announcing iGesture
+How I came to write iGesture
 ===
 
 As [mentioned][sw], I have been working on a personal project, a [Go server][go]. I've started with jQTouch, an excellent framework for writing iPhone applications using HTML, CSS, and JQuery. One of the nice things about jQTouch is that it provides callbacks for a common gesture, *swiping*.
