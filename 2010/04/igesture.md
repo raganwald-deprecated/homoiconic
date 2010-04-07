@@ -1,15 +1,17 @@
 How I came to write iGesture
 ===
 
-As [mentioned][sw], I have been working on a personal project, a [Go server][go]. I've started with jQTouch, an excellent framework for writing iPhone applications using HTML, CSS, and JQuery. One of the nice things about jQTouch is that it provides callbacks for a common gesture, *swiping*.
+As [mentioned][sw], I have been working on a personal project, a [Go server][go]. I recently extracted [iGesture][ig], an event-driven model for supporting *gestures* (like swiping the screen) from my Go server. Here's how that came about. I hope you find it interesting.
 
-I like using gestures on the iPhone because screen space is very limited. Visible affordances like buttons take away from space to display valuable information like a game board. Furthermore, because of [Fitts' Law](http://en.wikipedia.org/wiki/Fitts's_law "Fitts's law - Wikipedia, the free encyclopedia"), making the affordances smaller makes them harder to use. Gestures are the ultimate trade-off in favour of making commands highly usable, because you can use the entire screen. They also give you the maximum amount of screen real estate for information, because you don't need to display controls. They do so by providing the absolute minimum in discoverability, because there is no clue that anything will happen if you swipe the screen or perform some other gesture.
+I started the UI for my Go application on jQTouch, an excellent framework for writing iPhone applications using HTML, CSS, and JQuery. One of the nice things about jQTouch is that it provides the `swipe` custom event for a common gesture, *swiping*. I like using gestures on the iPhone because screen space is very limited. Visible affordances like buttons take away from space to display valuable information like a game board. Furthermore, because of [Fitts' Law](http://en.wikipedia.org/wiki/Fitts's_law "Fitts's law - Wikipedia, the free encyclopedia"), making the affordances smaller makes them harder to use.
+
+Gestures are the ultimate trade-off in favour of making commands highly usable, because you can use the entire screen. They also give you the maximum amount of screen real estate for information, because you don't need to display controls. They do so by providing the absolute minimum in discoverability, because there is no clue that anything will happen if you swipe the screen or perform some other gesture.
 
 How is a user to know that swiping the screen from left to right displays the previous board position? In my Go interface, I can't solve this problem but I do provide some hints to help the user remember what the gestures do when they try them: I animate the result. For example, I animate a slide when the user swipes horizontally, providing a spatial navigation metaphor suggesting that they are "moving backwards and forwards in time." If swiping downwards reveals game info, you can likewise animate the info sliding down from the top to cover the current game board. Users will quickly guess that a swipe up will slide the game info back upwards.
 
 Sliding something to cover something else suggests modality. Sliding the current thing out while sliding something else in suggests an infinite ribbon of information with some sort of scalar relationship along the axis of movement. Or so I rationalize my design to myself.
 
-jQTouch provides a simple event model. You get a `swipe` event, and you examine it for direction. Here's some of the code was using at the time:
+jQTouch provides a simple event model. You get the one `swipe` event, and you examine it for direction. Here's some of the code was using at the time:
 
     var swiper = function(event, data) {
       if (data.direction == 'left') {
@@ -26,7 +28,7 @@ jQTouch provides a simple event model. You get a `swipe` event, and you examine 
     
     elements.bind('swipe', swiper);
 
-Alas, I quickly exhausted jQTouch's built-in gesture support, and I have little stomache for rolling my own from scratch. I went looking and found [jGesture][jg], a JQuery plugin that used a callback model. With jGesture, you could attach callbacks to DOM elements and your function would be passed a special gesture object when the user did something like swipe the screen or draw a circle with their finger. Here are two such gestures, the "close," (so named because it is often used to dismiss dialogs), and the "rotate:"
+As I grew more ambitious, I quickly exhausted jQTouch's built-in gesture support, and I had little stomache for rolling my own from scratch. I went looking and found [jGesture][jg], a JQuery plugin that used a callback model. With jGesture, you could attach callbacks to DOM elements and your function would be passed a special gesture object when the user did something like swipe the screen or draw a circle with their finger. Here are two such gestures, the "close," (so named because it is often used to dismiss dialogs), and the "rotate:"
 
 ![Gestures][gestures]
 
@@ -69,7 +71,7 @@ I contacted Nico Goeminne, the author of jGesture, and he had no problem with my
 
 This brings me up to date. I have just released [iGesture][ig], a substantial modification of jGesture to generate events "from the ground up." Like jGesture, it's a jQuery plugin. And like jQTouch, you handle everything with events.
 
-It goes further, by having events for each different gesture. So you don't have to handle a swipe and then write a biug set of cascading if statements once you figure out which direction has been swiped. If you want a swipe to the left, you bind your handler to `gesture_left`. iGesture supports all of jGesture's named events plus some new ones. So far, in addition to swipes in any direction, circles, close, and various combinations of consecutive directions, iGesture also supports:
+It goes further, by having events for each different gesture. So you don't have to handle a swipe and then write a big set of cascading if statements once you figure out which direction has been swiped. If you want a swipe to the left, you bind your handler to `gesture_left`. iGesture supports all of jGesture's named events plus some new ones. So far, in addition to swipes in any direction, circles, close, and various combinations of consecutive directions, iGesture also supports:
 
 1. Rotation and pinching on Mobile Safari (`rotate` and `scale`).
 2. `scrub`, a back-and-forth wiping similar to the gesture the Apple Newton used to discard things.
