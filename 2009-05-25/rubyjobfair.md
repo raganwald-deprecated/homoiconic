@@ -23,4 +23,4 @@ I hope to see you there.
 
 ---
 
-This is [Homoiconic](http://github.com/raganwald/homoiconic/mater/tree/). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"): <a href="http://feeds.feedburner.com/raganwald">.
+This is [Homoiconic](http://github.com/raganwald/homoiconic/mater/tree/). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
