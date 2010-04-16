@@ -1,7 +1,7 @@
-The Use Case for Ruby's Blocks
+The Use Case for Blocks
 ===
 
-A colleague asked me to explain the use case for blocks in Ruby. he's perfectly familiar with them, of course, and he can explain how they differ from lambdas. But what he was looking for was a simple explanation for why a language really needed both. So the question isn't really "how are they different," but "What is there you can't do with lambdas such that you need to add blocks?"
+A colleague asked me to explain the use case for blocks in Ruby. He's perfectly familiar with them, of course, and he can explain how they differ from lambdas. But what he was looking for was a simple explanation for why a language really needed both. So the question isn't really "how are they different," but "What is there you can't do with lambdas such that you need to add blocks?"
 
 > A design is finished, not when there is nothing left to add, but when there is nothing left to take away &#8212;Antoine de Saint-Exupery
 
