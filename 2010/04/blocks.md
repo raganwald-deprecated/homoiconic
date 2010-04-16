@@ -99,6 +99,22 @@ The block has a different semantic than a lambda. When you return from a block, 
 
 And thus endeth the lesson: An important use case for blocks is when you want to write methods that emulate control structures and other syntax. In this case, you want blocks of statement that do not alter the behaviour of things like `return`. Blocks work. Functions and lambdas do not.
 
+**postscript: can we do away with blocks?**
+
+In Ruby you could avoid a block containing non-local return:
+
+    def outer ()
+
+      return 'close' if something_or_other.any?(&test)
+      
+    end
+
+This "functional style" is far more elegant than short-circuiting evaluation of `.each`. That being said, Ruby and Javascript both provide built-in syntactic constructs like `for` and `if` that have block behaviour, not function behaviour. The use case for blocks is that you can write your own constructs with the same behaviour as the built-in constructs.
+
+It's perfectly valid to avoid the built-in blocks in a program, or to choose a language that doesn't have built-in blocks. But just so we're clear, if a language has built-in blocks, I think it out to allow programmers to use them for their own constructs. If a language allows arbitrary short-circuit `return`, it ought to allow the programmer to use it anywhere.
+
+(This postscript was inspired by some excellent comments in [Hacker News][hn].)
+
 ----
   
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
@@ -106,3 +122,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [ig]: http://github.com/raganwald/iGesture
 [each]: http://api.jquery.com/jQuery.each/ "jQuery.each()"
 [blocks]: http://sphotos.ak.fbcdn.net/hphotos-ak-snc3/hs506.snc3/26589_10150173040005714_835045713_12122576_6398063_n.jpg
+[hn]: http://news.ycombinator.com/item?id=1270842
