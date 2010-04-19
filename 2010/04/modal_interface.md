@@ -5,7 +5,7 @@ Last night I pushed a new [iGesture][ig] demo to Github, [Combining Gestures wit
 
 ![Slave I in Low Earth Orbit][slave]
 
-Swiping the image to the left or the right changes it to one of nine other Star Wars images. You'll see the new image slide into the viewport. So far, we have exactly the same swipe to navigate interface as in my [Go][go] project. In Go, swiping moves forward and backwards in time so you can review the moves that led up to the current position. In the demo, swiping moves around a ring of ten images.
+Using the mouse to swipe the image to the left or the right changes it to one of nine other Star Wars images (I have not tested this on iPhone or iPad, the gestures fork just fine but I'm using jQuery animation and for full compatibility I'd probably need to use Webkit native animations). You'll see the new image slide into the viewport. So far, we have exactly the same swipe to navigate interface as in my [Go][go] project. In Go, swiping moves forward and backwards in time so you can review the moves that led up to the current position. In the demo, swiping moves around a ring of ten images.
 
 The problem we need to solve is that the image is larger than its "viewport." Go has the same problem when you use an iPhone (or iPod Touch, but I'm not going to keep saying that) to play on a board larger than eleven by eleven. You need a mechanism to move between boards and another mechanism to pan or scroll around within a single board.
 
@@ -23,15 +23,15 @@ The challenge is that modal interfaces can be confusing. There are two well-know
 
 ![Rubber Band][band]
 
-Keyboard modifier keys and mouse buttons are good examples of rubber-band modes: As soon as you release them, the special behaviour stops. These kinds of things are easy to understand. The caps lock key is a good example of a mode that is annoying because it isn't a rubber-band mode. Dragscroll mode in this demo is a rubber-band mode: As soon as you stop dragging the image and release the mouse button or lift your finger, you return to the normal behaviour.
+Keyboard modifier keys and mouse buttons are good examples of rubber-band modes: As soon as you release them, the special behaviour stops. These kinds of things are easy to understand. The caps lock key is a good example of a mode that is annoying because it isn't a rubber-band mode. Panning mode in this demo is a rubber-band mode: As soon as you stop dragging the image and release the mouse button, you return to the normal behaviour.
 
-The demo solves the problem by making "panning" a rubber-band mode. Here's how to pan the image: Hold your mouse button or finger down on the image without moving. After a few seconds, the image shakes signaling you can drag it around . Pan the image without releasing the button or lifting your finger and the image pans around within the viewport. Release the button or lift your finger when you are done. You are now back in "navigation" mode and can swipe to your heart's content.
+The demo solves the problem by making "panning" a rubber-band mode. Here's how to pan the image: Hold your mouse button down on the image without moving. After a few seconds, the image shakes signaling you can drag it around. Pan the image without releasing the button, and the image pans around within the viewport. Release the button when you are done. You are now back in "navigation" mode and can swipe to your heart's content.
 
 ![iPhone Home Screen][home]
 
 > The hold and shake behaviour was inspired by the behaviour of the iPhone's home screen: When you hold your finger down on an icon, after a delay all the icons start jiggling. You are now in edit mode and can re-arrange the icons. This is not a rubber-band mode, so on the iPhone's home screen you have to tap the home button to return to the normal mode. But I like the hold and shake, because the shaking implies movement.
 
-Like gestures, there are no visual affordances suggesting that swiping or holding your finger down does anything. After you have done so, the sliding image or shaking image give you some feedback, so this kind of interface represents an extreme tradeoff between functionality and discoverability. But it is an option to consider for metaphors that are naturally spatial.
+Like gestures, there are no visual affordances suggesting that swiping or holding the mouse button down does anything. After you have done so, the sliding image or shaking image give you some feedback, so this kind of interface represents an extreme tradeoff between functionality and discoverability. But it is an option to consider for metaphors that are naturally spatial.
 
 **implementing the modal interface**
 
@@ -41,7 +41,7 @@ The code for the demo is available to anyone who can view source, but it's also 
 
 First, I had to do a little [yak shaving][yak] (also [this][dont_yak]).
 
-The `hold` gesture, where you hold your finger down without moving it, required something a little more fancy than iGesture supported, in that it had to work while your finger was down after a delay. The Timers jQuery plugin is ideal, but if you don't use hold, there shouldn't be a dependency. I [added the hold gesture][hold] with the proviso that you must include Timers to use hold. If you don't use hold, the timer code is never invoked.
+The `hold` gesture, where you hold the mouse down without moving it, required something a little more fancy than iGesture supported, in that it had to trigger after a delay. The Timers jQuery plugin is ideal, but if you don't use hold, there shouldn't be a dependency. I [added the hold gesture][hold] with the proviso that you must include Timers to use hold. If you don't use hold, the timer code is never invoked.
 
 Next, I noticed was that iGesture doesn't have a `.removegesture` method for unbinding gesture handling from a DOM element. I sent a [swift kick in the pants to the developer][catch_22], and the feature was added. And when I downloaded a copy of the [Dragscrollable][dsble] plugin for jQuery, I found that it also lacked a method to unbind its handler support. A similar plugin, [Dragscroll][ds], provides this functionality. It took me a few minutes, but I was able to implement `.removedragscrollable` on a [local copy][dsjs] of the plugin.
 
