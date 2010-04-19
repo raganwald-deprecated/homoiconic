@@ -110,7 +110,7 @@ The actual navigation sliding is not particularly cromulant, but that isn't real
 		return false;
 	};
 	
-And that, as they say, is that. A modal interface alternates between gestures for navigation and direct manipulation for panning. As mentioned above, the demo is [Combining Gestures with Dragscrolling][drag] and the [code][code] is in Github.
+And that, as they say, is that. A modal interface alternates between gestures for navigation and direct manipulation for panning. As mentioned above, the demo is [Combining Gestures with Dragscrolling][drag] and the [code][code] is in Github. Naturally, you can discuss this post on [Hacker News][hn].
 
 ---
 
@@ -132,3 +132,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [dont_yak]: http://sethgodin.typepad.com/seths_blog/2005/03/dont_shave_that.html "Don't Shave That Yak!"
 [yak]: http://www.catb.org/~esr/jargon/html/Y/yak-shaving.html
 [hold]: http://github.com/raganwald/iGesture/issues/closed/#issue/20 "iGesture Issue #20"
+[hn]: http://news.ycombinator.com/item?id=1277481 "Discuss this post"
