@@ -121,7 +121,7 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [affordance]: http://en.wikipedia.org/wiki/Affordance
 [go]: http://github.com/raganwald/go "Go"
 [band]: /raganwald/homoiconic/raw/master/2010/04/rubberband.jpg
-[home]: /raganwald/homoiconic/raw/master/2010/04/home_screen.jpg
+[home]: /raganwald/homoiconic/raw/master/2010/04/home_screen.png
 [code]: http://github.com/raganwald/iGesture/tree/gh-pages
 [special]: http://benalman.com/news/2010/03/jquery-special-events/
 [catch_22]: http://github.com/raganwald/iGesture/issues/closed/#issue/22 "iGesture Issue #22"
