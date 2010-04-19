@@ -36,8 +36,8 @@ Like gestures, there are no visual affordances suggesting that swiping or holdin
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
 
 [drag]: http://raganwald.github.com/iGesture/drag.html
-[slave]: /raganwald/iGesture/raw/master/2010/04/slave_i.png "Slave I in Low Earth Orbit"
+[slave]: /raganwald/homoiconic/raw/master/2010/04/slave_i.png "Slave I in Low Earth Orbit"
 [ig]: /raganwald/iGesture "iGesture is a jQuery plugin for adding gesture support to web applications"
 [affordance]: http://en.wikipedia.org/wiki/Affordance
 [go]: http://github.com/raganwald/go "Go"
-[band]: /raganwald/iGesture/raw/master/2010/04/rubberband.jpg
+[band]: /raganwald/homoiconic/raw/master/2010/04/rubberband.jpg
