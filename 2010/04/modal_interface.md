@@ -35,7 +35,7 @@ Like gestures, there are no visual affordances suggesting that swiping or holdin
 
 **implementing the modal interface**
 
-The code for the demo is available to anyone who can view source, but it's also in [Github][code]. I won't go into the animation I hacked together. The principle idea is to create two modes and there is a function for each mode that binds the appropriate handlers for the mode while unbinding the handlers for the other mode.
+The code for the demo is available to anyone who can view source, but it's also in [Github][code]. The principle idea is to create two modes and there is a function for each mode that binds the appropriate handlers for the mode while unbinding the handlers for the other mode.
 
 (This approach probably doesn't scale well to zillions of modes: You might want to look at decorating event handlers using [jQuery Special Events][special] if you're building something like this in production.)
 
@@ -105,7 +105,8 @@ The actual navigation sliding is not particularly cromulant, but that isn't real
 					.hide()
 					.prependTo($('.dragger'))
 					.show("slide", { direction: show_direction }, 1000);
-			});
+			})
+			.remove();
 		return false;
 	};
 	
