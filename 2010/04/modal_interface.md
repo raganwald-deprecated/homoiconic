@@ -29,7 +29,7 @@ The demo solves the problem by making "panning" a rubber-band mode. Here's how t
 
 ![iPhone Home Screen][home]
 
-(The hold and shake behaviour was inspired by the behaviour of the iPhone's home screen: When you hold your finger down on an icon, after a delay all the icons start jiggling. You are now in edit mode and can re-arrange the icons. This is not a rubber-band mode, so on the iPhone's home screen you have to tap the home button to return to the normal mode. But I like the hold and shake, because the shaking implies movement.)
+> The hold and shake behaviour was inspired by the behaviour of the iPhone's home screen: When you hold your finger down on an icon, after a delay all the icons start jiggling. You are now in edit mode and can re-arrange the icons. This is not a rubber-band mode, so on the iPhone's home screen you have to tap the home button to return to the normal mode. But I like the hold and shake, because the shaking implies movement.
 
 Like gestures, there are no visual affordances suggesting that swiping or holding your finger down does anything. After you have done so, the sliding image or shaking image give you some feedback, so this kind of interface represents an extreme tradeoff between functionality and discoverability. But it is an option to consider for metaphors that are naturally spatial.
 
