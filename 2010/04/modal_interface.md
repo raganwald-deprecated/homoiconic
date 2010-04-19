@@ -86,7 +86,7 @@ And:
 			.unbind('.drag');
 	};
 
-The actual navigation sliding is not particularly cromulant, but that isn't really the point of the demo:
+The actual navigation sliding is not particularly cromulent, but that isn't really the point of the demo:
 
 	var bring_image_from = function (show_direction) {
 		var hide_direction;
