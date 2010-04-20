@@ -32,7 +32,7 @@
 
 class Object
   # unfold takes a "seed" argument and a incrementor. It returns an array. The first element of the array is the
-  # seed, every subsequentelement is the result of applying the incrementor to the previous element.
+  # seed, every subsequent element is the result of applying the incrementor to the previous element.
   # so in pretentious quasi-math: result[n] = incrementor(result[n-1]).
   # the array ends when the incrementor returns nil, so unfold(0) { |n| n+1 } is a bad idea in Ruby
   # to add terminating conditions, use if not logic, because false does not terminate unfold.
