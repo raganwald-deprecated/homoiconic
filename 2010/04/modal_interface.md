@@ -45,49 +45,63 @@ The `hold` gesture, where you hold the mouse down without moving it, required so
 
 Next, I noticed was that iGesture doesn't have a `.removegesture` method for unbinding gesture handling from a DOM element. I sent a [swift kick in the pants to the developer][catch_22], and the feature was added. And when I downloaded a copy of the [Dragscrollable][dsble] plugin for jQuery, I found that it also lacked a method to unbind its handler support. A similar plugin, [Dragscroll][ds], provides this functionality. It took me a few minutes, but I was able to implement `.removedragscrollable` on a [local copy][dsjs] of the plugin.
 
-At last I could write the two functions that implemented the navigation and panning modes:
+At last I could write the two functions that implemented the navigation and panning modes, starting with defining the elements:
+
+	var navigation_mode;
+	var panning_mode;
+	var viewport_element = $('.viewport');
+	var dragger_element = $('.viewport .dragger')
+		.bind({
+			'gesture_right.drag': function () {
+				return bring_image_from('left');
+			},
+			'gesture_left.drag': function () {
+				return bring_image_from('right');
+			},
+			'gesture_hold.drag': function (event) {
+				panning_mode();
+				$(this)
+					.effect("shake", { times:3 }, 100, function () {
+						$(this)
+							.trigger(event.gesture_data.originalEvent);
+					})
+			}
+		});
+
+Then the `navigation_mode` function:
 
 	navigation_mode = function () {
-		$('.viewport .dragger')
-			.gesture(['left', 'right', 'hold'])
-			.bind({
-				'gesture_right.drag': function () {
-					return bring_image_from('left');
-				},
-				'gesture_left.drag': function () {
-					return bring_image_from('right');
-				},
-				'gesture_hold.drag': function (event) {
-					panning_mode();
-					$(this)
-						.effect("shake", { times:3 }, 100, function () {
-							$(this)
-								.parent()
-									.trigger(event.gesture_data.originalEvent);
-						})
-				}
-			});
-		$('.viewport')
+		dragger_element
+			.gesture(['left', 'right', 'hold']);
+		viewport_element
 			.removedragscrollable()
 			.unbind('.drag');
 	}
 
-And:
+And finally the `panning_mode` function:
 
 	panning_mode = function () {
-		$('.viewport')
+		viewport_element
 			.dragscrollable()
 			.bind('mouseup.drag', function () {
 				navigation_mode();
 				return false;
 			});
-		$('.viewport .dragger')
-			.removegesture()
-			.unbind('.drag');
+		dragger_element
+			.removegesture();
 	};
 
 The actual navigation sliding is not particularly cromulent, but that isn't really the point of the demo:
 
+	var img_src = function (num) {
+		return 'star_wars/' + num + '.jpeg';
+	};
+	
+	var image_number = Math.floor(Math.random() * 10);
+
+	var image_element = $('.viewport .dragger img')
+		.attr('src', img_src(image_number));
+	
 	var bring_image_from = function (show_direction) {
 		var hide_direction;
 		if (show_direction == 'left') {
@@ -98,10 +112,10 @@ The actual navigation sliding is not particularly cromulent, but that isn't real
 			show_direction = 'right';
 			hide_direction = 'left';
 		}
-		$('.viewport img')
+		image_element
 			.hide("slide", { direction: hide_direction }, 1000, function () {
 				$('<img/>')
-					.attr('src', 'star_wars/' + image_number + '.jpeg')
+					.attr('src', img_src(image_number))
 					.hide()
 					.prependTo($('.dragger'))
 					.show("slide", { direction: show_direction }, 1000);
