@@ -12,11 +12,11 @@ In a comment on [Ruby Stylista](http://www.pathf.com/blogs/2008/10/ruby-stylista
 	(foo = 5) and 10; foo
 	  => 5
 
-You can see from the examples how the expression is 'grouped' by the very low precedence of `and` and `or`. Since they are such low precedence, I use them to create conditional execution, to tie two imperative statements together. For example, you could write:
+You can see from the examples how the expression is 'grouped' by the very low precedence of `and` and `or`. Since they have such low precedence, I use them to create conditional execution, to tie two imperative statements together. For example, you could write:
 
 	foo = fubar() if do_something()
 
-This reverses the order of execution, putting the caluse `do_something()` after `foo = fubar()` even though it will happen in the opposite order. If you wish to write them in temporal order, you can use `and`:
+This reverses the order of execution, putting the clause `do_something()` after `foo = fubar()` even though it will happen in the opposite order. If you wish to write them in temporal order, you can use `and`:
 
 	do_something() and foo = fubar()
 
