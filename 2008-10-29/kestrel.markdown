@@ -88,7 +88,7 @@ The pattern of wanting a Kestrel/returning/tap when you create a new object is s
 	  end
 	end
 
-In Rails, `returning` is not necessary when creating instances your model classes, thanks to ActiveRecord's built-in object initializer blocks.
+In Rails, `returning` is not necessary when creating instances of your model classes, thanks to ActiveRecord's built-in object initializer blocks.
 
 **a variation on the kestrel**
 
