@@ -39,7 +39,7 @@ Now, this bizarre syntactic convention of writing `foo.call(bar).call(bash)` is 
 
 **Let's build a cardinal in Ruby**
 
-The next chunk of code works around the fact that Ruby 1.8 can't define a proc that takes a block and also doesn't allow `define_method` to define a method that takes a block. So for Ruby 1.8, we will start by making a utility method that defines methods that can take a block, based on [an idea from coderr](http://coderrr.wordpress.com/2008/10/29/using-define_method-with-blocks-in-ruby-18/ "Using define_method with blocks in Ruby 1.8"). For Ruby 1.9 this is not necessary, you can use `define_method` to define methods that take blocks as arguments.
+The next chunk of code works around the fact that Ruby 1.8 can't define a proc that takes a block and also doesn't allow `define_method` to define a method that takes a block. So for Ruby 1.8, we will start by making a utility method that defines methods that can take a block, based on [an idea from coderr](http://coderrr.wordpress.com/2008/10/29/using-define_method-with-blocks-in-ruby-18/ "Using define_method with blocks in Ruby 1.8"). For Ruby 1.9 this is not necessary: you can use `define_method` to define methods that take blocks as arguments.
 
 	def define_method_taking_block(name, method_body_proc)
 	  self.class.send :define_method, "__cardinal_helper_#{name}__", &method_body_proc
