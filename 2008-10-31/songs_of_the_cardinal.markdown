@@ -1,7 +1,7 @@
 Songs of the Cardinal
 ---
 
-In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the cardinal is one of the most basic _permuting_ combinators, it reverses and parenthesizes the normal order of evaluation.
+In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the cardinal is one of the most basic _permuting_ combinators; it reverses and parenthesizes the normal order of evaluation.
 
 > As explained in [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown#readme), the practice of nicknaming combinators after birds was established in Raymond Smullyan's amazing book [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422). In this book, Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. Since the publication of the book more than twenty years ago, the names he gave the birds have become standard nicknames for the various combinators.
 
@@ -39,7 +39,7 @@ Now, this bizarre syntactic convention of writing `foo.call(bar).call(bash)` is 
 
 **Let's build a cardinal in Ruby**
 
-The next chunk of code works around the fact that Ruby 1.8 can't define a proc that takes a block and also doesn't allow `define_method` to define a method that takes a block. So for Ruby 1.8, we will start by making a utility method that defines methods that can take a block, based on [an idea from coderr](http://coderrr.wordpress.com/2008/10/29/using-define_method-with-blocks-in-ruby-18/ "Using define_method with blocks in Ruby 1.8"). For Ruby 1.9 this is not necessary, you can use `define_method` to define methods that take blocks as arguments.
+The next chunk of code works around the fact that Ruby 1.8 can't define a proc that takes a block and also doesn't allow `define_method` to define a method that takes a block. So for Ruby 1.8, we will start by making a utility method that defines methods that can take a block, based on [an idea from coderr](http://coderrr.wordpress.com/2008/10/29/using-define_method-with-blocks-in-ruby-18/ "Using define_method with blocks in Ruby 1.8"). For Ruby 1.9 this is not necessary: you can use `define_method` to define methods that take blocks as arguments.
 
 	def define_method_taking_block(name, method_body_proc)
 	  self.class.send :define_method, "__cardinal_helper_#{name}__", &method_body_proc
@@ -112,7 +112,7 @@ Therefore we can define a thrush with:
 	end
 	  => 625
 
-As you can see, once you have a defined a cardinal, you can create an infinite variety of methods that have thrush-like syntax--a method that applies a value to a block--but you can modify or augment the _semantics_ of the block in any you want.
+As you can see, once you have a defined a cardinal, you can create an infinite variety of methods that have thrush-like syntax--a method that applies a value to a block--but you can modify or augment the _semantics_ of the block in any way you want.
 
 In Ruby terms, you are meta-programming. In Smullyan's terms, you are *Listening to the Songs of the Cardinal*.
 
