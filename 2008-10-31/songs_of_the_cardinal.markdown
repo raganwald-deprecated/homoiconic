@@ -112,7 +112,7 @@ Therefore we can define a thrush with:
 	end
 	  => 625
 
-As you can see, once you have a defined a cardinal, you can create an infinite variety of methods that have thrush-like syntax--a method that applies a value to a block--but you can modify or augment the _semantics_ of the block in any you want.
+As you can see, once you have a defined a cardinal, you can create an infinite variety of methods that have thrush-like syntax--a method that applies a value to a block--but you can modify or augment the _semantics_ of the block in any way you want.
 
 In Ruby terms, you are meta-programming. In Smullyan's terms, you are *Listening to the Songs of the Cardinal*.
 
