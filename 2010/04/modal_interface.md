@@ -5,7 +5,7 @@ Last night I pushed a new [iGesture][ig] demo to Github, [Combining Gestures wit
 
 ![Slave I in Low Earth Orbit][slave]
 
-Using the mouse to swipe the image to the left or the right changes it to one of nine other Star Wars images (I have not tested this on iPhone or iPad, the gestures fork just fine but I'm using jQuery animation and for full compatibility I'd probably need to use Webkit native animations). You'll see the new image slide into the viewport. So far, we have exactly the same swipe to navigate interface as in my [Go][go] project. In Go, swiping moves forward and backwards in time so you can review the moves that led up to the current position. In the demo, swiping moves around a ring of ten images.
+Use the mouse (or your finger on iPhone) to swipe the image to the left or the right. You'll see one of nine other Star Wars images slide into the viewport. So far, we have exactly the same swipe to navigate interface as in my [Go][go] project. In Go, swiping moves forward and backwards in time so you can review the moves that led up to the current position. In the demo, swiping moves around a ring of ten images.
 
 The problem we need to solve is that the image is larger than its "viewport." Go has the same problem when you use an iPhone (or iPod Touch, but I'm not going to keep saying that) to play on a board larger than eleven by eleven. You need a mechanism to move between boards and another mechanism to pan or scroll around within a single board.
 
