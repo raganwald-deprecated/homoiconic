@@ -84,7 +84,7 @@ The [README][igreadme] explains how all these gestures are supported with essent
 
 ----
   
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace][http://unspace.ca], and I like it.
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace](http://unspace.ca), and I like it.
 
 [go]: http://github.com/raganwald/go
 [sw]: http://github.com/raganwald/homoiconic/blob/master/2010/03/significant_whitespace.md#readme "Significant Whitespace"
