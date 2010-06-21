@@ -49,4 +49,4 @@ It seems that if you explicitly define a method taking no parameters, you get th
 
 ---
 	
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace][http://unspace.ca], and I like it.

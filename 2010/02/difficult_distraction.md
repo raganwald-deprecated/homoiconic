@@ -142,7 +142,7 @@ So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, 
 
 ----
 	
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed").
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace][http://unspace.ca], and I like it.
 
 [anaphora]: http://github.com/raganwald/homoiconic/blob/master/2009-09-22/anaphora.md#readme "Anaphora in Ruby"
 [andand]: http://andand.rubyforge.org/ "Object#andand"
