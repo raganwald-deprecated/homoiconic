@@ -1,9 +1,9 @@
-To What Degree?
+A Degree of Understanding
 ===
 
 I recently released [jQuery Combinators][jqc], a very simple jQuery plugin that adds two methods to every jQuery object: `K` and `T`. Can you guess what they do from their names? How about if we include the fact that they are the K and T combinators?
 
-You probably know exactly what they do, but let's be honest with each other: People who read my Homoiconic "un-blog," or people who read Hacker News, or people who read programming.reddit.com are not exactly representative of the larger community of professional programmers. I wrestled with naming them `returning` and `into`, but decided against such a "marketing" move in the end because it's so d\*\*n easy for programmers to rename them if they don't like `K` and `T`.
+You probably know exactly what they do, but let's be honest with each other: People who read my [Homoiconic][h] "un-blog," or people who read Hacker News, or people who read programming.reddit.com are not exactly representative of the larger community of professional programmers. I wrestled with naming them `returning` and `into`, but decided against such a "marketing" move in the end because it's so d\*\*n easy for programmers to rename them if they don't like `K` and `T`.
 
 But I am left scratching my head about something. If we grant my strawman argument that most programmers have no idea what `K` or `T` stand for, if most programmers have never heard of [Kestrels][k] or [Thrushes][t], why is a degree in Computer Science one of the basic requirements for most entry-level programming jobs?
 
@@ -22,3 +22,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [jqc]: http://github.com/raganwald/JQuery-Combinators
 [k]: http://github.com/raganwald/homoiconic/blob/master/2008-10-29/kestrel.markdown#readme
 [t]: http://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown#readme
+[h]: http://github.com/raganwald/homoiconic/#readme
