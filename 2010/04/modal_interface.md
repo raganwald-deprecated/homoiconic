@@ -134,7 +134,7 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [slave]: /raganwald/homoiconic/raw/master/2010/04/slave_i.png "Slave I in Low Earth Orbit"
 [ig]: /raganwald/iGesture "iGesture is a jQuery plugin for adding gesture support to web applications"
 [affordance]: http://en.wikipedia.org/wiki/Affordance
-[go]: http://github.com/raganwald/go "Go"
+[go]: http://github.com/raganwald/wood_and_stones "Go"
 [band]: /raganwald/homoiconic/raw/master/2010/04/rubberband.jpg
 [home]: /raganwald/homoiconic/raw/master/2010/04/home_screen.png
 [code]: http://github.com/raganwald/iGesture/tree/gh-pages

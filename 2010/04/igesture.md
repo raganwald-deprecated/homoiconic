@@ -86,13 +86,13 @@ The [README][igreadme] explains how all these gestures are supported with essent
   
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace](http://unspace.ca), and I like it.
 
-[go]: http://github.com/raganwald/go
+[go]: http://github.com/raganwald/wood_and_stones
 [sw]: http://github.com/raganwald/homoiconic/blob/master/2010/03/significant_whitespace.md#readme "Significant Whitespace"
 [jg]: http://web.siruna.com/nico/jgesture/documentation.html
 [gestures]: /raganwald/iGesture/raw/master/about/gestures.png  "Example Gestures"
-[eventified]: http://github.com/raganwald/go/blob/4562b25a40b3ef2e22aec9811921f622f84a2bff/public/javascripts/jgesture.eventified.js "jgesture.eventified.js"
+[eventified]: http://github.com/raganwald/wood_and_stones/blob/4562b25a40b3ef2e22aec9811921f622f84a2bff/public/javascripts/jgesture.eventified.js "jgesture.eventified.js"
 [ig]: http://github.com/raganwald/iGesture
 [igreadme]: http://github.com/raganwald/iGesture#readme
 [nc]: http://raganwald.github.com/iGesture/naughts_and_crosses.html
 [oxox]: /raganwald/iGesture/raw/master/about/oxox.png  "Naughts and Crosses"
-[gojs]: http://github.com/raganwald/go/blob/master/public/javascripts/application.js "application.js"
+[gojs]: http://github.com/raganwald/wood_and_stones/blob/master/public/javascripts/application.js "application.js"
