@@ -3,8 +3,7 @@ Final by Default
 
 Four years ago, [Elliotte "Rusty" Harold][elharo] and I disagreed on the subject of the `final` keyword in Java. At the time, I stated my views in an post entitled [Ready, Aim, Final][raf]. There was some back and forth between my blog and Rusty's. I forgot about the matter until [Wikileaks threatened to leak 5,000 open source Java projects With All That Private/Final Bullshit Removed][leaks]. That got me thinking about `final` again.
 
-three methods
----
+**three methods**
 
 What functions do these three methods compute?
 
@@ -60,8 +59,7 @@ What functions do these three methods compute?
 
 All three compute the Fibonacci sequence. The first is an almost direct translation of the definition: `n` for any value of n that is less than two, otherwise it is the sum of the previous two numbers. The second also computes the Fibonacci sequence, however the definition has been "reworded" to express the first algorithm in "tail recursive" form. The third takes advantage of a completely different definition of the Fibonacci sequence that expresses it as the exponent of a matrix.
 
-two conundrums
----
+**two conundrums**
 
 First, consider a project where there is a critical piece of logic that can be expressed simply and directly. The correctness of the program relies on this logic producing the expected outputs and side effects. Which version of the function should we use? The first is the easiest to verify. It appears to do exactly what is specified, and works just fine for small values of `n`. But what if we need to handle large values of `n`? The third function is the fastest of the three, but it might be difficult for someone reading the code to grasp at a glance what it does.
 
@@ -79,8 +77,7 @@ At heart, both "conundrums" are the same problem. The "contract" for a function 
 
 The first "conundrum" presented a choice between implementations that obviously have no deficiencies and have no obvious deficiencies. The second conundrum presented the problem of deficiencies in code that hasn't even been written at the time the author is forced to choose.
 
-severing the gordian knot
----
+**severing the gordian knot**
 
 > Warning: Strawmen Approaching
 
@@ -96,8 +93,7 @@ The "heavyweight" approach is to solve the problem with the programming language
 
 Given that the heavyweight programmer can choose an implementation for Fibonacci and then lock it down so that future programmers cannot change or override it, the heavyweight programmer has a much greater responsibility to select an implementation that will "Last for the ages." Fibonacci is a rather simple example, so there is little to consider in terms of changing behaviour. However in more complex domains such as modelling business processes, behaviour may need to be changed or extended without breaking existing code that relies on the original behaviour. Heavyweight programmers are often very concerned with carefully decomposing functionality into fine grained units that can be individually locked or overridden.
 
-and yet
----
+**and yet...**
 
 Both the lightweight and heavyweight approaches do nothing about the basic problem that:
 
@@ -143,8 +139,7 @@ Is functionally equivalent to:
 
 Without being *obviously* equivalent. This is the way with code that grows and extends, for example. Additional cases are added or additional functionality is added and the original, basic purpose of the code becomes obscured. Test suites grow in length until their ability to document the original, basic purpose of the code degrades.
 
-bondage and discipline
----
+**bondage and discipline**
 
 I am a proponent of [Strict Liskov Substitutability][liskov]. My original definition for Strict Liskov Substitutability is that for any two objects `A` and `B`, if `B is-an A`, then any test written for `A` will have the exact same result for `B`.
 
@@ -190,8 +185,7 @@ In my [blog post][liskov], I described Strict Liskov Substitutability in terms o
 
 So, there are two approaches to preventing someone from breaking the functionality encoded in an implementation. First, write tests for it and enforce those tests on subclasses. Second, prevent subclasses from overriding the implementation. These are the heavyweight (with a little of my own speculative proposals assed to spice things up) and the heavyweight approaches described above.
 
-duck correctness
----
+**duck correctness**
 
 Strongly typed languages work by statically analyzing a program and "proving" that its use of operators and methods is consistent with its assignment of typed values. Languages like ML and Haskell use [type inference][inference], where declarations are minimized but the compiler searches for possible inconsistencies.
 
@@ -281,9 +275,13 @@ This idea is obviously incomplete. And yet... It seems to me that it would make 
 
 > "Certain informal discussions took place, involving a full and frank exchange of views, out of which there arose a series of proposals, which, on examination, proved to indicate certain promising lines of inquiry, which, when pursued, led to the realization that the alternative courses of action might in fact, in certain circumstances, be susceptible of discreet modification, leading to a reappraisal of the original areas of difference and pointing the way to encouraging possibilities of compromise and cooperation, which, if bilaterally implemented, with appropriate give and take on both sides, might, if the climate were right, have a reasonable possibility, at the end of the day, of leading, rightly or wrongly, to a mutually satisfactory resolution." ([Power to the People][p2p], "Yes, Prime Minister")
 
-Four years ago, [Elliotte Rusty Harold][elharo] claimed that methods should be *final by default*. I will not put words into his mouth, but if what he meant was that "When you write a method, you are definingthe implementation contract for the behaviour of this class and all of its subclasses," I now admit that <u>Rusty was right</u>.
+**seek what he sought**
 
-All methods should be *effectively* final by default.
+Four years ago, [Elliotte Rusty Harold][elharo] claimed that methods should be *final by default*. I will not put words into Rusty's mouth, but he may have suggested that all methods be final by default so as to effectively impose the rule that "When you write a method, you are defining the implementation contract for the behaviour of this class and all of its subclasses."
+
+> Do not follow in the footsteps of the Sages. Seek what they sought.
+
+If this is what he was seeking to accomplish, I admit that <u>Rusty was right all along</u>. All methods should be *effectively* final by default.
 
 ----
   
