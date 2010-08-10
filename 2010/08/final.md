@@ -1,8 +1,6 @@
 Final by Default
 ===
 
-> I am pleased to report that with the passing of time, "Certain informal discussions took place, involving a full and frank exchange of views, out of which there arose a series of proposals, which, on examination, proved to indicate certain promising lines of inquiry, which, when pursued, led to the realization that the alternative courses of action might in fact, in certain circumstances, be susceptible of discreet modification, leading to a reappraisal of the original areas of difference and pointing the way to encouraging possibilities of compromise and cooperation, which, if bilaterally implemented, with appropriate give and take on both sides, might, if the climate were right, have a reasonable possibility, at the end of the day, of leading, rightly or wrongly, to a mutually satisfactory resolution." ([Power to the People][p2p], "Yes, Prime Minister")
-
 Four years ago, Elliott Rusty Harold and I disagreed on the subject of the `final` keyword in Java. At the time, I stated my views in an post entitled [Ready, Aim, Final][raf]. There was some back and forth between my blog and Rusty's. I forgot about the matter until [Wikileaks threatened to leak 5,000 open source Java projects With All That Private/Final Bullshit Removed][leaks]. That got me thinking about `final` again.
 
 three methods
@@ -188,7 +186,7 @@ If that doesn't work in our domain, we are alerted to the need to refactor. For 
 
 Ok, fine. Maybe you like Strict Liskov Substitutability, maybe you don't. Let's play along and say that we do just to see what happens. What about Fibonacci and the conundrums we listed above?
 
-In my [blog post][liskov], I described Strict Liskov Substitutability in terms of tests. I was holding a testing hammer at the time, and it looked like a nail. But there are other tools. Isn't the `final` keyword a fine-grained tool that attenmpts to enforce this? If we declare that a method is final, we are declaring that every subclass has exactly the same implementation, so as far as the behaviour of that method is concerned, they are exactly substitutable.
+In my [blog post][liskov], I described Strict Liskov Substitutability in terms of tests. I was holding a testing hammer at the time, and it looked like a nail. But there are other tools. Isn't the `final` keyword a fine-grained tool that attempts to enforce this? If we declare that a method is final, we are declaring that every subclass has exactly the same implementation, so as far as the behaviour of that method is concerned, they are exactly substitutable.
 
 So, there are two approaches to preventing someone from breaking the functionality encoded in an implementation. First, write tests for it and enforce those tests on subclasses. Second, prevent subclasses from overriding the implementation. These are the heavyweight (with a little of my own speculative proposals assed to spice things up) and the heavyweight approaches described above.
 
@@ -281,7 +279,9 @@ This is remarkably simple for pure functions. For methods with side effects, som
 
 This idea is obviously incomplete. And yet... It seems to me that it would make programs far more readable if you could use implementations as a kind of method contract: "All implementations of this method will behave just like this." Then, optimizing code or extending methods wouldn't be obscuring the original intent because it would still be right there in a module or superclass.
 
-Well, I've gone on quite a bit and it's time for both of us to move along. But before I close, I want to return to my blog post exchange with [Elliotte Rusty Harold][elharo]. he claimed at the time that methods should be final by default. I will not put words into his mouth, but if what he meant was that "when you write a method, you are declaring the behaviour of this object and all of its subclasses," I now admit that <u>Elliotte Rusty Harold was right</u>.
+> "Certain informal discussions took place, involving a full and frank exchange of views, out of which there arose a series of proposals, which, on examination, proved to indicate certain promising lines of inquiry, which, when pursued, led to the realization that the alternative courses of action might in fact, in certain circumstances, be susceptible of discreet modification, leading to a reappraisal of the original areas of difference and pointing the way to encouraging possibilities of compromise and cooperation, which, if bilaterally implemented, with appropriate give and take on both sides, might, if the climate were right, have a reasonable possibility, at the end of the day, of leading, rightly or wrongly, to a mutually satisfactory resolution." ([Power to the People][p2p], "Yes, Prime Minister")
+
+Four years ago, [Elliotte Rusty Harold][elharo] claimed that methods should be *final by default*. I will not put words into his mouth, but if what he meant was that "When you write a method, you are definingthe implementation contract for the behaviour of this class and all of its subclasses," I now admit that <u>Rusty was right</u>.
 
 All methods should be *effectively* final by default.
 
