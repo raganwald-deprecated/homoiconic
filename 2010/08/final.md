@@ -67,8 +67,6 @@ First, consider a project where there is a critical piece of logic that can be e
 
 *Which implementation should we choose?*
 
-> I conclude that there are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is make it so complicated that there are no obvious deficiencies. The first method is far more difficult. – C.A.R. Hoare, [The Emperor’s Old Clothes][clothes], Turing Award lecture, 1980
-
 Second, consider a project where we are writing a library and some of its functions that depend on Fibonacci. Like Java, our language permits other programmers to extend the library and override its functionality. We can also declare that a method like Fibonacci cannot be overridden.
 
 Whatever implementation of Fibonacci we choose, there will almost certainly be some client application that has a different set of needs than we anticipate. For example, some clients do not care about memory and would willingly memoize results to trade space for even greater speed. However, permitting other programmers to override Fibonacci will also permit them to accidentally break the functionality of the functions that depend on Fibonacci. Conversely, prohibiting programmers from overriding Fibonacci bars them from improving its suitability for their applications even if they are careful not to break anything.
@@ -76,6 +74,8 @@ Whatever implementation of Fibonacci we choose, there will almost certainly be s
 So: *Do we allow clients to override our choice of implementation?*
 
 At heart, both "conundrums" are the same problem. The "contract" for a function is more than just its method signature. The contract for a function also includes the correctness of its behaviour. Most popular languages provide very little support for statically checking that a function behaves correctly. There is n simple way to write what the Fibonacci function should do and have a compiler enforce this behaviour.
+
+> I conclude that there are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is make it so complicated that there are no obvious deficiencies. The first method is far more difficult. – C.A.R. Hoare, [The Emperor’s Old Clothes][clothes], Turing Award lecture, 1980
 
 The first "conundrum" presented a choice between implementations that obviously have no deficiencies and have no obvious deficiencies. The second conundrum presented the problem of deficiencies in code that hasn't even been written at the time the author is forced to choose.
 
