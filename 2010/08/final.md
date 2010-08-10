@@ -284,6 +284,8 @@ Four years ago, [Elliotte Rusty Harold][elharo] claimed that methods should be *
 If this is what he was seeking to accomplish, I admit that <u>Rusty was right all along</u>. All methods should be *effectively* final by default.
 
 ----
+
+Discuss on [Hacker News][hn] and [reddit.com][reddit].
   
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace](http://unspace.ca), and I like it.
 
@@ -295,3 +297,5 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [liskov]: http://weblog.raganwald.com/2008/04/is-strictly-equivalent-to.html "IS-STRICTLY-EQUIVALENT-TO-A"
 [inference]: http://en.wikipedia.org/wiki/Type_inference "Type inference - Wikipedia, the free encyclopedia"
 [elharo]: http://www.elharo.com/ "Elliotte Rusty Harold"
+[hn]: http://news.ycombinator.com/item?id=1592556
+[reddit]: http://www.reddit.com/r/programming/comments/czlll/final_by_default/
