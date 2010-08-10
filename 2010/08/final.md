@@ -1,4 +1,4 @@
-Final by Default
+Effectively Final by Default
 ===
 
 Four years ago, [Elliotte "Rusty" Harold][elharo] and I disagreed on the subject of the `final` keyword in Java. At the time, I stated my views in an post entitled [Ready, Aim, Final][raf]. There was some back and forth between my blog and Rusty's. I forgot about the matter until [Wikileaks threatened to leak 5,000 open source Java projects With All That Private/Final Bullshit Removed][leaks]. That got me thinking about `final` again.
