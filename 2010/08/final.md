@@ -1,4 +1,4 @@
-Finality
+Final by Default
 ===
 
 > I am pleased to report that with the passing of time, "Certain informal discussions took place, involving a full and frank exchange of views, out of which there arose a series of proposals, which, on examination, proved to indicate certain promising lines of inquiry, which, when pursued, led to the realization that the alternative courses of action might in fact, in certain circumstances, be susceptible of discreet modification, leading to a reappraisal of the original areas of difference and pointing the way to encouraging possibilities of compromise and cooperation, which, if bilaterally implemented, with appropriate give and take on both sides, might, if the climate were right, have a reasonable possibility, at the end of the day, of leading, rightly or wrongly, to a mutually satisfactory resolution." ([Power to the People][p2p], "Yes, Prime Minister")
@@ -96,9 +96,194 @@ The implementation code is optimized towards separation of concerns and other go
 
 The "heavyweight" approach is to solve the problem with the programming language's compiler. The programmer writing the library sets limits on what other programmers can change, override, or extend. The heavyweight approach does not eschew unit testing, of course, however the heavyweight approach does take the view that the programmer writing the library today has the authority to constrain the choices of programmers using the library tomorrow.
 
-Given that the heavyweight programmer can choose an implementation for Fibonacci and then lock it down so that future programmers cannot change or override it, the heavyweight programmer has a much greater responsibility to select an implementation that will "Last for the ages." Fibonacci is a rather simple example, so there is little to consider in terms of changing behaviour. However in more complex domains such as modelling business processes, behaviour may need to be changed or extended without breaking existing code that relies on the original behaviour.
+Given that the heavyweight programmer can choose an implementation for Fibonacci and then lock it down so that future programmers cannot change or override it, the heavyweight programmer has a much greater responsibility to select an implementation that will "Last for the ages." Fibonacci is a rather simple example, so there is little to consider in terms of changing behaviour. However in more complex domains such as modelling business processes, behaviour may need to be changed or extended without breaking existing code that relies on the original behaviour. Heavyweight programmers are often very concerned with carefully decomposing functionality into fine grained units that can be individually locked or overridden.
 
-The heavyweight programmer must carefully analyze units of functionality and make sure they are properly decomposed along the lines of responsibility. If functionality is locked down at too coarse a level, things that may need to be changed are locked just as securely as things that should not change. Heavyweight programmers often decompose functionality finely (using patterns such as [template method][template]). There are many claimed benefits of decomposing functionality, however the hallmark of the heavyweight approach is to decompose the functionality even when that decomposition is not needed at the current time. The heavyweight programmer takes the view that it is his responsibility to 
+and yet
+---
+
+Both the lightweight and heavyweight approaches do nothing about the basic problem that:
+
+      def self.first n
+        n < 2 ? n : self.first(n-1) + self.first(n-2)
+      end
+
+Is functionally equivalent to:
+
+      Matrix = Struct.new(:a, :b, :c) do
+
+        alias :d :a
+        alias :e :b
+        alias :f :c
+
+        def * other
+          Matrix.new(
+            self.a * other.d + self.b * other.e, 
+            self.a * other.e + self.b * other.f,
+            self.b * other.e + self.c * other.f
+          )
+        end
+
+        def ^ n
+          if n == 1
+            self
+          elsif n == 2
+            self * self
+          elsif n > 2
+            if n % 2 == 0
+              self ^ (n / 2) ^ 2
+            else
+              (self ^ (n / 2) ^ 2) * self
+            end
+          end
+        end
+
+      end
+
+      def self.third n
+        n < 2 ? n : (Matrix.new(1,1,0) ^ (n - 1)).a
+      end
+
+Without being *obviously* equivalent. This is the way with code that grows and extends, for example. Additional cases are added or additional functionality is added and the original, basic purpose of the code becomes obscured. Test suites grow in length until their ability to document the original, basic purpose of the code degrades.
+
+bondage and discipline
+---
+
+I am a proponent of [Strict Liskov Substitutability][liskov]. My original definition for Strict Liskov Substitutability is that for any two objects `A` and `B`, if `B is-an A`, then any test written for `A` will have the exact same result for `B`.
+
+So if you say that: `Manager is-an Employee`, you should be able to take some pseudo-unit test-code like this:
+
+    e = Employee.new(:foo => ..., :bar => ...)
+    assert(e.foo())
+    assert(e.bar())
+    assert_nil(e.blitz())
+
+And rewrite it like this:
+
+    e = Manager.new(:foo => ..., :bar => ...)
+    assert(e.foo())
+    assert(e.bar())
+    assert_nil(e.blitz())
+
+And everything will work. Always.
+
+This rarely works even when you're trying your best. For one thing, Managers may need additional initialization. So if you want to do this kind of testing, you are going to need to set up your test factories so that Manager objects get the right default values if you initialize them in an employee test case. Perhaps like this:
+
+    e = TestInstance.of(Employee, :foo => ..., :bar => ...)
+    assert(e.foo())
+    assert(e.bar())
+    assert_nil(e.blitz())
+
+You also want your test suite to do this automatically for every subclass of employee:
+
+    ClassTester.for_every_kind_of(Employee) do |employee_class|
+      e = TestInstance.of(employee_class, :foo => ..., :bar => ...)
+      assert(e.foo())
+      assert(e.bar())
+      assert_nil(e.blitz())
+    end
+
+What does this get us? It gets us that we are guaranteed that when we write a Manager class, we can override whatever we like, secure in the knowledge that we won't accidentally break the Manager's behaviour as an employee because all of our employee tests are automagically applied to managers.
+
+If that doesn't work in our domain, we are alerted to the need to refactor. For example, who is the CEO's manager? Nobody? Perhaps the `Employee` class needs to be split up. Some of its functionality should be part of a `Subordinate` module, some of its functionality should be an `Employee` class, and `Manager` should be a module as well. Some Employees are Managers, some Subordinates, and ever Manager except the CEO is both a Manager and a Subordinate. Strict Liskov Substitutability forced us to organize our inheritance properly
+
+Ok, fine. Maybe you like Strict Liskov Substitutability, maybe you don't. Let's play along and say that we do just to see what happens. What about Fibonacci and the conundrums we listed above?
+
+In my [blog post][liskov], I described Strict Liskov Substitutability in terms of tests. I was holding a testing hammer at the time, and it looked like a nail. But there are other tools. Isn't the `final` keyword a fine-grained tool that attenmpts to enforce this? If we declare that a method is final, we are declaring that every subclass has exactly the same implementation, so as far as the behaviour of that method is concerned, they are exactly substitutable.
+
+So, there are two approaches to preventing someone from breaking the functionality encoded in an implementation. First, write tests for it and enforce those tests on subclasses. Second, prevent subclasses from overriding the implementation. These are the heavyweight (with a little of my own speculative proposals assed to spice things up) and the heavyweight approaches described above.
+
+duck correctness
+---
+
+Strongly typed languages work by statically analyzing a program and "proving" that its use of operators and methods is consistent with its assignment of typed values. Languages like ML and Haskell use [type inference][inference], where declarations are minimized but the compiler searches for possible inconsistencies.
+
+Languages like Ruby are formally untyped. As far as the interpreter is concerned, if it walks like a duck and talks like a duck, it's a duck. This is also true of ML, however Ruby only finds an inconsistency when it runs into one a runtime.
+
+Could we do this with Strict Liskov Substitutability? Yes.
+
+Consider the following code:
+
+    class ReadbleButSlow
+
+      # ...
+      
+      def fib n
+        n < 2 ? n : fib(n-1) + fib(n-2)
+      end
+
+    end
+    
+    class FasterButTooCleverByHalf < ReadableButSlow
+
+      Matrix = Struct.new(:a, :b, :c) do
+
+        alias :d :a
+        alias :e :b
+        alias :f :c
+
+        def * other
+          Matrix.new(
+            self.a * other.d + self.b * other.e, 
+            self.a * other.e + self.b * other.f,
+            self.b * other.e + self.c * other.f
+          )
+        end
+
+        def ^ n
+          if n == 1
+            self
+          elsif n == 2
+            self * self
+          elsif n > 2
+            if n % 2 == 0
+              self ^ (n / 2) ^ 2
+            else
+              (self ^ (n / 2) ^ 2) * self
+            end
+          end
+        end
+
+      end
+
+      def fib n
+        n < 2 ? n : (Matrix.new(1,1,0) ^ (n - 1)).a
+      end
+    
+    end
+    
+There are no tests written. None. But imagine we write:
+
+    o = FasterButTooCleverByHalf.new(...)
+    o.fib(5)
+    
+We get a result. How do we know whether it is correct? We don't, but we know it must be *consistent* with:
+
+    o = ReadableButSlow.new(...)
+    o.fib(5)
+
+This, we can test. In fact, our test suite doesn't need to assert anything. If it sets objects up and calls methods, we simply do all the substitutability we need and check that overriding a method never produces a different result than the original. In effect, all methods behave as if they're final. Always.
+
+And therefore, readable but slow method become the standard way to document what a function does. If you are writing a Math library and need to rewrite a method to optimize its performance, you could do this:
+
+    FastMathLibrary
+    
+      include CanonicalImplementations # readable but slow
+      
+      def fib n
+        # blisteringly fast
+      end
+      
+    end
+
+The Canonical Implementations are your documentation and your tests.
+
+This is remarkably simple for pure functions. For methods with side effects, some care would need to be given. You want to be able to extend a method with side effects in such a way that all of the original side effects are there plus new ones. The testing framework that compares a parent and its child for side effects would need to have a protocol for deciding whether one set of side effects was or was not an extension of another's. Such side effects would have to go beyond the receiver to include other objects it might modify.
+
+This idea is obviously incomplete. And yet... It seems to me that it would make programs far more readable if you could use implementations as a kind of method contract: "All implementations of this method will behave just like this." Then, optimizing code or extending methods wouldn't be obscuring the original intent because it would still be right there in a module or superclass.
+
+Well, I've gone on quite a bit and it's time for both of us to move along. But before I close, I want to return to my blog post exchange with [Elliotte Rusty Harold][elharo]. he claimed at the time that methods should be final by default. I will not put words into his mouth, but if what he meant was that "when you write a method, you are declaring the behaviour of this object and all of its subclasses," I now admit that <u>Elliotte Rusty Harold was right</u>.
+
+All methods should be *effectively* final by default.
 
 ----
   
@@ -109,3 +294,6 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [leaks]: http://steve-yegge.blogspot.com/2010/07/wikileaks-to-leak-5000-open-source-java.html
 [clothes]: http://scifac.ru.ac.za/cspt/hoare.htm
 [template]: http://en.wikipedia.org/wiki/Template_method_pattern "Template method pattern - Wikipedia, the free encyclopedia"
+[liskov]: http://weblog.raganwald.com/2008/04/is-strictly-equivalent-to.html "IS-STRICTLY-EQUIVALENT-TO-A"
+[inference]: http://en.wikipedia.org/wiki/Type_inference "Type inference - Wikipedia, the free encyclopedia"
+[elharo]: http://www.elharo.com/ "Elliotte Rusty Harold"
