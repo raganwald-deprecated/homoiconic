@@ -71,7 +71,7 @@ Whatever implementation of Fibonacci we choose, there will almost certainly be s
 
 So: *Do we allow clients to override our choice of implementation?*
 
-At heart, both "conundrums" are the same problem. The "contract" for a function is more than just its method signature. The contract for a function also includes the correctness of its behaviour. Most popular languages provide very little support for statically checking that a function behaves correctly. There is n simple way to write what the Fibonacci function should do and have a compiler enforce this behaviour.
+At heart, both "conundrums" are the same problem. The "contract" for a function is more than just its method signature. The contract for a function also includes the correctness of its behaviour. Most popular languages provide very little support for statically checking that a function behaves correctly. There is no simple way to write what the Fibonacci function should do and have a compiler enforce this behaviour.
 
 > I conclude that there are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is make it so complicated that there are no obvious deficiencies. The first method is far more difficult. – C.A.R. Hoare, [The Emperor’s Old Clothes][clothes], Turing Award lecture, 1980
 
@@ -183,7 +183,9 @@ Ok, fine. Maybe you like Strict Liskov Substitutability, maybe you don't. Let's 
 
 In my [blog post][liskov], I described Strict Liskov Substitutability in terms of tests. I was holding a testing hammer at the time, and it looked like a nail. But there are other tools. Isn't the `final` keyword a fine-grained tool that attempts to enforce this? If we declare that a method is final, we are declaring that every subclass has exactly the same implementation, so as far as the behaviour of that method is concerned, they are exactly substitutable.
 
-So, there are two approaches to preventing someone from breaking the functionality encoded in an implementation. First, write tests for it and enforce those tests on subclasses. Second, prevent subclasses from overriding the implementation. These are the heavyweight (with a little of my own speculative proposals assed to spice things up) and the heavyweight approaches described above.
+So, there are two approaches to preventing someone from breaking the functionality encoded in an implementation. First, write tests for it and enforce those tests on subclasses. Second, prevent subclasses from overriding the implementation. These are the lightweight (with a little of my own speculative proposals added to spice things up) and the heavyweight approaches described above.
+
+Is there another way forward?
 
 **duck correctness**
 
@@ -195,7 +197,7 @@ Could we do this with Strict Liskov Substitutability? Yes.
 
 Consider the following code:
 
-    class ReadbleButSlow
+    class ReadableButSlow
 
       # ...
       
@@ -253,9 +255,9 @@ We get a result. How do we know whether it is correct? We don't, but we know it 
     o = ReadableButSlow.new(...)
     o.fib(5)
 
-This, we can test. In fact, our test suite doesn't need to assert anything. If it sets objects up and calls methods, we simply do all the substitutability we need and check that overriding a method never produces a different result than the original. In effect, all methods behave as if they're final. Always.
+This, we can test. In fact, our test suite doesn't need to assert anything. If it sets objects up and calls methods, we perform the substitutions and check that overriding a method never produces a different result than the original. In effect, methods behave as if they're final. Always.
 
-And therefore, readable but slow method become the standard way to document what a function does. If you are writing a Math library and need to rewrite a method to optimize its performance, you could do this:
+And therefore, the "readable but slow" method becomes the standard way to document what a function does. If you are writing a Math library and need to rewrite a method to optimize its performance, you could do this:
 
     FastMathLibrary
     
@@ -267,7 +269,7 @@ And therefore, readable but slow method become the standard way to document what
       
     end
 
-The Canonical Implementations are your documentation and your tests.
+The Canonical Implementations are your documentation *and* your tests.
 
 This is remarkably simple for pure functions. For methods with side effects, some care would need to be given. You want to be able to extend a method with side effects in such a way that all of the original side effects are there plus new ones. The testing framework that compares a parent and its child for side effects would need to have a protocol for deciding whether one set of side effects was or was not an extension of another's. Such side effects would have to go beyond the receiver to include other objects it might modify.
 
@@ -277,7 +279,7 @@ This idea is obviously incomplete. And yet... It seems to me that it would make 
 
 **seek what he sought**
 
-Four years ago, [Elliotte Rusty Harold][elharo] claimed that methods should be *final by default*. I will not put words into Rusty's mouth, but he may have suggested that all methods be final by default so as to effectively impose the rule that "When you write a method, you are defining the implementation contract for the behaviour of this class and all of its subclasses."
+Four years ago, [Rusty][elharo] claimed that methods should be *final by default*. I will not put words into Rusty's mouth, but he may have suggested that all methods be final by default so as to effectively impose the rule that "When you write a method, you are defining the implementation contract for the behaviour of this class and all of its subclasses."
 
 > Do not follow in the footsteps of the Sages. Seek what they sought.
 
