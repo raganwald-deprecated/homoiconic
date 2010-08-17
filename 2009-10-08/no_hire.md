@@ -35,7 +35,7 @@ Also&#8212;and I think this would be laugh-out-loud-funny if it wasn't so person
 
 The irony of using networking in my career when I'm deathly afraid of one of the most important methods of networking is not lost on me, I can only hope you understand that I am not being hypocritical. Even if it makes me uncomfortable, it works well.
 
-(This post will be permanently moved to [http://raganwald.posterous.com/no-i-wouldnt-hire-a-programmer-that-has-no-in][http://raganwald.posterous.com/no-i-wouldnt-hire-a-programmer-that-has-no-in] on August 17, 2010.)
+(This post will be permanently moved to [http://raganwald.posterous.com/no-i-wouldnt-hire-a-programmer-that-has-no-in](http://raganwald.posterous.com/no-i-wouldnt-hire-a-programmer-that-has-no-in "Raganwald's Posterous") on August 17, 2010.)
 
 ---
 	
