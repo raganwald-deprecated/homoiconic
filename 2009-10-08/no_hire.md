@@ -25,7 +25,7 @@ If you read the above article closely, it never says that someone who does not i
 
 I stand by the above, however I think we can all agree that:
 
-&#172;(&#172;MY_PEEPS &#8658; &#172;SKILLZ) &#8743; &#172;(&#172;SKILLZ &#8658; &#172;SOFTWARE)
+&#172;(&#172;MY_PEEPS &#8658; &#172;SKILLZ) &#8744; &#172;(&#172;SKILLZ &#8658; &#172;SOFTWARE)
 
 Also&#8212;and I think this would be laugh-out-loud-funny if it wasn't so personally painful&#8212;I rarely attend conferences or networking events unless I am invited to give a presentation or participate in a workshop or are otherwise manoevered into some other tangible and explicit commitment. Why? I have social anxiety, and while I am stimulated in an incredibly rich and rewarding way when I meet and talk to people I like and admire, when there are more than a few people in the room I feel incredibly uncomfortable and have to fight the urge to slide out.
 
