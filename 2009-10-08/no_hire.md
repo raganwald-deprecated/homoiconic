@@ -21,11 +21,11 @@ Done this way, questions like the above tend to take care of themselves.
 
 If you read the above article closely, it never says that someone who does not involve themselves in programming outside of business hours is not competent or not passionate. It simply says that I use a certain method of getting to know people (call this MY-PEEPS) which in my anecdotal experience leads to a satisfactory number of candidates who have certain competences I desire when hiring (call these `SKILLZ`). Why do I desire them? Because in my anecdotal experience, a small team with `SKILLZ` ships `SOFTWARE`. So my experience is that:
 
-`MY-PEEPS`&#8658;`SKILLZ` &#8743; `SKILLZ`&#8658;`SOFTWARE`
+(`MY-PEEPS` &#8658; `SKILLZ`) &#8743; (`SKILLZ` &#8658; `SOFTWARE`)
 
 I stand by the above, however I think we can all agree that:
 
-&#172;(&#172;`MY-PEEPS`&#8658;&#172;`SKILLZ`) &#8743; &#172;(&#172;`SKILLZ`&#8658;&#172;`SOFTWARE`)
+&#172;(&#172;`MY-PEEPS` &#8658; &#172;`SKILLZ`) &#8743; &#172;(&#172;`SKILLZ` &#8658; &#172;`SOFTWARE`)
 
 Also, I rarely attend conferences or networking events unless I am invited to give a presentation or participate in a workshop or are otherwise manoevered into some other tangible and explicit commitment. Why? I have social anxiety, and while I am stimulated in an incredibly rich and rewarding way when I meet and talk to people I like and admire, when there are more than a few people in the room I feel incredibly uncomfortable and have to fight the urge to slide out.
 
