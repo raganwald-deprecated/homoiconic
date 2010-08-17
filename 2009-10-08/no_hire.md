@@ -27,9 +27,15 @@ I stand by the above, however I think we can all agree that:
 
 &#172;(&#172;MY_PEEPS &#8658; &#172;SKILLZ) &#8743; &#172;(&#172;SKILLZ &#8658; &#172;SOFTWARE)
 
+Or more simply (thanks, [riffraff](http://news.ycombinator.com/item?id=1611275). Loved you in Dark City!):
+
+&#172;(SKILLZ &#8658; MY_PEEPS &#8744; SOFTWARE &#8658; SKILLZ)
+
 Also&#8212;and I think this would be laugh-out-loud-funny if it wasn't so personally painful&#8212;I rarely attend conferences or networking events unless I am invited to give a presentation or participate in a workshop or are otherwise manoevered into some other tangible and explicit commitment. Why? I have social anxiety, and while I am stimulated in an incredibly rich and rewarding way when I meet and talk to people I like and admire, when there are more than a few people in the room I feel incredibly uncomfortable and have to fight the urge to slide out.
 
 The irony of using networking in my career when I'm deathly afraid of one of the most important methods of networking is not lost on me, I can only hope you understand that I am not being hypocritical. Even if it makes me uncomfortable, it works well.
+
+(This post will be permanently moved to [http://raganwald.posterous.com/no-i-wouldnt-hire-a-programmer-that-has-no-in](http://raganwald.posterous.com/no-i-wouldnt-hire-a-programmer-that-has-no-in "Raganwald's Posterous") on August 17, 2010.)
 
 ---
 	
