@@ -16,5 +16,21 @@ I think you have to align your values with your complete hiring process, not jus
 Done this way, questions like the above tend to take care of themselves.
 
 ---
+
+*Update August 16, 2010*:
+
+If you read the above article closely, it never says that someone who does not involve themselves in programming outside of business hours is not competent or not passionate. It simply says that I use a certain method of getting to know people (call this MY-PEEPS) which in my anecdotal experience leads to a satisfactory number of candidates who have certain competences I desire when hiring (call these SKILLZ). Why do I desire them? Because in my anecdotal experience, a small team with SKILLZ ships SOFTWARE. So my experience is that:
+
+    MY-PEEPS&#8658;SKILLZ &#8743; SKILLZ&#8658;SOFTWARE
+
+I assert the above, however I think we can all agree that:
+
+    &#172;(&#172;MY-PEEPS&#8658;&#172;SKILLZ) &#8743; &#172;(&#172;SKILLZ&#8658;&#172;SOFTWARE)
+
+Also, I rarely attend conferences or networking events unless I am invited to give a presentation or participate in a workshop or are otherwise manoevered into some other tangible and explicit commitment. Why? I have social anxiety, and while I am stimulated in an incredibly rich and rewarding way when I meet and talk to people I like and admire, when there are more than a few people in the room I feel incredibly uncomfortable and have to fight the urge to slide out.
+
+The irony of using networking in my career when I'm deathly afraid of one of the most important methods of networking is not lost on me, I can only hope you understand that I am not being hypocritical. Even if it makes me uncomfortable, it works well.
+
+---
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace](http://unspace.ca), and I like it.
