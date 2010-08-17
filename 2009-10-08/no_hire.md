@@ -19,11 +19,11 @@ Done this way, questions like the above tend to take care of themselves.
 
 *Update August 16, 2010*:
 
-If you read the above article closely, it never says that someone who does not involve themselves in programming outside of business hours is not competent or not passionate. It simply says that I use a certain method of getting to know people (call this MY-PEEPS) which in my anecdotal experience leads to a satisfactory number of candidates who have certain competences I desire when hiring (call these SKILLZ). Why do I desire them? Because in my anecdotal experience, a small team with SKILLZ ships SOFTWARE. So my experience is that:
+If you read the above article closely, it never says that someone who does not involve themselves in programming outside of business hours is not competent or not passionate. It simply says that I use a certain method of getting to know people (call this MY-PEEPS) which in my anecdotal experience leads to a satisfactory number of candidates who have certain competences I desire when hiring (call these `SKILLZ`). Why do I desire them? Because in my anecdotal experience, a small team with `SKILLZ` ships `SOFTWARE`. So my experience is that:
 
 `MY-PEEPS`&#8658;`SKILLZ` &#8743; `SKILLZ`&#8658;`SOFTWARE`
 
-I assert the above, however I think we can all agree that:
+I stand by the above, however I think we can all agree that:
 
 &#172;(&#172;`MY-PEEPS`&#8658;&#172;`SKILLZ`) &#8743; &#172;(&#172;`SKILLZ`&#8658;&#172;`SOFTWARE`)
 
