@@ -13,7 +13,7 @@ SmallTalk had a syntax for this in the *Last Freakin' Century*:
 
 		framework
 		  use: (Sammy at: 'Haml');
-		  element_selector: '#main'; 
+		  elementSelector: '#main'; 
 		  get: '#/' handledWith: ((application at: 'controllers') at: 'home').
 
 I do think that a language's syntax should support cascades like this, but I also like the idea of [significant whitespace](http://github.com/raganwald/homoiconic/blob/master/2010/03/significant_whitespace.md). There's something sloshing around my hindbrain that thinks this can be combined with combinators to produce [code that resembles the structure of the data it consumes and/or generates](http://weblog.raganwald.com/2007/04/writing-programs-for-people-to-read.html "Writing programs for people to read").
