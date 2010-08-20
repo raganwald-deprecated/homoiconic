@@ -82,6 +82,12 @@ I may never learn how to judge whether a player's position is improving in Go. B
 
 So that's what I'm going to do.
 
+--
+
+**Update**
+
+My side-project/hobby is writing a [Goban](http://www.sente.ch/software/goban/ "Sen:te - Goban") for iPad. You can [read about it and review the code](http://github.com/raganwald/wood_and_stones#readme "raganwald's wood_and_stones at master - GitHub") on Github. You can also play it for free here: [Wood & Stones](http://raganwald.github.com/wood_and_stones). There's no need to download an app from the app store, simply go to [http://raganwald.github.com/wood\_and\_stones](http://raganwald.github.com/wood_and_stones) using Mobile Safari and you can use your iPad as a game board. It also works just fine on Safari on a Mac. I haven't tested it with Safari on Windows, and although the code works just fine with Safari on an iPhone, I haven't updated all the CSS files for the smaller board sizes yet.
+
 ---
 
 **Selected Tweets and Comments**
