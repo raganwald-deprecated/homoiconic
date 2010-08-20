@@ -1,6 +1,8 @@
 High Anxiety
 ===
 
+*UPDATE: [Eyes of Wood, Hands of Stone, Heart of Paper](http://github.com/raganwald/homoiconic/blob/master/2010/08/wood_and_stones.md#readme)*.
+
 The other night, a good friend was visiting and she suggested we pass the time playing [Go](http://bit.ly/hbUQr). I own a board, but I don't recall ever playing with it. We got the board out and she started to explain how to play. I love games, so you would expect that we had a good time. But no, I fell into a blue funk and things went rapidly downhill. I do not kid when I say that by the time she ended the game in exasperation, I had sucked all the joy out of the room.
 
 
@@ -81,12 +83,6 @@ It could be that I will never present a challenge to anyone, perhaps I will alwa
 I may never learn how to judge whether a player's position is improving in Go. But I know a little about judging whether my position is improving in Life. And I know that enjoying a game of Go with a friend would be an improvement, especially if I do so by overcoming my fear of incompetence rather than avoiding it.
 
 So that's what I'm going to do.
-
---
-
-**Update**
-
-My side-project/hobby is writing a [Goban](http://www.sente.ch/software/goban/ "Sen:te - Goban") for iPad. You can [read about it and review the code](http://github.com/raganwald/wood_and_stones#readme "raganwald's wood_and_stones at master - GitHub") on Github. You can also play it for free here: [Wood & Stones](http://raganwald.github.com/wood_and_stones). There's no need to download an app from the app store, simply go to [http://raganwald.github.com/wood\_and\_stones](http://raganwald.github.com/wood_and_stones) using Mobile Safari and you can use your iPad as a game board. It also works just fine on Safari on a Mac. I haven't tested it with Safari on Windows, and although the code works just fine with Safari on an iPhone, I haven't updated all the CSS files for the smaller board sizes yet.
 
 ---
 
