@@ -55,17 +55,21 @@ So, I have stopped playing. I didn't get as far as enjoying it, but it was a big
 
 **wood & stones**
 
-Oh yeah, I forgot to mention the most important thing about failing to learn to enjoy Go. The most important thing is that along the way I started writing a Goban, a program to turn your iPad into a Go board for playing face to face. If you're reading this in Mobile Safari, you can try it now by clicking this link:
+Oh yeah, I forgot to mention the most important thing about failing to learn to enjoy Go. The most important thing is that along the way I started writing a Goban, a program to turn your iPad into a Go board for playing face to face. If you're reading this in Mobile Safari, you can try it now by clicking [Wood & Stones][ws] or any of the screenshots.
 
-[Wood & Stones][ws]
+[![Choose a Game][http://github.com/raganwald/homoiconic/raw/master/2010/08/wood_and_stones/choosegame.png]][ws]
 
 Wood & Stones is an HTML5/CSS3/JS application. That means that you don't need to download it from the Apple Store, you can visit the link and play. It also means that once you've clicked the link, you can save it to your iPad's home screen and play it offline. Take it to the park, enjoy a game with a friend on a park bench.
 
 I know that there's a lot of action playing Go online. So I could have written a client for one of the popular sites. But I didn't see much upside in that. I'd like to integrate it with [Dave Peck's Go][peck]. If you don't know what that is, "go" there now and play!
 
+[![Really Wild Fuseki][http://github.com/raganwald/homoiconic/raw/master/2010/08/wood_and_stones/reallywild.png]][ws]
+
 But back to Wood & Stones. I went with a gestural interface. For example, to review the history of the game, you swipe the screen just like turning pages in a book. It was interesting to develop a minimal user interface using gestures, and it also felt like I was writing an application that had the simplicity of Go. It just feels *wrong* to me to have such a simple game be represented on the screen with so many controls that a 747 pilot would feel at home.
 
 It's still a work in progress. I'm doing the help screens at the moment. But the most important thing is for you to try it. Let me know what you think. If you don't have an iPad, try it using Apple Safari. If you don't have Safari, try it using a modern browser and let's see how it goes.
+
+[![Help][http://github.com/raganwald/homoiconic/raw/master/2010/08/wood_and_stones/wshelp.png]][ws]
 
 So in the end, something very good came out of this exercise: I wrote some interesting [code for Wood & Stones][wscode]. Wood & Stones also emitted [iGesture][ig], a jQuery plugin for writing gestural interfaces, and  [jQuery Combinators][jqc], a jQuery plugin that makes your code deeply beautiful. That's satisfying.
 
