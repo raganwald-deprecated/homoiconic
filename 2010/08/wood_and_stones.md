@@ -1,13 +1,11 @@
 Eyes of Wood, Hands of Stone, Heart of Paper
 ===
 
-A while back, I tried to play Go. As I recounted in my post, [High Anxiety][anxiety], it did not go well. Since then, I tried to let go of myself and learn the game as others suggested. For starters, I purchased a few games for my iPhone and played many times. That went nowhere in a certain sense: I reached a certain level and progress ceased immediately. I also tried going online and playing people at the bottom of the online rankings on 9x9 boards. I lost <u>every</u> game, no matter who I played.
+A while back, I tried to play Go. As I recounted in my post, [High Anxiety][anxiety], it did not go well. Since then, I tried to let go of myself and learn the game as others suggested. I played on my iPhone many times. That went nowhere in a certain sense: I reached a certain level and progress ceased immediately. I also tried going online and playing people at the bottom of the online rankings on 9x9 boards. I lost <u>every</u> game, no matter who I played.
 
 [![Really Wild Fuseki](http://github.com/raganwald/homoiconic/raw/master/2010/08/wood_and_stones/reallywild.png)][ws]
 
 I played with my friend on 9x9 and 13x13 boards with huge handicaps. Because of the disparity in our abilities, every game felt like a military retreat. The objective was to lose slowly enough that the game would end before she could destroy everything I had. If I lost too quickly, she would have more territory at the end of the game. If the board was larger, the game lasted longer, and therefore I needed more of a handicap so that my pace of losing would come close enough to the longer length of the game to put the outcome in doubt.
-
-I went along with this for a little while, but honestly the experience was unsatisfying. I was able to put my ego aside and accept that as a novice I am supposed to lose. However, there is some weird sense of aesthetics I have where I dislike the character of a game that involves an ongoing retreat. It rankled me that I was making terrible moves. I felt like playing me was tempting my friend to make moves that would normally be considered very poor, but would succeed against me by drawing me into elementary traps. Clearly, playing me might have social value for her, but I failed to see what our games could teach her about Go.
 
 **humbility**
 
@@ -21,11 +19,9 @@ Once again, I'm a pre-novice. Small children effortlessly bunny hop their bikes 
 
 However, I really, really enjoy riding the new bike, but I don't enjoy Go. What is the difference?
 
-**learning style**
+**feedback**
 
-I think it's really simple. Cycling skills require performing with the conscious mind turned off. You can't think your way over a pile of logs. Either your body has learned what to do, or it hasn't. Performance is an unconscious skill. However, learning what to do is not an unconscious skill. You learn by observing what someone does, breaking it into small pieces, practicing the pieces, putting them together, analyzing feedback...
-
-There are probably great riders who learn unconsciously as well, but I know for a fact that it is possible to learn the basic riding skills consciously, because that's what I've been doing. Go is different: I have been unable to consciously learn. I have read books with problems, I have played, I have backed up games and replayed positions, but in the end it seems to resist breaking into small pieces that can be learned.
+I think it's really simple. Cycling skills require performing with the conscious mind turned off. However, learning cycling skills is conscious. You learn by observing what someone does, breaking it into small pieces, practicing the pieces, putting them together, analyzing feedback, and so on. Go is different: I have been unable to consciously learn. I have read books with problems, I have played, I have backed up games and replayed positions, but in the end it seems to resist breaking into small pieces that can be learned.
 
 In cycling, I receive regular positive feedback. I can measure my improvement with little things like occasionally feeling myself hit the balance point when working on a "1/2-1/4 to manual wheelie drop." Or popping the front wheel up onto a bench and driving the rear wheel up and under me.
 
@@ -37,21 +33,17 @@ What conclusion do I draw? I think I am a very simple person, with a simple, dog
 
 **what to do?**
 
-Some people find this quality of Go delightful. The mysteries, the necessity for putting away the conscious learning mind to learn to play the game. I can appreciate intellectually that other people find this delightful. However, I can't actually empathize with them, I have no appreciation for the pleasure of learning in this way.
-
-> It could be that I will never present a challenge to anyone, perhaps I will always lose no matter how many stones I am given. I don't know, but I do know that when I next sit in front of a Go board, I will enjoy myself. 
-
-I wrote that I would teach myself to enjoy playing Go. Well, I have good news and bad news. I no longer feel terrified, or angry, or anxious when playing Go. I can lose without pain. That's good.
+Some people find this quality of Go delightful. The mysteries, the necessity for putting away the conscious learning mind to learn to play the game are satisfying to them. I can appreciate intellectually that other people find this delightful. However, I can't actually empathize with them, I have no appreciation for the pleasure of learning in this way.
 
 > Is this film more interesting than a documentary of the same actors having lunch? --Gene Siskel
 
-Playing Go is not more interesting to me than having lunch with somebody. Therefore, I have stopped playing.
+I promised myself that I would learn to enjoy playing Go. Well... I no longer feel terrified, or angry, or anxious when playing Go. I can lose without pain. That's good. However, playing Go is not more interesting to me than having lunch with somebody. I think that's a reasonable way to say "Yes, I do enjoy your company but no, I don't enjoy playing Go with you." 
 
-In my attempts to learn, I didn't get as far as enjoying Go, but it was a big victory to become indifferent to my helplessness. In the future, I may pick it up again, perhaps at some point Go will give something to me, there will be some reward of some kind for playing.
+So I haven't played in months. Maybe I will again one day, maybe not. So why am I writing this?
 
 **wood & stones**
 
-Oh yeah, I forgot to mention the most important thing about failing to learn to enjoy Go. The most important thing is that along the way I started writing a Goban, a program to turn your iPad into a Go board for playing face to face. If you're reading this in Mobile Safari, you can try it now by clicking [Wood & Stones][ws] or any of the screenshots inthis post.
+Oh yeah, I forgot to mention the most important thing, the reason I'm writing all this. The most important thing is that along the way I started writing a Goban, a program to turn your iPad into a Go board for playing face to face. If you're reading this in Mobile Safari, you can try it now by clicking [Wood & Stones][ws] or any of the screenshots inthis post.
 
 [![Choose a Game](http://github.com/raganwald/homoiconic/raw/master/2010/08/wood_and_stones/choosegame.png)][ws]
 
