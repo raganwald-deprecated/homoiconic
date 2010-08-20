@@ -25,31 +25,29 @@ However, I really, really enjoy riding the new bike, but I don't enjoy Go. What 
 
 I think it's really simple. Cycling skills require performing with the conscious mind turned off. You can't think your way over a pile of logs. Either your body has learned what to do, or it hasn't. Performance is an unconscious skill. However, learning what to do is not an unconscious skill. You learn by observing what someone does, breaking it into small pieces, practicing the pieces, putting them together, analyzing feedback...
 
-There are probably great riders who learn unconsciously as well, but I know for a fact that it is possible to learn the basic skills consciously, because that's what I've been doing.
+There are probably great riders who learn unconsciously as well, but I know for a fact that it is possible to learn the basic riding skills consciously, because that's what I've been doing. Go is different: I have been unable to consciously learn. I have read books with problems, I have played, I have backed up games and replayed positions, but in the end it seems to resist breaking into small pieces that can be learned.
 
-This seems to differ for me in Go, because I have been unable to consciously learn. I have read books with problems, I have played, I have backed up games and replayed positions, but in the end it seems to resist breaking into small pieces that can be learned so well that they become unconscious. (Another possibility is that it takes longer than a year to discover that you've learned anything).
+In cycling, I receive regular positive feedback. I can measure my improvement with little things like occasionally feeling myself hit the balance point when working on a "1/2-1/4 to manual wheelie drop." Or popping the front wheel up onto a bench and driving the rear wheel up and under me.
 
-Either way, the big difference between the two activities is that in cycling, I receive regular positive feedback. A competitive part of me would love to be able to use other people as ticks on a measuring stick: "I'm better than Frank but not as good as Tony." Not yet, for now I measure my improvement with little things like occasionally feeling myself hit the balance point when working on a "1/2-1/4 to manual wheelie drop." Or popping the front wheel up onto a bench and driving the rear wheel up and under me.
-
-In Go, I received no such affirmation. I play, I lose, and games are too long to be able to identify the specific mistakes without extensive personal coaching. I simply don't know whether I am succeeding or failing when I make a move unless it's a spectacular blunder. Problems are a far better fit with my personality, because I know right away whether I succeed or fail.
+In Go, I received no such affirmation. I play, I lose, and games are too long to be able to identify the specific mistakes without extensive personal coaching. I simply don't know whether I am succeeding or failing when I make a move unless it's a spectacular blunder.
 
 [![Help](http://github.com/raganwald/homoiconic/raw/master/2010/08/wood_and_stones/wshelp.png)][ws]
 
-What conclusion do I draw? I think I am a very simple person, with a simple, dog-like need for immediate feedback. I have no experience learning through osmosis, learning by imitating people without trying to understand what I am imitating. This is not a good fit for Go, at all. I am not a subtle person with deep wisdom and infinite patience.
-
-> "I cannot forecast to you the action of Russia. It is a riddle, wrapped in a mystery, inside an enigma; but perhaps there is a key. That key is Russian national interest." --Winston Churchill, October 1939
-
-Go presents itself as a mystery, and as you try to learn, it gives no feedback.
+What conclusion do I draw? I think I am a very simple person, with a simple, dog-like need for positive feedback. I have no experience learning through osmosis, learning by imitating people without trying to understand what I am imitating.
 
 **what to do?**
 
-Some people find this quality of Go delightful. The mysteries, the necessity for putting away the conscious learning mind to learn to play the game. I don't. I can appreciate intellectually that other people find this delightful, and I do not argue. However, if I close my eyes I can't actually empathize with them, I have no appreciation for the pleasure of learning in this way.
+Some people find this quality of Go delightful. The mysteries, the necessity for putting away the conscious learning mind to learn to play the game. I can appreciate intellectually that other people find this delightful. However, I can't actually empathize with them, I have no appreciation for the pleasure of learning in this way.
 
 > It could be that I will never present a challenge to anyone, perhaps I will always lose no matter how many stones I am given. I don't know, but I do know that when I next sit in front of a Go board, I will enjoy myself. 
 
-I wrote that I would teach myself to enjoy playing Go. Well, I have good news and bad news. I no longer feel terrified, or angry, or anxious when playing Go. I can lose without pain. However, I don't enjoy it, it's just time passing. My friend challenged me on this. If I don't enjoy Go, why am I learning to play? I thought about this, and I can find no retort. There's the social stigma of being born without the "Go" gene. I will learn to live with the shame. Other programmers will whisper at conference, "Yes, he writes well, *but he can't play Go*."
+I wrote that I would teach myself to enjoy playing Go. Well, I have good news and bad news. I no longer feel terrified, or angry, or anxious when playing Go. I can lose without pain. That's good.
 
-So, I have stopped playing. I didn't get as far as enjoying it, but it was a big victory to become indifferent to my helplessness. In the future, I may pick it up again, perhaps at some point Go will give something to me, there will be some reward of some kind for playing.
+> Is this film more interesting than a documentary of the same actors having lunch? --Gene Siskel
+
+Playing Go is not more interesting to me than having lunch with somebody. Therefore, I have stopped playing.
+
+In my attempts to learn, I didn't get as far as enjoying Go, but it was a big victory to become indifferent to my helplessness. In the future, I may pick it up again, perhaps at some point Go will give something to me, there will be some reward of some kind for playing.
 
 **wood & stones**
 
