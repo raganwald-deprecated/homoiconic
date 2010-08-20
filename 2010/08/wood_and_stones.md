@@ -65,11 +65,11 @@ I know that there's a lot of action playing Go online. So I could have written a
 
 But back to Wood & Stones. I went with a gestural interface. For example, to review the history of the game, you swipe the screen just like turning pages in a book. It was interesting to develop a minimal user interface using gestures, and it also felt like I was writing an application that had the simplicity of Go. It just feels *wrong* to me to have such a simple game be represented on the screen with so many controls that a 747 pilot would feel at home.
 
-It's still a work in progress. I'm doing the help screens at the moment. But the mst important thing is for you to try it. Let me know what you think. If you don't have an iPad, try it using Apple Safari. If you don't have Safari, try it using a modern browser and let's see how it goes.
+It's still a work in progress. I'm doing the help screens at the moment. But the most important thing is for you to try it. Let me know what you think. If you don't have an iPad, try it using Apple Safari. If you don't have Safari, try it using a modern browser and let's see how it goes.
 
-So in the end, something very good came out of this exercise: I wrote some interesting code.
+So in the end, something very good came out of this exercise: I wrote some interesting [code for Wood & Stones][wscode]. Wood & Stones also emitted [iGesture][ig], a jQuery plugin for writing gestural interfaces, and  [jQuery Combinators][jqc], a jQuery plugin that makes your code deeply beautiful. That's satisfying.
 
-Enjoy!
+So, enjoy Go!
 
 ----
 	
@@ -77,4 +77,8 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 
 [anxiety]: http://github.com/raganwald/homoiconic/blob/master/2009-10-20/high_anxiety.md#readme
 [ws]: http://raganwald.github.com/wood_and_stones
+[wscode]: http://github.com/raganwald/wood_and_stones
+[raganwaldcode]: http://github.com/raganwald/
+[ig]: http://github.com/raganwald/iGesture
+[jqc]: http://github.com/raganwald/JQuery-Combinators
 [peck]: http://github.com/davepeck/appengine-go
