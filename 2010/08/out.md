@@ -11,7 +11,9 @@ Much hilarity ensues if one of your hapless users decides to use your library an
 
 ![Godfather, Part III](http://gallery.sendbad.net/data/media/68/godfather_part_iii_ver1.jpg)
 
-I've said this before, and even then it was hardly a grand revelation. But this morning I found myself writing this Javascript in a [tiny little framework][roweis] I'm writing with some colleagues for a projhect at [Unspace Interactive][unspace]:
+**plus ça change (plus c'est la même chose)**
+
+I've said this before, and even then it was hardly a grand revelation. And it has been months since I did any work with Ruby. I've had a refreshing time working with Javascript. But this morning I found myself writing this code in a [tiny little framework][roweis] I'm writing with some colleagues for a project at [Unspace Interactive][unspace]:
 
     if (controller.target) {
       controller.render_target = (function (render_target_context) {
@@ -31,7 +33,7 @@ Notice the use of [jQuery Combinators][comb]'s `ergo`? I'm the author of `ergo`,
 
 So... No jQuery Combinators in Roweis[roweis]. So if you look at my code and wonder why I don;t seem to be eating my own dog food, the reason is that although I like the taste, I don;t want to force-feed it to everyone else.
 
-Harrumph.
+Harrumph. This really emphasizes that if you want change, you have to really change. Javascript in the Browser is completely different from Ruby on the Server in all the ways that don't matter a damn.
 
 ----
 	
