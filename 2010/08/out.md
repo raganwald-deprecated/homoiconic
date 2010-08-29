@@ -35,6 +35,10 @@ Regrettably, I have to remove any use of jQuery Combinators from [Roweis][roweis
 
 Not a big deal in itself, but this really emphasizes that if you want change, you have to really change. Javascript in the Browser is completely different from Ruby on the Server in all the ways that don't matter a damn.
 
+*fin*
+
+(You can dis or cuss this post on [Reddit][prg].)
+
 ----
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace](http://unspace.ca), and I like it.
@@ -43,3 +47,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [unspace]: http://unspace.ca
 [comb]: http://github.com/raganwald/jQuery-Combinators
 [roweis]: http://github.com/raganwald/Roweis
+[prg]: http://www.reddit.com/r/programming/comments/d6wp7/just_when_i_thought_i_was_out_they_pull_me_back_in/
