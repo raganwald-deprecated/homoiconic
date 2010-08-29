@@ -5,7 +5,7 @@ For some little time I've been [disquieted][sick] by Ruby's global environment f
 
 Naturally, you're a careful programmer and you have close to 100% code coverage, so you don't mind working with really sharp tools. This is fine when you're a leaf node: If your application uses other code but is not used by other code, if your manipulation of the global class definitions breaks one of the gems or libraries you're using, you have the power to work around things, change libraries, or change approaches.
 
-The problem comes in when you are writing code for other people to use. If you decide that it's cool to implement `#try` in your library, you might break the code for anyone implementing `#try` downstream of you. Okay, they can decide whether to use your version of `#try` or whether they prefer another library. But what happens when your definition of `#try` breaks some code in another library or gem you've never heard of and therefore never tested?
+The problem comes in when you are writing code for other people to use. If you decide that it's cool to implement `#sum` in your library, you might break the code for anyone implementing `#sum` downstream of you. Okay, they can decide whether to use your version of `#sum` or whether they prefer another library. But what happens when your definition of `#sum` breaks some code in another library or gem you've never heard of and therefore never tested?
 
 Much hilarity ensues if one of your hapless users decides to use your library and the other library, of course. Two reasonable programmers&#8212;you and the other library author&#8212;each did reasonable things with close to 100% code coverage and nevertheless the code doesn't work together and users have no ability to fix the problem for themselves.
 
