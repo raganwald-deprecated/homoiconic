@@ -3,7 +3,7 @@ Just when I thought I was out... they pull me back in.
 
 For some little time I've been [disquieted][sick] by Ruby's global environment for classes and modules. Class definitions are the ultimate global variables: Any monkey patch you make in your code affects all the other code running anywhere in the same instance of the interpreter.
 
-Naturally, you';re a careful programmer and you have close to 100% code coverage, so you don't mind working with really sharp tools. This is find when you're a leaf node: If your application uses other code but is not used by other code, if your manipulation of the global class definitions breaks one of the gems or libraries you're using, you have the power to work around things, change libraries, or change approaches.
+Naturally, you're a careful programmer and you have close to 100% code coverage, so you don't mind working with really sharp tools. This is find when you're a leaf node: If your application uses other code but is not used by other code, if your manipulation of the global class definitions breaks one of the gems or libraries you're using, you have the power to work around things, change libraries, or change approaches.
 
 The problem comes in when you are writing code for other people to use. If you decide that it's cool to implement `#try` in your library, you might break the code for anyone implementing `#try` downstream of you. Okay, they can decide whether to use your version of `#try` or whether they prefer another library. But what happens when your definition of `#try` breaks some code in another library or gem you've never heard of and therefore never tested?
 
