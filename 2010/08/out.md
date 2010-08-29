@@ -17,7 +17,7 @@ I've said this before, and even then it was hardly a grand revelation. And it ha
 
     if (controller.target) {
       controller.render_target = (function (render_target_context) {
-        return function (selection) {
+        return (function (selection) {
           selection
             .find(controller.target)
               .ergo(function (element) {
@@ -25,8 +25,8 @@ I've said this before, and even then it was hardly a grand revelation. And it ha
                   element.append(rendered);
                 });
               });
-        };
-      };
+        });
+      })();
     }
     
 Notice the use of [jQuery Combinators][comb]'s `ergo`? I'm the author of `ergo`, and I want to use my own tools. But jQuery plugins work just like Ruby's global class definitions. If I extend `jQuery.fn` to include `ergo`, every user of my framework gets it whether they like it or not.
