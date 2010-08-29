@@ -31,9 +31,9 @@ I've said this before, and even then it was hardly a grand revelation. And it ha
     
 Notice the use of [jQuery Combinators][comb]'s `ergo`? I'm the author of `ergo`, and I want to use my own tools. But jQuery plugins work just like Ruby's global class definitions. If I extend `jQuery.fn` to include `ergo`, every user of my framework gets it whether they like it or not.
 
-So... No jQuery Combinators in [Roweis][roweis]. So if you look at my code and wonder why I don't seem to be eating my own dog food, the reason is that although I like the taste, I don;t want to force-feed it to everyone else.
+regrettably, I have to remove any use of jQuery Combinators from [Roweis][roweis]. And if one day you look at my code and wonder why I don't seem to be eating my own dog food, the reason is that although I like the taste, I don't want to force-feed it to everyone else.
 
-Harrumph. This really emphasizes that if you want change, you have to really change. Javascript in the Browser is completely different from Ruby on the Server in all the ways that don't matter a damn.
+Not a big deal in itself, but this really emphasizes that if you want change, you have to really change. Javascript in the Browser is completely different from Ruby on the Server in all the ways that don't matter a damn.
 
 ----
 	
