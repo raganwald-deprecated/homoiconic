@@ -16,7 +16,7 @@ Much hilarity ensues if one of your hapless users decides to use your library an
 I've said this before, and even then it was hardly a grand revelation. And it has been months since I did any work with Ruby. I've had a refreshing time working with Javascript. But this morning I found myself writing this code in a [tiny little framework][roweis] I'm writing with some colleagues for a project at [Unspace Interactive][unspace]:
 
     if (controller.target) {
-      controller.render_target = (function (render_target_context) {
+      controller.render_target = function (render_target_context) {
         return (function (selection) {
           selection
             .find(controller.target)
@@ -26,7 +26,7 @@ I've said this before, and even then it was hardly a grand revelation. And it ha
                 });
               });
         });
-      })();
+      };
     }
     
 Notice the use of [jQuery Combinators][comb]'s `ergo`? I'm the author of `ergo`, and I want to use my own tools. But jQuery plugins work just like Ruby's global class definitions. If I extend `jQuery.fn` to include `ergo`, every user of my framework gets it whether they like it or not.
