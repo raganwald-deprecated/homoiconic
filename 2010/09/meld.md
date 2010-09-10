@@ -1,4 +1,4 @@
-Meld in Javascript
+Meld, a replacement for jQuery's $.extend
 ===
 
 If you use jQuery, you may have used `$.extend`:
