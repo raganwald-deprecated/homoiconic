@@ -47,6 +47,10 @@ In which case:
       
 Note that `meld` requires [Functional Javascript][j] and that `meld` is purely functional, unlike `$.extend` which destructively modifies its first argument.
 
+*UPDATE*
+
+It turns out that `$.extend` does what I wanted provided you pass true as the first parameter. Wonderful news!
+
 ---
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace](http://unspace.ca), and I like it.
