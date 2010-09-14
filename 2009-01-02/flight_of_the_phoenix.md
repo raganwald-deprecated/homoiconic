@@ -8,7 +8,7 @@ Turning Back the Hands of Time
 
 (You can skip this bit if you've heard it before.)
 
-Pete Forde and Meghann Millard of [Unspace](http://www.unspace.ca/ "Unspace") decided to organize the [RubyFringe](http://rubyfringe.com/ "RubyFringe: Deep nerd tech with punk rock spirit.") conference (and a whole bunch of other people, please forgive me for not making a comprehensive list). I pinged Pete the moment I heard about it and asked what I could do to help, with an offer to speak if he cared to have his audience bored to tears.
+Pete Forde and Meghann Millard of [Unspace Interactive](http://www.unspace.ca/ "Unspace") decided to organize the [RubyFringe](http://rubyfringe.com/ "RubyFringe: Deep nerd tech with punk rock spirit.") conference (and a whole bunch of other people, please forgive me for not making a comprehensive list). I pinged Pete the moment I heard about it and asked what I could do to help, with an offer to speak if he cared to have his audience bored to tears.
 
 Pete said go ahead and gave me a "blank cheque" to present on any topic of my choosing. Pete, thanks for the trust.
 
@@ -75,4 +75,4 @@ This is not ready for prime time, it's just something I'm toying with. I'm using
 
 ----
 	
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace](http://unspace.ca), and I like it.
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.

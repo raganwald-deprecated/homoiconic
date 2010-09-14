@@ -289,7 +289,7 @@ If this is what he was seeking to accomplish, I admit that <u>Rusty was right al
 
 Discuss on [Hacker News][hn] and [reddit.com][reddit].
   
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace](http://unspace.ca), and I like it.
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [p2p]: http://www.yes-minister.com/ypmseas2b.htm
 [raf]: http://weblog.raganwald.com/2006/05/ready-aim-final.html
