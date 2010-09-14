@@ -1,4 +1,4 @@
-Meld in Javascript
+Meld, a replacement for jQuery's $.extend
 ===
 
 If you use jQuery, you may have used `$.extend`:
@@ -46,6 +46,10 @@ In which case:
       // => { foo: 'fu', bar: 'bar', etc: { one: 1, two: 2 } }
       
 Note that `meld` requires [Functional Javascript][j] and that `meld` is purely functional, unlike `$.extend` which destructively modifies its first argument.
+
+*UPDATE*
+
+It turns out that `$.extend` does what I wanted provided you pass true as the first parameter. Wonderful news!
 
 ---
 	
