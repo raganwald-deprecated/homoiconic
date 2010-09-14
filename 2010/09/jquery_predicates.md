@@ -27,12 +27,23 @@ Into this:
         
 That's nice: `.ergo` converts a test of existence into a guarded method call that chains fluently. However, sometimes you still want an old-fashioned `if` statement or anything else relying on testing existence. And if you are going to use something like an if statement to test for the existence of DOM elements, you might as well have some semantic sugar.
 
-Thus, [jQuery Predicates][pred]. With jQuery Predicates in your jQuery quiver, you can write this:
+Thus, [jQuery Predicates][pred]. With jQuery Predicates in your jQuery quiver, you can replace this:
+
+    if (killed_stones.length)
+      updated_killed_count(killed_stones);
+      
+With this:
 
     if (killed_stones.exists())
       updated_killed_count(killed_stones);
     
-Or perhaps this:
+And replace this:
+
+    while (0 === stones.into(adjacents).length) {
+      // ...
+    }
+      
+With this:
 
     while (stones.into(adjacents).do_not_exist()) {
       // ...
@@ -40,7 +51,7 @@ Or perhaps this:
 
 In short, [jQuery Predicates][pred] adds two queries to every jQuery selection: `.exists()` returns true if the selection has at least one element, and `.does_not_exist()` returns true if the selection is empty (for convenience, jQuery Predicates also defines the synonyms `.exist()` and `do_not_exist()`).
 
-And naturally, jQuery Predicates plays well with jQuery Combinators. Using both, you now have access to `.ergo()`, `.when()`, `.exists()`, and `.does_not_exist()` for discriminating between empty and non-empty selections.
+And naturally, jQuery Predicates plays well with jQuery Combinators. Using them together, you now have access to `.ergo()`, `.when()`, `.exists()`, and `.does_not_exist()` for discriminating between empty and non-empty selections.
 
 Enjoy!
 
