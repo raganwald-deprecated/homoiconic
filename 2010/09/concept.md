@@ -66,6 +66,10 @@ Is curiosity some noble, lofty purpose? I don't think so, and there's a lot of c
 
 Ultimately, I happen to be curious about certain things, and my curiosity demands that I get some answers. There's no other lofty, admirable explanation for why I write on things like [Recursive Combinators](http://github.com/raganwald/froobie/blob/master/lib/froobie/recursive_combinators.rb "lib/froobie/recursive_combinators.rb at master from raganwald's froobie - GitHub") when I could be contributing to a software product.
 
+---
+
+My recent little product releases include [Wood &amp; Stones](http://github.com/raganwald/wood_and_stones "raganwald's wood_and_stones at master - GitHub"), [jQuery Combinators](http://github.com/raganwald/JQuery-Combinators "raganwald's JQuery-Combinators at master - GitHub"), [jQuery Predicates](http://github.com/raganwald/jQuery-Predicates "raganwald's jQuery-Predicates at master - GitHub"), and [iGesture](http://github.com/raganwald/iGesture "raganwald's iGesture at master - GitHub"). Feedback about "why" or "why not" is always welcome... I wrote these things to be used!
+
 ----
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
