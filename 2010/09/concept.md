@@ -52,7 +52,7 @@ With andand and Ick, I went from product to concept. I later went in reverse: I 
 
 I even presented my concept product at [Rubyfringe](http://www.infoq.com/presentations/braithwaite-rewrite-ruby "InfoQ: Ruby.rewrite(Ruby)"), an un-conference. I didn't ask people to use it, I held it up as proof that there was at least one alternative to monkey-patching, and challenged the community to invent a better way.
 
-Well, inspirational speaking os good, but as a professional programmer I needed a product. So I started from scratch and used what I learned from writing Rewrite to--ummm--rewrite it as [Rewrite Rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub"). Rewrite Rails was a product: It was written specifically to make it easy to add to existing projects. I used it myself on a shipping product. My mission for Rewrite Rails very definitely addressed the questions of who and why.
+Well, inspirational speaking is nice, but as a professional programmer I needed a product. So I started from scratch and used what I learned from writing Rewrite to--ummm--rewrite it as [Rewrite Rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub"). Rewrite Rails was a product: It was written specifically to make it easy to add to existing projects. I used it myself on a shipping product. My mission for Rewrite Rails very definitely addressed the questions of who and why.
 
 So here we have two products and two concepts. In one case, the product inspired the concept. In the other, the concept inspired the product. Although they might seem to be inverses of each other, in both cases the impetus for the concept was *curiosity*.
 
