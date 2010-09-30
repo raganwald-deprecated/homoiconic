@@ -68,7 +68,7 @@ Ultimately, I happen to be curious about certain things, and my curiosity demand
 
 ---
 
-My recent little product releases include [Wood &amp; Stones](http://github.com/raganwald/wood_and_stones "raganwald's wood_and_stones at master - GitHub"), [jQuery Combinators](http://github.com/raganwald/JQuery-Combinators "raganwald's JQuery-Combinators at master - GitHub"), [jQuery Predicates](http://github.com/raganwald/jQuery-Predicates "raganwald's jQuery-Predicates at master - GitHub"), and [iGesture](http://github.com/raganwald/iGesture "raganwald's iGesture at master - GitHub"). Feedback about "why" or "why not" is always welcome... I wrote these things to be used!
+p.s. My recent little product releases include [Wood &amp; Stones](http://github.com/raganwald/wood_and_stones "raganwald's wood_and_stones at master - GitHub"), [jQuery Combinators](http://github.com/raganwald/JQuery-Combinators "raganwald's JQuery-Combinators at master - GitHub"), [jQuery Predicates](http://github.com/raganwald/jQuery-Predicates "raganwald's jQuery-Predicates at master - GitHub"), and [iGesture](http://github.com/raganwald/iGesture "raganwald's iGesture at master - GitHub"). Feedback about "why" or "why not" is always welcome... I wrote these things to be used!
 
 ----
 
