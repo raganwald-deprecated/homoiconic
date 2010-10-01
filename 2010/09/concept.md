@@ -1,4 +1,4 @@
-Why I Write Concept Software
+Why I Write Concept Software (Revised)
 ===
 
 One of the best technology business essays I've ever read is [Why Apple doesn’t do "Concept Products"](http://counternotions.com/2008/08/12/concept-products/ "Why Apple doesn&#8217;t do &#8220;Concept Products&#8221; &laquo; counternotions"), written by the mononymous "Kontra."
@@ -15,15 +15,11 @@ I hope that Kontra does not object to my quoting one of the best pieces of techn
 
 > Concept products are like essays, musings in 3D. They are incomplete promises. Shipping products, by contrast, are brutally honest deliveries. You get what’s delivered. They live and die by their own design constraints. To the extent they are successful, they do advance the art and science of design and manufacturing by exposing the balance between fantasy and capability.
 
-I think this is correct. Real artists ship, dabblers create concept products.
+I think this is correct. Successful shipping products "advance the art and science of design and manufacturing by exposing the balance between fantasy and capability."
 
 **software products and concepts**
 
-I hope you'll agree that software can be a product, even when you don't charge money for it. Most software solves a problem of some kind. Most software has a user of some sort. Before the software is used, somebody (often the user, but there is also "The Enterprise") has to make a decision to use the software. There is almost always a range of competing options to choose from.
-
-Even when software is "free as in beer," there is a cost associated with change that must be carefully weighed by the person or persons choosing the software. When software is a tool such as a programming language or a framework, the long-term intangible implications of choosing the software dwarf the up-front financial cost.
-
-Thus, software can be a product, and shipping software can be shipping a product. Paul Graham once suggested that startups pose their mission statement as a question. Google's question might have been "Will the PageRank algorithm deliver results that are so good that they lure users away from Altavista?"
+I hope you'll agree that software can be a product, even when you don't charge money for it. And every product has a mission, a purpose. Paul Graham once suggested that startups pose their mission statement as a question. Google's question might have been "Will the PageRank algorithm deliver results that are so good that they lure users away from Altavista?"
 
 Products have a user or a decision maker in their question. Product questions are expressions of curiosity about human behaviour. Will people buy this phone? Will people share personal details with each other on the Internet? Will people submit and rank content for each other to read and discuss? Product questions ultimately boil down to, *What does it take to get people to change their behaviour?*
 
@@ -34,7 +30,11 @@ _(image gleefully snarfed from Engadget)_
 
 Concept products, on the other hand, are expressions of curiosity about what is and isn't possible with design, technology, styling, or anything else that doesn't have a person making a decision in it. How would a tablet work if it unfolded like a book? What would a computer look like if it could talk to you? There may be people in the question, but the question is never about the transition between now and the future, the question is never about what it takes to get them to change. Concept product leap into the future without addressing the pesky question of how to get there from here.
 
-Naturally, if software can be a product, we can also have "concept software." Software that exists to answer a question about who, what, where, when, and how, *but not why*.
+Naturally, if software can be a product, we can also have "concept software." Software that exists to answer a question about who, what, where, when, and how, *but not why*. Concept products are sometimes just musing, sometimes just sketching, sometimes just aimless dabbling. But sometimes concept products are focused attempts to answer a specific question. Naturally, a question that doesn't include reasons why people will change their behaviour is an easier question to answer.
+
+But nevertheless, concept products can be judged by the degree to which they express the answer to a specific question. Is it possible to manufacture a racing bicycle that weighs under three kilograms and is strong enough to complete a stage race? Can a human-powered ornithopter fly?
+
+Concept software can be judged by the same metric, by whether it answers a specific question. Can cellular automata reproduce themselves using a blueprint or description of themselves? Could program behaviour be denoted using CSS-like classes instead of OO-like classes?
 
 **some of my experience with concept software**
 
@@ -65,6 +65,12 @@ There. I've freely confessed that I create concept software for no more reason t
 Is curiosity some noble, lofty purpose? I don't think so, and there's a lot of curiosity out there. Curiosity about whether jQuery Mobile will catch on is no less important than curiosity about whether PHP programmers can be induced to write more elegant OO programs. Curiosity about whether someone can bank a few million dollars a week from a game written in Java is no less noble than curiosity about whether Javascript applications on the client can have a simple, Sinatra-like architecture.
 
 Ultimately, I happen to be curious about certain things, and my curiosity demands that I get some answers. There's no other lofty, admirable explanation for why I write on things like [Recursive Combinators](http://github.com/raganwald/froobie/blob/master/lib/froobie/recursive_combinators.rb "lib/froobie/recursive_combinators.rb at master from raganwald's froobie - GitHub") when I could be contributing to a software product.
+
+However, just because I create concept software out of curiosity, that doesn't mean I'm off the hook for having some direction, some means of judging how well I'm doing. I've found that the key is to articulate a question to answer, just like any other concept product. WhenI'm curious about something, the next step is to be specific about precisely what I'd like to discover.
+
+When I am able to articulate a specific question, my curiosity leads to concept software that advances my own understanding of software design and manufacturing. When I fail to articulate a specific question, I wind up dabbling without direction.
+
+And this brings us to a satisfactory answer to the question. I write concept software to satisfy my curiosity, and when I am able to focus on answering a specific question, I am able to advance my understanding of software development.
 
 ---
 
