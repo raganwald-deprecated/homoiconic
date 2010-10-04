@@ -116,7 +116,7 @@ It's so well known that you may not think you need  additional syntactic sugar. 
         return ++counter;
       }
     })(0);
-
+˝
 What we've done is extracted the variable declaration and turned it into a parameter of our anonymous function. I prefer this strongly because I know that the creation of the function is what establishes a new scope, and a function's parameters are sitting right there in its definition.
 
 I'm not alone in my madness. Here is a common abbreviation pattern:
