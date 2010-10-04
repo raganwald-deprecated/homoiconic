@@ -109,7 +109,7 @@ This solves our problem, and the pattern of defining variables inside of an anon
     count()
       => 2
 
-It's so well known that you may not think you need  additional syntactic sugar. But since you're sticking around, I can tell you that I prefer to write:
+It's so well known that you may not think you need additional syntactic sugar. But since you're sticking around, I can tell you that I prefer to write:
 
     var count = (function (counter) {
       return function () {
@@ -181,9 +181,12 @@ Is `let` worth the bother? I think so. Although I've been using anonymous functi
 
 And I suppose we shouldn't be making long functions, but even on a short function I prefer the values and the bindings be kept close together. Declaring variables inside a scope avoids that issue, but I strongly prefer using parameters when I want to create a new scope. The parameter variable is very close to the `function` keyword what establishes the scope, and that makes the code very easy to understand.
 
+But the very best reason for using `let` is that [Javascript 1.7 includes a `let` keyword][js17]! Knowing that you'll be using `let` eventually, why not write your code so it is future-proof?
+
 ---
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [eee_closures]: http://japhr.blogspot.com/2010/10/gah-i-still-dont-know-closures.html
 [thrush]: http://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown#readme
+[js17]: https://developer.mozilla.org/en/New_in_JavaScript_1.7#let_statement
