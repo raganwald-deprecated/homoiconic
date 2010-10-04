@@ -39,7 +39,7 @@ Into this:
       };
     }
 
-Alas, it didn't work, and Chris goes on to explain how to remedy the problem. If you haven't spotted the bug, you might want to try the following simplified version in Firebug or Safari's error console:
+Alas, it didn't work right out of the gate, and Chris goes on to explain how he remedied the issue. If you haven't spotted the bug, you might want to try the following simplified version in Firebug or Safari's error console:
 
     var conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
     
