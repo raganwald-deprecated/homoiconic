@@ -221,9 +221,9 @@ And I suppose we shouldn't be making long functions, but even on a short functio
 
 But the very best reason for using `let` is that [Javascript 1.7 includes a `let` keyword][js17]! Knowing that you'll be using `let` eventually, why not write your code so it is future-proof?
 
-p.s. It seems that my tongue being in cheek was not obvious about the expression "future-proof." So here's the long explanation: Using this "functional" implementation of `let` makes your code "let-like," and certainly it will be easy to rewrite it if and when `let` is supported as a keyword on all of the Javascript platforms you intend to target. Even if you are writing for a browser that supports Javascript 1.7 and `let`, you have to turn the keyword on precisely because the keyword will break existing code, so using this implementation of `let` is safe. To summarize, if you are working in an environment where you can count on the `let` keyword, I think you should use it. If you aren't, I prefer to use this functional implementation, knowing that it will be easy to 'port' should the need ever arise.
-
 ---
+
+p.s. It seems that my tongue being in cheek was not obvious about the expression "future-proof." So here's the long explanation: Using this "functional" implementation of `let` makes your code "let-like," and certainly it will be easy to rewrite it if and when `let` is supported as a keyword on all of the Javascript platforms you intend to target. Even if you are writing for a browser that supports Javascript 1.7 and `let`, you have to turn the keyword on precisely because the keyword will break existing code, so using this implementation of `let` is safe. To summarize, if you are working in an environment where you can count on the `let` keyword, I think you should use it. If you aren't, I prefer to use this functional implementation, knowing that it will be easy to 'port' should the need ever arise.
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
