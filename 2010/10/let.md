@@ -87,6 +87,8 @@ To understand this issue, we really have to let go of the idea that if we give s
 
 Names are just ways of looking things up, that's all.
 
+[<img src="http://2.bp.blogspot.com/_JrXOqYWNfjc/S0n5yp4kheI/AAAAAAAAB14/id9j_d7tYIQ/s400/Redwing_Arlesey_2010Jan10.jpg" height="432" width="500"/>][thrush]
+
 **scope**
 
 When is a new variable created? Well, the interpreter might do one thing, it might do another, but in practice it is sufficient to say the following:
@@ -161,9 +163,11 @@ I'm not alone in my madness. Here is a common abbreviation pattern:
 
 This binds `$` and `F` without conflicting with other libraries that may want to define `$` or `F` for their own purposes. The only trouble with structuring things as parameters is that in Javascript, the definition of the parameter and the value it is passed can be a long way away from each other.
 
+[<img src="http://1.bp.blogspot.com/_JrXOqYWNfjc/S0n5UufzeoI/AAAAAAAAB1I/Y5OpeIWPU2c/s1600/Fieldfare1_Arlesey_2010Jan10.jpg" height="427" width="500"/>][thrush]
+
 **let's get closer**
 
-If you prefer to keep your paramaters closer to the values you are going to bind, we can use a Javascript version of the [Thrush Combinator][thrush], `let`:
+If you prefer to keep your parameters closer to the values you are going to bind, we can use a Javascript version of the [Thrush Combinator][thrush], `let`:
 
     var let = function () {
       var body = arguments[arguments.length-1];
@@ -224,3 +228,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [eee_closures]: http://japhr.blogspot.com/2010/10/gah-i-still-dont-know-closures.html
 [thrush]: http://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown#readme
 [js17]: https://developer.mozilla.org/en/New_in_JavaScript_1.7#let_statement
+[thrush]: http://dansbirdingblog.blogspot.com/2010/01/urban-thrushes-whooper-and-nice-goose.html "Urban Thrushes, a Whooper, and a Nice Goose"
