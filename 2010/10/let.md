@@ -105,7 +105,9 @@ The dictionaries can be thought to nest, but I prefer to think of them as having
 
 The chain of dictionaries is called a *scope*. In practice, making dictionaries children of the dictionary for the function that creates another function makes it easy to determine where a variable is defined by examining the lexical form of the source code statically. Thus, this style of scoping is called **Lexical Scope**.
 
-**soling the problem**
+We take lexical scope for granted with Javascript: When our function refers to the `conjunction` variable, we look for its definition right there in the code surrounding the function. That's lexical scoping in action. (There is another way to do things, Dynamic Scoping, where a scope is the child of the scope of the code that invokes a function. Im that case, `conjunction` would have to be defined by whatever code invokes `"christian mcbride".after("jaco pastorius")`. If that seems impossibly contrived, consider that exception handling is dynamically scoped and people find ways to make it useful.)
+
+**solving the problem**
 
 Now that we've examined javascript's lexical scope in detail, we have a solution. If we want different values for `conjunction` each time we create a new function, we need different variables each time through the for loop. To create new variables, we have to invoke a new function each time though the for loop. 
 
