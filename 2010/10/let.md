@@ -224,6 +224,8 @@ But the very best reason for using `let` is that [Javascript 1.7 includes a `let
 ---
 
 p.s. It seems that my tongue being in cheek was not obvious about the expression "future-proof." So here's the long explanation: Using this "functional" implementation of `let` makes your code "let-like," and certainly it will be easy to rewrite it if and when `let` is supported as a keyword on all of the Javascript platforms you intend to target. Even if you are writing for a browser that supports Javascript 1.7 and `let`, you have to turn the keyword on precisely because the keyword will break existing code, so using this implementation of `let` is safe. To summarize, if you are working in an environment where you can count on the `let` keyword, I think you should use it. If you aren't, I prefer to use this functional implementation, knowing that it will be easy to 'port' should the need ever arise.
+
+p.p.s. A proggit reader [brings up a good point][proggit]: *Closures* are a means of implementing *lexical scope*. Closures are an implementation mechanism, nit a language feature.
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
@@ -231,3 +233,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [thrush]: http://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown#readme
 [js17]: https://developer.mozilla.org/en/New_in_JavaScript_1.7#let_statement
 [thrush]: http://dansbirdingblog.blogspot.com/2010/01/urban-thrushes-whooper-and-nice-goose.html "Urban Thrushes, a Whooper, and a Nice Goose"
+[proggit]: http://www.reddit.com/r/programming/comments/dn4ra/lets_make_closures_easy/c11fv9e
