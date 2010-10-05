@@ -60,13 +60,54 @@ And here's what's wrong:
 
 Hmmm.
 
-**fixing our problem**
-      
-The culprit is that inside our function, we refer to the variable `conjunction`. Javascript correctly notes that this refers to the variable defined outside of the function in the line `var conjunction = conjunctions[i];`. However, all it stores is a reference to the variable. When the function is invoked, Javascript looks the variable up and fetches whatever was last written to the variable, which in this case is `'outside'`, the last element in our array.
+**the problem**
 
-We are making six different functions, however they all share the same variable reference. Although we execute the line `var conjunction = conjunctions[i];` six times, they're all within the same scope, so they're all the same variable. What we want is for each of our functions to have its own copy of the `conjunction` variable.
+Let's start by diagnosing the issue. We're defining six new methods for `String` instances. Unlike Ruby, methods in Javascript and functions in Javascript are the exact same thing, so we can also say that we're creating six new functions, one for each element in the conjunctions array. Note that it's technically wrong to say that we are creating one function. We're creating six different functions, one each time the Javascript interpreter encounters the `function` keyword.
 
-The easiest way to do that is to create a new scope each time though the for loop. First, here's the code:
+Inside each of our six functions, we refer to the variable `conjunction`. Javascript correctly notes that this refers to the variable defined outside of the function in the line `var conjunction = conjunctions[i];`. `conjunction` has a different value each time we create a new function, so we might think that when each of our functions are invoked they will refer to its value when the function was created.
+
+This is not the case. Each of our functions simply stores a reference to the variable `conjunction` and when the function is invoked, it looks up the value at invocation time, not definition time. Its value at function invocation time is irrelevant.
+
+The easiest way to fix this problem is to make sure that each of the six functions we create has their own `conjunction` variable rather than having them all share the same variable.
+
+> Practice explaining code to others is one of the keys to improving your ability to write self-explanatory code.
+
+This brings us to the key question: *When do we create a new variable in Javascript*? Most of you probably consider this question ridiculously trivial to understand, but let's work out how to explain it. You never know when you'll have to explain your code to someone else. The ideal code is self-explanatory, and practice explaining code to others is one of the keys to improving your ability to write self-explanatory code.
+
+Let's look at this code again, simplified greatly:
+
+    for (/* ... */) {
+      var conjunction = // ...
+      // ...
+    }
+
+It appears as if we're using the `var` keyword to create a new variable each time through the for loop. *But this is not so*. Although we execute that line of code six times, we only create *one* variable. The rest of the time, we're simply assigning a new value to it.
+
+To understand this issue, we really have to let go of the idea that if we give something a name (like "conjunction"), that there is one thing with that name. There might be one, there might be many. Likewise sometimes something doesn't have a name (like an anonymous function) but it exists anyways.
+
+Names are just ways of looking things up, that's all.
+
+**scope**
+
+When is a new variable created? Well, the interpreter might do one thing, it might do another, but in practice it is sufficient to say the following:
+
+*A new variable is created for each parameter every time a function is invoked.*
+
+Note that if a function is invoked 100 times, each of its parameters will actually create 100 different new variables even though all 100 share the same name in the code. We say that parameters in Javascript have *function scope*. My mental model is that when a function is invoked, Javascript creates a new dictionary of variables and values. The first thing it does is make entries for each of the parameters. Some other part of the program might have variables with the same name (common variables like "i," "key," or "value" might exist in many different dictionaries), but since those variables are written in different dictionaries, they don't conflict with our variables.
+
+Variables created with the `var` keyword also have function scope. When a naïve Javascript interpreter encounters the `var` keyword, it looks in the dictionary for the currently invoked function to see if the variable already exists. If it doesn't, it makes a new entry.
+
+So is a dictionary a scope? Not quite. We've written about creating variables. What about looking up their values? When a variable is used, javascript looks it up in the current dictionary. If it isn't in the dictionary, Javascript looks in the dictionary for whatever function was invoked when the current function was *created*. Not invoked, created. If it isn't there, Javascript repeats the process until it is looking in a top-level dictionary that represents code running when Javascript was first invoked.
+
+The dictionaries can be thought to nest, but I prefer to think of them as having a parent-child relationship. Invoking a function creates a new dictionary, but the new dictionary is the child of the code that created the function, not the code that invokes the function.
+
+The chain of dictionaries is called a *scope*. In practice, making dictionaries children of the dictionary for the function that creates another function makes it easy to determine where a variable is defined by examining the lexical form of the source code statically. Thus, this style of scoping is called **Lexical Scope**.
+
+**soling the problem**
+
+Now that we've examined javascript's lexical scope in detail, we have a solution. If we want different values for `conjunction` each time we create a new function, we need different variables each time through the for loop. To create new variables, we have to invoke a new function each time though the for loop. 
+
+Here's the simplest refactoring, the one that minimizes rearranging our code:
 
     for (var i=0; i<conjunctions.length; i++) {
       (function () {
@@ -92,16 +133,15 @@ Why did this work? Well, let's look at what we added:
       // blah, blah
     })();
 
-Each time through the for loop, we're creating a new, anonymous function *with the definition of `conjunction` inside the function's body*. Unlike executing the definition six times in a for loop, executing the definition inside a new function creates a new variable. We then execute the function immediately with no arguments. The entire exercise exists to create a new scope.
+Each time through the for loop, we're creating a new, anonymous function *with the definition of `conjunction` inside the function's body*. We then invoke the function immediately, which creates a new scope. The `var` keyword creates a new variable in each scope, and we thus get six different variables, each of which has its own value.
 
-This solves our problem, and the pattern of defining variables inside of an anonymous function that is immediately invoked is very useful. Amongst other things, it's handy for keeping the global namespace clean or creating private variables. Here's a function that counts:
+This solves our problem, and the pattern of defining variables inside of an anonymous function that is immediately invoked is very useful. Amongst other things, it's handy for keeping the global namespace clean or creating private variables. And there's another way to use an anonymous function to create new variables. Here's a function that counts:
 
-    var count = (function () {
-      var counter = 0;
+    var count = (function (counter) {
       return function () {
         return ++counter;
       }
-    })();
+    })(0);
     
     count()
       => 1
@@ -109,15 +149,7 @@ This solves our problem, and the pattern of defining variables inside of an anon
     count()
       => 2
 
-It's so well known that you may not think you need additional syntactic sugar. But since you're sticking around, I can tell you that I prefer to write:
-
-    var count = (function (counter) {
-      return function () {
-        return ++counter;
-      }
-    })(0);
-˝
-What we've done is extracted the variable declaration and turned it into a parameter of our anonymous function. I prefer this strongly because I know that the creation of the function is what establishes a new scope, and a function's parameters are sitting right there in its definition.
+You recall that parameters create new variables as well. I prefer this strongly because I know that the creation of the function is what establishes a new scope, and a function's parameters are sitting right there in its definition.
 
 I'm not alone in my madness. Here is a common abbreviation pattern:
 
