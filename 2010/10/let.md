@@ -66,7 +66,7 @@ Let's start by diagnosing the issue. We're defining six new methods for `String`
 
 Inside each of our six functions, we refer to the variable `conjunction`. Javascript correctly notes that this refers to the variable defined outside of the function in the line `var conjunction = conjunctions[i];`. `conjunction` has a different value each time we create a new function, so we might think that when each of our functions are invoked they will refer to its value when the function was created.
 
-This is not the case. Each of our functions simply stores a reference to the variable `conjunction` and when the function is invoked, it looks up the value at invocation time, not definition time. Its value at function invocation time is irrelevant.
+This is not the case. Each of our functions simply stores a reference to the variable `conjunction` and when the function is invoked, it looks up the value at invocation time, not definition time. The variable's value at the time the function was created is *irrelevant*.
 
 The easiest way to fix this problem is to make sure that each of the six functions we create has their own `conjunction` variable rather than having them all share the same variable.
 
