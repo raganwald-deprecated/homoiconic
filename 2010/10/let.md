@@ -1,7 +1,7 @@
 Let's make closures easy
 ===
 
-In [Gah! I Still Don't Know Closures][eee_closures], Chris Strom refactored this:
+In [Gah! I Still Don't Know Closures][eee_closures], Chris Strom refactored this Javascript code:
 
     Frame.prototype.remove = function () {
       for (var i=0; i<this.elements.length; i++) {
@@ -41,16 +41,20 @@ Into this:
 
 Alas, it didn't work right out of the gate, and Chris goes on to explain how he remedied the issue. If you haven't spotted the bug, you might want to try the following simplified version in Firebug or Safari's error console:
 
-    var conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
+    function declareConjunctions () {
+      var conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
     
-    for (var i=0; i<conjunctions.length; i++) {
-      var conjunction = conjunctions[i];
-      String.prototype[conjunctions[i]] = function (that) {
-        return this + ' ' + conjunction + ' ' + that;
-      };
+      for (var i=0; i<conjunctions.length; i++) {
+        var conjunction = conjunctions[i];
+        String.prototype[conjunctions[i]] = function (that) {
+          return this + ' ' + conjunction + ' ' + that;
+        };
+      }
     }
     
 And here's what's wrong:
+
+    declareConjunctions();
 
     "miles davis".before("wynton marsalis")
       => "miles davis outside wynton marsalis"
@@ -76,16 +80,15 @@ This brings us to the key question: *When do we create a new variable in Javascr
 
 Let's look at this code again, simplified greatly:
 
-    for (/* ... */) {
-      var conjunction = // ...
+    function declareConjunctions () {
       // ...
+      for (/* ... */) {
+        var conjunction = // ...
+        // ...
+      }
     }
 
-It appears as if we're using the `var` keyword to create a new variable each time through the for loop. *But this is not so*. Although we execute that line of code six times, we only create *one* variable. The rest of the time, we're simply assigning a new value to it.
-
-To understand this issue, we really have to let go of the idea that if we give something a name (like "conjunction"), that there is one thing with that name. There might be one, there might be many. Likewise sometimes something doesn't have a name (like an anonymous function) but it exists anyways.
-
-Names are just ways of looking things up, that's all.
+It appears as if we're using the `var` keyword to create a new variable each time through the for loop. *But this is not so*. To understand this issue, we really have to understand when the Javascript interpreter creates a new variable and when it simply assigns a value to an existing variable.
 
 [<img src="http://2.bp.blogspot.com/_JrXOqYWNfjc/S0n5yp4kheI/AAAAAAAAB14/id9j_d7tYIQ/s400/Redwing_Arlesey_2010Jan10.jpg" height="432" width="500"/>][thrush]
 
@@ -93,11 +96,39 @@ Names are just ways of looking things up, that's all.
 
 When is a new variable created? Well, the interpreter might do one thing, it might do another, but in practice it is sufficient to say the following:
 
-*A new variable is created for each parameter every time a function is invoked.*
+*A new variable is created for each parameter and every variable declared with the `var` keyword every time a function is invoked.*
 
 Note that if a function is invoked 100 times, each of its parameters will actually create 100 different new variables even though all 100 share the same name in the code. We say that parameters in Javascript have *function scope*. My mental model is that when a function is invoked, Javascript creates a new dictionary of variables and values. The first thing it does is make entries for each of the parameters. Some other part of the program might have variables with the same name (common variables like "i," "key," or "value" might exist in many different dictionaries), but since those variables are written in different dictionaries, they don't conflict with our variables.
 
-Variables created with the `var` keyword also have function scope. When a naïve Javascript interpreter encounters the `var` keyword, it looks in the dictionary for the currently invoked function to see if the variable already exists. If it doesn't, it makes a new entry.
+Parameters and variables created with the `var` keyword also have function scope. When the Javascript interpreter is first parsing a function declaration, it searches for `var` keywords. These are "hoisted" to the beginning of the function that immediately encloses them. So if you write this:
+
+    function declareConjunctions () {
+      var conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
+    
+      for (var i=0; i<conjunctions.length; i++) {
+        var conjunction = conjunctions[i];
+        String.prototype[conjunctions[i]] = function (that) {
+          return this + ' ' + conjunction + ' ' + that;
+        };
+      }
+    }
+
+The interpreter rearranges things so it looks like this:
+
+    function declareConjunctions () {
+      var conjunctions, conjunction;
+      
+      conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
+    
+      for (var i=0; i<conjunctions.length; i++) {
+        conjunction = conjunctions[i];
+        String.prototype[conjunctions[i]] = function (that) {
+          return this + ' ' + conjunction + ' ' + that;
+        };
+      }
+    }
+
+Now it's very obvious that there is one and only only one `conjunction` variable created when you invoke `declareConjunctions`. The fact that the `var` keyword was placed inside a for loop is irrelevant. After the interpreter has created dictionary entries for each of the parameters, it creates dictionary entries for each of the "hoisted" variables declared with `var`.
 
 So is a dictionary a scope? Not quite. We've written about creating variables. What about looking up their values? When a variable is used, javascript looks it up in the current dictionary. If it isn't in the dictionary, Javascript looks in the dictionary for whatever function was invoked when the current function was *created*. Not invoked, created. If it isn't there, Javascript repeats the process until it is looking in a top-level dictionary that represents code running when Javascript was first invoked.
 
@@ -113,17 +144,22 @@ Now that we've examined javascript's lexical scope in detail, we have a solution
 
 Here's the simplest refactoring, the one that minimizes rearranging our code:
 
-    for (var i=0; i<conjunctions.length; i++) {
-      (function () {
-        var conjunction = conjunctions[i];
-        String.prototype[conjunctions[i]] = function (that) {
-          return this + ' ' + conjunction + ' ' + that;
-        };
-      })();
+    function declareConjunctions () {
+      var conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
+      for (var i=0; i<conjunctions.length; i++) {
+        (function () {
+          var conjunction = conjunctions[i];
+          String.prototype[conjunctions[i]] = function (that) {
+            return this + ' ' + conjunction + ' ' + that;
+          };
+        })();
+      }
     }
 
 Now we get the expected behaviour:
 
+    declareConjunctions();
+    
     "miles davis".before("wynton marsalis")
       => "miles davis before wynton marsalis"
       
@@ -137,9 +173,28 @@ Why did this work? Well, let's look at what we added:
       // blah, blah
     })();
 
-Each time through the for loop, we're creating a new, anonymous function *with the definition of `conjunction` inside the function's body*. We then invoke the function immediately, which creates a new scope. The `var` keyword creates a new variable in each scope, and we thus get six different variables, each of which has its own value.
+Each time through the for loop, we're creating a new, anonymous function *with the definition of `conjunction` inside that function's body*. We then invoke the function immediately, which creates a new scope. The `var` keyword creates a new variable in each scope, and we thus get six different variables, each of which has its own value. Let's look at what the interpreter does when it "hoists" our variable:
 
-This solves our problem, and the pattern of defining variables inside of an anonymous function that is immediately invoked is very useful. Amongst other things, it's handy for keeping the global namespace clean or creating private variables. And there's another way to use an anonymous function to create new variables. Here's a function that counts:
+    function declareConjunctions () {
+      var conjunctions;
+      
+      conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
+      
+      for (var i=0; i<conjunctions.length; i++) {
+        (function () {
+          var conjunction;
+          
+          conjunction = conjunctions[i];
+          String.prototype[conjunctions[i]] = function (that) {
+            return this + ' ' + conjunction + ' ' + that;
+          };
+        })();
+      }
+    }
+
+This solves our problem, because adding a new function inside the for loop means that the closest function definition is inside the for loop, which is where the interpreter hoists the variable declaration.
+
+The pattern of defining variables inside of an anonymous function that is immediately invoked is very useful. Amongst other things, it's handy for keeping the global namespace clean or creating private variables. And there's another way to use an anonymous function to create new variables. Here's a function that counts:
 
     var count = (function (counter) {
       return function () {
@@ -219,13 +274,13 @@ Is `let` worth the bother? I think so. Although I've been using anonymous functi
 
 And I suppose we shouldn't be making long functions, but even on a short function I prefer the values and the bindings be kept close together. Declaring variables inside a scope avoids that issue, but I strongly prefer using parameters when I want to create a new scope. The parameter variable is very close to the `function` keyword what establishes the scope, and that makes the code very easy to understand.
 
-But the very best reason for using `let` is that [Javascript 1.7 includes a `let` keyword][js17]! Knowing that you'll be using `let` eventually, why not write your code so it is future-proof?
+But the very best reason for using `let` is that [Javascript 1.7 includes a `let` keyword][js17]! Knowing that you'll be using `let` eventually, why get in the habit now?
 
 ---
 
-p.s. It seems that my tongue being in cheek was not obvious about the expression "future-proof." So here's the long explanation: Using this "functional" implementation of `let` makes your code "let-like," and certainly it will be easy to rewrite it if and when `let` is supported as a keyword on all of the Javascript platforms you intend to target. Even if you are writing for a browser that supports Javascript 1.7 and `let`, you have to turn the keyword on precisely because the keyword will break existing code, so using this implementation of `let` is safe. To summarize, if you are working in an environment where you can count on the `let` keyword, I think you should use it. If you aren't, I prefer to use this functional implementation, knowing that it will be easy to 'port' should the need ever arise.
+p.s. A proggit reader [brings up a good point][proggit]: *Closures* are a means of implementing *lexical scope*. Closures are an implementation mechanism, not a language feature.
 
-p.p.s. A proggit reader [brings up a good point][proggit]: *Closures* are a means of implementing *lexical scope*. Closures are an implementation mechanism, nit a language feature.
+p.p.s. There's an excellent discussion of variable hoisting in [this excellent article][answers].
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
@@ -234,3 +289,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [js17]: https://developer.mozilla.org/en/New_in_JavaScript_1.7#let_statement
 [thrush]: http://dansbirdingblog.blogspot.com/2010/01/urban-thrushes-whooper-and-nice-goose.html "Urban Thrushes, a Whooper, and a Nice Goose"
 [proggit]: http://www.reddit.com/r/programming/comments/dn4ra/lets_make_closures_easy/c11fv9e
+[answers]: http://www.nczonline.net/blog/2010/01/26/answering-baranovskiys-javascript-quiz/ "Answering Baranovskiy's JavaScript Quiz"
