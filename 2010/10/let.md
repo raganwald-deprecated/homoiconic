@@ -100,7 +100,7 @@ When is a new variable created? Well, the interpreter might do one thing, it mig
 
 Note that if a function is invoked 100 times, each of its parameters will actually create 100 different new variables even though all 100 share the same name in the code. We say that parameters in Javascript have *function scope*. My mental model is that when a function is invoked, Javascript creates a new dictionary of variables and values. The first thing it does is make entries for each of the parameters. Some other part of the program might have variables with the same name (common variables like "i," "key," or "value" might exist in many different dictionaries), but since those variables are written in different dictionaries, they don't conflict with our variables.
 
-Parameters and variables created with the `var` keyword also have function scope. When the Javascript interpreter is first parsing a function declaration, it searches for `var` keywords. These are "hoisted" to the beginning of the function that immediately encloses them. So if you write this:
+Variables created with the `var` keyword also have function scope. When the Javascript interpreter is first parsing a function declaration, it searches for `var` keywords. These are "hoisted" to the beginning of the function that immediately encloses them. So if you write this:
 
     function declareConjunctions () {
       var conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
