@@ -99,9 +99,29 @@ With this definition, when the browser hash is changed to `#/institution/42`, th
 
 In many simple cases, the programmer writing the application is working with a fixed domain logic server. Writing the RESTful URL is simpler than using a Collection Proxy and indirectly performing the GET by calling `.fetch` on the proxy.
 
+**(¬M)VC's greatest hit**
+
+(¬M)VC's greatest strength is its greatest weakness. (¬M)VC pushes the access of resources into controllers. It's a great fit for SPI applications that begin their life as ports of a standard web-backed MVC application server: The controllers that would normally be written in the server are written in the client, the view templates are also pushed down into the client, and their is an inherent idea of a loop where the user invokes an URL (by using a link to change the hash or by submitting a form), and the SPI application runs the action through a controller, exchanges data with a RESTful domain server as appropriate, then displays the appropriate view.
+
+We say that the controllers and views of an (¬M)VC application are *coarse-grained* because they operate on large views and in a big looping cycle based on user clicks and submits.
+
+This basic (¬M)VC pattern is thus a very good fit for applications that have an interface that strongly resemble a web application. The UI maps well to web "pages." Of course, it is superior to a traditional server-based web application in many ways: It need only fetch and refresh portions of a page, it can perform certain refreshes in the background, and so on.
+
+And such an application is easy for the web-centric programmer to build and maintain. After all, it looks a lot like a standard web application. A Roweis application is instantly familiar to a Rails programmer. That's often a good thing.
+
+However, if you want to take full advantage of the interactivity possible in a client-side application, you may want to do things that are impractical with a constant looping through controllers and views. You want  *fine-grained* controllers. For example, if your application has a video player with controls for playback, the (¬M)VC notion of a controller that talks to a domain server before populating a view with data is a poor fit.
+
+Likewise, if you have the possibility of updating multiple different views when a single resource changes, (¬M)VC is a poor fit: (¬M)VC is based around controllers that fetch and populate.
+
+When you have these fine-grained interface elements, a true MVC architecture is a better fit. Controllers update models, and views update themselves when the models change. Some models may be proxies for domain logic resources. They may also have additional logic of their own that is only relevant in the client user interface. The controls for playing a video are of no interest to a domain logic server. A fine-grained application like this is very different from a web application. While it may not be familiar to the web specialist, a desktop programmer such as a Smalltalk expert will be right at home. 
+
+Thus, (¬M)VC is a good fit when the controllers and interaction is expected to be coarse-grained, but PVC and/or MVC is a better fit when the controllers and interaction are expected to be fine-grained.
+
 **summary: moving from MVC to PVC or (¬M)VC**
 
-This essay's thesis is that when separating domain logic from application logic, domain logic can be implemnted as a RESTful domain logic server. When doing so, the application can be implemented as an application server with models replaced by proxies to the domain server's resources such as with ActiveResource in Rails. The application can also be implemented as a single page interface in Javascript. SPI applications can use the PVC architecture to create proxies. In simple cases, SPI applications can forgo models and tightly couple the controllers to the domain logic server, a practice known as the (¬M)VC architecture.
+This essay's thesis is that when separating domain logic from application logic, domain logic can be implemnted as a RESTful domain logic server. When doing so, the application can be implemented as an application server with models replaced by proxies to the domain server's resources such as with ActiveResource in Rails.
+
+The application can also be implemented as a single page interface in Javascript. SPI applications can use the PVC architecture to create proxies. In simple, coarse-grained cases, SPI applications can forgo models and tightly couple the controllers to the domain logic server, a practice known as the (¬M)VC architecture. MVC and/or PVC is a better fit for SPI applications that are fine-grained and resemble desktop applications rather than web applications.
 
 ---
 
