@@ -5,7 +5,7 @@ MVC, PVC and (¬M)VC
 
 This essay gives some background on two separate architecture patterns: The separation of domain logic from application logic, and the implementation of an application using the model-view-controller ("MVC") pattern. The integration of the two patterns is discussed and two alternatives to MVC are described. In the first alternative, the models in the application are proxies for resources in the domain logic server. In the second alternative, the application's controllers make RESTful calls directly to the domain logic server omitting models entirely.
 
-**a long and barely relevant anecdote**
+**a long and barely relevant anecdote** (feel free to skip this or come back to it later)
 
 A long time ago, I worked on the development of a Java programming tool called JProbe Threadalyzer. Threadalyzer instrumented some running Java code and watched it for certain patterns of behaviour that indicated the possible presence of a threading bug. For example, if one thread were to obtain locks A and B in that order before accessing a shared resource and then at a later time any thread were to obtain locks B and A in that order (note the difference), Threadalyzer would alert the programmer that there was a possible bug. Although the code did not enter a deadlock, *if* two different threads were to try to obtain locks A, B, and B, A there might be a deadlock where one thread held A while waiting for B and another held B while waiting for A.
 
@@ -25,9 +25,11 @@ Although we didn't have a grand architectural desire to "use best practices," we
 
 Flash forward to today and many enterprise-scale business applications are built with a similar architecture. An internal domain logic server talks to various resources like databases or legacy, screen-scraped applications. The domain logic server exposes an API for performing queries and updates in XML or JSON over a mechanism like MQ or perhaps HTTP. The domain logic server enforces business rules and atomicity. For example, an online bank might have a certain rules about eligibility for opening a new type of account. If the applicant fails these automated rules, they must speak to a customer service representative. Those rules are enforced by the domain logic server.
 
+![servers](http://github.com/raganwald/homoiconic/raw/master/2010/10/servers.png)
+
 Sitting on front of the domain logic server are various application servers. In an online shopping company, there might be a web application server for customers to shop, while an entirely different server is used for internal customer service staff, and a third server is used for fulfillment applications. All of the application servers talk to the domain logic server, not directly to databases. Therefore, they concern themselves with implementing a user interface, not with enforcing business rules.
 
-> If a banking application is built as a traditional domain logic server, transferring funds from one account to another must be implemented in a single call. The business rule that funds debited from one account must exactly correspond to funds credited to another account must be enforced in domain logic, not by an application server. The domain logic server is the one that must use the database's transaction mechanism to ensure that the operation is atomic.
+> **An example domain logic rule**: If a banking application is built as a traditional domain logic server, transferring funds from one account to another must be implemented in a single call. The domain logic rule that funds debited from one account must exactly correspond to funds credited to another account must be enforced by the domain server, not by an application server. The domain logic server is the one that must use the database's transaction mechanism to ensure that the operation is atomic.
 
 **REST**
 
