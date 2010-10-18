@@ -84,6 +84,8 @@ Up to now we've discussed a two server architecture. There's a domain server and
 
 If the SPI application features certain types of interactivity, implementing PVC makes sense. For example, if the application polls for model changes and may update a variety of view with the updated data, models are necessary and a proxy library such as [backbone.js][backbone] will do the trick. Such an application still benefits from separating controllers and views from models, so you end up with proxies, views, and controllers as separate entities with separate responsibilities.
 
+![proxy-view-controller in an SPI application](http://github.com/raganwald/homoiconic/raw/master/2010/10/spi_pvc.png)
+
 **(¬M)VC**
 
 In an SPI application, the transport mechanism used to talk to the domain logic server is fixed, it's HTTP. In simple applications, there is less incentive to use model proxies. Under those circumstances, hard-wiring controllers to talk directly to the domain logic server is less painful. Removing the model proxy layer of indirection may be a win.
@@ -100,6 +102,8 @@ An SPI application using (¬M)VC will have separate views and controllers, howev
     })
       
 With this definition, when the browser hash is changed to `#/institution/42`, the framework performs a `GET /institutions/42` and a `GET /institutions/42/me` from the domain logic server and populates the local variables `institution` and `m_and_e_list` with the results. The template `singular` (likely found at `/haml/institutions/singular.haml` for reasons not shown in this snippet) displays the result.
+
+![(¬M)VC](http://github.com/raganwald/homoiconic/raw/master/2010/10/vc.png)
 
 In many simple cases, the programmer writing the application is working with a fixed domain logic server. Writing the RESTful URL is simpler than using a Collection Proxy and indirectly performing the GET by calling `.fetch` on the proxy.
 
