@@ -5,6 +5,10 @@ MVC, PVC and (¬M)VC
 
 This essay gives some background on two separate architecture patterns: The separation of domain logic from application logic, and the implementation of an application using the model-view-controller ("MVC") pattern. The integration of the two patterns is discussed and two alternatives to MVC are described. In the first alternative, the models in the application are proxies for resources in the domain logic server. In the second alternative, the application's controllers make RESTful calls directly to the domain logic server omitting models entirely.
 
+This essay's thesis is that when separating domain logic from application logic, domain logic can be implemented as a RESTful domain logic server. When doing so, the application can be implemented as an application server with models replaced by proxies to the domain server's resources such as with ActiveResource in Rails.
+
+The application can also be implemented as a single page interface in Javascript. SPI applications can use the PVC architecture to create proxies. In simple, coarse-grained cases, SPI applications can forgo models and tightly couple the controllers to the domain logic server, a practice known as the (¬M)VC architecture. MVC and/or PVC is a better fit for SPI applications that are fine-grained and resemble desktop applications rather than web applications.
+
 **a long and barely relevant anecdote** (feel free to skip this or come back to it later)
 
 A long time ago, I worked on the development of a Java programming tool called JProbe Threadalyzer. Threadalyzer instrumented some running Java code and watched it for certain patterns of behaviour that indicated the possible presence of a threading bug. For example, if one thread were to obtain locks A and B in that order before accessing a shared resource and then at a later time any thread were to obtain locks B and A in that order (note the difference), Threadalyzer would alert the programmer that there was a possible bug. Although the code did not enter a deadlock, *if* two different threads were to try to obtain locks A, B, and B, A there might be a deadlock where one thread held A while waiting for B and another held B while waiting for A.
@@ -127,9 +131,9 @@ Thus, (¬M)VC is a good fit when the controllers and interaction is expected to 
 
 **summary: moving from MVC to PVC or (¬M)VC**
 
-This essay's thesis is that when separating domain logic from application logic, domain logic can be implemnted as a RESTful domain logic server. When doing so, the application can be implemented as an application server with models replaced by proxies to the domain server's resources such as with ActiveResource in Rails.
+We've had a brief look at two separate architecture patterns: The separation of domain logic from application logic, and the implementation of an application using the model-view-controller ("MVC") pattern. We've looked more closely at implementing domain logic in a RESTful domain logic server and implementing the UI in an MVC application server with models replaced by proxies.
 
-The application can also be implemented as a single page interface in Javascript. SPI applications can use the PVC architecture to create proxies. In simple, coarse-grained cases, SPI applications can forgo models and tightly couple the controllers to the domain logic server, a practice known as the (¬M)VC architecture. MVC and/or PVC is a better fit for SPI applications that are fine-grained and resemble desktop applications rather than web applications.
+We've also seen that the application can be implemented as a single page interface in Javascript. In simple, coarse-grained cases, SPI applications can forgo models and tightly couple the controllers to the domain logic server in (¬M)VC style. Applications that are fine-grained and resemble desktop applications rather than web applications should prefer PVC style.
 
 ---
 
