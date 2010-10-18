@@ -76,6 +76,8 @@ First, the trivial case is that the application server omits models. In a Rails 
 
 An improved architecture for application servers is that the models in the application server are proxies for the resources exposed by the RESTful domain logic server. Ruby on Rails supports this pattern with [ActiveResource][active_resource]. The application server is built using pure MVC, however the models don't contain business logic, all operations on them are forwarded to the domain logic server through REST. I personally nickname this pattern "PVC" for Proxy-View-Controller.
 
+![proxy-view-controller](http://github.com/raganwald/homoiconic/raw/master/2010/10/pvc.png)
+
 The benefit of using PVC is that the concern of how to communicate with the domain logic server or servers is separated from controller logic. What if communication is over HTTP but you want to change it to RabbitMQ when loads increase? PVC manages this transition easily. Likewise, if the application grows and some resources are obtained from one server and some from another, this distinction is managed by the proxies and not by the controllers that use them.
 
 Up to now we've discussed a two server architecture. There's a domain server and there's an application server. Implied in this architecture is a third entity, a client web browser. Another architecture choice is a domain server and a client web *application*, where the application is written in Javascript, ActionScript, or some other technology. This essay will confine itself to talking about Javascript [Single Page Interface][spi] ("SPI") applications.
