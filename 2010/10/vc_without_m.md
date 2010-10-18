@@ -113,7 +113,7 @@ In many simple cases, the programmer writing the application is working with a f
 
 **(¬M)VC's greatest hit**
 
-(¬M)VC's greatest strength is its greatest weakness. (¬M)VC pushes the access of resources into controllers. It's a great fit for SPI applications that begin their life as ports of a standard web-backed MVC application server: The controllers that would normally be written in the server are written in the client, the view templates are also pushed down into the client, and their is an inherent idea of a loop where the user invokes an URL (by using a link to change the hash or by submitting a form), and the SPI application runs the action through a controller, exchanges data with a RESTful domain server as appropriate, then displays the appropriate view.
+(¬M)VC's greatest strength is its greatest weakness. (¬M)VC pushes the access of resources into controllers. It's a great fit for SPI applications that begin their life as ports of a standard web-backed MVC application server: The controllers that would normally be written in the server are written in the client, the view templates are also pushed down into the client, and there is an inherent idea of a loop where the user invokes an URL (by using a link to change the hash or by submitting a form), and the SPI application runs the action through a controller, exchanges data with a RESTful domain server as appropriate, then displays the appropriate view.
 
 We say that the controllers and views of an (¬M)VC application are *coarse-grained* because they operate on large views and in a big looping cycle based on user clicks and submits.
 
@@ -137,7 +137,7 @@ We've also seen that the application can be implemented as a single page interfa
 
 ---
 
-Discuss this post on [hacker News](http://news.ycombinator.com/item?id=1803432) or [programming.reddit.com](http://www.reddit.com/r/programming/comments/dstm5/mvc_pvc_and_mvc/). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1803432) or [programming.reddit.com](http://www.reddit.com/r/programming/comments/dstm5/mvc_pvc_and_mvc/). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [u]: http://unspace.ca
 [spi]: http://itsnat.sourceforge.net/php/spim/spi_manifesto_en.php "The Single Page Interface Manifesto"
