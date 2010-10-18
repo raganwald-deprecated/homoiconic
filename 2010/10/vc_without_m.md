@@ -133,7 +133,7 @@ The application can also be implemented as a single page interface in Javascript
 
 ---
 
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+Discuss this post on [hacker News](http://news.ycombinator.com/item?id=1803432) or [programming.reddit.com](http://www.reddit.com/r/programming/comments/dstm5/mvc_pvc_and_mvc/). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [u]: http://unspace.ca
 [spi]: http://itsnat.sourceforge.net/php/spim/spi_manifesto_en.php "The Single Page Interface Manifesto"
