@@ -127,6 +127,8 @@ Likewise, if you have the possibility of updating multiple different views when 
 
 When you have these fine-grained interface elements, a true MVC architecture is a better fit. Controllers update models, and views update themselves when the models change. Some models may be proxies for domain logic resources. They may also have additional logic of their own that is only relevant in the client user interface. The controls for playing a video are of no interest to a domain logic server. A fine-grained application like this is very different from a web application. While it may not be familiar to the web specialist, a desktop programmer such as a Smalltalk expert will be right at home. 
 
+> Be careful of tying your JavaScript applications (SPI, in the essay's parlance) too tightly to specific URLs and HTTP requests, ... what happens if you want to load a handful of institutions in the background, without changing the URL? What happens if you'd like to not repeat the institution request if the data has already been loaded once? Being able to work with model data in sophisticated ways is the heart of JavaScript applications&#8212;if you omit models from a JS app, it might feel like a simplification at the beginning, but as soon as you want to perform an interesting computation, optimization, or rendering trick, you'll start to regret it. &#8212;[Jeremy Ashkenas](http://news.ycombinator.com/item?id=1804570)
+
 Thus, (¬M)VC is a good fit when the controllers and interaction is expected to be coarse-grained, but PVC and/or MVC is a better fit when the controllers and interaction are expected to be fine-grained.
 
 **summary: moving from MVC to PVC or (¬M)VC**
@@ -137,7 +139,7 @@ We've also seen that the application can be implemented as a single page interfa
 
 ---
 
-Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1803432) or [programming.reddit.com](http://www.reddit.com/r/programming/comments/dstm5/mvc_pvc_and_mvc/). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1803432). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [u]: http://unspace.ca
 [spi]: http://itsnat.sourceforge.net/php/spim/spi_manifesto_en.php "The Single Page Interface Manifesto"
