@@ -5,7 +5,7 @@ A new way to think about programs
 
 Going from Javascript to Coffeescript today feels a lot like going from Java to Ruby felt to me in early 2003. I know this may surprise people used to my wordiness, but I honestly can't think of anything to say that will be more persuasive than the experience of simply writing Coffeescript code. But however exciting that is, I haven't written about it.
 
-<center>![Fiorenzato Coffee Machine Ducale](https://www.coffeeitalia.co.uk/prodimages/fiorenzato/professional/ducale/Ducale-fronte_300.jpg)</center>
+![Fiorenzato Coffee Machine Ducale](https://www.coffeeitalia.co.uk/prodimages/fiorenzato/professional/ducale/Ducale-fronte_300.jpg)
 
 Every time I've started a blog post about Coffeescript, it felt vaguely like I was recycling some old post about Ruby or about meta-programming, or about the power of writing and reading succinct code. Such things may be news to a new generation of programmers, but when I write them, I feel like one of those self-help Gurus who keep re-selling the same damn book over and over again: *The One Minute Manager's Seven Habits for Getting Chicken Soup for the Mars and Venus Bipolar Lisp Programmer's Soul Done, [The Hard Way][lpthw].*
 
@@ -21,7 +21,7 @@ This isn't translating English into machine instructions, you still write code (
 
 One force acting on program organization is the *archeological accident*: We write our programs, make changes, add features, and if we do nothing else the resulting program's organization is strongly influenced by the chronology of our changes.This is why it's always easy to criticize an existing program. The existing program is usually adorned with the warts of its archeology, and in hindsight it's easy to see how if you were starting from scratch with the final "requirements," you would design something cleaner and more elegant than the program that evolved over time.
 
-<center>![Illuminated Manuscript](http://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Meister_des_Mar%C3%A9chal_de_Boucicaut_001.jpg/370px-Meister_des_Mar%C3%A9chal_de_Boucicaut_001.jpg)</center>
+![Illuminated Manuscript](http://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Meister_des_Mar%C3%A9chal_de_Boucicaut_001.jpg/370px-Meister_des_Mar%C3%A9chal_de_Boucicaut_001.jpg)
 
 Another force acting on program organization is the *responsibility architecture*. Programs are organized into modules or chunks based on their responsibilities. Whether those chunks are services, objects, methods, functions, modules, namespaces, or whatever, contemporary thinking emphasizes an architecture that optimizes for separation of responsibilities and concerns.
 
