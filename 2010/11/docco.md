@@ -1,7 +1,7 @@
 A new way to think about programs
 ===
 
-[Coffeescript][coffee] is an excellent "little" programming language created by Jeremy Ashkenas. I've been meaning to write nice things about Coffeescript for a while, but quite honestly it speaks for itself. really. Have a look at it, and especially try programming with it. If you go to the Coffeescript home page, you can try Coffeescript right in your browser. Coffeescript support is baked into [Node.js][node]. How much easier do you want it to be?
+[Coffeescript][coffee] is an excellent "little" programming language created by Jeremy Ashkenas. I've been meaning to write nice things about Coffeescript for a while, but quite honestly it speaks for itself. Really! Have a look at it, and especially *try programming with it*. If you go to the Coffeescript home page, you can try Coffeescript right in your browser. Coffeescript support is baked into [Node.js][node]. How much easier do you want it to be? (*By the way, Coffeescript is about to get **even more interesting**. Be sure to check the Coffeescript site for updates and/or announcements over the next few days...*)
 
 Going from Javascript to Coffeescript today feels a lot like going from Java to Ruby felt to me in early 2003. I know this may surprise people used to my wordiness, but I honestly can't think of anything to say that will be more persuasive than the experience of simply writing Coffeescript code. But however exciting that is, I haven't written about it.
 
