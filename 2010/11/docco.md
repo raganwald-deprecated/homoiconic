@@ -72,7 +72,7 @@ p.s. *Coffeescript is about to get **even more interesting**. Be sure to check t
 
 ---
 
-Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1883995). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1883995) and [Reddit](http://www.reddit.com/r/programming/comments/e345e/a_new_way_to_think_about_programs_githubcom/). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [coffee]: http://jashkenas.github.com/coffee-script/ "CoffeeScript"
 [node]: http://nodejs.org/ "node.js"
