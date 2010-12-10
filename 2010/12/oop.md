@@ -41,8 +41,8 @@ In this system, our ontology is observed from nature just like the naturalist's 
 
 fin.
 
-*(Alan Kay coined the phrase Object-Oriented Programming, but this is not his fault. He has repeatedly said that to him, OOP is about encapsulation and message passing, not inheritance and ontologies of types. But like so many other Cargo Cults in Computer Programming culture, OOP and inheritance are enchained like ancient mariner and albatross.)*
+*([Alan Kay](http://duckduckgo.com/Alan_Kay) coined the phrase Object-Oriented Programming, but this is not his fault. He has repeatedly said that to him, OOP is about encapsulation and message passing, not inheritance and ontologies of types. But like so many other Cargo Cults in Computer Programming culture, OOP and inheritance are enchained like ancient mariner and albatross.)*
 
 ---
 
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+[Discuss this post](http://news.ycombinator.com/item?id=1993129) on Hacker News. Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
