@@ -139,7 +139,7 @@ We've also seen that the application can be implemented as a single page interfa
 
 ---
 
-Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1803432). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1803432). Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [u]: http://unspace.ca
 [spi]: http://itsnat.sourceforge.net/php/spim/spi_manifesto_en.php "The Single Page Interface Manifesto"

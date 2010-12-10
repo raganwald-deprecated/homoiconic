@@ -90,7 +90,7 @@ p.s. Beautiful Failure on [Hacker News][hn] and [Reddit][r]
 
 ----
 	
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [sum]: http://github.com/raganwald/homoiconic/blob/master/2009-04-09/my_objection_to_sum.md#readme "My Objection to Array#Sum"
 [rc]: http://en.wikipedia.org/wiki/Race_condition "Race condition - Wikipedia, the free encyclopedia"

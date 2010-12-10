@@ -17,7 +17,7 @@ So I'm genuinely puzzled... Why is it a bad idea to call my jQuery plugin "jQuer
 
 ----
   
-Discuss this post on [Hacker News][hn], follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+Discuss this post on [Hacker News][hn], Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [jqc]: http://github.com/raganwald/JQuery-Combinators
 [k]: http://github.com/raganwald/homoiconic/blob/master/2008-10-29/kestrel.markdown#readme

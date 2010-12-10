@@ -282,7 +282,7 @@ p.s. A proggit reader [brings up a good point][proggit]: *Closures* are a means 
 
 p.p.s. There's an excellent discussion of variable hoisting in [this excellent article][answers].
 	
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald) or [RSS](http://feeds.feedburner.com/raganwald "raganwald's rss feed"). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [eee_closures]: http://japhr.blogspot.com/2010/10/gah-i-still-dont-know-closures.html
 [thrushcombinator]: http://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown#readme
