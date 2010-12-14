@@ -39,6 +39,12 @@ In this system, our ontology is observed from nature just like the naturalist's 
 
 fin.
 
+**interesting further reading**
+
+* [InfoQ: Book Excerpt and Interview: The Joy of Clojure](http://www.infoq.com/articles/the-joy-of-clojure "InfoQ: Book Excerpt and Interview: The Joy of Clojure")
+* Loren Segal, [Too Lazy to "Type"](http://gnuu.org/2010/12/13/too-lazy-to-type/ "Too Lazy to &quot;Type&quot; (gnuu.org)")
+* Robert Martin's [Response](http://cleancoder.posterous.com/too-lazy-to-type "Too Lazy to &quot;Type&quot;. - Uncle Bob's Blog")
+
 *([Alan Kay](http://duckduckgo.com/Alan_Kay) coined the phrase Object-Oriented Programming, but this is not his fault. He has repeatedly said that to him, OOP is about encapsulation and message passing, not inheritance and ontologies of types. But like so many other Cargo Cults in Computer Programming culture, OOP and inheritance are enchained like ancient mariner and albatross.)*
 
 ---
