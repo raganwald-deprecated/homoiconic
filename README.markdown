@@ -7,20 +7,22 @@ Homoiconic is really simple: *Snippets of code and words about snippets of code*
 
 **what can I read right now?**
 
-I tag every post in del.icio.us with "homoiconic," so even though the git interface is horrible, here is [a list of all homoiconic posts with the most recent writing first](http://delicious.com/raganwald/homoiconic?sort=date&amp;order=desc "raganwald's homoiconic Bookmarks   on Delicious").
-
 Asking me what to read is like asking the chef what's good on the menu. It's all excellent, of course! That being said, I have a few personal favourites:
 
 * [Optimism](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme)
 * [Elegance and the Surreals](http://github.com/raganwald/homoiconic/blob/master/2009-03-07/surreal.md#readme)
 
-My series on combinators: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown#readme), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown#readme), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown#readme), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown#readme), [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#readme), [The Enchaining and Obdurate Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-11-12/the_obdurate_kestrel.md#readme), [Finding Joy in Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-16/joy.md#readme), [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md#readme), [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme), [The Hopelessly Egocentric Blog Post](http://github.com/raganwald/homoiconic/tree/master/2009-02-02/hopeless_egocentricity.md#readme), and [Wrapping Combinators](http://github.com/raganwald/homoiconic/tree/master/2009-06-29/wrapping_combinators.md#readme).
+Many people link to my series on combinators: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown#readme), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown#readme), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown#readme), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown#readme), [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#readme), [The Enchaining and Obdurate Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-11-12/the_obdurate_kestrel.md#readme), [Finding Joy in Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-16/joy.md#readme), [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md#readme), [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme), [The Hopelessly Egocentric Blog Post](http://github.com/raganwald/homoiconic/tree/master/2009-02-02/hopeless_egocentricity.md#readme), and [Wrapping Combinators](http://github.com/raganwald/homoiconic/tree/master/2009-06-29/wrapping_combinators.md#readme).
 
-**how to subscribe**
+Of course, you can simply read the archives. They're organized by date, so the most recent writing is at the bottom, not the top.
 
-I tag new posts in [del.icio.us](http://delicious.com/raganwald/homoiconic "Homoiconic Bookmarks on Delicious"). You can subscribe to [an RSS feed that will alert you when I manually tag a new post](http://feeds.delicious.com/v2/rss/raganwald/homoiconic "Homoiconic Bookmarks Feed").
+**is there anything else to read?**
 
-If you're into git and like fine-grained updates, you can follow [homoiconic](http://github.com/raganwald/homoiconic) here on GitHub or [subscribe to commit messages](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic") letting you know what I've added or updated in your feed reader. The latter option is likely to be moderate volume, as I like to make edits and corrections as I go.
+When I want to write about something that doesn't have any code in it, I try to resist the temptation. When resistance is futile, my words appear on [posterous](http://raganwald.posterous.com). I used to write a traditional blog called [raganwald](http://weblog.raganwald.com).
+
+**can I subscribe?**
+
+Not in the traditional sense. If you're into git and like fine-grained updates, you can follow [homoiconic](http://github.com/raganwald/homoiconic) here on GitHub or [subscribe to commit messages](http://github.com/feeds/raganwald/commits/homoiconic/master "Recent Commits to homoiconic") letting you know what I've added or updated in your feed reader. The latter option is likely to be moderate volume, as I like to make edits and corrections as I go.
 
 **advocacy-free**
 
