@@ -25,26 +25,26 @@ Java passes a reference to a mutable object by value. This means:
 Illustration:
 
     public void some_method () {
-      String first_ref = 'original string';
+      String first_ref = "original string";
       // ...
     }
 
-So `first_ref` is a reference to the string 'original string' in some_method.
+So `first_ref` is a reference to the string "original string" in some_method.
 
 Somewhere else we write:
 
     public void called_method (String second_ref) {
-      second_ref = 'brand new string';
+      second_ref = "brand new string";
     }
 
 In `called_method`, `second_ref` will be a copy of a reference to a String. When `called_method` is called, `second_ref` will point to some original String (which is an object, obviously). But it's a brand new reference.
 
-What happens when `second_ref = 'brand new string';` is executed? Well, first we evaluate the RHS of the assignment. This creates a brand new string with the value "brand new string". Then we change the reference `second_ref` to point to the brand new string and throw away its original value, which was a reference to the original string.
+What happens when `second_ref = "brand new string";` is executed? Well, first we evaluate the RHS of the assignment. This creates a brand new string with the value "brand new string". Then we change the reference `second_ref` to point to the brand new string and throw away its original value, which was a reference to the original string.
 
 Let's flesh out `some_method`:
 
     public void some_method () {
-      String first_ref = 'original string';
+      String first_ref = "original string";
       called_method(first_ref);
       System.out.println(first_ref);
     }
