@@ -23,6 +23,6 @@ That's all.
 
 p.s. If you press me to give a firm opinion, I choose [blue in green](http://bikeshed.com) :-)
 
----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

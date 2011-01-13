@@ -36,6 +36,6 @@ The sharp-eyed amongst you may have noticed that some of these statements could 
     
 But that's a *different* language feature. Okay, that's enough lingua obscura for today.
 
-----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

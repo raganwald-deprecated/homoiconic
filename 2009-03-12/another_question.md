@@ -99,6 +99,6 @@ That you should refactor it into this:
 
 *Join the discussion on [Hacker News](http://news.ycombinator.com/item?id=513472)*.
 
----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

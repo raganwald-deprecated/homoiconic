@@ -111,6 +111,6 @@ Truthfully, if using `method_missing` to turn `nil` into a lightweight Maybe Mon
 
 Nevertheless, it's a really provocative idea. And now I'm going to make myself some espresso and spend a few moments thinking about the relationship between `NULL` and hopelessly egocentric combinator birds :-)
 
-----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

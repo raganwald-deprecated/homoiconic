@@ -174,6 +174,6 @@ When you want to convert any object to a block, pass it to a method expecting a 
 
 p.s. *This post originally appeared on [weblog.raganwald.com](http://weblog.raganwald.com/2008/06/what-does-do-when-used-as-unary.html "The unary ampersand in Ruby")*
 
----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

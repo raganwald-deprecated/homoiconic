@@ -55,7 +55,7 @@ And naturally, jQuery Predicates plays well with jQuery Combinators. Using them 
 
 Enjoy!
 
-----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

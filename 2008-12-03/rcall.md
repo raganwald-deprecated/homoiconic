@@ -82,6 +82,6 @@ Post Scriptum
 
 If you've been following along with the techniques in [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme) and [Keep Your Privates To Yourself](http://github.com/raganwald/homoiconic/tree/master/2008-12-1/keep_your_privates_to_yourself.md#readme), you may have noticed that our implementation of `#rcall` naively creates a new lambda every time it is called. There are ways to fix this. Why not fork homoiconic and optimize `Proc#rcall` for yourself? Send me a pull request when you're done!
 
----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

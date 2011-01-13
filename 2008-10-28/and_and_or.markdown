@@ -35,6 +35,6 @@ Again putting the first thing first. I normally only do this if both clauses are
 
 The predicate seems less important than the consequent, which suggests that it should come second even though the test is performed first.
 
----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

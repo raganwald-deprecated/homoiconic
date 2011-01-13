@@ -7,6 +7,6 @@ In the end, I decided against making a "real blog," because I wanted to focus on
 
 I hope that over time you will grow to like reading it in this minimalist format as much as I like writing it.
 
-----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

@@ -140,7 +140,7 @@ So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, 
 
 *p.p.s. Discuss this post [here][proggit] on programming.reddit.com or [here][hn] on Hacker News.*
 
-----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

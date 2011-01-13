@@ -69,7 +69,7 @@ Legend has it that this code was used to fix a bug without search and replace, a
 
 True, but every now and then [some idiot][r] ventures into the tomb and awakens a [long dead monster][name].
 
-----
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
