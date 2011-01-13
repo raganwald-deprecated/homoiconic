@@ -13,11 +13,14 @@ In my opinion, trouble over terms is more important when moving from a language 
 
 ![Duke Mom](http://silveiraneto.net/wp-content/uploads/2008/05/duke_mom.png)
 
-But for those of you who haven't seen any of the Aleph-0 explanations, here is the Aleph-One-th explanation of why Java (and Ruby and Javascript and most other modern programming languages) is Pass by Value.
+But for those of you who haven't seen any of the [Aleph-0][a] explanations, here is the Aleph-One-th explanation of why Java (and Ruby and Javascript and most other modern programming languages) is Pass by Value.
 
 **explanation**
 
-Java passes a reference to a mutable object by value. This means 1. There is only one instance of the original object, it is not copied, and 2. There are *two* reference to it. One in the original method's environment and one in the called method's environment. Since Java passed the reference by value, there is a copy of the reference in the called method.
+Java passes a reference to a mutable object by value. This means:
+
+1. There is only one instance of the original object, it is not copied, and;
+2. There are *two* reference to it. One in the original method's environment and one in the called method's environment. Since Java passed the reference by value, there is a copy of the reference in the called method.
 
 Illustration:
 
@@ -64,6 +67,7 @@ Legend has it that this code was used to fix a bug without search and replace, a
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
+[a]: http://www.amazon.com/gp/product/0192861611?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0192861611 "Satan, Cantor and Infinity at Amazon.com"
 [hn]: http://news.ycombinator.com/item?id=2100507
 [es]: https://secure.wikimedia.org/wikipedia/en/wiki/Evaluation_strategy 
 [arg]: http://stackoverflow.com/questions/40480/is-java-pass-by-reference
