@@ -1,7 +1,7 @@
 Pass by Reference isn't one of Java's Values
 ===
 
-Over on Hacker News, I noticed [this discussion][hn] about [another discussion][ss] by Java programmers about whether Java the language uses [Pass by Reference or Pass by Value][es]. It's an [old, old argument][arg], and the `tl;dr` is that Java and most other modern languages pass references to objects by value, which means it uses Pass by Value. It is absolutely wrong to assert that Java uses Pass by Reference.
+On proggit and Hacker News, I noticed [these][p] [discussiond][hn] about [another discussion][ss] by Java programmers about whether Java the language uses [Pass by Reference or Pass by Value][es]. It's an [old, old argument][arg], and the `tl;dr` is that Java and most other modern languages pass references to objects by value, which means it uses Pass by Value. It is absolutely wrong to assert that Java uses Pass by Reference.
 
 While it's tempting to bash Java programmers for the misconceptions, I think that's just confirmation bias. I have absolutely no faith that a statistically significant sample of Ruby or Javascript programmers would contain a larger proportion of people who get the terms right.
 
@@ -83,3 +83,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [tw]: https://twitter.com/#!/axeolotl/statuses/25634042510581760
 [r]: http://github.com/raganwald
 [name]: https://github.com/raganwald/rewrite_rails/blob/master/doc/call_by_name.md#readme "Call by Name in RewriteRails"
+[p]: http://www.reddit.com/r/programming/comments/f1d7r/huge_war_over_whether_java_is_pass_by_reference/
