@@ -9,9 +9,9 @@ Which, for the most part, probably demonstrates that the issue just isn't that i
 
 I doubt this comes up much, since two programmers talking about Ruby or Java or javascript would both have the same understanding of what happens with parameters passed to functions/methods.
 
-In my opinion, trouble over terms is more important when moving from a language with one set of semantics to another. For example,when moving from Java to Javascript, not understanding closures would make for some error-laden conversations with experienced Javascript programmers.
+In my opinion, trouble over terms is more important when moving from a language with one set of semantics to another. For example, when moving from Java to Javascript, not understanding closures would make for some error-laden conversations with experienced Javascript programmers.
 
-![Duke Mom][http://silveiraneto.net/wp-content/uploads/2008/05/duke_mom.png]
+![Duke Mom](http://silveiraneto.net/wp-content/uploads/2008/05/duke_mom.png)
 
 But for those of you who haven't seen any of the Aleph-0 explanations, here is the Aleph-One-th explanation of why Java (and Ruby and Javascript and most other modern programming languages) is Pass by Value.
 
