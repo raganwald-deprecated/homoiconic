@@ -55,13 +55,19 @@ As above, `second_ref` inside of `called_method` now contains a reference to "br
 
 Thus, Java passes references to objects, but it does so by making a brand new reference to the original object. If Java used pass by reference, this program would output "brand new string."
 
-Pass by Reference is rare in modern languages, but consider this line of code:
+Pass by Reference is rare in modern languages, but consider this line of ancient FORTRAN:
 
     2 = 3
 
 FORTRAN was originally Pass by Reference for *everything*. To make matters more interesting, integer constants in a program were references to the integers, not some kind of special primitive. Therefore, the above line of code changes the reference `2` to become the reference `3`, and everywhere in the program that uses `2`, you actually get `3`.
 
 Legend has it that this code was used to fix a bug without search and replace, a very expensive operation in the days of paper tape and/or punch cards.
+
+**post scriptum**
+
+> pass by value (of refs) is just so plain better that "by name" and "by reference" are mostly of historic/scientific interest&#8212;[@axeolotl][tw]
+
+True, but every now and then [some idiot][r] ventures into the tomb and awakens a [long dead monster][name].
 
 ----
 	
@@ -72,3 +78,6 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [es]: https://secure.wikimedia.org/wikipedia/en/wiki/Evaluation_strategy 
 [arg]: http://stackoverflow.com/questions/40480/is-java-pass-by-reference
 [ss]: http://www.theserverside.com/news/thread.tss?track=NL-461&ad=808081&thread_id=61622&asrc=EM_NLN_13145929&uid=2780877
+[tw]: https://twitter.com/#!/axeolotl/statuses/25634042510581760
+[r]: http://github.com/raganwald
+[name]: https://github.com/raganwald/rewrite_rails/blob/master/doc/call_by_name.md#readme "Call by Name in RewriteRails"
