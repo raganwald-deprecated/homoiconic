@@ -29,7 +29,7 @@ Illustration:
       // ...
     }
 
-So 'first_ref' is a reference to the string 'bar' in some_method.
+So `first_ref` is a reference to the string 'original string' in some_method.
 
 Somewhere else we write:
 
@@ -37,11 +37,11 @@ Somewhere else we write:
       second_ref = 'brand new string';
     }
 
-In 'called_method,' 'second_ref' will be a copy of a reference to a String. When foo is called, second_ref will point to some original String (which is an object, obviously). But it's a brand new reference.
+In `called_method`, `second_ref` will be a copy of a reference to a String. When `called_method` is called, `second_ref` will point to some original String (which is an object, obviously). But it's a brand new reference.
 
-What happens when "second_ref = 'brand new string';" is executed? Well, first we evaluate the RHS of the assignment. This creates a brand new string with the value "brand new string". Then we change the reference second_ref to point to the brand new string and throw away its original value, which was a reference to the original string.
+What happens when `second_ref = 'brand new string';` is executed? Well, first we evaluate the RHS of the assignment. This creates a brand new string with the value "brand new string". Then we change the reference `second_ref` to point to the brand new string and throw away its original value, which was a reference to the original string.
 
-Let's flesh out 'some_method':
+Let's flesh out `some_method`:
 
     public void some_method () {
       String first_ref = 'original string';
@@ -51,7 +51,7 @@ Let's flesh out 'some_method':
 
 What is output?
 
-As above, 'second_ref' inside of 'called_method' now contains a reference to "brand new string". But first_ref hasn't changed, it still points to "original string," and that's what gets printed.
+As above, `second_ref` inside of `called_method` now contains a reference to "brand new string". But `first_ref` hasn't changed, it still points to "original string," and that's what gets printed.
 
 Thus, Java passes references to objects, but it does so by making a brand new reference to the original object. If Java used pass by reference, this program would output "brand new string."
 
@@ -59,7 +59,7 @@ Pass by Reference is rare in modern languages, but consider this line of code:
 
     2 = 3
 
-FORTRAN was originally Pass by Reference for *everything*. To make matters more interesting, integer constants in a program were references to the integers, not some kind of special primitive. Therefore, the above line of code changes the reference 2 to become the reference 3, and everywhere in the program that uses '2', you actually get '3'.
+FORTRAN was originally Pass by Reference for *everything*. To make matters more interesting, integer constants in a program were references to the integers, not some kind of special primitive. Therefore, the above line of code changes the reference `2` to become the reference `3`, and everywhere in the program that uses `2`, you actually get `3`.
 
 Legend has it that this code was used to fix a bug without search and replace, a very expensive operation in the days of paper tape and/or punch cards.
 
