@@ -55,6 +55,8 @@ As above, `second_ref` inside of `called_method` now contains a reference to "br
 
 Thus, Java passes references to objects, but it does so by making a brand new reference to the original object. If Java used pass by reference, this program would output "brand new string."
 
+**post scriptum**
+
 Pass by Reference is rare in modern languages, but consider this line of ancient FORTRAN:
 
     2 = 3
@@ -63,7 +65,7 @@ FORTRAN was originally Pass by Reference for *everything*. To make matters more 
 
 Legend has it that this code was used to fix a bug without search and replace, a very expensive operation in the days of paper tape and/or punch cards.
 
-**post scriptum**
+And this just in:
 
 > pass by value (of refs) is just so plain better that "by name" and "by reference" are mostly of historic/scientific interest&#8212;[@axeolotl][tw]
 
