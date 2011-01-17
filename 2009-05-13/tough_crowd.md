@@ -33,6 +33,6 @@ Also interesting: My perception is that the above post is about *How to intervie
 
 It's too small a sample to draw conclusions about communities and bias, but the early comments on [news.ycombinator.com](http://news.ycombinator.com/item?id=606947 "Hacker News | Tough Crowd") and [programming.reddit.com](http://www.reddit.com/r/programming/comments/8k5em/tough_crowd/ "Tough Crowd : programming") show a sharply different take on the post. One discussion is about how to ask interview questions, the other is about how to answer them.
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

@@ -242,6 +242,6 @@ If you would like to read more on line, I strongly suggest Mark Chu-Carroll's [I
 
 So... If you want a readable and entertaining exposition, read [Knuth](http://www.amazon.com/gp/product/0201038129?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0201038129 "Surreal Numbers"). If you want all of the glory of numbers and games, read [Conway](http://www.amazon.com/gp/product/1568811276?ie=UTF8&amp;tag=raganwald001-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1568811276 "On Numbers and Games"). If you want a readable but highly provocative exploration, read [Chu-Carroll](http://scienceblogs.com/goodmath/2007/03/introducing_the_surreal_number_2.php "Introducing the Surreal Numbers"). And of course, these are not mutually exclusive. Read them all!
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

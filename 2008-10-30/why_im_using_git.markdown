@@ -19,6 +19,6 @@ Reg Braithwaite:
 
 > !
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

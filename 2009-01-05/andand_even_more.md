@@ -54,6 +54,6 @@ Note that if we don't actually *need* `my_var` in the block, we don't really nee
     
 Like anything else, `andand do ... end` is a tool to be used in specialized situations. Use it whenever you want to do something more complicated than a simple message send, but only when the subject is not `nil`.
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

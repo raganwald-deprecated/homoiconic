@@ -20,6 +20,6 @@ I do think that a language's syntax should support cascades like this, but I als
 
 ttfn...
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

@@ -20,7 +20,7 @@ So far so good, I think I understand how Ruby's Array class implements the "boat
     
 Ha! As [Pete Forde][peteforde] puts it, "Nothing about Ruby surprises me any more."
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

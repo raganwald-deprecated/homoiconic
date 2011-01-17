@@ -214,7 +214,11 @@ This refactoring may not look like what most people call "Separation of Concerns
 
 Whereas here we have split the definition of `controller.location(params)` according to *when* things can happen. Some things should continue to happen at specific stages of the function pipeline. Others can happen as soon as the data required to satisfy their `translate` definitions is available.
 
-Separating code by when it needs to happen is a useful technique. A lot of code 
+Separating code by when it needs to happen is a useful technique.
+
+<hr/>
+	
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [q]: http://weblog.raganwald.com/2006/06/my-favourite-interview-question.html
 [ww]: http://weblog.raganwald.com/2007/03/why-why-functional-programming-matters.html

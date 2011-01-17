@@ -39,6 +39,6 @@ Never mind whether I'm old or not, or whether I'm any good at turning yesterday'
 
 Unfinished ideas are opportunities. Old ideas are opportunities. Embrace them.
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

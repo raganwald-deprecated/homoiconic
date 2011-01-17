@@ -126,6 +126,6 @@ So that's what I'm going to do.
 
 *p.s. If you liked this, you may also like another very personal post from this unblog, [Optimism](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme).*
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

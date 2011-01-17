@@ -320,6 +320,6 @@ I recently discovered that [rewrite](http://github.com/raganwald/rewrite/tree "r
 
 I am fixing this, and my first priority is to make `called_by_name` work again.
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

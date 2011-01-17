@@ -17,6 +17,6 @@ But I'm a pattern matching machine, and somehow this seemed darn familiar. At th
 
 Fix one and you fix the other.
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

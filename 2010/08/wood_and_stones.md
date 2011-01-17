@@ -59,7 +59,7 @@ So in the end, something very good came out of this exercise: I wrote some inter
 
 So, enjoy Go!
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

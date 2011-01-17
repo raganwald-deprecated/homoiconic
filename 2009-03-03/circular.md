@@ -20,6 +20,6 @@ Circular
       @followers_count="412", @screen_name="raganwald", @url="http://reginald.braythwayt.com", @description="",
       @id="18137723">, @in_reply_to_status_id="", @id="1275406032">
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

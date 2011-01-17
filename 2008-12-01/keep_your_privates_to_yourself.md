@@ -403,6 +403,6 @@ And a tip: *Using local variables and `defne_method` to create private helpers a
 *  [anonymous\_method.rb](http:anonymous_method.rb)
 * An example of this recipe in action: The `separate_args` lambda from [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb)
 
-**(more)**
+<hr/>
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
