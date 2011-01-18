@@ -3,7 +3,7 @@ Anything to Declare?
 
 "Separation of Concerns" is often given as a strong motivating force when organizing code. I certainly think about it a lot (and it comes up fairly regularly when I try to organize my thoughts in essay form, e.g. [My Favourite Interview Question][q] and [Why Why Functional Programming Matters Matters][ww]).
 
-I recently did a marathon refactoring session with [Faux][f], and I'd like to sketch what changed and how it's relevant to separating concerns. The main idea is that in order to implement a new feature, route helpers for templates, I needed to factor declarations out of what were formerly opaque functions. Once the declarations were factored out, I could implement the new feature and apply some convention over configuration to make it palatable.
+As you've no doubt heard 97 bajillion times from me, I'm on a team that has been developing a new Javascript framework for writing Single Page Interface ("SPI") applications called [Faux][f]. I just finished a refactoring session, and I'd like to sketch what changed and how it's relevant to separating concerns. The main idea is that in order to implement a new feature, route helpers for templates, I needed to factor declarations out of what were formerly opaque functions. Once the declarations were factored out, I could implement the new feature and apply some convention over configuration to make it palatable.
 
 **disclaimer**
 
@@ -13,7 +13,7 @@ There's nothing really insightful in this post, I'm mostly writing it to sort ou
 
 **background**
 
-As you've no doubt heard 97 bajillion times from me, I'm on a team that has been developing a new Javascript framework for writing Single Page Interface applications called [Faux][f]. My colleague [Jamie Gilgen][jg] started work on an interesting idea: An example app for Faux that would start its life as a simple Rails app and be refactored into an SPI app. This would demonstrate how well Faux does at separating the concerns of domain logic on the server from the user interface in the browser. It would also be a nice sales pitch for folks that are comfortable with Rails but are just venturing into SPI applications.
+My colleague [Jamie Gilgen][jg] started work on an interesting idea: An example app for [Faux][f] that would start its life as a simple Rails app and be refactored into an SPI app. This would demonstrate how well Faux does at separating the concerns of domain logic on the server from the user interface in the browser. It would also be a nice sales pitch for folks that are comfortable with Rails but are just venturing into SPI applications.
 
 I took a glance at her work the other day, and the bottom dropped out of my stomach. Sprinkled throughout the app's templates are rails `link_to` helpers like this:
 
