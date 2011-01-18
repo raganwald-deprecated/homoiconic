@@ -66,6 +66,6 @@ It reads like it sounds: "Do this and then do that." The if statement sounds too
       }
     end
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

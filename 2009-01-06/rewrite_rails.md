@@ -10,6 +10,6 @@ Now, RewriteRails is not for everyone. Kindly pass this message on to some more 
 
 But if you are using `Object#andand` or `String#to_proc` in a Rails project, please consider an upgrade to RewriteRails. You can back out at any time, the plugin has been specifically engineered so that you are **never** locked in to it. Email if you would like to set up a VNC session to get it installed in your project.
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

@@ -88,7 +88,7 @@ These are just a few of the thoughts I have when I take a moment to look at a to
 
 p.s. Beautiful Failure on [Hacker News][hn] and [Reddit][r]
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

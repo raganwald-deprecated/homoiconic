@@ -103,6 +103,6 @@ THIS spirit of confidence and change is optimism, and it's what I hope we will a
 
 *p.s. If you liked this, you may also like another very personal post from this unblog, [High Anxiety](http://github.com/raganwald/homoiconic/blob/master/2009-10-20/high_anxiety.md#readme).*
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

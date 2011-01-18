@@ -38,6 +38,6 @@ So when a developer talks about being "more productive," what do they mean? Do t
 
 If someone can figure out what it means for a programmer to be more productive, I wish they would let me in on the secret. I'm not ashamed to admit that I haven't figured it out yet.
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

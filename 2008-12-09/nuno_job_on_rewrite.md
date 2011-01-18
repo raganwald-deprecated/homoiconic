@@ -16,6 +16,6 @@ I received a very nice email from [Nuno Job](http://github.com/dscape). Here it 
 > Best,  
 > Nuno
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

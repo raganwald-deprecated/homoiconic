@@ -23,6 +23,6 @@ So what do I think of sifting through the internet for personal information abou
 
 NO HIRE.
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

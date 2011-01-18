@@ -39,7 +39,7 @@ Not a big deal in itself, but this really emphasizes that if you want change, yo
 
 (You can dis or cuss this post on [Reddit][prg].)
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

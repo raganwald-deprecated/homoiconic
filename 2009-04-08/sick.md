@@ -19,6 +19,6 @@ Likewise over in La-la-lisp land we have moved from naked recursion to recursive
 
 Now its your turn. Dazzle me.
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

@@ -51,7 +51,7 @@ Note that `meld` requires [Functional Javascript][j] and that `meld` is purely f
 
 It turns out that `$.extend` does what I wanted provided you pass true as the first parameter. Wonderful news!
 
-<hr/>
+**(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
