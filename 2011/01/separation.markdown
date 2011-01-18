@@ -1,6 +1,10 @@
 Separation of Concerns
 ===
 
+*STOP! THis essay is UNDER CONSTRUCTION and quite unfinished. Drive on if you like, but be sure to bring your 4x4 with winch and engine snorkel.*
+
+[![Quicksnad plus pothole equals sunken car](http://www.carmk.com/media/2010/09/20100901082510353.jpg)](http://www.carmk.com/2010/09/01/quicksand-plus-pothole-equals-sunken-car/)
+
 "Separation of Concerns" is often given as a strong motivating force when organizing code. I certainly think about it a lot (and it comes up fairly regularly when I try to organize my thoughts in essay form, e.g. [My Favourite Interview Question][q] and [Why Why Functional Programming Matters Matters][ww]).
 
 I recently did a marathon refactoring session with [Faux][f], and I'd like to sketch what changed and how it's relevant to separating concerns.
