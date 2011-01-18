@@ -29,7 +29,7 @@ Well. You can get away with this when you're writing a complex template as part 
 
 <a href="http://www.flickr.com/photos/vkareh/2997275679/" title="Corn Maze by vkareh, on Flickr"><img src="http://farm4.static.flickr.com/3205/2997275679_9ff3cfd478.jpg" width="500" height="375" alt="Corn Maze" /></a>
 
-But last night when I got home from the gym I decided to take a little un-billable time and put it towards fixing this problem. I started by developing an even simpler example to serve as a test bed: [Misadventure][m] (play it [here][play]). Misadventure is a gross over-simplification of text-based [adventure][a] games. You've been abducted by aliens and you wake up in a corn make. Naturally, you have to find your way out of the maze.
+Last night when I got home from the gym I decided to take a little un-billable time and put it towards fixing this problem. I started by developing an even simpler example to serve as a test bed: [Misadventure][m]. Misadventure is a gross over-simplification of text-based [adventure][a] games (you can play Misadventure [here][play]). You've been abducted by aliens and you wake up in a corn maze. Naturally, you have to find your way out, one step at a time.
 
 The key benefit of Misadventure for the purpose of working on helpers for routes is that it is route-heavy: Every location in the corn maze has its own id and the game can reconstruct the maze from a seed that is provided to Javascript's PRNG `Math.random`.
 
