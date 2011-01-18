@@ -207,6 +207,8 @@ We've told Faux how to go from a `seed` to a `LocationCollection`, and how to ex
 
 Such inferences place a heavy reliance on convention over configuration, of course. But what's interesting is that they are only possible when we separate our concerns, when we factor our code.
 
+**conclusion**
+
 I wouldn't hold this out as a case study in refactoring by any stretch, Faux is still struggling to escape its embryonic sack. But it is a reminder that when facing something that seems impossibly ugly to implement, the answer may be factoring things on different lines, especially (as in this case) when something can be transformed from imperative to declarative form.
 
 My feeling is that it is nicer to work with declarations than with imperative functions or methods. In an imperative language like Javascript or ruby, declarations need some kind of engine to be useful. However, once you have things in declarative form, you have a lot of flexibility about how to apply them to the code.
