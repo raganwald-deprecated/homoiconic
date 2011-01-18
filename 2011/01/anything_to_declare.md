@@ -86,6 +86,8 @@ Along the way, each of those little functions can transform the `params` by addi
 
 This transformation will happen as part of `controller.location(params)` before the template is displayed. Some other Faux code will extract `params.seed` and `params.location_id` from the route, and then the code written here will take over and generate `params.locations` and `params.location`, which the template and view will use.
 
+<a href="http://www.flickr.com/photos/wilsonh/1731303635/" title="Corn maze by WHardcastle, on Flickr"><img src="http://farm3.static.flickr.com/2328/1731303635_cf2110f13b.jpg" width="500" height="375" alt="Corn maze" /></a>
+
 **the problem**
 
 What we'd like is that when we define `controller.location(params)`, we also get `helpers.route_to_location(params)`. Then we mix `helpers` into locals when displaying a template, and presto, you can use it in a template easily.
@@ -166,6 +168,8 @@ This declaration uses two inputs:
 It says that if we want a `location`, we can make it from a collection of `locations` and from a `location_id` with the function `function (locations, location_id) { return locations.get(location_id); }`.
 
 Armed with translations declared in this fashion, the latest version of [Faux][f] will sort everything out for us. Whether you invoke the route `#/12345/67890` or call `controller.location({ seed: 12345, location_id: 67890 })`, Faux can sort out how to display the data in the location template. And should you call `route_to_location({ location: location })`, Faux can generate `#/12345/67890` using the translations as well.
+
+<a href="http://www.flickr.com/photos/zebuladesign/4023334045/" title="Dinosaur themed Corn Maze by nzebula, on Flickr"><img src="http://farm3.static.flickr.com/2803/4023334045_265fb849cd.jpg" width="500" height="375" alt="Dinosaur themed Corn Maze" /></a>
 
 **but...**
 
