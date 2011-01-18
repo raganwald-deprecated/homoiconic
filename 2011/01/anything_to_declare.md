@@ -9,35 +9,27 @@ I recently did a marathon refactoring session with [Faux][f], and I'd like to sk
 
 There's nothing really insightful in this post, I'm mostly writing it to sort out the ideas in my own head and as something to look back at to understand what the bleep I was thinking when I built certain features into Faux.
 
-**background**
-
-As you've no doubt heard 97 bajillion times from me, I'm on a team that has been developing a new Javascript framework for writing Single Page Interface applications called [Faux][f]. We started by extracting it from a really interesting client project, and now we're documenting it and writing example apps.
-
-Example apps are great because when you're working with something very simple, there's absolutely no excuse for a complicated implementation. With client work, you can always lie to yourself a little: "This code is complicated because the underlying business logic is complicated, and there's nothing we can do about it. That code is complicated because the client insists on a complicated UI, there's nothing we can do about it." But with an example app, the code ought to be very simple, and there's no rationalization possible. If the code isn't simple, rewrite it and/or the framework until it is simple.
-
-My colleague [Jamie Gilgen][jg] started work on an interesting idea: An example that would start its life as a simple Rails app and be refactored into an SPI app. This would demonstrate how well Faux does at separating the concerns of domain logic on the server from the user interface in the browser. It would also be a nice sales pitch for folks that are comfortable with Rails but are just venturing into SPI applications.
-
-I took a glance at her work and the bottom dropped out of my stomach. Sprinkled throughout the app's templates are rails `link_to` helpers like this:
-
-    = link_to "Edit", edit_card_path(@card)
-    |
-    = link_to "Destroy", @card, :confirm => 'Are you sure?', :method => :delete
-    |
-    = link_to "View All", cards_path
-
-But Faux didn't have any helpers like this! We spent a ton of time making a library that helps displaying stuff, but for whatever reason we never even thought to write helpers for links or routes. I guess we were just so comfortable with our routes that we saw nothing wrong with writing code like this:
-
-    %a.north{ href: '#/' + seed + '/' + location.north().id }
-    
-Well. You can get away with this when you're writing a complex template as part of a complex application. And even if you don't like it, the ticket to change things goes in the same bin as the ticket to add features that the client is actually funding, so progress is slow.
-
 <a href="http://www.flickr.com/photos/vkareh/2997275679/" title="Corn Maze by vkareh, on Flickr"><img src="http://farm4.static.flickr.com/3205/2997275679_9ff3cfd478.jpg" width="500" height="375" alt="Corn Maze" /></a>
 
-Last night when I got home from the gym I decided to take a little un-billable time and put it towards fixing this problem. I started by developing an even simpler example to serve as a test bed: [Misadventure][m]. Misadventure is a gross over-simplification of text-based [adventure][a] games (you can play Misadventure [here][play]). You've been abducted by aliens and you wake up in a corn maze. Naturally, you have to find your way out, one step at a time.
+**background**
 
-The key benefit of Misadventure for the purpose of working on helpers for routes is that it is route-heavy: Every location in the corn maze has its own id and the game can reconstruct the maze from a seed that is provided to Javascript's PRNG `Math.random`.
+As you've no doubt heard 97 bajillion times from me, I'm on a team that has been developing a new Javascript framework for writing Single Page Interface applications called [Faux][f]. My colleague [Jamie Gilgen][jg] started work on an interesting idea: An example app for Faux that would start its life as a simple Rails app and be refactored into an SPI app. This would demonstrate how well Faux does at separating the concerns of domain logic on the server from the user interface in the browser. It would also be a nice sales pitch for folks that are comfortable with Rails but are just venturing into SPI applications.
 
-There's not much else going on, so working on Misadventure makes it easy to focus on the feature we need.
+I took a glance at her work the other day, and the bottom dropped out of my stomach. Sprinkled throughout the app's templates are rails `link_to` helpers like this:
+
+    = link_to "Edit", edit_card_path(@card)
+
+Oops, Faux didn't have any helpers like this! We spent a ton of time making a library that helps displaying stuff, but for whatever reason we never even thought to write helpers for links or routes. I guess we were just so comfortable with our routes that we saw nothing wrong with writing code like this:
+
+    %a.north{ href: '#/' + seed + '/' + location.north().id }
+
+This is why example apps are essential. When you're working with something very simple, there's absolutely no excuse for a complicated implementation. And that piece of code is complicated and brittle and repeats some logic that lives in a controller.
+
+> With client work, you can always lie to yourself a little: "This code is complicated because the underlying business logic is complicated, and there's nothing we can do about it. That code is complicated because the client insists on a complicated UI, there's nothing we can do about it."
+
+So, last night when I got home from the gym I decided to take a little un-billable time and put it towards fixing this problem. I started by developing an even simpler example to serve as a test bed: [Misadventure][m]. Misadventure is a gross over-simplification of text-based [adventure][a] games (you can play Misadventure [here][play]). You've been abducted by aliens and you wake up in a corn maze. Naturally, you have to find your way out, one step at a time.
+
+The key benefit of Misadventure for the purpose of working on helpers for routes is that it is route-heavy: Every location in the corn maze has its own id and the game can reconstruct the maze from a seed that is provided to Javascript's PRNG `Math.random`. There's not much else going on, so working on Misadventure makes it easy to focus on the feature we need.
 
 **the situation**
 
