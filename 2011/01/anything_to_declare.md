@@ -5,6 +5,10 @@ Anything to Declare?
 
 I recently did a marathon refactoring session with [Faux][f], and I'd like to sketch what changed and how it's relevant to separating concerns. The main idea is that in order to implement a new feature, route helpers for templates, I needed to factor declarations out of what were formerly opaque functions. Once the declarations were factored out, I could implement the new feature and apply some convention over configuration to make it palatable.
 
+**disclaimer**
+
+There's nothing really insightful in this post, I'm mostly writing it to sort out the ideas in my own head and as something to look back at to understand what the bleep I was thinking when I built certain features into Faux.
+
 **background**
 
 As you've no doubt heard 97 bajillion times from me, I'm on a team that has been developing a new Javascript framework for writing Single Page Interface applications called [Faux][f]. We started by extracting it from a really interesting client project, and now we're documenting it and writing example apps.
