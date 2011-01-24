@@ -160,21 +160,15 @@ Let's look at [controller.js][cjs]. It's the last file to be loaded, and it star
           'locations=': function () { return LocationCollection.find_or_create(); }
         })
 
-        .begin({
-          route: ':seed'
+        .method('location', {
+          route: ':seed/:location_id'
         })
-
-          .method('bed')
-
-          .method('location', {
-            route: ':location_id'
-          })
-    
-          .end()
-    
-        .end()
   
-        ;
+        .method('bed', {
+          route: ':seed/bed'
+        })
+    
+        .end();
 
 
     $(function() {
@@ -190,9 +184,9 @@ Faux the library is nothing more than a backbone controller that has a bunch of 
 
     .method('wake', { ...configuration... })
 
-    .method('bed')
-
     .method('location', { ...configuration... })
+
+    .method('bed')
     
 We now have enough information to explain Misadventure's basic structure:
 
@@ -207,7 +201,47 @@ Let's look at how each method is configured.
 
 **in the beginning**
 
-Faux methods are configured with objects, usually object literals. 
+Faux methods are configured with objects, usually object literals. To facilitate sharing configuration between methods, Faux provides a lexical scoping mechanism, `.begin({...})` and `.end()`. `.begin({...})` introduces configuration that applies to all of the `.method(...)` calls until `.end()` is called. You can nest calls to `.begin({...})`,and we see that in controllers.js.
+
+Faux methods are also configured by default according to certain naming conventions. We will discuss some more later, but for now the most important one is that unless otherwise specified, the name of the method is part of its route.
+
+Hand-waving over the exact mechanism, the code above is equivalent to:
+
+    controller
+
+        .method('wake', {
+          route: '/wake',
+          partial: 'haml/wake.haml',
+          'seed=': {
+            locations: function (locations) { return locations.seed; }
+          },
+          'locations=': {
+            '': function () { return LocationCollection.find_or_create(); },
+            seed: function (seed) { return LocationCollection.find_or_create({ seed: seed }); }
+          }
+        })
+
+        .method('location', {
+          route: '/:seed/:location_id'
+          partial: 'haml/location.haml',
+          'seed=': {
+            locations: function (locations) { return locations.seed; }
+          },
+          'locations=': {
+            seed: function (seed) { return LocationCollection.find_or_create({ seed: seed }); }
+          }
+        })
+
+        .method('bed', {
+          route: '/:seed/bed',
+          partial: 'haml/bed.haml',
+          'seed=': {
+            locations: function (locations) { return locations.seed; }
+          },
+          'locations=': {
+            seed: function (seed) { return LocationCollection.find_or_create({ seed: seed }); }
+          }
+        })
 
 [bc]: http://documentcloud.github.com/backbone/#Controller
 
