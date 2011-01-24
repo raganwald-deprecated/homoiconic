@@ -296,7 +296,7 @@ As you know from jQuery, this code:
 
 So now we know how the application is launched. Let's look at our controller methods in more detail.
 
-`controller.wake()`
+controller.wake()
 ---
 
 As you saw above, `controller.wake()` has this "extended" configuration:
@@ -347,7 +347,7 @@ In our case, we aren't providing any parameters, so Faux can't calculate `seed` 
 
 Let's say this produces `'19608841026141122'`. So our parameters went from `{}` (no parameters) to `{ seed: '19608841026141122' }`. What about `locations`? Well, now that we have`seed`, Faux can calculation `locations` using `LocationCollection.find_or_create({ seed: seed })`. So Faux now has parameters of `{ seed: '19608841026141122', locations: ... }`.
 
-`wake.haml`
+wake.haml
 ---
 
 "ANd?" you may ask. Well, Faux knows this method is called `Wake`. Faux has already looked for a `Backbone.View` of `WakeView` Looking in `views.js`, we see that there is a `BedView` and a `LocationView`, but no `WakeView`. Likewise, there is no `Wake` or `WakeModel` defined. Therefore, Faux skips all other Backbone architecture and displays the parameters it has in the `wake.haml` template:
