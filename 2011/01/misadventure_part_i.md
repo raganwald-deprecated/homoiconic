@@ -200,7 +200,7 @@ We now have enough information to explain Misadventure's basic structure:
 
 We haven't explained anything else about views, models, parsing parameters out of URL, or even defining which URLs invoke which methods yet. All of these things are driven by convention and configuration (preferring convention over configuration, of course).
 
-****what is a controller method?**
+**what is a controller method?**
 
 If you're comfortable with a web framework like Ruby on Rails, you already know what a controller method is: A controller method is the application code that services a request or performs an action. All of the controller methods defined in Misadventure display something in the page using a template.
 

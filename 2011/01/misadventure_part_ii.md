@@ -71,7 +71,7 @@ These options name two parameters, `seed` and `locations`. They also describe ho
 
 You can see that the convention is to provide a hash of variable(s) provided to functions that do the calculating. The special case is that if you provide an empty string as a key, it becomes the "default" calculation.
 
-In our case, we aren't providing any parameters, so Faux can't calculate `seed` from `locations`, and it can't use `seed` to calculate `locations` (since it doesn't have seed). Since it doesn't have any other calculation that works, Faux will use the "default" calculation for `seed` of `Math.random().toString().substring(2)` `LocationCollection.find_or_create()`.
+In our case, we aren't providing any parameters, so Faux can't calculate `seed` from `locations`, and it can't use `seed` to calculate `locations` (since it doesn't have seed). Since it doesn't have any other calculation that works, Faux will use the "default" calculation for `seed` of `Math.random().toString().substring(2)`.
 
 Let's say this produces `'19608841026141122'`. So our parameters went from `{}` (no parameters) to `{ seed: '19608841026141122' }`. What about `locations`? Well, now that we have`seed`, Faux can calculation `locations` using `LocationCollection.find_or_create({ seed: seed })`. So Faux now has parameters of `{ seed: '19608841026141122', locations: ... }`.
 
