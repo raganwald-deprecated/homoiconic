@@ -9,7 +9,8 @@ Misadventure, Part I: Overview
 
 This is Part I, wherein we look at the game and its controller. In [Part II][pii], we'll start our examination of controller methods with a look at `controller.wake()`.
 
-**the game**
+Misadventure
+---
 
 Open [http://unspace.github.com/misadventure][play] in your browser.
 
@@ -56,7 +57,8 @@ Before we look at the code, here's a quick summary of what we've seen:
 
 Now we'll see how Misadventure uses Faux and Backbone.js to make this happen.
 
-**code overview**
+i can haz codes?
+---
 
 Misadventure is organized in a tree:
 
@@ -141,7 +143,6 @@ Let's look at [controller.js][cjs]. It's the last file to be loaded, and it star
 
     var controller = new Faux.Controller({
       save_location: true,
-      model_clazz: true,
       element_selector: '.content',
       partial: 'haml',
       partial_suffix: '.haml',
@@ -224,7 +225,6 @@ The code above is equivalent to:
       .method('wake', {
         route: '/wake',            // <- by convention, from the name
         partial: 'haml/wake.haml', // <- by convention, from the name
-        model_clazz: false,        // <- by convention, from the name
         clazz: false,              // <- by convention, from the name
         'seed=': {                 // <- 'inherited' from .begin(...)
           locations: function (locations) { return locations.seed; },
@@ -241,7 +241,6 @@ The code above is equivalent to:
       .method('bed', {
         route: '/:seed/bed',
         partial: 'haml/bed.haml',  // <- by convention, from the name
-        model_clazz: false,        // <- by convention, from the name
         clazz: BedView,            // <- by convention, from the name
         'seed=': {                 // <- 'inherited' from .begin(...)
           locations: function (locations) { return locations.seed; },

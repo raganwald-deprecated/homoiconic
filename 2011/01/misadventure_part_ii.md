@@ -1,4 +1,4 @@
-Misadventure, [Part I][pi]I: The "Wake" Controller Method
+Misadventure, Part II: The "Wake" Controller Method
 ===
 
 *Misadventure is a little game written on top of Faux and Backbone.js*
@@ -7,17 +7,32 @@ Misadventure, [Part I][pi]I: The "Wake" Controller Method
 
 [Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
 
-This is [Part I][pi], wherein we start our examination of controller methods with a look at `controller.wake()` . In [Part I][pi], we had an introduction to the game and its controller
+This is [Part I][pi], wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller
 
 controller.wake()
 ---
 
-As we saw in [Part I][pi], `controller.wake()` has this "extended" configuration (meaning this is a combination of what we actually write and what Faux infers for us):
+As we saw in [Part I][pi], `controller.wake()` is configured like this:
+
+    controller
+
+      .begin({
+        'seed=': {
+          locations: function (locations) { return locations.seed; },
+          '': function () { return Math.random().toString().substring(2); }
+        },
+        'locations=': {
+          seed: function (seed) { return LocationCollection.find_or_create({ seed: seed }); }
+        }
+      })
+
+        .method('wake')
+
+And Faux turns what we write into this "extended" configuration (meaning this is a combination of what we actually write and what Faux infers for us):
 
     .method('wake', {
       route: '/wake',            // <- by convention, from the name
       partial: 'haml/wake.haml', // <- by convention, from the name
-      model_clazz: false,        // <- by convention, from the name
       clazz: false,              // <- by convention, from the name
       'seed=': {                 // <- 'inherited' from .begin(...)
         locations: function (locations) { return locations.seed; },
@@ -63,7 +78,11 @@ Let's say this produces `'19608841026141122'`. So our parameters went from `{}` 
 wake.haml
 ---
 
-"ANd?" you may ask. Well, Faux knows this method is called `Wake`. Faux has already looked for a `Backbone.View` of `WakeView` Looking in `views.js`, we see that there is a `BedView` and a `LocationView`, but no `WakeView`. Likewise, there is no `Wake` or `WakeModel` defined. Therefore, Faux skips all other Backbone architecture and displays the parameters it has in the `wake.haml` template:
+"And?" you may ask. Well, Faux knows this method is called `Wake`. And by default, Faux has figured out that its template is `haml/wake.hal`. Templates can be displayed by themselves or they can be controlled by an instance of `Backbone.View` (or much more likely, an instance of a class you define by extending `Backbone.View`). Which class to use is determined by the `clazz` configuration.
+
+Faux has already looked for a `Backbone.View` class called `WakeView`. Looking in `views.js`, we see that there is a `BedView` and a `LocationView`, but no `WakeView`. If Faux can't find a view class with the conventional name and you don't tell it you want to use a different class, Faux assumes you don't want to use a view class, just a template. Thus, Faux assumes `clazz: false` as you saw above and just displays the `wake.haml` template.
+
+Therefore, the `controller.wake()` method displays the parameters it has in the `wake.haml` template:
 
     %p.intro You have been abducted by aliens!
 
@@ -118,9 +137,12 @@ This, incidentally, is the whole point of writing the separate calculations as p
 
 Consider the alternative. If we didn't have separate calculations, you would have to write `route_to_location({ seed: location.collection.seed, location_id: location.id })`. That's better than `'#/' + location.collection.seed + '/' + location.id`, but not much. Now all this code needs to know is that the route to a location requires a location. The specifics of how that is translated to the route is hidden. Perhaps some future refactoring might build enough information into the location's id that no seed is necessary.
 
-**summary**
+Summary
+---
 
-Our `controller.wake()` method doesn't use a Backbone model or view. It infers parameters and those parameters are available as locals in `wake.haml`. Also, `route_to` helpers are available in `wake.haml` as local functions.
+Our `controller.wake()` method doesn't use a Backbone view class. It infers parameters and those parameters are available as locals in `wake.haml`. Also, `route_to` helpers are available in `wake.haml` as local functions.
+
+In Part III of this series (to come), we will look at `controller.bed()` in detail. `controller.bed()` uses a view class, so we'll have an opportunity to learn a little about how Backbone view classes work and how Faux wires a controller method, a view class, and a template together.
 
 **(more)**
 	
