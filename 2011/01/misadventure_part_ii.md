@@ -73,6 +73,8 @@ You can see that the convention is to provide a hash of variable(s) provided to 
 
 In our case, we aren't providing any parameters, so Faux can't calculate `seed` from `locations`, and it can't use `seed` to calculate `locations` (since it doesn't have seed). Since it doesn't have any other calculation that works, Faux will use the "default" calculation for `seed` of `Math.random().toString().substring(2)`.
 
+(We don't know what a "seed" is, but knowing that we included [Math.seedrandom][sr] in the project, we can make an educated guess that the "seed" is used to make sure we have a repeatable series of pseudo-random numbers. Given taht we seem to work with randomly generated mazes, when we get to the post about generating the mazes, you won't be surprised to discover that each seed generates its own maze, and therefore by storing or passing around the seed we have a compact way of storing the layout of the maze. Randomly generating a new seed is a way of identifying a new maze even if we haven't generated it yet.)
+
 Let's say this produces `'19608841026141122'`. So our parameters went from `{}` (no parameters) to `{ seed: '19608841026141122' }`. What about `locations`? Well, now that we have`seed`, Faux can calculation `locations` using `LocationCollection.find_or_create({ seed: seed })`. So Faux now has parameters of `{ seed: '19608841026141122', locations: ... }`.
 
 wake.haml
@@ -174,3 +176,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [l3]: http://unspace.github.com/misadventure/#/42492610216140747/3916709493533819
 [bed]: http://unspace.github.com/misadventure/#/42492610216140747/bed
 [pi]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_i.md#readme
+[sr]: http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html "Random Seeds, Coded Hints, and Quintillions"
