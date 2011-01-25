@@ -16,7 +16,7 @@ Open [http://unspace.github.com/misadventure][play] in your browser.
 
 Misadventure starts inauspiciously:
 
-<a target="_blank" href="http://min.us/mvkEt6y"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
+<a target="_blank" href="http://min.us/mvkEt6y#1"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
 
 You notice that a *fragment* of [#/wake][wake] has been added to the URL, but the base URL hasn't changed. Since Single Page Interface architecture is all the rage these days, you already know that this means that the contents of the page are being loaded into the DOM without refreshing the entire page. That requires much less bandwidth and scales faster than rendering pages from the server.
 

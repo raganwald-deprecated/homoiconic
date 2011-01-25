@@ -102,7 +102,7 @@ Therefore, the `controller.wake()` method displays the parameters it has in the 
 
 And this is what you see:
 
-<a target="_blank" href="http://min.us/mvkEt6y"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
+<a target="_blank" href="http://min.us/mvkEt6y#1"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
 
 The two things of interest in our template are `href: route_to_location({ location: locations.centre })` and `href: route_to_wake()`. Each of the controller methods we defined has a corresponding `route_to` helper method that is available locally in templates. So (obviously) the `route_to_location` helper returns the route that invokes `controller.location(...)` and the `route_to_wake` helper returns the route that invokes `controller.wake()`.
 
