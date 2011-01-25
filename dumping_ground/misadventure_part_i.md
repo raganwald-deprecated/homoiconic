@@ -1,11 +1,13 @@
-Misadventure
+Misadventure, Part I: Overview
 ===
 
-*A little game written on top of Faux and Backbone.js*
+*Misadventure is a little game written on top of Faux and Backbone.js*
 
 **introduction**
 
-[Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure's code makes use of the [Faux][f] and [Backbone.js][b] libraries. In this essay I will give you a brief tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
+[Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
+
+This is Part I, wherein we look at the game and its controller. In [Part II][pii], we'll start our examination of controller methods with a look at `controller.wake()`.
 
 **the game**
 
@@ -294,116 +296,18 @@ As you know from jQuery, this code:
     
 ...is run when the page has loaded. `Backbone.history.start();` initializes Backbone's support for managing URLs. The next line checks to see whether the current URL has a fragment. If it doesn't, it invokes the controller method `.wake()` to start the application in a new cornfield.
 
-So now we know how the application is launched. Let's look at our controller methods in more detail.
+So now we know that when our application is launched by loading its URL, if we have a fragment, we let the controller sort out what to do. If we don't have a fragment, we invoke `controller.wake()` to start a new game.
 
-controller.wake()
+Summary
 ---
 
-As you saw above, `controller.wake()` has this "extended" configuration:
+In this first post, we've seen how Misadventure behaves like a web site, with stable URLs that can be bookmarked or shared and with standard navigation like back and forwards. We've also seen that everything is done in the DOM, with no laborious refreshing of the entire page.
 
-    .method('wake', {
-      route: '/wake',            // <- by convention, from the name
-      partial: 'haml/wake.haml', // <- by convention, from the name
-      model_clazz: false,        // <- by convention, from the name
-      clazz: false,              // <- by convention, from the name
-      'seed=': {                 // <- 'inherited' from .begin(...)
-        locations: function (locations) { return locations.seed; },
-        '': function () { return Math.random().toString().substring(2); }
-      },
-      'locations=': {
-        '': function () { return LocationCollection.find_or_create(); },
-        seed: function (seed) {  // <- 'inherited' from .begin(...)
-          return LocationCollection.find_or_create({ seed: seed }); 
-        }
-      }
-    })
-        
-We've discussed that because its route is configured to be `/wake`, `controller.wake()` is invoked by a fragment of `#wake`. It can also be invoked directly, as we saw when the page is first loaded. It has no parameters.
+In [Part II][pii] of this series, we'll look at `controller.wake()` in detail, exploring how controller methods are declared using Faux's little DSL, how parameters are inferred, how templates are displayed, and we'll look at `route_to` helpers you can use in templates.
 
-So what happens after it is invoked? This is where the additional configuration comes into play:
-
-      'seed=': {
-        locations: function (locations) { return locations.seed; },
-        '': function () { return Math.random().toString().substring(2); }
-      },
-      
-And:
-
-      'locations=': {
-        seed: function (seed) {
-          return LocationCollection.find_or_create({ seed: seed }); 
-        }
-      }
-
-These options name two parameters, `seed` and `locations`. They also describe how might calculate either one if it isn't provided. What they say is:
-
-1. To calculate `seed`, if you have `locations`, return `locations.seed`
-2. To calculate `seed`, if nothing else works, return `Math.random().toString().substring(2)`
-2. To calculate `locations`, if you have `seed`, return `LocationCollection.find_or_create({ seed: seed })`
-
-You can see that the convention is to provide a hash of variable(s) provided to functions that do the calculating. The special case is that if you provide an empty string as a key, it becomes the "default" calculation.
-
-In our case, we aren't providing any parameters, so Faux can't calculate `seed` from `locations`, and it can't use `seed` to calculate `locations` (since it doesn't have seed). Since it doesn't have any other calculation that works, Faux will use the "default" calculation for `seed` of `Math.random().toString().substring(2)` `LocationCollection.find_or_create()`.
-
-Let's say this produces `'19608841026141122'`. So our parameters went from `{}` (no parameters) to `{ seed: '19608841026141122' }`. What about `locations`? Well, now that we have`seed`, Faux can calculation `locations` using `LocationCollection.find_or_create({ seed: seed })`. So Faux now has parameters of `{ seed: '19608841026141122', locations: ... }`.
-
-wake.haml
----
-
-"ANd?" you may ask. Well, Faux knows this method is called `Wake`. Faux has already looked for a `Backbone.View` of `WakeView` Looking in `views.js`, we see that there is a `BedView` and a `LocationView`, but no `WakeView`. Likewise, there is no `Wake` or `WakeModel` defined. Therefore, Faux skips all other Backbone architecture and displays the parameters it has in the `wake.haml` template:
-
-    %p.intro You have been abducted by aliens!
-
-    %img{ src: './images/cornfield.gif' }
-
-    %p.caption You wake up in a cornfield.
-
-    %ol
-      %li
-        %a.stand_north{ href: route_to_location({ location: locations.centre }) } Stand up
-         and look around.
-
-      %li.reset
-        Or you can 
-        %a.close_eyes{ href: route_to_wake() } close your eyes
-         and go back to sleep, maybe it will all go away.
-
-The two things of interest in this template are `href: route_to_location({ location: locations.centre })` and `href: route_to_wake()`. Each of the controller methods we defined has a corresponding `route_to` helper method that is available locally in templates. So (obviously) the `route_to_location` helper returns the route that invokes `controller.location(...)` and the `route_to_wake` helper returns the route that invokes `controller.wake()`.
-
-Let's look at `route_to_location({ location: locations.centre })`. We're passing in a parameter named `location`. We'll get to that in a moment, but the value is interesting: We take our `locations` parameter and get the `centre` property. (That happens to be the centre of the corn maze, but we'll cover locations shortly.)
-
-So what happens when we call `route_to_location({ location: locations.centre })`? Let's take a sneak peek at our definition for `controller.location`:
-
-      .method('location', {
-        route: '/:seed/:location_id'
-        partial: 'haml/location.haml', // <- by convention, from the name
-        model_clazz: Location,         // <- by convention, from the name
-        clazz: LocationView,           // <- by convention, from the name
-        'seed=': {                     // <- 'inherited' from .begin(...)
-          locations: function (locations) { return locations.seed; },
-          '': function () { return Math.random().toString().substring(2); }
-        },
-        'locations=': {                // <- 'inherited' from .begin(...)
-          seed: function (seed) { return LocationCollection.find_or_create({ seed: seed }); },
-          location: function (location) { return location.collection; } // <- by convention, from the name
-        },
-        'location_id': {               // <- by convention, from the name
-          location: function (location) { return location.id; }
-        },
-        'location=': {                 // <- by convention, from the name
-          'locations location_id': function (locations, location_id) { return locations.get(location_id); }
-        }
-      })
-    
-Faux wants to generate a route. So it needs a `seed` and a `location_id`. We've defined how to make a `seed` out of `locations`. And Faux has inferred how to make `locations` out of a `location` from the name. So Faux figures the seed out from the location your supply. Faux also needs a `location_id`, and once again Faux has inferred the correct function from the names, and it can fill in the values.
-
-(If you don't like to use such obvious naming conventions, you are free to define your own conversion functions, just as we did for `seed` and `locations`).
-
-So having provided the centre `location`, Faux is able to calculate a route of `http://unspace.github.com/misadventure/#/7221645157845498/6682013437305772` using `route_to_location`.  With `route_to_wake`, no calculations are needed because the route, `/wake`, doesn't have any parameters.
-
-This, incidentally, is the whole point of writing the separate calculations as part of the configuration instead of as a function. Faux can mix that in with conversions it infers by convention and thus support `route_to` helpers.
-
-Consider the alternative. If we didn't have separate calculations, you would have to write `route_to_location({ seed: location.collection.seed, location_id: location.id })`. That's better than `'#/' + location.collection.seed + '/' + location.id`, but not much. Now all this code needs to know is that the route to a location requires a location. The specifics of how that is translated to the route is hidden. Perhaps some future refactoring might build enough information into the location's id that no seed is necessary.
+**(more)**
+	
+Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [bc]: http://documentcloud.github.com/backbone/#Controller
 [haml-lang]: http://haml-lang.com/
@@ -426,3 +330,4 @@ Consider the alternative. If we didn't have separate calculations, you would hav
 [l2]: http://unspace.github.com/misadventure/#/42492610216140747/5682321739861935
 [l3]: http://unspace.github.com/misadventure/#/42492610216140747/3916709493533819
 [bed]: http://unspace.github.com/misadventure/#/42492610216140747/bed
+[pii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_ii.md#readme
