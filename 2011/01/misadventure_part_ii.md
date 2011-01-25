@@ -1,4 +1,4 @@
-Misadventure, Part II: The "Wake" Controller Method
+Misadventure, Part II: controller.wake()
 ===
 
 *Misadventure is a little game written on top of Faux and Backbone.js*
@@ -7,7 +7,7 @@ Misadventure, Part II: The "Wake" Controller Method
 
 [Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
 
-This is Part II, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller
+This is Part II, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller.
 
 controller.wake()
 ---
