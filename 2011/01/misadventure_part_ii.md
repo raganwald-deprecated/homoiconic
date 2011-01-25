@@ -78,9 +78,9 @@ Let's say this produces `'19608841026141122'`. So our parameters went from `{}` 
 wake.haml
 ---
 
-"And?" you may ask. Well, Faux knows this method is called `Wake`. And by default, Faux has figured out that its template is `haml/wake.hal`. Templates can be displayed by themselves or they can be controlled by an instance of `Backbone.View` (or much more likely, an instance of a class you define by extending `Backbone.View`). Which class to use is determined by the `clazz` configuration.
+"And?" you may ask. Well, Faux knows this method is called `Wake`. And by default, Faux has figured out that its template is `haml/wake.haml`. Templates can be displayed by themselves or they can be controlled by an instance of `Backbone.View` (or much more likely, an instance of a class you define by extending `Backbone.View`). Which class to use is determined by the `clazz` configuration.
 
-Faux has already looked for a `Backbone.View` class called `WakeView`. Looking in `views.js`, we see that there is a `BedView` and a `LocationView`, but no `WakeView`. If Faux can't find a view class with the conventional name and you don't tell it you want to use a different class, Faux assumes you don't want to use a view class, just a template. Thus, Faux assumes `clazz: false` as you saw above and just displays the `wake.haml` template.
+Faux has already looked for a `Backbone.View` class called `WakeView`. Looking in [views.js][vjs], we see that there is a `BedView` and a `LocationView`, but no `WakeView`. If Faux can't find a view class with the conventional name and you don't tell it you want to use a different class, Faux assumes you don't want to use a view class, just a template. Thus, Faux assumes `clazz: false` as you saw above and just displays the `wake.haml` template.
 
 Therefore, the `controller.wake()` method displays the parameters it has in the `wake.haml` template:
 
