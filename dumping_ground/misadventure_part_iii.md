@@ -117,7 +117,7 @@ Now that we understand how Faux determines all of the parameters (and not just t
 LocationCollection and Location
 ---
 
-AS we saw above, given a `seed` and a `location_id`, the first thing Faux does is evaluate `LocationCollection.find_or_create({ seed: '7762367175167509' })`. Have a look at the `LocationCollection` class, it's in [models.js][mjs]. The first thing is that `find_or_create({ seed: '7762367175167509' })` is a class method. It allows us to cache location collections so that we don't have to make a new one every time we process a new route.
+Given a `seed` and a `location_id`, the first thing Faux does is evaluate `LocationCollection.find_or_create({ seed: '7762367175167509' })`. Have a look at the `LocationCollection` class, it's in [models.js][mjs]. The first thing is that `find_or_create({ seed: '7762367175167509' })` is a class method. It allows us to cache location collections so that we don't have to make a new one every time we process a new route.
 
 But the first time, we'll have to make a new `LocationCollection`. So what is a `LocationCollection`? Quite simply, it's a Corn Maze. Out of the box, Backbone.js gives you collections that store models by `id`, can proxy to a remote server by AJAX, and so on.
 
@@ -125,9 +125,162 @@ When writing a Backbone.js-based application, you can use collections of models 
 
 The `LocationCollection` class is responsible for maintaining a two-dimensional collection of nodes in a maze. So if you want to iterate through the locations in a row from West to East without regard for whether walls block passage, you work through the `LocationCollection`. But if you want to travel from node to node following the passages, you work through the `Locations`.
 
+    window.Location = Backbone.Model.extend({
+  
+      // Methods that return the adjacent location, even if it is `this`.
+      north: function () { return this.attributes.north && this.collection.get(this.attributes.north.id); },
+      south: function () { return this.attributes.south && this.collection.get(this.attributes.south.id); },
+      west: function () { return this.attributes.west && this.collection.get(this.attributes.west.id); },
+      east: function () { return this.attributes.east && this.collection.get(this.attributes.east.id); },
+  
+      // Methods that return whether the adjacent location is a different location and passable.
+      has_north: function () { return this.attributes.north && this !== this.attributes.north; },
+      has_south: function () { return this.attributes.south && this !== this.attributes.south; },
+      has_west: function () { return this.attributes.west && this !== this.attributes.west; },
+      has_east: function () { return this.attributes.east && this !== this.attributes.east; },
+  
+      // Methods that return whether the adjacent location is passable, which could be
+      // an adacent location or an exit.
+      passage_north: function () { return this !== this.attributes.north; },
+      passage_south: function () { return this !== this.attributes.south; },
+      passage_west: function () { return this !== this.attributes.west; },
+      passage_east: function () { return this !== this.attributes.east; },
+  
+  
+      // Methods that return whether the adjacent location is the exit.
+      escapes_north: function () { return undefined === this.attributes.north; },
+      escapes_south: function () { return undefined === this.attributes.south; },
+      escapes_west: function () { return undefined === this.attributes.west; },
+      escapes_east: function () { return undefined === this.attributes.east; }
+  
+    });
+
 Each location has four attributes, `north`, `south`, `east`, and `west`. The preferred method of access is through the instance methods `north()`, `south()`, `east()`, and `west()`. If there is a passage to another node in any direction, the attribute contains that node. If there is a wall blocking passage, or the node is on the edge of the maze, that attribute is the location itself. This is like having an arc that leads back to its origin.
 
-One location on the edge of the maze has a single attribute of `undefined`. That is the direction that leads to escaping the maze (`undefined` approximating the idea of travelling outside of the maze's geometry). There are convenience methods such as `escapes_north()` to test whether travelling North would escape the maze and `passage_west()` that tests whether travelling West would lead somewhere else (either escape or another location).
+A location can have an `undefined` direction attribute. This is the way we note that a location is adjacent to the exit, and that travelling in that direction escapes from the maze (`undefined` approximating the idea of travelling outside of the maze's geometry). There are convenience methods such as `escapes_north()` to test whether travelling North would escape the maze and `passage_west()` that tests whether travelling West would lead somewhere else (either escape or another location).
+
+`Location` instances are constructed and owned by `LocationCollection` instances.
+
+    window.LocationCollection = Backbone.Collection.extend({
+  
+      model: Location,
+  
+      initialize: function (models, options) {
+        this.seed = options.seed || this._random_string();
+        this.field_width = options.width || 15;
+        this.field_height = options.height || 15;
+        this._regenerate();
+      },
+  
+      _random_string: function () {
+        return Math.random().toString().substring(2);
+      },
+  
+      // **Generate a New Maze**
+      _regenerate: function () {
+        // ...
+      },
+  
+      _bisect: function (low_row, high_row, low_col, high_col) {
+        // ...
+      }
+  
+    }, {
+
+      find_or_create: (function () {
+        var cache = {};
+        return function (options) {
+          options || (options = {});
+          var lc;
+          if (_.isUndefined(options.seed)) {
+            lc = new window.LocationCollection([]);
+            cache[lc.seed] = lc;
+          }
+          else if (_.isUndefined(cache[options.seed])) {
+            lc = new window.LocationCollection([], options);
+            cache[options.seed] = lc;
+          }
+          else lc = cache[options.seed];
+          return lc;
+        };
+      })()
+  
+    });
+
+The basic structure is simple. `Location.find_or_create({ seed: ... })` caches location collections by seed. Multiple calls with the same seed will simply fetch the collection from the cache instead of recreating it. `.initialize(...)` concerns itself with options. The `seed` gets a random value by default, however we actually expect to be provide a seed value when we create a new location collection. `height` and `width` aren't adjustable in the interface yet, so they get default values of `15`.
+
+Having set its properties in `.initialize`, the location collection calls `._regenerate()`. This method constructs a new maze given the seed, height, and width. Let's look at how our maze is regenerated:
+
+    _regenerate: function () {
+      var width = this.field_width;
+      var height = this.field_height;
+      Math.seedrandom(this.seed);
+    
+      // Start with a rectangle of locations
+      this.field = _.range(0, height).map(function (row) {
+        return _.range(0, width).map(function (col) {
+          return new Location({ id: this._random_string(), row: row, col: col });
+        }, this);
+      }, this);
+    
+      // the centre will be the starting location
+      this.centre = this.field[Math.floor(height/2)][Math.floor(width/2)];
+    
+      // Create passageways between adjacent locations, while closing off the
+      // west and east sides
+      _(_.range(0,height)).each(function (row) {
+        _(this.field[row]).first().attributes.west = _(this.field[row]).first();
+        _(this.field[row]).last().attributes.east = _(this.field[row]).last();
+        _(_.range(0,width)).each(function (col) {
+          if (row > 0) {
+            this.field[row][col].attributes.north = this.field[row - 1][col];
+            this.field[row - 1][col].attributes.south = this.field[row][col].attributes;
+          }
+          if (col > 0) {
+            this.field[row][col].attributes.west = this.field[row][col - 1];
+            this.field[row][col - 1].attributes.east = this.field[row][col];
+          }
+        }, this);
+      }, this);
+    
+      // close off the north and south sides
+      _(_(this.field).first()).each(function (top_location) {
+        top_location.attributes.north = top_location;
+      });
+      _(_(this.field).last()).each(function (bottom_location) {
+        bottom_location.attributes.south = bottom_location;
+      });
+    
+      // open one exit
+      var which = Math.random();
+      if (which < 0.25) {
+        var col = Math.floor(Math.random() * width);
+        _(this.field).first()[col].attributes.north = undefined;
+      }
+      else if (which < 0.5) {
+        var col = Math.floor(Math.random() * width);
+        _(this.field).last()[col].attributes.south = undefined;
+      }
+      else if (which < 0.75) {
+        var row = Math.floor(Math.random() * height);
+        _(this.field[row]).first().attributes.west = undefined;
+      }
+      else {
+        var row = Math.floor(Math.random() * height);
+        _(this.field[row]).last().attributes.east = undefined;
+      }
+    
+      // recursively bisect the field until it is a maze
+      this._recursive_bisect(0, height - 1, 0, width - 1);
+    
+      // refresh the collection
+      this.refresh(_.flatten(this.field));
+    }
+  
+The first thing we do is call [Math.seedrandom][sr] with the `seed`. An important property of this method is that it must be [idempotent][idem]. WHy? Consider what happens if we start a new maze and play continuously. With every call to `controller.location(...)`, the seed is provided and the location collection is retrieved from the cache. Thus, it will always be the same location collection with the same maze layout. But what happens if someone hits reload? Or fetches a link from a bookmark? We need to generate exactly the same maze in every respect. Thus, we seed the random number generator before we regenerate the maze.
+
+Next, we create a two-dimensional collection of new locations. Each location has a pseudo-random `id`. We also initialize locations with a row and column. We don't use these at the moment, but they are useful for debugging. Then we note the `centre` location, we'll need that for `controller.wake`.
+
 
 But now let's see what happens when `controller.location()` renders its template. Things are a little more advanced than with `controller.wake()`. What we saw in [Part II][pii] was simple template being passed the parameters.
 
@@ -250,3 +403,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [pi]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_i.md#readme
 [pii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_ii.md#readme
 [sr]: http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html "Random Seeds, Coded Hints, and Quintillions"
+[idem]: https://secure.wikimedia.org/wikipedia/en/wiki/Idempotence
