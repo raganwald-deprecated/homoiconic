@@ -1,4 +1,4 @@
-Misadventure, Part II: controller.wake()
+Misadventure, Part III: Models and Views
 ===
 
 *Misadventure is a little game written on top of Faux and Backbone.js*
@@ -7,12 +7,14 @@ Misadventure, Part II: controller.wake()
 
 [Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
 
-This is Part II, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller.
+This is Part III, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller, and in [Part II][pii] we looked at controller methods and a simple view-free template.
 
-controller.wake()
+invoking controller.location()
 ---
 
-As we saw in [Part I][pi], `controller.wake()` is configured like this:
+We'll begin our look at using Backbone's [models][bm] and [views][bv] with a look at `controller.location(...)`. This method is interesting because it uses parameters to instantiate a model and a Backbone [collection][bcc], then it displays the model through a view.
+
+As we saw in [Part I][pi], `controller.location(...)` is configured like this:
 
     controller
 
@@ -26,48 +28,115 @@ As we saw in [Part I][pi], `controller.wake()` is configured like this:
         }
       })
 
-        .method('wake')
+        .method('location', {
+          route: ':seed/:location_id'
+        })
 
 And Faux turns what we write into this "extended" configuration (meaning this is a combination of what we actually write and what Faux infers for us):
 
-    .method('wake', {
-      route: '/wake',            // <- by convention, from the name
-      partial: 'haml/wake.haml', // <- by convention, from the name
-      clazz: false,              // <- by convention, from the name
-      'seed=': {                 // <- 'inherited' from .begin(...)
+    .method('location', {
+      route: '/:seed/:location_id'
+      partial: 'haml/location.haml', // <- by convention, from the name
+      model_clazz: Location,         // <- by convention, from the name
+      clazz: LocationView,           // <- by convention, from the name
+      'seed=': {                     // <- 'inherited' from .begin(...)
         locations: function (locations) { return locations.seed; },
         '': function () { return Math.random().toString().substring(2); }
       },
-      'locations=': {
-        '': function () { return LocationCollection.find_or_create(); },
-        seed: function (seed) {  // <- 'inherited' from .begin(...)
-          return LocationCollection.find_or_create({ seed: seed }); 
-        }
+      'locations=': {                // <- 'inherited' from .begin(...)
+        seed: function (seed) { return LocationCollection.find_or_create({ seed: seed }); },
+        location: function (location) { return location.collection; } // <- by convention, from the name
+      },
+      'location_id': {               // <- by convention, from the name
+        location: function (location) { return location.id; }
+      },
+      'location=': {                 // <- by convention, from the name
+        'locations location_id': function (locations, location_id) { return locations.get(location_id); }
       }
     })
         
-In [Part I][pi] we saw that because its route is configured to be `/wake`, `controller.wake()` is invoked by a fragment of `#wake`. It can also be invoked directly, as we saw when the page is first loaded. It has no parameters.
+Because its route is configured to be '/:seed/:location_id', `controller.location(...)` is invoked by almost any fragment featuring two strings separated by forward slashes such as `#/7762367175167509/9581772962891746`, `#/3072363413300996/4150982475107942`, or even `#/yahoo/serious`. That doesn't mean it can do anything sensible with the route, just that the controller will trigger `.location(...)` in response. (`controller.location(...)` can also be invoked directly, as we will see later.)
 
-So what happens after it is invoked? This is where the additional configuration comes into play:
+So what happens when `controller.location(...)` is invoked? Unlike `controller.wake()`, controller.location(...)` is expecting one or more parameters. If it's invoked with a fragment like `#/7762367175167509/9581772962891746`, this is exactly equivalent to calling it directly like this:
 
-      'seed=': {
-        locations: function (locations) { return locations.seed; },
-        '': function () { return Math.random().toString().substring(2); }
-      },
-      
-And:
+    controller.location({ seed: '7762367175167509', location_id: '9581772962891746' });
+    
+(Controller methods in Faux differs slightly from controller methods in a pure Backbone application. In Faux, the parameters extracted from the route are passed as key-value pairs. In pure Backbone, they would be passed as function parameters like this: `.location('7762367175167509', '9581772962891746')`.)
 
-      'locations=': {
-        seed: function (seed) {
-          return LocationCollection.find_or_create({ seed: seed }); 
-        }
-      }
+Just as with `.wake()`, Faux uses the calculations in the configuration (both declared and inferred by convention) to infer additional parameters. It is given `seed`, so it can ignore `seed=`. What about `locations=`?
 
-These options name two parameters, `seed` and `locations`. They also describe how might calculate either one if it isn't provided. What they say is:
+    'locations=': {                // <- 'inherited' from .begin(...)
+      seed: function (seed) { return LocationCollection.find_or_create({ seed: seed }); },
+      location: function (location) { return location.collection; } // <- by convention, from the name
+    }
 
-1. To calculate `seed`, if you have `locations`, return `locations.seed`
-2. To calculate `seed`, if nothing else works, return `Math.random().toString().substring(2)`
-2. To calculate `locations`, if you have `seed`, return `LocationCollection.find_or_create({ seed: seed })`
+We have a calculation for determining `locations` given `seed`. Faux evaluates `LocationCollection.find_or_create({ seed: seed })` and thus our parameters go from:
+
+    {
+      seed: '7762367175167509',
+      location_id: '9581772962891746'
+    }
+
+To:
+
+    {
+      seed: '7762367175167509',
+      locations: ... // an instance of LocationCollection,
+      location_id: '9581772962891746'
+    }
+    
+Now we have `seed`, `locations`, and `location_id`. Faux knows about this:
+
+    'location=': {
+      'locations location_id': function (locations, location_id) { return locations.get(location_id); }
+    }
+
+This says that if you have `locations` and `location_id`, you can calculate `location`. This is a standard inference Faux draws from the names and from the existence of a `Location` model class as well as a `LocationCollection` collection class. (If you need to use other names, you can do so by explicitly providing the appropriate calculations for Faux.)
+
+Faux evaluates `locations.get(location_id)` and there are no further calculations to perform:
+
+    {
+      seed: '7762367175167509',
+      locations: ... // an instance of LocationCollection,
+      location_id: '9581772962891746',
+      location: ... // an instance of Location
+    }
+
+If you're wondering why Faux uses this declarative syntax for calculations instead of something like:
+
+    location: function (seed, location_id) {
+      var locations = LocationCollection.find_or_create({ seed: seed });
+      var location = LocationCollection.get(location_id);
+      // ...
+    }
+
+The reason is that Faux can be much more flexible about parameters. For example, Faux generates a `route_to_location(...)` helper as we saw in [Part II][pii] that can be called with just a `location`. Faux can work out the `seed` and the `location_id` needed from the route using the calculations. Faux can also allow you to call `controller.location({ location: ... })` as we'll see below.
+
+Now that we understand how Faux determines all of the parameters (and not just the ones passed in through the route), let's take a closer look at `locations` and `location`, and more importantly, the `LocationCollection` collection class and the `Location` model class.
+
+LocationCollection and Location
+---
+
+AS we saw above, given a `seed` and a `location_id`, the first thing Faux does is evaluate `LocationCollection.find_or_create({ seed: '7762367175167509' })`. Have a look at the `LocationCollection` class, it's in [models.js][mjs]. The first thing is that `find_or_create({ seed: '7762367175167509' })` is a class method. It allows us to cache location collections so that we don't have to make a new one every time we process a new route.
+
+But the first time, we'll have to make a new `LocationCollection`. So what is a `LocationCollection`? Quite simply, it's a Corn Maze. Out of the box, Backbone.js gives you collections that store models by `id`, can proxy to a remote server by AJAX, and so on.
+
+When writing a Backbone.js-based application, you can use collections of models as-is and out of the box, and you can also add functionality and semantics. In our case, we want to enhance our collection to represent a Maze. A maze can be represented as a graph of nodes with arcs between the nodes representing open passages. The nodes will be represented by instances of `Location` with arcs between the nodes represented by attributes. Arcs are decorated with compass directions, so travelling "North" from a node would lead on a different arc than travelling "East."
+
+The `LocationCollection` class is responsible for maintaining a two-dimensional collection of nodes in a maze. So if you want to iterate through the locations in a row from West to East without regard for whether walls block passage, you work through the `LocationCollection`. But if you want to travel from node to node following the passages, you work through the `Locations`.
+
+Each location has four attributes, `north`, `south`, `east`, and `west`. The preferred method of access is through the instance methods `north()`, `south()`, `east()`, and `west()`. If there is a passage to another node in any direction, the attribute contains that node. If there is a wall blocking passage, or the node is on the edge of the maze, that attribute is the location itself. This is like having an arc that leads back to its origin.
+
+One location on the edge of the maze has a single attribute of `undefined`. That is the direction that leads to escaping the maze (`undefined` approximating the idea of travelling outside of the maze's geometry). There are convenience methods such as `escapes_north()` to test whether travelling North would escape the maze and `passage_west()` that tests whether travelling West would lead somewhere else (either escape or another location).
+
+But now let's see what happens when `controller.location()` renders its template. Things are a little more advanced than with `controller.wake()`. What we saw in [Part II][pii] was simple template being passed the parameters.
+
+Like `controller.wake()`, `controller.location(...)` will invoke its namesake template `location.haml` (you can override this default choice by naming another template, of course). But what happens between calculating all of the parameters and displaying the template?
+
+LocationView
+---
+
+We saw above that unlike `controller.wake()`, `controller.location(...)` was configured with `clazz: ControllerView` by convention. Meaning, that Faux assumed that since we were defining a controller method called `location`, and since there was a class `LocationView` that extends `Backbone.View`, we must want `LocationView` to manage the view for us.
 
 You can see that the convention is to provide a hash of variable(s) provided to functions that do the calculating. The special case is that if you provide an empty string as a key, it becomes the "default" calculation.
 
@@ -154,7 +223,10 @@ In Part III of this series (to come), we will look at `controller.bed()` in deta
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
-[bc]: http://documentcloud.github.com/backbone/#Controller
+[bc]: http://documentcloud.github.com/backbone/#Controller "Backbone.Controller"
+[bcc]: http://documentcloud.github.com/backbone/#Collection "Backbone.Collection"
+[bm]: http://documentcloud.github.com/backbone/#Model "Backbone.Model"
+[bv]: http://documentcloud.github.com/backbone/#View "Backbone.View"
 [haml-lang]: http://haml-lang.com/
 [a]: http://www.digitalhumanities.org/dhq/vol/001/2/000009/000009.html
 [f]: https://github.com/unspace/faux
@@ -176,4 +248,5 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [l3]: http://unspace.github.com/misadventure/#/42492610216140747/3916709493533819
 [bed]: http://unspace.github.com/misadventure/#/42492610216140747/bed
 [pi]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_i.md#readme
+[pii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_ii.md#readme
 [sr]: http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html "Random Seeds, Coded Hints, and Quintillions"
