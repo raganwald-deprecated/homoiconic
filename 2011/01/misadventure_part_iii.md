@@ -9,7 +9,7 @@ Misadventure, Part III: Models and Views
 
 <a target="_blank" href="http://min.us/mvkEt6y#1"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
 
-This is Part III, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller, and in [Part II][pii] we looked at controller methods and a simple view-free template.
+This is Part III, wherein we dive into controller methods that wire models, collections, views, and templates together with a look at `controller.location(...)`. In [Part I][pi], we had an introduction to the game and its controller, and in [Part II][pii] we looked at controller methods and a simple view-free template.
 
 invoking controller.location()
 ---
