@@ -330,3 +330,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [l3]: http://unspace.github.com/misadventure/#/42492610216140747/3916709493533819
 [bed]: http://unspace.github.com/misadventure/#/42492610216140747/bed
 [pii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_ii.md#readme
+[piii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_iii.md#readme
