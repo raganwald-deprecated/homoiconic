@@ -57,6 +57,8 @@ And Faux turns what we write into this "extended" configuration (meaning this is
         
 Because its route is configured to be '/:seed/:location_id', `controller.location(...)` is invoked by almost any fragment featuring two strings separated by forward slashes such as `#/7762367175167509/9581772962891746`, `#/3072363413300996/4150982475107942`, or even `#/yahoo/serious`. That doesn't mean it can do anything sensible with the route, just that the controller will trigger `.location(...)` in response. (`controller.location(...)` can also be invoked directly, as we will see later.)
 
+<a target="_blank" href="http://min.us/mvkEt6y#3"><img src="http://i.min.us/jeflO8.png" border="0"/></a>
+
 So what happens when `controller.location(...)` is invoked? Unlike `controller.wake()`, controller.location(...)` is expecting one or more parameters. If it's invoked with a fragment like `#/7762367175167509/9581772962891746`, this is exactly equivalent to calling it directly like this:
 
     controller.location({ seed: '7762367175167509', location_id: '9581772962891746' });
@@ -126,6 +128,13 @@ When writing a Backbone.js-based application, you can use collections of models 
 The `LocationCollection` class is responsible for maintaining a two-dimensional collection of nodes in a maze. So if you want to iterate through the locations in a row from West to East without regard for whether walls block passage, you work through the `LocationCollection`. But if you want to travel from node to node following the passages, you work through the `Locations`.
 
     window.Location = Backbone.Model.extend({
+  
+      // initalize each location to be surrounded by walls
+      initialize: function () {
+        _(['north', 'south', 'east', 'west']).each(function (direction) {
+          this.attributes[direction] = this;
+        }, this);
+      },
   
       // Methods that return the adjacent location, even if it is `this`.
       north: function () { return this.attributes.north && this.collection.get(this.attributes.north.id); },
@@ -209,168 +218,248 @@ A location can have an `undefined` direction attribute. This is the way we note 
 
 The basic structure is simple. `Location.find_or_create({ seed: ... })` caches location collections by seed. Multiple calls with the same seed will simply fetch the collection from the cache instead of recreating it. `.initialize(...)` concerns itself with options. The `seed` gets a random value by default, however we actually expect to be provide a seed value when we create a new location collection. `height` and `width` aren't adjustable in the interface yet, so they get default values of `15`.
 
-Having set its properties in `.initialize`, the location collection calls `._regenerate()`. This method constructs a new maze given the seed, height, and width. Let's look at how our maze is regenerated:
+Having set its properties in `.initialize`, the location collection calls `._regenerate()`. This method constructs a new maze given the seed, height, and width. Let's look at how our maze is regenerated.
+
+The first thing we do is call [Math.seedrandom][sr] with the `seed`. An important property of this method is that it must be [idempotent][idem]. Why? Consider what happens if we start a new maze and play continuously. With every call to `controller.location(...)`, the seed is provided and the location collection is retrieved from the cache. Thus, it will always be the same location collection with the same maze layout. But what happens if someone hits reload? Or fetches a link from a bookmark? We need to generate exactly the same maze in every respect. Thus, we seed the random number generator before we regenerate the maze.
 
     _regenerate: function () {
       var width = this.field_width;
       var height = this.field_height;
       Math.seedrandom(this.seed);
     
-      // Start with a rectangle of locations
+Next, we create a two-dimensional collection of new locations. Each location has a pseudo-random `id`. We also initialize locations with a row and column. We don't use these at the moment, but they are useful for debugging.
+
       this.field = _.range(0, height).map(function (row) {
         return _.range(0, width).map(function (col) {
           return new Location({ id: this._random_string(), row: row, col: col });
         }, this);
       }, this);
     
-      // the centre will be the starting location
+Then we note the `centre` location, we'll need that for `controller.wake`.
+
       this.centre = this.field[Math.floor(height/2)][Math.floor(width/2)];
     
-      // Create passageways between adjacent locations, while closing off the
-      // west and east sides
-      _(_.range(0,height)).each(function (row) {
-        _(this.field[row]).first().attributes.west = _(this.field[row]).first();
-        _(this.field[row]).last().attributes.east = _(this.field[row]).last();
-        _(_.range(0,width)).each(function (col) {
-          if (row > 0) {
-            this.field[row][col].attributes.north = this.field[row - 1][col];
-            this.field[row - 1][col].attributes.south = this.field[row][col].attributes;
-          }
-          if (col > 0) {
-            this.field[row][col].attributes.west = this.field[row][col - 1];
-            this.field[row][col - 1].attributes.east = this.field[row][col];
-          }
+At this point our locations aren't wired together, each location is surrounded by walls. It's time to create a grid of adjacent locations, so we wire the interior of the maze up, connecting adjacent locations:
+
+      _(_.range(1, height)).each(function (i_row) {
+        _(_.range(1, width)).each(function (j_col) {
+          this.field[i_row][j_col].attributes.north = this.field[i_row - 1][j_col];
+          this.field[i_row - 1][j_col].attributes.south = this.field[i_row][j_col].attributes;
+          this.field[i_row][j_col].attributes.west = this.field[i_row][j_col - 1];
+          this.field[i_row][j_col - 1].attributes.east = this.field[i_row][j_col];
         }, this);
       }, this);
+      
+At this point we have a grid, all interior locations are connected to each other and there is a wall around the periphery. We'll pick a random side and open one exit on it:
     
-      // close off the north and south sides
-      _(_(this.field).first()).each(function (top_location) {
-        top_location.attributes.north = top_location;
-      });
-      _(_(this.field).last()).each(function (bottom_location) {
-        bottom_location.attributes.south = bottom_location;
-      });
-    
-      // open one exit
       var which = Math.random();
       if (which < 0.25) {
-        var col = Math.floor(Math.random() * width);
-        _(this.field).first()[col].attributes.north = undefined;
+        var j_col = Math.floor(Math.random() * width);
+        _(this.field).first()[j_col].attributes.north = undefined;
       }
       else if (which < 0.5) {
-        var col = Math.floor(Math.random() * width);
-        _(this.field).last()[col].attributes.south = undefined;
+        var j_col = Math.floor(Math.random() * width);
+        _(this.field).last()[j_col].attributes.south = undefined;
       }
       else if (which < 0.75) {
-        var row = Math.floor(Math.random() * height);
-        _(this.field[row]).first().attributes.west = undefined;
+        var i_row = Math.floor(Math.random() * height);
+        _(this.field[i_row]).first().attributes.west = undefined;
       }
       else {
-        var row = Math.floor(Math.random() * height);
-        _(this.field[row]).last().attributes.east = undefined;
+        var i_row = Math.floor(Math.random() * height);
+        _(this.field[i_row]).last().attributes.east = undefined;
       }
     
-      // recursively bisect the field until it is a maze
+We then build a random maze inside the grid. One of the properties of a maze is that there is at least one route between any two locations in the maze. That guarantees that there is a route from centre to exit. This algorithm adds walls. You can substitute any other wall-adder that you like. We're not going to step through the `_recursive_bisect(...)` algorithm for generating a maze. You can study the code in [models.js][mjs], and Jamis Buck [describes and animates the algorithm as part of his series on generating mazes][r].
+
       this._recursive_bisect(0, height - 1, 0, width - 1);
     
-      // refresh the collection
+Now we call Backbone.js's `refresh` method on an array of all the locations. This adds them in bulk to the collection so that `locations.get(location_id)` will work. Then we're done!
+
       this.refresh(_.flatten(this.field));
     }
   
-The first thing we do is call [Math.seedrandom][sr] with the `seed`. An important property of this method is that it must be [idempotent][idem]. WHy? Consider what happens if we start a new maze and play continuously. With every call to `controller.location(...)`, the seed is provided and the location collection is retrieved from the cache. Thus, it will always be the same location collection with the same maze layout. But what happens if someone hits reload? Or fetches a link from a bookmark? We need to generate exactly the same maze in every respect. Thus, we seed the random number generator before we regenerate the maze.
+**summary**
 
-Next, we create a two-dimensional collection of new locations. Each location has a pseudo-random `id`. We also initialize locations with a row and column. We don't use these at the moment, but they are useful for debugging. Then we note the `centre` location, we'll need that for `controller.wake`.
-
-
-But now let's see what happens when `controller.location()` renders its template. Things are a little more advanced than with `controller.wake()`. What we saw in [Part II][pii] was simple template being passed the parameters.
-
-Like `controller.wake()`, `controller.location(...)` will invoke its namesake template `location.haml` (you can override this default choice by naming another template, of course). But what happens between calculating all of the parameters and displaying the template?
+The maze is represented as a graph of locations. Each location know whether it lies adjacent to the exit and which adjacent locations can be reached from it. The location collection's responsibilities are to construct the graph of locations from a seed value and to serve a location given its unique `id`.
 
 LocationView
 ---
 
-We saw above that unlike `controller.wake()`, `controller.location(...)` was configured with `clazz: ControllerView` by convention. Meaning, that Faux assumed that since we were defining a controller method called `location`, and since there was a class `LocationView` that extends `Backbone.View`, we must want `LocationView` to manage the view for us.
+At this point we know how `controller.location(...)` calculates the `locations` and `location` given a `seed` and a `location_id`. We've seen how an entire maze can be constructed from the seed and how the class caches collections so that subsequent access is fast.
 
-You can see that the convention is to provide a hash of variable(s) provided to functions that do the calculating. The special case is that if you provide an empty string as a key, it becomes the "default" calculation.
+But now let's see what happens when `controller.location()` renders its template. Things are a little more advanced than with `controller.wake()`. What we saw in [Part II][pii] was simple template being passed the parameters.
 
-In our case, we aren't providing any parameters, so Faux can't calculate `seed` from `locations`, and it can't use `seed` to calculate `locations` (since it doesn't have seed). Since it doesn't have any other calculation that works, Faux will use the "default" calculation for `seed` of `Math.random().toString().substring(2)`.
+Like `controller.wake()`, `controller.location(...)` will invoke its namesake template `location.haml` (you can override this default choice by naming another template, of course). But there is a crucial difference: `controller.location(...)` is configured with `clazz: ControllerView` by convention. Meaning, that Faux assumed that since we were defining a controller method called `location`, and since there was a class `LocationView` that extends `Backbone.View`, we must want `LocationView` to manage the view for us.
 
-(We don't know what a "seed" is, but knowing that we included [Math.seedrandom][sr] in the project, we can make an educated guess that the "seed" is used to make sure we have a repeatable series of pseudo-random numbers. Given that we seem to work with randomly generated mazes, when we get to the post about generating the mazes, you won't be surprised to discover that each seed generates its own maze, and therefore by storing or passing around the seed we have a compact way of storing the layout of the maze. Randomly generating a new seed is a way of identifying a new maze even if we haven't generated it yet.)
+Faux takes `LocationView` and extends it with a custom `.render()` method, something like this:
 
-Let's say this produces `'19608841026141122'`. So our parameters went from `{}` (no parameters) to `{ seed: '19608841026141122' }`. What about `locations`? Well, now that we have`seed`, Faux can calculation `locations` using `LocationCollection.find_or_create({ seed: seed })`. So Faux now has parameters of `{ seed: '19608841026141122', locations: ... }`.
+    var anonymous_view_clazz = LocationView.extend({
+      render: function () {
+        // run any before_rnder functions
+        // display the parameters in haml/location.haml
+        // run any after_render functions
+      }
+    });
+    
+    var view = new anonymous_view_clazz(parameters);
 
-wake.haml
+It extends `LocationView` with a `.render()` method that displays the template `location.haml`. This is important, because when you write views that update themselves, it will re-render the template as we would expect.
+
+Let's peek at the first few lines of `location.haml` and see if anything is different from `wake.haml`:
+
+    %img{ src: this.passage_image_source() }
+
+    %p.caption 
+      %em You are in #{this.text_description()}
+      
+Hmm! In `wake.haml` we accessed the parameters as locals. In a template associated with a view class, the instance of the view is available as `this`. Good style is to access the parameters as `this.options` instead of as locals. For example, the seed would be `this.options.seed`.
+
+Functions like `this.text_description()` are methods on the view instance, of course. A view becomes a good way to organize helper functions and unobtrusive Javascript for a template. Here's `LocationView` showing the helper methods that are designed to be called from within the template:
+
+    window.LocationView = Backbone.View.extend({
+  
+      before_render: function () { ... }
+      after_render: function () { ... }
+      go_north: function () { ... },
+      go_south: function () { ...  },
+      go_east: function () { ... },
+      go_west: function () { ... },
+  
+      // The text description is a clumsy homage to [Adventure][play].
+      //
+      // [play]: http://unspace.github.com/misadventure/
+      text_description: (function () {
+        var descriptions = ['a hole with no way out',
+          'a little maize of twisting passages',
+          'a little maize of twisty passages',
+          'a little twisty maize of passages',
+          'a maize of little twisting passages',
+          'a maize of little twisty passages',
+          'a maize of twisting little passages',
+          'a maize of twisty little passages',
+          'a twisting little maize of passages',
+          'a twisting maize of little passages',
+          'a twisty little maize of passages',
+          'a twisty maize of little passages',
+          'a little twisting maize of passages',
+          'amazing little twisting passages',
+          'amazing little twisty passages',
+          'amazing twisting little passages'];
+        return function () {
+          return descriptions[
+            (this.model.has_north() ? 1 : 0) + 
+            (this.model.has_south() ? 2 : 0) + 
+            (this.model.has_west() ? 4 : 0) + 
+            (this.model.has_east() ? 8 : 0)
+          ];
+        };
+      })(),
+  
+      // a rough approximation of what you might see here
+      passage_image_source: (function () {
+        var passages = ['./images/passages1.png',
+          './images/passages1.png',
+          './images/passages2.png',
+          './images/passages3.png',
+          './images/passages4.png'];
+        return function () {
+          return passages[
+            (this.model.has_north() ? 1 : 0) + 
+            (this.model.has_south() ? 1 : 0) + 
+            (this.model.has_west() ? 1 : 0) + 
+            (this.model.has_east() ? 1 : 0)
+          ];
+        };
+      })()
+  
+    });
+
+There's one more thing. Faux looks for `before_render` and `after_render` functions in the view class. When it composes the `.render()` method for the view, it mixes this [method advice][aop] in. `LocationView` uses `before_render` and `after_render` to bind a keypress listener to the DOM's document object. When the user presses an arrow key, the view's `go_north`, `go_south`, `go_east`, or `go_west` methods are called.
+
+Now you see another use for view classes: Managing the code required for the user experience. Let's have a look at `go_north`:
+
+    go_north: function () {
+      if (this.model.has_north()) {
+        this.options.controller.location({ location: this.model.north() });
+      }
+      else if (this.model.escapes_north()) {
+        this.options.controller.bed({ location: this.model })
+      }
+    }
+
+Up to now we've talked about directly invoking a controller method, but here we see it in action. This is much more readable and stable than trying to simulate a redirect through the URL. We also see that as promised, although the route for `controller.location(...)` expects a `seed` and a `location_id`, the controller method can take a `location` and go from there. If you try an arrow key in the browser, you'll also see that calling the controller method properly updates the fragment in the history so that navigation and bookmarking works properly.
+
+Faux isolates the details of URLs from the code.
+
+(Backbone.js provides a convenient and expressive mechanism for views to handle DOM events, however this will not work for keypresses unless they are associated with a form inside the DOM element managed by the view. There's no form, so we can't use Backbone's mechanism and have rolled our own listener. You can read the code in [views.js][vjs].)
+
+**summary**
+
+The view class is the natural repository for code related to displaying what is seen and for handling interaction with the user. The view class extends `Backbone.View`, and Faux writes a `.render()` method for the view that displays the template. You can customize this method by writing `before_render` and `after_render` methods. When a view class like `LocationView` is is use, the view instance is the template's current context and available as `this`. You can thus write your own helper methods in the view.
+
+Although we don';t show it in Misadventure, you can use standard Backbone event handlers and wire views to models to handle automatic updates.
+
+more location.haml
 ---
 
-"And?" you may ask. Well, Faux knows this method is called `Wake`. And by default, Faux has figured out that its template is `haml/wake.haml`. Templates can be displayed by themselves or they can be controlled by an instance of `Backbone.View` (or much more likely, an instance of a class you define by extending `Backbone.View`). Which class to use is determined by the `clazz` configuration.
+In [Part II][pii], we saw that a template can access the controller method's parameters as locals, and we also saw that it can access helper methods as local functions. Let's take a full look at `location.haml`:
 
-Faux has already looked for a `Backbone.View` class called `WakeView`. Looking in [views.js][vjs], we see that there is a `BedView` and a `LocationView`, but no `WakeView`. If Faux can't find a view class with the conventional name and you don't tell it you want to use a different class, Faux assumes you don't want to use a view class, just a template. Thus, Faux assumes `clazz: false` as you saw above and just displays the `wake.haml` template.
+    %img{ src: this.passage_image_source() }
 
-Therefore, the `controller.wake()` method displays the parameters it has in the `wake.haml` template:
+    %p.caption 
+      %em You are in #{this.text_description()}
 
-    %p.intro You have been abducted by aliens!
+    %ol{ id: this.model.id }
+      :if this.options.location.escapes_north()
+        %li
+          %a.north{ href: route_to_bed({ location: this.options.location }) } 
+            %strong &uarr; freedom beckons north
+      :if this.options.location.has_north()
+        %li
+          %a.north{ href: route_to_location({ location: this.options.location.north() }) } &uarr; move north
 
-    %img{ src: './images/cornfield.gif' }
+      :if this.options.location.escapes_south()
+        %li
+          %a.south{ href: route_to_bed({ location: this.options.location }) } 
+            %strong &darr; freedom beckons south  &darr;
+      :if this.options.location.has_south()
+        %li
+          %a.north{ href: route_to_location({ location: this.options.location.south() }) } turn south &darr;
 
-    %p.caption You wake up in a cornfield.
+      :if this.options.location.escapes_west()
+        %li
+          %a.west{ href: route_to_bed({ location: this.options.location }) } 
+            %strong &larr; freedom beckons to the west
+      :if this.options.location.has_west()
+        %li
+          %a.north{ href: route_to_location({ location: this.options.location.west() }) } &larr; go west
 
-    %ol
+      :if this.options.location.escapes_east()
+        %li
+          %a.east{ href: route_to_bed({ location: this.options.location }) } 
+            %strong freedom beckons to the east &rarr;
+      :if this.options.location.has_east()
+        %li
+          %a.north{ href: route_to_location({ location: this.options.location.east() }) } go east &rarr; 
+
       %li
-        %a.stand_north{ href: route_to_location({ location: locations.centre }) } Stand up
-         and look around.
-
-      %li.reset
         Or you can 
         %a.close_eyes{ href: route_to_wake() } close your eyes
          and go back to sleep, maybe it will all go away.
 
-And this is what you see:
+We see that this view mixes accessing the view instance through `this`. The current location is actually available in two different ways. You could access it directly using `location` or you could access it through the view using `this.options.location` as we've done here. When the view instance is instantiated, the controller method parameters are passed in as options.
 
-<a target="_blank" href="http://min.us/mvkEt6y#1"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
+As we saw in [Part II][pii], we can pass a parameter like the current location to a route helper, and Faux figures out what to do to display the correct fragment. For example, `route_to_location` will work out the `seed` from `location.collection.seed`, and the `location_id` from `location.id`. Experiment. It works just as well had you written:
 
-The two things of interest in our template are `href: route_to_location({ location: locations.centre })` and `href: route_to_wake()`. Each of the controller methods we defined has a corresponding `route_to` helper method that is available locally in templates. So (obviously) the `route_to_location` helper returns the route that invokes `controller.location(...)` and the `route_to_wake` helper returns the route that invokes `controller.wake()`.
+    route_to_location({ seed: locationcollection.seed, location_id: location.west().id })
 
-Let's look at `route_to_location({ location: locations.centre })`. We're passing in a parameter named `location`. We'll get to that in a moment, but the value is interesting: We take our `locations` parameter and get the `centre` property. (That happens to be the centre of the corn maze, but we'll cover locations shortly.)
-
-So what happens when we call `route_to_location({ location: locations.centre })`? Let's take a sneak peek at our definition for `controller.location`:
-
-      .method('location', {
-        route: '/:seed/:location_id'
-        partial: 'haml/location.haml', // <- by convention, from the name
-        model_clazz: Location,         // <- by convention, from the name
-        clazz: LocationView,           // <- by convention, from the name
-        'seed=': {                     // <- 'inherited' from .begin(...)
-          locations: function (locations) { return locations.seed; },
-          '': function () { return Math.random().toString().substring(2); }
-        },
-        'locations=': {                // <- 'inherited' from .begin(...)
-          seed: function (seed) { return LocationCollection.find_or_create({ seed: seed }); },
-          location: function (location) { return location.collection; } // <- by convention, from the name
-        },
-        'location_id': {               // <- by convention, from the name
-          location: function (location) { return location.id; }
-        },
-        'location=': {                 // <- by convention, from the name
-          'locations location_id': function (locations, location_id) { return locations.get(location_id); }
-        }
-      })
-    
-Faux wants to generate a route. So it needs a `seed` and a `location_id`. We've defined how to make a `seed` out of `locations`. And Faux has inferred how to make `locations` out of a `location` from the name. So Faux figures the seed out from the location your supply. Faux also needs a `location_id`, and once again Faux has inferred the correct function from the names, and it can fill in the values.
-
-(If you don't like to use such obvious naming conventions, you are free to define your own conversion functions, just as we did for `seed` and `locations`).
-
-So having provided the centre `location`, Faux is able to calculate a route of `http://unspace.github.com/misadventure/#/7221645157845498/6682013437305772` using `route_to_location`.  With `route_to_wake`, no calculations are needed because the route, `/wake`, doesn't have any parameters.
-
-This, incidentally, is the whole point of writing the separate calculations as part of the configuration instead of as a function. Faux can mix that in with conversions it infers by convention and thus support `route_to` helpers.
-
-Consider the alternative. If we didn't have separate calculations, you would have to write `route_to_location({ seed: location.collection.seed, location_id: location.id })`. That's better than `'#/' + location.collection.seed + '/' + location.id`, but not much. Now all this code needs to know is that the route to a location requires a location. The specifics of how that is translated to the route is hidden. Perhaps some future refactoring might build enough information into the location's id that no seed is necessary.
+(It's slightly better style to access parameters like `location` through the view, as this allows interactive views to change their own options..)
 
 Summary
 ---
 
-Our `controller.wake()` method doesn't use a Backbone view class. It infers parameters and those parameters are available as locals in `wake.haml`. Also, `route_to` helpers are available in `wake.haml` as local functions.
-
-In Part III of this series (to come), we will look at `controller.bed()` in detail. `controller.bed()` uses a view class, so we'll have an opportunity to learn a little about how Backbone view classes work and how Faux wires a controller method, a view class, and a template together.
+Our `controller.location(...)` method uses a model, a collection, and a view. It infers parameters and those parameters are available as locals in `location.haml`, however the preferred style is to access the parameters as options in the view instance. The view instance is the natural repository for code that helps the template, set things up or tears them down, and controls interaction with the user.
 
 **(more)**
 	
@@ -404,3 +493,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [pii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_ii.md#readme
 [sr]: http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html "Random Seeds, Coded Hints, and Quintillions"
 [idem]: https://secure.wikimedia.org/wikipedia/en/wiki/Idempotence
+[aop]: https://secure.wikimedia.org/wikipedia/en/wiki/Aspect-oriented_programming "Aspect Oriented Programming"

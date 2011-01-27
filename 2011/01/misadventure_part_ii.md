@@ -7,7 +7,7 @@ Misadventure, Part II: controller.wake()
 
 [Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
 
-This is Part II, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller.
+This is Part II, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template.
 
 controller.wake()
 ---
@@ -148,7 +148,7 @@ Summary
 
 Our `controller.wake()` method doesn't use a Backbone view class. It infers parameters and those parameters are available as locals in `wake.haml`. Also, `route_to` helpers are available in `wake.haml` as local functions.
 
-In Part III of this series (to come), we will look at `controller.bed()` in detail. `controller.bed()` uses a view class, so we'll have an opportunity to learn a little about how Backbone view classes work and how Faux wires a controller method, a view class, and a template together.
+In [Part III][piii] of this series, we will look at `controller.location(...)` in detail. `controller.location(...)` uses a model, a controller, and view class, so we'll have an opportunity to learn a little about how Backbone view classes work and how Faux wires controller methods, models, collections, views, and templates together.
 
 **(more)**
 	
@@ -176,4 +176,5 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [l3]: http://unspace.github.com/misadventure/#/42492610216140747/3916709493533819
 [bed]: http://unspace.github.com/misadventure/#/42492610216140747/bed
 [pi]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_i.md#readme
+[piii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_iii.md#readme
 [sr]: http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html "Random Seeds, Coded Hints, and Quintillions"

@@ -7,7 +7,7 @@ Misadventure, Part I: Overview
 
 [Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
 
-This is Part I, wherein we look at the game and its controller. In [Part II][pii], we'll start our examination of controller methods with a look at `controller.wake()`.
+This is Part I, wherein we look at the game and its controller. In [Part II][pii], we'll start our examination of controller methods with a look at `controller.wake()`. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template.
 
 Misadventure
 ---
@@ -302,7 +302,7 @@ Summary
 
 In this first post, we've seen how Misadventure behaves like a web site, with stable URLs that can be bookmarked or shared and with standard navigation like back and forwards. We've also seen that everything is done in the DOM, with no laborious refreshing of the entire page.
 
-In [Part II][pii] of this series, we'll look at `controller.wake()` in detail, exploring how controller methods are declared using Faux's little DSL, how parameters are inferred, how templates are displayed, and we'll look at `route_to` helpers you can use in templates.
+In [Part II][pii] of this series, we'll look at `controller.wake()` in detail, exploring how controller methods are declared using Faux's little DSL, how parameters are inferred, how templates are displayed, and we'll look at `route_to` helpers you can use in templates. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template.
 
 **(more)**
 	
