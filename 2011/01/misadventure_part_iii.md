@@ -7,6 +7,8 @@ Misadventure, Part III: Models and Views
 
 [Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
 
+<a target="_blank" href="http://min.us/mvkEt6y#1"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
+
 This is Part III, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller, and in [Part II][pii] we looked at controller methods and a simple view-free template.
 
 invoking controller.location()
@@ -56,8 +58,6 @@ And Faux turns what we write into this "extended" configuration (meaning this is
     })
         
 Because its route is configured to be '/:seed/:location_id', `controller.location(...)` is invoked by almost any fragment featuring two strings separated by forward slashes such as `#/7762367175167509/9581772962891746`, `#/3072363413300996/4150982475107942`, or even `#/yahoo/serious`. That doesn't mean it can do anything sensible with the route, just that the controller will trigger `.location(...)` in response. (`controller.location(...)` can also be invoked directly, as we will see later.)
-
-<a target="_blank" href="http://min.us/mvkEt6y#3"><img src="http://i.min.us/jeflO8.png" border="0"/></a>
 
 So what happens when `controller.location(...)` is invoked? Unlike `controller.wake()`, controller.location(...)` is expecting one or more parameters. If it's invoked with a fragment like `#/7762367175167509/9581772962891746`, this is exactly equivalent to calling it directly like this:
 
@@ -115,6 +115,8 @@ If you're wondering why Faux uses this declarative syntax for calculations inste
 The reason is that Faux can be much more flexible about parameters. For example, Faux generates a `route_to_location(...)` helper as we saw in [Part II][pii] that can be called with just a `location`. Faux can work out the `seed` and the `location_id` needed from the route using the calculations. Faux can also allow you to call `controller.location({ location: ... })` as we'll see below.
 
 Now that we understand how Faux determines all of the parameters (and not just the ones passed in through the route), let's take a closer look at `locations` and `location`, and more importantly, the `LocationCollection` collection class and the `Location` model class.
+
+<a target="_blank" href="http://min.us/mvkEt6y#2"><img src="http://i.min.us/jefdsa.png" border="0"/></a>
 
 LocationCollection and Location
 ---
@@ -282,6 +284,8 @@ Now we call Backbone.js's `refresh` method on an array of all the locations. Thi
 **summary**
 
 The maze is represented as a graph of locations. Each location know whether it lies adjacent to the exit and which adjacent locations can be reached from it. The location collection's responsibilities are to construct the graph of locations from a seed value and to serve a location given its unique `id`.
+
+<a target="_blank" href="http://min.us/mvkEt6y#3"><img src="http://i.min.us/jeflO8.png" border="0"/></a>
 
 LocationView
 ---
@@ -455,6 +459,8 @@ As we saw in [Part II][pii], we can pass a parameter like the current location t
     route_to_location({ seed: locationcollection.seed, location_id: location.west().id })
 
 (It's slightly better style to access parameters like `location` through the view, as this allows interactive views to change their own options..)
+
+<a target="_blank" href="http://min.us/mvkEt6y#4"><img src="http://i.min.us/jbJZZ8.png" border="0"/></a>
 
 Summary
 ---
