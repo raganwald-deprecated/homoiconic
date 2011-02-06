@@ -104,3 +104,4 @@ If you place your classes in files named after your methods or after the classes
 [a]: http://www.digitalhumanities.org/dhq/vol/001/2/000009/000009.html
 [b]: http://documentcloud.github.com/backbone/
 [source]: http://github.com/unspace/misadventure
+[f]: https://github.com/unspace/faux
