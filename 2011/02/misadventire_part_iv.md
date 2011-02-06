@@ -98,5 +98,5 @@ If you place your classes in files named after your methods or after the classes
 [pi]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_i.md#readme
 [pii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_ii.md#readme
 [piii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_iii.md#readme
-[piv]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_iv.md#readme
+[piv]: http://github.com/raganwald/homoiconic/tree/master/2011/02/misadventure_part_iv.md#readme
 [cjs]: http://unspace.github.com/misadventure/docs/controller.html
