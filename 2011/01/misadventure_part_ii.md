@@ -9,7 +9,7 @@ Misadventure, Part II: controller.wake()
 
 <a target="_blank" href="http://min.us/mvkEt6y#1"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
 
-This is Part II, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template.
+This is Part II, wherein we start our examination of controller methods with a look at `controller.wake()`. In [Part I][pi], we had an introduction to the game and its controller. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template. In [Part IV][piv], we'll do a double-take and talk about loading classes.
 
 controller.wake()
 ---
@@ -84,7 +84,7 @@ wake.haml
 
 "And?" you may ask. Well, Faux knows this method is called `Wake`. And by default, Faux has figured out that its template is `haml/wake.haml`. Templates can be displayed by themselves or they can be controlled by an instance of `Backbone.View` (or much more likely, an instance of a class you define by extending `Backbone.View`). Which class to use is determined by the `clazz` configuration.
 
-Faux has already looked for a `Backbone.View` class called `WakeView`. Looking in [views.js][vjs], we see that there is a `BedView` and a `LocationView`, but no `WakeView`. If Faux can't find a view class with the conventional name and you don't tell it you want to use a different class, Faux assumes you don't want to use a view class, just a template. Thus, Faux assumes `clazz: false` as you saw above and just displays the `wake.haml` template.
+Faux has already looked for a `Backbone.View` class called `WakeView`, but we haven't defined one. If Faux can't find a view class with the conventional name and you don't tell it you want to use a different class, Faux assumes you don't want to use a view class, just a template. Thus, Faux assumes `clazz: false` as you saw above and just displays the `wake.haml` template.
 
 Therefore, the `controller.wake()` method displays the parameters it has in the `wake.haml` template:
 
@@ -169,8 +169,6 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [source]: http://github.com/unspace/misadventure
 [docco]: https://github.com/raganwald/homoiconic/blob/master/2010/11/docco.md "A new way to think about programs"
 [cjs]: http://unspace.github.com/misadventure/docs/controller.html
-[mjs]: http://unspace.github.com/misadventure/docs/models.html
-[vjs]: http://unspace.github.com/misadventure/docs/views.html
 [s]: http://yayinternets.com/
 [ui]: http://unspace.ca
 [b]: http://documentcloud.github.com/backbone/
@@ -182,3 +180,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [pi]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_i.md#readme
 [piii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_iii.md#readme
 [sr]: http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html "Random Seeds, Coded Hints, and Quintillions"
+[piv]: http://github.com/raganwald/homoiconic/tree/master/2011/02/misadventure_part_iv.md#readme

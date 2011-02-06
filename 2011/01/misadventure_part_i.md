@@ -7,7 +7,7 @@ Misadventure, Part I: Overview
 
 [Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
 
-This is Part I, wherein we look at the game and its controller. In [Part II][pii], we'll start our examination of controller methods with a look at `controller.wake()`. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template.
+This is Part I, wherein we look at the game and its controller. In [Part II][pii], we'll start our examination of controller methods with a look at `controller.wake()`. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template. In [Part IV][piv], we'll do a double-take and talk about loading classes.
 
 Misadventure
 ---
@@ -80,6 +80,7 @@ Ignoring `README.md`, `docs`, `images`, and `stylesheets`, we're going to look a
         <link href="./stylesheets/application.css" rel="stylesheet">
         <!-- hard requirements for Faux -->
         <script src="./javascripts/vendor/jquery.1.4.2.js"></script>
+        <script src="./javascripts/vendor/async.js"></script>
         <script src="./javascripts/vendor/documentcloud/underscore.js"></script>
         <script src="./javascripts/vendor/documentcloud/backbone.js"></script>
         <script src="./javascripts/vendor/haml-js.js"></script>
@@ -92,9 +93,7 @@ Ignoring `README.md`, `docs`, `images`, and `stylesheets`, we're going to look a
         <script src="./javascripts/vendor/functional/to-function.js"></script>
         <script src="./javascripts/vendor/jquery.combinators.js"></script>
         <script src="./javascripts/vendor/jquery.predicates.js"></script>
-        <!--misadventure's javascript -->
-        <script src="./javascripts/models.js"></script>
-        <script src="./javascripts/views.js"></script>
+        <!--misadventure's controller -->
         <script src="./javascripts/controller.js"></script>
       </head>
   
@@ -129,7 +128,7 @@ Ignoring `README.md`, `docs`, `images`, and `stylesheets`, we're going to look a
 A few points of interest:
 
 1. We include jQuery, Underscore, Backbone.js, amd haml-js before we include Faux;
-2. Misadventure's own files are [models.js][mjs], [views.js][vjs], and [controller.js][cjs];
+2. The only Misadventure file we load is [controller.js][cjs];
 3. There's a very interesting DOM element, `<div class="content"></div>`.
 
 Looking in the [haml][haml] directory, we see three [Haml][haml-lang] templates: `wake.haml`, `location.haml`, and `bed.haml`. We're going to see where those are used shortly.
@@ -146,6 +145,7 @@ Let's look at [controller.js][cjs]. It's the last file to be loaded, and it star
       element_selector: '.content',
       partial: 'haml',
       partial_suffix: '.haml',
+      javascript: 'javascripts',
       title: 'Misadventure'
     });
 
@@ -174,10 +174,12 @@ Let's look at [controller.js][cjs]. It's the last file to be loaded, and it star
         .end();
 
 
-    $(function() {
-      Backbone.history.start();
-      window.location.hash || controller.wake();
-    });
+      $(function() {
+        controller.define_all(function () {
+          Backbone.history.start();
+          window.location.hash || controller.wake();
+        });
+      });
 	
     })();
 
@@ -289,11 +291,15 @@ So now we know that there are three controller methods, that each has a route, a
 As you know from jQuery, this code:
 
     $(function() {
-      Backbone.history.start();
-      window.location.hash || controller.wake();
+      controller.define_all(function () {
+        Backbone.history.start();
+        window.location.hash || controller.wake();
+      });
     });
     
-...is run when the page has loaded. `Backbone.history.start();` initializes Backbone's support for managing URLs. The next line checks to see whether the current URL has a fragment. If it doesn't, it invokes the controller method `.wake()` to start the application in a new cornfield.
+...is run when the page has loaded. Becasue some definitions might take a while for Faux to process, Faux actually defers building all of the methods we defined them until you call `controller.define_all`. So we call it after the page has loaded, and we pass it a callback function to execute when it finishes with all of the definitions. Let's look at what we want to do once all of the methods are defined:
+
+`Backbone.history.start();` initializes Backbone's support for managing URLs. The next line checks to see whether the current URL has a fragment. If it doesn't, it invokes the controller method `.wake()` to start the application in a new cornfield.
 
 So now we know that when our application is launched by loading its URL, if we have a fragment, we let the controller sort out what to do. If we don't have a fragment, we invoke `controller.wake()` to start a new game.
 
@@ -302,7 +308,7 @@ Summary
 
 In this first post, we've seen how Misadventure behaves like a web site, with stable URLs that can be bookmarked or shared and with standard navigation like back and forwards. We've also seen that everything is done in the DOM, with no laborious refreshing of the entire page.
 
-In [Part II][pii] of this series, we'll look at `controller.wake()` in detail, exploring how controller methods are declared using Faux's little DSL, how parameters are inferred, how templates are displayed, and we'll look at `route_to` helpers you can use in templates. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template.
+In [Part II][pii] of this series, we'll look at `controller.wake()` in detail, exploring how controller methods are declared using Faux's little DSL, how parameters are inferred, how templates are displayed, and we'll look at `route_to` helpers you can use in templates. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template. Finally, in [Part IV][piv], we'll do a double-take and talk about loading classes.
 
 **(more)**
 	
@@ -319,8 +325,6 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [source]: http://github.com/unspace/misadventure
 [docco]: https://github.com/raganwald/homoiconic/blob/master/2010/11/docco.md "A new way to think about programs"
 [cjs]: http://unspace.github.com/misadventure/docs/controller.html
-[mjs]: http://unspace.github.com/misadventure/docs/models.html
-[vjs]: http://unspace.github.com/misadventure/docs/views.html
 [s]: http://yayinternets.com/
 [ui]: http://unspace.ca
 [b]: http://documentcloud.github.com/backbone/
@@ -331,3 +335,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [bed]: http://unspace.github.com/misadventure/#/42492610216140747/bed
 [pii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_ii.md#readme
 [piii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_iii.md#readme
+[piv]: http://github.com/raganwald/homoiconic/tree/master/2011/02/misadventure_part_iv.md#readme

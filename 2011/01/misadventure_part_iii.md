@@ -9,7 +9,7 @@ Misadventure, Part III: Models and Views
 
 <a target="_blank" href="http://min.us/mvkEt6y#1"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
 
-This is Part III, wherein we dive into controller methods that wire models, collections, views, and templates together with a look at `controller.location(...)`. In [Part I][pi], we had an introduction to the game and its controller, and in [Part II][pii] we looked at controller methods and a simple view-free template.
+This is Part III, wherein we dive into controller methods that wire models, collections, views, and templates together with a look at `controller.location(...)`. In [Part I][pi], we had an introduction to the game and its controller, and in [Part II][pii] we looked at controller methods and a simple view-free template. In [Part IV][piv], we'll do a double-take and talk about loading classes.
 
 invoking controller.location()
 ---
@@ -121,7 +121,7 @@ Now that we understand how Faux determines all of the parameters (and not just t
 LocationCollection and Location
 ---
 
-Given a `seed` and a `location_id`, the first thing Faux does is evaluate `LocationCollection.find_or_create({ seed: '7762367175167509' })`. Have a look at the `LocationCollection` class, it's in [models.js][mjs]. The first thing is that `find_or_create({ seed: '7762367175167509' })` is a class method. It allows us to cache location collections so that we don't have to make a new one every time we process a new route.
+Given a `seed` and a `location_id`, the first thing Faux does is evaluate `LocationCollection.find_or_create({ seed: '7762367175167509' })`. Have a look at the `LocationCollection` class, it's in [location.js][ljs]. The first thing is that `find_or_create({ seed: '7762367175167509' })` is a class method. It allows us to cache location collections so that we don't have to make a new one every time we process a new route.
 
 But the first time, we'll have to make a new `LocationCollection`. So what is a `LocationCollection`? Quite simply, it's a Corn Maze. Out of the box, Backbone.js gives you collections that store models by `id`, can proxy to a remote server by AJAX, and so on.
 
@@ -272,7 +272,7 @@ At this point we have a grid, all interior locations are connected to each other
         _(this.field[i_row]).last().attributes.east = undefined;
       }
     
-We then build a random maze inside the grid. One of the properties of a maze is that there is at least one route between any two locations in the maze. That guarantees that there is a route from centre to exit. This algorithm adds walls. You can substitute any other wall-adder that you like. We're not going to step through the `_recursive_bisect(...)` algorithm for generating a maze. You can study the code in [models.js][mjs], and Jamis Buck [describes and animates the algorithm as part of his series on generating mazes][r].
+We then build a random maze inside the grid. One of the properties of a maze is that there is at least one route between any two locations in the maze. That guarantees that there is a route from centre to exit. This algorithm adds walls. You can substitute any other wall-adder that you like. We're not going to step through the `_recursive_bisect(...)` algorithm for generating a maze. You can study the code in [location.js][ljs], and Jamis Buck [describes and animates the algorithm as part of his series on generating mazes][r].
 
       this._recursive_bisect(0, height - 1, 0, width - 1);
     
@@ -396,7 +396,7 @@ Up to now we've talked about directly invoking a controller method, but here we 
 
 Faux isolates the details of URLs from the code.
 
-(Backbone.js provides a convenient and expressive mechanism for views to handle DOM events, however this will not work for keypresses unless they are associated with a form inside the DOM element managed by the view. There's no form, so we can't use Backbone's mechanism and have rolled our own listener. You can read the code in [views.js][vjs].)
+(Backbone.js provides a convenient and expressive mechanism for views to handle DOM events, however this will not work for keypresses unless they are associated with a form inside the DOM element managed by the view. There's no form, so we can't use Backbone's mechanism and have rolled our own listener. You can read the code in [bed_view.js][bvjs].)
 
 **summary**
 
@@ -467,6 +467,8 @@ Summary
 
 Our `controller.location(...)` method uses a model, a collection, and a view. It infers parameters and those parameters are available as locals in `location.haml`, however the preferred style is to access the parameters as options in the view instance. The view instance is the natural repository for code that helps the template, set things up or tears them down, and controls interaction with the user.
 
+Next, in [Part IV][piv], we'll do a double-take and talk about loading classes.
+
 **(more)**
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
@@ -485,8 +487,8 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [source]: http://github.com/unspace/misadventure
 [docco]: https://github.com/raganwald/homoiconic/blob/master/2010/11/docco.md "A new way to think about programs"
 [cjs]: http://unspace.github.com/misadventure/docs/controller.html
-[mjs]: http://unspace.github.com/misadventure/docs/models.html
-[vjs]: http://unspace.github.com/misadventure/docs/views.html
+[ljs]: http://unspace.github.com/misadventure/docs/location.html
+[bvjs]: http://unspace.github.com/misadventure/docs/bed_view.html
 [s]: http://yayinternets.com/
 [ui]: http://unspace.ca
 [b]: http://documentcloud.github.com/backbone/
@@ -500,3 +502,4 @@ Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raga
 [sr]: http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html "Random Seeds, Coded Hints, and Quintillions"
 [idem]: https://secure.wikimedia.org/wikipedia/en/wiki/Idempotence
 [aop]: https://secure.wikimedia.org/wikipedia/en/wiki/Aspect-oriented_programming "Aspect Oriented Programming"
+[piv]: http://github.com/raganwald/homoiconic/tree/master/2011/02/misadventure_part_iv.md#readme
