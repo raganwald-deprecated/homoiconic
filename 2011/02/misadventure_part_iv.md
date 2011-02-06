@@ -105,3 +105,5 @@ If you place your classes in files named after your methods or after the classes
 [b]: http://documentcloud.github.com/backbone/
 [source]: http://github.com/unspace/misadventure
 [f]: https://github.com/unspace/faux
+[ljs]: http://unspace.github.com/misadventure/docs/location.html
+[bvjs]: http://unspace.github.com/misadventure/docs/bed_view.html
