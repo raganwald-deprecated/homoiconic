@@ -100,3 +100,7 @@ If you place your classes in files named after your methods or after the classes
 [piii]: http://github.com/raganwald/homoiconic/tree/master/2011/01/misadventure_part_iii.md#readme
 [piv]: http://github.com/raganwald/homoiconic/tree/master/2011/02/misadventure_part_iv.md#readme
 [cjs]: http://unspace.github.com/misadventure/docs/controller.html
+[play]: http://unspace.github.com/misadventure/
+[a]: http://www.digitalhumanities.org/dhq/vol/001/2/000009/000009.html
+[b]: http://documentcloud.github.com/backbone/
+[source]: http://github.com/unspace/misadventure
