@@ -54,13 +54,32 @@ Faux is able to load Javascript files automatically, provided they are named app
 
 Misadventure takes advantage of two of these rules to demonstrate how they work. There is a file named `location.js`, so Faux loads it when defining `controller.location(...)`. There is no file named `wake.js` or `wake_view` or anything else like that, so Faux doesn't find any classes associated with `controller.wake()`. There is no file named `bed.js`, but there is a file named `bed_view.js`, so Faux is able to load it and define the `BedView` class.
 
-**loading javascript by configuration**
+**a standard for organizing javascript files**
 
-Perhaps you want to put all your views in a file named `view.js` and your models in a file named `models.js` and you don't want dozens of little files in your project. No problem, simply use HTML or perhaps `jQuery.getScript(...)` to explicitly load the files you want to use.
+Looking at Faux's rules, you can see that it strongly encourages organizing your Backbone.js model, collection and view classes in either of two forms:
+
+1. Put the classes you need for each controller method into a file named after the method, e.g. `wake.js` for `controller.wake()`, `location.js` for `controller.location(...)`, and `bed.js` for `controller.bed(...)`. In misadventure, we did this with `location.js` to demonstrate how that works.
+2. Put each class into a file using underscores instead of CamelCase, e.g. `bed_view.js` for the `BedView` class, which is what we did in Misadventure to demonstrate how that works.
+
+When choosing how to organize your classes, you will want to consider dependencies between classes carefully. Since `LocationCollection` depends on `Location`, putting them in the same file--`location.js`--ensures that the dependency is respected:
+
+    window.Location = Backbone.Model.extend({ ... });
+    
+    window.LocationCollection = Backbone.Collection.extend({
+      
+      model: Location,
+      
+      // ...
+  
+    });
+
+Unlike frameworks like Ruby on Rails, Faux does not dynamically resolve dependencies. Had we placed `Location` in `location.js` and `LocationCollection` in `location_collection.js`, Faux guarantees that it will load both files when sorting out the `controller.location(...)` method, but Faux does not guarantee the load order.
+
+In more complex applications you will run into dependencies between model classes. In such cases, you can always override Faux's rules by loading the files yourself using `<script>` tags or with `jQuery.getScript(...)`.
 
 **summary**
 
-If you place your classes in files named after your methods or after the classes themselves, Faux will load them for you and save you the trouble of explicitly loading every file.
+If you place your classes in files named after your methods or after the classes themselves, Faux will load them for you and save you the trouble of explicitly loading every file. You can always override this behaviour by explicitly loading Javascript files.
 
 
 [index]: http://github.com/unspace/misadventure/tree/master/index.html
