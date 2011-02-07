@@ -1,4 +1,4 @@
-Misadventure, Part IV: Class Loading
+Misadventure, Part IV: Class Loading (Updated!)
 ===
 
 *Misadventure is a little game written on top of Faux and Backbone.js*
