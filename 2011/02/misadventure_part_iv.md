@@ -14,62 +14,32 @@ This is Part IV, wherein we'll do a double-take and talk about loading classes. 
 index.html
 ---
 
-Let's flash back to [index.html][index]: `index.html` contains the web page you see when you open Misadventure for the first time. Here's the source:
+Let's flash back to [index.html][index]: Here's the code that loads our Javascript files for us:
 
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <title>Misadventure</title>
-        <meta charset="utf-8">
-        <link href="./stylesheets/application.css" rel="stylesheet">
-        <!-- hard requirements for Faux -->
-        <script src="./javascripts/vendor/jquery.1.4.2.js"></script>
-        <script src="./javascripts/vendor/async.js"></script>
-        <script src="./javascripts/vendor/documentcloud/underscore.js"></script>
-        <script src="./javascripts/vendor/documentcloud/backbone.js"></script>
-        <script src="./javascripts/vendor/haml-js.js"></script>
-        <!-- fixes for using haml-js with IE -->
-        <script src="./javascripts/vendor/ie.js"></script>
-        <!-- Faux -->
-        <script src="./javascripts/vendor/faux.js"></script>
-        <!-- other libraries we happen to like -->
-        <script src="./javascripts/vendor/seedrandom.js"></script>
-        <script src="./javascripts/vendor/functional/to-function.js"></script>
-        <script src="./javascripts/vendor/jquery.combinators.js"></script>
-        <script src="./javascripts/vendor/jquery.predicates.js"></script>
-        <!--misadventure's controller -->
-        <script src="./javascripts/controller.js"></script>
-      </head>
-  
-      <body>
+    <!-- hard requirements for Faux -->
+    <script src="./javascripts/vendor/jquery.1.4.2.js"></script>
+    <script src="./javascripts/vendor/async.js"></script>
+    <script src="./javascripts/vendor/documentcloud/underscore.js"></script>
+    <script src="./javascripts/vendor/documentcloud/backbone.js"></script>
+    <script src="./javascripts/vendor/haml-js.js"></script>
     
-        <div id="container">
-          <h1>Misadventure</h1>
-          <div class="content"></div>
-  
-        </div>    
+    <!-- fixes for using haml-js with IE -->
+    <script src="./javascripts/vendor/ie.js"></script>
     
-        <small id="get-code">Read about Misadventure and browse the code on <a href="http://github.com/unspace/misadventure">Github</a>.</small>
-  
-      </body>
+    <!-- Faux -->
+    
+    <script src="./javascripts/vendor/faux.js"></script>
+    
+    <!-- other libraries we happen to like -->
+    <script src="./javascripts/vendor/seedrandom.js"></script>
+    <script src="./javascripts/vendor/functional/to-function.js"></script>
+    <script src="./javascripts/vendor/jquery.combinators.js"></script>
+    <script src="./javascripts/vendor/jquery.predicates.js"></script>
+    
+    <!--misadventure's controller -->
+    <script src="./javascripts/controller.js"></script>
 
-      <!-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-      IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-      FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-      AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-      LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-      THE SOFTWARE.
-
-      To the extent possible under law, Unspace Interactive has waived all copyright 
-      and related or neighboring rights to the software, except for those portions
-      that are otherwise licensed.
-
-      This work is published from Canada. -->
-
-    </html>
-
-You'll notice we load exactly one file for Misdaventure itself, [controller.js][cjs]. We've read about the controller, that's fine. But we've also read about some other backbone classes in the application like `Location`, `LocationCollection`, `LocationView`, and `BedView`. Where are they?
+You'll notice we load exactly one file for Misadventure itself, [controller.js][cjs]. We've read about the controller, that's fine. But we've also read about some other backbone classes in the application like `Location`, `LocationCollection`, `LocationView`, and `BedView`. Where are they?
 
 The answer is that `Location`, `LocationCollection`, and `LocationView` are in the file [location.js][ljs], and `BedView` is in the file [bed_view.js][bvjs], which Faux loaded for us. But we haven't loaded these Javascript files. How does Faux know to load them?
 
