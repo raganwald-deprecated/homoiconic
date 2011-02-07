@@ -70,11 +70,9 @@ Unlike frameworks such as Ruby on Rails, Faux does not dynamically resolve depen
   
     });
 
-`LocationCollection` has a dependency on the class `Location`. If we place `LocationCollection` in `location_collection.js`, Faux will load it when sorting out the `controller.location(...)` method, but Faux does not guarantee the load order. Therefore, it might try to load `location_collection.js` before `location.js` and fail to resolve the class `Location` properly.
+`LocationCollection` has a *dependency* on the class `Location`. If we place `LocationCollection` in `location_collection.js`, Faux will load it when sorting out the `controller.location(...)` method, but Faux does not guarantee the load order. Therefore, it might try to load `location_collection.js` before the class `Location` has been resolved and fail to define `LocationCollection` properly.
 
-Now let's be specific about the word "dependency." There are two forms that matter to Faux. First, there are _define-time dependencies_. This is code that is run when you define your methods. The dependency between `LocationCollection` and `Location` is a define-time dependency, because `Location` will be resolved when the `LocationCollection` class is created.
-
-There are also _run-time dependencies_. Consider this code from `controller.js`:
+Now let's be specific about the word "dependency." There are two forms that matter to Faux. First, there are _define-time dependencies_. This is code that is run when you define your methods. The dependency between `LocationCollection` and `Location` is a define-time dependency, because `Location` will be resolved when the `LocationCollection` class is created. There are also _run-time dependencies_. Consider this code from `controller.js`:
 
     controller
     
