@@ -56,9 +56,9 @@ Misadventure takes advantage of two of these rules to demonstrate how they work.
 
 **a standard for organizing javascript files**
 
-Looking at Faux's rules, you can see that it strongly encourages organizing your Backbone.js model, collection and view classes in either of two forms:
+Looking at Faux's rules, you can see that it strongly encourages organizing your Backbone.js model, collection and view classes in files named after the classes or after the methods.
 
-First and simplest, you can place each class into a file using underscores instead of CamelCase, e.g. `bed_view.js` for the `BedView` class. This works well when the class does not have any dependencies on other models, collections, or views. This does not work for classes that have dependencies that need to be resolved.
+In simple cases, you can place each class into a file using underscores instead of CamelCase, e.g. `bed_view.js` for the `BedView` class. This works well when the class does not have any dependencies on other models, collections, or views. This does not work for classes that have dependencies that need to be resolved.
 
 Unlike frameworks such as Ruby on Rails, Faux does not dynamically resolve dependencies. Consider the class `LocationCollection`:
     
@@ -70,11 +70,11 @@ Unlike frameworks such as Ruby on Rails, Faux does not dynamically resolve depen
   
     });
 
-`LocationCollection` has a dependency on the class `Location`. If we place `LocationCollection` in `location_collection.js`, Faux will load both files when sorting out the `controller.location(...)` method, but Faux does not guarantee the load order. Therefore, it might try to load `location_collection.js` before `location.js` and fail to resolve the class `Location` properly.
+`LocationCollection` has a dependency on the class `Location`. If we place `LocationCollection` in `location_collection.js`, Faux will load it when sorting out the `controller.location(...)` method, but Faux does not guarantee the load order. Therefore, it might try to load `location_collection.js` before `location.js` and fail to resolve the class `Location` properly.
 
 Now let's be specific about the word "dependency." There are two forms that matter to Faux. First, there are _define-time dependencies_. This is code that is run when you define your methods. The dependency between `LocationCollection` and `Location` is a define-time dependency, because `Location` will be resolved when the `LocationCollection` class is created.
 
-Second, there are _run-time dependencies_. Consider this code from `controller.js`:
+There are also _run-time dependencies_. Consider this code from `controller.js`:
 
     controller
     
