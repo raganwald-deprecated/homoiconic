@@ -103,10 +103,48 @@ But back to our problem with `LocationCollection`. It _does_ have a define-time 
     });
 
 Now `Location` is guaranteed to resolve when resolving `LocationCollection` because they are in the same file. This is a simple case. In more complex applications you will run into dependencies between model classes. In such cases, you can always override Faux's rules by loading the files yourself using `<script>` tags or with `jQuery.getScript(...)`.
+  
+**you're in control**
+
+You can disable this behaviour for your entire application or within a scope with the configuration option `dynamic`. To disable all dynamic class loading:
+
+    dynamic: {
+      method: false,
+      clazz: false
+    }
+    
+    // or...
+
+    dynamic: false
+
+To disable loading of class files but allow loading of method files:
+
+    dynamic: {
+      method: true,
+      clazz: false
+    }
+
+To disable loading of method files but allow loading of class files:
+
+    dynamic: {
+      method: false,
+      clazz: true
+    }
+
+To enable both:
+
+    dynamic: {
+      method: true,
+      clazz: true
+    }
+    
+    // or...
+    
+    dynamic: true
 
 **summary**
 
-If you place your classes in files named after your methods or after the classes themselves, Faux will load them for you and save you the trouble of explicitly loading every file. You can always override this behaviour by explicitly loading Javascript files.
+If you place your classes in files named after your methods or after the classes themselves, Faux will load them for you and save you the trouble of explicitly loading every file. You can always override this behaviour by explicitly loading Javascript files and/or by explicitly forbidding Faux from trying to load Javascript files by convention.
 
 
 [index]: http://github.com/unspace/misadventure/tree/master/index.html
