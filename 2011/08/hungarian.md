@@ -1,7 +1,7 @@
 Hungarian PBKAC
 ---
 
-Hungarian notation (whether apps or systems) is useful, especially when you want some of the benefits of an untype language but want to make wrong code look wrong. The trouble with it is just like the trouble with any documentation that isn't checked or enforced automatically: Over time the words diverge from the code, making it worse than useless because it actively deceives.
+Hungarian notation (whether apps or systems) is useful, especially when you want some of the benefits of an untyped language but want to make [wrong code look wrong][1]. The trouble with it is just like the trouble with any documentation that isn't checked or enforced automatically: Over time the words diverge from the code, making it worse than useless because it actively deceives.
 
 Here is some actual code I found in a current project today.
 
@@ -18,6 +18,8 @@ Here is some actual code I found in a current project today.
     end
 
 Sure, a generator could be used to DRY up the code. But before we get there... What do the method names promise and what do the methods deliver?  Need I say that a quick "blame" in git revealed that these lines were written by the usual suspect?
+
+[1]: http://www.joelonsoftware.com/articles/Wrong.html "Making Wrong Code Look Wrong - Joel on Software"
 
 **(more)**
 	
