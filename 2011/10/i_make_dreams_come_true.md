@@ -8,7 +8,7 @@ Recently, I read [Don't Call Yourself a Programmer][1]. Right away, I'm going to
 [1]: http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/
 
 
-But if I could send messages back in time, "Don’t Call Yourself a Programmer" contains a lot of the stuff I would want to tell a young Mr. Braithwaite. There are some other things I'd want to tell myself. One of them is, I'm not in the programming business, or the adding value to the economy business. Those are ways I finance my real business, which is **the making dreams come true business**.
+But if I could send messages back in time, "Don’t Call Yourself a Programmer" contains a lot of the stuff I would want to tell a young Mr. Braithwaite. There are some other things I'd want to tell myself. One of them is, I'm not in the "programming" business, or the "adding value to the economy" business. I program and add value, but my motivation for programming and for finding ways to add value is that those are the ways I finance my real business, which is **the making dreams come true business**.
 
 Consider movies. Sure, there are incredible documentaries. And moving, gritty, realistic dramas. But many great movies have a dream-like quality to them. I don't mean the movies *depict* dreaming, that's often too much. But movies like [Amelie][2] have a dream-like feeling, something that connects with us in a deep way, something that takes us out of where we are and places us in the past, future, or parallel reality. Something that breaks the laws of physics or society.
 
