@@ -7,9 +7,11 @@ Recently, I read [Don't Call Yourself a Programmer][1]. Right away, I'm going to
 
 [1]: http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/
 
-There are some other things I'd want to tell myself. One of them is, I'm not in the programming business, or the adding value to the economy business. Those are ways I finance my real business, which is the **Making Dreams Business**. I make dreams come true.
+There are some other things I'd want to tell myself. One of them is, I'm not in the programming business, or the adding value to the economy business. Those are ways I finance my real business, which is the **Making Dreams Come True Business**.
 
 Think about movies for a second. Sure, there are incredible documentaries. And moving, gritty, realistic dramas. But great movies often have this dream-like quality to them. I don't mean movies about dreaming, that's almost too much. But movies like [Amelie][2] have a dream-like feeling, something that connects with us in a deep way, something that takes us out of where we are and places us in the past, future, or parallel reality. Something that breaks the laws of physics or society.
+
+Such movies aren't just about what the filmmakers were dreaming, they connect with us because they're a realization of *our* dreams. Filmmakers make dreams come true. Just like me: I make dreams come true. And I don't just mean, I make *my* dreams come true. I mean, I write software that makes its users' dreams come true.
 
 [2]: https://en.wikipedia.org/wiki/Amélie
 
@@ -17,7 +19,7 @@ Think about movies for a second. Sure, there are incredible documentaries. And m
 
 **The Dream Feeling**
 
-I feel the same way about software, whether it's software with a visual look and feel or it's a new programming notation or perhaps a library that makes you think about doing an old thing in a new way. Great software and great programming languages have a dream-like quality. Learning to use them has this strange feeling of needing to relearn everything you know while simultaneously feeling so natural that you are filled with wonder but not dissonance.
+The idea that films realize dreams applies to software, whether it's software with a visual look and feel or it's a new programming notation or perhaps a library that makes you think about doing an old thing in a new way. Great software and great programming languages have a dream-like quality. Learning to use them has this strange feeling of needing to relearn everything you know while simultaneously feeling so natural that you are filled with wonder but not dissonance.
 
 I want that from the software I build. If it doesn't change the way its users think, what damn good is it? When someone uses my software or programs with one of my libraries, I want "Aha!" I want "Of course it works this way, why did everyone screw this up before?" I want "Now that you've given it to me, you can have it back when you pry it from my cold, dead fingers."
 
