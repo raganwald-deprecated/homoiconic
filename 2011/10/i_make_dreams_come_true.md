@@ -13,6 +13,8 @@ Think about movies for a second. Sure, there are incredible documentaries. And m
 
 [2]: https://en.wikipedia.org/wiki/Amélie
 
+![Amélie as a little girl](http://www.anomalousmaterial.com/movies/wp-content/uploads/2010/02/amelie.jpg)
+
 **The Dream Feeling**
 
 I feel the same way about software, whether it's software with a visual look and feel or it's a new programming notation or perhaps a library that makes you think about doing an old thing in a new way. Great software and great programming languages have a dream-like quality. Learning to use them has this strange feeling of needing to relearn everything you know while simultaneously feeling so natural that you are filled with wonder but not dissonance.
