@@ -1,4 +1,4 @@
-Pass by Reference isn't one of Java's Values
+˝Pass by Reference isn't one of Java's Values
 ===
 
 On the interwebs, I noticed some discussions (e.g. [proggit][p] and [hacker news][hn]) about another discussion ([serverside][ss]) about whether Java the language uses [Pass by Reference or Pass by Value][es]. It's an [old, old argument][arg], and the `tl;dr` is that Java and most other modern languages pass references to objects by value, which means it uses Pass by Value. It is absolutely wrong to assert that Java uses Pass by Reference.

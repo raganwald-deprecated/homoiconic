@@ -3,13 +3,14 @@ I Make Dreams Come True
 
 > Visions are worth fighting for. Why spend your life making someone else’s dreams?—Orson Welles in the film "Ed Wood"
 
-Recently, I read [Don't Call Yourself a Programmer][1]. Right away, I'm going to say that in my nearly thirty years of experience turning software into money, just about everything Patrick says about the business of software and how to get ahead is absolutely true. Sure, you can quibble with something or other. After all, getting ahead in business is a huge subject and this is an essay. Something has to be overgeneralized or insufficiently explained, that's the nature of trying to cram a very large number of bits of information into a fixed size container. But if I could send messages back in time, this essay contains a lot of the stuff I would want to tell a young Mr. Braithwaite.
+Recently, I read [Don't Call Yourself a Programmer][1]. Right away, I'm going to say that in my nearly thirty years of experience turning software into money, just about everything Patrick says about the business of software and how to get ahead is absolutely true. Sure, you can quibble with something or other. After all, getting ahead in business is a huge subject and this is an essay. Something has to be overgeneralized or insufficiently explained, that's the nature of trying to cram a very large number of bits of information into a fixed size container.
 
 [1]: http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/
 
-There are some other things I'd want to tell myself. One of them is, I'm not in the programming business, or the adding value to the economy business. Those are ways I finance my real business, which is the **Making Dreams Come True Business**.
 
-Think about movies for a second. Sure, there are incredible documentaries. And moving, gritty, realistic dramas. But great movies often have this dream-like quality to them. I don't mean movies about dreaming, that's almost too much. But movies like [Amelie][2] have a dream-like feeling, something that connects with us in a deep way, something that takes us out of where we are and places us in the past, future, or parallel reality. Something that breaks the laws of physics or society.
+But if I could send messages back in time, "Don’t Call Yourself a Programmer" contains a lot of the stuff I would want to tell a young Mr. Braithwaite. There are some other things I'd want to tell myself. One of them is, I'm not in the programming business, or the adding value to the economy business. Those are ways I finance my real business, which is **the making dreams come true business**.
+
+Consider movies. Sure, there are incredible documentaries. And moving, gritty, realistic dramas. But many great movies have a dream-like quality to them. I don't mean the movies *depict* dreaming, that's often too much. But movies like [Amelie][2] have a dream-like feeling, something that connects with us in a deep way, something that takes us out of where we are and places us in the past, future, or parallel reality. Something that breaks the laws of physics or society.
 
 Such movies aren't just about what the filmmakers were dreaming, they connect with us because they're a realization of *our* dreams. Filmmakers make dreams come true. Just like me: I make dreams come true. And I don't just mean, I make *my* dreams come true. I mean, I write software that makes its users' dreams come true.
 
