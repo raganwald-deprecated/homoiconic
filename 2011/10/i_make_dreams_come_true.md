@@ -60,7 +60,7 @@ Okay, three people who are reading this within Emacs raised their hands. Congrat
 
 That's a powerful business model. Use it wisely.
 
-([discuss](http://news.ycombinator.com/item?id=3175430))
+([discuss](http://www.reddit.com/r/programming/comments/lwi07/i_dont_call_myself_a_programmer_i_make_dreams/))
 
 ---
 	
