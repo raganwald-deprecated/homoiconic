@@ -12,8 +12,6 @@ When composing functionality at the method level of granularity, techniques such
 
 You might think of extracting smaller methods from bigger methods as *decomposing* methods. You break them into smaller pieces, and thus you can share functionality or rearrange the pieces so that your code is organized by responsibility.
 
-You might think of extracting smaller methods from bigger methods as *decomposing* methods. You break them into smaller pieces, and thus you can share functionality or rearrange the pieces so that your code is organized by responsibility.
-
 For example, let's say that we are writing a game for the nostalgia market, and we wish to use partially constructed objects to save resources. When we go to actually use the object, we *hydrate* it, loading the complete object from persistent storage. This is a coarse kind of *lazy evaluation*.
 
 Here's some bogus code:
