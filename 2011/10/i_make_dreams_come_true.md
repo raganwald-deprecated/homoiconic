@@ -60,8 +60,6 @@ Okay, three people who are reading this within Emacs raised their hands. Congrat
 
 That's a powerful business model. Use it wisely.
 
-([discuss](http://news.ycombinator.com/item?id=3175430))
-
 ---
 	
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
