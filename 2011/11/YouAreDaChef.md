@@ -1,4 +1,4 @@
-Aspect-Oriented Programming in Coffeescript using Combinator Birds
+Aspect-Oriented Programming in Coffeescript with a side order of Combinator Birds
 ---
 
 *This article is based on [Aspect-Oriented Programming in Ruby using Combinator Birds][ruby].*
