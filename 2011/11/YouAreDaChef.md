@@ -15,7 +15,7 @@ In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the blue
 
 **the bluebird**
 
-The bluebird is written `Bxyz = x(yz)`. In Coffeescript, we can define the bluebird like this:
+The bluebird is written `Bxyz = x(yz)`. In [Coffeescript][coffee], we can define the bluebird like this:
 
 	bluebird = (x) ->
 		(y) ->
@@ -145,7 +145,7 @@ That looks handy. But we also want an _after method_, a way to compose methods i
 [![happy pride (c) 2008 penguincakes, some rights reserved reserved](http://farm4.static.flickr.com/3035/2891197379_556f528536.jpg)](http://www.flickr.com/photos/penguincakes/2891197379/ "happy pride (c) 2008 penguincakes, some rights reserved")  
 
 
-Written `Qxyz = y(xz)`, the Coffeescript equivalent is:
+Written `Qxyz = y(xz)`, the [Coffeescript][coffee] equivalent is:
 
 	queer_bird.call(x).call(y).call(z)
 		=> y(x(z))
@@ -159,7 +159,7 @@ In other words:
 
 	queer_bird(x)(y)(z) is y(x(z))
 
-Queer birds--or after combinations--are very handy for things like logging method calls or cleaning things up. Event triggering code is often very decoupled from method logic: The whole point of events is to invert control so that an object like a `Wumpus` doesn't need to know which objects want to do something after it moves. For example,  a backbone.js view might be observing the Wumpus and wish to update itself when the Wumpus moves:
+Queer birds--or after combinations--are very handy for things like logging method calls or cleaning things up. Event triggering code is often very decoupled from method logic: The whole point of events is to invert control so that an object like a `Wumpus` doesn't need to know which objects want to do something after it moves. For example,  a Backbone.js view might be observing the Wumpus and wish to update itself when the Wumpus moves:
 
 	YouAreDaChef(Wumpus, Hunter)
 		.after 'run', () ->
@@ -191,7 +191,9 @@ Around advice is useful for wrapping methods. Using an around combinator, you co
 
 **summary**
 
-The bluebird is an interesting combinator because it controls function combination, allowing us to change the order of application without parameters. We used the bluebird as a thinly veiled excuse to look at the [YouAreDaChef][chef] library and at method combinations, a technique for separating concerns in coffeescript code when the level of granularity is smaller than a method.
+The bluebird is an interesting combinator because it controls function combination, allowing us to change the order of application without parameters. We used the bluebird as a thinly veiled excuse to look at the [YouAreDaChef][chef] library and at method combinations, a technique for separating concerns in [coffeescript][coffee] code when the level of granularity is smaller than a method.
+
+[coffee]: http://coffeescript.org/
 
 ---
 
