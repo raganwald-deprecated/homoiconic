@@ -104,8 +104,9 @@ Here's our code again, this time using  [YouAreDaChef][chef] to provide *before 
 	hydrate = (object) ->
 		# code that hydrates the object from storage
 
-	YouAreDaChef(Wumpus, Hunter).before 'roar', 'draw', 'run', () ->
-		hydrate(this)
+	YouAreDaChef(Wumpus, Hunter)
+		.before 'roar', 'draw', 'run', () ->
+			hydrate(this)
 
 Whenever the `roar`, `draw`, or `run` methods are called, YouAreDaChef calls `hydrate(this)` first.  And  the two concerns--How a Wumpus works and when it ought to be hydrated--are totally separated. This isn't a new idea, it's called aspect-oriented programming, and practitioners will describe what we're doing in terms of method advice and point cuts.
 
@@ -136,7 +137,7 @@ Let's look at how YouAreTheChef works. Here's a simplified version of the code f
 
 This is really simple, we are composing a method with a function. The method already defined in the class is called the *pointcut*, and the function we are supplying is called the *advice*. Unlike a purely functional combinator, we are only executing the advice for side-effects, not for its result. But in object-oriented imperative programming, that's usually what we want.
 
-**the queer bird**
+**the queer birds and other method ocmbinations**
 
 That looks handy. But we also want an _after method_, a way to compose methods in the other order. Good news, the queer bird combinator is exactly what we want. 
 
@@ -158,32 +159,39 @@ In other words:
 
 	queer_bird(x)(y)(z) is y(x(z))
 
-Queer birds--or after combinations--are very handy for things like logging method calls or cleaning things up. My current shiny not-so-new use for after combinations is triggering events for models that listen to other models in backbone.js:
-
-	class Wumpus
-		roar: ->
-			# ...
-		run: ->
-			#...
-
-	class Hunter
-		draw: (bow) ->
-			# ...
-		run: ->
-			#...
-
-	hydrate = (object) ->
-		# code that hydrates the object from storage
+Queer birds--or after combinations--are very handy for things like logging method calls or cleaning things up. Event triggering code is often very decoupled from method logic: The whole point of events is to invert control so that an object like a `Wumpus` doesn't need to know which objects want to do something after it moves. For example,  a backbone.js view might be observing the Wumpus and wish to update itself when the Wumpus moves:
 
 	YouAreDaChef(Wumpus, Hunter)
-		.before 'roar', 'draw', 'run', () ->
-			hydrate(this)
-		.after 'roar', 'draw', () ->
-			this.trigger 'action'
 		.after 'run', () ->
-			this.trigger 'move'
+			this.trigger 'move', this
 
-Code like this helps keep models very clean and small, while moving cross-cutting concerns into their own code blocks.
+	CaveView = Backbone.View.extend
+		initialize: ->
+			# ...
+			@model.bind 'move', @wumpusMoved
+		wumpusMoved: (wumpus) ->
+			# ...
+
+The code coupling the view to the model has now been separated from the code defining the model itself. YouAreDaChef also provides other mechanisms for separating concerns. *Around combinations* (also called around advice) are a very general-purpose combinator. With an around combination, the original method (the pointcut) is passed to the advice funtion as a parameter, allowing it to be called at any time.
+
+Around advice is useful for wrapping methods. Using an around combinator, you could bake error handling and transactions into methods without encumbering their code with implementation details. In this example, we define the methods to be matched using a regular expression, and YouAreDaChef passes the result of the match to the advice function, which wraps them in a transaction and adds some logging:
+
+    class EnterpriseyLegume
+      setId:         (@id)         ->
+      setName:       (@name)       ->
+      setDepartment: (@department) ->
+      setCostCentre: (@costCentre) ->
+    
+    YouAreDaChef(EnterpriseyLegume)
+    
+      .around /set(.*)/, (pointcut, match, value) ->
+        performTransaction () ->
+          writeToLog "#{match[1]}: #{value}"
+          pointcut(value)
+
+**summary**
+
+The bluebird is an interesting combinator because it controls function combination, allowing us to change the order of application without parameters. We used the bluebird as a thinly veiled excuse to look at method combinations, a technique for separating concerns in coffeescript code when the level of granularity is smaller than a method.
 
 _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-10-29/kestrel.markdown#readme), [The Thrush](http://github.com/raganwald/homoiconic/tree/master/2008-10-30/thrush.markdown#readme), [Songs of the Cardinal](http://github.com/raganwald/homoiconic/tree/master/2008-10-31/songs_of_the_cardinal.markdown#readme), [Quirky Birds and Meta-Syntactic Programming](http://github.com/raganwald/homoiconic/tree/master/2008-11-04/quirky_birds_and_meta_syntactic_programming.markdown#readme), [Aspect-Oriented Programming in Ruby using Combinator Birds](http://github.com/raganwald/homoiconic/tree/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#readme), [The Enchaining and Obdurate Kestrels](http://github.com/raganwald/homoiconic/tree/master/2008-11-12/the_obdurate_kestrel.md#readme), [Finding Joy in Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-16/joy.md#readme), [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md#readme), [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme), [The Hopelessly Egocentric Blog Post](http://github.com/raganwald/homoiconic/tree/master/2009-02-02/hopeless_egocentricity.md#readme), and [Wrapping Combinators](http://github.com/raganwald/homoiconic/tree/master/2009-06-29/wrapping_combinators.md#readme).
 
