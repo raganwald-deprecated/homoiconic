@@ -21,7 +21,11 @@ So far so good, I think I understand how Ruby's Array class implements the "boat
 Ha! As [Pete Forde][peteforde] puts it, "Nothing about Ruby surprises me any more."
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [peteforde]: http://twitter.com/peteforde "Pete Fode on Twitter"

@@ -112,5 +112,9 @@ Truthfully, if using `method_missing` to turn `nil` into a lightweight Maybe Mon
 Nevertheless, it's a really provocative idea. And now I'm going to make myself some espresso and spend a few moments thinking about the relationship between `NULL` and hopelessly egocentric combinator birds :-)
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

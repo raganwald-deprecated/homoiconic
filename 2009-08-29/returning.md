@@ -148,5 +148,9 @@ Curiosity. It's easy to dismiss programmers who accidentally misuse features lik
 * [returning.rb](http://github.com/raganwald/rewrite_rails/tree/master/lib/rewrite_rails/returning.rb "")
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

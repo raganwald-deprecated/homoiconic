@@ -40,7 +40,11 @@ Not a big deal in itself, but this really emphasizes that if you want change, yo
 (You can dis or cuss this post on [Reddit][prg].)
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [sick]: http://github.com/raganwald/homoiconic/blob/master/2009-04-08/sick.md#readme "I'm Sick Of This Shit"

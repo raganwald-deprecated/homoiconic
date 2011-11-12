@@ -404,5 +404,9 @@ And a tip: *Using local variables and `defne_method` to create private helpers a
 * An example of this recipe in action: The `separate_args` lambda from [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb)
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

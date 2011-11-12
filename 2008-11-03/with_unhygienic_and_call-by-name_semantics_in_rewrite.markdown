@@ -230,5 +230,9 @@ Although rewrite can do a lot more than `called_by_name`, I have found that most
 As a example, things like [andand](http://github.com/raganwald/andand/tree "raganwald's andand at master &mdash; GitHub") become trivial if you have called-by-name semantics for method calls. YMMV.
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

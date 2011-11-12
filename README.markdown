@@ -69,5 +69,9 @@ I originally set up a blog at homoiconic.com, but I spotted [David Baldwin's blo
 I am [Reg Braithwaite](http://reginald.braythwayt.com/). You can reach me by email. My first name is `reg`, and that works fine for sending email to `braythwayt.com`. I look forward to hearing from you.
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

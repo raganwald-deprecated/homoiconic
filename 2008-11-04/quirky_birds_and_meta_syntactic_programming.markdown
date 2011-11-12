@@ -248,5 +248,9 @@ _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/ma
 p.s. Please vote for this post on [ruby.reddit.com](http://www.reddit.com/r/ruby/comments/7bhsh/quirky_birds_and_metasyntactic_programming/) and [hacker news](http://news.ycombinator.com/item?id=354660)!
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

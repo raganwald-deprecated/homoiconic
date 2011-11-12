@@ -89,7 +89,11 @@ These are just a few of the thoughts I have when I take a moment to look at a to
 p.s. Beautiful Failure on [Hacker News][hn] and [Reddit][r]
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [sum]: http://github.com/raganwald/homoiconic/blob/master/2009-04-09/my_objection_to_sum.md#readme "My Objection to Array#Sum"

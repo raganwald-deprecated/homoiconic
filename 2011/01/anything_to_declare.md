@@ -216,7 +216,11 @@ My feeling is that it is nicer to work with declarations than with imperative fu
 In this case, turning functions into declarations lets us build controller methods and `route_to` helpers, and it helps us perform more convention over configuration.
 
 **(more)**
+
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [q]: http://weblog.raganwald.com/2006/06/my-favourite-interview-question.html
