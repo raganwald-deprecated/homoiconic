@@ -84,6 +84,8 @@ The [README][igreadme] explains how all these gestures are supported with essent
 
 ----
   
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [go]: http://github.com/raganwald/wood_and_stones

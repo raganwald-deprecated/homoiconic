@@ -282,6 +282,8 @@ p.s. A proggit reader [brings up a good point][proggit]: *Closures* are a means 
 
 p.p.s. There's an excellent discussion of variable hoisting in [this excellent article][answers].
 	
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [eee_closures]: http://japhr.blogspot.com/2010/10/gah-i-still-dont-know-closures.html

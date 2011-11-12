@@ -289,6 +289,8 @@ If this is what he was seeking to accomplish, I admit that <u>Rusty was right al
 
 Discuss on [Hacker News][hn] and [reddit.com][reddit].
   
+NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
+
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 
 [p2p]: http://www.yes-minister.com/ypmseas2b.htm
