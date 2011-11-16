@@ -23,7 +23,7 @@ That's all.
 
 p.s. If you press me to give a firm opinion, I choose [blue in green](http://bikeshed.com) :-)
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

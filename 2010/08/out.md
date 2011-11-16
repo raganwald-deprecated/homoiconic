@@ -39,7 +39,7 @@ Not a big deal in itself, but this really emphasizes that if you want change, yo
 
 (You can dis or cuss this post on [Reddit][prg].)
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

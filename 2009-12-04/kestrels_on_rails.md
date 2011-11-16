@@ -39,7 +39,7 @@ Object initialization is what you want when you want to initialize certain field
 
 Summary: In Rails, object initializers are evaluated before the object's life cycle is started, #returning's block is evaluated afterwards. And that is today's *lingua obscura*.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

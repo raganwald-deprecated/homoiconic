@@ -469,7 +469,7 @@ Our `controller.location(...)` method uses a model, a collection, and a view. It
 
 Next, in [Part IV][piv], we'll do a double-take and talk about loading classes.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

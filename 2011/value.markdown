@@ -71,7 +71,7 @@ And this just in:
 
 True, but every now and then [some idiot][r] ventures into the tomb and awakens a [long dead monster][name].
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

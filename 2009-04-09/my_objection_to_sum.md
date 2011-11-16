@@ -85,7 +85,7 @@ Someone asked wither `an_array_instance.sum()` is really necessary given that we
 
 (And yes, I feel exactly the same way about adding inflections and escapes and all sorts of other convenience methods to the String class. If #titlecase is not a semantically valid method to send to a string that represents a part code, why does `part_code.respond_to?(#titlecase)` return true? We either need to arrange things such that only *some* strings implement #titlecase, or we need to have the code that wknows whether a string is titlecase-worthy know how to convert a string to titlecase.)
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

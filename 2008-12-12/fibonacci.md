@@ -194,7 +194,7 @@ Christoph Temmel [forked homoiconic](http://github.com/kar8nga/homoiconic/tree "
 *The only difficulty is, that in order to avoid floating point arithmetic one would have to do the powers in the field \mathbb{Q}[\sqrt{5}] - this would ask for a custom datatype with overloading of addition and multiplication (the part needed for this exercise). *
 
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

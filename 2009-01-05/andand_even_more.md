@@ -54,7 +54,7 @@ Note that if we don't actually *need* `my_var` in the block, we don't really nee
     
 Like anything else, `andand do ... end` is a tool to be used in specialized situations. Use it whenever you want to do something more complicated than a simple message send, but only when the subject is not `nil`.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

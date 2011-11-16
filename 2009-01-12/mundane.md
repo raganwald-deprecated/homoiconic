@@ -11,7 +11,7 @@ This `.rb` file can be placed somewhere that Rails can't find it, this is a case
 
 Just a thought...
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

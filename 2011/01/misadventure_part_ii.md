@@ -154,7 +154,7 @@ Our `controller.wake()` method doesn't use a Backbone view class. It infers para
 
 In [Part III][piii] of this series, we will look at `controller.location(...)` in detail. `controller.location(...)` uses a model, a controller, and view class, so we'll have an opportunity to learn a little about how Backbone view classes work and how Faux wires controller methods, models, collections, views, and templates together.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

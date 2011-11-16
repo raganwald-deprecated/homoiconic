@@ -32,7 +32,7 @@ And the gotcha? Well what do you think happens when you write `Example.including
     
 Were you expecting an empty selection? *Me neither*.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

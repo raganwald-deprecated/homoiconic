@@ -237,7 +237,7 @@ Anaphora allow us to abbreviate code, hiding parameters and temporary variables 
 * [@RobertFischer](http://twitter.com/RobertFischer "Robert Fischer") pointed out that Groovy implements Block Anaphora using exactly the same syntax as rewrite\_rails, as well as mentioning that Groovy provides a special operator, `?.`, for the Maybe Monad.
 * Perl has some [anaphora of its own](http://www.wellho.net/mouth/969_Perl-and-.html "Perl - $_ and @_").
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

@@ -35,7 +35,7 @@ Again putting the first thing first. I normally only do this if both clauses are
 
 The predicate seems less important than the consequent, which suggests that it should come second even though the test is performed first.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

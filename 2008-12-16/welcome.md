@@ -27,7 +27,7 @@ p.s. A must-read: [Try() as you might](http://blog.lawrencepit.com/2009/01/11/tr
 
 > How wrong could I be when just a few minutes ago I wrote, with apparent misplaced confidence, that I'd accept the danger of anyone actually contributing a different `try` method. They might as well deliver me over to the mad doctor of blood island right now! No point in postponing the horrors that are my fate.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

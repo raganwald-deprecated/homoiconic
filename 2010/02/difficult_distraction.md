@@ -140,7 +140,7 @@ So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, 
 
 *p.p.s. Discuss this post [here][proggit] on programming.reddit.com or [here][hn] on Hacker News.*
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

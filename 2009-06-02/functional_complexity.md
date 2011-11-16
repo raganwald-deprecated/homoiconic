@@ -186,7 +186,7 @@ The two programs would have entirely different type systems but both would calcu
 
 In other words, these two programs are by necessity congruent modulo test suites that ignore their type architecture.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

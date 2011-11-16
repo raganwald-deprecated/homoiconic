@@ -99,7 +99,7 @@ That you should refactor it into this:
 
 *Join the discussion on [Hacker News](http://news.ycombinator.com/item?id=513472)*.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

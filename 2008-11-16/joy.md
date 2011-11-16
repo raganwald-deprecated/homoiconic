@@ -133,7 +133,7 @@ _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/ma
 
 p.s. Just published: [Combinatory Logic](http://plato.stanford.edu/entries/logic-combinatory/) in the Stanford Encyclopedia of Philosophy.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

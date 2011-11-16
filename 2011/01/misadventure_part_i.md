@@ -310,7 +310,7 @@ In this first post, we've seen how Misadventure behaves like a web site, with st
 
 In [Part II][pii] of this series, we'll look at `controller.wake()` in detail, exploring how controller methods are declared using Faux's little DSL, how parameters are inferred, how templates are displayed, and we'll look at `route_to` helpers you can use in templates. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template. Finally, in [Part IV][piv], we'll do a double-take and talk about loading classes.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

@@ -88,7 +88,7 @@ These are just a few of the thoughts I have when I take a moment to look at a to
 
 p.s. Beautiful Failure on [Hacker News][hn] and [Reddit][r]
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

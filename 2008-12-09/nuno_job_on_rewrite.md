@@ -16,7 +16,7 @@ I received a very nice email from [Nuno Job](http://github.com/dscape). Here it 
 > Best,  
 > Nuno
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

@@ -7,7 +7,7 @@ In the end, I decided against making a "real blog," because I wanted to focus on
 
 I hope that over time you will grow to like reading it in this minimalist format as much as I like writing it.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

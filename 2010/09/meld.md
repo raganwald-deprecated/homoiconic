@@ -51,7 +51,7 @@ Note that `meld` requires [Functional Javascript][j] and that `meld` is purely f
 
 It turns out that `$.extend` does what I wanted provided you pass true as the first parameter. Wonderful news!
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

@@ -126,7 +126,7 @@ So that's what I'm going to do.
 
 *p.s. If you liked this, you may also like another very personal post from this unblog, [Optimism](http://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#readme).*
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

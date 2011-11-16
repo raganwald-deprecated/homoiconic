@@ -255,7 +255,7 @@ An extension method isn't a tool for writing OO code, it's a tool for writing sa
 
 But if you want to write well-factored object-oriented code, an extension method is **not** the way to go. Either take your gem conflict lumps, or campaign for better scoping in the language.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

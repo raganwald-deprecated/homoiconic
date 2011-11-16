@@ -59,7 +59,7 @@ So in the end, something very good came out of this exercise: I wrote some inter
 
 So, enjoy Go!
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

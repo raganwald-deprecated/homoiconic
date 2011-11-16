@@ -19,7 +19,7 @@ Likewise over in La-la-lisp land we have moved from naked recursion to recursive
 
 Now its your turn. Dazzle me.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

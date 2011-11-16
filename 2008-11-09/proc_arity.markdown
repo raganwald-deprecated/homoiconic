@@ -47,7 +47,7 @@ I thought I'd have a look at method arity as well:
 
 It seems that if you explicitly define a method taking no parameters, you get the correct arity. However, if you use `define_method` and a block, you get the bug again.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

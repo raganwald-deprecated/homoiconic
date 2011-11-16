@@ -20,7 +20,7 @@ I do think that a language's syntax should support cascades like this, but I als
 
 ttfn...
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

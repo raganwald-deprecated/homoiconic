@@ -23,7 +23,7 @@ So what do I think of sifting through the internet for personal information abou
 
 NO HIRE.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

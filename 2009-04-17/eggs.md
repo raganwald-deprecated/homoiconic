@@ -17,7 +17,7 @@ But I'm a pattern matching machine, and somehow this seemed darn familiar. At th
 
 Fix one and you fix the other.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

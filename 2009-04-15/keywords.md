@@ -66,7 +66,7 @@ It reads like it sounds: "Do this and then do that." The if statement sounds too
       }
     end
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

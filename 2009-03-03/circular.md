@@ -20,7 +20,7 @@ Circular
       @followers_count="412", @screen_name="raganwald", @url="http://reginald.braythwayt.com", @description="",
       @id="18137723">, @in_reply_to_status_id="", @id="1275406032">
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

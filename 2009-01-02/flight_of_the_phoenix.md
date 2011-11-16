@@ -73,7 +73,7 @@ Status
 
 This is not ready for prime time, it's just something I'm toying with. I'm using it on a project to force myself to eat my own dog food, so it moves forward when I discover something else I need or something that is broken. It has a version of `#andand` and--new today--a version of `String#to_proc` called `StringToBlock`. I'll document  that soon, the basic idea is that you write your code as if you are using `String#to_proc` and RewriteRails 'compiles' it to ordinary Ruby. This is a huge performance gain and once again it future proofs your code.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

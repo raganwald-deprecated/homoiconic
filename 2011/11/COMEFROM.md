@@ -148,7 +148,7 @@ I never saw him again, but I like to imagine that he's still at ThinkWare, writi
 
 [yadc]: https://github.com/raganwald/YouAreDaChef "YouAreDaChef"
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

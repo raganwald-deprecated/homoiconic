@@ -64,7 +64,7 @@ Share and enjoy!
 
 p.s. *Another* post on Fibonacci? *Dude, WTF!?* My response is to paraphrase [Dijkstra](http://thinkexist.com/quotation/computer_science_is_no_more_about_computers_than/334131.html "Edsger Dijkstra quotes"): "This post is no more about Arithmetic than Astronomy is about telescopes." I'm just trying to share with you my appreciation for composing alternate approaches to solving the same problem and for working out what the imperfect trade-offs the approaches may entail.
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 

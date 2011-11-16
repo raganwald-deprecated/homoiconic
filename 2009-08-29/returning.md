@@ -147,7 +147,7 @@ Curiosity. It's easy to dismiss programmers who accidentally misuse features lik
 * [RewriteRails](http://github.com/raganwald/rewrite_rails/tree/master/README.md)
 * [returning.rb](http://github.com/raganwald/rewrite_rails/tree/master/lib/rewrite_rails/returning.rb "")
 
-**(more)**
+---
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 
