@@ -11,7 +11,7 @@ However, Williams was unlike every other veterans I've ever met. Most veterans c
 
 He had long ago accepted that the rest of the world was not about to change to do things the "right way," but he likewise refused to submit to fashion, no matter what the costs to his reputation or career. So he bounced from job to job, constantly being let go for "lack of fit with the team," until he wound up at ThinkWare, a contracting firm. The partners at ThinkWare specialized in finding ways for square pegs to write software that fit in round holes, and they carefully walled Williams off so that he could write software his own way with very little interference from anyone else.
 
-Williams development had a style that ThinkWare described as "unorthodox, but effective." 
+Williams had a style that ThinkWare described as "unorthodox, but effective." 
 
 **I'll take you, darling. And you. And you. And. You.**
 
@@ -47,14 +47,6 @@ Once the Wall Posts were delivered with tests, he might work on comments, which 
 		end
 
 Williams would isolate all of the code for comments into a module or plugin, and "monkey patch" the `WallPost` class:
-
-		# wall_post.rb
-
-		class WallPost < ActiveRecord::Model
-			# ...
-		end
-
-And:
 
 		# vendor/plugins/comments/lib/railtie.rb
 
@@ -150,7 +142,7 @@ So the ThinkWare partners put Williams in charge of small projects where he coul
 
 Sometimes they'd return to another project and try to implement some of his ideas, with middling success. But as long as the developers learned something from the experience, the ThinkWare partners figured that pairing Williams with a colleague from time to time was a win.
 
-The last time I saw Williams, he had grown an afro and was carrying a tennis racket, obviously on his way to a game. we chatted for a while, and he excitedly told me about a framework he was developing for implementing really [lightweight decoupling][yadc] in some weird dialect of Javascript.
+The last time I saw Williams, he had grown an afro and was carrying a tennis racket, obviously on his way to a game. We chatted for a while, and he excitedly told me about a framework he was developing for implementing really [lightweight decoupling][yadc] in some weird dialect of Javascript.
 
 I never saw him again, but I like to imagine that he's still at ThinkWare, writing solid code and evangelizing his ideas to anyone who will listen.
 
