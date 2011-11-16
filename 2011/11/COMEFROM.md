@@ -1,4 +1,4 @@
-Williams
+Williams, Master of the "Come From"
 ---
 
 In this business, you meet more than your fair share of eccentric developers with their own idiosyncratic ideas about software development. (If you're like me, you need go no further than a mirror to see what one looks like.) One of the most iconoclastic fellows I never met was a grizzled veteran named Jim Kelly. For reasons of interest only to cultural antiques, everyone called him "Williams."
