@@ -1,13 +1,13 @@
 Williams, Master of the "Come From"
 ---
 
-In this business, you meet more than your fair share of eccentric developers with their own idiosyncratic ideas about software development. (If you're like me, you need go no further than a mirror to see what one looks like.) One of the most iconoclastic fellows I never met was a grizzled veteran named Jim Kelly. For reasons of interest only to cultural antiques, everyone called him "Williams."
+In this business, you meet more than your fair share of eccentric developers with their own idiosyncratic ideas about software development. (If you're like me, you need go no further than a mirror to see what one looks like.) One of the most iconoclastic fellows I ever met was a grizzled veteran named Jim Kelly. For reasons of interest only to cultural antiques, everyone called him "Williams."
 
 Williams claimed to have gotten started when using punch cards and random access memory was considered effete by the [drum memory wizards of the previous generation][mel]. Like many retro-grouches, he would fondly recall rites of passage such as booting computers by toggling the three bootstrap instructions into a CPU's front panel. If his eccentricity stopped at recounting tales from days of yore, I'd probably have forgotten him years ago.
 
 [mel]: http://www.pbm.com/~lindahl/mel.html "The Story of Mel"
 
-However, Williams was unlike every other veterans I've ever met. Most veterans cling to whatever beliefs about software development were in vogue when they were cutting their teeth. Be it the utility of Lisp, the superiority of the VAX architecture, or the string-theory-like perfection of Smalltalk, most veterans cling to technology and ideas that were cutting edge back in their day. Not Williams. Williams had invented his own software development methodology, and he espoused it with the fervour of an evangelist on a street corner.
+However, Williams was unique. Most veterans cling to whatever beliefs about software development were in vogue when they were cutting their teeth. Be it the utility of Lisp, the superiority of the VAX architecture, or the string-theory-like perfection of Smalltalk, most veterans cling to technology and ideas that were cutting edge back in their day. Not Williams. Williams had invented his own software development methodology, and he espoused it with the fervour of an evangelist on a street corner.
 
 He had long ago accepted that the rest of the world was not about to change to do things the "right way," but he likewise refused to submit to fashion, no matter what the costs to his reputation or career. So he bounced from job to job, constantly being let go for "lack of fit with the team," until he wound up at ThinkWare, a contracting firm. The partners at ThinkWare specialized in finding ways for square pegs to write software that fit in round holes, and they carefully walled Williams off so that he could write software his own way with very little interference from anyone else.
 
@@ -37,7 +37,7 @@ However, once WIlliams delivered a feature, he liked to move on to the next feat
 			# ...
 		end
 
-Once the Wall Posts were delivered with tests, he might work on comments, which he would implement with a plugin. But instead of changing `wall_post.rb` to read:
+Once the Wall Posts were delivered with tests, he might work on comments. But instead of changing `wall_post.rb` to read:
 
 		# wall_post.rb
 
@@ -55,7 +55,7 @@ Williams would isolate all of the code for comments into a module or plugin, and
 			# ...
 		end
 
-By using tricks like this and other aspect-oriented programming techniques, his code was uniformly organized so that the code dependencies were exactly isomorphic to the feature dependencies.
+Since none of the code written so far needed to know that a wall post could have comments, he saw no value in cluttering up those files with comment-handling code. Instead, he put the relationship between wall posts and comments in the code that was responsible for doing something with comments. His code was uniformly organized so that the code dependencies were exactly isomorphic to the feature dependencies.
 
 Williams used every decoupling technique in the book and several he invented himself, from monkey-patching to method combinators to writing observers on classes. Inexperienced developers would often be completely bewildered as to how anything worked at all, and would search in vain for signs of a heavyweight [Dependency-Injection][di] framework.
 
