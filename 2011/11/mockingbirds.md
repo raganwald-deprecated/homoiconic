@@ -5,7 +5,7 @@ In Raymond Smullyan's delightful book on Combinatory logic, [To Mock a Mockingbi
 
 ## Duplicative Combinators
 
-Many combinators "conserve" their arguments. For example, if you pass `xyz` to a [Bluebird][bb], you get one `x`, one `y`, and one `z` back, exactly what you passed in. You get `x(yz)` back, so they have been grouped for you. But nothing has been added and nothing has been taken away. Likewise the [Thrush][th] reverses its arguments, but again it answers back the same number arguments you passed to it. The [Kestrel]][k], on the other hand, does not conserve its arguments. It *erases* one. If you pass `xy` to a Kestrel, you only get `x` back. The `y` is erased. Kestrels do not conserve their arguments.
+Many combinators "conserve" their arguments. For example, if you pass `xyz` to a [Bluebird][bb], you get one `x`, one `y`, and one `z` back, exactly what you passed in. You get `x(yz)` back, so they have been grouped for you. But nothing has been added and nothing has been taken away. Likewise the [Thrush][th] reverses its arguments, but again it answers back the same number arguments you passed to it. The [Kestrel][k], on the other hand, does not conserve its arguments. It *erases* one. If you pass `xy` to a Kestrel, you only get `x` back. The `y` is erased. Kestrels do not conserve their arguments.
 
 [bb]: https://github.com/raganwald/homoiconic/blob/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown
 [th]: https://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown
@@ -16,7 +16,9 @@ Today we are going to meet another combinator that does not conserve its argumen
 	mockingbird.call(x)
 		#=> x.call(x)
 
-The Mockingbird is not the only combinator that duplicates one or more of its arguments. Logicians have also found important uses for many other duplicating combinators like the Starling (`Sxyz = xz(yz)`), which is one half of the [SK combinator calculus](http://en.wikipedia.org/wiki/SKI_combinator_calculus "SKI combinator calculus - Wikipedia, the free encyclopedia"), and the Turing Bird (`Uxy = y(xxy)`), which is named after [its discoverer](http://www.alanturing.net/turing_archive/index.html "Alan Turing (1912-1954)").
+The Mockingbird is not the only combinator that duplicates one or more of its arguments. Logicians have also found important uses for many other duplicating combinators like the Starling (`Sxyz = xz(yz)`), which is one half of the [SK combinator calculus](http://en.wikipedia.org/wiki/SKI_combinator_calculus "SKI combinator calculus - Wikipedia, the free encyclopedia"), and the Turing Bird (`Uxy = y(xxy)`), which is named after [its discoverer][turning].
+
+[turing]: http://www.alanturing.net/turing_archive/index.html "Alan Turing"
 
 The great benefit of duplicative combinators from a *theoretical* perspective is that combinators that duplicate an argument can be used to introduce recursion without names, scopes, bindings, and other things that clutter things up. Being able to introduce anonymous recursion is very elegant, and [there are times when it is useful in its own right](http://www.eecs.harvard.edu/~cduan/technical/ruby/ycombinator.shtml "A Use of the Y Combinator in Ruby").
 
