@@ -159,7 +159,7 @@ Looking at this final example, we can see it has two cleanly separated parts:
 
 ## Recursive Combinators in Idiomatic Ruby
 
-We've now managed to separate the mechanism of recursing (the combinator) from what we want to do while recursing. Let's formalize this and make it idiomatic Ruby. We'll make a Kernel method for creating recursive callback lambdas and call it with a block:
+We've now managed to separate the mechanism of recursing (the combinator) from what we want to do while recursing. Let's formalize this and make it idiomatic Ruby. We'll make it a method for creating recursive lambdas and call it with a block instead of a lambda:
 
     def lambda_with_recursive_callback
       lambda { |x| x.call(x) }.call(
@@ -182,7 +182,7 @@ Not bad. But hey, let's DRY things up. Aren't `x.call(x)` and `myself.call(mysel
 
 ## The Mockingbird
 
-Yes,  `x.call(x)` and `myself.call(myself)` *are* the same thing:
+Yes, `x.call(x)` and `myself.call(myself)` *are* the same thing:
 
     def mockingbird &x
       x.call(x)
