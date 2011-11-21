@@ -195,8 +195,6 @@ We've now managed to separate the mechanism of recursing (the combinator) from w
         end
       )
     end
-    
-Since we're using a block instead of a lambda, we'll change our function to avoid the `return` keyword:
 
     sum_of_nested_list = lambda_with_recursive_callback do |arg, recurse|
       arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
@@ -229,6 +227,15 @@ Yes,  `x.call(x)` and `myself.call(myself)` *are* the same thing:
 
     sum_of_nested_list.call([1, [[2,3], [[[4]]]]])
  		  #=> 10 
+ 		  
+But does it blend?
+
+    lambda_with_recursive_callback { |arg, recurse| 
+      arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
+    }.call([1, [[2,3], [[[4]]]]])
+ 		  #=> 10 
+ 
+Yes!
 
 And now we have our finished recursive combinator. We are able to create recursive lambdas in Ruby without relying on environment variables, just on parameters passed to blocks or lambdas. and our recursive combinator is built on the simplest and most basic of duplicating combinators, the Mockingbird.
 
