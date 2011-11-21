@@ -70,14 +70,14 @@ Another reason to eschew having lambdas call themselves by name is that we won't
 The combinator way around this is to find a way to pass a function to itself as a parameter. If a lambda only ever calls its own parameters, it doesn't depend on anything being bound to a name in its environment. Let's start by rewriting our function to take itself as an argument:
 
   	sum_of_nested_list = lambda do |myself, arg|
-      arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
+      arg.kind_of?(Numeric) ? arg : arg.map { |item| myself.call(myself, item) }.inject(&:+)
   	end
 
-One little problem. Our function `sum_of_nested_lists` takes two arguments, but the function we pass into it only takes one argument. So let's *curry* it into a function that takes one argument, itself, and returns a function that takes an item:
+One little problem: How are we going to pass our function to itself? Let's start by *currying* it into a function that takes one argument, itself, and returns a function that takes an item:
 
     sum_of_nested_list = lambda do |myself|
       lambda do |arg|
-        arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
+        arg.kind_of?(Numeric) ? arg : arg.map { |item| myself.call(myself).call(item) }.inject(&:+)
       end
     end
 
@@ -86,26 +86,12 @@ Notice that we now have `myself` call itself and have the result call an item. T
   	sum_of_nested_list.call(sum_of_nested_list).call([1, [[2,3], [[[4]]]]])
    		#=> 10 
 
-This works, but is annoying. Writing our function to take itself as an argument and return a function is one thing, we can fix that, but remembering to call ourself when calling the function is error-prone, and remembering to write our function to call itself by name defeats the very purpose of the exercise. Let's fix that by going back to a version that didn't work.
-
-Since our lambda and the lambda we call aren't the same thing, we'll call it `recurse` instead of `myself`:
-
-    sum_of_nested_list = lambda do |myself|
-      lambda do |arg|
-        arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
-      end
-    end
-
-    sum_of_nested_list.call(sum_of_nested_list).call([1, [[2,3], [[[4]]]]])
-        #=> NameError: undefined local variable or method `recurse' for main:Object
-
-That's not going to work directly. Somehow, we have to turn `myself` into `recurse`. Let's do that by making `recurse` a parameter of our inner lambda (it's the *last* parameter in an homage to callback-oriented programming style) and passing it `myself.call(myself)`:
+This works, but is annoying. Writing our function to take itself as an argument and return a function is one thing, we can fix that, but having our function call itself by name defeats the very purpose of the exercise. Let's fix it. Firstthing we'll do, let's get rid of `myself.call(myself).call(item)`. We'll use a new parameter, `recurse` (it's the *last* parameter in an homage to callback-oriented programming style). We'll pass it `myself.call(myself)`, thus removing `myself.call(myself)` from our inner lambda:
 
     sum_of_nested_list = lambda do |myself|
       lambda do |arg|
         lambda do |arg, recurse|
-          return arg if arg.kind_of?(Numeric)
-          arg.map { |item| recurse.call(item) }.inject(&:+)
+          arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
         end.call(arg, myself.call(myself))
       end
     end
@@ -113,22 +99,7 @@ That's not going to work directly. Somehow, we have to turn `myself` into `recur
     sum_of_nested_list.call(sum_of_nested_list).call([1, [[2,3], [[[4]]]]])
  		  #=> 10 
 
-Now let's hoist our code out of the middle and make it a parameter:
-
-    sum_of_nested_list = lambda do |fn, myself|
-      lambda do |arg|
-        fn.call(arg, myself.call(myself))
-      end
-    end.call(
-      lambda do |arg, recurse|
-        arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
-      end
-    )
-
-    sum_of_nested_list.call(sum_of_nested_list).call([1, [[2,3], [[[4]]]]])
- 		  #=> 10 
-
-Almost there. Let's get rid of the ` sum_of_nested_list.call(sum_of_nested_list)` by moving it into our function:
+Next, we hoist our code out of the middle and make it a parameter. This allows us to get rid of the ` sum_of_nested_list.call(sum_of_nested_list)` by moving it into our lambda:
 
     sum_of_nested_list = lambda do |fn|
       lambda { |x| x.call(x) }.call(
