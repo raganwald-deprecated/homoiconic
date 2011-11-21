@@ -3,6 +3,10 @@ Mockingbirds and Simple Recursive Combinators in Ruby
 
 In Raymond Smullyan's delightful book on Combinatory logic, [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422), Smullyan explains combinatory logic and derives a number of important results by presenting the various combinators as songbirds in a forest. As you can guess from the title, one such bird, the Mockingbird, plays a central role in combinatory logic.
 
+> **What is a Combinator?** One definition of a combinator is a function with no free variables. Another way to put it is that a combinator is a function that takes one or more arguments and produces a result without introducing anything new. In Ruby terms, we are talking about blocks, lambdas or methods that do not call anything except what has been passed in.--[Finding Joy in Combinators][joy]
+
+[joy]: http://github.com/raganwald/homoiconic/tree/master/2008-11-16/joy.md#readme
+
 ## Duplicative Combinators
 
 Many combinators "conserve" their arguments. For example, if you pass `xyz` to a [Bluebird][bb], you get one `x`, one `y`, and one `z` back, exactly what you passed in. You get `x(yz)` back, so they have been grouped for you. But nothing has been added and nothing has been taken away. Likewise the [Thrush][th] reverses its arguments, but again it answers back the same number arguments you passed to it. The [Kestrel][k], on the other hand, does not conserve its arguments. It *erases* one. If you pass `xy` to a Kestrel, you only get `x` back. The `y` is erased. Kestrels do not conserve their arguments.
