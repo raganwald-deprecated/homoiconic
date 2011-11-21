@@ -34,8 +34,7 @@ So what is our algorithm?
 In Ruby:
 
     sum_of_nested_list = lambda do |arg|
-    	return arg if arg.kind_of?(Numeric)
-    	arg.map { |item| sum_of_nested_list.call(item) }.inject(&:+)
+      arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
     end
 
 One reason we don't like this is that it breaks badly if we ever modify the variable `sum_of_nested_list`. Although you may think that's unlikely, it can happen when writing the method combinators you've seen in previous chapters. For example, imagine you wanted to write to the log when calling this function, but only once, you don't want to write to the log when it calls itself.
@@ -65,16 +64,14 @@ Another reason to eschew having lambdas call themselves by name is that we won't
 The combinator way around this is to find a way to pass a function to itself as a parameter. If a lambda only ever calls its own parameters, it doesn't depend on anything being bound to a name in its environment. Let's start by rewriting our function to take itself as an argument:
 
   	sum_of_nested_list = lambda do |myself, arg|
-  		return arg if arg.kind_of?(Numeric)
-  		arg.map { |item| myself.call(item) }.inject(&:+)
+      arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
   	end
 
 One little problem. Our function `sum_of_nested_lists` takes two arguments, but the function we pass into it only takes one argument. So let's *curry* it into a function that takes one argument, itself, and returns a function that takes an item:
 
     sum_of_nested_list = lambda do |myself|
       lambda do |arg|
-        return arg if arg.kind_of?(Numeric)
-        arg.map { |item| myself.call(myself).call(item) }.inject(&:+)
+        arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
       end
     end
 
@@ -89,8 +86,7 @@ Since our lambda and the lambda we call aren't the same thing, we'll call it `re
 
     sum_of_nested_list = lambda do |myself|
       lambda do |arg|
-        return arg if arg.kind_of?(Numeric)
-        arg.map { |item| recurse.call(item) }.inject(&:+)
+        arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
       end
     end
 
@@ -119,8 +115,7 @@ Now let's hoist our code out of the middle and make it a parameter:
       end
     end.call(
       lambda do |arg, recurse|
-        return arg if arg.kind_of?(Numeric)
-        arg.map { |item| recurse.call(item) }.inject(&:+)
+        arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
       end
     )
 
@@ -139,8 +134,7 @@ Almost there. Let's get rid of the ` sum_of_nested_list.call(sum_of_nested_list)
       )
     end.call(
       lambda do |arg, recurse|
-        return arg if arg.kind_of?(Numeric)
-        arg.map { |item| recurse.call(item) }.inject(&:+)
+        arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
       end
     )
 
@@ -159,8 +153,7 @@ Lots of code there, but let's check and see that it works as an anonymous lambda
       )
     end.call(
       lambda do |arg, recurse|
-        return arg if arg.kind_of?(Numeric)
-        arg.map { |item| recurse.call(item) }.inject(&:+)
+        arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
       end
     ).call([1, [[2,3], [[[4]]]]])
  		  #=> 10
@@ -182,8 +175,7 @@ Looking at this final example, we can see it has two cleanly separated parts:
       # The lambda we wish to make recursive
       
       lambda do |arg, recurse|
-        return arg if arg.kind_of?(Numeric)
-        arg.map { |item| recurse.call(item) }.inject(&:+)
+        arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
       end
       
     )
@@ -192,7 +184,7 @@ Looking at this final example, we can see it has two cleanly separated parts:
 
 We've now managed to separate the mechanism of recursing (the combinator) from what we want to do while recursing. Let's formalize this and make it idiomatic Ruby. We'll make a Kernel method for creating recursive callback lambdas and call it with a block:
 
-    def Kernel.lambda_with_recursive_callback
+    def lambda_with_recursive_callback
       lambda { |x| x.call(x) }.call(
         lambda do |myself|
           lambda do |arg|
@@ -201,10 +193,11 @@ We've now managed to separate the mechanism of recursing (the combinator) from w
         end
       )
     end
+    
+Since we're using a block instead of a lambda, we'll change our function to avoid the `return` keyword:
 
     sum_of_nested_list = lambda_with_recursive_callback do |arg, recurse|
-      return arg if arg.kind_of?(Numeric)
-      arg.map { |item| recurse.call(item) }.inject(&:+)
+      arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
     end
 
     sum_of_nested_list.call([1, [[2,3], [[[4]]]]])
@@ -216,11 +209,11 @@ Not bad. But hey, let's DRY things up. Aren't `x.call(x)` and `myself.call(mysel
 
 Yes,  `x.call(x)` and `myself.call(myself)` *are* the same thing:
 
-    def Kernel.mockingbird &x
+    def mockingbird &x
       x.call(x)
     end
 
-    def Kernel.lambda_with_recursive_callback
+    def lambda_with_recursive_callback
       mockingbird do |myself|
         lambda do |arg|
           yield(arg, mockingbird(&myself))
@@ -229,8 +222,7 @@ Yes,  `x.call(x)` and `myself.call(myself)` *are* the same thing:
     end
 
     sum_of_nested_list = lambda_with_recursive_callback do |arg, recurse|
-      return arg if arg.kind_of?(Numeric)
-      arg.map { |item| recurse.call(item) }.inject(&:+)
+      arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
     end
 
     sum_of_nested_list.call([1, [[2,3], [[[4]]]]])
