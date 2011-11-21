@@ -40,7 +40,7 @@ So what is our algorithm?
 In Ruby:
 
     sum_of_nested_list = lambda do |arg|
-      arg.kind_of?(Numeric) ? arg : arg.map { |item| recurse.call(item) }.inject(&:+)
+      arg.kind_of?(Numeric) ? arg : arg.map { |item| sum_of_nested_list.call(item) }.inject(&:+)
     end
 
 One reason we don't like this is that it breaks badly if we ever modify the variable `sum_of_nested_list`. Although you may think that's unlikely, it can happen when writing the method combinators you've seen in previous chapters. For example, imagine you wanted to write to the log when calling this function, but only once, you don't want to write to the log when it calls itself.
@@ -86,7 +86,7 @@ Notice that we now have `myself` call itself and have the result call an item. T
   	sum_of_nested_list.call(sum_of_nested_list).call([1, [[2,3], [[[4]]]]])
    		#=> 10 
 
-This works, but is annoying. Writing our function to take itself as an argument and return a function is one thing, we can fix that, but having our function call itself by name defeats the very purpose of the exercise. Let's fix it. Firstthing we'll do, let's get rid of `myself.call(myself).call(item)`. We'll use a new parameter, `recurse` (it's the *last* parameter in an homage to callback-oriented programming style). We'll pass it `myself.call(myself)`, thus removing `myself.call(myself)` from our inner lambda:
+This works, but is annoying. Writing our function to take itself as an argument and return a function is one thing, we can fix that, but having our function call itself by name defeats the very purpose of the exercise. Let's fix it. First thing we'll do, let's get rid of `myself.call(myself).call(item)`. We'll use a new parameter, `recurse` (it's the *last* parameter in an homage to callback-oriented programming style). We'll pass it `myself.call(myself)`, thus removing `myself.call(myself)` from our inner lambda:
 
     sum_of_nested_list = lambda do |myself|
       lambda do |arg|
