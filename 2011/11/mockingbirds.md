@@ -238,7 +238,7 @@ Yes,  `x.call(x)` and `myself.call(myself)` *are* the same thing:
 
 And now we have our finished recursive combinator. We are able to create recursive lambdas in Ruby without relying on environment variables, just on parameters passed to blocks or lambdas. and our recursive combinator is built on the simplest and most basic of duplicating combinators, the Mockingbird.
 
----
+## Afterword
 
 This essay is a substantial reworking of a [Template Methods, Double Mockingbirds, and Helpers][dm]. It also appears as a chapter in [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators). Recursive combinators are fleshed out more completely in [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md#readme) and [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme).
 
