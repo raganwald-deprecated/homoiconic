@@ -86,7 +86,7 @@ But more complex cases require breaking the method invocations up:
       .find('.toolbar #heyButton')
         .attr('src', '/images/tools/empty-text-green.png');
 
-I don't like this. What I want is to write these methods just like I write my [haml](http://haml-lang.com/) and especially [sass](http://sass-lang.com/ "Sass - Syntactically Awesome Stylesheets") code (Thank you [Hamp](http://hamptoncatlin.com/ "Hampton Catlin | Ruby, Haml, Wikipedia, iPhone Development")!). I'd liek to write something like:
+I don't like this. What I want is to write these methods just like I write my [haml](http://haml-lang.com/) and especially [sass](http://sass-lang.com/ "Sass - Syntactically Awesome Stylesheets") code (Thank you [Hamp](http://hamptoncatlin.com/ "Hampton Catlin | Ruby, Haml, Wikipedia, iPhone Development")!). I'd like to write something like:
 
     var move_data = $('body').data('moves')[target_move_number];
     var next_move = memoized_move(target_move_number + 1);
