@@ -167,6 +167,8 @@ I admire John Resig for making a smart API design choice that enables me to writ
 For now, I'm settling for `end()`.
 
 ----
+
+New for 2011: "[Sans Titre](https://github.com/raganwald/homoiconic/blob/master/2011/11/sans-titre.md#readme)."
   
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
