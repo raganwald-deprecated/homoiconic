@@ -225,7 +225,7 @@ This feature can easily be added to Coffeescript, without a new operator, by sim
 
 ---
 
-([Discuss][d] on Hacker News. Also, relevant Coffeescript feature requests are [Improve chaining syntax][1495] and [Dart Monocle Mustache][1889]. And back in March of 2010, I wrote "[Significant Whitespace][sw]")
+([Discuss][d] on Hacker News. A relevant Coffeescript feature request: [Improve chaining syntax][1495]. And back in March of 2010, I wrote "[Significant Whitespace][sw]")
 
 [d]: http://news.ycombinator.com/item?id=3296202
 [1495]: https://github.com/jashkenas/coffee-script/issues/1495
