@@ -129,7 +129,7 @@ Says to me that the `butFirst()` lines all belong to `console?.log [1..3]`. The 
           .filter((x) -> x % 2 is 0)
             .reverse()
 
-It says that each line belongs to the previous line, because our rule with outlines is that when something is indented, it belongs to its parent. Let's imagine for a moment that Coffeescript treated method calls and property syntax using that rule.
+It says that each line belongs to the previous line, because our rule with outlines is that *when something is indented, it belongs to its parent*. Let's imagine for a moment that Coffeescript treated method calls and property syntax using that rule.
 
 ## A hypothetical whitespace rule for Coffeescript
 
@@ -219,8 +219,13 @@ We get both kinds of behaviour and our intent is always clear, regardless of whe
 One thing that expressive languages like Ruby, Smalltalk, and Lisp teach us is that many 'design patterns' are actually language smells. The 'fluent interface' design patterns is just that: A sign that a language is missing a  cascading message feature.
 
 This feature can easily be added to Coffeescript, without a new operator, by simply making whitespace *more significant*.
-
 ---
+
+([discuss][d] on Hacker News. Also, relevant Coffeescript feature requests are [Improve chaining syntax][1495] and [Dart Monocle Mustache][1889])
+
+[d]: http://news.ycombinator.com/item?id=3296202
+[1495]: https://github.com/jashkenas/coffee-script/issues/1495
+[1889]: https://github.com/jashkenas/coffee-script/issues/1889
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 
