@@ -3,7 +3,7 @@
 ![Sans Titre](http://upload.wikimedia.org/wikipedia/en/f/fe/Mondrian_Composition_II_in_Red%2C_Blue%2C_and_Yellow.jpg)  
 (*"Sans Titre," also called "Composition II in Red, Blue and Yellow" by Piet Mondrian, 1930*)
 
-I have been programming in [Coffeescript][cs] lately. In my opinion, it does a good job of paving over a lot of Javascript's accidental complexity. Another thing  that I find interesting about it is that it encourages a certain kind of programming style. I like that. As Alan Perlis said, "A language that doesn't change the way you think about programming is not worth learning." Coffeescript definitely changes the way I think about programming -in-the-small, about the way I express concepts in syntax.
+I have been programming in [Coffeescript][cs] lately. In my opinion, it does a good job of paving over a lot of Javascript's accidental complexity. Another thing  that I find interesting about it is that it encourages a certain kind of programming style. I like that. As Alan Perlis said, "A language that doesn't change the way you think about programming is not worth learning." Coffeescript definitely changes the way I think about programming-in-the-small, about the way I express concepts in syntax.
 
 [cs]: http://jashkenas.github.com/coffee-script/
 
@@ -225,11 +225,12 @@ This feature can easily be added to Coffeescript, without a new operator, by sim
 
 ---
 
-([discuss][d] on Hacker News. Also, relevant Coffeescript feature requests are [Improve chaining syntax][1495] and [Dart Monocle Mustache][1889])
+([Discuss][d] on Hacker News. Also, relevant Coffeescript feature requests are [Improve chaining syntax][1495] and [Dart Monocle Mustache][1889]. And back in March of 2010, I wrote "[Significant Whitespace][sw]")
 
 [d]: http://news.ycombinator.com/item?id=3296202
 [1495]: https://github.com/jashkenas/coffee-script/issues/1495
 [1889]: https://github.com/jashkenas/coffee-script/issues/1889
+[sw]: https://github.com/raganwald/homoiconic/blob/master/2010/03/significant_whitespace.md#readme
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 
