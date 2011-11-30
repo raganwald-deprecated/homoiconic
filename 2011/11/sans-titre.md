@@ -7,7 +7,7 @@ I have been programming in [Coffeescript][cs] lately. In my opinion, it does a g
 
 [cs]: http://jashkenas.github.com/coffee-script/
 
-One of the big ways Coffeescript differs from Javascript in that it is somewhat whitespace-significant. Instead of:
+One of the big ways Coffeescript differs from Javascript in that its control structures are whitespace-significant. Instead of:
 
 	if (foo) {
 		// ...
@@ -70,7 +70,7 @@ Is not the same thing as:
 
 Indentation matters.
 
-## Methods
+## Method calls are whitespace-blind
 
 Now let's look at methods and properties in Coffeescript. Recall that with `if` statements, indentation matters. With method calls, *it doesn't*. Consider this expression:
 
@@ -101,6 +101,8 @@ And one last one, this:
             .reverse()
 
 Although they have different indentation, they all produce the same result. Surprise!
+
+## Why I'm surprised
 
 Let's review, starting with:
 
