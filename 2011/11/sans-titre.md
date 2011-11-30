@@ -1,6 +1,7 @@
 # Sans Titre
 
-![Sans Titre](http://images.worldgallery.co.uk/i/prints/rw/lg/3/7/Piet-Mondrian-Sans-Titre-379225.jpg)
+![Sans Titre](http://upload.wikimedia.org/wikipedia/en/f/fe/Mondrian_Composition_II_in_Red%2C_Blue%2C_and_Yellow.jpg)  
+(*"Sans Titre," also called "Composition II in Red, Blue and Yellow" by Piet Mondrian, 1930*)
 
 I have been programming in [Coffeescript][cs] lately. In my opinion, it does a good job of paving over a lot of Javascript's accidental complexity. Another thing  that I find interesting about it is that it encourages a certain kind of programming style. I like that. As Alan Perlis said, "A language that doesn't change the way you think about programming is not worth learning." Coffeescript definitely changes the way I think about programming -in-the-small, about the way I express concepts in syntax.
 
@@ -32,7 +33,7 @@ I like that. It is [familiar][f]: That's the way we write outlines. It's an obvi
 
 [f]: http://www.asktog.com/papers/raskinintuit.html "INTUITIVE EQUALS FAMILIAR"
 
-![AST][ast]
+![AST][ast]  
 (*image snarfed from [OranLooney.com][ast-link]*)
 [ast]: http://oranlooney.com/static/misl/ast.png
 [ast-link]: http://oranlooney.com/minimal-interpreted-scripting-language/
@@ -219,6 +220,7 @@ We get both kinds of behaviour and our intent is always clear, regardless of whe
 One thing that expressive languages like Ruby, Smalltalk, and Lisp teach us is that many 'design patterns' are actually language smells. The 'fluent interface' design patterns is just that: A sign that a language is missing a  cascading message feature.
 
 This feature can easily be added to Coffeescript, without a new operator, by simply making whitespace *more significant*.
+
 ---
 
 ([discuss][d] on Hacker News. Also, relevant Coffeescript feature requests are [Improve chaining syntax][1495] and [Dart Monocle Mustache][1889])
