@@ -15,7 +15,7 @@ This dynamic is common in interviews. Most interview processes start by selectin
 
 A final point.
 
-Liking or disliking someone's "attitude" is very dangerous ground. What I believe happens is this: You decide whether you like or dislike someone in the [blink](ttp://www.amazon.com/gp/product/0316010669?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0316010669) of an eye. Then you cast everything they say in the light of your prejudices. If you have already decided that the candidate is "Just a technical writer," then his push-back is obviously the sign of a difficult personality who will be grit in the team's vaseline.
+Liking or disliking someone's "attitude" is very dangerous ground. What I believe happens is this: You decide whether you like or dislike someone in the [blink](http://www.amazon.com/gp/product/0316010669?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0316010669) of an eye. Then you cast everything they say in the light of your prejudices. If you have already decided that the candidate is "Just a technical writer," then his push-back is obviously the sign of a difficult personality who will be grit in the team's vaseline.
 
 Or what do we do with someone who uses pushing back on the requirements to display [their contempt for the question](http://exold.com/article/stupid-interview-questions "Stupid Interview Questions")? Is being contemptuous of our interview process a bad sign? Why? Do we only want conformists who will never question us?
 
