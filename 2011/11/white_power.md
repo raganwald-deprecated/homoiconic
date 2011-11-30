@@ -1,4 +1,4 @@
-# White Power
+# White Space
 
 I have been programming in [Coffeescript][cs] lately. In my opinion, it does a good job of paving over a lot of Javascript's accidental complexity. Another thing  that I find interesting about it is that it encourages a certain kind of programming style. I like that. As Alan Perlis said, "A language that doesn't change the way you think about programming is not worth learning." Coffeescript definitely changes the way I think about programming -in-the-small, about the way I express concepts in syntax.
 
