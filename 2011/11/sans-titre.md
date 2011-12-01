@@ -159,7 +159,7 @@ So when would we do things differently? Well, how about:
       .fill("blue")
       .ellipse(50, 50)
 
-This says that each of these methods (`moveTo`, `stroke`, `fill`, and `ellipse`) **belong to** `path`. Regardlesss of what each method returns, with our hypothetical whitespace rule, anything with this outline form woudl work the same way.
+This says that each of these methods (`moveTo`, `stroke`, `fill`, and `ellipse`) **belong to** `path`. Regardlesss of what each method returns, with our hypothetical whitespace rule, anything with this outline form would work the same way.
 
 ## Why we need this rule
 
