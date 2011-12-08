@@ -232,6 +232,6 @@ This feature can easily be added to Coffeescript, without a new operator, by sim
 [1889]: https://github.com/jashkenas/coffee-script/issues/1889
 [sw]: https://github.com/raganwald/homoiconic/blob/master/2010/03/significant_whitespace.md#readme
 
-NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
+[Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
