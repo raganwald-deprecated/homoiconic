@@ -37,6 +37,10 @@ The predicate seems less important than the consequent, which suggests that it s
 
 ---
 
-[Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book!
+Recent work:
+
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
+* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
