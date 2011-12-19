@@ -3,28 +3,22 @@
 > A language that doesn't change the way you think about programming is not worth learning.—Alan Perlis
 
 [CoffeeScript][c] is a program that takes some text you write using a special set of rules and transforms it into some other text, which happens to be a JavaScript program. It is often described as a programming language that "compiles" to JavaScript much as other programming languages compile to assembler or JVM byte codes.
+Like many new ideas, CoffeeScript has inspired some enthusiasm from early adopters, some diffidence from pragmatists, and disdain from conservative laggards.
+
+In [A Case Against Using CoffeeScript][against], Ryan Florence argues that if people use CoffeeScript to write JavaScript programs, maintenance will be a nightmare: The world will become full of programs that are impossible to understand. Quite honestly, he's right that there will be plenty of terrible generated JavaScript in the wild. As Sturgeon remarked, "90% of everything is crud." But will the 90% of crud be worse for having been generated in CoffeeScript? And will the 10% of good code be better?
+
+I don't think the 90% will magically be transformed from crud to gold.  Crud is crud. By I think it will be better than the crud that would have been written in "pure" JavaScript. And I think the 10% of good JavaScript will be *better* by virtue of having been transformed from CoffeeScript.
+
+And the reason I think so is the reason that CoffeeScript is "not a language worth learning:"
 
 [c]: http://jashkenas.github.com/coffee-script/
-
-Like many new ideas, CoffeeScript has inspired some enthusiasm from early adopters, some diffidence from pragmatists, and disdain from conservative laggards. For example, in [A Case Against Using CoffeeScript][against], Ryan Florence argues that the tool chain is inconvenient, a common knock against new tools. I recall, for example, the arguments against Java when it appeared included the lack of tooling. With enthusiasm for Java came the development of robust tools, and Java now seems to be over-tooled.
-
 [against]: http://ryanflorence.com/2011/2012/case-against-coffeescript/
-
-CoffeeScript will probably follow the same pattern: Early adopters will persevere despite the lack of world-class tools, enthusiasts will build tools to scratch their own itches, and at some point a critical mass of users will inspire existing tools to start catering to CoffeeScript.
-
-Ryan makes sense arguing about the inconvenience today, but his main thesis left me scratching my head. He says maintenance will be a nightmare and that people shouldn't use it. It seems that his lack of ability to comprehend CoffeeScript at a glance today leads him to believe that the world will become full of programs that are impossible to understand tomorrow.
-
-Quite honestly, that argument applies to everything. Imagine we take his essay and swap Java for JavaScript and Ruby for CoffeeScript. It reads like a polemic against Ruby from 2004, arguing that all this "clever" code like `foobar.map(&:blitz)` will lead to the next software crisis. Quite honestly, he's right that there will be plenty of terrible CoffeeScript in the wild. As Sturgeon remarked, "90% of everything is crud." The question is, if the people who are going to write cruddy CoffeeScript use JavaScript instead, will they write better code?
-
-I don't think so.
-
-But hang on a second. Here I am defending CoffeeScript. But the title of this essay is that CoffeeScript is not a language worth learning? What gives?
 
 ##CoffeeScript is JavaScript
 
-My argument is that CoffeeScript is not a language worth learning because **CoffeeScript is not a language**. CoffeeScript is JavaScript. Okay, it has a different syntax, but only in the most superficial way. If JavaScript was English, CoffeeScript wouldn't be another language like French, it wouldn't be a dialect like Jamaican Patois, it would be technical jargon like the conversation one programmer might have with another.
+My argument is that CoffeeScript is not a language worth learning because **CoffeeScript is not a language**. CoffeeScript is JavaScript. You don't "think in CoffeeScript," you "think in JavaScript." Only you think in well-crafted JavaScript.
 
-> CoffeeScript is JavaScript
+Obviously, CoffeeScript has a different syntax, but only in the most superficial way. If JavaScript was English, CoffeeScript wouldn't be another language like French, it wouldn't be a dialect like Jamaican Patois, it would be technical jargon like the conversation one programmer might have with another.
 
 CoffeeScript doesn't introduce dramatic new ways to organize programs like continuations, promises, or monads. All of the transformations it produces are local: If you look at a small snippet of CoffeeScript, you know that it translates to a small snippet of JavaScript without dramatically affecting anything else in any other part of the program. There are no back-flips to get "compiled" CoffeeScript to talk to compiled JavaScript.
 
@@ -114,7 +108,7 @@ It's the same argument behind Python's significant whitespace, or behind enforci
 
 That leaves us free to express our creativity on the stuff that matters, the stuff that makes a difference.
 
-## CoffeeScript may not be worth learning, but it's worth using
+## CoffeeScript a damn fine tool
 
 If you want to write your JavaScript code such that you generate much the same code that CoffeeScript generates, I say go for it. Do what you do when you do what you do so well!
 
