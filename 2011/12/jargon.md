@@ -110,13 +110,17 @@ That leaves us free to express our creativity on the stuff that matters, the stu
 
 ## CoffeeScript a damn fine tool
 
-If you want to write your JavaScript code such that you generate much the same code that CoffeeScript generates, I say go for it. Do what you do when you do what you do so well! But please don't start arguing about whether CoffeeScript is readable or maintainable or debuggable. Really. CoffeeScript isn't a language, it's hardly a notation. It's a jargon for writing standard JavaScript using standard Design Patterns for dealing with common JavaScript problems like how to write class-oriented OOP or how to loop over an object's own properties.
+If you want to write your JavaScript code such that you generate much the same code that CoffeeScript generates, I say go for it. *Do what you do when you do what you do so well*. But please don't start arguing about whether CoffeeScript is readable or maintainable or debuggable. Really. CoffeeScript isn't a language, it's a jargon for writing standard JavaScript using standard Design Patterns for dealing with common JavaScript problems.
 
 If  you value making that JavaScript easier to *write* by virtue of having a tool that generates well-written JavaScript, CoffeeScript is a good tool to help you write good JavaScript.
 
 And if you value making JavaScript easier to *read* by virtue of getting everyone to solve the same problems the same way with the same Design Patterns, CoffeeScript is a good tool for getting *everyone else* to write good JavaScript.
 
 CoffeeScript isn't a language worth learning because it isn't a language. It doesn't make you think about programming in a new way. It's a tool for writing programs in a language you already know, JavaScript. And considered in that light, it's a damn fine tool.
+
+([discuss][d])
+
+[d]: http://news.ycombinator.com/item?id=3370428 "Discuss on Hacker News"
 
 ---
 
