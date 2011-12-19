@@ -5,9 +5,9 @@
 [CoffeeScript][c] is a program that takes some text you write using a special set of rules and transforms it into some other text, which happens to be a JavaScript program. It is often described as a programming language that "compiles" to JavaScript much as other programming languages compile to assembler or JVM byte codes.
 Like many new ideas, CoffeeScript has inspired some enthusiasm from early adopters, some diffidence from pragmatists, and disdain from conservative laggards.
 
-In [A Case Against Using CoffeeScript][against], Ryan Florence argues that if people use CoffeeScript to write JavaScript programs, maintenance will be a nightmare: The world will become full of programs that are impossible to understand. Quite honestly, he's right that there will be plenty of terrible generated JavaScript in the wild. As Sturgeon remarked, "90% of everything is crud." But will the 90% of crud be worse for having been generated in CoffeeScript? And will the 10% of good code be better?
+In [A Case Against Using CoffeeScript][against], Ryan Florence argues that people who write bad CoffeeScript will wind up with even worse JavaScript programs. Quite honestly, he's right that there will be plenty of terrible generated JavaScript in the wild. As Sturgeon remarked, "90% of everything is crud." But will the 90% of crud be worse for having been generated in CoffeeScript? I don't think so.
 
-I don't think the 90% will magically be transformed from crud to gold.  Crud is crud. By I think it will be better than the crud that would have been written in "pure" JavaScript. And I think the 10% of good JavaScript will be *better* by virtue of having been transformed from CoffeeScript.
+Mind you, I don't think the 90% will magically be transformed from crud to gold.  Crud is crud. By I think it will be better than the crud that would have been written in "pure" JavaScript. And I think the 10% of good JavaScript will be *better* by virtue of having been transformed from CoffeeScript.
 
 And the reason I think so is the reason that CoffeeScript is "not a language worth learning:"
 
