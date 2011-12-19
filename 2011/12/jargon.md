@@ -16,7 +16,7 @@ And the reason I think so is the reason that CoffeeScript is "not a language wor
 
 ##CoffeeScript is JavaScript
 
-My argument is that CoffeeScript is not a language worth learning because **CoffeeScript is not a language**. CoffeeScript is JavaScript. You don't "think in CoffeeScript," you "think in JavaScript." Only you think in well-crafted JavaScript.
+My argument is that CoffeeScript is not a language worth learning because **CoffeeScript is not a language**. CoffeeScript is JavaScript. You don't "Think in CoffeeScript," you "Think in JavaScript." Only you think in well-crafted JavaScript.
 
 Obviously, CoffeeScript has a different syntax, but only in the most superficial way. If JavaScript was English, CoffeeScript wouldn't be another language like French, it wouldn't be a dialect like Jamaican Patois, it would be technical jargon like the conversation one programmer might have with another.
 
