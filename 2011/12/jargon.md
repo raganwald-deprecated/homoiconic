@@ -26,13 +26,13 @@ So you write `@render()` instead of `this.render()`. Big whoop! That's a shortha
 
 		if foo and @get('bar')
 		  doThis()
-			doThat()
+		  doThat()
 			
 Instead of:
 
 		if (foo && this.get('bar')) {
 		  doThis();
-			doThat();
+		  doThat();
 		}
 		
 How can we get worked up over this? CoffeeScript has lots of more subtle transformations up its sleeve, like comprehensions, destructuring assignment, splats, or the "fat arrow" some rail against. Here's the secret to understand: None of these things are "language features" that compile from a language that has them—CoffeeScript—into a language that doesn't have them—JavaScript.
