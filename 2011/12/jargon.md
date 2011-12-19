@@ -30,7 +30,7 @@ So you write `@render()` instead of `this.render()`. Big whoop! That's a shortha
 			
 Instead of:
 
-		if (foo && @get('bar')) {
+		if (foo && this.get('bar')) {
 		  doThis();
 			doThat();
 		}
