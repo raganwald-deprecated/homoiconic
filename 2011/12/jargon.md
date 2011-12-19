@@ -124,6 +124,10 @@ CoffeeScript isn't a language worth learning because it isn't a language. It doe
 
 ---
 
+p.s. My friend Nikolai had this to say about CoffeeScript providing a standard way to solve common JavaScript problems such implementing OOP: "[Those who do not learn from history, are doomed to repeat it][standards]."
+
+[standards]: http://xkcd.com/927/ "Standards"
+
 Recent work:
 
 * [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
