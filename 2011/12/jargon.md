@@ -120,8 +120,6 @@ CoffeeScript isn't a language worth learning because it isn't a language. It doe
 
 ([discuss][d])
 
----
-
 ## Afterwords
 
 Here are a few observations about this essay I'd like to make based on the feedback I've received.
@@ -132,7 +130,7 @@ Quite obviously, the title is a bit of legerdemain. It holds out the promise of 
 
 What happened was this. In a somewhat unrelated exchange on twitter, [@jashkenas][jashkenas] expressed surprise that there was a CoffeeScript-specific subreddit:
 
-> Huh. Shouldn't it just go into /r/javascript or /r/programming?
+> Huh. Shouldn't it just go into /r/JavaScript or /r/programming?
 
 That got me thinking. Isn't CoffeeScript programming really just JavaScript programming? It's not like there are CoffeeScript-specific libraries. Sure, you can write a book about reading and writing CoffeeScript's syntax, but ultimately, you're writing JavaScript.
 
