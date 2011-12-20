@@ -140,7 +140,9 @@ Thanks to Paul Graham, I look upon essay-writing as a tool for working out my ow
 
 Of course, such an "extreme" essay is useful for working out ideas, but the real world is more complex than an essay can capture. *I really do think CoffeeScript is a little language*. It definitely changes the way you think about JavaScript programming idioms. One person commented that the JavaScript created by CoffeeScript is more functional than the JavaScript he writes by hand, because "It is just too much hassle to write and nest so many anonymous functions."
 
-Next time, I'll write a challenging title, answer the title in an essay, and then change the title to something less controversial. Thanks to everyone who provided feedback about this.
+So: Is CoffeeScript really a little language? Yes. Is CoffeeScript really a dialect of JavaScript? Also yes. Is CoffeeScript programming its own thing? Yes. Is CoffeeScript programming really JavaScript programming? Also yes. Next time, I'll write a challenging title, answer the title in an essay, and then change the title to something less controversial.
+
+Thanks to everyone who provided feedback about this.
 
 ### Transpilers
 
