@@ -41,7 +41,7 @@ I have another way of looking at these features: They're *JavaScript Design Patt
 
 The JavaScript CoffeeScript generates is JavaScript, The Good Parts. Using consistent, standard ways to solve common problems that JavaScript throws in my way. And best of all, everyone else using CoffeeScript solves those exact problems the exact same way. 
 
-Imagine, if you will, that the Java people took over JavaScript. What would they do? Well, they'd agree on a set of Design Patterns. They'd then build an IDE that generates a skeleton of a design pattern for you automagically. So you'd write something like this in the IDE:
+Imagine, if you will, that the Java people took over JavaScript. What would they do? Well, they'd agree on a set of Design Patterns. They'd then build an IDE that generates a skeleton of a design pattern for you automagically. So you'd write something like this code from the [Katy][katy] combinators library:
 
 		class OneTimeWrapper
 		  constructor: (@what) ->
@@ -53,7 +53,7 @@ Imagine, if you will, that the Java people took over JavaScript. What would they
 		  chain: -> new MonadicWrapper(@what)
 		  value: -> @what
 
-And while you're writing that, the IDE would automagically expand it into:
+And the IDE would automagically expand it into:
 
 		OneTimeWrapper = (function() {
 
@@ -87,6 +87,11 @@ And while you're writing that, the IDE would automagically expand it into:
 		})();
 
 This isn't inscrutable, it's the JavaScript I ought to have written in the first place. Much as writing structured programs in the 1970s was like writing programs with GOTOs, only using them wisely and eschewing error-prone constructions.
+
+> I treat CoffeeScript as a big TextMate snippet that's always editable.—[@topfunky][topfunky]
+
+[katy]: http://github.com/raganwald/katy
+[topfunky]: http://twitter.com/topfunky
 
 So for me, writing CoffeeScript is writing JavaScript, only with a tool that helps me denote some standard design patterns with an abbreviated notation. And unlike the IDE, I can go back and modify the CoffeeScript itself any time, and the tool will generate another JavaScript file for me.
 
