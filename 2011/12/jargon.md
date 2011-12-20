@@ -120,8 +120,6 @@ CoffeeScript isn't a language worth learning because it isn't a language. It doe
 
 ([discuss][d])
 
----
-
 ## Afterwords
 
 Here are a few observations about this essay I'd like to make based on the feedback I've received.
