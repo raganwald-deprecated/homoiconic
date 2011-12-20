@@ -120,10 +120,47 @@ CoffeeScript isn't a language worth learning because it isn't a language. It doe
 
 ([discuss][d])
 
-p.s. My friend Nikolai had this to say about CoffeeScript providing a standard way to solve common JavaScript problems such implementing OOP: "[Those who do not learn from history, are doomed to repeat it][standards]."
+---
+
+## Afterwords
+
+Here are a few observations about this essay I'd like to make based on the feedback I've received.
+
+### About the Title
+
+Quite obviously, the title is a bit of legerdemain. It holds out the promise of a critique of CoffeeScript, then reverses itself sharply to praise it. I apologize to anyone who felt I was trying to trick them into reading the essay, that was not my intent. My purpose was actually to challenge myself.
+
+What happened was this. In a somewhat unrelated exchange on twitter, [@jashkenas][jashkenas] expressed surprise that there was a CoffeeScript-specific subreddit:
+
+> Huh. Shouldn't it just go into /r/javascript or /r/programming?
+
+That got me thinking. Isn't CoffeeScript programming really just JavaScript programming? It's not like there are CoffeeScript-specific libraries. Sure, you can write a book about reading and writing CoffeeScript's syntax, but ultimately, you're writing JavaScript.
+
+Thanks to Paul Graham, I look upon essay-writing as a tool for working out my own thoughts. So I set out to dash off an essay about this. One of the ways to trick yourself into thoroughly exploring a subject is to pick an extreme position and try to explore it, to ask yourself what happens if you turn the dial up to eleven. For example, if code reviews are good, extreme code reviews becomes pair programming. Or if objects are good, extreme OOP is a language where everything, even control flow constructs and numbers, are really objects. (This last bit seems obvious, but it was an unusual idea when SmallTalk was created.)
+
+Of course, such an "extreme" essay is useful for working out ideas, but the real world is more complex than an essay can capture. *I really do think CoffeeScript is a little language*. It definitely changes the way you think about JavaScript programming idioms. One person commented that the JavaScript created by CoffeeScript is more functional than the JavaScript he writes by hand, because "It is just too much hassle to write and nest so many anonymous functions."
+
+Next time, I'll write a challenging title, answer the title in an essay, and then change the title to something less controversial. Thanks to everyone who provided feedback about this.
+
+### Transpilers
+
+As noted on [Hacker News][d], there is a special name for compiling a language into another language: *Transpiling*, an abbreviation of "[Transcompiling][trans]."
+
+The strict definition is any conversion from one language to another, and Wikipedia gives conversion from one ASM to another, including optimizations. Current usage seems to focus on translation from one high-level language to another, using only local transformations, so for example many people would not call the original Haskell-to-C implementation a transpiler, because the process involved many global transformations and greenspunning features like lazy evaluation that aren't part of C's semantics.
+
+CoffeeScript is implemented as a transpiler, not a compiler.
+
+### Patterns or Idioms?
+
+As noted on [reddit][reddit], many of the coding conventions that CoffeeScript produces should be more properly called [programming idioms][idioms] rather than [design patterns][patterns]. The distinction between an idiom and a design pattern is mostly one of scale: Idioms are mostly about how to implement something, while design patterns are mostly about how to organize something.
 
 [d]: http://news.ycombinator.com/item?id=3370428 "Discuss on Hacker News"
 [standards]: http://xkcd.com/927/ "Standards"
+[reddit]: http://www.reddit.com/r/javascript/comments/niqup/coffeescript_is_not_a_language_worth_learning/
+[trans]: http://en.wikipedia.org/wiki/Transcompiler
+[idioms]: http://en.wikipedia.org/wiki/Programming_idiom
+[patterns]: http://en.wikipedia.org/wiki/Design_pattern_(computer_science)
+[jashkenas]: http://twitter.com/jashkenas
 
 ---
 
