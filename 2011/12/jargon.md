@@ -159,6 +159,10 @@ CoffeeScript is implemented as a transpiler, not a compiler.
 
 As noted on [reddit][reddit], many of the coding conventions that CoffeeScript produces should be more properly called [programming idioms][idioms] rather than [design patterns][patterns]. The distinction between an idiom and a design pattern is mostly one of scale: Idioms are mostly about how to implement something, while design patterns are mostly about how to organize something.
 
+### So is CoffeeScript really a different language?
+
+> It depends entirely on whether you consider syntax or semantics to be what defines a language.—[Luke VanderHart][levanderhart]
+
 [d]: http://news.ycombinator.com/item?id=3370428 "Discuss on Hacker News"
 [standards]: http://xkcd.com/927/ "Standards"
 [reddit]: http://www.reddit.com/r/javascript/comments/niqup/coffeescript_is_not_a_language_worth_learning/
@@ -166,6 +170,7 @@ As noted on [reddit][reddit], many of the coding conventions that CoffeeScript p
 [idioms]: http://en.wikipedia.org/wiki/Programming_idiom
 [patterns]: http://en.wikipedia.org/wiki/Design_pattern_(computer_science)
 [jashkenas]: http://twitter.com/jashkenas
+[levanderhart]: https://twitter.com/#!/levanderhart/status/149502899247001600
 
 ---
 
