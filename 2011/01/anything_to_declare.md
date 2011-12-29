@@ -3,7 +3,7 @@ Anything to Declare?
 
 "Separation of Concerns" is often given as a strong motivating force when organizing code. I certainly think about it a lot (and it comes up fairly regularly when I try to organize my thoughts in essay form, e.g. [My Favourite Interview Question][q] and [Why Why Functional Programming Matters Matters][ww]).
 
-As you've no doubt heard 97 bajillion times from me, I'm on a team that has been developing a new Javascript framework for writing Single Page Interface ("SPI") applications called [Faux][f]. I just finished a refactoring session, and I'd like to sketch what changed and how it's relevant to separating concerns. The main idea is that in order to implement a new feature, route helpers for templates, I needed to factor declarations out of what were formerly opaque functions. Once the declarations were factored out, I could implement the new feature and apply some convention over configuration to make it palatable.
+As you've no doubt heard 97 bajillion times from me, I'm on a team that has been developing a new JavaScript framework for writing Single Page Interface ("SPI") applications called [Faux][f]. I just finished a refactoring session, and I'd like to sketch what changed and how it's relevant to separating concerns. The main idea is that in order to implement a new feature, route helpers for templates, I needed to factor declarations out of what were formerly opaque functions. Once the declarations were factored out, I could implement the new feature and apply some convention over configuration to make it palatable.
 
 **disclaimer**
 
@@ -29,7 +29,7 @@ This is why example apps are essential. When you're working with something very 
 
 So, last night when I got home from the gym I decided to take a little un-billable time and put it towards fixing this problem. I started by developing an even simpler example to serve as a test bed: [Misadventure][m]. Misadventure is a gross over-simplification of text-based [adventure][a] games (you can play Misadventure [here][play]). You've been abducted by aliens and you wake up in a corn maze. Naturally, you have to find your way out, one step at a time.
 
-The key benefit of Misadventure for the purpose of working on helpers for routes is that it is route-heavy: Every location in the corn maze has its own id and the game can reconstruct the maze from a seed that is provided to Javascript's PRNG `Math.random`. There's not much else going on, so working on Misadventure makes it easy to focus on the feature we need.
+The key benefit of Misadventure for the purpose of working on helpers for routes is that it is route-heavy: Every location in the corn maze has its own id and the game can reconstruct the maze from a seed that is provided to JavaScript's PRNG `Math.random`. There's not much else going on, so working on Misadventure makes it easy to focus on the feature we need.
 
 **the situation**
 
@@ -211,7 +211,7 @@ Such inferences place a heavy reliance on convention over configuration, of cour
 
 I wouldn't hold this out as a case study in refactoring by any stretch, Faux is still struggling to escape its embryonic sack. But it is a reminder that when facing something that seems impossibly ugly to implement, the answer may be factoring things on different lines, especially (as in this case) when something can be transformed from imperative to declarative form.
 
-My feeling is that it is nicer to work with declarations than with imperative functions or methods. In an imperative language like Javascript or ruby, declarations need some kind of engine to be useful. However, once you have things in declarative form, you have a lot of flexibility about how to apply them to the code.
+My feeling is that it is nicer to work with declarations than with imperative functions or methods. In an imperative language like JavaScript or ruby, declarations need some kind of engine to be useful. However, once you have things in declarative form, you have a lot of flexibility about how to apply them to the code.
 
 In this case, turning functions into declarations lets us build controller methods and `route_to` helpers, and it helps us perform more convention over configuration.
 
@@ -219,9 +219,10 @@ In this case, turning functions into declarations lets us build controller metho
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

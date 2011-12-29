@@ -10,7 +10,7 @@ Sammy, Backbone, and Roweis
 > Cheers,  
 > Orlin
 
-Thanks your your email, Orin! And thank you for permission to answer your question in a public forum. The short answer is, although the [Backbone](http://documentcloud.github.com/backbone/ "Backbone.js") library provides excellent support for building Models, Views, and Controllers in Javascript, and although it also provides support for routing and history, we are very happy to continue to work on Roweis.
+Thanks your your email, Orin! And thank you for permission to answer your question in a public forum. The short answer is, although the [Backbone](http://documentcloud.github.com/backbone/ "Backbone.js") library provides excellent support for building Models, Views, and Controllers in JavaScript, and although it also provides support for routing and history, we are very happy to continue to work on Roweis.
 
 We don't think Roweis supplants Backbone or Sammy. We do think Roweis *complements* Backbone for a certain class of [Single Page Interface](http://itsnat.sourceforge.net/php/spim/spi_manifesto_en.php) ("SPI") applications.
 

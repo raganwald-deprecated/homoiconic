@@ -3,17 +3,17 @@
 
 On the interwebs, I noticed some discussions (e.g. [proggit][p] and [hacker news][hn]) about another discussion ([serverside][ss]) about whether Java the language uses [Pass by Reference or Pass by Value][es]. It's an [old, old argument][arg], and the `tl;dr` is that Java and most other modern languages pass references to objects by value, which means it uses Pass by Value. It is absolutely wrong to assert that Java uses Pass by Reference.
 
-While it's tempting to bash Java programmers for the misconceptions, I think that's just confirmation bias. I have absolutely no faith that a statistically significant sample of Ruby or Javascript programmers would contain a larger proportion of people who get the terms right.
+While it's tempting to bash Java programmers for the misconceptions, I think that's just confirmation bias. I have absolutely no faith that a statistically significant sample of Ruby or JavaScript programmers would contain a larger proportion of people who get the terms right.
 
 Which, for the most part, probably demonstrates that the issue just isn't that important. If it were, nobody would be able to write code without figuring the names out. The fact is, if you understand what your language *does*, knowing the correct names is only important when talking to another programmer.
 
 I doubt this comes up much, since two programmers talking about Ruby or Java or javascript would both have the same understanding of what happens with parameters passed to functions/methods.
 
-In my opinion, trouble over terms is more important when moving from a language with one set of semantics to another. For example, when moving from Java to Javascript, not understanding closures would make for some error-laden conversations with experienced Javascript programmers.
+In my opinion, trouble over terms is more important when moving from a language with one set of semantics to another. For example, when moving from Java to JavaScript, not understanding closures would make for some error-laden conversations with experienced JavaScript programmers.
 
 ![Duke Mom](http://silveiraneto.net/wp-content/uploads/2008/05/duke_mom.png)
 
-But for those of you who haven't seen any of the [Aleph-0][a] explanations, here is the Aleph-One-th explanation of why Java (and Ruby and Javascript and most other modern programming languages) is Pass by Value.
+But for those of you who haven't seen any of the [Aleph-0][a] explanations, here is the Aleph-One-th explanation of why Java (and Ruby and JavaScript and most other modern programming languages) is Pass by Value.
 
 **explanation**
 
@@ -75,9 +75,10 @@ True, but every now and then [some idiot][r] ventures into the tomb and awakens 
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

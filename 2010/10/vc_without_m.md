@@ -7,7 +7,7 @@ This essay gives some background on two separate architecture patterns: The sepa
 
 This essay's thesis is that when separating domain logic from application logic, domain logic can be implemented as a RESTful domain logic server. When doing so, the application can be implemented as an application server with models replaced by proxies to the domain server's resources such as with ActiveResource in Rails.
 
-The application can also be implemented as a single page interface in Javascript. SPI applications can use the PVC architecture to create proxies. In simple, coarse-grained cases, SPI applications can forgo models and tightly couple the controllers to the domain logic server, a practice known as the (¬M)VC architecture. MVC and/or PVC is a better fit for SPI applications that are fine-grained and resemble desktop applications rather than web applications.
+The application can also be implemented as a single page interface in JavaScript. SPI applications can use the PVC architecture to create proxies. In simple, coarse-grained cases, SPI applications can forgo models and tightly couple the controllers to the domain logic server, a practice known as the (¬M)VC architecture. MVC and/or PVC is a better fit for SPI applications that are fine-grained and resemble desktop applications rather than web applications.
 
 **a long and barely relevant anecdote** (feel free to skip this or come back to it later)
 
@@ -84,7 +84,7 @@ An improved architecture for application servers is that the models in the appli
 
 The benefit of using PVC is that the concern of how to communicate with the domain logic server or servers is separated from controller logic. What if communication is over HTTP but you want to change it to RabbitMQ when loads increase? PVC manages this transition easily. Likewise, if the application grows and some resources are obtained from one server and some from another, this distinction is managed by the proxies and not by the controllers that use them.
 
-Up to now we've discussed a two server architecture. There's a domain server and there's an application server. Implied in this architecture is a third entity, a client web browser. Another architecture choice is a domain server and a client web *application*, where the application is written in Javascript, ActionScript, or some other technology. This essay will confine itself to talking about Javascript [Single Page Interface][spi] ("SPI") applications.
+Up to now we've discussed a two server architecture. There's a domain server and there's an application server. Implied in this architecture is a third entity, a client web browser. Another architecture choice is a domain server and a client web *application*, where the application is written in JavaScript, ActionScript, or some other technology. This essay will confine itself to talking about JavaScript [Single Page Interface][spi] ("SPI") applications.
 
 If the SPI application features certain types of interactivity, implementing PVC makes sense. For example, if the application polls for model changes and may update a variety of view with the updated data, models are necessary and a proxy library such as [backbone.js][backbone] will do the trick. Such an application still benefits from separating controllers and views from models, so you end up with proxies, views, and controllers as separate entities with separate responsibilities.
 
@@ -135,7 +135,7 @@ Thus, (¬M)VC is a good fit when the controllers and interaction is expected to 
 
 We've had a brief look at two separate architecture patterns: The separation of domain logic from application logic, and the implementation of an application using the model-view-controller ("MVC") pattern. We've looked more closely at implementing domain logic in a RESTful domain logic server and implementing the UI in an MVC application server with models replaced by proxies.
 
-We've also seen that the application can be implemented as a single page interface in Javascript. In simple, coarse-grained cases, SPI applications can forgo models and tightly couple the controllers to the domain logic server in (¬M)VC style. Applications that are fine-grained and resemble desktop applications rather than web applications should prefer PVC style.
+We've also seen that the application can be implemented as a single page interface in JavaScript. In simple, coarse-grained cases, SPI applications can forgo models and tightly couple the controllers to the domain logic server in (¬M)VC style. Applications that are fine-grained and resemble desktop applications rather than web applications should prefer PVC style.
 
 ---
 

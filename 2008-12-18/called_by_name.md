@@ -186,7 +186,7 @@ And call our function like this:
 	    lambda { default_value() }
 	)
 
-We have just implemented the [Try.these](http://www.prototypejs.org/api/utility/try-these "Prototype JavaScript framework:  Utility Methods.Try.these") function from the Prototype Javascript library.
+We have just implemented the [Try.these](http://www.prototypejs.org/api/utility/try-these "Prototype JavaScript framework:  Utility Methods.Try.these") function from the Prototype JavaScript library.
 
 This technique gets us almost all of what we want for this common case of wanting to work around call-by-value semantics. As you can surmise from the fact that it has a name, it is not some newfangled shiny toy idea, it goes back to ALGOL 60, where it was known as call-by-name. (PHP has something called "Call By Name," but it has a lot more in common with C++ references than it does with ALGOL parameter passing.)
 
@@ -324,8 +324,9 @@ I am fixing this, and my first priority is to make `called_by_name` work again.
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

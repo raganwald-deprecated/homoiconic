@@ -309,7 +309,7 @@ Have fun!
 
 <font color="red">NOTE: The material from this post is being extensively revised and appears in [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md#readme).</font>
 
-*p.s. Recursive combinators are definitely found in the wild: Eugene Lazutkin's article on [Using recursion combinators in JavaScript](http://lazutkin.com/blog/2008/jun/30/using-recursion-combinators-javascript/ "") shows how to use combinators to build divide and conquer algorithms in Javascript:*
+*p.s. Recursive combinators are definitely found in the wild: Eugene Lazutkin's article on [Using recursion combinators in JavaScript](http://lazutkin.com/blog/2008/jun/30/using-recursion-combinators-javascript/ "") shows how to use combinators to build divide and conquer algorithms in JavaScript:*
 
 	var fib0 = function(n){
 	    return n <= 1 ? 1 :
@@ -329,8 +329,9 @@ _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/ma
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

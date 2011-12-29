@@ -3,11 +3,11 @@
 ![Sans Titre](http://upload.wikimedia.org/wikipedia/en/f/fe/Mondrian_Composition_II_in_Red%2C_Blue%2C_and_Yellow.jpg)  
 (*"Sans Titre," also called "Composition II in Red, Blue and Yellow" by Piet Mondrian, 1930*)
 
-I have been programming in [Coffeescript][cs] lately. In my opinion, it does a good job of paving over a lot of Javascript's accidental complexity. Another thing  that I find interesting about it is that it encourages a certain kind of programming style. I like that. As Alan Perlis said, "A language that doesn't change the way you think about programming is not worth learning." Coffeescript definitely changes the way I think about programming-in-the-small, about the way I express concepts in syntax.
+I have been programming in [CoffeeScript][cs] lately. In my opinion, it does a good job of paving over a lot of JavaScript's accidental complexity. Another thing  that I find interesting about it is that it encourages a certain kind of programming style. I like that. As Alan Perlis said, "A language that doesn't change the way you think about programming is not worth learning." CoffeeScript definitely changes the way I think about programming-in-the-small, about the way I express concepts in syntax.
 
 [cs]: http://jashkenas.github.com/coffee-script/
 
-One of the big ways Coffeescript differs from Javascript in that its control structures are whitespace-significant. Instead of:
+One of the big ways CoffeeScript differs from JavaScript in that its control structures are whitespace-significant. Instead of:
 
 	if (foo) {
 		// ...
@@ -72,7 +72,7 @@ Indentation matters.
 
 ## Method calls are whitespace-blind
 
-Now let's look at methods and properties in Coffeescript. Recall that with `if` statements, indentation matters. With method calls, *it doesn't*. Consider this expression:
+Now let's look at methods and properties in CoffeeScript. Recall that with `if` statements, indentation matters. With method calls, *it doesn't*. Consider this expression:
 
 	console?.log [1..3].concat([4..6]).map((x) -> x * x).filter((x) -> x % 2 is 0).reverse()
 
@@ -132,11 +132,11 @@ Says to me that the `butFirst()` lines all belong to `console?.log [1..3]`. The 
           .filter((x) -> x % 2 is 0)
             .reverse()
 
-It says that each line belongs to the previous line, because our rule with outlines is that *when something is indented, it belongs to its parent*. Let's imagine for a moment that Coffeescript treated method calls and property syntax using that rule.
+It says that each line belongs to the previous line, because our rule with outlines is that *when something is indented, it belongs to its parent*. Let's imagine for a moment that CoffeeScript treated method calls and property syntax using that rule.
 
-## A hypothetical whitespace rule for Coffeescript
+## A hypothetical whitespace rule for CoffeeScript
 
-In our hypothetical version of Coffeescript, methods and properties will use our outline rule: If you have a property reference or method call, it either belongs to the thing to its left, as in `[1..3].concat([4..6])` or belongs to its parent, as in:
+In our hypothetical version of CoffeeScript, methods and properties will use our outline rule: If you have a property reference or method call, it either belongs to the thing to its left, as in `[1..3].concat([4..6])` or belongs to its parent, as in:
 
 	[1..3]
 	  .concat([4..6])
@@ -221,11 +221,11 @@ We get both kinds of behaviour and our intent is always clear, regardless of whe
 
 One thing that expressive languages like Ruby, Smalltalk, and Lisp teach us is that many 'design patterns' are actually language smells. The 'fluent interface' design patterns is just that: A sign that a language is missing a  cascading message feature.
 
-This feature can easily be added to Coffeescript, without a new operator, by simply making whitespace *more significant*.
+This feature can easily be added to CoffeeScript, without a new operator, by simply making whitespace *more significant*.
 
 ---
 
-([Discuss][d] on Hacker News. A relevant Coffeescript feature request: [Improve chaining syntax][1495]. And back in March of 2010, I wrote "[Significant Whitespace][sw]")
+([Discuss][d] on Hacker News. A relevant CoffeeScript feature request: [Improve chaining syntax][1495]. And back in March of 2010, I wrote "[Significant Whitespace][sw]")
 
 [d]: http://news.ycombinator.com/item?id=3296202
 [1495]: https://github.com/jashkenas/coffee-script/issues/1495

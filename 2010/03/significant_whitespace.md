@@ -1,11 +1,11 @@
 Significant Whitespace
 ======================
 
-I've always been a big fan of Javascript's good parts. But for various reasons, I "disappeared myself" whenever the subject of writing DOM manipulation browser code came up in a project. Sure, I did some interesting things with Javascript, like a complex form with dynamic field generation and a validation engine that ran in the browser and on the server using Rhino. (Would you believe there was nitpicking over whether this was "J2EE-compliant?") But overall, I must admit that I've not liked dealing with browser quirks and fussing with the DOM.
+I've always been a big fan of JavaScript's good parts. But for various reasons, I "disappeared myself" whenever the subject of writing DOM manipulation browser code came up in a project. Sure, I did some interesting things with JavaScript, like a complex form with dynamic field generation and a validation engine that ran in the browser and on the server using Rhino. (Would you believe there was nitpicking over whether this was "J2EE-compliant?") But overall, I must admit that I've not liked dealing with browser quirks and fussing with the DOM.
 
-But times change and we must change with them. So I decided it was time to get off the couch and embrace the DOM. My latest hobby project is a small [Goban program](http://github.com/raganwald/wood_and_stones "Wood & Stones") written for Mobile Safari on the iPad. I'm trying to really use Javascript to give the game play more of an app feel than a web page feel. That seemed to require a little more oomph than Prototype supplies, especially since I have no particular interest in making my Javascript behave more "class-like." I went in search of a new library to learn.
+But times change and we must change with them. So I decided it was time to get off the couch and embrace the DOM. My latest hobby project is a small [Goban program](http://github.com/raganwald/wood_and_stones "Wood & Stones") written for Mobile Safari on the iPad. I'm trying to really use JavaScript to give the game play more of an app feel than a web page feel. That seemed to require a little more oomph than Prototype supplies, especially since I have no particular interest in making my JavaScript behave more "class-like." I went in search of a new library to learn.
 
-The word on the street was that there were a bunch of powerful Javascript libraries kicking around, but the one thing I consistently heard about John Resig's [jQuery](http://jquery.com/ "jQuery: The Write Less, Do More, JavaScript Library") was that it "Changes the way you think about programming." And while I am far from done learning new things, I will admit that I have been provoked into wondering whether significant whitespace could be a really good thing.
+The word on the street was that there were a bunch of powerful JavaScript libraries kicking around, but the one thing I consistently heard about John Resig's [jQuery](http://jquery.com/ "jQuery: The Write Less, Do More, JavaScript Library") was that it "Changes the way you think about programming." And while I am far from done learning new things, I will admit that I have been provoked into wondering whether significant whitespace could be a really good thing.
 
 Let me show you what I am thinking about. One of jQuery's consistent styles is for most 'methods' to return the receiver, which allows you to chain method calls. For example:
 
@@ -14,7 +14,7 @@ Let me show you what I am thinking about. One of jQuery's consistent styles is f
       .dialog({...})
       .dialog('open');
 
-This code invokes `text` once and `dialog` twice on `message_dialog_instance`. In Javascript, it's exactly the same as writing:
+This code invokes `text` once and `dialog` twice on `message_dialog_instance`. In JavaScript, it's exactly the same as writing:
 
     message_dialog_instance.text(text).dialog({...}).dialog('open');
     
@@ -110,7 +110,7 @@ I don't like this. What I want is to write these methods just like I write my [h
       .find('.toolbar #heyButton')
         .attr('src', '/images/tools/empty-text-green.png');
 
-In other words, I want Javascript to know that when I have multiple invocations at the same level of indentation, I am invoking them on the same receiver. When I indent one more level, I am invoking them on the result of the last method invocation.
+In other words, I want JavaScript to know that when I have multiple invocations at the same level of indentation, I am invoking them on the same receiver. When I indent one more level, I am invoking them on the result of the last method invocation.
 
 As I found out after publishing an earlier version of this post, jQuery does provide some help in the form of [end()](http://api.jquery.com/end). End "undoes" a selection method, restoring the previous selection. So I can now rewrite my code like this:
 
@@ -145,7 +145,7 @@ This isn't exactly what I want but I'll take it. The final two calls to `end` ar
 
 It may seem like perhaps I should break this up into smaller methods to make it easier to understand. I am thinking that we want to break long functions up into short functions *because our languages don't give us a good way to express a verbose idea clearly in a single function*. We are not talking about 20+ lines of conditional execution here, we are talking about manipulating something that can naturally be expressed as a tree. Why not express the idea in code that looks like a tree?
 
-I like [writing programs for people to read](http://weblog.raganwald.com/2007/04/writing-programs-for-people-to-read.html). Code that resembles what it consumes (sass), what it produces (haml), or what it manipulates (my hypothetical significant whitespace variation of Javascript) is easy to read.
+I like [writing programs for people to read](http://weblog.raganwald.com/2007/04/writing-programs-for-people-to-read.html). Code that resembles what it consumes (sass), what it produces (haml), or what it manipulates (my hypothetical significant whitespace variation of JavaScript) is easy to read.
 
 As it happens, [the last time I asked about a language feature](http://github.com/raganwald/homoiconic/blob/master/2010/01/beautiful_failure.markdown "Beautiful Failure"), I was told that Smalltalk did it in 1981. Well, this time I happen to know that Smalltalk already does this. In Smalltalk, you can write:
 

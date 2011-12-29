@@ -1,4 +1,4 @@
-Separating Concerns in Coffeescript using Aspect-Oriented Programming
+Separating Concerns in CoffeeScript using Aspect-Oriented Programming
 ---
 
 Modern object-oriented software design [favours composition over inheritance][coi] and celebrates code that is [DRY][dry]. The idea is to separate each object's concerns and responsibility into separate units of code, each of which have a single responsibility. When two different types of objects share the same functionality, they do not repeat their implementation, instead they share their implementation.
@@ -185,8 +185,9 @@ This article is loosely based on [Aspect-Oriented Programming in Ruby using Comb
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

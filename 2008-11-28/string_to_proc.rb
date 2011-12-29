@@ -6,7 +6,7 @@
 #
 # See http://weblog.raganwald.com/2007/10/stringtoproc.html
 #
-# Ported from the String Lambdas in Oliver Steele's Functional Javascript
+# Ported from the String Lambdas in Oliver Steele's Functional JavaScript
 # http://osteele.com/sources/javascript/functional/
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy

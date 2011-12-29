@@ -5,7 +5,7 @@ Anaphora in Ruby
 
 **Block anaphora**
 
-Oliver Steele wrote a nice little Javascript library called [Functional Javascript](http://osteele.com/sources/javascript/functional/ "Functional Javascript"). Javascript is a particularly verbose language descended from Lisp. It's syntax for writing anonymous functions is awkward, especially for the kind of short functions that are passed to higher-level functions like `map` or `select`. Oliver decided that if you wanted to write a lot of anonymous functions, you'd better have a more succinct way to write them. So he added "String Lambdas" to Javascript, a succinct alternate syntax for anonymous functions.
+Oliver Steele wrote a nice little JavaScript library called [Functional JavaScript](http://osteele.com/sources/javascript/functional/ "Functional JavaScript"). JavaScript is a particularly verbose language descended from Lisp. It's syntax for writing anonymous functions is awkward, especially for the kind of short functions that are passed to higher-level functions like `map` or `select`. Oliver decided that if you wanted to write a lot of anonymous functions, you'd better have a more succinct way to write them. So he added "String Lambdas" to JavaScript, a succinct alternate syntax for anonymous functions.
 
 [String#to\_proc](http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You can't be serious!?") is a port of Oliver's String Lambdas to Ruby. One of the things you can do with String#to\_proc is define a block (or a proc) that takes one parameter with an expression containing an underscore instead of explicitly naming a parameter.
 
@@ -241,8 +241,9 @@ Anaphora allow us to abbreviate code, hiding parameters and temporary variables 
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

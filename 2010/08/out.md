@@ -13,7 +13,7 @@ Much hilarity ensues if one of your hapless users decides to use your library an
 
 **plus ça change (plus c'est la même chose)**
 
-I've said this before, and even then it was hardly a grand revelation. And it has been months since I did any work with Ruby. I've had a refreshing time working with Javascript. But this morning I found myself writing this code in a [tiny little framework][roweis] I'm writing with some colleagues for a project at [Unspace Interactive][unspace]:
+I've said this before, and even then it was hardly a grand revelation. And it has been months since I did any work with Ruby. I've had a refreshing time working with JavaScript. But this morning I found myself writing this code in a [tiny little framework][roweis] I'm writing with some colleagues for a project at [Unspace Interactive][unspace]:
 
     if (controller.target) {
       controller.render_target = function (render_target_context) {
@@ -31,9 +31,9 @@ I've said this before, and even then it was hardly a grand revelation. And it ha
     
 Notice the use of [jQuery Combinators][comb]'s `ergo`? I'm the author of `ergo`, and I want to use my own tools. But jQuery plugins work just like Ruby's global class definitions. If I extend `jQuery.fn` to include `ergo`, every user of my framework gets it whether they like it or not.
 
-Regrettably, I have to remove any use of jQuery Combinators from [Roweis][roweis]. And if one day you look at my code and wonder why I don't seem to be eating my own dog food, the reason is that although I like the taste, I don't want to force-feed it to everyone else. jQuery Combinators belongs in the application Javascript, not the framework code.
+Regrettably, I have to remove any use of jQuery Combinators from [Roweis][roweis]. And if one day you look at my code and wonder why I don't seem to be eating my own dog food, the reason is that although I like the taste, I don't want to force-feed it to everyone else. jQuery Combinators belongs in the application JavaScript, not the framework code.
 
-Not a big deal in itself, but this really emphasizes that if you want change, you have to really change. Javascript in the Browser is completely different from Ruby on the Server in all the ways that don't matter a damn.
+Not a big deal in itself, but this really emphasizes that if you want change, you have to really change. JavaScript in the Browser is completely different from Ruby on the Server in all the ways that don't matter a damn.
 
 *fin*
 
@@ -43,9 +43,10 @@ Not a big deal in itself, but this really emphasizes that if you want change, yo
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

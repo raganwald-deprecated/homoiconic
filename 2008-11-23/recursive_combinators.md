@@ -244,7 +244,7 @@ Now the common code is glaringly obvious. The main challenge in factoring it int
 
 Now we have refactored the common algorithm out. Typically, something like divide and conquer is treated as a "pattern," a recipe for writing methods. We have changed it into an *abstraction* by writing a `#divide_and_conquer` method and passing it our own functions which it combines to form the final algorithm. That ought to sound familiar: `#divide_and_conquer` is a *combinator* that creates recursive methods for us.
 
-You can also find recursive combinators in other languages like Joy, Factor, and even Javascript (the recursive combinator presented here as `#divide_and_conquer` is normally called `multirec`). Eugene Lazutkin's article on [Using recursion combinators in JavaScript](http://lazutkin.com/blog/2008/jun/30/using-recursion-combinators-javascript/ "") shows how to use combinators to build divide and conquer algorithms in Javascript with the Dojo libraries. This example uses `binrec`, a recursive combinator for algorithms that always divide their problems in two:
+You can also find recursive combinators in other languages like Joy, Factor, and even JavaScript (the recursive combinator presented here as `#divide_and_conquer` is normally called `multirec`). Eugene Lazutkin's article on [Using recursion combinators in JavaScript](http://lazutkin.com/blog/2008/jun/30/using-recursion-combinators-javascript/ "") shows how to use combinators to build divide and conquer algorithms in JavaScript with the Dojo libraries. This example uses `binrec`, a recursive combinator for algorithms that always divide their problems in two:
 
 	var fib0 = function(n){
 	    return n <= 1 ? 1 :
@@ -396,8 +396,9 @@ _More on combinators_: [Kestrels](http://github.com/raganwald/homoiconic/tree/ma
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

@@ -217,7 +217,7 @@ What just happened is that `our_and` is defined as a lambda, with `called_by_nam
 
 There are some important implications of this approach. First, with unhygienic, `our_and` disappears. There is no `our_and` function or method, invocations are replaced by whatever `to` expression you provide. Whereas, `called_by_name` actually defines a lambda for `our_and` and defines it in scope for our block of code.
 
-> Note: Caleb asked about the fetish for lambdas. In Ruby 1.8 MRI, it makes no difference. In other implementations, these constructs will by hygienic. Yet, these implementations do not exist yet. So, either I don't understand YAGNI, or perhaps I have spent too much time with languages like Javascript that [actually get this right](http://weblog.raganwald.com/2007/08/block-structured-javascript.html "Block-Structured Javascript"), or I am from the future and I know that Ruby will get this right.
+> Note: Caleb asked about the fetish for lambdas. In Ruby 1.8 MRI, it makes no difference. In other implementations, these constructs will by hygienic. Yet, these implementations do not exist yet. So, either I don't understand YAGNI, or perhaps I have spent too much time with languages like JavaScript that [actually get this right](http://weblog.raganwald.com/2007/08/block-structured-javascript.html "Block-Structured JavaScript"), or I am from the future and I know that Ruby will get this right.
 
 Second, even though `temp` is still around and still could shadow some variable where it is defined, it doesn't shadow any definition inside your block. So you could define rewriters with `called_by_name` at the top level or inside of a method somewhere and be assured that you are making 100% hygienic code.
 
@@ -233,8 +233,9 @@ As a example, things like [andand](http://github.com/raganwald/andand/tree "raga
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.

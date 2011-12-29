@@ -5,7 +5,7 @@ A colleague asked me to explain the use case for blocks in Ruby. He's perfectly 
 
 > A design is finished, not when there is nothing left to add, but when there is nothing left to take away &#8212;Antoine de Saint-Exupery
 
-As it happens, I was working on [iGesture][ig], and I had the following for loop in this Javascript code:
+As it happens, I was working on [iGesture][ig], and I had the following for loop in this JavaScript code:
 
     var gesture = {
       
@@ -79,7 +79,7 @@ Now here's our refactored use of `.each`:
 
 As you can see, we have a new anonymous "inner" function. Let's look this line of code: `if ( test(e) ) return 'close';` again. Does it still return the string "close" from the function `outer` if `test(something_or_other[i])` evaluates truthy? *Or does it now return from the anonymous inner function?*
 
-Because Javascript has functions but no blocks, you can write things like `map` or `each`, but you cannot use them in a case like this where you want to return from an outer function. `return` always returns from the innermost function, which in this simple case is the function we are using in our iterator.
+Because JavaScript has functions but no blocks, you can write things like `map` or `each`, but you cannot use them in a case like this where you want to return from an outer function. `return` always returns from the innermost function, which in this simple case is the function we are using in our iterator.
 
 ![Blocks][blocks]
 
@@ -109,7 +109,7 @@ In Ruby you could avoid a block containing non-local return:
       
     end
 
-This "functional style" is far more elegant than short-circuiting evaluation of `.each`. That being said, Ruby and Javascript both provide built-in syntactic constructs like `for` and `if` that have block behaviour, not function behaviour. The use case for blocks is that you can write your own constructs with the same behaviour as the built-in constructs.
+This "functional style" is far more elegant than short-circuiting evaluation of `.each`. That being said, Ruby and JavaScript both provide built-in syntactic constructs like `for` and `if` that have block behaviour, not function behaviour. The use case for blocks is that you can write your own constructs with the same behaviour as the built-in constructs.
 
 It's perfectly valid to avoid the built-in blocks in a program, or to choose a language that doesn't have built-in blocks. But just so we're clear, if a language has built-in blocks, I think it out to allow programmers to use them for their own constructs. If a language allows arbitrary short-circuit `return`, it ought to allow the programmer to use it anywhere.
 

@@ -5,7 +5,7 @@ Misadventure, Part IV: Class Loading (Updated!)
 
 **introduction**
 
-[Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
+[Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in JavaScript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
 
 <a target="_blank" href="http://min.us/mvkEt6y#1"><img src="http://i.min.us/jeaApo.png" border="0"/></a>
 
@@ -14,7 +14,7 @@ This is Part IV, wherein we'll do a double-take and talk about loading classes. 
 index.html
 ---
 
-Let's flash back to [index.html][index]: Here's the code that loads our Javascript files for us:
+Let's flash back to [index.html][index]: Here's the code that loads our JavaScript files for us:
 
     <!-- hard requirements for Faux -->
     <script src="./javascripts/vendor/jquery.1.4.2.js"></script>
@@ -41,12 +41,12 @@ Let's flash back to [index.html][index]: Here's the code that loads our Javascri
 
 You'll notice we load exactly one file for Misadventure itself, [controller.js][cjs]. We've read about the controller, that's fine. But we've also read about some other backbone classes in the application like `Location`, `LocationCollection`, `LocationView`, and `BedView`. Where are they?
 
-The answer is that `Location`, `LocationCollection`, and `LocationView` are in the file [location.js][ljs], and `BedView` is in the file [bed_view.js][bvjs], which Faux loaded for us. But we haven't loaded these Javascript files. How does Faux know to load them?
+The answer is that `Location`, `LocationCollection`, and `LocationView` are in the file [location.js][ljs], and `BedView` is in the file [bed_view.js][bvjs], which Faux loaded for us. But we haven't loaded these JavaScript files. How does Faux know to load them?
 
 loading javascript by convention
 ---
 
-Faux is able to load Javascript files automatically, provided they are named appropriately. Faux may try to load a Javascript file if it is looking for a class but that class hasn't been defined. Let's say Faux is looking for a class named `WunderBar` while defining a method named `show_bar`. Faux's rules are:
+Faux is able to load JavaScript files automatically, provided they are named appropriately. Faux may try to load a JavaScript file if it is looking for a class but that class hasn't been defined. Let's say Faux is looking for a class named `WunderBar` while defining a method named `show_bar`. Faux's rules are:
 
 1. If there is a class named `WunderBar`, use it.
 2. If there is no class named `WunderBar`, but there is a file named `show_bar.js`, load that file.
@@ -144,7 +144,7 @@ To enable both:
 
 **summary**
 
-If you place your classes in files named after your methods or after the classes themselves, Faux will load them for you and save you the trouble of explicitly loading every file. You can always override this behaviour by explicitly loading Javascript files and/or by explicitly forbidding Faux from trying to load Javascript files by convention.
+If you place your classes in files named after your methods or after the classes themselves, Faux will load them for you and save you the trouble of explicitly loading every file. You can always override this behaviour by explicitly loading JavaScript files and/or by explicitly forbidding Faux from trying to load JavaScript files by convention.
 
 
 [index]: http://github.com/unspace/misadventure/tree/master/index.html

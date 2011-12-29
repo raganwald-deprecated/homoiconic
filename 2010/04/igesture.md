@@ -50,7 +50,7 @@ With jGesture, you ask the gesture for its name and decide what to do based on t
     
 Like jQTouch, you have to examine what you get to figure out what to do. Unlike jQTouch, you get lots more gestures. I quickly decided I wanted to use the "close" gesture to close any dialogs that appeared in my application. (There's also a close button, but I was gesture-happy).
 
-It took about ten seconds to realize that I didn't like the callback model for this. I wanted events just like jQTouch and, incidentally, just like Javascript usually works, like `mouseup`: You handle that with `.bind`, not by calling a special mouse handling callback registrar.
+It took about ten seconds to realize that I didn't like the callback model for this. I wanted events just like jQTouch and, incidentally, just like JavaScript usually works, like `mouseup`: You handle that with `.bind`, not by calling a special mouse handling callback registrar.
 
 So I wrote a little [doohicky][eventified] that would call `.gesture` and in turn would trigger custom events. My theory was that by extracting this code into its own file, you could include it alongside jGesture to get an event-driven model. Then you could write code that looked like this:
 

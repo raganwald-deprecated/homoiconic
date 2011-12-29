@@ -5,7 +5,7 @@ Misadventure, Part I: Overview
 
 **introduction**
 
-[Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in Javascript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
+[Misadventure][play] is a little game in the style of [Adventure][a]. Misadventure is written in JavaScript and runs entirely in the browser. Misadventure is written in standard Model-View-Controller style, making heavy use of the [Faux][f] and [Backbone.js][b] libraries. In this series of posts I will give you a tour of Misadventure's [code][source], showing how it uses Faux to structure its routes and templates as well as how it uses Backbone.js to organize its models and interactive view code.
 
 This is Part I, wherein we look at the game and its controller. In [Part II][pii], we'll start our examination of controller methods with a look at `controller.wake()`. In [Part III][piii], we'll look at a controller method that wires a model, a collection, and a view up to a template. In [Part IV][piv], we'll do a double-take and talk about loading classes.
 
@@ -28,7 +28,7 @@ The fragment has changed again, now it's [#/42492610216140747/7624672284554068][
 
 <a target="_blank" href="http://min.us/mvkEt6y#3"><img src="http://i.min.us/jeflO8.png" border="0"/></a>
 
-And the fragment has changed yet again, now it's [#/42492610216140747/3916709493533819][l3]. We just moved North. What happens if we move South? Let's investigate. First, each possible move is a standard HTML link. There's no magic Javascript. Let's look at the link to move South. It's the same URL, but the fragment looks familiar: [#/42492610216140747/5682321739861935][l2]. That's interesting, it's the exact same fragment that we were on a move ago.
+And the fragment has changed yet again, now it's [#/42492610216140747/3916709493533819][l3]. We just moved North. What happens if we move South? Let's investigate. First, each possible move is a standard HTML link. There's no magic JavaScript. Let's look at the link to move South. It's the same URL, but the fragment looks familiar: [#/42492610216140747/5682321739861935][l2]. That's interesting, it's the exact same fragment that we were on a move ago.
 
 And looking at the page, we see that the link to move South is colored <font color='red'>red</font>. There's no special magic going on. It's a standard link and it goes to a place that's still in the browser's history, so it is styled differently, just like any other link. We'll see how that works later, but let's try something else.
 
@@ -206,7 +206,7 @@ We haven't explained anything else about views, models, parsing parameters out o
 
 If you're comfortable with a web framework like Ruby on Rails, you already know what a controller method is: A controller method is the application code that services a request or performs an action. All of the controller methods defined in Misadventure display something in the page using a template.
 
-These three controller methods are all associated with routes. Controller methods can also be invoked directly in Javascript. For example, invoking `controller.location({ seed: '42492610216140747', id: '7624672284554068' })` has exactly teh same effect as directing your browser to [#/42492610216140747/7624672284554068](http://unspace.github.com/misadventure/#/42492610216140747/7624672284554068). Faux even updates the browser's location bar so that bookmarking and navigation works correctly.
+These three controller methods are all associated with routes. Controller methods can also be invoked directly in JavaScript. For example, invoking `controller.location({ seed: '42492610216140747', id: '7624672284554068' })` has exactly teh same effect as directing your browser to [#/42492610216140747/7624672284554068](http://unspace.github.com/misadventure/#/42492610216140747/7624672284554068). Faux even updates the browser's location bar so that bookmarking and navigation works correctly.
 
 If you dive deeply into Faux, you'll also discover that controller methods can be associated with events or with DOM elements, such that inserting a DOM element with a specific `id` and/or classes automatically invokes a controller method to populate it with children. Misadventure doesn't use any of these techniques. They aren't "advanced" or "complicated," but Misadventure is a small app and doesn't need to use every tool in the toolbox.
 
@@ -314,9 +314,10 @@ In [Part II][pii] of this series, we'll look at `controller.wake()` in detail, e
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one convenient and inexpensive e-book.
-* [Katy](http://github.com/raganwald/Katy), fluent CoffeeScript and JavaScript using combinators.
-* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), Coffeescript/Javascript method combinations for Underscore projects.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
 

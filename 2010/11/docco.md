@@ -1,23 +1,23 @@
 A new way to think about programs
 ===
 
-[Coffeescript][coffee] is an excellent "little" programming language created by Jeremy Ashkenas. I've been meaning to write nice things about Coffeescript for a while, but quite honestly it speaks for itself. Really! Have a look at it, and especially *try programming with it*. If you go to the Coffeescript home page, you can try Coffeescript right in your browser. Coffeescript support is baked into [Node.js][node]. How much easier do you want it to be?
+[CoffeeScript][coffee] is an excellent "little" programming language created by Jeremy Ashkenas. I've been meaning to write nice things about CoffeeScript for a while, but quite honestly it speaks for itself. Really! Have a look at it, and especially *try programming with it*. If you go to the CoffeeScript home page, you can try CoffeeScript right in your browser. CoffeeScript support is baked into [Node.js][node]. How much easier do you want it to be?
 
-Going from Javascript to Coffeescript today feels a lot like going from Java to Ruby felt to me in early 2003. I know this may surprise people used to my wordiness, but I honestly can't think of anything to say that will be more persuasive than the experience of simply writing Coffeescript code. But however exciting that is, I haven't written about it.
+Going from JavaScript to CoffeeScript today feels a lot like going from Java to Ruby felt to me in early 2003. I know this may surprise people used to my wordiness, but I honestly can't think of anything to say that will be more persuasive than the experience of simply writing CoffeeScript code. But however exciting that is, I haven't written about it.
 
 ![Fiorenzato Coffee Machine Ducale](https://www.coffeeitalia.co.uk/prodimages/fiorenzato/professional/ducale/Ducale-fronte_300.jpg)
 
-Every time I've started a blog post about Coffeescript, it felt vaguely like I was recycling some old post about Ruby or about meta-programming, or about the power of writing and reading succinct code. Such things may be news to a new generation of programmers, but when I write them, I feel like one of those self-help Gurus who keep re-selling the same damn book over and over again: *The One Minute Manager's Seven Habits for Getting Chicken Soup for the Mars and Venus Bipolar Lisp Programmer's Soul Done, [The Hard Way][lpthw].*
+Every time I've started a blog post about CoffeeScript, it felt vaguely like I was recycling some old post about Ruby or about meta-programming, or about the power of writing and reading succinct code. Such things may be news to a new generation of programmers, but when I write them, I feel like one of those self-help Gurus who keep re-selling the same damn book over and over again: *The One Minute Manager's Seven Habits for Getting Chicken Soup for the Mars and Venus Bipolar Lisp Programmer's Soul Done, [The Hard Way][lpthw].*
 
 So I keep putting off writing about Coffescript, hoping that one day I'll have something insightful to say about it, or hoping that I'll discover something about it that "piques my intellectual curiosity." It isn't that anything is missing, it's just that it works and works well.
 
 **illiteracy**
 
-Last week, I tried something else Jeremy has written, and I think it's even more exciting than Coffeescript. If I were Steve Jobs, I'd tell you there's "one more thing." I'm talking about **[Docco][docco]**. Docco is a tool for writing code in the [Literate Programming][lp] style. You can read about literate programming for yourself, but the idea is to write a program in a conversational, narrative style. Your write it the way you would explain your idea to another human, and a tool converts your literate programming into the "tangled" representation that the computer understands.
+Last week, I tried something else Jeremy has written, and I think it's even more exciting than CoffeeScript. If I were Steve Jobs, I'd tell you there's "one more thing." I'm talking about **[Docco][docco]**. Docco is a tool for writing code in the [Literate Programming][lp] style. You can read about literate programming for yourself, but the idea is to write a program in a conversational, narrative style. Your write it the way you would explain your idea to another human, and a tool converts your literate programming into the "tangled" representation that the computer understands.
 
 > The literate programming paradigm... represents a move away from writing programs in the manner and order imposed by the computer, and instead enables programmers to develop programs in the order demanded by the logic and flow of their thoughts. Literate programs are written as an uninterrupted exposition of logic in an ordinary human language, much like the text of an essay, in which macros which hide abstractions and traditional source code are included. --[Wikipedia][lp]
 
-This isn't translating English into machine instructions, you still write code (Javascript or Coffeescript in the case of Docco), this is actually a question of the way you organize your program. We programmers have many different forces acting on the way we organize a program.
+This isn't translating English into machine instructions, you still write code (JavaScript or CoffeeScript in the case of Docco), this is actually a question of the way you organize your program. We programmers have many different forces acting on the way we organize a program.
 
 One force acting on program organization is the *archeological accident*: We write our programs, make changes, add features, and if we do nothing else the resulting program's organization is strongly influenced by the chronology of our changes.This is why it's always easy to criticize an existing program. The existing program is usually adorned with the warts of its archeology, and in hindsight it's easy to see how if you were starting from scratch with the final "requirements," you would design something cleaner and more elegant than the program that evolved over time.
 
@@ -68,7 +68,7 @@ Docco has affected the way I think about programming. Literate programming may n
 
 Thanks, Jeremy!
 
-p.s. *Coffeescript is about to get **even more interesting**. Be sure to check the [Coffeescript site][coffee] for updates and/or announcements over the next few days...*
+p.s. *CoffeeScript is about to get **even more interesting**. Be sure to check the [CoffeeScript site][coffee] for updates and/or announcements over the next few days...*
 
 ---
 
