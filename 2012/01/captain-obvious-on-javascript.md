@@ -81,6 +81,8 @@ $('input').toArray()
   
 Which really means, "Get the `.value` from every `input` DOM element, and map the `parseFloat` function over the result."
 
+Obviously, this last example involves creating a new function and iterating *twice* over the array. Avoiding the extra loop may be an important performance optimization. Then again, it may be premature optimization. Captain Obvious says: "*These are not examples of things you should do, these are examples of things you should understand how to do and why they work.*"
+
 ---
 
 Recent work:
