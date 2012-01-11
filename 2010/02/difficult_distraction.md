@@ -149,7 +149,7 @@ Recent work:
 * [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
 * [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [anaphora]: http://github.com/raganwald/homoiconic/blob/master/2009-09-22/anaphora.md#readme "Anaphora in Ruby"
 [andand]: http://andand.rubyforge.org/ "Object#andand"

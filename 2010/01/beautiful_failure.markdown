@@ -97,7 +97,7 @@ Recent work:
 * [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
 * [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [sum]: http://github.com/raganwald/homoiconic/blob/master/2009-04-09/my_objection_to_sum.md#readme "My Objection to Array#Sum"
 [rc]: http://en.wikipedia.org/wiki/Race_condition "Race condition - Wikipedia, the free encyclopedia"

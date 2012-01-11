@@ -130,7 +130,7 @@ And that, as they say, is that. A modal interface alternates between gestures fo
 
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [drag]: http://raganwald.github.com/iGesture/drag.html
 [slave]: /raganwald/homoiconic/raw/master/2010/04/slave_i.png "Slave I in Low Earth Orbit"

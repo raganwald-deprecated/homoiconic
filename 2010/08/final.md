@@ -291,7 +291,7 @@ Discuss on [Hacker News][hn] and [reddit.com][reddit].
   
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
-Follow [me](http://reginald.braythwayt.com) on [Twitter](http://twitter.com/raganwald). I work with [Unspace Interactive](http://unspace.ca), and I like it.
+[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [p2p]: http://www.yes-minister.com/ypmseas2b.htm
 [raf]: http://weblog.raganwald.com/2006/05/ready-aim-final.html
