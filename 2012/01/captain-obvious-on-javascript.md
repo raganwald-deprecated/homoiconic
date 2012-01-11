@@ -28,9 +28,11 @@ array.forEach(function (element) {
 });
 ```
   
-...Is just a funny way of writing a for loop. It isn't a way of saying "Do this thing with every member of `array`." `jQuery.each` is a method that takes a function as an argument, so this code is a way of saying "Apply every member of `array` to this function". You can pass it a function literal (as above), a variable name that resolves to a function, even an expression like `myObject.methodName` that looks like a method but is really a function defined in an object's prototype. Naturally, once you know that you can refactor things to take advantage of it.
+...Is just a funny way of writing a for loop. It's not!
 
-This example uses [Underscore][u] in the browser:
+`forEach` isn't a way of saying "Do this thing with every member of `array`." No, `forEach` is an array method that takes a function as an argument, so this code is a way of saying "Apply every member of `array` to this function". You can pass `forEach` a function literal (as above), a variable name that resolves to a function, even an expression like `myObject.methodName` that looks like a method but is really a function defined in an object's prototype.
+
+Once you have internalized the fact that *any* function will do, you can refactor code to clear out the cruft. This example uses [Underscore][u] in the browser:
 
 [u]: http://documentcloud.github.com/underscore/
 
