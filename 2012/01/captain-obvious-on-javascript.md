@@ -6,22 +6,10 @@ In JavaScript, anywhere you find yourself writing:
 function (x) { return foo(x); }
 ```
   
-You can just as easily write:
-
-```javascript
-foo
-```
-
-For example, this code:
+You can just as easily write `foo`. For example, this code:
 
 ```javascript
 var floats = someArray.map(function (value) {
-  return parseFloat(value);
-});
-
-// or in a paranoid browser environment:
-
-var floats = jQuery.map( someArray, function (value) {
   return parseFloat(value);
 });
 ```
@@ -36,12 +24,6 @@ This understanding is *vital*. Without it, you can be led astray into thinking t
 
 ```javascript
 array.forEach(function (element) {
-  // do something
-});
-
-// or in a paranoid browser environment:
-
-jQuery.each( array, function (element) {
   // do something
 });
 ```
