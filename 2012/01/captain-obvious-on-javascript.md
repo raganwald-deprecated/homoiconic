@@ -3,35 +3,35 @@
 In JavaScript, anywhere you find yourself writing:
 
 ```javascript
-  function (x) { return foo(x); }
+function (x) { return foo(x); }
 ```
   
 You can just as easily write:
 
 ```javascript
-  foo
+foo
 ```
 
 For example, this code:
 
 ```javascript
-  var floats = jQuery.map( someArray, function (value) {
-    return parseFloat(value);
-  });
+var floats = jQuery.map( someArray, function (value) {
+  return parseFloat(value);
+});
 ```
   
 Could be written:
 
 ```javascript
-  var floats = jQuery.map( someArray, parseFloat);
+var floats = jQuery.map( someArray, parseFloat);
 ```
   
 This understanding is *vital*. Without it, you can be led astray into thinking that this code:
 
 ```javascript
-  jQuery.each( array, function (element) {
-    // do something
-  });
+jQuery.each( array, function (element) {
+  // do something
+});
 ```
   
 ...Is just a funny way of writing a for loop. It isn't a way of saying "Do this thing with every member of `array`." `jQuery.each` is a method that takes a function as an argument, so this code is a way of saying "Apply every member of `array` to this function". You can pass it a function literal (as above), a variable name that resolves to a function, even an expression like `myObject.methodName` that looks like a method but is really a function defined in an object's prototype. Naturally, once you know that you can refactor things to take advantage of it. This example uses [Underscore][u]:
@@ -39,23 +39,23 @@ This understanding is *vital*. Without it, you can be led astray into thinking t
 [u]: http://documentcloud.github.com/underscore/
 
 ```javascript
-  var floats = _.map( $('input'), function (domElement) {
-    return parseFloat(domElement.value);
-  });
+var floats = _.map( $('input'), function (domElement) {
+  return parseFloat(domElement.value);
+});
 ```
   
 Becomes:
 
 ```javascript
-  var floats = _.map( _.pluck($('input'), 'value'), function (value) {
-    return parseFloat(value);
-  });
+var floats = _.map( _.pluck($('input'), 'value'), function (value) {
+  return parseFloat(value);
+});
 ```
   
 So now we can write:
 
 ```javascript
-  var floats = _.map( _.pluck($('input'), 'value'), parseFloat);
+var floats = _.map( _.pluck($('input'), 'value'), parseFloat);
 ```
   
 Which really means, "pluck the `.value` from every `input` DOM element, and map the `parseFloat` function over the result."
