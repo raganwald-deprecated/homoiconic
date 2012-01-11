@@ -32,31 +32,54 @@ array.forEach(function (element) {
 
 `forEach` isn't a way of saying "Do this thing with every member of `array`." No, `forEach` is an array method that takes a function as an argument, so this code is a way of saying "Apply every member of `array` to this function". You can pass `forEach` a function literal (as above), a variable name that resolves to a function, even an expression like `myObject.methodName` that looks like a method but is really a function defined in an object's prototype.
 
-Once you have internalized the fact that *any* function will do, you can refactor code to clear out the cruft. This example uses [Underscore][u] in the browser:
+Once you have internalized the fact that *any* function will do, you can refactor code to clear out the cruft. This example uses [Jquery][j] in the browser:
 
-[u]: http://documentcloud.github.com/underscore/
+[j]: http://jquery.org
 
 ```javascript
-var floats = _.map( $('input'), function (domElement) {
+$('input').toArray().map(function (domElement) {
   return parseFloat(domElement.value);
-});
+})
 ```
   
-Becomes:
+Let's turn that into:
 
 ```javascript
-var floats = _.map( _.pluck($('input'), 'value'), function (value) {
-  return parseFloat(value);
-});
+$('input').toArray()
+  .map(function (domElement) {
+    return domElement.value;
+  })
+  .map(function (value) {
+    return parseFloat(value);
+  })
 ```
   
-So now we can write:
+And thus:
 
 ```javascript
-var floats = _.map( _.pluck($('input'), 'value'), parseFloat);
+$('input').toArray()
+  .map(function (domElement) {
+    return domElement.value;
+  })
+  .map(parseFloat)
+```
+Once you get started turning function literals into other expressions, you can't stop. The next step on the road to addiction is using functions that return functions:
+
+```javascript
+function get (attr) {
+  return function (object) { return object[attr]; }
+}
+```
+
+Which permits us to write:
+
+```javascript
+$('input').toArray()
+  .map(get('value'))
+  .map(parseFloat)
 ```
   
-Which really means, "pluck the `.value` from every `input` DOM element, and map the `parseFloat` function over the result."
+Which really means, "Get the `.value` from every `input` DOM element, and map the `parseFloat` function over the result."
 
 ---
 
