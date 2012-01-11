@@ -48,6 +48,8 @@ Recent work:
 * [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
 * [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
+---
+
 [Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [sick]: http://github.com/raganwald/homoiconic/blob/master/2009-04-08/sick.md#readme "I'm Sick Of This Shit"

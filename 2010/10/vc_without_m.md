@@ -141,6 +141,8 @@ We've also seen that the application can be implemented as a single page interfa
 
 Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1803432). NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
+---
+
 [Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [u]: http://unspace.ca

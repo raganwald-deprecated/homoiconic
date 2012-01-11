@@ -119,6 +119,8 @@ It's perfectly valid to avoid the built-in blocks in a program, or to choose a l
   
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
+---
+
 [Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [ig]: http://github.com/raganwald/iGesture

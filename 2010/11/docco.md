@@ -74,6 +74,8 @@ p.s. *CoffeeScript is about to get **even more interesting**. Be sure to check t
 
 Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1883995) and [Reddit](http://www.reddit.com/r/programming/comments/e345e/a_new_way_to_think_about_programs_githubcom/). NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
+---
+
 [Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [coffee]: http://jashkenas.github.com/coffee-script/ "CoffeeScript"

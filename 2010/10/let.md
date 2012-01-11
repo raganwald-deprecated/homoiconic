@@ -284,6 +284,8 @@ p.p.s. There's an excellent discussion of variable hoisting in [this excellent a
 	
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
+---
+
 [Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [eee_closures]: http://japhr.blogspot.com/2010/10/gah-i-still-dont-know-closures.html

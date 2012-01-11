@@ -19,6 +19,8 @@ So I'm genuinely puzzled... Why is it a bad idea to call my jQuery plugin "jQuer
   
 Discuss this post on [Hacker News][hn], NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
+---
+
 [Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [jqc]: http://github.com/raganwald/JQuery-Combinators
