@@ -15,6 +15,12 @@ foo
 For example, this code:
 
 ```javascript
+var floats = someArray.map(function (value) {
+  return parseFloat(value);
+});
+
+// or in a paranoid browser environment:
+
 var floats = jQuery.map( someArray, function (value) {
   return parseFloat(value);
 });
@@ -23,18 +29,26 @@ var floats = jQuery.map( someArray, function (value) {
 Could be written:
 
 ```javascript
-var floats = jQuery.map( someArray, parseFloat);
+var floats = someArray.map(parseFloat);
 ```
   
 This understanding is *vital*. Without it, you can be led astray into thinking that this code:
 
 ```javascript
+array.forEach(function (element) {
+  // do something
+});
+
+// or in a paranoid browser environment:
+
 jQuery.each( array, function (element) {
   // do something
 });
 ```
   
-...Is just a funny way of writing a for loop. It isn't a way of saying "Do this thing with every member of `array`." `jQuery.each` is a method that takes a function as an argument, so this code is a way of saying "Apply every member of `array` to this function". You can pass it a function literal (as above), a variable name that resolves to a function, even an expression like `myObject.methodName` that looks like a method but is really a function defined in an object's prototype. Naturally, once you know that you can refactor things to take advantage of it. This example uses [Underscore][u]:
+...Is just a funny way of writing a for loop. It isn't a way of saying "Do this thing with every member of `array`." `jQuery.each` is a method that takes a function as an argument, so this code is a way of saying "Apply every member of `array` to this function". You can pass it a function literal (as above), a variable name that resolves to a function, even an expression like `myObject.methodName` that looks like a method but is really a function defined in an object's prototype. Naturally, once you know that you can refactor things to take advantage of it.
+
+This example uses [Underscore][u] in the browser:
 
 [u]: http://documentcloud.github.com/underscore/
 
