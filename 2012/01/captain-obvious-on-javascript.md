@@ -83,7 +83,7 @@ Which really means, "Get the `.value` from every `input` DOM element, and map th
 
 Obviously, this last example involves creating a new function and iterating *twice* over the array. Avoiding the extra loop may be an important performance optimization. Then again, it may be premature optimization. Captain Obvious says: "*These are not examples of things you should do, these are examples of things you should understand how to do and why they work.*"
 
-p.s. For extra credit, rewrite this example to use [parseInt][pi] instead of [parseFloat][pf]. Does it work as advertised? Why? Why not?
+p.s. For extra credit, rewrite this example to use [parseInt][pi] instead of [parseFloat][pf]. Does it work as advertised? Why? Why not? Also, Captain Obvious would not write such excellently plain-as-the-nose-on-his-face posts without the help of people like [@jcoglan](https://twitter.com/#!/jcoglan), [@CrypticSwarm](https://twitter.com/#!/CrypticSwarm), [@notmatt](https://twitter.com/#!/notmatt), and [@cammerman](https://twitter.com/#!/cammerman).
 
 [pi]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseInt
 [pf]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseFloat
