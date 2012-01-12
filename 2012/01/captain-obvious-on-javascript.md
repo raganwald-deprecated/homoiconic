@@ -85,6 +85,19 @@ Which really means, "Get the `.value` from every `input` DOM element, and map th
 
 Obviously, this last example involves creating a new function and iterating *twice* over the array. Avoiding the extra loop may be an important performance optimization. Then again, it may be premature optimization. Captain Obvious says: "*These are not examples of things you should do, these are examples of things you should understand how to do and why they work.*"
 
+Because once you inderstand them, it might occur to you that the `.sequence` method from Oliver Steele's [Functional javaScript][fj] library might be useful:
+
+[fj]: http://osteele.com/sources/javascript/functional/
+
+```javascript
+$('input').toArray()
+  .map(Functional.sequence(
+    get('value'),
+    parseFloat))
+```
+
+`Functional.sequence` composes two or more functions in the argument order (Functional Javascript also provides `.compose` to compose multiple functions in applicative order). Now the code iterates over the array just once, mapping it to the composition of the two functions while still preserving the new character of ther code where the elements of an expression have been teased into separate functions. 
+
 (Captain Obvious would not write such excellently plain-as-the-nose-on-his-face posts without the help of people like [@jcoglan](https://twitter.com/#!/jcoglan), [@CrypticSwarm](https://twitter.com/#!/CrypticSwarm), [@notmatt](https://twitter.com/#!/notmatt), [@cammerman](https://twitter.com/#!/cammerman), and [@BrendanEich](https://twitter.com/#!/BrendanEich).)
 
 [pi]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseInt
