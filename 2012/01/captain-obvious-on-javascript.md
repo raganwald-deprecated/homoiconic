@@ -6,9 +6,9 @@ In JavaScript, anywhere you find yourself writing:
 function (x) { return foo(x); }
 ```
   
-You can substitute `foo`.[^awb] For example, this code:
+You can [almost always][awb] substitute just `foo`. For example, this code:
 
-[^awb]: Well, [almost](http://www.wirfs-brock.com/allen/posts/166 "A JavaScript Optional Argument Hazard") always substitute `foo`...
+[awb]: http://www.wirfs-brock.com/allen/posts/166 "A JavaScript Optional Argument Hazard"
 
 ```javascript
 var floats = someArray.map(function (value) {
