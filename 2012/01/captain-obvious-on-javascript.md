@@ -91,12 +91,33 @@ Because once you inderstand them, it might occur to you that the `.sequence` met
 
 ```javascript
 $('input').toArray()
-  .map(Functional.sequence(
-    get('value'),
-    parseFloat))
+  .map(
+    Functional.sequence(
+      get('value'),
+      parseFloat
+    )
+  )
 ```
 
-`Functional.sequence` composes two or more functions in the argument order (Functional Javascript also provides `.compose` to compose multiple functions in applicative order). Now the code iterates over the array just once, mapping it to the composition of the two functions while still preserving the new character of ther code where the elements of an expression have been teased into separate functions. 
+`Functional.sequence` composes two or more functions in the argument order (Functional Javascript also provides `.compose` to compose multiple functions in applicative order). For the purpose of this post, they could be defined something like this:
+
+```javascript
+var naiveSequence = function (a, b) {
+  return function (c) { 
+    return b(a(c));
+  };
+}
+
+var naiveCompose = function (a, b) {
+  return function (c) { 
+    return a(b(c));
+  };
+}
+```
+
+(`Functional.sequence` and `Functional.compose` are far more thorough than these naive examples, of course.)
+
+Now that we've sequenced the two functions, the code iterates over the array just once, mapping it to the composition of the two functions while still preserving the new character of the code where the elements of an expression have been teased into separate functions. 
 
 (Captain Obvious would not write such excellently plain-as-the-nose-on-his-face posts without the help of people like [@jcoglan](https://twitter.com/#!/jcoglan), [@CrypticSwarm](https://twitter.com/#!/CrypticSwarm), [@notmatt](https://twitter.com/#!/notmatt), [@cammerman](https://twitter.com/#!/cammerman), [Skyhighatrist](http://www.reddit.com/user/Skyhighatrist), and [@BrendanEich](https://twitter.com/#!/BrendanEich).)
 
