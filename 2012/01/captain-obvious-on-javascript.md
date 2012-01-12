@@ -83,9 +83,11 @@ $('input').toArray()
   
 Which really means, "Get the `.value` from every `input` DOM element, and map the `parseFloat` function over the result."
 
+## a step in the right direction
+
 Obviously, this last example involves creating a new function and iterating *twice* over the array. Avoiding the extra loop may be an important performance optimization. Then again, it may be premature optimization. Captain Obvious says: "*These are not examples of things you should do, these are examples of things you should understand how to do and why they work.*"
 
-Because once you inderstand them, it might occur to you that the `.sequence` method from Oliver Steele's [Functional javaScript][fj] library might be useful:
+Once you inderstand them, it might occur to you that the `.sequence` method from Oliver Steele's [Functional javaScript][fj] library will be useful:
 
 [fj]: http://osteele.com/sources/javascript/functional/
 
@@ -117,9 +119,11 @@ var naiveCompose = function (a, b) {
 
 (`Functional.sequence` and `Functional.compose` are far more thorough than these naive examples, of course.)
 
-Now that we've sequenced the two functions, the code iterates over the array just once, mapping it to the composition of the two functions while still preserving the new character of the code where the elements of an expression have been teased into separate functions. 
+Now the code iterates over the array just once, mapping it to the composition of the two functions while still preserving the new character of the code where the elements of an expression have been factored into separate functions. Is this better than the original? It is if you want to refactor the code to do interesting things like memoize one of the functions. But that is no longer obvious.
 
-(Captain Obvious would not write such excellently plain-as-the-nose-on-his-face posts without the help of people like [@jcoglan](https://twitter.com/#!/jcoglan), [@CrypticSwarm](https://twitter.com/#!/CrypticSwarm), [@notmatt](https://twitter.com/#!/notmatt), [@cammerman](https://twitter.com/#!/cammerman), [Skyhighatrist](http://www.reddit.com/user/Skyhighatrist), and [@BrendanEich](https://twitter.com/#!/BrendanEich).)
+What *is* obvious is that JavaScript is a functional language, and the more ways you have of factoring expressions into functions, the more ways you have of organizing your code to suit your own style, performance, or assignment of responsibility purposes.
+
+p.s. Captain Obvious would not write such excellently plain-as-the-nose-on-his-face posts without the help of people like [@jcoglan](https://twitter.com/#!/jcoglan), [@CrypticSwarm](https://twitter.com/#!/CrypticSwarm), [@notmatt](https://twitter.com/#!/notmatt), [@cammerman](https://twitter.com/#!/cammerman), [Skyhighatrist](http://www.reddit.com/user/Skyhighatrist), and [@BrendanEich](https://twitter.com/#!/BrendanEich).
 
 [pi]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseInt
 [pf]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseFloat
