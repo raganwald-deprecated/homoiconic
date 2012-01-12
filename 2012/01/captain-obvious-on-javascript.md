@@ -34,7 +34,7 @@ array.forEach(function (element) {
 
 `forEach` isn't a way of saying "Do this thing with every member of `array`." No, `forEach` is an array method that takes a function as an argument, so this code is a way of saying "Apply every member of `array` to this function". You can pass `forEach` a function literal (as above), a variable name that resolves to a function, even an expression like `myObject.methodName` that looks like a method but is really a function defined in an object's prototype.
 
-Once you have internalized the fact that *any* function will do, you can refactor code to clear out the cruft. This example uses [Jquery][j] in the browser:
+Once you have internalized the fact that *any* function will do, you can refactor code to clear out the cruft. This example uses [jQuery][j] in the browser:
 
 [j]: http://jquery.org
 
@@ -87,21 +87,9 @@ Which really means, "Get the `.value` from every `input` DOM element, and map th
 
 Obviously, this last example involves creating a new function and iterating *twice* over the array. Avoiding the extra loop may be an important performance optimization. Then again, it may be premature optimization. Captain Obvious says: "*These are not examples of things you should do, these are examples of things you should understand how to do and why they work.*"
 
-Once you inderstand them, it might occur to you that the `.sequence` method from Oliver Steele's [Functional javaScript][fj] library will be useful:
+Once you inderstand them, it might occur to you that `Functional.sequence` from Oliver Steele's [Functional JavaScript][fj] library will be useful. `Functional.sequence` composes two or more functions in the argument order (Functional Javascript also provides `.compose` to compose multiple functions in applicative order). For the purpose of this post, they could be defined something like this:
 
 [fj]: http://osteele.com/sources/javascript/functional/
-
-```javascript
-$('input').toArray()
-  .map(
-    Functional.sequence(
-      get('value'),
-      parseFloat
-    )
-  )
-```
-
-`Functional.sequence` composes two or more functions in the argument order (Functional Javascript also provides `.compose` to compose multiple functions in applicative order). For the purpose of this post, they could be defined something like this:
 
 ```javascript
 var naiveSequence = function (a, b) {
@@ -118,6 +106,25 @@ var naiveCompose = function (a, b) {
 ```
 
 (`Functional.sequence` and `Functional.compose` are far more thorough than these naive examples, of course.)
+
+Given this, you could expect that:
+
+```javascript
+Functional.sequence(get('value'), parseFloat)({ value: '1.5' })
+  // => 1.5
+```
+
+Thus, we can rewrite our map as:
+
+```javascript
+$('input').toArray()
+  .map(
+    Functional.sequence(
+      get('value'),
+      parseFloat
+    )
+  )
+```
 
 Now the code iterates over the array just once, mapping it to the composition of the two functions while still preserving the new character of the code where the elements of an expression have been factored into separate functions. Is this better than the original? It is if you want to refactor the code to do interesting things like memoize one of the functions. But that is no longer obvious.
 
