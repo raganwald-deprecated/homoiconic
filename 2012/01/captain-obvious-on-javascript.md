@@ -6,7 +6,7 @@ In JavaScript, anywhere you find yourself writing:
 function (x) { return foo(x); }
 ```
   
-You can [almost always][awb] substitute just `foo`. For example, this code:
+You can [usually][awb] substitute just `foo`. For example, this code:
 
 [awb]: http://www.wirfs-brock.com/allen/posts/166 "A JavaScript Optional Argument Hazard"
 
