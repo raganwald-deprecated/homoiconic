@@ -138,12 +138,13 @@ p.s. Captain Obvious would not write such excellently plain-as-the-nose-on-his-f
 
 p.p.s. More than a few people asked whether iterating once is really faster than iterating twice, and even if so, whether the result is more readable, and so forth. With respect to performance, you ought to measure, not guess. It might not make any difference. I usually don't worry about it: Writing `array.map(...).map(...)` gives me something easy to read and easy to factor. But that being said, this is not a *prescriptive* essay. These are not design patterns with well-formed problem statements and prescriptions for how to solve them. It's just some neat stuff, as Captain Obvious says, you need not do these things but you ought to know how to do them and why they work. If you're interested in going further:
 
-* Structure and Interpretation of Computer Programs
-* [Variables Now and Later][vnl (a follow-up to this essay by CrypticSwarm)
+* [Structure and Interpretation of Computer Programs][sicp], *the* book on learning programming from first principles,
+* [Variables Now and Later][vnl], a follow-up to this essay by CrypticSwarm.
 
 [pi]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseInt
 [pf]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseFloat
 [vnl]: http://crypticswarm.com/variables-now-and-later
+[sicp]: http://mitpress.mit.edu/sicp/
 
 ---
 
