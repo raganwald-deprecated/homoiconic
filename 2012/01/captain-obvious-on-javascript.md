@@ -85,7 +85,7 @@ Which really means, "Get the `.value` from every `input` DOM element, and map th
 
 Obviously!
 
-# Part II: From the obvious to the practical
+# Part II: Less obvious but still interesting
 
 Although the example illustrated the obvious points about functions as first class entities, the final example involved creating a new function and iterating *twice* over the array. Avoiding the extra loop may be an important performance optimization. Then again, it may be premature optimization. But either way, once we have absorbed the obvious, we're ready to look at the practical. 
 
