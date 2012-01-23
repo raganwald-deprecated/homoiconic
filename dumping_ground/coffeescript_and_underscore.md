@@ -1,6 +1,6 @@
 # A taste of CoffeeScript, a dab of Underscore, a helping of Life
 
-### preface
+### Introduction
 
 When introducing an idea, it is often wise to do so with as simple an example as possible. With programming tips, a simple example maximizes the signal-to-noise ration by focusing the code on the idea being introduced. I've used this style a fair bit, and readers tell me choosing simple examples makes my essays easy to understand.
 
@@ -70,6 +70,15 @@ var succ = function (row, col) {
   var count = a[row-1][col-1] + a[row-1][col] + a[row-1][col+1] + a[row][col-1] + a[row][col+1] + a[row+1][col-1] + a[row+1][col] + a[row+1][col+1]
   return count === 3 || (count == 2 && a[row][col] === 1) ? Indivisible.Alive : Indivisible.Dead
 }
+```
+
+Let's see what we can learn comparing the snippets:
+
+1. Functions are introduced with `->`. For example, `(x) -> x + 1` is a function that adds one to its argument.
+2. In lieu of braces, CoffeeScript uses indentation (a/k/a "Significant Whitespace"). SO for non-trivial functions, we write the arguments and arrow on one line, and the body of the function on successive lines, indented once.
+3. A common problem with JavaScript programs is failing to declare variables with the `var` keyword. CoffeeScript does it for you, as we can see with `succ` and `count`.
+4. JavaScript functions must explicitly use `return` to return a value. Like Ruby, CoffeeScript returns the value of the last expression evaluated. No explicit `return` is necessary.
+5. CoffeeScript tries to make everything an expression that evaluates to something, including many things that are not expressions in JavaScript. We see here that `if` statements in JavaScript are `if` *expressions* in CoffeeScript. The closest equivalent in JavaScript is the much-reviled ternary operator.
 
 We'll return to the code in a moment. HashLife operates on square regions of the board, with the length of the side of each square being a natural power of two ( `2^0 -> 1`, `2^1 -> 2`, `2^2 -> 4`, `2^3 -> 8`...). Cafe au Life 
 
