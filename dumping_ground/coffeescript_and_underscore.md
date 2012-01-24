@@ -16,13 +16,11 @@ The example project is called [Cafe au Life][cal]. It's an implementation of Joh
 
 In this article, we're going to learn a very little of the CoffeeScript language. I assume that you're familiar with basic JavaScript, including but not limited to knowing what a function literal is, what a `.prototype` is, and of course a little about strings, numbers, arrays, and objects in JavaScript. We're also going to constantly allude to the Cafe au Life implementation of HashLife. This might be distracting, all I can do is try to make it *interesting*.
 
-We're not going to start with the basics and then carefully introduce new ideas that rely on what we've already learned. We're going to jump in and learn as we go. This is a terrible way of learning if you only have one text to study, but if you have several different instructional essays and book to review, examples of the language constrcuts in the context of a non-trivial piece of code can provide some perspective on how the pieces relate to each other.
+We're not going to start with the basics and then carefully introduce new ideas that rely on what we've already learned. We're going to jump in and learn as we go. This is a terrible way of learning if you only have one text to study, but if you have several different instructional essays and book to review, examples of the language constructs in the context of a non-trivial piece of code can provide some perspective on how the pieces relate to each other.
 
 ## HashLife
 
-*Obviously* you are familiar with John Conway's Game of Life. Technically speaking, it's a zero-player game, meaning that no choices are involved. Life is a cellular automata that is [Turing-equivalent][te]. The universe is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, *alive* or *dead*. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
-
-[te]: http://rendell-attic.org/gol/tm.htm
+*Obviously* you are familiar with John Conway's Game of Life. Life is a cellular automata. Its universe is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, *alive* or *dead*. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
 
 * Any live cell with fewer than two live neighbours dies, as if caused by under-population.
 * Any live cell with two or three live neighbours lives on to the next generation.
@@ -30,6 +28,10 @@ We're not going to start with the basics and then carefully introduce new ideas 
 * Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed—births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick (in other words, each generation is a pure function of the preceding one). The rules continue to be applied repeatedly to create further generations.
+
+From these simple rules arise many complex phenomena. Life was carefully designed to be a very simple set of rules that were conjectured to be Turing-equivalent. This was later proven to be the case theoretically, and still later people built [Turing Machines][tm], Minsky Register Machines, and even a Universal Turing Machine
+
+[tm]: http://rendell-attic.org/gol/tm.htm
 
 Let's express the Life rules in CoffeeScript. Here's the exact code from Cafe au Life:
 
@@ -46,6 +48,7 @@ Let's express the Life rules in CoffeeScript. Here's the exact code from Cafe au
       ne: succ(1,2)
       se: succ(2,2)
       sw: succ(2,1)
+)
 ```
 
 In this post, we're going to do a simple thing: Explain everything going on in that one piece of CoffeeScript code. Along the way, we'll learn a little about CoffeeScript, a little about the Underscore library, and a little about HashLife.
@@ -75,7 +78,51 @@ The squares of size four are in turn each composed of four quadrants of size two
 class Square
 ```
 
-In CoffeeScript, classes are declared using the `class` keyword. If you're familiar with dynamic languages like Ruby, you probably expect that classes aren't really *declared* in the sense that a class is declared in a static language like Java. You're right! The class is an object and you can assign it to a variable, return a class from a function, and so on. This particular class is the smallest possible kind of class, one that declares no methods and does not extend another 
+In CoffeeScript, classes are declared using the `class` keyword. If you're familiar with dynamic languages like Ruby, you probably expect that classes aren't really *declared* in the sense that a class is declared in a static language like Java. You're right! The class is an object and you can assign it to a variable, return a class from a function, and so on. This particular class is the smallest possible kind of class, one that declares no methods and does not extend another class.
+
+The smallest possible square is a cell. Defying the rational choice of "Cell," I have named the class that represents a single cell, `Indivisible`. It *extends* the class `Square`,. which means that ever instance of Indivisible IS-AN instance of Square, and every instance of Indivisible inherits all of the methods of Square (there aren't any at the moment, but still):
+
+```coffeescript
+class Indivisible extends Square
+```
+
+Speaking of methods:
+
+```coffeescript
+class Indivisible extends Square
+  constructor: (@hash) ->
+  toValue: ->
+    @hash
+  to_json: ->
+    [@hash]
+  level: ->
+    0
+  empty_copy: ->
+    Indivisible.Dead
+```
+
+If you've never seen CoffeeScript before, there are a ten(!) new ideas to grasp here:
+
+1. Combining indentation with labels (like `constructor:` and `toValue:`) is how CoffeeScript declares object literals, a/k/a hashes.
+2. The hash for a class defines the properties for the object's prototype.
+3. When the prototype's properties are functions, you get object methods.
+4. Functions are introduced with `->`. For example, `(x) -> x` is the I combinator, a function that returns its argument. This syntax nests: `(x) -> (y) -> x` is the K Combinator, a function that returns a constant function. The arguments to the function are to the left of the arrow, and the body follows.
+5. JavaScript functions must explicitly use `return` to return a value. Like Ruby, CoffeeScript returns the value of the last expression evaluated. No explicit `return` is necessary.
+6. If you don't have any arguments, you can omit them. Thus, `-> 'Hello World'` is a function that takes no arguments and always returns "Hello World."
+7. In lieu of braces, CoffeeScript uses indentation (a/k/a "Significant Whitespace"). For non-trivial functions, we write the arguments and arrow on one line, and the body of the function on successive lines, indented once. However, you can write a function on one line or embedded in another expression if you like.
+8. `@` in CoffeeScript is short-form for `this.`, So `[@hash]` is actually an array literal that is equivalent to `[ this.hash ]` in JavaScript.
+9. CoffeeScript has [destructuring assignment][da] and destructuring parameter declarations. They can handle extracting values from hashes or arrays, variable numbers of parameters, and this useful case: `(@hash) ->`. This odd expression defines a function that takes a single argument and assigns it to `this.hash` instead of assigning it to a newly created parameter variable. Since the function has no body, it doesn't do anything else. It's equivalent to: `(hash) -> @hash = hash`.
+10. The method `constructor` is special: It is called when you make a new instance of our class, such as `new Indivisible(1)`. This creates a new instance of indivisible, and calls its `constructor` method with an argument of `1`. As we saw above, this will be assigned to the `.hash` property by the method `(@hash) ->`.
+
+[da]: http://coffeescript.org/#destructuring
+
+Indivisible.Alive = _.tap new Indivisible(1), (alive) ->
+  alive.is_empty = ->
+    false
+Indivisible.Dead = _.tap new Indivisible(0), (dead) ->
+  dead.is_empty = ->
+    true
+```
 
 The key principle behind HashLife is taking advantage of redundancy. Therefore, two squares with the same alive and dead cells are always represented by the same, immutable square objects. There is no concept of an array or bitmap of cells except when performing import and export.
 
