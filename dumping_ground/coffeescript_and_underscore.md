@@ -2,25 +2,25 @@
 
 ### Introduction
 
-When introducing an idea, it is often wise to do so with as simple an example as possible. With programming tips, a simple example maximizes the signal-to-noise ration by focusing the code on the idea being introduced. I've used this style a fair bit, and readers tell me choosing simple examples makes my essays easy to understand.
-
-All this notwithstanding, I feel like a change. So, I present this post about [CoffeeScript][c] and the [Underscore][u] library. Instead of simple examples, I will be using examples from a project I cooked up just to provide some material.
+When introducing an idea, it is often wise to do so with as simple an example as possible. With programming tips, a simple example maximizes the signal-to-noise ration by focusing the code on the idea being introduced. I've used this style a fair bit, and readers tell me choosing simple examples makes my essays easy to understand. All this notwithstanding, I feel like a change. So, I present this post about [CoffeeScript][c] and the [Underscore][u] library. Instead of simple examples, I will be using examples from a project I cooked up just to provide some material.
 
 [c]: http://jashkenas.github.com/coffee-script/
 [u]: http://documentcloud.github.com/underscore/
 
-The example project is called [Cafe au Life][cal]. It's an implementation of John Conway's [Game of Life][life] that uses one of my favourite algorithms of all time, Bill Gosper's brilliant (no, I am not running out of adjectives) [HashLife][hl]. HashLife is a beautiful algoritm, one "[from the book][erdos]."
+The example project is called [Cafe au Life][cal]. It's an implementation of John Conway's [Game of Life][life] that uses one of my favourite algorithms of all time, Bill Gosper's brilliant (no, I am not in any danger of running out of adjectives) [HashLife][hl]. HashLife is a beautiful algorithm, one "[from the book][erdos]."
 
 [cal]: http://github.com/raganwald/cafeaulife
 [life]: http://en.wikipedia.org/wiki/Conway's_Game_of_Life
-[HashLife][hl]
+[hl]: http://en.wikipedia.org/wiki/Hashlife
 [erdos]: http://en.wikipedia.org/wiki/Paul_Erdős
 
 In this article, we're going to learn a very little of the CoffeeScript language. I assume that you're familiar with basic JavaScript, including but not limited to knowing what a function literal is, what a `.prototype` is, and of course a little about strings, numbers, arrays, and objects in JavaScript. We're also going to constantly allude to the Cafe au Life implementation of HashLife. This might be distracting, all I can do is try to make it *interesting*.
 
+We're not going to start with the basics and then carefully introduce new ideas that rely on what we've already learned. We're going to jump in and learn as we go. This is a terrible way of learning if you only have one text to study, but if you have several different instructional essays and book to review, examples of the language constrcuts in the context of a non-trivial piece of code can provide some perspective on how the pieces relate to each other.
+
 ## HashLife
 
-*Obviously* you are familiar with John Conway's Game of Life. Technically speaking, it's a zero-player game, meaning no choices are involved, it's a cellular automata that is [Turing-equivalent][te]. The universe is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, *alive* or *dead*. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
+*Obviously* you are familiar with John Conway's Game of Life. Technically speaking, it's a zero-player game, meaning that no choices are involved. Life is a cellular automata that is [Turing-equivalent][te]. The universe is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, *alive* or *dead*. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
 
 [te]: http://rendell-attic.org/gol/tm.htm
 
@@ -31,60 +31,28 @@ In this article, we're going to learn a very little of the CoffeeScript language
 
 The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed—births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick (in other words, each generation is a pure function of the preceding one). The rules continue to be applied repeatedly to create further generations.
 
-Let's express the Life rules in CoffeeScript. Here's the exact class from Cafe au Life:
+Let's express the Life rules in CoffeeScript. Here's the exact code from Cafe au Life:
 
 ```coffeescript
-class SquareSz4 extends Divisible
-  constructor: (params) ->
-    super(params)
-    @generations = 1
-    @result = _.memoize( ->
-      a = @.to_json()
-      succ = (row, col) ->
-        count = a[row-1][col-1] + a[row-1][col] + a[row-1][col+1] + a[row][col-1] + a[row][col+1] + a[row+1][col-1] + a[row+1][col] + a[row+1][col+1]
-        if count is 3 or (count is 2 and a[row][col] is 1) then Indivisible.Alive else Indivisible.Dead
-      Square.find_or_create
-        nw: succ(1,1)
-        ne: succ(1,2)
-        se: succ(2,2)
-        sw: succ(2,1)
-    )
+@result = _.memoize( 
+  ->
+    a = @.to_json()
+    succ = (row, col) ->
+      count = a[row-1][col-1] + a[row-1][col] + a[row-1][col+1] + a[row][col-1] + 
+              a[row][col+1] + a[row+1][col-1] + a[row+1][col] + a[row+1][col+1]
+      if count is 3 or (count is 2 and a[row][col] is 1) then Indivisible.Alive else Indivisible.Dead
+    Square.find_or_create
+      nw: succ(1,1)
+      ne: succ(1,2)
+      se: succ(2,2)
+      sw: succ(2,1)
 ```
 
 In this post, we're going to do a simple thing: Explain everything going on in that one piece of CoffeeScript code. Along the way, we'll learn a little about CoffeeScript, a little about the Underscore library, and a little about HashLife.
 
-### Functions in CoffeeScript
+### Squares in HashLife
 
-Let's look at one snippet of CoffeeScript code:
-
-```coffeescript
-succ = (row, col) ->
-  count = a[row-1][col-1] + a[row-1][col] + a[row-1][col+1] + a[row][col-1] + a[row][col+1] + a[row+1][col-1] + a[row+1][col] + a[row+1][col+1]
-  if count is 3 or (count is 2 and a[row][col] is 1) then Indivisible.Alive else Indivisible.Dead
-```
-
-This is a function declaration. It's equivalent to the following JavaScript:
-
-```javascript
-var succ = function (row, col) {
-  var count = a[row-1][col-1] + a[row-1][col] + a[row-1][col+1] + a[row][col-1] + a[row][col+1] + a[row+1][col-1] + a[row+1][col] + a[row+1][col+1]
-  return count === 3 || (count == 2 && a[row][col] === 1) ? Indivisible.Alive : Indivisible.Dead
-}
-```
-
-Let's see what we can learn comparing the snippets:
-
-1. Functions are introduced with `->`. For example, `(x) -> x + 1` is a function that adds one to its argument.
-2. In lieu of braces, CoffeeScript uses indentation (a/k/a "Significant Whitespace"). SO for non-trivial functions, we write the arguments and arrow on one line, and the body of the function on successive lines, indented once.
-3. A common problem with JavaScript programs is failing to declare variables with the `var` keyword. CoffeeScript does it for you, as we can see with `succ` and `count`.
-4. JavaScript functions must explicitly use `return` to return a value. Like Ruby, CoffeeScript returns the value of the last expression evaluated. No explicit `return` is necessary.
-5. CoffeeScript tries to make everything an expression that evaluates to something, including many things that are not expressions in JavaScript. We see here that `if` statements in JavaScript are `if` *expressions* in CoffeeScript. The closest equivalent in JavaScript is the much-reviled ternary operator.
-
-We'll return to the code in a moment. HashLife operates on square regions of the board, with the length of the side of each square being a natural power of two ( `2^0 -> 1`, `2^1 -> 2`, `2^2 -> 4`, `2^3 -> 8`...). Cafe au Life 
-
-### Subdivisions
-
-One property of a square of size `2^n | n > 0` is that it can be divided into four component squares of size `2^(n-1)`. For example, a square of size eight (`2^3`) is composed of four component squares of size four (`2^2`):
+We'll return to the code in a moment. HashLife operates on square regions of the board, with the length of the side of each square being a natural power of two ( `2^0 -> 1`, `2^1 -> 2`, `2^2 -> 4`, `2^3 -> 8`...). One property of a square of size `2^n | n > 0` is that it can be divided into four quadrants of size `2^(n-1)`. For example, a square of size eight is composed of four quadrants of size four (in all these diagrams, the lines and crosses are part of the quadrants):
 
     nw        ne  
       +--++--+
@@ -97,11 +65,7 @@ One property of a square of size `2^n | n > 0` is that it can be divided into fo
       +--++--+
     sw        se
 
-The squares of size four are in turn each composed of four component squares of size two (`2^1`), which are each composed of four component squares of size one (`2^0`), which cannot be subdivided.(For simplicity, a Cafe au Life board is represented as one such large square, although the HashLife algorithm can be used to handle any board shape by tiling it with squares.)
-
-HashLife exploits this symmetry by representing all squares of size `n > 0` as CoffeeScript class instances with four quadrants, conventionally labeled `nw`, `ne`, `se` and `sw`.
-
-(The technical name for such a data structure is a [QuadTree][qt].)
+The squares of size four are in turn each composed of four quadrants of size two, which are each composed of four quadrants of size one, which cannot be subdivided.(For simplicity, a Cafe au Life board is represented as one such large square, although the HashLife algorithm can be used to handle any board shape by tiling it with squares.) HashLife exploits this symmetry by representing all squares of size `n > 0` as CoffeeScript class instances with four quadrants, conventionally labeled `nw`, `ne`, `se` and `sw`. The technical name for such a data structure is a [QuadTree][qt].
 
 [qt]: http://en.wikipedia.org/wiki/Quadtree
 
@@ -109,15 +73,9 @@ HashLife exploits this symmetry by representing all squares of size `n > 0` as C
 
 ```coffeescript
 class Square
-  constructor: ->
-    @toString = _.memoize( ->
-      (_.map @to_json(), (row) ->
-        (_.map row, (cell) ->
-          if cell then '*' else ' '
-        ).join('')
-      ).join('\n')
-    )
 ```
+
+In CoffeeScript, classes are declared using the `class` keyword. If you're familiar with dynamic languages like Ruby, you probably expect that classes aren't really *declared* in the sense that a class is declared in a static language like Java. You're right! The class is an object and you can assign it to a variable, return a class from a function, and so on. This particular class is the smallest possible kind of class, one that declares no methods and does not extend another 
 
 The key principle behind HashLife is taking advantage of redundancy. Therefore, two squares with the same alive and dead cells are always represented by the same, immutable square objects. There is no concept of an array or bitmap of cells except when performing import and export.
 
@@ -188,6 +146,41 @@ new Divisible
 ```
 
 It uses the same square used to make up the empty square of size four. We see from these examples the fundamental way HashLife represents the state of the Life "universe:" Squares are subdivided into quadrants of one size smaller, and the same square can and is reused anywhere that same representation is needed.
+
+### Functions in CoffeeScript
+
+Let's look at one snippet of CoffeeScript code:
+
+```coffeescript
+succ = (row, col) ->
+  count = a[row-1][col-1] + a[row-1][col] + a[row-1][col+1] + a[row][col-1] + a[row][col+1] + a[row+1][col-1] + a[row+1][col] + a[row+1][col+1]
+  if count is 3 or (count is 2 and a[row][col] is 1) then Indivisible.Alive else Indivisible.Dead
+```
+
+This is a function declaration. It's equivalent to the following JavaScript:
+
+```javascript
+var succ = function (row, col) {
+  var count = a[row-1][col-1] + a[row-1][col] + a[row-1][col+1] + a[row][col-1] + 
+              a[row][col+1] + a[row+1][col-1] + a[row+1][col] + a[row+1][col+1];
+  return count === 3 || (count == 2 && a[row][col] === 1) ? Indivisible.Alive : Indivisible.Dead;
+}
+```
+
+Let's see what we can learn comparing the snippets:
+
+1. Functions are introduced with `->`. For example, `(x) -> x` is the I combinator, a function that returns its argument. This syntax nests: `(x) -> (y) -> x` is the K Combinator, a function that returns a constant function.
+2. In lieu of braces, CoffeeScript uses indentation (a/k/a "Significant Whitespace"). For non-trivial functions, we write the arguments and arrow on one line, and the body of the function on successive lines, indented once.
+3. A common problem with JavaScript programs is failing to declare variables with the `var` keyword. CoffeeScript does it for you, as we can see with `succ` and `count`.
+4. JavaScript functions must explicitly use `return` to return a value. Like Ruby, CoffeeScript returns the value of the last expression evaluated. No explicit `return` is necessary.
+5. CoffeeScript tries to make everything an expression that evaluates to something, including many things that are not expressions in JavaScript. We see here that `if` statements in JavaScript are `if` *expressions* in CoffeeScript. The closest equivalent in JavaScript is the much-reviled ternary operator.
+6. Most of the time, you want to use `===` in JavaScript instead of `==`. CoffeeScript provides the `is` operator as a synonym for `===`, as well as `and` and `or` as synonyms for `&&` and `||`
+7. You don't need semicolons when each line is a separate statement.
+
+Put together, the `succ` function references a variable `a` bound outside of its scope. `a` is an array representing a portion of the Life universe. The array is encoded 
+with a `1` for each cell that is alive and a `0` for each cell that is dead. `succ` is called with two parameters, `row` and `col`, representing the index of a cell. `succ` returns whether that cell is alive or dead in the next generation by returning an object that represents an alive cell or a dead cell.
+
+---
 
 ### The Speed of Light
 
