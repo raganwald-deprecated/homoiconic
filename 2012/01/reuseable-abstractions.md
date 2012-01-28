@@ -40,7 +40,7 @@ h = _.compose(a, b)
 
 And this is just the beginning. You can `.map` over an array, but you can't pass an array to `.map` as an argument. Same for standard objects (a/k/a "hashes"). We can go though our toolbox, and find hundreds of places where we have a special tool for functions that we can't use on arrays or objects. How annoying. I suppose we could "monkey-patch" `Array` to support `.apply` and `.call` to get around some of these errors, but the cure would be worse than the disease.
 
-### Why CoffeeScript is an acceptable ClojureScript
+### Why CoffeeScript is an acceptable ClojureScript\*
 
 There are tremendous benefits to a language making these two things equivalent "all the way down." But for many practical purposes, we can reap the benefits of having arrays and objects be first-class functions by wrapping arrays and objects in a function. Here's one such implementation:
 
@@ -105,6 +105,8 @@ Within a single function, it's good CoffeeScript and JavaScript to implement cer
 
 [cafe]: https://github.com/raganwald/cafeaulife
 [ll]: http://www.conwaylife.com/wiki/Cellular_automaton#Well-known_Life-like_cellular_automata
+
+* *I kid, I kid. Don't take the flame-bait!*
 
 ---
 
