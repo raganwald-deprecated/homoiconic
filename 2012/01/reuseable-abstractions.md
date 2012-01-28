@@ -1,4 +1,4 @@
-# Reusable Abstractions in CoffeeScript and JavaScript
+# Reusable Abstractions in CoffeeScript (and JavaScript!)
 
 [David Nolan][swan] made a really interesting observation:
 
