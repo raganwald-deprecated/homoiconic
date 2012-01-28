@@ -1,13 +1,17 @@
 # Reusable Abstractions in CoffeeScript and JavaScript
 
+[David Nolan][swan] made a really interesting observation:
+
+[swan]: https://github.com/swannodette
+
 > Wow. HashMaps in ClojureScript are functions! Now this may look like some special case provided by the language but that's not true. ClojureScript eats its own dog food - the language is defined on top of reusable abstractions. [Comparing JavaScript, CoffeeScript & ClojureScript](http://dosync.posterous.com/comparing-javascript-coffeescript-clojurescri)
 
-HashMaps in ClojureScript are functions. That's a really *interesting* idea. Why? Well, let's think about it. Right now, in CoffeeScript (and JavaScript), we have two things that behave in almost the same way but have different syntax:
+HashMaps in ClojureScript are functions. That's a really powerful idea. Why? Well, let's think about it. Right now, in CoffeeScript (and JavaScript), we have two things that behave in almost the same way but have different syntax:
 
 ```coffeescript
-a = b[c]
+a = b[c] # b is an array or an object
 
-e = f(g)
+e = f(g) # f is a function
 ```
 
 There is a good thing about this: The two different syntaxes signal to the reader whether we are dealing with arrays or functions.
@@ -39,7 +43,7 @@ And this is just the beginning. You can `.map` over an array, but you can't pass
 
 ### Why CoffeeScript is an Acceptable ClojureScript
 
-For many practical purposes, we can reap the benefits of having arrays and objects be first-class functions by wrapping arrays and objects in a function. Here's one such implementation:
+There are tremendous benefits to a language making these two things equivalent "all the way down." But for many practical purposes, we can reap the benefits of having arrays and objects be first-class functions by wrapping arrays and objects in a function. Here's one such implementation:
 
 ```coffeescript
 dfunc = (dictionary) ->
