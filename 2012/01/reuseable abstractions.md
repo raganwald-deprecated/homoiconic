@@ -36,7 +36,6 @@ b = (x) -> x * 2
 
 h = _.compose(a, b)
   # => TypeError: Object 2,3,5,7,11,13,17,19 has no method 'apply'
-       at /Users/raganwald/Dropbox/development/cafeaulife/node_modules/underscore/underscore.js:593:26
 ```
 
 And this is just the beginning. You can `.map` over an array, but you can't pass an array to `.map` as an argument. Same for standard objects (a/k/a "hashes"). We can go though our toolbox, and find hundreds of places where we have a special tool for functions that we can't use on arrays or objects. How annoying. I suppose we could "monkey-patch" `Array` to support `.apply` and `.call` to get around some of these errors, but the cure would be worse than the disease.
@@ -97,6 +96,8 @@ succ = (cells, row, col) ->
 ```
 
 Of course, `succ` could be written to depend on the array implementation of the rules. But turning it into a function factors it cleanly. We can change `rule` and `succ` independently, which is what we expect from *encapsulating* the array in a function.
+
+[maze]: http://www.conwaylife.com/wiki/Maze
 
 ### Reusable Abstractions
 
