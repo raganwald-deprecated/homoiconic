@@ -106,7 +106,7 @@ Within a single function, it's good CoffeeScript and JavaScript to implement cer
 [cafe]: https://github.com/raganwald/cafeaulife
 [ll]: http://www.conwaylife.com/wiki/Cellular_automaton#Well-known_Life-like_cellular_automata
 
-* *I kid, I kid. Don't take the flame-bait!*
+\* *I kid, I kid. Don't take the flame-bait!*
 
 ---
 
