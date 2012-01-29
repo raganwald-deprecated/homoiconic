@@ -4,7 +4,7 @@
 
 [swan]: https://github.com/swannodette
 
-> Wow. HashMaps in ClojureScript are functions! Now this may look like some special case provided by the language but that's not true. ClojureScript eats its own dog food - the language is defined on top of reusable abstractions. [Comparing JavaScript, CoffeeScript & ClojureScript](http://dosync.posterous.com/comparing-javascript-coffeescript-clojurescri)
+> Wow. HashMaps in ClojureScript are functions! Now this may look like some special case provided by the language but that's not true. ClojureScript eats its own dog food - the language is defined on top of reusable abstractions.--[Comparing JavaScript, CoffeeScript & ClojureScript](http://dosync.posterous.com/comparing-javascript-coffeescript-clojurescri)
 
 HashMaps in ClojureScript are functions. That's a really powerful idea. Why? Well, let's think about it. Right now, in CoffeeScript (and JavaScript), we have two things that behave in almost the same way but have different syntax:
 
