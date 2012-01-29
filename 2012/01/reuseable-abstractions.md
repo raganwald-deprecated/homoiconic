@@ -88,11 +88,12 @@ rule = dfunc [
 ]
 
 succ = (cells, row, col) ->
+  current_state = cells[row][col]
   neighbour_count = cells[row-1][col-1] + cells[row-1][col] +
     cells[row-1][col+1] + cells[row][col-1] +
     cells[row][col+1] + cells[row+1][col-1] +
     cells[row+1][col] + cells[row+1][col+1]
-  rule(cells[row][col], neighbour_count)
+  rule(current_state, neighbour_count)
 ```
 
 Of course, `succ` could be written to depend on the array implementation of the rules. But turning it into a function factors it cleanly. We can change `rule` and `succ` independently, which is what we expect from *encapsulating* the array in a function.
