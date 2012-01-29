@@ -76,7 +76,7 @@ And the rules for the life-like game [Maze][maze] are represented as:
 ```coffeescript
 [
   [0, 0, 0, 1, 0, 0, 0, 0, 0] # A cell in state 0 changes to state 1 if it has exactly 3 neighbours
-  [0, 0, 1, 1, 0, 0, 0, 0, 0] # A cell in state 1 changes to state 0 unless it has 1 to 5 neighbours
+  [0, 1, 1, 1, 1, 1, 0, 0, 0] # A cell in state 1 changes to state 0 unless it has 1 to 5 neighbours
 ]
 ```
 
