@@ -27,7 +27,7 @@ f = (x) -> x + 1
 g = (x) -> x * 2
 
 h = _.compose(f, g)
-  # h(3) === f(g(3)) === 7
+  # h(3) => f(g(3)) => 7
 ```
 
 But we can't compose a function with an array reference:
@@ -37,7 +37,7 @@ a = [2, 3, 5, 7, 11, 13, 17, 19]
 b = (x) -> x * 2
 
 c = _.compose(a, b)
-  # => TypeError: Object 2,3,5,7,11,13,17,19 has no method 'apply'
+  # c(3) => TypeError: Object 2,3,5,7,11,13,17,19 has no method 'apply'
 ```
 
 And this is just the beginning. You can `.map` over an array, but you can't pass an array to `.map` as an argument. Same for standard objects (a/k/a HashMaps). We can go though our toolbox, and find hundreds of places where we have a special tool for functions that we can't use on arrays or objects. How annoying. I suppose we could "monkey-patch" `Array` to support `.apply` and `.call` to get around some of these errors, but the cure would be worse than the disease.
