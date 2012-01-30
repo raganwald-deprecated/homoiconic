@@ -64,7 +64,7 @@ address = dfunc
   zip: "00000000"
 ```
 
-And now you have a function, just like one of ClojureScript's use cases. `dfunc` is also useful for encapsulating the choice of using an object or array lookup for implementing a  function. In [Cafe au Life][cafe], rules for [life-like games][ll] are represented as an array of arrays of neighbour counts. For example, the rules for Conway's Game of Life are represented as:
+And now you have a function, just like one of ClojureScript's use cases ([try it!][try]). `dfunc` is also useful for encapsulating the choice of using an object or array lookup for implementing a  function. In [Cafe au Life][cafe], rules for [life-like games][ll] are represented as an array of arrays of neighbour counts. For example, the rules for Conway's Game of Life are represented as:
 
 ```coffeescript
 [
@@ -102,6 +102,7 @@ Of course, `succ` could be written to depend on the array implementation of the 
 
 [maze]: http://www.conwaylife.com/wiki/Maze
 [turtles]: http://en.wikipedia.org/wiki/Turtles_all_the_way_down
+[try]: http://coffeescript.org/#try:dfunc%20%3D%20(dictionary)%20-%3E%0A%20%20(indices...)%20-%3E%0A%20%20%20%20indices.reduce%20(a%2C%20i)%20-%3E%0A%20%20%20%20%20%20a%5Bi%5D%0A%20%20%20%20%2C%20dictionary%0A%0Aaddress%20%3D%20dfunc%0A%20%20street%3A%20%221010%20Foo%20Ave.%22%0A%20%20apt%3A%20%2211111111%22%0A%20%20city%3A%20%22Bit%20City%22%0A%20%20zip%3A%20%2200000000%22%0A%0Aalert%20address('city')%0A%0A
 
 ### And yet...
 
