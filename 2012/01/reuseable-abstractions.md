@@ -30,13 +30,13 @@ h = _.compose(f, g)
   # h(3) === f(g(3)) === 7
 ```
 
-But we can't compose a function with an array reference or two array references:
+But we can't compose a function with an array reference:
 
 ```coffeescript
 a = [2, 3, 5, 7, 11, 13, 17, 19]
 b = (x) -> x * 2
 
-h = _.compose(a, b)
+c = _.compose(a, b)
   # => TypeError: Object 2,3,5,7,11,13,17,19 has no method 'apply'
 ```
 
@@ -44,7 +44,7 @@ And this is just the beginning. You can `.map` over an array, but you can't pass
 
 ### Why CoffeeScript is an acceptable ClojureScript\*
 
-There are tremendous benefits to a language making these two things equivalent "all the way down." But for many practical purposes, we can reap the benefits of having arrays and objects be first-class functions by wrapping arrays and objects in a function. Here's one such implementation:
+There are tremendous benefits to a language making these two things equivalent "[all the way down][turtles]." But for many practical purposes, we can reap the benefits of having arrays and objects be first-class functions by wrapping arrays and objects in a function. Here's one such implementation:
 
 ```coffeescript
 dfunc = (dictionary) ->
@@ -101,6 +101,7 @@ succ = (cells, row, col) ->
 Of course, `succ` could be written to depend on the array implementation of the rules. But turning it into a function factors it cleanly. We can change `rule` and `succ` independently, which is what we expect from *encapsulating* the array in a function.
 
 [maze]: http://www.conwaylife.com/wiki/Maze
+[turtles]: http://en.wikipedia.org/wiki/Turtles_all_the_way_down
 
 ### And yet...
 
