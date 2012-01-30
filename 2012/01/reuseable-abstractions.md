@@ -100,6 +100,10 @@ succ = (cells, row, col) ->
 
 Of course, `succ` could be written to depend on the array implementation of the rules. But turning it into a function factors it cleanly. We can change `rule` and `succ` independently, which is what we expect from *encapsulating* the array in a function.
 
+### And yet...
+
+David Nolan also pointed out that encapsulating an array or object in a function isn't the same thing as having a language treat them as functions or even better, have them be made out of the same stuff. When you wrap an object inside of a function, you've hidden it, you lose access to everything about it except for the function's interface. Sometimes, that's exactly what you want. Much of software design is about modules exposing the right abstractions to their peers and clients. And sometimes, that isn't what you want, and a language like ClojureScript effectively has it both ways: HashMaps are functions, and if you want to encapsulate them in a function, you can do that too.
+
 [maze]: http://www.conwaylife.com/wiki/Maze
 
 ### Summary: Reusable Abstractions in CoffeeScript (and JavaScript)
