@@ -49,7 +49,7 @@ There are tremendous benefits to a language making these two things equivalent "
 ```coffeescript
 dfunc = (dictionary) ->
   (indices...) ->
-    _.reduce indices, (a, i) ->
+    indices.reduce (a, i) ->
       a[i]
     , dictionary
 ```
