@@ -102,12 +102,14 @@ Of course, `succ` could be written to depend on the array implementation of the 
 
 [maze]: http://www.conwaylife.com/wiki/Maze
 
-### Reusable Abstractions
+### Summary: Reusable Abstractions in CoffeeScript (and JavaScript)
 
 Within a single function, it's good CoffeeScript and JavaScript to implement certain things with arrays and objects as dictionaries. Naturally! But when *exposing* properties as part of an API, functions are preferred, because functions are more easily reused abstractions and they preserve a read-only contract. JavaScript and CoffeeScript don't actually implement arrays and HashMaps as functions, but it's easy to wrap them in a function and obtain many of the benefits.
 
 [cafe]: http://raganwald.github.com/cafeaulife/docs/cafeaulife.html
 [ll]: http://www.conwaylife.com/wiki/Cellular_automaton#Well-known_Life-like_cellular_automata
+
+([discuss](http://news.ycombinator.com/item?id=3528744))
 
 p.s. About [Cafe au Life][cafe]. From time to time, I write a post and include overly simple examples. Such examples help to highlight the techniques being discussed by ruthlessly doing away with the accidental (for the purpose of the technique) complexity of real-world code. I've decided to take a different tack for a while. I plan to use Cafe au Life as my standard code base for CoffeeScript examples. My hope is that it plays out as follows: The examples will be a less obvious because readers have to figure out a little about implementing Life recursively, and there will be opportunities to derail discussions by pointing out poor choices I've made that have nothing to do with a particular post. But in return, discussions have the potential to be richer for being set in the context of trying to implement a beautiful algorithm, and any digressions will be fortuitous and productive.
 
