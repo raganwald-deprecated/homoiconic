@@ -4,7 +4,9 @@
 
 [swan]: https://github.com/swannodette
 
-> Wow. HashMaps in ClojureScript are functions! Now this may look like some special case provided by the language but that's not true. ClojureScript eats its own dog food - the language is defined on top of reusable abstractions.--[Comparing JavaScript, CoffeeScript & ClojureScript](http://dosync.posterous.com/comparing-javascript-coffeescript-clojurescri)
+> Wow. HashMaps in ClojureScript are functions! Now this may look like some special case provided by the language but that's not true. ClojureScript eats its own dog food - the language is defined on top of reusable abstractions.
+>
+> --[Comparing JavaScript, CoffeeScript & ClojureScript](http://dosync.posterous.com/comparing-javascript-coffeescript-clojurescri)
 
 HashMaps in ClojureScript are functions. That's a really powerful idea. Why? Well, let's think about it. Right now, in CoffeeScript (and JavaScript), we have two things that behave in almost the same way but have different syntax:
 
@@ -38,7 +40,7 @@ h = _.compose(a, b)
   # => TypeError: Object 2,3,5,7,11,13,17,19 has no method 'apply'
 ```
 
-And this is just the beginning. You can `.map` over an array, but you can't pass an array to `.map` as an argument. Same for standard objects (a/k/a "hashes"). We can go though our toolbox, and find hundreds of places where we have a special tool for functions that we can't use on arrays or objects. How annoying. I suppose we could "monkey-patch" `Array` to support `.apply` and `.call` to get around some of these errors, but the cure would be worse than the disease.
+And this is just the beginning. You can `.map` over an array, but you can't pass an array to `.map` as an argument. Same for standard objects (a/k/a HashMaps). We can go though our toolbox, and find hundreds of places where we have a special tool for functions that we can't use on arrays or objects. How annoying. I suppose we could "monkey-patch" `Array` to support `.apply` and `.call` to get around some of these errors, but the cure would be worse than the disease.
 
 ### Why CoffeeScript is an acceptable ClojureScript\*
 
@@ -102,7 +104,7 @@ Of course, `succ` could be written to depend on the array implementation of the 
 
 ### Reusable Abstractions
 
-Within a single function, it's good CoffeeScript and JavaScript to implement certain things with arrays and objects as dictionaries. Naturally! But when *exposing* properties as part of an API, functions are preferred, because functions are more easily reused abstractions and they preserve a read-only contract. JavaScript and CoffeeScript don't actually implement arrays and "hashes" as functions, but it's easy to wrap them in a function and obtain many of the benefits.
+Within a single function, it's good CoffeeScript and JavaScript to implement certain things with arrays and objects as dictionaries. Naturally! But when *exposing* properties as part of an API, functions are preferred, because functions are more easily reused abstractions and they preserve a read-only contract. JavaScript and CoffeeScript don't actually implement arrays and HashMaps as functions, but it's easy to wrap them in a function and obtain many of the benefits.
 
 [cafe]: http://raganwald.github.com/cafeaulife/docs/cafeaulife.html
 [ll]: http://www.conwaylife.com/wiki/Cellular_automaton#Well-known_Life-like_cellular_automata
