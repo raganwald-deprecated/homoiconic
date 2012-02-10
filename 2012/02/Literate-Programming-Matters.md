@@ -213,7 +213,7 @@ First, some code is one or more steps removed from the underlying algorithm or i
 
 Second, writing for exposition provokes a different organization than writing for reference. This is related to the first issue, in that when writing for exposition you may want to deal with orthogonal protocols or responsibilities in a particular order.
 
-I don't know whether we need a literate programming tool that transforms the source directly, or whether we need different tools for recombining source code into runtime objects and classes. But I do feel we need to keep working on tools and language features for for reorganizing program entities, and I also feel that we need to continue to think about whether we can dispense with comments in words for cases where the code's behaviour is one or more steps removed from the simple requirements or where the format best suited for explaining it to a human (liek a diagram) is not the format best suited for writing a program (like symbols).
+I don't know whether we need a literate programming tool that transforms the source directly, or whether we need different tools for recombining source code into runtime objects and classes. But I do feel we need to keep working on tools and language features for for reorganizing program entities, and I also feel that we need to continue to think about whether we can dispense with comments in words for cases where the code's behaviour is one or more steps removed from the simple requirements or where the format best suited for explaining it to a human (like a diagram) is not the format best suited for writing a program (like symbols).
 
 ([discuss][hn])
 
