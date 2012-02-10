@@ -2,9 +2,9 @@
 
 > No amount of pontification in English will ever make a piece of code clearer than the code itself--David Nolen, [Illiterate Programming](http://dosync.posterous.com/illiterate-programming)
 
-This statement is the most provocative thing I've read all year (although we should not forget Groucho Marx's line from *A Day at the Races*: "It's early yet.") I think there is an obvious truth this points towards: It's a terrible idea to try to fix bad code with good documentation. There's another obvious truth: Good documentation can't improve the code, it can only *explain* it. If you remove the documentation, the code is still the code.
+There is an obvious truth this statemnt points towards: It's a terrible idea to try to fix bad code with good documentation. There's another obvious truth: Good documentation can't improve the code, it can only *explain* it. If you remove the documentation, the code is still the code.
 
-David essay is excellent advice, and it pushes my personal "like" buttons by pointing out that Smalltalk's elegance makes it easier to write good software, not harder. Those languages that pile on features designed to make the resulting code "easier to maintain" really do produce the opposite. Whether you use an iPhone or not, I hope you appreciate Apple's meta-design protocol ("MDP") that design consists of leaving features out and making sure what remains works together harmoniously, not piling features on top of each other higgledy-piggledy.
+David's essay is excellent advice, and it pushes my personal "like" buttons by pointing out that Smalltalk's elegance makes it easier to write good software, not harder. Those languages that pile on features designed to make the resulting code "easier to maintain" really do produce the opposite. 
 
 However, as it happens I spend a lot of time writing words for humans to read as well as a lot of time writing programs for people to read. And I have some opinions about the relationship between the two. As a bonus, I have been doing some literate programming lately, and my experience contradicts what David is saying about literate programming. Mind you, my experience *completely validates* what he is saying about the power of elegant languages for writing readable code. What this suggests to me is that while David presents the concepts of literate programming and elegant programming as a dichotomy, I think they're orthogonal.
 
@@ -59,6 +59,74 @@ There are other transformations that present the same difficulties. When we add 
 [cafe]: http://raganwald.github.com/cafeaulife/docs/cafeaulife.html
 
 ## To Literate HashLife
+
+ Every single explanation of the HashLife algorithm I've seen incorporates diagrams. For example:
+ 
+        # We can also derive four overlapping squares, these representing `n`, `e`, `s`, and `w`:
+        #
+        #          nn
+        #       ..+--+..        ..+--+..
+        #       ..|..|..        ..|..|..
+        #       +-|..|-+        +--++--+
+        #       |.+--+.|      w |..||..| e
+        #       |.+--+.|      w |..||..| e
+        #       +-|..|-+        +--++--+
+        #       ..|..|..        ..|..|..
+        #       ..+--+..        ..+--+..
+        #          ss
+
+        # Deriving these from our four component squares is straightforward, and when we take their results,
+        # we fill in four of the five missing blanks for our intermediate square:
+        #
+        #     nw        ne
+        #
+        #        ..nn..
+        #        ..nn..
+        #        ww..ee
+        #        ww..ee
+        #        ..ss..
+        #        ..ss..
+        #
+        #     sw        se
+
+But then the code that follows is made up of symbols:
+
+        nn: Square
+          .canonicalize
+            nw: square.nw.ne
+            ne: square.ne.nw
+            se: square.ne.sw
+            sw: square.nw.se
+          .result()
+        ee: Square
+          .canonicalize
+            nw: square.ne.sw
+            ne: square.ne.se
+            se: square.se.ne
+            sw: square.se.nw
+          .result()
+        ss: Square
+          .canonicalize
+            nw: square.sw.ne
+            ne: square.se.nw
+            se: square.se.sw
+            sw: square.sw.se
+          .result()
+        ww: Square
+          .canonicalize
+            nw: square.nw.sw
+            ne: square.nw.se
+            se: square.sw.ne
+            sw: square.sw.nw
+          .result()
+          
+They say the same thing, and yet the representation convenient for the human is different from the representation convenient for programming. I toyed with writing a DSL that would allow me to pass ASCII art diagrams to a function and have it "interpret" them. With that, one could dispense with the comments and simply write code that was easy to understand in visual form.
+
+In the end, I decided this would probably end badly, with a leaky abstraction that really only worked well for the cases I anticipated in advance and would not stand up to refactoring or change over time. But I'm left with the thought that some ideas need different representations for humans to grok than for humans to work with.
+
+It isn't as simple as writing for humans versus writing for the machine: Writing for humans to understand is different than writing for humans to manipulate once they understand.
+
+### Enveloper number two: "Reorganize"
 
 I said above:
 
@@ -122,72 +190,6 @@ Likewise there is another part of the code that actually calculates the "future"
       _.extend Cell.prototype,
         level:
           0
-          
-### Draw me a diagram
-
- Every single explanation of the HashLife algorithm I've seen incorporates diagrams. For example:
- 
-        # We can also derive four overlapping squares, these representing `n`, `e`, `s`, and `w`:
-        #
-        #          nn
-        #       ..+--+..        ..+--+..
-        #       ..|..|..        ..|..|..
-        #       +-|..|-+        +--++--+
-        #       |.+--+.|      w |..||..| e
-        #       |.+--+.|      w |..||..| e
-        #       +-|..|-+        +--++--+
-        #       ..|..|..        ..|..|..
-        #       ..+--+..        ..+--+..
-        #          ss
-
-        # Deriving these from our four component squares is straightforward, and when we take their results,
-        # we fill in four of the five missing blanks for our intermediate square:
-        #
-        #     nw        ne
-        #
-        #        ..nn..
-        #        ..nn..
-        #        ww..ee
-        #        ww..ee
-        #        ..ss..
-        #        ..ss..
-        #
-        #     sw        se
-
-But then the code that follows is made up of symbols:
-
-        nn: Square
-          .canonicalize
-            nw: square.nw.ne
-            ne: square.ne.nw
-            se: square.ne.sw
-            sw: square.nw.se
-          .result()
-        ee: Square
-          .canonicalize
-            nw: square.ne.sw
-            ne: square.ne.se
-            se: square.se.ne
-            sw: square.se.nw
-          .result()
-        ss: Square
-          .canonicalize
-            nw: square.sw.ne
-            ne: square.se.nw
-            se: square.se.sw
-            sw: square.sw.se
-          .result()
-        ww: Square
-          .canonicalize
-            nw: square.nw.sw
-            ne: square.nw.se
-            se: square.sw.ne
-            sw: square.sw.nw
-          .result()
-          
-They say the same thing, and yet the representation convenient for the human is different from the representation convenient for programming. I toyed with writing a DSL that would allow me to pass ASCII art diagrams to a function and have it "interpret" them. With that, one could dispense with teh comments and simply write code that was easy to understand in visual form.
-
-In the end, I decided this would probably end badly, with a leaky abstraction that really only worked well for the cases I anticipated in advance and would not stand up to refactoring or change over time.
 
 ### COMEFROM
 
