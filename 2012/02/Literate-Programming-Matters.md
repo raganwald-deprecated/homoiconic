@@ -128,7 +128,7 @@ In the end, I decided this would probably end badly, with a leaky abstraction th
 
 It isn't as simple as writing for humans versus writing for the machine: Writing for humans to understand is different than writing for humans to manipulate once they understand.
 
-### Enveloper number two: "Reorganize"
+### Envelope number two: "Reorganize"
 
 I said above:
 
