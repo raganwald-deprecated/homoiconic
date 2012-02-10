@@ -6,11 +6,13 @@ There is an obvious truth this statement points towards: It's a terrible idea to
 
 David's essay is excellent advice, and it pushes my personal "like" buttons by pointing out that Smalltalk's elegance makes it easier to write good software, not harder. Those languages that pile on features designed to make the resulting code "easier to maintain" really do produce the opposite. 
 
-However, as it happens I spend a lot of time writing words for humans to read as well as a lot of time writing programs for people to read. And I have some opinions about the relationship between the two. As a bonus, I have been doing some literate programming lately, and my experience contradicts what David is saying about literate programming. Mind you, my experience *completely validates* what he is saying about the power of elegant languages for writing readable code. What this suggests to me is that while David presents the concepts of literate programming and elegant programming as a dichotomy, I think they're orthogonal.
+However, as it happens I spend a lot of time writing words for humans to read as well as a lot of time writing programs for people to read. And I have some opinions about the relationship between the two. As a bonus, I have been doing some [literate programming][lp] lately, and my experience contradicts what David is saying about literate programming. Mind you, my experience *completely validates* what he is saying about the power of elegant languages for writing readable code. What this suggests to me is that while David presents the concepts of literate programming and elegant programming as a dichotomy, I think they're orthogonal.
+
+[lp]: http://en.wikipedia.org/wiki/Literate_programming
 
 ## From Life
 
-Of late, I've been working on a completely useless project: [Conway's Game of Life][life]. My implementation is called [Cafe au Life][cafe], and the interesting thing here is that it uses Bill Gosper's [HashLife][hl] algorithm to compute the future of a life pattern. This matters greatly to the question of writing readable code and of course I'm going to explain why.
+Of late, I've been working on a completely useless project: [Conway's Game of Life][life]. My implementation is called [Cafe au Life][cafe], and the interesting thing here is that it uses Bill Gosper's [HashLife][hl] algorithm to compute the future of a life pattern. This matters greatly to the question of writing readable code.
 
 > An easy question: How well does the design document the actual game of Monopoly? If someone were to read the source code, do you think they could learn how to play the actual game?--[My favourite interview question](http://weblog.raganwald.com/2006/06/my-favourite-interview-question.html)
 
@@ -27,7 +29,7 @@ The initial pattern constitutes the *seed* of the system. The first generation i
 
 So far so good, and quote frankly, given a language that isn't brain-dead at birth, you ought to be able to write an implementation such that another programmer could come along, read your code sans comments, and figure out "Oh, this is the Game of Life!" Or if the weren't familiar with Life, they could read your code and write out the rules above.
 
-GIven the goal of writing code that explains the rules of life, the solution is obvious: You translate the ideas from the rules directly into the entities in the code. You need cells, you need a two-dimensional orthogonal grid, you need neighbours, you need transitions, ticks or generations, and so on.
+Given the goal of writing code that explains the rules of life, the solution is obvious: You translate the ideas from the rules directly into the entities in the code. You need cells, you need a two-dimensional orthogonal grid, you need neighbours, you need transitions, ticks or generations, and so on.
 
 If there is a nearly 1:1 correspondence between the entities and relationships of the rules and the entities and relationships of the code, you are going to have a very good shot at writing some highly readable code.
 
