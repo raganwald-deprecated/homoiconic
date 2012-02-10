@@ -41,7 +41,7 @@ Now we come to [HashLife][hl]. HashLife is an algorithm that throws out the two-
 
 You can read all about it in my [literate implementation][cafe].
 
-The problem this presents is that hasLife is one layer of indirection away from Life. I accept that you could write some code such that if someone is familiar with the HasLife algorithm, they look at your code and say: "Aha! Quad trees, Sqaure.canonicalize, _.memoize, this must be Gosper's HashLife." But if they have never seen HashLife, how will they recognize Life from it?
+The problem this presents is that HashLife is one layer of indirection away from Life. I accept that you could write some code such that if someone is familiar with the HashLife algorithm, they look at your code and say: "Aha! Quad trees, Sqaure.canonicalize, _.memoize, this must be Gosper's HashLife." But if they have never seen HashLife, how will they recognize Life from it?
 
 > At the University of Bigginton-on-Stoke, the top Comp. Sci. graduates are often uncertain of whether to commercialize research in a startup, or put up for postgraduate studies in Lisp and Haskell. The school has developed a two-part test to help them find their calling. In the first part of the test, the student is led into a lab and told to boil water. Finding a tap, a beaker, and a bunsen burner, he fills the beaker, places it on the burner, lights the burner, and when the water boils he is led off to the second test.
 
