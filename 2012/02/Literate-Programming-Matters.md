@@ -2,7 +2,7 @@
 
 > No amount of pontification in English will ever make a piece of code clearer than the code itself--David Nolen, [Illiterate Programming](http://dosync.posterous.com/illiterate-programming)
 
-There is an obvious truth this statemnt points towards: It's a terrible idea to try to fix bad code with good documentation. There's another obvious truth: Good documentation can't improve the code, it can only *explain* it. If you remove the documentation, the code is still the code.
+There is an obvious truth this statement points towards: It's a terrible idea to try to fix bad code with good documentation. There's another obvious truth: Good documentation can't improve the code, it can only *explain* it. If you remove the documentation, the code is still the code.
 
 David's essay is excellent advice, and it pushes my personal "like" buttons by pointing out that Smalltalk's elegance makes it easier to write good software, not harder. Those languages that pile on features designed to make the resulting code "easier to maintain" really do produce the opposite. 
 
