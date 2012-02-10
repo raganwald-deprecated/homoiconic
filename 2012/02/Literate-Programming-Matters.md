@@ -6,7 +6,9 @@ There is an obvious truth this statement points towards: It's a terrible idea to
 
 David's essay is excellent advice, and it pushes my personal "like" buttons by pointing out that Smalltalk's elegance makes it easier to write good software, not harder. Those languages that pile on features designed to make the resulting code "easier to maintain" really do produce the opposite. 
 
-However, as it happens I spend a lot of time writing words for humans to read as well as a lot of time writing programs for people to read. And I have some opinions about the relationship between the two. As a bonus, I have been doing some [literate programming][lp] lately, and my experience contradicts what David is saying about literate programming. Mind you, my experience *completely validates* what he is saying about the power of elegant languages for writing readable code. What this suggests to me is that while David presents the concepts of literate programming and elegant programming as a dichotomy, I think they're orthogonal.
+However, as it happens I spend a lot of time writing words for humans to read as well as a lot of time writing programs for people to read. And I have some opinions about the relationship between the two. As a bonus, I have been doing some [literate programming][lp] lately, and my experience contradicts what David is saying about literate programming. Mind you, my experience *completely validates* what he is saying about the power of elegant languages for writing readable code.
+
+What this suggests to me is that while David presents the concepts of literate programming and elegant programming using the expressions "literate" and "illiterate," we must be careful not to view them as a dichotomy: They're *orthogonal* issues.
 
 [lp]: http://en.wikipedia.org/wiki/Literate_programming
 
