@@ -213,10 +213,14 @@ Second, writing for exposition provokes a different organization than writing fo
 
 I don't know whether we need a literate programming tool that transforms the source directly, or whether we need different tools for recombining source code into runtime objects and classes. But I do feel we need to keep working on tools and language features for for reorganizing program entities, and I also feel that we need to continue to think about whether we can dispense with comments in words for cases where the code's behaviour is one or more steps removed from the simple requirements or where the format best suited for explaining it to a human (liek a diagram) is not the format best suited for writing a program (like symbols).
 
+([discuss][hn])
+
 [YouAreDaChef]: https://github.com/raganwald/YouAreDaChef
 [1]: https://github.com/raganwald/homoiconic/blob/master/2010/12/oop.md "OOP practiced backwards is "POO""
 [2]: http://weblog.raganwald.com/2007/10/too-much-of-good-thing-not-all.html "Too much of a good thing: not all functions should be object methods"
 [docco]: http://jashkenas.github.com/docco/
 [ll]: http://www.conwaylife.com/wiki/Cellular_automaton#Well-known_Life-like_cellular_automata
 [williams]: https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md
-[COMEFROM]: http://en.wikipedia.org/wiki/COMEFROM
+[COMEFROM]: http://en.wikipedia.org/wiki/COMEFROM'
+
+[hn]: http://news.ycombinator.com/item?id=3576837
