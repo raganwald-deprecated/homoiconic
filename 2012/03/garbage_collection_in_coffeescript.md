@@ -1,10 +1,6 @@
 # Garbage Collection in CoffeeScript (and JavaScript)
 
-**This is a work-in-progress, please do not post to hacker News, &c.**
-
----
-
-> "There are only two hard things in Computer Science: Cache invalidation and naming things." Tim Bray, quoting Phil Karlton
+> "There are only two hard things in Computer Science: Cache invalidation and naming things."--Tim Bray, quoting Phil Karlton
 
 ## HashLife
 
@@ -186,7 +182,7 @@ The original implementation memoized results using [underscore.js's][u] `_.memoi
 
 Unfortunately, while `_.memoize` is elegant, it blocks us from implementing garbage collection. As you recall, we wish to count the references from a parent to a child, including from a square to its result. (If we don't count references to results, a square could return a memoized result that has been garbage collected from the cache.) We need to memoize results in a way that exposes them to inspection, so the memoization was refactored into a general-purpose feature with methods that could be "advised:"
 
-```coffeescript    initialize: ->
+```coffeescript
     initialize: ->
       super()
       @memoized = {}
