@@ -170,12 +170,12 @@ The original implementation memoized those results using [underscore.js's][u] `_
 [u]: http://documentcloud.github.com/underscore/
 
 ```coffeescript
-    initialize: ->
-      super()
-      # ...
-      @intermediate_at_time = _.memoize( (t) ->
-        @intermediate_via_subresults_at_time(t)
-      )
+  initialize: ->
+    super()
+    # ...
+    @intermediate_at_time = _.memoize( (t) ->
+      @intermediate_via_subresults_at_time(t)
+    )
 ```
 
 For those not familiar with  `_.memoize`, it takes a function and returns a memoized version of the function. The memoized function caches its results so that subsequent calls with the same parameters are turned into cache lookups. Using `_.memoize` with a method is done within the object's `initialize` method because if we memoize the class' prototype of the method, all of the different objects will share the same cache, while we want each object to have its own cache. Thus, we define `intermediate_via_subresults_at_time` as a standard method in the prototype, but `intermediate_at_time` is bound to the memoized function in each object.
