@@ -2,6 +2,8 @@
 
 > "There are only two hard things in Computer Science: Cache invalidation and naming things." Tim Bray, quoting Phil Karlton
 
+## HashLife
+
 [Cafe au Life][recursiveuniverse] is an implementation of John Conway's [Game of Life][life] cellular automata written in [CoffeeScript][cs]. Cafe au Life runs on [Node.js][node].
 
 The "Life Universe" is an infinite two-dimensional matrix of cells. Cells are indivisible and are in either of two states,commonly called "alive" and "dead." Time is represented as discrete quanta called either "ticks" or "generations." With each generation, a rule is applied to decide the state the cell will assume. The rules are decided simultaneously, and there are only two considerations: The current state of the cell, and the states of the cells in its [Moore Neighbourhood][moore], the eight cells adjacent horizontally, vertically, or diagonally.
@@ -39,7 +41,7 @@ One maximally favourable example is the Gilder Gun. Glider guns generate a strea
 
 [beauty]: http://raganwald.posterous.com/a-beautiful-algorithm
 
-### The problem to be solved
+## Cafe au Life's Limitation
 
 Cafe au Life is fine for highly repetitious patterns. Or put in another way, Cafe au Life is fine with patterns that have futures with low entropy. The size of the cache is driven by the information encoded in the future of the pattern. A large but regular pattern might need less space to compute than a small pattern that evolves in chaotic ways.
 
@@ -58,7 +60,7 @@ This is one of the delights of Life: One pattern with thirty-six cells can grow 
 
 Clearly, Cafe au Life needed to "grow up" and implement a garbage collection strategy. In short, it needed to start removing squares from the cache to keep things at a manageable size when patterns had complex evolutions.
 
-### KISS
+### Garbage Collection
 
 Cafe au Life is not meant to be a sophisticated implementation of HashLife. Practical implementations are written in tightly coded C and handle massive patterns that emulate universal turing machines, print numbers, and perform other impressive tricks. So garbage collection would by necessity be written as simply as possible.
 
@@ -77,3 +79,21 @@ The reference counting strategy outlined is missing a key consideration: In the 
 The cache enforces this, and if a varible were to contain an object representing a square while that same square was removed from the cache, another part of the code could easily wind up creating a copy of the square, breaking the "contract" that there is only ever one representation of each square. If a square is to be removed from the cache, it must not be in use anywhere in the computation. Thus, if it is needed again, a new copy will be created and cached and all references will be to the new copy, preserving the requirement that there is only ever one representation at any one time.
 
 The garbage collection algorithm must have a way to know which squares are currently being used while Cafe au Life recursively computes the future of a pattern if it is to collect garbage at any point in the middle of a computation. The squares in use must have their reference counts incremented while they are in use and then decremented as soon as they are no longer needed. Decrementing the reference counts as soon as possible is essential to good garbage collection.
+
+### Summary
+
+Cafe au Life was to be upgarded to add garbage collection via reference counting. References would be maintained for children of squares in the cache, and squares used for intermediate calculations were to have references for the time they were needed.
+
+## Implementing Garbage collection in Cafe au Life
+
+Cafe au Life is written in pseudo-literate style. The code is written specifically to be understood by the first-time reader. This is sometimes a mistake in production code, where optimizing for someone's first day on the job at the expense of their second through nth day may be a grave mistake.
+
+The overall style is of a succession of "reveals." The basic classes are revealed with very little extraneous code, then a a series of modules are introduced that "monkey-patch" or "provide advice to point cuts" or even "introduce the computed, non-local [COMEFROM][comefrom]" to add functionality as new concepts are articulated in the accompanying annotations.
+
+In order to add somethingas pervasive as garbage collection, the first step was to determine where the existing code would need to be "advised." The actual code to compute the future of a pattern is in `future.coffee`. In some cases, functionality could be added to existing methods without any changes.
+
+For example:
+
+
+
+[comefrom]: https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md
