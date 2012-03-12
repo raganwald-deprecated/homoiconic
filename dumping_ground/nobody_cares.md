@@ -90,10 +90,61 @@ Cafe au Life is written in pseudo-literate style. The code is written specifical
 
 The overall style is of a succession of "reveals." The basic classes are revealed with very little extraneous code, then a a series of modules are introduced that "monkey-patch" or "provide advice to point cuts" or even "introduce the computed, non-local [COMEFROM][comefrom]" to add functionality as new concepts are articulated in the accompanying annotations.
 
-In order to add somethingas pervasive as garbage collection, the first step was to determine where the existing code would need to be "advised." The actual code to compute the future of a pattern is in `future.coffee`. In some cases, functionality could be added to existing methods without any changes.
-
-For example:
-
-
-
 [comefrom]: https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md
+
+In order to add something as pervasive as garbage collection, the first step was to determine where the existing code would need to be "advised." In some cases, functionality could be added to existing methods without any changes. In others, existing methods would need to be refactored to create opportiunities to advise them.
+
+For example, we set a recursively computable square's reference count to zero by adding after advice to its initialize method:
+
+```coffeescript
+  YouAreDaChef(Square.RecursivelyComputable)
+    .after 'initialize', ->
+      @references = 0
+```
+
+This leaves the original class definition bare of any discussion of reference counts. We likewise add new reference count methods that garbage collection needs within the code describing garbage collection. For example:
+
+```coffeescript
+  _.extend Cell.prototype,
+    has_references: ->
+      true
+    has_no_references: ->
+      false
+    has_one_reference: ->
+      false
+    has_many_references: ->
+      true
+    incrementReference: ->
+      this
+    decrementReference: ->
+      this
+    children: -> {}
+    remove: ->
+    removeRecursively: ->
+```
+
+And:
+
+```coffeescript
+  _.extend Square.RecursivelyComputable.prototype,
+    has_references: ->
+      @references > 0
+    has_no_references: ->
+      @references is 0
+    has_one_reference: ->
+      @references is 1
+    has_many_references: ->
+      @references > 1
+    incrementReference: ->
+      throw "incrementReference!? #{@references}" unless @references >= 0
+      @references += 1
+      this
+    decrementReference: () ->
+      throw "decrementReference!?" unless @references > 0
+      @references -= 1
+      this
+```
+
+### Refactoring memoization
+
+### Refactoring computation
