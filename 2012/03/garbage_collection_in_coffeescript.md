@@ -82,7 +82,7 @@ The garbage collection algorithm must have a way to know which squares are curre
 
 ### Summary
 
-Cafe au Life was to be upgarded to add garbage collection via reference counting. References would be maintained for children of squares in the cache, and squares used for intermediate calculations were to have references for the time they were needed.
+Cafe au Life was to be upgraded to add garbage collection via reference counting. References would be maintained for children of squares in the cache, and squares used for intermediate calculations were to have references for the time they were needed.
 
 ## Implementing Garbage Collection in Cafe au Life
 
