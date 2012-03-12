@@ -1,5 +1,9 @@
 # Garbage Collection in CoffeeScript (and JavaScript)
 
+**This is a work-in-progress, please do not post to hacker News, &c.**
+
+---
+
 > "There are only two hard things in Computer Science: Cache invalidation and naming things." Tim Bray, quoting Phil Karlton
 
 ## HashLife
@@ -227,4 +231,17 @@ The new version of `result` uses the `@memoize` class method to memoize its retu
 
 (Note that the original code still runs all of its test cases perfectly: if you remove the garbage collection module from the project and don't run any of the gc-specific specs, Cafe au Life retains 100% of its original functionality. That's what refactoring means: Changing the way a program is organized or "factored," without adding to or removing its functionality.)
 
-### Refactoring computation
+**This is a work-in-progress, please do not post to hacker News, &c.**
+
+---
+
+Recent work:
+
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
+* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
+
+---
+
+[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
