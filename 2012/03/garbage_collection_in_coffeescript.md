@@ -227,7 +227,7 @@ The new version of `result` uses the `@memoize` class method to memoize its retu
 
 (Note that the original code still runs all of its test cases perfectly: if you remove the garbage collection module from the project and don't run any of the gc-specific specs, Cafe au Life retains 100% of its original functionality. That's what refactoring means: Changing the way a program is organized or "factored," without adding to or removing its functionality.)
 
-**This is a work-in-progress, please do not post to hacker News, &c.**
+**This is a work-in-progress! Please do not post to Hacker News, &c.**
 
 ---
 
