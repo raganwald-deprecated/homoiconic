@@ -161,23 +161,70 @@ Some of the original code needed to be refactored to permit the gc module to pro
 
 [memo]: https://en.wikipedia.org/wiki/Memoization
 
-(Note that the original code still runs all of its test cases perfectly: if you remove the garbage collection module from the project and don't run any of the gc-specific specs, Cafe au Life retains 100% of its original functionality. That's what refactoring means: Changing the way a program is organized or "factored," without adding to or removing its functionality.)
-
 As explained above, every square has four child quadrant squares. It also calculates results for times from zero to `2^(n-2)` generations in the future. If those were calculated every time they were needed, HashLife's canonicalization of squares would simply be a way to save the space required to represent very large Life universes. However, HashLife also saves computation by memoizing those calculations. Once a square calculates its result for a particular time in the future, it saves the result and reuses it.
 
-The original implementation memoized those results using [underscore.js's][u] `_.memoize` function:
+The original implementation memoized results using [underscore.js's][u] `_.memoize` function. For example:
 
 [u]: http://documentcloud.github.com/underscore/
 
 ```coffeescript
   initialize: ->
     super()
-    # ...
-    @intermediate_at_time = _.memoize( (t) ->
-      @intermediate_via_subresults_at_time(t)
+    @result = _.memoize( -> Square.canonicalize
+      nw: @subsquares_via_subresults.nw.result()
+      ne: @subsquares_via_subresults.ne.result()
+      se: @subsquares_via_subresults.se.result()
+      sw: @subsquares_via_subresults.sw.result()
     )
 ```
 
-For those not familiar with  `_.memoize`, it takes a function and returns a memoized version of the function. The memoized function caches its results so that subsequent calls with the same parameters are turned into cache lookups. Using `_.memoize` with a method is done within the object's `initialize` method because if we memoize the class' prototype of the method, all of the different objects will share the same cache, while we want each object to have its own cache. Thus, we define `intermediate_via_subresults_at_time` as a standard method in the prototype, but `intermediate_at_time` is bound to the memoized function in each object.
+(For those not familiar with  `_.memoize`, it takes a function and returns a memoized version of the function. The memoized function caches its results so that subsequent calls with the same parameters are turned into cache lookups. Using `_.memoize` to create a method is done within the object's `initialize` method because if we memoize the class' prototype of the method, all of the different objects will share the same cache, while we want each object to have its own cache.)
+
+Unfortunately, while `_.memoize` is elegant, it blocks us from implementing garbage collection. As you recall, we wish to count the references from a parent to a child, including from a square to its result. (If we don't count references to results, a square could return a memoized result that has been garbage collected from the cache.) We need to memoize results in a way that exposes them to inspection, so the memoization was refactored into a general-purpose feature with methods that could be "advised:"
+
+```coffeescript    initialize: ->
+    initialize: ->
+      super()
+      @memoized = {}
+
+    @memoize: (name, method_body) ->
+      (args...) ->
+        index = name + _.map( args, (arg) -> "_#{arg}" ).join('')
+        @get_memo(index) or @set_memo(index, method_body.call(this, args...))
+
+    get_memo: (index) ->
+      @memoized[index]
+
+    set_memo: (index, square) ->
+      @memoized[index] = square
+
+    # ...
+
+    result:
+      @memoize 'result', ->
+        Square.canonicalize(
+          Square.RecursivelyComputable.sequence(
+            Square.RecursivelyComputable.square_to_intermediate_map
+            Square.RecursivelyComputable.take_the_canonicalized_values
+            Square.RecursivelyComputable.take_the_results
+            Square.RecursivelyComputable.intermediate_to_subsquares_map
+            Square.RecursivelyComputable.take_the_canonicalized_values
+            Square.RecursivelyComputable.take_the_results
+          )(this)
+        )
+```
+
+The new version of `result` uses the `@memoize` class method to memoize its return value, and now the gc module can hook into `set_memo` to manage the child's reference count (Note that in CoffeeScript, declaring `@memoize:` declares a method on the class, not each instance):
+
+```coffeescript
+  YouAreDaChef(Square.RecursivelyComputable)
+    .before 'set_memo', (index) ->
+      if (existing = @get_memo(index))
+        existing.decrementReference()
+    .after 'set_memo', (index, square) ->
+      square.incrementReference()
+```
+
+(Note that the original code still runs all of its test cases perfectly: if you remove the garbage collection module from the project and don't run any of the gc-specific specs, Cafe au Life retains 100% of its original functionality. That's what refactoring means: Changing the way a program is organized or "factored," without adding to or removing its functionality.)
 
 ### Refactoring computation
