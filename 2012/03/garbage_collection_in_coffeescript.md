@@ -1,12 +1,12 @@
 # Garbage Collection in CoffeeScript (and JavaScript)
 
-> "There are only two hard things in Computer Science: Cache invalidation and naming things."--Tim Bray, quoting Phil Karlton
+> "There are only two hard things in Computer Science: Cache invalidation and naming things."—Tim Bray, quoting Phil Karlton
 
 ## HashLife
 
 [Cafe au Life][recursiveuniverse] is an implementation of John Conway's [Game of Life][life] cellular automata written in [CoffeeScript][cs]. Cafe au Life runs on [Node.js][node].
 
-The "Life Universe" is an infinite two-dimensional matrix of cells. Cells are indivisible and are in either of two states,commonly called "alive" and "dead." Time is represented as discrete quanta called either "ticks" or "generations." With each generation, a rule is applied to decide the state the cell will assume. The rules are decided simultaneously, and there are only two considerations: The current state of the cell, and the states of the cells in its [Moore Neighbourhood][moore], the eight cells adjacent horizontally, vertically, or diagonally.
+The "Life Universe" is an infinite two-dimensional matrix of cells. Cells are indivisible and are in either of two states, commonly called "alive" and "dead." Time is represented as discrete quanta called either "ticks" or "generations." With each generation, a rule is applied to decide the state the cell will assume. The rules are decided simultaneously, and there are only two considerations: The current state of the cell, and the states of the cells in its [Moore Neighbourhood][moore], the eight cells adjacent horizontally, vertically, or diagonally.
 
 Cafe au Life implements Conway's Game of Life, as well as other "[life-like][ll]" games in the same family.
 
@@ -29,7 +29,7 @@ Broadly speaking, HashLife has two major components. The first is a high level a
 
 [recursiveuniverse]: http://recursiveuniver.se/
 
-Without repeating what the annotated source code explains in detail, HashLife leverages the fact that information has a speed limit: The state of any cell in Life can only affect its neighbors in one generation, their neighbours in two generations, and so on. Appying this in reverse, if you want to compute the state of a cell in `n` generations you do not need to consider any cells except those `n` distance away or closer.
+Without repeating what the annotated source code explains in detail, HashLife leverages the fact that information has a speed limit: The state of any cell in Life can only affect its neighbours in one generation, their neighbours in two generations, and so on. Applying this in reverse, if you want to compute the state of a cell in `n` generations you do not need to consider any cells except those `n` distance away or closer.
 
 HashLife exploits this by dividing the universe into squares of dimension `2^n`. For any such square where `n>1`, there is a center square of size `2^(n-1)`. The future of the centre can always be computed out to `2^(n-2)` generations, and it will always be the same no matter where the square appears.
 
@@ -64,25 +64,25 @@ Clearly, Cafe au Life needed to "grow up" and implement a garbage collection str
 
 Cafe au Life is not meant to be a sophisticated implementation of HashLife. Practical implementations are written in tightly coded C and handle massive patterns that emulate universal turing machines, print numbers, and perform other impressive tricks. So garbage collection would by necessity be written as simply as possible.
 
-The relationships between squares are highly regular. HashLife represents the universee as a quadtree, so each square has exactly four child squares. As computations are made, each square lazily computes a number of "result squares" for future times ranging from 0 generations in the future (its current centre) out to `2^(n-2)` as explained above.
+The relationships between squares are highly regular. HashLife represents the universe as a quadtree, so each square has exactly four child squares. As computations are made, each square lazily computes a number of "result squares" for future times ranging from 0 generations in the future (its current centre) out to `2^(n-2)` as explained above.
 
 Leaving aside for the moment the question of temporary results generated as the algorithm does its work, the cache itself has a very regular reference structure, and thus a simple reference counting scheme works. A square is the parent of each of its four direct children and it is also the parent of each of the result squares it calculates. Every square in the cache has zero or more parents in the cache. A square with no parents in the cache is eligible to be removed. When it is removed, the reference count for each child is decremented, and if they become zero, the child is removed as well.
 
-Garbage collection could be done in parallel with computation, but it is simpler to check the cache to see if it is getting full (>700,000 squares) and if so, perform garbage collection until there is enough headroom to continue computation (arbitraily set at <350,000 squares). The numbers can be tuned if necessary, collecting too much garbage will hamper performance by forcing the algorithm to recalculate futures that had been thrown away. And of course, collecting too little garbage will cause the garbage collection algorithm to be invoked repeatedly, imposing overhead.
+Garbage collection could be done in parallel with computation, but it is simpler to check the cache to see if it is getting full (>700,000 squares) and if so, perform garbage collection until there is enough headroom to continue computation (arbitrarily set at <350,000 squares). The numbers can be tuned if necessary, collecting too much garbage will hamper performance by forcing the algorithm to recalculate futures that had been thrown away. And of course, collecting too little garbage will cause the garbage collection algorithm to be invoked repeatedly, imposing overhead.
 
-Performance could be improved by tuning the start collection and stop collection thresholds. Another potential s improvement would be to create a strategy for prioritizing squares to be grabgae collected, such as by Least Recently Used.
+Performance could be improved by tuning the start collection and stop collection thresholds. Another potential s improvement would be to create a strategy for prioritizing squares to be garbage collected, such as by Least Recently Used.
 
 ### Recursion: See "recursion"
 
 The reference counting strategy outlined is missing a key consideration: In the midst of calculating the future of a pattern, there are intermediate results that must not be garbage collected from the cache. Although Node's JavaScript engine will not garbage collect the objects representing the squares from memory if they are in variables, the entire algorithm depends on the assumption that every object representing a square has been "canonicalized" and that there is only ever one active object for each unique square of any size.
 
-The cache enforces this, and if a varible were to contain an object representing a square while that same square was removed from the cache, another part of the code could easily wind up creating a copy of the square, breaking the "contract" that there is only ever one representation of each square. If a square is to be removed from the cache, it must not be in use anywhere in the computation. Thus, if it is needed again, a new copy will be created and cached and all references will be to the new copy, preserving the requirement that there is only ever one representation at any one time.
+The cache enforces this, and if a variable were to contain an object representing a square while that same square was removed from the cache, another part of the code could easily wind up creating a copy of the square, breaking the "contract" that there is only ever one representation of each square. If a square is to be removed from the cache, it must not be in use anywhere in the computation. Thus, if it is needed again, a new copy will be created and cached and all references will be to the new copy, preserving the requirement that there is only ever one representation at any one time.
 
 The garbage collection algorithm must have a way to know which squares are currently being used while Cafe au Life recursively computes the future of a pattern if it is to collect garbage at any point in the middle of a computation. The squares in use must have their reference counts incremented while they are in use and then decremented as soon as they are no longer needed. Decrementing the reference counts as soon as possible is essential to good garbage collection.
 
 ### Summary
 
-Cafe au Life was to be upgarded to add garbage collection via reference counting. References would be maintained for children of squares in the cache, and squares used for intermediate calculations were to have references for the time they were needed.
+Cafe au Life was to be upgraded to add garbage collection via reference counting. References would be maintained for children of squares in the cache, and squares used for intermediate calculations were to have references for the time they were needed.
 
 ## Implementing Garbage Collection in Cafe au Life
 
