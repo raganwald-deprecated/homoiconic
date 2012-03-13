@@ -8,9 +8,13 @@ Cafe au Life is written in a pseudo-literate style that leans heavily on [aspect
 
 [aosd]: https://en.wikipedia.org/wiki/Aspect-oriented_software_development
 
+![Period 24 Glider Gun](http://recursiveuniverse.github.com/docs/Trueperiod24gun.png)
+
+*(A period 24 Glider Gun. Gliders of different periods are useful for transmitting signals in complex Life machines.)*
+
 ## Cafe au Life
 
-[Cafe au Life][recursiveuniverse] is an implementation of John Conway's [Game of Life][life] cellular automata written in [CoffeeScript][cs]. Cafe au Life runs on [Node.js][node]. Cafe au Life implements Conway's Game of Life, as well as other "[life-like][ll]" games in the same family.
+[Cafe au Life][recursiveuniverse] is written in the [CoffeeScript][cs] dialect of JavaScript. Cafe au Life runs on [Node.js][node]. Cafe au Life implements Conway's Game of Life, as well as other "[life-like][ll]" games in the same family.
 
 [ll]: http://www.conwaylife.com/wiki/Cellular_automaton#Well-known_Life-like_cellular_automata
 [moore]: http://en.wikipedia.org/wiki/Moore_neighborhood
@@ -19,13 +23,13 @@ Cafe au Life is written in a pseudo-literate style that leans heavily on [aspect
 [cs]: http://jashkenas.github.com/coffee-script/
 [node]: http://nodejs.org
 
-![Period 24 Glider Gun](http://recursiveuniverse.github.com/docs/Trueperiod24gun.png)
-
-*(A period 24 Glider Gun. Gliders of different periods are useful for transmitting signals in complex Life machines.)*
-
-Cafe au Life's engine is based on Bill Gosper's [HashLife][hl] algorithm. HashLife is usually implemented in C and optimized to run very long simulations with very large 'boards' stinking fast. The HashLife algorithm is, in a word, a **beautiful design**, one that is "in the book." To read its description ignites the desire to explore it on a computer.
+Cafe au Life's engine is based on Bill Gosper's [HashLife][hl] algorithm. The HashLife algorithm is, in a word, a **beautiful design**, one that is "in the book." To read its description ignites the desire to explore it on a computer.
 
 Broadly speaking, HashLife has two major components. The first is a high level algorithm that is implementation independent. This algorithm exploits repetition and redundancy, aggressively 'caching' previously computed results for regions of the board. The second component is the cache itself, which is normally implemented cleverly in C to exploit memory and CPU efficiency in looking up precomputed results.
+
+HashLife is usually implemented in C, and implementations like [Golly][golly] are optimized to run very long simulations with huge patterns.
+
+[golly]: http://golly.sourceforge.net/
 
 [hl]: http://en.wikipedia.org/wiki/Hashlife
 
@@ -73,8 +77,6 @@ The relationships between squares are highly regular. HashLife represents the un
 Leaving aside for the moment the question of temporary results generated as the algorithm does its work, the cache itself has a very regular reference structure, and thus a simple reference counting scheme works. A square is the parent of each of its four direct children and it is also the parent of each of the result squares it calculates. Every square in the cache has zero or more parents in the cache. A square with no parents in the cache is eligible to be removed. When it is removed, the reference count for each child is decremented, and if they become zero, the child is removed as well.
 
 Garbage collection could be done in parallel with computation, but it is simpler to check the cache to see if it is getting full (>700,000 squares) and if so, perform garbage collection until there is enough headroom to continue computation (arbitrarily set at <350,000 squares). The numbers can be tuned if necessary, collecting too much garbage will hamper performance by forcing the algorithm to recalculate futures that had been thrown away. And of course, collecting too little garbage will cause the garbage collection algorithm to be invoked repeatedly, imposing overhead.
-
-Performance could be improved by tuning the start collection and stop collection thresholds. Another potential improvement would be to create a strategy for prioritizing squares to be garbage collected, such as by Least Recently Used.
 
 ### Recursion: See "recursion"
 
@@ -167,7 +169,7 @@ And:
 
 There are a number of other ways we extend or modify the existing code without changes or with trivial refactoring to accommodate placing the functionality in the garbage collection module.
 
-### Refactoring memoization
+### Refactoring Memoization
 
 Some of the original code needed to be refactored to permit the garbage collection module to provide method advice. The first thing that needed to be refactored was the code that [memoized][memo] the calculation of results.
 
@@ -235,7 +237,7 @@ The new version of `result` uses the `@memoize` class method to memoize its retu
 
 (The original code still runs all of its test cases perfectly: if you remove the garbage collection module from the project and don't run any of the garbage collection-specific specs, Cafe au Life retains 100% of its original functionality. That's what refactoring means: Changing the way a program is organized or "factored," without adding to or removing its functionality.)
 
-### Refactoring functional composition
+### Refactoring Functional Composition
 
 The `result` method quoted above was refactored to use a new mechanism for memoizing return values. It was also refactored to allow another module to modify the way functions are chained together, or as is more commonly termed, [composed][composition].
 
@@ -414,7 +416,22 @@ Once we've refactored our methods to use `sequence`, we can change the way they 
 
 The revised version of `sequence` takes the input map, increments the reference for each leaf of the tree, and  resizes the cache such that it does not exceed 700,000 squares. It then calls the function, decrementing the leaves of the tree when it's finished.
 
-We'll repeat for the *n*th time that this version of `sequence` is "monkey-patched" by the garbage collection module, the code in the future module is not altered other than the original refactoring to sequence functions.
+We'll repeat for the nth time that this version of `sequence` is "monkey-patched" by the garbage collection module, the code in the future module is not altered other than the original refactoring to sequence functions.
+
+### Does it blend?
+
+Having implemented garbage collection using aspect-oriented programming, we need to test it. Can we now compute the future of the rabbits pattern?
+
+```
+raganwald@Reginald-Braithwaites-iMac[cafeaulife (master)⚡] coffee
+coffee> require('./lib/menagerie').rabbits.future_at_time(17331).population
+GC: 700000->350000
+GC: 700000->350000
+1744
+coffee> 
+```
+
+Success of a sort! Cafe au Life collects garbage twice (and takes its sweet time) but correctly reports the future of the rabbits pattern after 17,331 generations.
 
 ## In Conclusion
 
@@ -422,7 +439,13 @@ Garbage collection is a hard problem. It is usually pervasive, as it touches man
 
 However, these changes need not involve scattering and tangling: Through refactoring, class extension, and method advice, we concentrate all of the responsibility for garbage collection in the Garbage Collection Module.
 
-### Homework:
+### Further Work
+
+This implementation focuses on making garbage collection work, but not on making it work *well*. With small but chaotic patterns like "rabbits," the distinction may not matter much. However, large and chaotic patterns may repeatedly cycle the cache, degrading HashLife to linear performance.
+
+Performance could be improved by tuning the start collection and stop collection thresholds. Another potential improvement would be to create a strategy for prioritizing squares to be garbage collected, such as by Least Recently Used. Improving the strategy for when garbage is collected and which squares are garbage collected is the "hard thing in computer science" mentioned at the top of the essay, but nevertheless must be done to make Cafe au Life useful for experimentation with non-trivial patterns.
+
+### Bonus
 
 from [Wikipedia][monad]:
 
