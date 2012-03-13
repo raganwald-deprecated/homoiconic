@@ -1,4 +1,4 @@
-# Implementing Garbage Collection in CoffeeScript (and JavaScript)
+# Implementing Garbage Collection with AOP
 
 > "There are only two hard things in Computer Science: Cache invalidation and naming things."—Tim Bray, quoting Phil Karlton
 
