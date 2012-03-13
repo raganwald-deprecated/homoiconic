@@ -100,6 +100,16 @@ Naturally, all of the code that implements garbage collection was placed in its 
 
 [gcc]: http://recursiveuniverse.github.com/docs/gc.html
 
+### Scattering and Tangling
+
+Aspect-oriented software developers talk about "scattering" and "tangling."
+
+Scattering is when a responsibility (such as garbage collection) is spread across across the code base. For example, the `Square.Smallest` and `Square.Seed` classes are defined in the Rule Module, while `Square.RecursivelyComputable` is defined in the Future Module. If reference counting was added in the traditional OO style where each class knows all about its own methods, the responsibility for garbage collection would be "scattered" across multiple modules.
+
+Tangling is when code that should be small and have a single clear responsibility is entangled with other responsibilities. For example, memoizing a result should increment the result square's count. If that code was added to the memoization method, we would be "entangling" the responsibility for memoization with the responsibility for reference counting.
+
+By refactoring our methods to permit advice and class extension, we eliminate the tangling and the scattering.
+
 ### Extending existing functionality
 
 In order to add something as pervasive as garbage collection, the first step was to determine where the existing code would need to be "advised." In some cases, functionality could be added to existing methods without any changes. In others, existing methods would need to be refactored to create opportunities to advise them. For example, we set a recursively computable square's reference count to zero by adding after advice to its initialize method using the [YouAreDaChef][y] library:
@@ -375,12 +385,12 @@ This makes our methods very readable:
 
 If you reconstruct the code at the time of this refactoring, it runs all the tests just fine. The only difference is that we've replaced JavaScript's native method for composing an expression with our own `sequence` function composing a series of functions set up as a pipeline of maps.
 
- ## And now... The Garbage Collection
- 
-  Once we've refactored our methods to use `sequence`, we can change the way they behave by decorating `sequence` with code that increments and decrements reference counts. Here's the actual code:
-  
-   ```coffeescript 
-       each_leaf = (h, fn) ->
+### And now... The Garbage Collection Itself
+
+Once we've refactored our methods to use `sequence`, we can change the way they behave by decorating `sequence` with code that increments and decrements reference counts. Here's the actual code from [gc.coffee][gcc]:
+
+ ```coffeescript 
+    each_leaf = (h, fn) ->
       _.each h, (value) ->
         if value instanceof Square
           fn(value)
@@ -400,7 +410,18 @@ If you reconstruct the code at the time of this refactoring, it runs all the tes
                 each_leaf(parameter_hash, (sq) -> sq.decrementReference())
           ).reverse()...
       )
-   ```
+```
+
+The revised version of `sequence` takes the input map, increments the reference for each leaf of the tree, and  resizes the cache such that it does not exceed 700,000 squares. It then calls the function, decrementing the leaves of the tree when it's finished.
+
+We'll repeat for the *n*th time that this version of `sequence` is "monkey-patched" by the garbage collection module, the code in the future module is not altered other than the original refactoring to sequence functions.
+
+## In Conclusion
+
+Garbage collection is a hard problem. It is usually pervasive, as it touches many different parts of a computation engine. In Cafe au Life, adding garbage collection required substantial changes to both memoization and the computation of results.
+
+However, these changes need not involve scattering and tangling: Through refactoring, class extension, and method advice, we concentrate all of the responsibility for garbage collection in the Garbage Collection Module.
+
 ---
 
 Recent work:
