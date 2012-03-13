@@ -242,13 +242,13 @@ The `result` method quoted above was refactored to use a new mechanism for memoi
 As noted above, the `.result` method looked like this:
 
 ```coffeescript
-    result:
-      @memoize 'result', ->
-        Square.canonicalize
-          nw: @subsquares_via_subresults().nw.result()
-          ne: @subsquares_via_subresults().ne.result()
-          se: @subsquares_via_subresults().se.result()
-          sw: @subsquares_via_subresults().sw.result()
+  result:
+    @memoize 'result', ->
+      Square.canonicalize
+        nw: @subsquares_via_subresults().nw.result()
+        ne: @subsquares_via_subresults().ne.result()
+        se: @subsquares_via_subresults().se.result()
+        sw: @subsquares_via_subresults().sw.result()
 ```
 
 Now that we understand the memoization, what does the underlying code do? Well, it canonicalizes a square from four quadrants, each of which is constructed in parallel by calling another method that seems to return four squares and taking the results of those squares.
