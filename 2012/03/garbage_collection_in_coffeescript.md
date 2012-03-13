@@ -213,13 +213,13 @@ Unfortunately, while `_.memoize` is elegant, it blocks us from implementing garb
     # ...
 
 
-    result:
-      @memoize 'result', ->
-        Square.canonicalize
-          nw: @subsquares_via_subresults().nw.result()
-          ne: @subsquares_via_subresults().ne.result()
-          se: @subsquares_via_subresults().se.result()
-          sw: @subsquares_via_subresults().sw.result()
+    result:
+      @memoize 'result', ->
+        Square.canonicalize
+          nw: @subsquares_via_subresults().nw.result()
+          ne: @subsquares_via_subresults().ne.result()
+          se: @subsquares_via_subresults().se.result()
+          sw: @subsquares_via_subresults().sw.result()
 ```
 
 The new version of `result` uses the `@memoize` class method to memoize its return value, and now the garbage collection module can hook into `set_memo` to manage the child's reference count (Note that in CoffeeScript, declaring `@memoize:` declares a method on the class, not each instance):
