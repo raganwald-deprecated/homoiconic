@@ -78,7 +78,7 @@ Leaving aside for the moment the question of temporary results generated as the 
 
 Garbage collection could be done in parallel with computation, but it is simpler to check the cache to see if it is getting full (>700,000 squares) and if so, perform garbage collection until there is enough headroom to continue computation (arbitrarily set at <350,000 squares). The numbers can be tuned if necessary, collecting too much garbage will hamper performance by forcing the algorithm to recalculate futures that had been thrown away. And of course, collecting too little garbage will cause the garbage collection algorithm to be invoked repeatedly, imposing overhead.
 
-### Recursion: See "recursion"
+### Recursion: See "Recursion"
 
 The reference counting strategy outlined is missing a key consideration: In the midst of calculating the future of a pattern, there are intermediate results that must not be garbage collected from the cache. Although Node's JavaScript engine will not garbage collect the objects representing the squares from memory if they are in variables, the entire algorithm depends on the assumption that every object representing a square has been "canonicalized" and that there is only ever one active object for each unique square of any size.
 
@@ -112,7 +112,7 @@ Tangling is when code that should be small and have a single clear responsibilit
 
 By refactoring our methods to permit advice and class extension, we eliminate the tangling and the scattering.
 
-### Extending existing functionality
+### Extending Existing Functionality
 
 In order to add something as pervasive as garbage collection, the first step was to determine where the existing code would need to be "advised." In some cases, functionality could be added to existing methods without any changes. In others, existing methods would need to be refactored to create opportunities to advise them. For example, we set a recursively computable square's reference count to zero by adding after advice to its initialize method using the [YouAreDaChef][y] library:
 
