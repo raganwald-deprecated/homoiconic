@@ -70,7 +70,7 @@ Leaving aside for the moment the question of temporary results generated as the 
 
 Garbage collection could be done in parallel with computation, but it is simpler to check the cache to see if it is getting full (>700,000 squares) and if so, perform garbage collection until there is enough headroom to continue computation (arbitrarily set at <350,000 squares). The numbers can be tuned if necessary, collecting too much garbage will hamper performance by forcing the algorithm to recalculate futures that had been thrown away. And of course, collecting too little garbage will cause the garbage collection algorithm to be invoked repeatedly, imposing overhead.
 
-Performance could be improved by tuning the start collection and stop collection thresholds. Another potential s improvement would be to create a strategy for prioritizing squares to be garbage collected, such as by Least Recently Used.
+Performance could be improved by tuning the start collection and stop collection thresholds. Another potential improvement would be to create a strategy for prioritizing squares to be garbage collected, such as by Least Recently Used.
 
 ### Recursion: See "recursion"
 
