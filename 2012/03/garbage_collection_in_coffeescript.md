@@ -23,11 +23,9 @@ Cafe au Life is written in a pseudo-literate style that leans heavily on [aspect
 [cs]: http://jashkenas.github.com/coffee-script/
 [node]: http://nodejs.org
 
-Cafe au Life's engine is based on Bill Gosper's [HashLife][hl] algorithm. The HashLife algorithm is, in a word, a **beautiful design**, one that is "in the book." To read its description ignites the desire to explore it on a computer.
+Cafe au Life's engine is based on Bill Gosper's [HashLife][hl] algorithm. The HashLife algorithm is, in a word, a [beautiful algorithm][beauty], one that is "in the book." To read its description ignites the desire to explore it on a computer.
 
-Broadly speaking, HashLife has two major components. The first is a high level algorithm that is implementation independent. This algorithm exploits repetition and redundancy, aggressively 'caching' previously computed results for regions of the board. The second component is the cache itself, which is normally implemented cleverly in C to exploit memory and CPU efficiency in looking up precomputed results.
-
-HashLife is usually implemented in C, and implementations like [Golly][golly] are optimized to run very long simulations with huge patterns.
+Broadly speaking, HashLife has two major components. The first is a high level algorithm that is implementation independent. This algorithm exploits repetition and redundancy, aggressively 'caching' previously computed results for regions of the board. The second component is the cache itself, which is normally implemented cleverly in C to exploit memory and CPU efficiency in looking up precomputed results. Implementations like [Golly][golly] are optimized to run very long simulations with huge patterns.
 
 [golly]: http://golly.sourceforge.net/
 
@@ -45,7 +43,7 @@ For example, if we have a 16 by 16 square (`2^4`), there is a centre square of s
 
 HashLife employs this idea elegantly to represent the life universe as a quadtree, stashing squares and their futures in a large cache (the "hash" in "HashLife"). The resulting performance is startling: Patterns that evolve with a great deal of repetition can be calculated to prodigious sizes and unimaginable distances into the future.
 
-One maximally favourable example is the Gilder Gun. Glider guns generate a stream of identical gliders marching off into infinity. Cafe au Life needs only a few seconds to calculate the future of a glider gun 143.4 quadrillion generations into the future, one for each second from the formation of the Earth until now. It's a [beautiful algorithm][beauty].
+One maximally favourable example is the Gilder Gun. Glider guns generate a stream of identical gliders marching off into infinity. Cafe au Life needs only a few seconds to calculate the future of a glider gun 143.4 quadrillion generations into the future, one for each second from the formation of the Earth until now.
 
 [beauty]: http://raganwald.posterous.com/a-beautiful-algorithm
 
@@ -64,7 +62,7 @@ Rabbits has just nine cells, but it [evolves][rabbitsvideo] for 17,331 generatio
 
 The first cut at Cafe au Life did not limit the cache in any way. As a pattern evolved, squares would be added to the cache but never removed, so the cache simply grew. This was fine up until I tried to run rabbits. The cache ballooned to nearly 800,000 squares, then the entire instance of node.js ran out of memory.
 
-This is one of the delights of Life: One pattern with thirty-six cells can grow to a population with 23.9 quadrillion active cells, while another a fourth of its size chokes the cache with fewer than 2,000 cells. The connection of initial state to complexity of the result over time is one of the deep properties of computation and in some ways the *central* problem in Computer Science.
+Thus, one pattern with thirty-six cells can grow to a population with 23.9 quadrillion active cells, while another a fourth of its size chokes the cache with fewer than 2,000 cells. The connection of initial state to complexity of the result over time is one of the deep properties of computation and in some ways the *central* problem in Computer Science.
 
 Clearly, Cafe au Life needed to "grow up" and implement a garbage collection strategy. In short, it needed to start removing squares from the cache to keep things at a manageable size when patterns had complex evolutions.
 
@@ -171,9 +169,10 @@ There are a number of other ways we extend or modify the existing code without c
 
 ### Refactoring Memoization
 
-Some of the original code needed to be refactored to permit the garbage collection module to provide method advice. The first thing that needed to be refactored was the code that [memoized][memo] the calculation of results.
+Some of the original code (found in [future.coffee][future]) needed to be refactored to permit the garbage collection module to provide method advice. The first thing that needed to be refactored was the code that [memoized][memo] the calculation of results.
 
 [memo]: https://en.wikipedia.org/wiki/Memoization
+[future]: http://recursiveuniverse.github.com/docs/future.html
 
 As explained above, every square in Cafe au Life has four child quadrant squares. Every non-trivial square also calculates its own results for times from zero to `2^(n-2)` generations in the future. If those were calculated every time they were needed, HashLife's canonicalization of squares would simply be a way to save the space required to represent very large Life universes. However, HashLife also saves computation by memoizing those calculations. Once a square calculates its result for a particular time in the future, it saves the result and reuses it.
 
@@ -444,6 +443,22 @@ However, these changes need not involve scattering and tangling: Through refacto
 This implementation focuses on making garbage collection work, but not on making it work *well*. With small but chaotic patterns like "rabbits," the distinction may not matter much. However, large and chaotic patterns may repeatedly cycle the cache, degrading HashLife to linear performance.
 
 Performance could be improved by tuning the start collection and stop collection thresholds. Another potential improvement would be to create a strategy for prioritizing squares to be garbage collected, such as by Least Recently Used. Improving the strategy for when garbage is collected and which squares are garbage collected is the "hard thing in computer science" mentioned at the top of the essay, but nevertheless must be done to make Cafe au Life useful for experimentation with non-trivial patterns.
+
+### Source Code
+
+* 	The [Rules Module][rules.html] provides a method for setting up the [rules][rules] of the Life universe.
+* 	The [Future Module][future.html] provides methods for computing the future of a pattern, taking into account its ability to grow beyond the size of its container square.
+* 	The [Cache Module][cache.html] implements a very naive hash-table for canoncial representations of squares. HashLife uses extensive [canonicalization][canon] to optimize the storage of very large patterns with repetitive components. New: Garbage collection allows Cafe au Life to compute the futur eof patterns with high entropy.
+* 	The [Garbage Collection Module][gc.html] implements a simple reference-counting garbage collector for the cache.
+* 	The [API Module][api.html] provides methods for grabbing json or strings of patterns and resizing them to fit expectations.
+* 	The [Menagerie Module][menagerie] provides a few well-know life objects predefined for you to play with. It is entirely optional.
+
+[rules.html]: http://recursiveuniverse.github.com/docs/rules.html
+[rules]: http://www.conwaylife.com/wiki/Cellular_automaton#Well-known_Life-like_cellular_automata
+[cache.html]: http://recursiveuniverse.github.com/docs/cache.html
+[canon]: https://en.wikipedia.org/wiki/Canonicalization
+[api.html]: http://recursiveuniverse.github.com/docs/api.html
+[menagerie]: http://recursiveuniverse.github.com/docs/menagerie.html
 
 ### Bonus
 
