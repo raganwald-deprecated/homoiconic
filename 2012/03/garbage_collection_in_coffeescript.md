@@ -455,6 +455,7 @@ Performance could be improved by tuning the start collection and stop collection
 
 [rules.html]: http://recursiveuniverse.github.com/docs/rules.html
 [rules]: http://www.conwaylife.com/wiki/Cellular_automaton#Well-known_Life-like_cellular_automata
+[future.html]: http://recursiveuniverse.github.com/docs/future.html
 [cache.html]: http://recursiveuniverse.github.com/docs/cache.html
 [canon]: https://en.wikipedia.org/wiki/Canonicalization
 [api.html]: http://recursiveuniverse.github.com/docs/api.html
