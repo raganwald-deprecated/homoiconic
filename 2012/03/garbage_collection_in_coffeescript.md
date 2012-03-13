@@ -467,9 +467,12 @@ from [Wikipedia][monad]:
 
 > In functional programming, a monad is a programming structure that represents computations. Monads are a kind of abstract data type constructor that encapsulate program logic instead of data in the domain model. A defined monad allows the programmer to chain actions together and build different pipelines that process data in various steps, in which each action is decorated with additional processing rules provided by the monad... Programs written in functional style can make use of monads to structure procedures that include sequenced operations.
 
-Discuss.
-
 [monad]: https://en.wikipedia.org/wiki/Monads_in_functional_programming
+
+Discuss on [programming.reddit.com][proggit] and [hacker news][hn].
+
+[proggit]: http://www.reddit.com/r/programming/comments/quesk/implementing_garbage_collection_in_csjs_using/
+[hn]: http://news.ycombinator.com/item?id=3697992
 
 ---
 
