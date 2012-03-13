@@ -96,9 +96,9 @@ Cafe au Life's overall style is of a succession of "reveals." The basic classes 
 
 [comefrom]: https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md
 
-Naturally, all of the code that implements garbage collection was placed in its own module, [gc.coffee][gcc], that modifies all of the code that came before it. Thus, it is possible to understand and even run Cafe au Life from the code without garbage collection, and then incorporate garbage collection when you're ready to consider how it works.
+Naturally, all of the code that implements garbage collection was placed in its own module, [gc.html.coffee][gc.html], that modifies all of the code that came before it. Thus, it is possible to understand and even run Cafe au Life from the code without garbage collection, and then incorporate garbage collection when you're ready to consider how it works.
 
-[gcc]: http://recursiveuniverse.github.com/docs/gc.html
+[gc.html]: http://recursiveuniverse.github.com/docs/gc.html
 
 ### Scattering and Tangling
 
@@ -388,7 +388,7 @@ If you reconstruct the code at the time of this refactoring, it runs all the tes
 
 ### And now... The Garbage Collection Itself
 
-Once we've refactored our methods to use `sequence`, we can change the way they behave by decorating `sequence` with code that increments and decrements reference counts. Here's the actual code from [gc.coffee][gcc]:
+Once we've refactored our methods to use `sequence`, we can change the way they behave by decorating `sequence` with code that increments and decrements reference counts. Here's the actual code from [gc.coffee][gc.html]:
 
  ```coffeescript 
     each_leaf = (h, fn) ->
@@ -448,9 +448,9 @@ Performance could be improved by tuning the start collection and stop collection
 
 * 	The [Rules Module][rules.html] provides a method for setting up the [rules][rules] of the Life universe.
 * 	The [Future Module][future.html] provides methods for computing the future of a pattern, taking into account its ability to grow beyond the size of its container square.
-* 	The [Cache Module][cache.html] implements a very naive hash-table for canoncial representations of squares. HashLife uses extensive [canonicalization][canon] to optimize the storage of very large patterns with repetitive components. New: Garbage collection allows Cafe au Life to compute the futur eof patterns with high entropy.
+* 	The [Cache Module][cache.html] implements a very naive hash-table for canonical representations of squares. HashLife uses extensive [canonicalization][canon] to optimize the storage of very large patterns with repetitive components.
 * 	The [Garbage Collection Module][gc.html] implements a simple reference-counting garbage collector for the cache.
-* 	The [API Module][api.html] provides methods for grabbing json or strings of patterns and resizing them to fit expectations.
+* 	The [API Module][api.html] provides methods for grabbing JSON or strings of patterns and resizing them to fit expectations.
 * 	The [Menagerie Module][menagerie] provides a few well-know life objects predefined for you to play with. It is entirely optional.
 
 [rules.html]: http://recursiveuniverse.github.com/docs/rules.html
