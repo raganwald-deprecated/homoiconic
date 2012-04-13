@@ -4,7 +4,7 @@ Well, not ActiveRecord itself, but rather the abstraction it presents. Today I h
 
 First, set up a plain jane vanilla rails project. Don't ask *me* how, I looked the other way, and when I looked back you needed to know all about Bundler and RVM and a bunch of other ways to reinvent the Virtual Machine wheel. Anyhow, when you've got that done:
 
-```bash
+```
 [tryit] rails g scaffold SomeTable some_column:string
       invoke  active_record
       create    db/migrate/20120413010253_create_some_tables.rb
@@ -42,9 +42,6 @@ First, set up a plain jane vanilla rails project. Don't ask *me* how, I looked t
 ==  CreateSomeTables: migrated (0.0013s) ======================================
 [tryit] rails c
 Loading development environment (Rails 3.2.3)
-```
-
-```ruby
 ruby-1.9.2-p290 :001 > SomeTable.create! some_column: 'ten'
    (0.0ms)  begin transaction
   SQL (59.4ms)  INSERT INTO "some_tables" ("created_at", "some_column", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 13 Apr 2012 01:03:55 UTC +00:00], ["some_column", "ten"], ["updated_at", Fri, 13 Apr 2012 01:03:55 UTC +00:00]]
