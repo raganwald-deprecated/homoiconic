@@ -1,8 +1,8 @@
 # Captain Obvious says, "ActiveRecord Leaks Like a Sieve"
 
-Well, not ActiveRecord itself, but rather the abstraction it presents. Today I had the pleasure of laughing at my PHP-using colleagues, who have the pleasure of needing to know why in PHP, `'9223372036854775807' == '9223372036854775808'`. I was wrong to laugh, because not minutes later I found myself trying to isolate some unexpected behaviour in Ruby on Rails. Here's how to reproduce it.
+Well, not ActiveRecord itself, but rather the abstraction it presents. Today I had the pleasure of laughing at my PHP-using colleagues, who inhabit a world where `'9223372036854775807' == '9223372036854775808'`. I was wrong to laugh, because not minutes later I found myself trying to isolate some unexpected behaviour in Ruby on Rails.
 
-First, set up a plain jane vanilla rails project. Don't ask *me* how, I looked the other way, and when I looked back you needed to know all about Bundler and RVM and a bunch of other ways to reinvent the Virtual Machine wheel. Anyhow, when you've got that done:
+Here's how to reproduce it. First, set up a plain jane vanilla rails project (Don't ask *me* how, I looked the other way, and when I looked back you needed to know all about Bundler and RVM and a bunch of other ways to reinvent the Virtual Machine wheel). Anyhow, when you've got that done:
 
 ```
 [tryit] rails g scaffold SomeTable some_column:string
