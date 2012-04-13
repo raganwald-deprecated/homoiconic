@@ -46,17 +46,17 @@ That is a lot more work than just submitting a comment. I'm sorry, it's a trade-
 
 I originally set up a blog at homoiconic.com, but I spotted [David Baldwin's blog](http://github.com/bilson/blog/tree/master), and I knew right away that a blog that is about the how of code ought to be hosted on Github.
 
-I am [Reg Braithwaite](http://reginald.braythwayt.com/). You can reach me by email. My first name is `reg`, and that works fine for sending email to `braythwayt.com`. I look forward to hearing from you.
+I am [Reg Braithwaite](http://braythwayt.com/). You can reach me by email. My first name is `reg`, and that works fine for sending email to `braythwayt.com`. I look forward to hearing from you.
 
 ---
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
-* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators) and my [other books](http://leanpub.com/u/raganwald).
+* [Cafe au Life](http://recursiveuniver.se), an implementation of Bill Gosper's HashLife in CoffeeScript in the "Williams Style."
 * [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
 * [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
