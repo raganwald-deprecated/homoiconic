@@ -42,6 +42,9 @@ First, set up a plain jane vanilla rails project. Don't ask *me* how, I looked t
 ==  CreateSomeTables: migrated (0.0013s) ======================================
 [tryit] rails c
 Loading development environment (Rails 3.2.3)
+```
+
+```ruby
 ruby-1.9.2-p290 :001 > SomeTable.create! some_column: 'ten'
    (0.0ms)  begin transaction
   SQL (59.4ms)  INSERT INTO "some_tables" ("created_at", "some_column", "updated_at") VALUES (?, ?, ?)  [["created_at", Fri, 13 Apr 2012 01:03:55 UTC +00:00], ["some_column", "ten"], ["updated_at", Fri, 13 Apr 2012 01:03:55 UTC +00:00]]
