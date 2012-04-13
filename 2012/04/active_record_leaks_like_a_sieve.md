@@ -77,7 +77,7 @@ Let me summarize. We have one record with an `id` of `1`. If we do a `.find`, we
 `'10'`: Does not find the record (one-zero).  
 `'1x'`: Finds the record. WTF!  
 
-Here's what api.rubyonrails.org has to say about `find by id`: "This can either be a specific id (1), a list of ids (1, 5, 6), or an array of ids ([5, 6, 10]). If no record can be found for all of the listed ids, then RecordNotFound will be raised." Nothing about coercing strings. It could be something trying to be helpful in ActiveRecord, or it could be SQL behaviour leaking through the abstraction. I don't care because I'm not supposed to care! (@alindeman notes that in plain Ruby, `"1x".to_i == 1`. So perhaps it's Ruby's errant behaviour leaking through the abstraction!)
+Here's what api.rubyonrails.org has to say about `find by id`: "This can either be a specific id (1), a list of ids (1, 5, 6), or an array of ids ([5, 6, 10]). If no record can be found for all of the listed ids, then RecordNotFound will be raised." Nothing about coercing strings. Now, @alindeman notes that in plain Ruby, `"1x".to_i == 1`. So perhaps .find is applying undocumented type coercion for me. This seems like a good thing, I can make pseudo-slugs like `homoiconic.com/posts/42-captain-obvious`. But isn't that a *controller* responsibility? Shouldn't it be the controller who knows that `"42-captain-obvious".to_i == 42` but `"captain-obvious-42".to_i == 0`? I personally don't like the behaviour of `"1x".to_i` in rails, but even if I liked it, I wouldn't like it hidden away "magically" in a model. And if I did put it in a model, I'd document it.
 
 Oh well, another arbitrary "gotcha" that I'll just have to remember.
 
