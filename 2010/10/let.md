@@ -286,7 +286,7 @@ NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/com
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [eee_closures]: http://japhr.blogspot.com/2010/10/gah-i-still-dont-know-closures.html
 [thrushcombinator]: http://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown#readme

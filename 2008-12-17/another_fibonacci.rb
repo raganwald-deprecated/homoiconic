@@ -1,7 +1,7 @@
 # The MIT License
 # 
 # All contents Copyright (c) 2004-2008 Reginald Braithwaite
-# <http://reginald.braythwayt.com>  except as otherwise noted.
+# <http://braythwayt.com>  except as otherwise noted.
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal

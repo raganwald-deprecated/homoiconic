@@ -76,7 +76,7 @@ Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1883995) 
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [coffee]: http://jashkenas.github.com/coffee-script/ "CoffeeScript"
 [node]: http://nodejs.org/ "node.js"

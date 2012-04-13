@@ -143,7 +143,7 @@ Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=1803432).
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [u]: http://unspace.ca
 [spi]: http://itsnat.sourceforge.net/php/spim/spi_manifesto_en.php "The Single Page Interface Manifesto"

@@ -293,7 +293,7 @@ NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/com
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [p2p]: http://www.yes-minister.com/ypmseas2b.htm
 [raf]: http://weblog.raganwald.com/2006/05/ready-aim-final.html

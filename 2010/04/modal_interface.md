@@ -132,7 +132,7 @@ NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/com
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [drag]: http://raganwald.github.com/iGesture/drag.html
 [slave]: /raganwald/homoiconic/raw/master/2010/04/slave_i.png "Slave I in Low Earth Orbit"

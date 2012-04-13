@@ -27,4 +27,4 @@ This is [Homoiconic](http://github.com/raganwald/homoiconic/mater/tree/). NEW! [
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)

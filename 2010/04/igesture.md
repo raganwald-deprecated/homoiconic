@@ -88,7 +88,7 @@ NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/com
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [go]: http://github.com/raganwald/wood_and_stones
 [sw]: http://github.com/raganwald/homoiconic/blob/master/2010/03/significant_whitespace.md#readme "Significant Whitespace"

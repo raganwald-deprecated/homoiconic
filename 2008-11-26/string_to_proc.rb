@@ -2,7 +2,7 @@
 # 
 # Copyright (c) 2004-2008 Reginald Braithwaite
 # Portions Copyright (c) 2006 Oliver Steele
-# <http://reginald.braythwayt.com>  except as otherwise noted.
+# <http://braythwayt.com>  except as otherwise noted.
 #
 # See http://weblog.raganwald.com/2007/10/stringtoproc.html
 #

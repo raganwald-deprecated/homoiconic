@@ -21,7 +21,7 @@ Discuss this post on [Hacker News][hn], NEW! [Kestrels, Quirky Birds, and Hopele
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [jqc]: http://github.com/raganwald/JQuery-Combinators
 [k]: http://github.com/raganwald/homoiconic/blob/master/2008-10-29/kestrel.markdown#readme

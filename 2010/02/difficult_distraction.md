@@ -144,14 +144,14 @@ So overall, I'm ok with rewriting Ruby. Not a failure, not a beautiful failure, 
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
-* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators) and my [other books](http://leanpub.com/u/raganwald).
+* [Cafe au Life](http://recursiveuniver.se), an implementation of Bill Gosper's HashLife in CoffeeScript in the "Williams Style."
 * [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
 * [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [anaphora]: http://github.com/raganwald/homoiconic/blob/master/2009-09-22/anaphora.md#readme "Anaphora in Ruby"
 [andand]: http://andand.rubyforge.org/ "Object#andand"

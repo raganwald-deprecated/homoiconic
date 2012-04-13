@@ -158,14 +158,14 @@ In [Part III][piii] of this series, we will look at `controller.location(...)` i
 
 Recent work:
 
-* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one e-book.
-* [What I've Learned From Failure](http://leanpub.com/shippingsoftware), my very best essays about getting software from ideas to shipping products, collected into one e-book.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators) and my [other books](http://leanpub.com/u/raganwald).
+* [Cafe au Life](http://recursiveuniver.se), an implementation of Bill Gosper's HashLife in CoffeeScript in the "Williams Style."
 * [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
 * [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
 
 ---
 
-[Reg Braithwaite](http://reginald.braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [bc]: http://documentcloud.github.com/backbone/#Controller
 [haml-lang]: http://haml-lang.com/
@@ -174,7 +174,7 @@ Recent work:
 [play]: http://unspace.github.com/misadventure/
 [r]: http://weblog.jamisbuck.org/2011/1/12/maze-generation-recursive-division-algorithm
 [j]: http://weblog.jamisbuck.org/
-[rb]: http://reginald.braythwayt.com
+[rb]: http://braythwayt.com
 [source]: http://github.com/unspace/misadventure
 [docco]: https://github.com/raganwald/homoiconic/blob/master/2010/11/docco.md "A new way to think about programs"
 [cjs]: http://unspace.github.com/misadventure/docs/controller.html
