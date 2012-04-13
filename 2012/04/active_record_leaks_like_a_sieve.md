@@ -77,7 +77,7 @@ Let me summarize. We have one record with an `id` of `1`. If we do a `.find`, we
 `'10'`: Does not find the record (one-zero).  
 `'1x'`: Finds the record. WTF!  
 
-Here's what api.rubyonrails.org has to say about `find by id`: "This can either be a specific id (1), a list of ids (1, 5, 6), or an array of ids ([5, 6, 10]). If no record can be found for all of the listed ids, then RecordNotFound will be raised." Nothing about coercing strings. It could be something trying to be helpful in ActiveRecord, or it could be SQL behaviour leaking through the abstraction. I don't care because I'm not supposed to care!
+Here's what api.rubyonrails.org has to say about `find by id`: "This can either be a specific id (1), a list of ids (1, 5, 6), or an array of ids ([5, 6, 10]). If no record can be found for all of the listed ids, then RecordNotFound will be raised." Nothing about coercing strings. It could be something trying to be helpful in ActiveRecord, or it could be SQL behaviour leaking through the abstraction. I don't care because I'm not supposed to care! (@alindeman notes that in plain Ruby, `"1x".to_i == 1`. So perhaps it's Ruby's errant behaviour leaking through the abstraction!)
 
 Oh well, another arbitrary "gotcha" that I'll just have to remember.
 
