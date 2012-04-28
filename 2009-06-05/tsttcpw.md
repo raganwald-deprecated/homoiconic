@@ -113,4 +113,4 @@ NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/com
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
-[Reg Braithwaite](http://braythwayt.com): [CV](http://braythwayt.com/RegBraithwaiteDev0110_en_US.pdf ""), [Twitter](http://twitter.com/)
+[Reg Braithwaite](http://braythwayt.com): [CV](http://braythwayt.com/reginald/RegBraithwaite20120423.pdf ""), [Twitter](http://twitter.com/)
