@@ -195,6 +195,15 @@ Christoph Temmel [forked homoiconic](http://github.com/kar8nga/homoiconic/tree "
 
 *The only difficulty is, that in order to avoid floating point arithmetic one would have to do the powers in the field \mathbb{Q}[\sqrt{5}] - this would ask for a custom datatype with overloading of addition and multiplication (the part needed for this exercise). *
 
+---
+
+### More fun with Fib
+
+As noted on [news.ycombinator.com](http://news.ycombinator.com/item?id=3903551), There is a closed-form solution to the function `fib`.
+
+http://en.wikipedia.org/wiki/Fibonacci_number#Closed-form_expression
+
+In the context of a hypothetical job interview, of course, the correct answer is whatever produces the most interesting discussion. If asked in a real interview, I might ask "Do you want the closed-form or are you trying to get me to correctly write a recursive function?" If you write out the closed-form, once in a very long while you will probably encounter someone who tries to out-clever your cleverness and demands that you write it without `Math.sqrt` or some other arbitrary way of forcing you to demonstrate that your brain has the right shape for handling recursion.
 
 ---
 
