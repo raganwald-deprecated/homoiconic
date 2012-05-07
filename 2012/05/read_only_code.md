@@ -1,0 +1,109 @@
+# Read-Only Code
+
+### preamble
+
+I recently found myself with a chunk of unplanned free time ([hint!](http://braythwayt.com/reginald/RegBraithwaite20120423.pdf)). After the shock wore off, I turned my attention to tasks and projects that I thought were important, but had been starved of attention by other, more urgent activities. In the words of [Steven Covey][7habits], things that were important but not urgent.
+
+[7habits]: http://www.amazon.com/gp/product/0743269519/ref=as_li_ss_tl?ie=UTF8&tag=raganwald001-20
+
+One of those things was refactoring [Café au Life][cafe]. As the home page says, Café au Life is an implementation of Bill Gosper's HashLife algorithm written in CoffeeScript for V8. One of the things I tried to do when I first wrote it was to organize the code as a series of successive "reveals." The algorithm's core functionality was implemented in the `cafeaulife`, `rules`, `future`, and `cache` modules, in that order, with all four modules depending upon each other and necessary for the algorithm to operate.
+
+The intent of the "successive reveals" was the make the program *easier to read*. When presenting something unfamiliar and complex, a standard technique is to explain the simplest part of it first, then add some complexity, then some more, and so on until the whole thing has been explained in sufficient detail. At each step of the way, you introduce one cohesive new topic.
+
+### Making code writeable
+
+Culturally, programmer's celebrate the concept of making code easy to read. An oft-quoted line comes from a book about programming in Scheme:
+
+> Programs must be written for people to read, and only incidentally for machines to execute.—Abelson & Sussman, [Structure and Interpretation of Computer Programs][sicp]
+
+[sicp]: http://mitpress.mit.edu/sicp/
+
+In casual exchanges, programmers often refer to making code easy-to-write as an anti-pattern. The reasoning is that you read code far more than you write it, so techniques that ease writing at the expense of reading are a mistake. This is true, of course: techniques that favour reading over writing should be viewed with extreme caution. The trouble comes when we assume that the two positions form a dichotomy.
+
+Some techniques that produce less code are, in fact, harmful to readability. They are a kind of "code golf." Other techniques for producing less code enhance readability by removing accidental complexity. It would be a mistake to generalize and think of writing less code as being an exercise in writing code at the expense of reading it.
+
+Thus, the `cafeaulife` module was mostly exposition, including only the barest skeleton of code for the program's essential `Cell` and `Square` classes. The `rules` module added some basic arithmetic for counting neighbours and generating canonical squares of the two smallest sizes. The `future` module introduced the HashLife algorithm proper, and the `cache` module introduced the cache that handled canonicalizing squares.
+
+In Café au Life, each module added functionality by adding methods and other members to the `Cell` and `Square` classes (as well as new subclasses and other detritus) when the modules were loaded. There are many ways to accomplish this. For example, languages like Ruby support Mixins to accomplish this goal in the coarse:
+
+```ruby
+
+    # app/models/post.rb
+    class Post
+      include Behaviors::PostBehavior
+    end
+
+    # app/models/behaviors/post_behavior.rb
+    module Behaviors
+      module PostBehavior
+        attr_accessor :blog, :title, :body
+
+        def initialize(attrs={})
+          attrs.each do |k,v| send("#{k}=",v) end 
+        end
+
+        def publish
+          blog.add_entry(self)
+        end
+
+        # ... twenty more methods go here
+      end
+    end
+    
+```
+
+(code from [Mixins: A refactoring anti-pattern](http://blog.steveklabnik.com/posts/2012-05-07-mixins--a-refactoring-anti-pattern))
+
+In CoffeeScript, you can use tools like Underscore's `.extend` to achieve the same goal with similar syntax:
+
+```coffeescript
+
+    class Post
+    
+      constructor: (args...) ->
+        @initialize(args...)
+        
+      initialize: (args...) ->
+    
+    PostBehaviour =
+    
+      initialize: ({@blog, @title, @body}) ->
+      
+      publish: ->
+        @blog.add_entry(this)
+
+      # ... twenty more methods go here
+      
+    _.extend Post.prototype, PostBehaviour
+    
+```
+    
+CoffeeScript also provides syntactic sugar for directly modifying a prototype if your "module" is not a cross-cutting concern:
+
+```coffeescript
+    
+    Post::initialize = ({@blog, @title, @body}) ->
+      
+    Post::publish = ->
+      @blog.add_entry(this)
+
+    # ... twenty more methods go here
+    
+```
+
+[cafe]: http://recursiveuniver.se
+
+These techniques are straightforward, and work well for situations where the functionality to be segregated factors very cleanly at the method level. The sticking point in Café au Life was the `initialize` method, or more specifically, constructors. each chunk of functionality wanted to rewrite the constructor to perform its own initialization.
+
+---
+
+Recent work:
+
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators) and my [other books](http://leanpub.com/u/raganwald).
+* [Cafe au Life](http://recursiveuniver.se), a CoffeeScript implementation of Bill Gosper's HashLife written in the [Williams Style](https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md).
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
+
+---
+
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
