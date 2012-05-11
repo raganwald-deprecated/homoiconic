@@ -1,4 +1,4 @@
-# What is `i`?
+# What is the value of `i`?
 
 [Stefan Tilkov][st] mentioned that he was asked to predict the value of `i` after the following code was evaluated:
 
@@ -54,7 +54,7 @@ I think it's probably a trick question. Off the top of my head, the answer could
 
 Most interestingly, the correct answer seems to be that the result is *undefined* in the C family of languages. That's because it features three assignments to `i` in one statement, and you aren't supposed to have more than one assignment per variable. I find that very interesting! Essentially, C takes the position that if assignments are involved, you cannot define the result of an expression, only a statement. So if I were to ask you:
 
-> `i` has the value `1`. What is the result of evaluating the expression `++i`?
+> `i` has the value one. What is the result of evaluating the expression `++i`?
 
 The correct answer for C is, "That depends, what's in the rest of the statement?" Whereas for Ruby, JavaScript, and many other languages, you can look at an individual expression and the language is explicit about exactly what that expression does, and when (or if) it does it. For such languages, you make a little expression tree in your head and each branch of the tree can be evaluated independently of the other branches. C is a little more complicated. There is some tangling between branches if an assignment is made.
 
