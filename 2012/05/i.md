@@ -60,7 +60,9 @@ The correct answer for C is, "That depends, what's in the rest of the statement?
 
 It seems like a little thing, but for me this is an extremely deep distinction between C and many other languages. There are many, many languages where each expression can be evaluated independently of other expressions in the same "statement." Of course, the value of bindings can be altered by whatever happens before an expression is evaluated, but the expression has a well-defined behaviour. Many languages go so far as to erase the distinction between statements and expressions: Everything's an expression. That makes it much easier to reason about expressions and statements, and much easier to build compilers, interpreters, and other tools. 
 
-I don't have some wonderful insight or suggestion to close with, just that I think the trend in language design is in the direction of everything being an expression and having them all be independent of each other. And I think such languages go a long way towards making "trick questions" like this go away. There's no trick question if the language's semantics aren't tricky to begin with.
+I don't have some wonderful insight or suggestion to close with, just that I think the trend in language design is in the direction of everything being an expression and having them all be independent of each other. And I think such languages go a long way towards making "trick questions" like this go away.
+
+There's no trick question if the language's semantics aren't tricky to begin with.
 
 ---
 
