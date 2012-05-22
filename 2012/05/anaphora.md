@@ -275,14 +275,6 @@ It seems that it is much harder to support anaphora for conditionals in Ruby tha
 
 Anaphora allow us to abbreviate code, hiding parameters and temporary variables for certain special cases. This can be a win for readability for short code snippets where the extra verbiage is almost as long as what you're trying to express. That being said, implementing anaphora in Ruby is a hard design problem, in part because There Is More Than One Way To Do It, and trying to provide complete support leads to ambiguities, inconsistencies, and conflicts. And old school anaphora? They are clearly an acquired taste.
 
-## Flame bait
-
-> "honestly... if someone used that in production on one of my systems, I'd fire them on the spot"--NameRedacted
-
-Well, I know exactly what to say to that. having looked around this big old Internet for a while (insert kindly voice here), I have found more than a few people who consider Symbol#to\_proc to be obfuscative enough that they would refuse to work with anyone who would use such a thing. And yet, large code bases are built with it and work just fine. Likewise, #andand and #try seem like ridiculous attempt to save a few keystrokes to some people but elegant devices to others. I think it comes down to certain code constructs being *idioms*, and each project must decide for itself which idioms are acceptable in its own dialect of Ruby without personalizing things by assuming that anyone comfortable with a different dialect should be fired.
-
-Unless, of course, said programmer knew that he rest of the team hated it and subverted the code review process. I'm guessing NameRedacted's team has a code review process and that you can't really add a new gem to a project and start coding away with it without *someone* noticing the state of affairs between checkin and production, and I'm guessing that in reality there would be a conversation about what the team wants and why.
-
 ## More to read
 
 * [String#to\_proc](http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You can't be serious!?") and its original [blog post](http://weblog.raganwald.com/2007/10/stringtoproc.html "String#to_proc").
