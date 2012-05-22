@@ -143,15 +143,19 @@ i = 1
 (1..10).map { &it.frobbish(i += 1) }
 ```
     
-`i +=1` is only evaluated once, not for each iteration. To "fix" either of these problems, you need to parse Ruby directly. No sane person would do this just for the convenience of using block anaphora in there code, however Github archeologists report that a now-extinct society of programmers did this very thing:
+`i +=1` is only evaluated once, not for each iteration.
+
+### Anaphora via AST Rewriting
+
+To "fix" the problems with using a proxy to implement anaphora, you need to parse and rewrite Ruby directly. No sane person would do this just for the convenience of using block anaphora in their code, however Github archeologists report that a now-extinct society of programmers did this very thing:
 
 The abandonware gem [rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") supported `it`, `its`, or `_` as block anaphora for blocks taking one argument. Similarly to Methodphitamine, you could write:
 
 ```ruby
 (1..10).map{ it * 2 + 1 } # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
 ```
-    
-You could also write all of the following:
+
+And it works just fine. `rewrte_rails` does its magic by parsing the block and rewriting it. So when you write:
 
 ```ruby
 (1..10).map { 1 + it * 2 }
@@ -159,8 +163,17 @@ Person.all(...).select { its.first_name == its.last_name } # and,
 [:foo, :bar, :blitz].map { it.to_proc.call(some_object) }
 (1..100).map { (1/_)+1 }
 ```
-    
-`rewrte_rails` does its magic by parsing the block and rewriting it.
+
+`rewrite_rails` actually rewrites your code into:
+
+```ruby
+(1..10).map { |it| 1 + it * 2 }
+Person.all(...).select { |its| its.first_name == its.last_name } # and,
+[:foo, :bar, :blitz].map { |it| it.to_proc.call(some_object) }
+(1..100).map { |_| (1/_)+1 }
+```
+
+Needless to say, this is a very heavyweight approach to implementing block anaphora, although the result is semantically much cleaner. It's best considered a proof of concept, a pointer towards what could be done if the people governing the Ruby language want to consider baking Anaphora directly into the interpreter.
 
 ## Speculative Digression: Anaphors for conditionals
 
