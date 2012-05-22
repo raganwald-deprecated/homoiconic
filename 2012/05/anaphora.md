@@ -149,13 +149,21 @@ i = 1
 
 To "fix" the problems with using a proxy to implement anaphora, you need to parse and rewrite Ruby directly. No sane person would do this just for the convenience of using block anaphora in their code, however Github archeologists report that a now-extinct society of programmers did this very thing:
 
-The abandonware gem [rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") supported `it`, `its`, or `_` as block anaphora for blocks taking one argument. Similarly to Methodphitamine, you could write:
+The abandonware gem [rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") supported `it`, `its`, or `_` as block anaphora for blocks taking one argument. When writing a block that takes just one parameter, you can use either `it` or `its` as a parameter without actually declaring the parameter using `{ |it| ... }`.
 
-```ruby
-(1..10).map{ it * 2 + 1 } # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
-```
+Like Methodphitimine and Ampex, you can supply parameters:
 
-And it works just fine. `rewrte_rails` does its magic by parsing the block and rewriting it. So when you write:
+    User.all(...).each { it.increment(:visits) }
+
+Or chain methods:
+
+    Person.all(...).map { its.first_name.titlecase }
+    
+Unlike the other gems, `it` needn't be the receiver:
+
+    Person.all(...).each { (name_count[its.first_name] ||= 0) += 1 }
+	  
+This style of code works best when you would naturally use the word "it" or the possessive "its" if you were reading the code aloud to a colleague. (You can use the underscore, `_` instead of `it` or `its` for visual compatibility with certain functional programming languages). `rewrte_rails` does its magic by parsing the block and rewriting it. So when you write:
 
 ```ruby
 (1..10).map { 1 + it * 2 }
