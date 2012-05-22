@@ -4,7 +4,7 @@
 
 > In natural language, an anaphor is an expression which refers back in the conversation. The most common anaphor in English is probably "it," as in "Get the wrench and put it on the table." Anaphora are a great convenience in everyday language--imagine trying to get along without them--but they don't appear much in programming languages. For the most part, this is good. Anaphoric expressions are often genuinely ambiguous, and present-day programming languages are not designed to handle ambiguity.  --Paul Graham, [On Lisp](http://www.paulgraham.com/onlisp.html "On Lisp")
 
-## Old school anaphora
+## Old School Global Variable Anaphora
 
 Anaphora have actually been baked into Ruby from its earliest days. Thanks to its Perl heritage, a number of global variables act like anaphora. For example, `$&` is a global variable containing the last successful regular expression match, or nil if the last attempt to match failed. So instead of writing something like:
 
