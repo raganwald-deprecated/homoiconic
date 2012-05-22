@@ -112,7 +112,7 @@ Also, unexpected things happen if you try to "record" an invocation of #to\_proc
 [:foo, :bar, :blitz].map(&it.to_proc.call(some_object)) # no!
 ```
 
-So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it * 2')` or `Person.all(...).select(&'_.first_name == _.last_name')`, this approach does not. (The implementation above has been simplified to illustrate the idea. Consult the actual [methodphitamine gem source](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") for details on how it is actually implemented: There are performance optimizations as well as a lightweight Maybe Monad hiding under the covers.)
+We'll have another look at these "gotchas" [below](http:#technical-gotchas).
 
 ### Ampex: Block anaphora updated
 
