@@ -8,11 +8,15 @@
 
 Anaphora have actually been baked into Ruby from its earliest days. Thanks to its Perl heritage, a number of global variables act like anaphora. For example, `$&` is a global variable containing the last successful regular expression match, or nil if the last attempt to match failed. So instead of writing something like:
 
-    if match_data = /reg(inald)?/.match(full_name) then puts match_data[0] end
-    
+```ruby
+if match_data = /reg(inald)?/.match(full_name) then puts match_data[0] end
+```
+
 You can use $& as an anaphor and avoid creating another explicit temporary variable, just like the anaphor in a conditional:
 
-    if /reg(inald)?/.match(full_name) then puts $& end 
+```ruby
+if /reg(inald)?/.match(full_name) then puts $& end 
+```
     
 These 'anaphoric' global variables have a couple of advantages. Since they are tied to the use of things like regular expression matching rather than a specific syntactic construct like an if expression, they are more flexible and can be used in more ways. Their behaviour is very well defined.
 
@@ -20,13 +24,19 @@ The disadvantage is that there is a complete hodge-podge of them. Some are read 
 
 Anaphors like the underscore or a special variable called "it" have the advantage of providing a smaller surface area for understanding. Consider Lisp's anaphoric macro where "it" refers to the value of the test expression and nothing more (we ignore the special cases and other ways Ruby expresses conditionals). Compare:
 
-    if /reg(inald)?/.match(full_name) then puts $& end
-    
+```ruby
+if /reg(inald)?/.match(full_name) then puts $& end
+```
+
 To:
 
-    if /reg(inald)?/.match(full_name) then puts it[0] end
-    
-To my eyes, "it" is easier to understand because it is a very general, well-understood anaphor. "It" always matches the test expression. We don't have to worry about whether `$&` is the result of a match or all the text to the left of a match or the command line parameters or what-have-you.
+```ruby
+if /reg(inald)?/.match(full_name) then puts it[0] end
+```
+
+To my eyes, "it" is easier to understand because it is a very general, well-understood anaphor. "It" always matches the test expression. We don't have to worry about whether `$&` is the result of a match or all the text to the left of a match or the command line parameters or what-have-you. Of course, "it" isn't an anaphor in Ruby. It is (forgive the expression) in other languages like Groovy.
+
+Could anaphors be added to Ruby where none previously existed? Yes. Sort of.
 
 ## New School Block Anaphora
 
@@ -38,41 +48,47 @@ Some languages provide a special meta-variable that can be used in a similar way
 
 Jay Phillips implemented a simple block anaphor called [Methodphitamine](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips"). `it` doesn't seem like much of a win when you just want to send a message without parameters. But if you want to do more, such as invoke a method with a parameter, or if you want to chain several methods, you are out of luck. Symbol#to\_proc does not allow you to write `Person.all(...).map(&:first_name[0..3])`. With Methodphitamine you can write:
 
-    Person.all(...).map(&it.first_name[0..3])
+```ruby
+Person.all(...).map(&it.first_name[0..3])
+```
     
 Likewise with Symbol#to\_proc you can't write `Person.all(...).map(&:first_name.titlecase)`. You have to write `Person.all(...).map(&:first_name).map(&:titlecase)`. With Methodphitamine you can write:
 
-    Person.all(...).map(&it.first_name.titlecase)
+```ruby
+Person.all(...).map(&it.first_name.titlecase)
+```
     
 This is easy to read and does what you expect for simple cases. Methodphitamine uses a proxy object to create the illusion of an anaphor, allowing you to invoke method with parameters and to chain more than one method. Here's some code illustrating the technique:
 
-    class AnaphorProxy < BlankSlate
-  
-      def initialize(proc = lambda { |x| x })
-        @proc = proc
-      end
-  
-      def to_proc
-        @proc 
-      end
-  
-      def method_missing(symbol, *arguments, &block)
-        AnaphorProxy.new(
-          lambda { |x| self.to_proc.call(x).send(symbol, *arguments, &block) }
-        )
-      end
-  
-    end
+```ruby
+class AnaphorProxy < BlankSlate
 
-    class Object
-  
-      def it
-        AnaphorProxy.new
-      end
-  
-    end
+  def initialize(proc = lambda { |x| x })
+    @proc = proc
+  end
 
-    (1..10).map(&it * 2 + 1) # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+  def to_proc
+    @proc 
+  end
+
+  def method_missing(symbol, *arguments, &block)
+    AnaphorProxy.new(
+      lambda { |x| self.to_proc.call(x).send(symbol, *arguments, &block) }
+    )
+  end
+
+end
+
+class Object
+
+  def it
+    AnaphorProxy.new
+  end
+
+end
+
+(1..10).map(&it * 2 + 1) # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+```
     
 What happens is that "it" is a method that returns an AnaphorProxy. The default proxy is an object that answers the Identity function in response to #to\_proc. Think about out how `(1..10).map(&it) => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` works: "it" is a method that returns the default AnaphorProxy; using &it calls AnaphorProxy#to\_proc and receives `lambda { |x| x }` in return; #map now applies this to `1..10` and you get `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`.
 
@@ -80,15 +96,21 @@ If you send messages to an AnaphorProxy, you get another AnaphorProxy that "reco
 
 As you might expect from a hack along these lines, there are all sorts of things to trip us up. `(1..10).map(&it * 2 + 1)` works, however what would you expect from:
 
-    (1..10).map(&1 + it * 2) # no!
+```ruby
+(1..10).map(&1 + it * 2) # no!
+```
     
 This does not work with Methodphitamine, and neither does something like:
 
-    Person.all(...).select(&it.first_name == it.last_name) # no!
+```ruby
+Person.all(...).select(&it.first_name == it.last_name) # no!
+```
     
 Also, unexpected things happen if you try to "record" an invocation of #to\_proc:
 
-    [:foo, :bar, :blitz].map(&it.to_proc.call(some_object)) # no!
+```ruby
+[:foo, :bar, :blitz].map(&it.to_proc.call(some_object)) # no!
+```
 
 So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it * 2')` or `Person.all(...).select(&'_.first_name == _.last_name')`, this approach does not. (The implementation above has been simplified to illustrate the idea. Consult the actual [methodphitamine gem source](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") for details on how it is actually implemented: There are performance optimizations as well as a lightweight Maybe Monad hiding under the covers.)
 
@@ -96,9 +118,11 @@ So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it *
 
 [Ampex](https://github.com/rapportive-oss/ampex) is a new block anaphora library. Instead of `it`, Ampex uses `X`:
 
-    ["a", "b", "c"].map &(X * 2)
-      # => ["aa", "bb", "cc"]
-      
+```ruby
+["a", "b", "c"].map &(X * 2)
+  # => ["aa", "bb", "cc"]
+```
+   
 As Conrad Irwin explains in a [blog post](http://cirw.in/blog/ampex) announcing Ampex:
 
 > The ampex library is distributed as a rubygem, so to use it, you can either install it one-off or add it to your Gemfile. We've been using ampex in production for over a year now, and beacuse it's written in pure Ruby, it works on Ruby 1.8.7, Ruby 1.9 and JRuby out of the box.
@@ -107,26 +131,34 @@ As Conrad Irwin explains in a [blog post](http://cirw.in/blog/ampex) announcing 
 
 Using proxy objects (as methodphitimine and ampex do) runs you into that curious problem of trying to implement symmetrical behaviour in object-oriented languages where everything is inherently *asymmetrical*. Block anaphora implemented by proxy objects only work properly when they're a receiver in a block. You cannot, for example, use methodphitimine or ampex to write:
 
-    (1..10).map { 1 + it * 2 }
-    (1..10).map { 1 + X * 2 }
+```ruby
+(1..10).map { 1 + it * 2 }
+(1..10).map { 1 + X * 2 }
+```
     
 You also have certain issues with respect to when arguments are evaluated:
 
-    i = 1
-    (1..10).map { it.frobbish(i += 1) }
+```ruby
+i = 1
+(1..10).map { &it.frobbish(i += 1) }
+```
     
 `i +=1` is only evaluated once, not for each iteration. To "fix" either of these problems, you need to parse Ruby directly. No sane person would do this just for the convenience of using block anaphora in there code, however Github archeologists report that a now-extinct society of programmers did this very thing:
 
 The abandonware gem [rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") supported `it`, `its`, or `_` as block anaphora for blocks taking one argument. Similarly to Methodphitamine, you could write:
 
-    (1..10).map{ it * 2 + 1 } # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+```ruby
+(1..10).map{ it * 2 + 1 } # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+```
     
 You could also write all of the following:
 
-    (1..10).map { 1 + it * 2 }
-    Person.all(...).select { its.first_name == its.last_name } # and,
-    [:foo, :bar, :blitz].map { it.to_proc.call(some_object) }
-    (1..100).map { (1/_)+1 }
+```ruby
+(1..10).map { 1 + it * 2 }
+Person.all(...).select { its.first_name == its.last_name } # and,
+[:foo, :bar, :blitz].map { it.to_proc.call(some_object) }
+(1..100).map { (1/_)+1 }
+```
     
 `rewrte_rails` does its magic by parsing the block and rewriting it.
 
