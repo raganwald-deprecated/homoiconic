@@ -44,7 +44,7 @@ Could anaphors be added to Ruby where none previously existed? Yes. Sort of.
 
 A *block anaphor* is a meta-variable that can be used in a Ruby block to refer to its only parameter. Consider the popular Symbol#to\_proc. Symbol#to\_proc is the standard way to abbreviate blocks that consist of a single method invocation, typically without parameters. For example if you want the first name of a collection of people records, you might use `Person.all(...).map(&:first_name)`. 
 
-Some languages provide a special meta-variable that can be used in a similar way. if `it` was a block anaphor in Ruby, you could write  `Person.all(...).map { it.first_name }`. Of course, Ruby doesn't have block anaphora built in, so people kludged workarounds, and sting#to\_proc was so popular that it became enshrined in the language itself.
+Some languages provide a special meta-variable that can be used in a similar way. if `it` was a block anaphor in Ruby, you could write  `Person.all(...).map { it.first_name }`. Of course, Ruby doesn't have block anaphora built in, so people kludged workarounds, and Symbol#to\_proc was so popular that it became enshrined in the language itself.
 
 Jay Phillips implemented a simple block anaphor called [Methodphitamine](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips"). `it` doesn't seem like much of a win when you just want to send a message without parameters. But if you want to do more, such as invoke a method with a parameter, or if you want to chain several methods, you are out of luck. Symbol#to\_proc does not allow you to write `Person.all(...).map(&:first_name[0..3])`. With Methodphitamine you can write:
 
@@ -90,7 +90,7 @@ end
 (1..10).map(&it * 2 + 1) # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
 ```
     
-What happens is that "it" is a method that returns an AnaphorProxy. The default proxy is an object that answers the Identity function in response to #to\_proc. Think about out how `(1..10).map(&it) => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` works: "it" is a method that returns the default AnaphorProxy; using &it calls AnaphorProxy#to\_proc and receives `lambda { |x| x }` in return; #map now applies this to `1..10` and you get `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`.
+What happens is that "it" is a method that returns an AnaphorProxy. The default proxy is an object that answers the Identity function in response to #to\_proc. Think about how `(1..10).map(&it) => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` works: "it" is a method that returns the default AnaphorProxy; using &it calls AnaphorProxy#to\_proc and receives `lambda { |x| x }` in return; #map now applies this to `1..10` and you get `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`.
 
 If you send messages to an AnaphorProxy, you get another AnaphorProxy that "records" the messages you send. So `it * 2 + 1` evaluates to an AnaphorProxy that returns `lambda { |x| lambda { |x| lambda { |x| x }.call(x) * 2 }.call(x) + 1 }`. This is equivalent to `lambda { |x| x * 2 + 1}` but more expensive to compute and dragging with it some closed over variables.
 
