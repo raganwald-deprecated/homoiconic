@@ -163,7 +163,7 @@ Unlike the other gems, `it` needn't be the receiver:
 
     Person.all(...).each { (name_count[its.first_name] ||= 0) += 1 }
 	  
-This style of code works best when you would naturally use the word "it" or the possessive "its" if you were reading the code aloud to a colleague. (You can use the underscore, `_` instead of `it` or `its` for visual compatibility with certain functional programming languages). `rewrte_rails` does its magic by parsing the block and rewriting it. So when you write:
+This style of code works best when you would naturally use the word "it" or the possessive "its" if you were reading the code aloud to a colleague. (You can use the underscore, `_` instead of `it` or `its` for visual compatibility with certain functional programming languages)Stri. `rewrte_rails` does its magic by parsing the block and rewriting it. So when you write:
 
 ```ruby
 (1..10).map { 1 + it * 2 }

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>2012/01/reuseable-abstractions.md</string>
+	<string>2012/05/anaphora.md</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -35,49 +35,121 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>2012/01/captain-obvious-on-javascript.md</key>
+		<key>2009-09-22/anaphora.md</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>146</integer>
+				<integer>0</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>112</integer>
+			<integer>0</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>94</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>159</integer>
+				<integer>0</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>85</integer>
 				<key>line</key>
-				<integer>146</integer>
+				<integer>250</integer>
 			</dict>
+		</dict>
+		<key>2012/01/captain-obvious-on-javascript.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>112</integer>
 		</dict>
 		<key>2012/01/reuseable-abstractions.md</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>39</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>11</integer>
+		</dict>
+		<key>2012/05/anaphora.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>277</integer>
+				<key>line</key>
+				<integer>165</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>140</integer>
+		</dict>
+		<key>2012/05/i.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>64</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>31</integer>
+		</dict>
+		<key>2012/05/read_only_code.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>85</integer>
+				<key>line</key>
+				<integer>156</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>106</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>159</integer>
+				<key>line</key>
+				<integer>143</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>85</integer>
+				<key>line</key>
+				<integer>156</integer>
+			</dict>
 		</dict>
 		<key>dumping_ground/coffeescript_and_underscore.md</key>
 		<dict>
@@ -96,13 +168,14 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>dumping_ground/coffeescript_and_underscore.md</string>
-		<string>2012/01/reuseable-abstractions.md</string>
-		<string>2012/01/captain-obvious-on-javascript.md</string>
+		<string>2012/05/read_only_code.md</string>
+		<string>2012/05/i.md</string>
+		<string>2009-09-22/anaphora.md</string>
+		<string>2012/05/anaphora.md</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{40, 0}, {1931, 1418}}</string>
+	<string>{{330, -0}, {1641, 1418}}</string>
 </dict>
 </plist>

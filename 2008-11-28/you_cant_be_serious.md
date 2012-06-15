@@ -187,7 +187,7 @@ Seriously.
 ---
 
 * [recursive\_combinators.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/recursive_combinators.rb)
-* [string\_to\_proc.rb](http:string_to_proc.rb)
+* [string\_to\_proc.rb](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/string_to_proc.rb)
 
 _More on recursive combinators_: [Refactoring Methods with Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-23/recursive_combinators.md#readme), and [Practical Recursive Combinators](http://github.com/raganwald/homoiconic/tree/master/2008-11-26/practical_recursive_combinators.md#readme).
 
