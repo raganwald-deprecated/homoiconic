@@ -103,7 +103,7 @@ So I did.
 
 **Rewriting #returning**
 
-The [RewriteRails](http://github.com/raganwald/rewrite_rails/tree/master) plug-in adds syntactic abstractions like [Andand](http://github.com/raganwald/rewrite_rails/tree/master/doc/andand.textile "") and [String to Block](http://github.com/raganwald/rewrite_rails/tree/master/doc/string_to_block.md#readme "") to Rails projects [without monkey-patching](http://avdi.org/devblog/2008/02/23/why-monkeypatching-is-destroying-ruby/ "Monkeypatching is Destroying Ruby"). RewriteRails now includes its own version of #returning that overrides the #returning shipping with Rails.
+The [RewriteRails](http://github.com/raganwald-deprecated/rewrite_rails/tree/master) plug-in adds syntactic abstractions like [Andand](http://github.com/raganwald-deprecated/rewrite_rails/tree/master/doc/andand.textile "") and [String to Block](http://github.com/raganwald-deprecated/rewrite_rails/tree/master/doc/string_to_block.md#readme "") to Rails projects [without monkey-patching](http://avdi.org/devblog/2008/02/23/why-monkeypatching-is-destroying-ruby/ "Monkeypatching is Destroying Ruby"). RewriteRails now includes its own version of #returning that overrides the #returning shipping with Rails.
 
 When RewriteRails is processing source code, it turns code like this:
 
@@ -144,8 +144,8 @@ Curiosity. It's easy to dismiss programmers who accidentally misuse features lik
 
 **More**
 
-* [RewriteRails](http://github.com/raganwald/rewrite_rails/tree/master/README.md)
-* [returning.rb](http://github.com/raganwald/rewrite_rails/tree/master/lib/rewrite_rails/returning.rb "")
+* [RewriteRails](http://github.com/raganwald-deprecated/rewrite_rails/tree/master/README.md)
+* [returning.rb](http://github.com/raganwald-deprecated/rewrite_rails/tree/master/lib/rewrite_rails/returning.rb "")
 
 ---
 

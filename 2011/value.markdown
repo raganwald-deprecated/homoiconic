@@ -91,5 +91,5 @@ Recent work:
 [ss]: http://www.theserverside.com/news/thread.tss?track=NL-461&ad=808081&thread_id=61622&asrc=EM_NLN_13145929&uid=2780877
 [tw]: https://twitter.com/#!/axeolotl/statuses/25634042510581760
 [r]: http://github.com/raganwald
-[name]: https://github.com/raganwald/rewrite_rails/blob/master/doc/call_by_name.md#readme "Call by Name in RewriteRails"
+[name]: https://github.com/raganwald-deprecated/rewrite_rails/blob/master/doc/call_by_name.md#readme "Call by Name in RewriteRails"
 [p]: http://www.reddit.com/r/programming/comments/f1d7r/huge_war_over_whether_java_is_pass_by_reference/

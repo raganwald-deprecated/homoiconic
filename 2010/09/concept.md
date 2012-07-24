@@ -44,15 +44,15 @@ To me, andand is a very small software product. It has users, it has a very well
 
 After andand, I became curious about monads and about modifying the way Ruby invoked methods on objects. I wondered to myself, *If andand was imply a specific case of a more general things, what would that thing look like?*. That question, you will note, has no "why" in it, no transition from what came before to what will come after. Answering that question creates concept software, not a software product.
 
-And indeed, I created the [Invocation Control Kit](http://github.com/raganwald/ick "raganwald's ick at master - GitHub"), "an ad hoc, informally-specified, bug-ridden, slow implementation of half of Monads" to answer the question. If you listen carefully, you can hear the crickets chirping around its download link.
+And indeed, I created the [Invocation Control Kit](http://github.com/raganwald-deprecated/ick "raganwald's ick at master - GitHub"), "an ad hoc, informally-specified, bug-ridden, slow implementation of half of Monads" to answer the question. If you listen carefully, you can hear the crickets chirping around its download link.
 
 When I wrote Ick, I had no illusions that it would become a product. I deliberately discarded any notion that I needed to make it easy to learn, or popular, or even superior for solving certain problems. I set out to find out how far I could abstract and generalize the idea of andand. I was working with a software deign the way a materials engineer might destructively test a piece of carbon fibre: I was abusing it to find out how far it would go before breaking.
 
-With andand and Ick, I went from product to concept. I later went in reverse: I created a concept called [Rewrite](http://github.com/raganwald/rewrite "raganwald's rewrite at master - GitHub"). I had a specific problem I wanted to solve, namely the egregious monkey-patching common in Ruby programs. However, I wrote Rewrite without any concern for making it adoptable. I set out to determine what and how without saying who, when, or why.
+With andand and Ick, I went from product to concept. I later went in reverse: I created a concept called [Rewrite](http://github.com/raganwald-deprecated/rewrite "raganwald's rewrite at master - GitHub"). I had a specific problem I wanted to solve, namely the egregious monkey-patching common in Ruby programs. However, I wrote Rewrite without any concern for making it adoptable. I set out to determine what and how without saying who, when, or why.
 
 I even presented my concept product at [Rubyfringe](http://www.infoq.com/presentations/braithwaite-rewrite-ruby "InfoQ: Ruby.rewrite(Ruby)"), an un-conference. I didn't ask people to use it, I held it up as proof that there was at least one alternative to monkey-patching, and challenged the community to invent a better way.
 
-Well, inspirational speaking is nice, but as a professional programmer I needed a product. So I started from scratch and used what I learned from writing Rewrite to--ummm--rewrite it as [Rewrite Rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub"). Rewrite Rails was a product: It was written specifically to make it easy to add to existing projects. I used it myself on a shipping product. My mission for Rewrite Rails very definitely addressed the questions of who and why.
+Well, inspirational speaking is nice, but as a professional programmer I needed a product. So I started from scratch and used what I learned from writing Rewrite to--ummm--rewrite it as [Rewrite Rails](http://github.com/raganwald-deprecated/rewrite_rails "raganwald's rewrite_rails at master - GitHub"). Rewrite Rails was a product: It was written specifically to make it easy to add to existing projects. I used it myself on a shipping product. My mission for Rewrite Rails very definitely addressed the questions of who and why.
 
 So here we have two products and two concepts. In one case, the product inspired the concept. In the other, the concept inspired the product. Although they might seem to be inverses of each other, in both cases the impetus for the concept was *curiosity*.
 
@@ -74,7 +74,7 @@ And this brings us to a satisfactory answer to the question. I write concept sof
 
 ---
 
-p.s. My recent little product releases include [Wood &amp; Stones](http://github.com/raganwald/wood_and_stones "raganwald's wood_and_stones at master - GitHub"), [jQuery Combinators](http://github.com/raganwald/JQuery-Combinators "raganwald's JQuery-Combinators at master - GitHub"), [jQuery Predicates](http://github.com/raganwald/jQuery-Predicates "raganwald's jQuery-Predicates at master - GitHub"), and [iGesture](http://github.com/raganwald/iGesture "raganwald's iGesture at master - GitHub"). Feedback about "why" or "why not" is always welcome... I wrote these things to be used!
+p.s. My recent little product releases include [Wood &amp; Stones](http://github.com/raganwald/wood_and_stones "raganwald's wood_and_stones at master - GitHub"), [jQuery Combinators](http://github.com/raganwald/JQuery-Combinators "raganwald's JQuery-Combinators at master - GitHub"), [jQuery Predicates](http://github.com/raganwald/jQuery-Predicates "raganwald's jQuery-Predicates at master - GitHub"), and [iGesture](http://github.com/raganwald-deprecated/iGesture "raganwald's iGesture at master - GitHub"). Feedback about "why" or "why not" is always welcome... I wrote these things to be used!
 
 ----
 

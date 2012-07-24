@@ -76,6 +76,6 @@ Recent work:
 [ws]: http://raganwald.github.com/wood_and_stones
 [wscode]: http://github.com/raganwald/wood_and_stones
 [raganwaldcode]: http://github.com/raganwald/
-[ig]: http://github.com/raganwald/iGesture
+[ig]: http://github.com/raganwald-deprecated/iGesture
 [jqc]: http://github.com/raganwald/JQuery-Combinators
 [peck]: http://github.com/davepeck/appengine-go

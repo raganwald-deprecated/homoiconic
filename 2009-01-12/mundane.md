@@ -5,7 +5,7 @@ A thought crossed my mind: Many people complain about [Ruby on Rails](http://rub
 
 Consider model classes. A few declarations... `acts_as_inscrutable`, `acts_as_magical`... And the model class gains a whole bunch of class and instance methods, plus often a whole bunch of `method_missing` behaviours that "behave like" methods. Some people complain it is hard to figure out what methods a model really has.
 
-What if [RewriteRails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master &mdash; GitHub") were to rewrite ActiveRecord model class declarations to "mundane-ify" these magical methods? In other words, after a class has been loaded and all of the magic performed, RewriteRails writes out a `.rb` file that has the source code for all of the magic methods as if the programmer had written them in by hand.
+What if [RewriteRails](http://github.com/raganwald-deprecated/rewrite_rails "raganwald's rewrite_rails at master &mdash; GitHub") were to rewrite ActiveRecord model class declarations to "mundane-ify" these magical methods? In other words, after a class has been loaded and all of the magic performed, RewriteRails writes out a `.rb` file that has the source code for all of the magic methods as if the programmer had written them in by hand.
 
 This `.rb` file can be placed somewhere that Rails can't find it, this is a case of documentation. Now a programmer can read the mundane-ified `.rb` file to get an idea of what methods the model class actually has.
 

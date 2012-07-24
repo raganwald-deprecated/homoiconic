@@ -123,7 +123,7 @@ NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/com
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
-[ig]: http://github.com/raganwald/iGesture
+[ig]: http://github.com/raganwald-deprecated/iGesture
 [each]: http://api.jquery.com/jQuery.each/ "jQuery.each()"
 [blocks]: http://sphotos.ak.fbcdn.net/hphotos-ak-snc3/hs506.snc3/26589_10150173040005714_835045713_12122576_6398063_n.jpg
 [hn]: http://news.ycombinator.com/item?id=1270842

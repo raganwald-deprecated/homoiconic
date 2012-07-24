@@ -1,7 +1,7 @@
 My Objection to Extension Methods
 ===
 
-The other day I pushed an update to Rewrite Rails. The new functionality supports writing [extension methods](http://en.wikipedia.org/wiki/Extension_method "Extension method - Wikipedia, the free encyclopedia") in your Ruby on Rails projects ([documentation here](http://github.com/raganwald/rewrite_rails/blob/master/doc/extension_methods.md#readme "Extension Methods in Rewrite Rails")). To grossly oversimplify, let's say you are writing some sort of scuba dive planning program, and you want to write things like:
+The other day I pushed an update to Rewrite Rails. The new functionality supports writing [extension methods](http://en.wikipedia.org/wiki/Extension_method "Extension method - Wikipedia, the free encyclopedia") in your Ruby on Rails projects ([documentation here](http://github.com/raganwald-deprecated/rewrite_rails/blob/master/doc/extension_methods.md#readme "Extension Methods in Rewrite Rails")). To grossly oversimplify, let's say you are writing some sort of scuba dive planning program, and you want to write things like:
 
     33.fsw.in_ata
     (4.5).ata.in_fsw

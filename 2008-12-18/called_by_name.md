@@ -316,7 +316,7 @@ Of course, `called_by_name` does so with lots of anonymous functions, and that i
 Update (December 18, 2008)
 ---
 
-I recently discovered that [rewrite](http://github.com/raganwald/rewrite/tree "raganwald's rewrite at master &mdash; GitHub") does not work with the latest versions of [ParseTree](http://rubyforge.org/projects/parsetree/ "RubyForge: ParseTree - ruby parse tree tools: Project Info"), Ruby2Ruby and their dependencies. The underlying representation of ruby code seems to have changed. For example, there are no longer any `:dvar` nodes, just `:lvar` nodes. What fun!
+I recently discovered that [rewrite](http://github.com/raganwald-deprecated/rewrite/tree "raganwald's rewrite at master &mdash; GitHub") does not work with the latest versions of [ParseTree](http://rubyforge.org/projects/parsetree/ "RubyForge: ParseTree - ruby parse tree tools: Project Info"), Ruby2Ruby and their dependencies. The underlying representation of ruby code seems to have changed. For example, there are no longer any `:dvar` nodes, just `:lvar` nodes. What fun!
 
 I am fixing this, and my first priority is to make `called_by_name` work again.
 

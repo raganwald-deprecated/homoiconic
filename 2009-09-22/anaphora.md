@@ -77,7 +77,7 @@ So while String#to\_proc allows you to write things like `(1..10).map(&'1 + it *
 
 **UPDATE: Block anaphora in rewrite_rails**
 
-[rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") supports `it`, `its`, or `_` as block anaphora for blocks taking one argument. Similarly to Methodphitamine, you can write:
+[rewrite_rails](http://github.com/raganwald-deprecated/rewrite_rails "raganwald's rewrite_rails at master - GitHub") supports `it`, `its`, or `_` as block anaphora for blocks taking one argument. Similarly to Methodphitamine, you can write:
 
     (1..10).map{ it * 2 + 1 } # => [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
     
@@ -127,7 +127,7 @@ Reading about Lisp's anaphoric macros made me wonder whether anaphora for condit
 
     if big_long_calculation(): it.foo end
     
-This is relatively easy to accomplish using [rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub"). In the most naïve case, you want to rewrite all of your if statements such that:
+This is relatively easy to accomplish using [rewrite_rails](http://github.com/raganwald-deprecated/rewrite_rails "raganwald's rewrite_rails at master - GitHub"). In the most naïve case, you want to rewrite all of your if statements such that:
 
     if big_long_calculation()
       it.foo
@@ -232,7 +232,7 @@ Anaphora allow us to abbreviate code, hiding parameters and temporary variables 
 * [String#to\_proc](http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You can't be serious!?") and its original [blog post](http://weblog.raganwald.com/2007/10/stringtoproc.html "String#to_proc").
 * [Methodphitamine](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") and its original [blog post](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips")
 * [Anaphoric macros](http://www.bookshelf.jp/texi/onlisp/onlisp_15.html "Onlisp:  Anaphoric Macros")
-* [rewrite_rails](http://github.com/raganwald/rewrite_rails "raganwald's rewrite_rails at master - GitHub") contains an improved implementation of String#to\_proc.
+* [rewrite_rails](http://github.com/raganwald-deprecated/rewrite_rails "raganwald's rewrite_rails at master - GitHub") contains an improved implementation of String#to\_proc.
 * A [usenet discussion](http://groups.google.com/group/ruby-talk-google/browse_thread/thread/26445dcef22f5a5/1772d0c487d4c570?hl=en&amp;lnk=ol&amp; "Introducing the &quot;it&quot; keyword") about anaphora in Ruby.
 * [@RobertFischer](http://twitter.com/RobertFischer "Robert Fischer") pointed out that Groovy implements Block Anaphora using exactly the same syntax as rewrite\_rails, as well as mentioning that Groovy provides a special operator, `?.`, for the Maybe Monad.
 * Perl has some [anaphora of its own](http://www.wellho.net/mouth/969_Perl-and-.html "Perl - $_ and @_").

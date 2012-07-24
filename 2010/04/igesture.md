@@ -93,10 +93,10 @@ NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/com
 [go]: http://github.com/raganwald/wood_and_stones
 [sw]: http://github.com/raganwald/homoiconic/blob/master/2010/03/significant_whitespace.md#readme "Significant Whitespace"
 [jg]: http://web.siruna.com/nico/jgesture/documentation.html
-[gestures]: /raganwald/iGesture/raw/master/about/gestures.png  "Example Gestures"
+[gestures]: /raganwald-deprecated/iGesture/raw/master/about/gestures.png  "Example Gestures"
 [eventified]: http://github.com/raganwald/wood_and_stones/blob/4562b25a40b3ef2e22aec9811921f622f84a2bff/public/javascripts/jgesture.eventified.js "jgesture.eventified.js"
-[ig]: http://github.com/raganwald/iGesture
-[igreadme]: http://github.com/raganwald/iGesture#readme
+[ig]: http://github.com/raganwald-deprecated/iGesture
+[igreadme]: http://github.com/raganwald-deprecated/iGesture#readme
 [nc]: http://raganwald.github.com/iGesture/naughts_and_crosses.html
-[oxox]: /raganwald/iGesture/raw/master/about/oxox.png  "Naughts and Crosses"
+[oxox]: /raganwald-deprecated/iGesture/raw/master/about/oxox.png  "Naughts and Crosses"
 [gojs]: http://github.com/raganwald/wood_and_stones/blob/master/public/javascripts/application.js "application.js"

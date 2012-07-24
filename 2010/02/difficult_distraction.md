@@ -157,14 +157,14 @@ Recent work:
 [andand]: http://andand.rubyforge.org/ "Object#andand"
 [ast]: http://en.wikipedia.org/wiki/Abstract_syntax_tree "Abstract syntax tree - Wikipedia, the free encyclopedia"
 [bf]: http://github.com/raganwald/homoiconic/blob/master/2010/01/beautiful_failure.markdown "Beautiful Failure"
-[cbn]: http://github.com/raganwald/rewrite_rails/blob/master/doc/call_by_name.md#readme
+[cbn]: http://github.com/raganwald-deprecated/rewrite_rails/blob/master/doc/call_by_name.md#readme
 [comment]: http://news.ycombinator.com/item?id=1097422
 [cs]: http://jashkenas.github.com/coffee-script/
-[em]: http://github.com/raganwald/rewrite_rails/blob/master/doc/extension_methods.md#readme
+[em]: http://github.com/raganwald-deprecated/rewrite_rails/blob/master/doc/extension_methods.md#readme
 [haml]: http://haml-lang.com/ "Haml and Sass"
 [hh]: http://developers.facebook.com/news.php?blog=1&story=358
 [hn]: http://news.ycombinator.com/item?id=1098773 "A Difficult Distraction on Hacker News"
-[into]: http://github.com/raganwald/rewrite_rails/blob/master/doc/into.md#readme
+[into]: http://github.com/raganwald-deprecated/rewrite_rails/blob/master/doc/into.md#readme
 [kestrel]: http://github.com/raganwald/homoiconic/blob/master/2008-10-29/kestrel.markdown "Kestrels"
 [ls]: http://www.asana.com/luna
 [matz]: http://casperfabricius.com/site/2008/04/02/ruby-fools-matzs-keynote/ "Matz’s keynote"
@@ -172,13 +172,13 @@ Recent work:
 [mp]: http://jicksta.com/posts/the-methodphitamine "The Mthodphitamine"
 [node]: http://nodejs.org/
 [proggit]: http://www.reddit.com/r/programming/comments/ay2bn/a_difficult_distraction_my_experience_creating_a/
-[ra]: http://github.com/raganwald/rewrite_rails/blob/master/doc/andand.textile#readme
-[returning]: http://github.com/raganwald/rewrite_rails/blob/master/doc/returning.md#readme
+[ra]: http://github.com/raganwald-deprecated/rewrite_rails/blob/master/doc/andand.textile#readme
+[returning]: http://github.com/raganwald-deprecated/rewrite_rails/blob/master/doc/returning.md#readme
 [rewrite]: http://rewrite.rubyforge.org/
 [rf]: http://www.infoq.com/presentations/braithwaite-rewrite-ruby "Video of the Ruby.rewrite(Ruby) presentation"
 [rhino]: http://weblog.raganwald.com/2007/07/javascript-on-jvm-in-fifteen-minutes.html "How to Run JavaScript on the JVM in Just Fifteen Minutes"
-[rr]: http://github.com/raganwald/rewrite_rails
+[rr]: http://github.com/raganwald-deprecated/rewrite_rails
 [s2p]: http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You Can't be Serious!"
-[source]: http://github.com/raganwald/rewrite_rails/blob/master/lib/rewrite_rails/block_anaphora.rb "block_anaphora.rb"
+[source]: http://github.com/raganwald-deprecated/rewrite_rails/blob/master/lib/rewrite_rails/block_anaphora.rb "block_anaphora.rb"
 [thrush]: http://github.com/raganwald/homoiconic/blob/master/2008-10-30/thrush.markdown#readme "The Thrush"
 [w]: http://www.fogcreek.com/FogBugz/blog/post/The-Origin-of-Wasabi.aspx "The Origin of Wasabi"

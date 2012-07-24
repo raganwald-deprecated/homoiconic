@@ -1,7 +1,7 @@
 Ruby Job Fair
 ===
 
-I will be "presenting myself" at Unspace's [Ruby Job Fair](http://rubyjobfair.ca/) on June 6, 2009. No, I am not on my knees begging anyone for employment, nor am I looking to hire a Sith Apprentice to initiate into the dark side of the [Ruby Rewriting](http://github.com/raganwald/rewrite_rails/tree/master "Rewrite Rails") arts. I have a completely different motivation.
+I will be "presenting myself" at Unspace's [Ruby Job Fair](http://rubyjobfair.ca/) on June 6, 2009. No, I am not on my knees begging anyone for employment, nor am I looking to hire a Sith Apprentice to initiate into the dark side of the [Ruby Rewriting](http://github.com/raganwald-deprecated/rewrite_rails/tree/master "Rewrite Rails") arts. I have a completely different motivation.
 
 The Ruby Job Fair format is like a science fair: You have a "poster" to display your work, and absolutely no computers are allowed. This can be intimidating to people. What do you put on the poster? Let's read this famous story about Richard Hamming:
 

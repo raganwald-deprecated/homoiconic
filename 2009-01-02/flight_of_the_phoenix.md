@@ -1,7 +1,7 @@
 The Flight of the Phoenix
 ===
 
-I am working on a new nano-project, the [RewriteRails](https://github.com/raganwald/rewrite_rails/tree) plug-in. RewriteRails applies some of my old [Rewrite Gem](https://github.com/raganwald/rewrite/tree)'s code rewriting to Ruby projects.
+I am working on a new nano-project, the [RewriteRails](https://github.com/raganwald-deprecated/rewrite_rails/tree) plug-in. RewriteRails applies some of my old [Rewrite Gem](https://github.com/raganwald-deprecated/rewrite/tree)'s code rewriting to Ruby projects.
 
 Turning Back the Hands of Time
 ---
@@ -16,7 +16,7 @@ At that time I had already reached certain decisions about the role blogging (or
 
 So, I decided to create some form of code rewriting or macro facility for Ruby. I already had certain opinions about  the value of syntactic abstractions, and I had some experience writing tools that write Java code, so I figured I had a fair shot of actually finishing something worth discussing. At the very least, I figured the adventure of trying would provide grist for a presentation even if I failed.
 
-As things turned out, I did make something that worked, the [Rewrite Gem](https://github.com/raganwald/rewrite/tree). In perverse celebration I decided to make my presentation in the form of code only. Okay, there was one little bit of Marx Brothers to kick it off, but everything else was code, and working code at that. (My presentation is on line at [InfoQ](http://www.infoq.com/presentations/braithwaite-rewrite-ruby). As you can see, I was seriously short of sleep. That's my excuse for giggling so much!)
+As things turned out, I did make something that worked, the [Rewrite Gem](https://github.com/raganwald-deprecated/rewrite/tree). In perverse celebration I decided to make my presentation in the form of code only. Okay, there was one little bit of Marx Brothers to kick it off, but everything else was code, and working code at that. (My presentation is on line at [InfoQ](http://www.infoq.com/presentations/braithwaite-rewrite-ruby). As you can see, I was seriously short of sleep. That's my excuse for giggling so much!)
 
 And then I put the Rewrite Gem aside for some little time. And last month, I picked it up again and discovered that it was broken. It seems that in my haste to put it out there, I failed to take some hygienic precautions like carefully documenting the version dependencies, and when [ParseTree](http://rubyforge.org/projects/parsetree/ "RubyForge: ParseTree - ruby parse tree tools: Project Info") and [Ruby2Ruby](http://seattlerb.rubyforge.org/ruby2ruby/ "seattlerb's ruby2ruby-1.2.1 Documentation") got some upgrades, Rewrite broke.
 
@@ -27,7 +27,7 @@ Whither Rewrite?
 
 So, the Rewrite Gem broke when ParseTree and Ruby2Ruby changed some of their representations. I thought about either freezing the versions Rewrite needed or upgrading the gem, but then I had a remarkably stupid idea: Why not try to make it a little more useful than a proof-of-concept?
 
-So, I started [RewriteRails](https://github.com/raganwald/rewrite_rails/tree). The idea is remarkably simple: You are writing a Rails project. You want to use things like [`andand`](http://weblog.raganwald.com/2008/01/objectandand-objectme-in-ruby.html "Object#andand & Object#me in Ruby") and [`String#to_proc`](http://weblog.raganwald.com/2007/10/stringtoproc.html "String#to_proc"). But you either have a fastidious disdain for opening core classes and slinging proxy objects around, a fanatical need for speed, or you want to be able to rip all that stuff out if you grow bored with it.
+So, I started [RewriteRails](https://github.com/raganwald-deprecated/rewrite_rails/tree). The idea is remarkably simple: You are writing a Rails project. You want to use things like [`andand`](http://weblog.raganwald.com/2008/01/objectandand-objectme-in-ruby.html "Object#andand & Object#me in Ruby") and [`String#to_proc`](http://weblog.raganwald.com/2007/10/stringtoproc.html "String#to_proc"). But you either have a fastidious disdain for opening core classes and slinging proxy objects around, a fanatical need for speed, or you want to be able to rip all that stuff out if you grow bored with it.
 
 RewriteRails solves all of these problems I invented that nobody is complaining about.
 

@@ -1,7 +1,7 @@
 RewriteRails
 ===
 
-A few days ago I wrote about [RewriteRails](http://github.com/raganwald/rewrite_rails/tree/master "raganwald's rewrite_rails at master &mdash; GitHub"). I have written up some documentation and as of now, I am asking absolutely everyone--this means you--to install it into your project. The best way to move it--and Ruby as a whole--forward is to make this bullet-proof.
+A few days ago I wrote about [RewriteRails](http://github.com/raganwald-deprecated/rewrite_rails/tree/master "raganwald's rewrite_rails at master &mdash; GitHub"). I have written up some documentation and as of now, I am asking absolutely everyone--this means you--to install it into your project. The best way to move it--and Ruby as a whole--forward is to make this bullet-proof.
 
 Now, RewriteRails is not for everyone. Kindly pass this message on to some more deserving soul if you:
 

@@ -136,18 +136,18 @@ NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/com
 
 [drag]: http://raganwald.github.com/iGesture/drag.html
 [slave]: /raganwald/homoiconic/raw/master/2010/04/slave_i.png "Slave I in Low Earth Orbit"
-[ig]: /raganwald/iGesture "iGesture is a jQuery plugin for adding gesture support to web applications"
+[ig]: /raganwald-deprecated/iGesture "iGesture is a jQuery plugin for adding gesture support to web applications"
 [affordance]: http://en.wikipedia.org/wiki/Affordance
 [go]: http://github.com/raganwald/wood_and_stones "Go"
 [band]: /raganwald/homoiconic/raw/master/2010/04/rubberband.jpg
 [home]: /raganwald/homoiconic/raw/master/2010/04/home_screen.png
-[code]: http://github.com/raganwald/iGesture/tree/gh-pages
+[code]: http://github.com/raganwald-deprecated/iGesture/tree/gh-pages
 [special]: http://benalman.com/news/2010/03/jquery-special-events/
-[catch_22]: http://github.com/raganwald/iGesture/issues/closed/#issue/22 "iGesture Issue #22"
+[catch_22]: http://github.com/raganwald-deprecated/iGesture/issues/closed/#issue/22 "iGesture Issue #22"
 [dsble]: http://plugins.jquery.com/files/jquery.dragscroll.js.txt
 [ds]: http://plugins.jquery.com/files/jquery.dragscroll.js.txt
-[dsjs]: http://github.com/raganwald/iGesture/blob/gh-pages/dragscrollable.js
+[dsjs]: http://github.com/raganwald-deprecated/iGesture/blob/gh-pages/dragscrollable.js
 [dont_yak]: http://sethgodin.typepad.com/seths_blog/2005/03/dont_shave_that.html "Don't Shave That Yak!"
 [yak]: http://www.catb.org/~esr/jargon/html/Y/yak-shaving.html
-[hold]: http://github.com/raganwald/iGesture/issues/closed/#issue/20 "iGesture Issue #20"
+[hold]: http://github.com/raganwald-deprecated/iGesture/issues/closed/#issue/20 "iGesture Issue #20"
 [hn]: http://news.ycombinator.com/item?id=1277481 "Discuss this post"

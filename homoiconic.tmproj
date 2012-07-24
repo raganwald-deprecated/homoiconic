@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>2012/05/anaphora.md</string>
+	<string>2008-11-28/you_cant_be_serious.md</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -34,6 +34,36 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>2008-11-28/you_cant_be_serious.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>103</integer>
+				<key>line</key>
+				<integer>189</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>160</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>189</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>103</integer>
+				<key>line</key>
+				<integer>189</integer>
+			</dict>
 		</dict>
 		<key>2009-09-22/anaphora.md</key>
 		<dict>
@@ -98,9 +128,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>277</integer>
+				<integer>212</integer>
 				<key>line</key>
-				<integer>165</integer>
+				<integer>149</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -172,6 +202,7 @@
 		<string>2012/05/i.md</string>
 		<string>2009-09-22/anaphora.md</string>
 		<string>2012/05/anaphora.md</string>
+		<string>2008-11-28/you_cant_be_serious.md</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
