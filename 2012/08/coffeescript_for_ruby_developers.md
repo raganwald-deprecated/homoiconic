@@ -28,8 +28,6 @@ Decorating Methods in CoffeeScript
 
 As you know, Ruby and JavaScript both have Object Models. And objects have methods. And good software often involves *decorating* a method. Let's start off by agreeing on what I mean in this context. By "decorating a method," I mean adding some functionality to a method external to the method's body. The functionality you're adding is a "method decorator." (Some people call the mechanism the decorator, but let's use my definition in this essay.)
 
-![Ruby Programmers](http://i.minus.com/ibvAEhE5ovIyjF.png)
-
 If you've written a `before_validation` method in Ruby on Rails, you've written a method decorator. You're decorating ActiveRecord's baked-in validation code with something you want done before it does its validation. Likewise, ActiveController's `before` filters do exactly the same thing, albeit with a different syntax.
 
 These are good things. Without decorators, you end up "tangling" every method with a lot of heterogenous cross-cutting concerns:
@@ -62,6 +60,8 @@ These are good things. Without decorators, you end up "tangling" every method wi
           controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
         loggingMechanism.log 'debug', 'leaving switchToReadMode'
         
+(These are not meant to be serious examples, but just credible enough that we can grasp the idea of cross-cutting concerns and tangling.)
+
 Faced with this problem and some Ruby experience, an intelligent but not particularly wise developer might rush off and write something like [YouAreDaChef][y], an Aspect-Oriented Framework for JavaScript. With YouAreDaChef, you can "untangle" the cross-cutting concerns from the primary purpose of each method:
 
 [y]: https://github.com/raganwald/YouAreDaChef "YouAreDaChef, AOP for JavaScript and CoffeeScript"
