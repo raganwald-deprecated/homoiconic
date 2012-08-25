@@ -3,15 +3,9 @@
 Thinking in CoffeeScript
 ===
 
-I spotted a funny joke on Twitter the other day: "I can always tell when a Ruby developer writes JavaScript, because it's not JavaScript, it's CoffeeScript."——[Vance Lucas][vlucas]
+I spotted a funny joke on Twitter the other day: *"I can always tell when a Ruby developer writes JavaScript, because it's not JavaScript, it's CoffeeScript."*——[Vance Lucas][vlucas]. Besides having a little fun with people's tribal inclinations, this tweet reminded me of an old saying that I have found to be very deep:
 
 [vlucas]: http://twitter.com/vlucas
-
-There *is* a grain of truth in this jape. Ruby programmers have become accustomed to a language that is fairly expressive. Raw JavaScript can be cumbersome. Ruby programmers are used to parentheses being optional for method calls. And there are a lot of tools in place for making CoffeeScript easy to deploy in Ruby projects, such as support baked into the Rails asset pipeline.
-
-Of course, there's a logical fallacy in its implication. There might be a strong implication that if someone is a Ruby programmer and they program in JavaScript, then they may be very likely to use CoffeeScript. But this isn't a biconditional. There are excellent reasons for using CoffeeScript even if you never use Ruby. I'd wager that CoffeeScript's whitespace significance is appealing to Python programmers.
-
-But besides a little fun with people's tribal inclinations, this tweet reminded me of an old saying that I have found to be very deep:
 
 > [Real programmers][rp] can write FORTRAN in any language.
 
