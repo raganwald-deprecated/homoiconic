@@ -3,7 +3,7 @@
 Thinking in CoffeeScript
 ===
 
-I spotted a funny joke on Twitter the other day: "I can always tell when a Ruby developer writes JavaScript, because it's not JavaScript, it's CoffeeScript."——[vance Lucas][vlucas]
+I spotted a funny joke on Twitter the other day: "I can always tell when a Ruby developer writes JavaScript, because it's not JavaScript, it's CoffeeScript."——[Vance Lucas][vlucas]
 
 [vlucas]: http://twitter.com/vlucas
 
@@ -211,7 +211,7 @@ That can be a very nice style when we're trying to eliminate dependencies. For e
 Decorating Methods
 ---
 
-But what if we don't need all the Architecture Astronautics? Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
+But what if we don't need all the [Architecture Astronautics][y]? Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
 
 [pyd]: http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators "Python Method Decorators"
 
@@ -272,7 +272,7 @@ All it takes is to "Think in CoffeeScript." And you'll find that many other patt
 Addendum: Why would we ever want to use YouAreDaChef?
 ---
 
-Having rubbished YouAreDaChef with faint praise, we should be a little more fair. YouAreDaChef (and other "action at a distance" approaches) are good when you want to separate dependencies and not just concerns.  For a example of this technique, see [Recursive Universe][ru], an implementation of HashLife written in CoffeeScript with YouAreDaChef.
+Having rubbished [YouAreDaChef][y] with faint praise, we should be a little more fair. YouAreDaChef (and other "action at a distance" approaches) are good when you want to separate dependencies and not just concerns.  For a example of this technique, see [Recursive Universe][ru], an implementation of HashLife written in CoffeeScript with YouAreDaChef.
 
 [ru]: http://recursiveuniver.se
 
