@@ -211,7 +211,7 @@ That can be a very nice style when we're trying to eliminate dependencies. For e
 Decorating Methods
 ---
 
-But what if we don't need all the [Architecture Astronautics][y]? Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
+But what if we don't need all the Architecture Astronautics? Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
 
 [pyd]: http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators "Python Method Decorators"
 
@@ -272,7 +272,7 @@ All it takes is to "Think in CoffeeScript." And you'll find that many other patt
 Addendum: Why would we ever want to use YouAreDaChef?
 ---
 
-Having rubbished [YouAreDaChef][y] with faint praise, we should be a little more fair. YouAreDaChef (and other "action at a distance" approaches) are good when you want to separate dependencies and not just concerns.  For a example of this technique, see [Recursive Universe][ru], an implementation of HashLife written in CoffeeScript with YouAreDaChef.
+Having rubbished [YouAreDaChef][y] with faint praise, we should be a little more fair. YouAreDaChef (and other "action at a distance" approaches) are good when you want to separate dependencies and not just concerns.  For a example of this technique, see [Recursive Universe][ru], an implementation of HashLife written in CoffeeScript.
 
 [ru]: http://recursiveuniver.se
 
@@ -317,7 +317,7 @@ Another way forward is to consider `withPermissionTo('read', Fubars)` something 
   
     .around 'foo', withPermissionTo('read', Fubars)
     
-You can count on `withPermissionTo('read', Fubars)` to apply to `A::foo` and to `B:foo`. It's a different way to think about programming, and it may be what you want, but it isn't "thinking in CoffeeScript."
+You can count on `withPermissionTo('read', Fubars)` to apply to `A::foo` and to `B:foo`. It's a different way to think about programming, and it may be what you want, but it isn't "Thinking in CoffeeScript."
 
 ---
 
