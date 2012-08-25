@@ -116,102 +116,12 @@ Faced with this problem and some Ruby experience, an intelligent but not particu
         loggingMechanism.log 'debug', "leaving switchToReadMode"
         value
         
-This is a well-factored solution in many languages (it isn't DRY yet, but we have untangled our methods).
+YouAreDaChef provides a mechanism for adding "advice" to each method, separating our base behaviour from the cross-cutting concerns. This example isn't particularly DRY, but let's not waste time fixing it up. It's interesting, but hardly "Thinking in CoffeeScript."
         
-Thinking in CoffeeScript
----
-
-Let's starting thinking on CoffeeScript. Or more importantly, to start thinking about the things that CoffeeScript/JavaScript does well that Ruby does poorly. The above code is very OO. That's nice. But JavaScript is an old-school *functional* language. So let's refactor the above code to take advantage of the fact that functions are first-class entities in JavaScript:
-
-    withPermissionTo = (verb, subject, callback, args...) ->
-      if currentUser.hasPermissionTo(verb, subject)
-        callback(args...)
-      else
-        controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
-        
-    debugEntryAndExit = (what, callback, args...) ->
-      loggingMechanism.log 'debug', "entering #{what}"
-      value = callback(args...)
-      loggingMechanism.log 'debug', "leaving #{what}"
-      value
-
-    YouAreDaChef(WidgetViewInSomeFramework)
-    
-      .around 'switchToEditMode', (callback, args...) ->
-        withPermissionTo('write', WidgetModel, callback, args...)
-    
-      .around 'switchToReadMode', (callback, args...) ->
-        withPermissionTo('read', WidgetModel, callback, args...)
-          
-      .around 'switchToEditMode', (callback, args...) ->
-        debugEntryAndExit('switchToEditMode', callback, args...)
-          
-      .around 'switchToReadMode', (callback, args...) ->
-        debugEntryAndExit('switchToReadMode', callback, args...)
-
-This is a lot better, especially if `withPermissionTo` and `debugEntryAndExit` are cross-cutting concerns you're going to reuse all over the application. But since we're getting into the functional swing of things, let's introduce [partial function application][pfa].
-
-[pfa]: https://en.wikipedia.org/wiki/Partial_application
-
-Partial function application is the conversion of a function that takes multiple arguments into a function that takes fewer arguments but binds some of its arguments. For example, if we have:
-
-    theSomethingOfYourSomething = (something1, something2) ->
-      "The #{something1} of your #{something2}"
-      
-    theSomethingOfYourSomething('touch', 'lips')
-      # => "The touch of your lips"
-      
-We can make a function that only takes the first argument and returns a function that takes the second argument:
-
-    theSomething = (something1) ->
-      (something2) ->
-        "The #{something1} of your #{something2}"
-        
-So:
-
-    ofYour = theSomething('touch')
-    ofYour('lips')
-      # => "The touch of your lips"
-
-Or even:
-  
-    theSomething('touch')('lips')
-      # => "The touch of your lips"
-      
-We can use this technique to create method decorators that we can use directly as advice instead of making advice that calls a helper function:
-
-    withPermissionTo = (verb, subject) ->
-      (callback, args...) ->
-        if currentUser.hasPermissionTo(verb, subject)
-          callback.apply(this, args)
-        else
-          controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
-        
-    debugEntryAndExit = (what) ->
-      (callback, args...) ->
-        loggingMechanism.log 'debug', "entering #{what}"
-        value = callback.apply(this, args)
-        loggingMechanism.log 'debug', "leaving #{what}"
-        value
-
-    YouAreDaChef(WidgetViewInSomeFramework)
-    
-      .around 'switchToEditMode', withPermissionTo('write', WidgetModel)
-    
-      .around 'switchToReadMode', withPermissionTo('read', WidgetModel)
-    
-      .around 'switchToEditMode', debugEntryAndExit('switchToEditMode')
-    
-      .around 'switchToReadMode', debugEntryAndExit('switchToReadMode')
-      
-Now our cross-cutting functions return method decorator functions. Functions returning functions are definitely functional. But wait, we can take this another step. YouAreDaChef is extremely useful when we want to completely separate cross-cutting concerns from business logic. For example, if we want to put our debug advice into a file called `debug.js` and conditionally include or exclude it, YouAreDaChef lets us 'MonkeyPatch' our classes from a distance.
-
-That can be a very nice style when we're trying to eliminate dependencies. For example, we may want to write Jasmine tests on our `WidgetViewInSomeFramework` class without having to mock up all our debugging and permissions behaviour.
-
 Decorating Methods
 ---
 
-But what if we don't need all the Architecture Astronautics? Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
+In CoffeeScript, we rarely need all the Architecture Astronautics. Can we do untangle the concerns with a simpler mechanism? Yes. Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
 
 [pyd]: http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators "Python Method Decorators"
 
@@ -219,7 +129,7 @@ CoffeeScript doesn't provide such a mechanism, because you don't need one in Jav
 
 > Every problem in Computer Science can be solved by adding another layer of abstraction, except for the problem of having too many layers of abstraction.--Alan Perlis
 
-Let's add another later of abstraction. Our decorators `withPermissionTo` and `debugEntryAndExit` will return functions that take a method function and return a decorated method. So they'll mix the decoration and the mechanism. YouAReDaChef does some magic to make sure `this` is correctly set, but we'll do it ourselves:
+Let's add our own method decorators `withPermissionTo` and `debugEntryAndExit`. They will return functions that take a method's body--a function--and return a decorated method. So they'll mix the decoration and the mechanism. We'll make sure `this` is set correctly:
 
     withPermissionTo = (verb, subject) ->
       (callback) ->
