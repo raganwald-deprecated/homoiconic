@@ -175,7 +175,7 @@ All it takes is to "Think in CoffeeScript." And you'll find that many other patt
 
 **The End**
 
-*Addendum: Why would we ever want to use YouAreDaChef?*
+### Addendum: Why would we ever want to use YouAreDaChef?
 
 Having rubbished [YouAreDaChef][y] with faint praise, we should be a little more fair. YouAreDaChef (and other "action at a distance" approaches) are good when you want to separate dependencies and not just concerns.  For a example of this technique, see [Recursive Universe][ru], an implementation of HashLife written in CoffeeScript.
 
