@@ -3,11 +3,11 @@
 Thinking in CoffeeScript
 ===
 
-I spotted a funny joke on Twitter the other day:
+I spotted a funny joke on Twitter the other day: "I can always tell when a Ruby developer writes JavaScript, because it's not JavaScript, it's CoffeeScript."——[vance Lucas][vlucas]
 
-![Ruby Programmers](http://i.minus.com/ibvAEhE5ovIyjF.png)
+[vlucas]: http://twitter.com/vlucas
 
-There *is* a grain of truth in this statement. Ruby programmers have become accustomed to a language that is fairly expressive. Raw JavaScript can be cumbersome. Ruby programmers are used to parentheses being optional for method calls. And there are a lot of tools in place for making CoffeeScript easy to deploy in Ruby projects, such as support baked into the Rails asset pipeline.
+There *is* a grain of truth in this jape. Ruby programmers have become accustomed to a language that is fairly expressive. Raw JavaScript can be cumbersome. Ruby programmers are used to parentheses being optional for method calls. And there are a lot of tools in place for making CoffeeScript easy to deploy in Ruby projects, such as support baked into the Rails asset pipeline.
 
 Of course, there's a logical fallacy in its implication. There might be a strong implication that if someone is a Ruby programmer and they program in JavaScript, then they may be very likely to use CoffeeScript. But this isn't a biconditional. There are excellent reasons for using CoffeeScript even if you never use Ruby. I'd wager that CoffeeScript's whitespace significance is appealing to Python programmers.
 
@@ -33,6 +33,8 @@ Decorating Methods in CoffeeScript
 ---
 
 As you know, Ruby and JavaScript both have Object Models. And objects have methods. And good software often involves *decorating* a method. Let's start off by agreeing on what I mean in this context. By "decorating a method," I mean adding some functionality to a method external to the method's body. The functionality you're adding is a "method decorator." (Some people call the mechanism the decorator, but let's use my definition in this essay.)
+
+![Ruby Programmers](http://i.minus.com/ibvAEhE5ovIyjF.png)
 
 If you've written a `before_validation` method in Ruby on Rails, you've written a method decorator. You're decorating ActiveRecord's baked-in validation code with something you want done before it does its validation. Likewise, ActiveController's `before` filters do exactly the same thing, albeit with a different syntax.
 
