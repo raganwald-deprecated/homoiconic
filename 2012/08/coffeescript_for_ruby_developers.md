@@ -3,7 +3,7 @@
 Thinking in CoffeeScript
 ===
 
-I spotted a funny joke on Twitter the other day: *"I can always tell when a Ruby developer writes JavaScript, because it's not JavaScript, it's CoffeeScript."*——[Vance Lucas][vlucas]. Besides having a little fun with people's tribal inclinations, this tweet reminded me of an old saying that I have found to be very deep:
+I spotted a funny joke on Twitter the other day: "I can always tell when a Ruby developer writes JavaScript, because it's not JavaScript, it's CoffeeScript."——[Vance Lucas][vlucas]. Besides having a little fun with people's tribal inclinations, this tweet reminded me of an old saying that I have found to be very deep:
 
 [vlucas]: http://twitter.com/vlucas
 
