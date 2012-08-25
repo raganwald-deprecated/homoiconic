@@ -173,8 +173,9 @@ Now we've worked out how to separate cross-cutting concerns from our method bodi
 
 All it takes is to "Think in CoffeeScript." And you'll find that many other patterns and designs from other languages can be expressed in simple and straightforward ways if we just embrace the the things that CoffeeScript does well instead of fighting against it and trying to write a Ruby program in CoffeeScript syntax.
 
-Addendum: Why would we ever want to use YouAreDaChef?
----
+**The End**
+
+*Addendum: Why would we ever want to use YouAreDaChef?*
 
 Having rubbished [YouAreDaChef][y] with faint praise, we should be a little more fair. YouAreDaChef (and other "action at a distance" approaches) are good when you want to separate dependencies and not just concerns.  For a example of this technique, see [Recursive Universe][ru], an implementation of HashLife written in CoffeeScript.
 
