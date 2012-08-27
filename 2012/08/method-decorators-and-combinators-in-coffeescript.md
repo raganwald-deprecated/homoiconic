@@ -171,7 +171,9 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
       # mode
 ```
 
-Our decorators work just like Python method decorators, only we don't need any magic syntax for them because CoffeeScript, like JavaScript, already has this idea that functions can return functions and there's nothing particularly magic about defining a method, it's just an expression that evaluates to a function. In this case, our methods are expressions that take two decorators and apply them to a function literal.
+Our decorators work just like Python method decorators, only we don't need any magic syntax for them because CoffeeScript, like JavaScript, already has this idea that functions can return functions and there's nothing particularly magic about defining a method, it's just an expression that evaluates to a function.[^python] In this case, our methods are expressions that take two decorators and apply them to a function literal.
+
+[^python]: To be clear, Python *does* have the idea of functions returning functions, and it does have anonymous functions in a syntactically limited form. The point here is that because JavaScript doe snot distinguish between a function and a method, all of the things you can do with any expression apply to "defining" a method, like having an expression where one or more functions are chained together. There is no need for syntactic sugar.
 
 We've worked out how to separate cross-cutting concerns from our method bodies and how to decorate our methods with them, without any special framework or module. It's just a natural consequence of JavaScript's underlying functional model.
 
