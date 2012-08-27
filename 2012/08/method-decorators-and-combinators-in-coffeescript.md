@@ -1,7 +1,9 @@
 Method Combinators in CoffeeScript
 ===
 
-Whenevr I catch myself thinking that a language I'm using doesn't have the conveniences I need to write programs in the style of some other language that I like, I try to remind myself that:
+Whenever I catch myself thinking that a language I'm using doesn't have the conveniences I need to write programs in the style of [some other language that I like][snobol], I try to remind myself that:
+
+[snobol]: ftp://ftp.cs.arizona.edu/snobol/gb.pdf
 
 > [Real programmers][rp] can write FORTRAN in any language.
 
@@ -262,9 +264,7 @@ class SomeExampleModel
 
 Now that we see the combinators turn functions into decorators, and the decorators turn functions into method bodies, we see that Python's method decorators are combinators too. JavaScript's functional model makes expressing these ideas natural, without requiring a heavyweight framework or special syntax.
 
-Try using method combinators in your next project. You'll be "Thinking in CoffeeScript!"
-
-p.s. And oh yeah, everything we've done here works 100% the same way in JavaScript, it's just that the syntax is a little cleaner. So you're "Thinking in JavaScript" too.
+Try using method combinators in your next project. You'll be "Thinking in CoffeeScript." And of course, everything we've done here works 100% the same way in JavaScript, it's just that the syntax is a little cleaner. So you're "Thinking in JavaScript" too.
 
 ([discuss](http://news.ycombinator.com/item?id=4439352))
 
