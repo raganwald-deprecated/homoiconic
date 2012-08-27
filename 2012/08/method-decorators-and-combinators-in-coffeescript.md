@@ -262,7 +262,7 @@ Try using method combinators in your next project. You'll be "Thinking in Coffee
 More Reading
 ---
 
-* [Understanding Python decorators](http://stackoverflow.com/questions/739654/understanding-python-decorators) on StackOverflow
+* [Understanding Python Decorators](http://stackoverflow.com/questions/739654/understanding-python-decorators) on StackOverflow
 * [Introduction to Python Decorators](http://www.artima.com/weblogs/viewpost.jsp?thread=240808) by Bruce Eckel
 * Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=4439352) or [Reddit](http://www.reddit.com/r/coffeescript/comments/ywnw2/method_combinators_in_coffeescript/)
 
