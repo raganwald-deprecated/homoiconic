@@ -1,4 +1,4 @@
-Method Decorators and Combinators in CoffeeScript
+Method Combinators in CoffeeScript
 ===
 
 Whenevr I catch myself thinking that a language I'm using doesn't have the conveniences I need to write programs in the style of some other language that I like, I try to remind myself that:
@@ -175,7 +175,7 @@ We've worked out how to separate cross-cutting concerns from our method bodies a
 
 All it takes is to "Think in CoffeeScript." And you'll find that many other patterns and designs from other languages can be expressed in simple and straightforward ways if we just embrace the the things that CoffeeScript does well instead of fighting against it and trying to write a Ruby program in CoffeeScript syntax.
 
-From Decorators to Combinators
+Decorators are Combinators
 ---
 
 After writing a few decorators, you'll notice that common patterns keep cropping up. Perusing the literature, they have names:
@@ -260,7 +260,9 @@ class SomeExampleModel
       # Do something that takes a long time
 ```
 
-Because we're working with functions in a functional language, or decorators and combinators compose and factor nicely. Once again, we're *Thinking in CoffeeScript*.
+Now that we see the combinators turn functions into decorators, and the decorators turn functions into method bodies, we see that Python's method decorators are combinators too. JavaScript's functional model makes expressing these ideas natural, without requiring a heavyweight framework or special syntax.
+
+Try using method combinators in your next project. You'll be "Thinking in CoffeeScript!"
 
 ---
 
