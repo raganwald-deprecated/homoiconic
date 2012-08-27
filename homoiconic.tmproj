@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>2008-11-28/you_cant_be_serious.md</string>
+	<string>2012/08/method-decorators-in-coffeescript.md</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -35,37 +35,21 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>2008-11-28/you_cant_be_serious.md</key>
+		<key>2008-11-03/with_unhygienic_and_call-by-name_semantics_in_rewrite.markdown</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>103</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>189</integer>
+				<integer>0</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>160</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>189</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>103</integer>
-				<key>line</key>
-				<integer>189</integer>
-			</dict>
+			<integer>0</integer>
 		</dict>
-		<key>2009-09-22/anaphora.md</key>
+		<key>2008-11-07/from_birds_that_compose_to_method_advice.markdown</key>
 		<dict>
 			<key>caret</key>
 			<dict>
@@ -92,8 +76,36 @@
 				<key>column</key>
 				<integer>85</integer>
 				<key>line</key>
-				<integer>250</integer>
+				<integer>259</integer>
 			</dict>
+		</dict>
+		<key>2009-09-22/anaphora.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>2010/04/igesture.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>2012/01/captain-obvious-on-javascript.md</key>
 		<dict>
@@ -128,9 +140,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>212</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>149</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -163,9 +175,9 @@
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
-			<integer>0</integer>
+			<integer>193</integer>
 			<key>firstVisibleLine</key>
-			<integer>106</integer>
+			<integer>112</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
@@ -181,6 +193,50 @@
 				<integer>156</integer>
 			</dict>
 		</dict>
+		<key>2012/08/coffeescript_for_ruby_developers.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>177</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>152</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>240</integer>
+			</dict>
+		</dict>
+		<key>2012/08/method-decorators-in-coffeescript.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>321</integer>
+				<key>line</key>
+				<integer>173</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dumping_ground/coffeescript_and_underscore.md</key>
 		<dict>
 			<key>caret</key>
@@ -195,18 +251,31 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>homoiconic.markdown</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
+		<string>2008-11-07/from_birds_that_compose_to_method_advice.markdown</string>
+		<string>2012/08/coffeescript_for_ruby_developers.md</string>
+		<string>2012/08/method-decorators-in-coffeescript.md</string>
 		<string>2012/05/read_only_code.md</string>
-		<string>2012/05/i.md</string>
-		<string>2009-09-22/anaphora.md</string>
-		<string>2012/05/anaphora.md</string>
-		<string>2008-11-28/you_cant_be_serious.md</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{330, -0}, {1641, 1418}}</string>
+	<string>{{898, 0}, {1148, 1406}}</string>
 </dict>
 </plist>
