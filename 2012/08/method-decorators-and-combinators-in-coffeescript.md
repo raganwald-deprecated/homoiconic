@@ -171,9 +171,7 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
       # mode
 ```
 
-Our decorators work just like Python method decorators, only we don't need any magic syntax for them because CoffeeScript, like JavaScript, already has this idea that functions can return functions and there's nothing particularly magic about defining a method, it's just an expression that evaluates to a function.[^python] In this case, our methods are expressions that take two decorators and apply them to a function literal.
-
-[^python]: To be clear, Python *does* have the idea of functions returning functions, and it does have anonymous functions in a syntactically limited form. The point here is that because JavaScript doe snot distinguish between a function and a method, all of the things you can do with any expression apply to "defining" a method, like having an expression where one or more functions are chained together. There is no need for syntactic sugar.
+Our decorators work just like Python method decorators, only we don't need any magic syntax for them because CoffeeScript, like JavaScript, already has this idea that functions can return functions and there's nothing particularly magic about defining a method, it's just an expression that evaluates to a function.([1](#notes)) In this case, our methods are expressions that take two decorators and apply them to a function literal.
 
 We've worked out how to separate cross-cutting concerns from our method bodies and how to decorate our methods with them, without any special framework or module. It's just a natural consequence of JavaScript's underlying functional model.
 
@@ -268,6 +266,11 @@ More Reading
 * [Introduction to Python Decorators](http://www.artima.com/weblogs/viewpost.jsp?thread=240808) by Bruce Eckel
 * [Aspect-Oriented programming using Combinator Birds](https://github.com/raganwald/homoiconic/blob/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#aspect-oriented-programming-in-ruby-using-combinator-birds)
 * Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=4439352) or [Reddit](http://www.reddit.com/r/coffeescript/comments/ywnw2/method_combinators_in_coffeescript/)
+
+Notes
+---
+
+1. To be clear, Python *does* have the idea of functions returning functions, and it does have anonymous functions in a syntactically limited form. The point here is that because JavaScript does not distinguish between a function and a method, all of the things you can do with any expression apply to "defining" a method, like having an expression where one or more functions are chained together. There is no need for syntactic sugar. ([back](#decorating-methods))
 
 ---
 
