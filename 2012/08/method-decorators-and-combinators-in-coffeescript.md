@@ -214,10 +214,10 @@ around = (decoration) ->
                decoration.apply(this, [callback].concat(argv))
 
 provided = (condition) ->
-           (base) ->
-             ->
-               if condition.apply(this, arguments)
-                 base.apply(this, arguments)
+             (base) ->
+               ->
+                 if condition.apply(this, arguments)
+                   base.apply(this, arguments)
 ```
 
 Combinatory Logic fans will recognize these as [basic combinators like the Bluebird and the Queer Bird][aopcombinators]. We can use our new combinators to create method decorators without having to handle messy details like arguments and managing `this` correctly:
