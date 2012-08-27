@@ -3,13 +3,11 @@
 Method Decorators and Combinators in CoffeeScript
 ===
 
-I spotted a funny joke on Twitter the other day: "I can always tell when a Ruby developer writes JavaScript, because it's not JavaScript, it's CoffeeScript."——[Vance Lucas][vlucas]. Besides having a little fun with people's tribal inclinations, this tweet reminded me of an old saying that I have found to be very deep:
-
-[vlucas]: http://twitter.com/vlucas
+Whenevr I catch myself thinking that a language I'm using doesn't have the conveniences I need to write programs in the style of some other language that I like, I try to remind myself that:
 
 > [Real programmers][rp] can write FORTRAN in any language.
 
-We tend to think in our favourite programming language and then translate our thoughts into whatever notation the compiler or interpreter accepts. If we're a "real programmer," I suppose we think in FORTRAN at all times even if were given a quiche-eater's language like Pascal or--God forbid--Smalltalk. We would just write a FORTRAN program with Pascal's syntax.
+If I don't catch myself, I tend to think in my favourite programming language and then translate my thoughts into whatever notation the compiler or interpreter accepts.
 
 [rp]: http://www.pbm.com/~lindahl/real.programmers.html "Real programmers don't use Pascal--Ed Post"
 
@@ -17,9 +15,9 @@ The advantage of this approach is apparent when we're working down the [power co
 
 [avg]: http://www.paulgraham.com/avg.html "Beating the Averages--Paul Graham"
 
-The disadvantage of this thinking in one language and writing in another is that sometimes we are blind to a language's own features and styles that are equally or even more powerful than the language we find comfortable to use. It may be apocryphal, but supposedly this is evident when someone uses a `for` loop in Ruby instead of `.each`, `.map`, or `.inject` to iterate over a collection. I'm not 100% convinced that using `for` is always bad thing, but I've certainly seen a similar thing in SQL where people sometimes write out stored procedures with loops when they could have learned how to use SQL's relational calculus to obtain the same results.
+The disadvantage of this thinking in one language and writing in another is that sometimes we are blind to a language's own features and styles that are equally or even more powerful than the language we find comfortable to use. I've seen this in SQL where people sometimes write out stored procedures with loops when they could have learned how to use SQL's relational calculus to obtain the same results.
 
-So my thesis is that when you go from one language to another, it's fine to bring your best stuff, but not at the expense of ignoring the good things that the new language does well. Ruby-flavoured CoffeeScript might be wonderful. A Ruby program in CoffeeScript syntax, not so nice.
+When I go from one language to another, it's fine to try bring my best stuff, but not at the expense of ignoring the good things that the new language does well. Ruby-informed CoffeeScript might be wonderful. A Ruby program in CoffeeScript, not so nice.
 
 Enough hand-waving, let's discuss a specific example!
 
@@ -64,7 +62,7 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
         
 (These are not meant to be serious examples, but just credible enough that we can grasp the idea of cross-cutting concerns and tangling.)
 
-Faced with this problem and some Ruby experience, an intelligent but not particularly wise developer might rush off and write something like [YouAreDaChef][y], an Aspect-Oriented Framework for JavaScript. With YouAreDaChef, you can "untangle" the cross-cutting concerns from the primary purpose of each method:
+Faced with this problem and some Ruby experience, an intelligent but not particularly wise developer might rush off and write something like [YouAreDaChef][y], an Aspect-Oriented Framework for JavaScript. With YouAreDaChef, we can "untangle" the cross-cutting concerns from the primary purpose of each method:
 
 [y]: https://github.com/raganwald/YouAreDaChef "YouAreDaChef, AOP for JavaScript and CoffeeScript"
 
