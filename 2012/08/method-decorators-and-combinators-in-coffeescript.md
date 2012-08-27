@@ -7,11 +7,11 @@ Whenevr I catch myself thinking that a language I'm using doesn't have the conve
 
 If I don't catch myself, I tend to think in my favourite programming language and then translate my thoughts into whatever notation the compiler or interpreter accepts.
 
-[rp]: http://www.pbm.com/~lindahl/real.programmers.html "Real programmers don't use Pascal--Ed Post"
+[rp]: http://www.pbm.com/~lindahl/real.programmers.html "Real programmers don't use Pascal—Ed Post"
 
 The advantage of this approach is apparent when we're working down the [power continuum][avg]. Because we think in a higher-level language, we Greenspun more powerful features into a less powerful language. The Ruby on Rails framework is a good example of this: ActiveController and ActiveRecord bake method-advice and method decorators into Ruby.
 
-[avg]: http://www.paulgraham.com/avg.html "Beating the Averages--Paul Graham"
+[avg]: http://www.paulgraham.com/avg.html "Beating the Averages—Paul Graham"
 
 The disadvantage of this thinking in one language and writing in another is that sometimes we are blind to a language's own features and styles that are equally or even more powerful than the language we find comfortable to use. I've seen this in SQL where people sometimes write out stored procedures with loops when they could have learned how to use SQL's relational calculus to obtain the same results.
 
@@ -85,27 +85,27 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
 
 YouAreDaChef(WidgetViewInSomeFramework)
 
-  .around 'switchToEditMode', (callback, args...) ->
+  .around 'switchToEditMode', (callback, argv...) ->
     if currentUser.hasPermissionTo('write', WidgetModel)
-      callback.apply(this, args)
+      callback.apply(this, argv)
     else
       controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
 
-  .around 'switchToReadMode', (callback, args...) ->
+  .around 'switchToReadMode', (callback, argv...) ->
     if currentUser.hasPermissionTo('read', WidgetModel)
-      callback.apply(this, args)
+      callback.apply(this, argv)
     else
       controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
       
-  .around 'switchToEditMode', (callback, args...) ->
+  .around 'switchToEditMode', (callback, argv...) ->
     loggingMechanism.log 'debug', "entering switchToEditMode"
-    value = callback.apply(this, args)
+    value = callback.apply(this, argv)
     loggingMechanism.log 'debug', "leaving switchToEditMode"
     value
       
-  .around 'switchToReadMode', (callback, args...) ->
+  .around 'switchToReadMode', (callback, argv...) ->
     loggingMechanism.log 'debug', "entering switchToReadMode"
-    value = callback.apply(this, args)
+    value = callback.apply(this, argv)
     loggingMechanism.log 'debug', "leaving switchToReadMode"
     value
 ```
@@ -121,22 +121,22 @@ In CoffeeScript, we rarely need all the Architecture Astronautics. Can we do unt
 
 CoffeeScript doesn't provide such a mechanism, because you don't need one in JavaScript. Unlike Ruby, there is no distinction between methods and functions. Furthermore, there is no 'magic' syntax for declaring a method. No `def` keyword, nothing. Methods are object and prototype properties that happen to be functions. And in CoffeeScript, we can provide any expression for a method body, it doesn't have to be a function literal.
 
-Let's create our own method decorators `withPermissionTo` and `debugEntryAndExit`. They will return functions that take a method's body--a function--and return a decorated method. We'll make sure `this` is set correctly:
+Let's create our own method decorators `withPermissionTo` and `debugEntryAndExit`. They will return functions that take a method's body (a function) and return a decorated method. We'll make sure `this` is set correctly:
 
 ```coffeescript
 withPermissionTo = (verb, subject) ->
   (callback) ->
-    (args...) ->
+    ->
       if currentUser.hasPermissionTo(verb, subject)
-        callback.apply(this, args)
+        callback.apply(this, arguments)
       else
         controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
     
 debugEntryAndExit = (what) ->
   (callback) ->
-    (args...) ->
+    ->
       loggingMechanism.log 'debug', "entering #{what}"
-      value = callback.apply(this, args)
+      value = callback.apply(this, arguments)
       loggingMechanism.log 'debug', "leaving #{what}"
       value
 ```
@@ -263,6 +263,8 @@ class SomeExampleModel
 Now that we see the combinators turn functions into decorators, and the decorators turn functions into method bodies, we see that Python's method decorators are combinators too. JavaScript's functional model makes expressing these ideas natural, without requiring a heavyweight framework or special syntax.
 
 Try using method combinators in your next project. You'll be "Thinking in CoffeeScript!"
+
+p.s. And oh yeah, everything we've done here works 100% the same way in JavaScript, it's just that the syntax is a little cleaner. So you're "Thinking in JavaScript" too.
 
 ---
 
