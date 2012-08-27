@@ -266,6 +266,8 @@ Try using method combinators in your next project. You'll be "Thinking in Coffee
 
 p.s. And oh yeah, everything we've done here works 100% the same way in JavaScript, it's just that the syntax is a little cleaner. So you're "Thinking in JavaScript" too.
 
+([discuss](http://news.ycombinator.com/item?id=4439352))
+
 ---
 
 Recent work:
