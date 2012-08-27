@@ -1,5 +1,3 @@
-**WARNING** *This is a working draft, not a finished essay. I'm soliciting feedback. While you're welcome to share it/tweet it, I ask you NOT to post it to Reddit/Hacker News &c. until it is no longer a working draft, likely on Monday morning. Thanks for your understanding.*
-
 Method Decorators and Combinators in CoffeeScript
 ===
 
