@@ -185,12 +185,11 @@ After writing a few decorators, you'll notice that common patterns keep cropping
 1. You want to do something *before* the method's base logic is executed.
 2. You want to do something *after* the method's base logic is executed.
 3. You want to do wrap some logic *around* the method's base logic.
-4. You only want to execute the method's base logic *when* some condition is truthy.
-5. You want to execute the method's base logic *unless* some condition is truthy (The inverse of the above)
+4. You only want to execute the method's base logic *provided* some condition is truthy.
 
 Rails gives you special methods that call other methods for this, but let's think in JavaScript, or more specifically, in functions. We wrote method decorators that were really functions that consumed a function and returned another function.
 
-So let's do that exact same thing again. We want five functions that consume a function representing the "something" we want done and return a method decorator that can consume a method's base function and return a decorated method.
+So let's do that exact same thing again. We want functions that consume a function representing the "something" we want done and return a method decorator that can consume a method's base function and return a decorated method.
 
 Such as:
 
@@ -214,16 +213,10 @@ around = (decoration) ->
                callback = => base.apply(this, argv)
                decoration.apply(this, [callback].concat(argv))
 
-when   = (condition) ->
+provided = (condition) ->
            (base) ->
              ->
                if condition.apply(this, arguments)
-                 base.apply(this, arguments)
-
-unless = (condition) ->
-           (base) ->
-             ->
-               unless condition.apply(this, arguments)
                  base.apply(this, arguments)
 ```
 
