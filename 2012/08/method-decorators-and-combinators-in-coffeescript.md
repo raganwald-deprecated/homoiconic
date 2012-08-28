@@ -121,7 +121,7 @@ In CoffeeScript, we rarely need all the Architecture Astronautics. Can we do unt
 
 [pyd]: http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators "Python Method Decorators"
 
-CoffeeScript doesn't provide such a mechanism, because you don't need one in JavaScript. Unlike Ruby, there is no distinction between methods and functions. Furthermore, there is no 'magic' syntax for declaring a method. No `def` keyword, nothing. Methods are object and prototype properties that happen to be functions. And in CoffeeScript, we can provide any expression for a method body, it doesn't have to be a function literal.
+CoffeeScript doesn't provide a similar annotation mechanism, because you don't need one in JavaScript. Unlike Ruby, there is no distinction between methods and functions. Furthermore, there is no 'magic' syntax for declaring a method. No `def` keyword, nothing. Methods are object and prototype properties that happen to be functions. And in CoffeeScript, we can provide any expression for a method body, it doesn't have to be a function literal.
 
 Let's create our own method decorators `withPermissionTo` and `debugEntryAndExit`. They will return functions that take a method's body (a function) and return a decorated method. We'll make sure `this` is set correctly:
 
@@ -171,9 +171,9 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
       # mode
 ```
 
-Our decorators work just like Python method decorators, only we don't need any magic syntax for them because CoffeeScript, like JavaScript, already has this idea that functions can return functions and there's nothing particularly magic about defining a method, it's just an expression that evaluates to a function.([1](#notes)) In this case, our methods are expressions that take two decorators and apply them to a function literal.
+Our decorators work just like Python method decorators, only we don't need any syntactic sugar for them ([1](#notes)). CoffeeScript (and JavaScript, although these examples are in CoffeeScript) doesn't have any special syntax for defining methods, it's just an expression that evaluates to a function. In this case, our methods are expressions that take two decorators and apply them to a function literal. Because there's no special syntax, any expression will do. We exploit this when using our method decorators inline as part of the method "definition."
 
-We've worked out how to separate cross-cutting concerns from our method bodies and how to decorate our methods with them, without any special framework or module. It's just a natural consequence of JavaScript's underlying functional model.
+So: We've worked out how to separate cross-cutting concerns from our method bodies and how to decorate our methods with them, without any special framework or module. It's just a natural consequence of JavaScript's underlying functional model.
 
 All it takes is to "Think in CoffeeScript." And you'll find that many other patterns and designs from other languages can be expressed in simple and straightforward ways if we just embrace the the things that CoffeeScript does well instead of fighting against it and trying to write a Ruby program in CoffeeScript syntax.
 
@@ -270,7 +270,7 @@ More Reading
 Notes
 ---
 
-1. To be clear, Python *does* have the idea of functions returning functions, and it does have anonymous functions in a syntactically limited form. The point here is that because JavaScript does not distinguish between a function and a method, all of the things you can do with any expression apply to "defining" a method, like having an expression where one or more functions are chained together. There is no need for syntactic sugar. ([back](#decorating-methods))
+1. To be clear, Python *does* have the idea of functions returning functions, and it does have anonymous functions ("lambdas"). The point here is that because CoffeeScript does not distinguish between a function and a method when defining a method, all of the things you can do with any expression apply to "defining" a method, like having an expression where one or more functions are chained together. There is no need for syntactic sugar or for a workaround like defining a method and then assigning a decorated function to it. (Clarifications courtesy of [masklinn](http://news.ycombinator.com/item?id=4443068)). [go back](#decorating-methods).
 
 ---
 
