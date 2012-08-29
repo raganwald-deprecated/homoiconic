@@ -1,4 +1,4 @@
-Method Combinators in CoffeeScript
+Method Combinators in LiveScript
 ===
 
 Whenever I catch myself thinking that a language I'm using doesn't have the conveniences I need to write programs in the style of [some other language that I like][snobol], I try to remind myself that:
@@ -34,10 +34,10 @@ These are good things. Without decorators, you end up "tangling" every method wi
 class WidgetViewInSomeFramework extends BuiltInFrameWorkView
   
   # ...
-  
-  switchToEditMode: (evt) ->
-    loggingMechanism.log 'debug', 'entering switchToEditMode'
-    if currentUser.hasPermissionTo('write', WidgetModel)
+
+  switch-to-edit-mode: (evt)->
+    logging-mechanism.log \debug 'entering switchToEditMode'
+    if current-user.has-permission-to \write WidgetModel
       # actual
       # code
       # switching to
@@ -45,11 +45,11 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
       # mode
     else
       controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
-    loggingMechanism.log 'debug', 'leaving switchToEditMode'
+    logging-mechanism.log \debug 'leaving switchToEditMode'
   
-  switchToReadMode: (evt) ->
-    loggingMechanism.log 'debug', 'entering switchToReadMode'
-    if currentUser.hasPermissionTo('read', WidgetModel)
+  switch-to-read-mode: (evt)->
+    logging-mechanism.log \debug 'entering switchToReadMode'
+    if current-user.has-permission-to \read WidgetModel
       # actual
       # code
       # switching to
@@ -57,7 +57,7 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
       # mode
     else
       controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
-    loggingMechanism.log 'debug', 'leaving switchToReadMode'
+    logging-mechanism.log \debug 'leaving switchToReadMode'
 ```
         
 (These are not meant to be serious examples, but just credible enough that we can grasp the idea of cross-cutting concerns and tangling.)
@@ -71,14 +71,14 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
   
   # ...
   
-  switchToEditMode: (evt) ->
+  switch-to-edit-mode: (evt)->
     # actual
     # code
     # switching to
     # edit
     # mode
   
-  switchToReadMode: (evt) ->
+  switch-to-read-mode: (evt)->
     # actual
     # code
     # switching to
@@ -87,28 +87,28 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
 
 YouAreDaChef(WidgetViewInSomeFramework)
 
-  .around 'switchToEditMode', (callback, argv...) ->
-    if currentUser.hasPermissionTo('write', WidgetModel)
-      callback.apply(this, argv)
+  .around 'switchToEditMode', (callback, ...argv)->
+    if current-user.has-permission-to \write WidgetModel
+      callback ...argv
     else
       controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
 
-  .around 'switchToReadMode', (callback, argv...) ->
-    if currentUser.hasPermissionTo('read', WidgetModel)
-      callback.apply(this, argv)
+  .around 'switchToReadMode', (callback, ...argv) ->
+    if current-user.has-permission-to \read WidgetModel
+      callback ...argv
     else
       controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
       
-  .around 'switchToEditMode', (callback, argv...) ->
-    loggingMechanism.log 'debug', "entering switchToEditMode"
-    value = callback.apply(this, argv)
-    loggingMechanism.log 'debug', "leaving switchToEditMode"
+  .around 'switchToEditMode', (callback, ...argv) ->
+    logging-mechanism.log \debug "entering switchToEditMode"
+    value = callback ...argv
+    logging-mechanism.log \debug "leaving switchToEditMode"
     value
       
-  .around 'switchToReadMode', (callback, argv...) ->
-    loggingMechanism.log 'debug', "entering switchToReadMode"
-    value = callback.apply(this, argv)
-    loggingMechanism.log 'debug', "leaving switchToReadMode"
+  .around 'switchToReadMode', (callback, ...argv) ->
+    logging-mechanism.log \debug "entering switchToReadMode"
+    value = callback ...argv
+    logging-mechanism.log \debug "leaving switchToReadMode"
     value
 ```
         
@@ -117,7 +117,7 @@ YouAreDaChef provides a mechanism for adding "advice" to each method, separating
 Decorating Methods
 ---
 
-In CoffeeScript, we rarely need all the Architecture Astronautics. Can we do untangle the concerns with a simpler mechanism? Yes. Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
+In LiveScript, we rarely need all the Architecture Astronautics. Can we do untangle the concerns with a simpler mechanism? Yes. Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
 
 [pyd]: http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators "Python Method Decorators"
 
@@ -126,20 +126,16 @@ CoffeeScript doesn't provide a similar annotation mechanism, because you don't n
 Let's create our own method decorators `withPermissionTo` and `debugEntryAndExit`. They will return functions that take a method's body (a function) and return a decorated method. We'll make sure `this` is set correctly:
 
 ```coffeescript
-withPermissionTo = (verb, subject) ->
-  (callback) ->
-    ->
-      if currentUser.hasPermissionTo(verb, subject)
-        callback.apply(this, arguments)
+with-permission-to(verb, subject, callback, _)=
+      if currentUser.has-permission-to verb, subject
+        callback ...
       else
         controller.redirect_to 'https://en.wikipedia.org/wiki/PEBKAC'
     
-debugEntryAndExit = (what) ->
-  (callback) ->
-    ->
-      loggingMechanism.log 'debug', "entering #{what}"
-      value = callback.apply(this, arguments)
-      loggingMechanism.log 'debug', "leaving #{what}"
+debug-entry-and-exit(what, callback, _)=
+      logging-mechanism.log \debug "entering #what"
+      value = callback ...
+      logging-mechanism.log \debug "leaving #what"
       value
 ```
           
@@ -150,9 +146,9 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
   
   # ...
   
-  switchToEditMode: 
-    withPermissionTo('write', WidgetModel) \
-    debugEntryAndExit('switchToEditMode') \
+  switch-to-edit-mode: 
+    with-permission-to \write WidgetModel <|
+    debug-entry-and-exit \switchToEditMode <|
     (evt) ->
       # actual
       # code
@@ -160,9 +156,9 @@ class WidgetViewInSomeFramework extends BuiltInFrameWorkView
       # edit
       # mode
   
-  switchToReadMode:
-    withPermissionTo('read', WidgetModel) \
-    debugEntryAndExit('switchToReadMode') \
+  switch-to-read-mode: 
+    with-permission-to \read WidgetModel <|
+    debug-entry-and-exit \switchToReadMode <|
     (evt) ->
       # actual
       # code
@@ -175,7 +171,7 @@ Our decorators work just like Python method decorators, only we don't need any s
 
 So: We've worked out how to separate cross-cutting concerns from our method bodies and how to decorate our methods with them, without any special framework or module. It's just a natural consequence of JavaScript's underlying functional model.
 
-All it takes is to "Think in CoffeeScript." And you'll find that many other patterns and designs from other languages can be expressed in simple and straightforward ways if we just embrace the the things that CoffeeScript does well instead of fighting against it and trying to write a Ruby program in CoffeeScript syntax.
+All it takes is to "Think in LiveScript." And you'll find that many other patterns and designs from other languages can be expressed in simple and straightforward ways if we just embrace the the things that LiveScript does well instead of fighting against it and trying to write a Ruby program in LiveScript syntax.
 
 Decorators are Combinators
 ---
@@ -194,30 +190,20 @@ So let's do that exact same thing again. We want functions that consume a functi
 Such as:
 
 ```coffeescript
-before = (decoration) ->
-           (base) ->
-             ->
-               decoration.apply(this, arguments)
-               base.apply(this, arguments)
+before(decoration,base)= ->
+  decoration ...
+  base ...
                
-after  = (decoration) ->
-           (base) ->
-             ->
-               __value__ = base.apply(this, arguments)
-               decoration.apply(this, arguments)
-               __value__
+after(decoration,base)= ->
+  value$ = base ...
+  decoration ...
+  value$
           
-around = (decoration) ->
-           (base) ->
-             (argv...) ->
-               callback = => base.apply(this, argv)
-               decoration.apply(this, [callback].concat(argv))
+around(decoration,base)= (...argv)->
+  decoration.apply this, [~> base] +++ argv
 
-provided = (condition) ->
-             (base) ->
-               ->
-                 if condition.apply(this, arguments)
-                   base.apply(this, arguments)
+provided = (condition,base)= ->
+  if condition ... then base ...
 ```
 
 Combinatory Logic fans will recognize these as [basic combinators like the Bluebird and the Queer Bird][aopcombinators]. We can use our new combinators to create method decorators without having to handle messy details like arguments and managing `this` correctly:
@@ -225,17 +211,14 @@ Combinatory Logic fans will recognize these as [basic combinators like the Blueb
 [aopcombinators]: https://github.com/raganwald/homoiconic/blob/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#aspect-oriented-programming-in-ruby-using-combinator-birds "Aspect-Oriented Programming in Ruby using Combinator Birds"
 
 ```coffeescript
-triggers = (eventStrings...) ->
-             after ->
-               for eventString in eventStrings
-                 @trigger(eventString)
+triggers = (...event-strings)-> after -> event-strings |> each @~trigger
 
-displaysWait = do ->
-                 waitLevel = 0
-                 around (yield) ->
-                   someDOMElement.show() if (waitLevel += 1) > 0
-                   yield()
-                   someDOMElement.hide() if (waitLevel -= 1) <= 0
+displays-wait = ->
+ wait-level = 0
+ around (yield)->
+   someDOMElement.show! if wait-level++ > 0
+   yield!
+   someDOMElement.hide! if wait-level-- <= 0
 ```
 
 And then we use the new decorators:
@@ -243,21 +226,21 @@ And then we use the new decorators:
 ```coffeescript
 class SomeExampleModel
 
-  setHeavyweightProperty:
-    triggers('cache:dirty') \
-    (property, value) ->
+  set-heavyweight-property:
+    triggers \cache:dirty <|
+    (property, value)->
       # set some property in a complicated way
     
   recalculate:
-    displaysWait \
-    triggers('cache:dirty') \
+    displays-wait <|
+    triggers \cache:dirty <|
     ->
       # Do something that takes a long time
 ```
 
 Now that we see the combinators turn functions into decorators, and the decorators turn functions into method bodies, we see that Python's method decorators are combinators too. JavaScript's functional model makes expressing these ideas natural, without requiring a heavyweight framework or special syntax.
 
-Try using method combinators in your next project. You'll be "Thinking in CoffeeScript." And of course, everything we've done here works 100% the same way in JavaScript, it's just that the syntax is a little cleaner. So you're "Thinking in JavaScript" too.
+Try using method combinators in your next project. You'll be "Thinking in LiveScript." And of course, everything we've done here works 100% the same way in JavaScript, it's just that the syntax is a little cleaner. So you're "Thinking in JavaScript" too.
 
 More Reading
 ---
