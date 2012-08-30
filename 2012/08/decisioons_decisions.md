@@ -100,22 +100,30 @@ We developers are personas and have user stories. Although it has little to do w
 
 Simple, easy to test. Can you do one thing (e.g. `cap deploy`) and push the latest changes to staging or production?
 
-We have other, more subjective requirements we can express as stories. For example, the great mantra of "bondage and discipline" coding environments is that a large team of moderately inexperienced developers with a relatively low level of communication can sustain a consistent velocity of development. Whether you agree that languages like Java and tools like XML make this possible or not, this is a user story with well-understood persona.
+We programmers don't usually talk about program designs in terms of "user stories," but we think about them. The jargon I usually hear from programmers is "Optimizing for \_\_\_\_\_\_\_." For example, we might say that we believe that polymorphism optimizes for creating or changing objects and their implementations. Or we might say that we believe that inheritance optimizes for easy sharing of implementations.
 
-When we say that method decorators and YouAreDaChef both solve the same problem, another way to say it is that they appear in the same user story. That story is one where a developer wishes to separate some cross-cutting functionality (like authorization, logging, displaying feedback, &c.) from some core functionality.
-
-If we stop right there, method decorators are the clear winners. They're simple and require only that you wrap your head around functions returning functions. But we needn't stop right there. Why is the developer separating these concerns with decorators instead of inline? What other developer user stories are involved?
+A more colloquial thing to say is that a particular design choice "makes something easy." For example, many people believe that good automated test coverage makes refactoring easy. So, what does YouAreDaChef make easy? And what does that tell us about designing programs?
 
 What does YouAreDaChef make easy?
 ---------------------------------
 
-Let's look more closely at YouAreDaChef and see if we can glean some of the other user stories by looking at what it "makes easy." ([1](#Notes))
+Let's look more closely at YouAreDaChef and see if we can glean some insights by looking at what it "makes easy." ([1](#Notes))
 
 ![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
 
 The first and most obvious thing that YouAreDaChef makes easy is using *three* pieces of code to separate some advice from some methods. the advice is one chunk. The methods are another, and YouAreDaChef's bindings are a third. With method decorators, you only need two, the decorators and the method declarations that separate the invocation of the decorators from the method bodies, but are still in the same big chunk of code.
 
-The both have three chunks of code, but YouAreDaChef completely breaks them apart, while method decorators have them separate but adjacent:
+The both have three chunks of code, but YouAreDaChef completely breaks them apart:
+
+```coffeescript
+YouAreDaChef
+  .clazz(SomeExampleModel)
+    .method('setHeavyweightProperty')
+      .after triggers('cache:dirty')
+      
+```
+
+While method decorators have them separate but adjacent within the class definition:
 
 ```coffeescript
 class SomeExampleModel
@@ -126,50 +134,77 @@ class SomeExampleModel
       # set some property in a complicated way
 ```
 
-[YouAreDaChef] is a meta-programming framework. It modifies an existing class or hierarchy of classes to add *method advice*. In the very simplest cases, method advice resembles decoration. You can provide "advice" in the form of a function that is executed `before`, `after`, or `around` a method. You can also `guard` a method with a predicate. You can do all of these things with method decorators, of course.
+Having the binding in a third chunk of code does make a few things easy. What happens if you omit the third chunk of code? If you are careful to make the YouAreDaChef bindings the only dependency between the advice and the method bodies, you have decoupled the advice from the methods.
 
-First, method decorators do something very simple: They modify the behaviour of one method body. Nothing else is changed. Second, method decorators are  almost always used in the declaration of a method. Finally, method decorators make use of functions calling other functions, so at runtime the structure of a decorated method can only be deduced by tracing its execution. There is no runtime-introspection capability that might be used for debugging or advanced meta-programming purposes.
+What does this make easy? Well, for one thing, it makes testing easy. You don't need your tests to elaborately mock up a lot of authorization code to appease the authorization advice, you simply don't bind it when you're unit testing the base functionality, and you bind it when you're integration testing the whole thing.
 
-YouAreDaChef differs from method decorators on all three counts:
+YouAreDaChef's decoupling makes writing tests easy.
 
-1. YouAreDaChef decouples advice from class declarations.
-2. YouAreDaChef understands inheritance.
-3. YouAreDaChef can be introspected at run time.
+What else does YouAreDaChef make easy?
+--------------------------------------
 
-YouAreDaChef decouples advice from class declarations
----
-
-With method decorators, you decorate the method right in the class "declaration." That is nice when you're reading a method and want to know everything it does. There's no spooky "action at a distance."
-
-However, it tightly couples classes to cross-cutting concerns. For example:
+YouAreDaChef does allow you to break things into three pieces, but you can also put them in two pieces, but in a different way. Consider the difference between:
 
 ```coffeescript
-class WidgetViewInSomeFramework extends BuiltInFrameWorkView
-  
-  # ...
-  
-  switchToEditMode: 
-    withPermissionTo('write', WidgetModel) \
-    debugEntryAndExit('switchToEditMode') \
-    (evt) ->
-      # actual
-      # code
-      # switching to
-      # edit
-      # mode
-  
-  switchToReadMode:
-    withPermissionTo('read', WidgetModel) \
-    debugEntryAndExit('switchToReadMode') \
-    (evt) ->
-      # actual
-      # code
-      # switching to
-      # view-only
-      # mode
+
+# Method Decorators I
+
+triggers = (eventStrings...) ->
+             after ->
+               for eventString in eventStrings
+                 @trigger(eventString)
+                   
+# Method decorators II
+
+class SomeExampleModel
+
+  setHeavyweightProperty:
+    triggers('cache:dirty') \
+    (property, value) ->
+      # set some property in a complicated way
+    
+  recalculate:
+    triggers('cache:dirty') \
+    ->
+      # Do something that takes a long time
 ```
 
-Why should a view know anything about permissions? Permissions and authoriz
+And:
+
+```coffeescript
+
+# YouAreDaChef I
+
+triggers = (eventStrings...) ->
+             for eventString in eventStrings
+               @trigger(eventString)
+               
+YouAreDaChef
+  .clazz(SomeExampleModel)
+    .method('setHeavyweightProperty', 'recalculate')
+      .after triggers('cache:dirty')
+
+# YouAreDaChef II
+
+class SomeExampleModel
+
+  setHeavyweightProperty: (property, value) ->
+    # set some property in a complicated way
+    
+  recalculate: ->
+    # Do something that takes a long time
+```
+
+The first one is organized such that the class being 'decorated' knows what does the decorating. So the decorated class depends on the decoration. The second one is organized such that the method advice knows what it advises. So the advice depends on the class being advised.
+
+The first one, written with method decorators, makes it easy to look at a class--like `SomeExampleModel`--and know everything about that model's behaviour. The second one, written with YouAreDaChef, makes it easy to look at a particular concern--like managing a cache--and know everything about the concern's behaviour. They both make it easy to look at a model class and understand its primary responsibility, uncluttered by other concerns.
+
+The YouAreDaChef approach is thus superior when you want to make working with cross-cutting concerns easy. [Recursive Universe] demonstrates this approach with the knobs turned up to eleven: Concerns like caching and garbage collection are entirely separated from core classes, and you can learn how the code works a piece at a time.
+
+[Recursive Universe]: http://recursiveuniver.se
+
+
+
 
 Notes
 -----
