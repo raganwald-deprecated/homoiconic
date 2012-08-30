@@ -46,6 +46,8 @@ I also wrote, more-or-less:
 
 [YouAreDaChef]: https://github.com/raganwald/YouAreDaChef "YouAreDaChef, AOP for JavaScript and CoffeeScript"
 
+![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
+
 And what is this YouAreDaChef? It's a library that appears to solve the same problem. Here's a look at how it works, starting with our advice. Note that these are not decorators, they don't modify a function:
 
 ```coffeescript
@@ -109,8 +111,6 @@ What does YouAreDaChef make easy?
 
 Let's look more closely at YouAreDaChef and see if we can glean some insights by looking at what it "makes easy." ([1](#Notes))
 
-![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
-
 The first and most obvious thing that YouAreDaChef makes easy is using *three* pieces of code to separate some advice from some methods. the advice is one chunk. The methods are another, and YouAreDaChef's bindings are a third. With method decorators, you only need two, the decorators and the method declarations that separate the invocation of the decorators from the method bodies, but are still in the same big chunk of code.
 
 The both have three chunks of code, but YouAreDaChef completely breaks them apart:
@@ -154,7 +154,7 @@ triggers = (eventStrings...) ->
                for eventString in eventStrings
                  @trigger(eventString)
                    
-# Method decorators II
+# Method Decorators II
 
 class SomeExampleModel
 
@@ -199,7 +199,7 @@ The first one is organized such that the class being 'decorated' knows what does
 
 The first one, written with method decorators, makes it easy to look at a class--like `SomeExampleModel`--and know everything about that model's behaviour. The second one, written with YouAreDaChef, makes it easy to look at a particular concern--like managing a cache--and know everything about the concern's behaviour. They both make it easy to look at a model class and understand its primary responsibility, uncluttered by other concerns.
 
-The YouAreDaChef approach is thus superior when you want to make working with cross-cutting concerns easy. [Recursive Universe] demonstrates this approach with the knobs turned up to eleven: Concerns like caching and garbage collection are entirely separated from core classes, and you can learn how the code works a piece at a time.
+The YouAreDaChef approach is thus superior when you want to make working with cross-cutting concerns easy. [Café au Life][Recursive Universe] demonstrates this approach with the knobs turned up to eleven: Concerns like caching and garbage collection are entirely separated from core classes, and you can learn how the code works a piece at a time.
 
 [Recursive Universe]: http://recursiveuniver.se
 
