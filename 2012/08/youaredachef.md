@@ -176,7 +176,7 @@ class SomeExampleModel
 
 We've put the YouAreDaChef code binding the advice to the methods with the implementation of the advice. This makes it easy to look at a particular concern--like managing a cache--and know everything about its behaviour. The YouAreDaChef approach makes working with cross-cutting concerns easy: You never have to go hunting through the app to find out what classes and methods are advised by the concern.([2](#Notes))
 
-YouAreDaChef working with cross-cutting concerns easy when you have inheritance hierarchies
+YouAreDaChef makes working with cross-cutting concerns easy when you have inheritance hierarchies
 -------------------------------------------------------------------------------------------
 
 Method decorators do exactly what they look like they do: They are expressions that return a function that is then bound to a property in a prototype. Everything else we might say about "inheritance" and "classes" works exactly as it always works in JavaScript.
@@ -223,7 +223,7 @@ YouAreDaChef makes working with cross-cutting concerns easy when you have inheri
 What does this tell us?
 -----------------------
 
-So. YouAreDaChef:
+YouAreDaChef:
 
 1. Makes testing easy
 2. Makes working with cross-cutting concerns easy
