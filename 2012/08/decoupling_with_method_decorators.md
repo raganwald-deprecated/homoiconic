@@ -1,8 +1,8 @@
 ![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
   
   
-What Aspect-Oriented Programming teaches us about Method Decorators
-===================================================================
+Using Method Decorators to Decouple Code
+========================================
 
 [Method Combinators in CoffeeScript][mcc] described method decorators, an elegant way of separating concerns in CoffeeScript methods. Here are some decorators:
 
@@ -126,7 +126,7 @@ Having the binding in a third chunk of code does make a few things easy. What ha
 
 What does this make easy? Well, for one thing, it makes testing easy. You don't need your tests to elaborately mock up a lot of authorization code to appease the authorization advice, you simply don't bind it when you're unit testing the base functionality, and you bind it when you're integration testing the whole thing.
 
-YouAreDaChef's decoupling makes writing tests easy.
+YouAreDaChef's decoupling makes writing tests easy by decoupling code so that you can test one responsibility at a time.
 
 Does YouAreDaChef makes working with cross-cutting concerns easy?
 -----------------------------------------------------------------
@@ -200,7 +200,7 @@ SomeExampleModel::recalculate =
   SomeExampleModel::recalculate
 ```
 
-Hah! If we wanted to make testing easy and work with cross-cutting concerns, we can do that with method decorators too. This is an important pattern.
+Hah! If we wanted to make testing easy and work with cross-cutting concerns, we can do that with method decorators too. This is an important pattern: Method decorators can be used to decouple code.
 
 What is YouAreDaChef's special sauce?
 -------------------------------------
@@ -240,10 +240,12 @@ This style of inheritance looks very weird if you think in terms of the implemen
 
 If it didn't, we'd have to redeclare all of our advice every time we subclassed. And worse, it would be a maintenance nightmare. if you add a new piece of advice to `SomeExampleModel`, can you be sure you remembered to add it to all of its subclasses that might override its methods?
 
+This is YouAreDaChef's special sauce: It makes working with inheritance easy by decoupling advice inheritance from method body inheritance.
+
 Summary
 -------
 
-Is it worth using a library when method decorators are a simple design pattern arising from JavaScript's existing functional model? There's nothing wrong with taking a YAGNI approach. Don't worry about your decorators until you find yourself writing a lot of mocking and stubbing every time you write some new tests. When you do, consider refactoring your decorators to decouple them from your methods.
+Is it worth using a library to decouple code when method decorators are a simple design pattern arising from JavaScript's existing functional model? There's nothing wrong with taking a YAGNI approach. Don't worry about your decorators until you find yourself writing a lot of mocking and stubbing every time you write some new tests. When you do, consider refactoring your decorators to decouple them from your methods.
 
 Don't worry about your decorators until you find that modifying cross-cutting concerns sends you on a chase across files and classes because its dependencies are scattered through the code. When you do, refactoring your decorators to couple them with the concerns so that everything to do with the concern is in one place.
 
