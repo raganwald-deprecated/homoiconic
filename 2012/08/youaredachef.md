@@ -1,8 +1,8 @@
 ![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
   
   
-Decisions, Decisions
-====================
+What Does YouAreDaChef Make Easy?
+=================================
 
 [Method Combinators in CoffeeScript][mcc] described method decorators, an elegant way of separating concerns in CoffeeScript methods. Here are some decorators:
 
@@ -92,8 +92,8 @@ YouAreDaChef
 
 YouAreDaChef's design takes a very different approach to solving what appears to be the same problem that method decorators solve. The differences between method decorators and YouAreDaChef are deliberate, they're a consequence of each approach solving the same basic problem but also attempting to solve some other software development problems at the same time. The unstated problems represent a set of what you might call "hidden assumptions" about the challenges of software development.
 
-User Stories in Software Development
-------------------------------------
+Ease
+----
 
 Software Development is all about satisfying requirements, which we can express as enabling user stories peopled by persona. Of course, we know that, those people are our software's "users." But everyone who interacts with our program is a user of sorts. That also includes the IT department who maintains the servers, the DBAs who optimize our queries, QA analysts, product managers, interns, documentation specialists, and (I've saved my favourite for last) the developers themselves. And yes, that means YOU.
 
@@ -234,6 +234,10 @@ Is it worth using a library when method decorators are a simple design pattern a
 There's nothing wrong with taking a YAGNI approach. Don't worry about YouAreDaChef until you find yourself writing a lot of mocking and stubbing every time you write some new tests. When you do, have another look. Don't worry about YouAreDaChef until you find that modifying cross-cutting concerns sends you on a chase across files and classes because its dependencies are scattered through the code. When you do, have another look. And don't worry about YouAreDaChef if your classes tend to be organized in shallow hierarchies with more composition than inheritance. Those of you who prefer [a more ontological approach][oop] already know who you are.
 
 [oop]: https://github.com/raganwald/homoiconic/blob/master/2010/12/oop.md#oop-practiced-backwards-is-poo
+
+In the end, software design decisions, including choosing how to handle cross-cutting concerns, are expressions of your beliefs about how the software will be used by other programmers. They are the consequences of your beliefs of what is likely to change frequently and what is unlikely to change. they are expressions of your belief in what needs to be well understood and what can be cursorily scanned.
+
+Should you use method decorators or YouAreDaChef? It all depends on what you believe is going to happen to your program.
 
 Notes
 -----
