@@ -1,11 +1,10 @@
-*This essay is a work in progress. Feel free to comment, tweet, &c. but it is definately not ready or Hacker News, Reddit, and so forth. Thanks!*
-
 ![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
-
+  
+  
 Decisions, Decisions
 ====================
 
-In [Method Combinators in CoffeeScript][mcc], I described method decorators, an elegant way of separating concerns in CoffeeScript and JavaScript methods. Here's an example:
+[Method Combinators in CoffeeScript][mcc] described method decorators, an elegant way of separating concerns in CoffeeScript methods. Here are some decorators:
 
 ```coffeescript
 triggers = (eventStrings...) ->
@@ -21,7 +20,7 @@ displaysWait = do ->
                    someDOMElement.hide() if (waitLevel -= 1) <= 0
 ```
 
-And then we use the new decorators:
+And here they are in use:
 
 ```coffeescript
 class SomeExampleModel
@@ -38,6 +37,8 @@ class SomeExampleModel
       # Do something that takes a long time
 ```
 
+(The idea of mixing some kind of view-ish `displayWait` responsibility with a model responsibility may set our teeth on edge, but let's hand-wave that furiously and stay focused on how these things work rather than arguing whether the colour of the bike shed is appropriate for a nuclear installation.)
+
 I also wrote, more-or-less:
 
 [mcc]: https://github.com/raganwald/homoiconic/blob/master/2012/08/method-decorators-and-combinators-in-coffeescript.md#method-combinators-in-coffeescript
@@ -48,7 +49,7 @@ I also wrote, more-or-less:
 
 [YouAreDaChef]: https://github.com/raganwald/YouAreDaChef "YouAreDaChef, AOP for JavaScript and CoffeeScript"
 
-And what is this YouAreDaChef? It's a library that appears to solve the same problem. Here's a look at how it works, starting with our advice. Note that these are not decorators, they don't modify a function:
+And what is this [YouAreDaChef]? It's a library that appears to solve the same problem. Here's a look at how it works, starting with our advice. Note that these are not decorators, they don't modify a function:
 
 ```coffeescript
 triggers = (eventStrings...) ->
@@ -140,36 +141,14 @@ What does this make easy? Well, for one thing, it makes testing easy. You don't 
 
 YouAreDaChef's decoupling makes writing tests easy.
 
-YouAreDaChef makes refactoring easy
------------------------------------
+YouAreDaChef makes working with cross-cutting concerns easy
+-----------------------------------------------------------
 
-YouAreDaChef does allow you to break things into three pieces, but you can also put them in two pieces, but in a different way. Consider the difference between:
+YouAreDaChef does allow you to break things into three pieces, but you can also put them back into two pieces, but in a different way than method decorators.
 
-```coffeescript
+Almost any technique allows you to separate the implementation of a cross-cutting concern from the code that uses it. Method decorators extracts the use of the concern from the body of the method, but puts them adjacent to each other. So while the concern is separated from the method body, they're both within the class definition. This makes it easy to look at a class--like `SomeExampleModel`--and know everything about that model's behaviour.
 
-# Method Decorators I
-
-triggers = (eventStrings...) ->
-             after ->
-               for eventString in eventStrings
-                 @trigger(eventString)
-                   
-# Method Decorators II
-
-class SomeExampleModel
-
-  setHeavyweightProperty:
-    triggers('cache:dirty') \
-    (property, value) ->
-      # set some property in a complicated way
-    
-  recalculate:
-    triggers('cache:dirty') \
-    ->
-      # Do something that takes a long time
-```
-
-And:
+Here's another way to organize the code in two pieces:
 
 ```coffeescript
 
@@ -195,46 +174,10 @@ class SomeExampleModel
     # Do something that takes a long time
 ```
 
-The first one is organized such that the class being 'decorated' knows what does the decorating. So the decorated class depends on the decoration. The second one is organized such that the method advice knows what it advises. So the advice depends on the class being advised.
+We've put the YouAreDaChef code binding the advice to the methods with the implementation of the advice. This makes it easy to look at a particular concern--like managing a cache--and know everything about its behaviour. The YouAreDaChef approach makes working with cross-cutting concerns easy: You never have to go hunting through the app to find out what classes and methods are advised by the concern.([2](#Notes))
 
-The first one, written with method decorators, makes it easy to look at a class--like `SomeExampleModel`--and know everything about that model's behaviour. The second one, written with YouAreDaChef, makes it easy to look at a particular concern--like managing a cache--and know everything about the concern's behaviour. They both make it easy to look at a model class and understand its primary responsibility, uncluttered by other concerns.
-
-The YouAreDaChef approach is thus superior when you want to make working with cross-cutting concerns easy. If you're adding authorization or permissions to an application, you probably want all of the rules for who can do what located in one place, not "scattered" across the application.
-
-[Café au Life][Recursive Universe] demonstrates the YouAreDaChef approach with the knobs turned up to eleven: Concerns like caching and garbage collection are entirely separated from core classes, and you can learn how the code works one concern at a time.
-
-[Recursive Universe]: http://recursiveuniver.se
-
-Of course, YouAreDaChef lets you organize things a lot like method decorators, you can always write:
-
-```coffeescript
-
-# YouAreDaChef I
-
-triggers = (eventStrings...) ->
-             for eventString in eventStrings
-               @trigger(eventString)
-
-# YouAreDaChef II
-
-class SomeExampleModel
-
-  setHeavyweightProperty: (property, value) ->
-    # set some property in a complicated way
-    
-  recalculate: ->
-    # Do something that takes a long time
-               
-YouAreDaChef
-  .clazz(SomeExampleModel)
-    .method('setHeavyweightProperty', 'recalculate')
-      .after triggers('cache:dirty')
-```
-
-YouAreDaChef makes refactoring easy because it gives you more options for how your organize the dependencies between the chunks of code containing your your methods and the cross-cutting concerns.
-
-YouAreDaChef makes a new kind of inheritance easy
--------------------------------------------------
+YouAreDaChef working with cross-cutting concerns easy when you have inheritance hierarchies
+-------------------------------------------------------------------------------------------
 
 Method decorators do exactly what they look like they do: They are expressions that return a function that is then bound to a property in a prototype. Everything else we might say about "inheritance" and "classes" works exactly as it always works in JavaScript.
 
@@ -271,7 +214,31 @@ YouAreDaChef
 
 Our `DifferentPropertyImplementationModel` inherits the `after` advice from `SomeExampleModel` but overrides the default body. Default bodies are not additive, they override.
 
+This style of inheritance looks very weird if you think in terms of the implementation. If you try to figure out what YouAreDaChef is doing rather than what its declarations mean, it's a lot. But if you accept the abstraction at face value, it's very simple: If you declare that `triggers('cache:dirty')` happens after the `setHeavyweightProperty` method of `SomeExampleModel` is invoked, well, doesn't that obviously mean it happens after the `setHeavyweightProperty` methods of `ShowyModel` or `DifferentPropertyImplementationModel` are invoked? They're `SomeExampleModel`s too!
+
+If it didn't, we'd have to redeclare all of our advice every time we subclassed. And worse, it would be a maintenance nightmare. if you add a new piece of advice to `SomeExampleModel`, can you be sure you remembered to add it to all of its subclasses that might override its methods?
+
+YouAreDaChef makes working with cross-cutting concerns easy when you have inheritance hierarchies.
+
+What does this tell us?
+-----------------------
+
+So. YouAreDaChef:
+
+1. Makes testing easy
+2. Makes working with cross-cutting concerns easy
+3. Makes working with cross-cutting concerns easy when you have inheritance hierarchies
+
+Is it worth using a library when method decorators are a simple design pattern arising from JavaScript's existing functional model? Like anything, it depends on whether you really need help with your tests. It depends on whether your cross-cutting concerns are entangling your code, and whether you are already philosophically inclined to write deep inheritance hierarchies.
+
+There's nothing wrong with taking a YAGNI approach. Don't worry about YouAreDaChef until you find yourself writing a lot of mocking and stubbing every time you write some new tests. When you do, have another look. Don't worry about YouAreDaChef until you find that modifying cross-cutting concerns sends you on a chase across files and classes because its dependencies are scattered through the code. When you do, have another look. And don't worry about YouAreDaChef if your classes tend to be organized in shallow hierarchies with more composition than inheritance. Those of you who prefer [a more ontological approach][oop] already know who you are.
+
+[oop]: https://github.com/raganwald/homoiconic/blob/master/2010/12/oop.md#oop-practiced-backwards-is-poo
+
 Notes
 -----
 
 1. And because it's a shiny cool thing I wrote and I want you to say "Ooh!" and "Ah!" But I'd never admit to that in writing. Even now, I'm pretending this is self-deprecating humour, not a serious troll for attention and validation from strangers on the Internet.
+2. [Café au Life][Recursive Universe] demonstrates the YouAreDaChef approach with the knobs turned up to eleven: Concerns like caching and garbage collection are entirely separated from core classes, and you can learn how the code works one concern at a time.
+
+[Recursive Universe]: http://recursiveuniver.se
