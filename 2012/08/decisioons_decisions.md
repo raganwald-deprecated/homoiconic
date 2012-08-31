@@ -1,5 +1,7 @@
 *This essay is a work in progress. Feel free to comment, tweet, &c. but it is definately not ready or Hacker News, Reddit, and so forth. Thanks!*
 
+![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
+
 Decisions, Decisions
 ====================
 
@@ -35,8 +37,6 @@ class SomeExampleModel
     ->
       # Do something that takes a long time
 ```
-
-![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
 
 I also wrote, more-or-less:
 
@@ -106,8 +106,8 @@ We programmers don't usually talk about program designs in terms of "user storie
 
 A more colloquial thing to say is that a particular design choice "makes something easy." For example, many people believe that good automated test coverage makes refactoring easy. So, what does YouAreDaChef make easy? And what does that tell us about designing programs?
 
-What does YouAreDaChef make easy?
----------------------------------
+YouAreDaChef makes testing easy
+-------------------------------
 
 Let's look more closely at YouAreDaChef and see if we can glean some insights by looking at what it "makes easy." ([1](#Notes))
 
@@ -140,8 +140,8 @@ What does this make easy? Well, for one thing, it makes testing easy. You don't 
 
 YouAreDaChef's decoupling makes writing tests easy.
 
-What else does YouAreDaChef make easy?
---------------------------------------
+YouAreDaChef makes refactoring easy
+-----------------------------------
 
 YouAreDaChef does allow you to break things into three pieces, but you can also put them in two pieces, but in a different way. Consider the difference between:
 
@@ -205,8 +205,36 @@ The YouAreDaChef approach is thus superior when you want to make working with cr
 
 [Recursive Universe]: http://recursiveuniver.se
 
-One More Thing
----
+Of course, YouAreDaChef lets you organize things a lot like method decorators, you can always write:
+
+```coffeescript
+
+# YouAreDaChef I
+
+triggers = (eventStrings...) ->
+             for eventString in eventStrings
+               @trigger(eventString)
+
+# YouAreDaChef II
+
+class SomeExampleModel
+
+  setHeavyweightProperty: (property, value) ->
+    # set some property in a complicated way
+    
+  recalculate: ->
+    # Do something that takes a long time
+               
+YouAreDaChef
+  .clazz(SomeExampleModel)
+    .method('setHeavyweightProperty', 'recalculate')
+      .after triggers('cache:dirty')
+```
+
+YouAreDaChef makes refactoring easy because it gives you more options for how your organize the dependencies between the chunks of code containing your your methods and the cross-cutting concerns.
+
+YouAreDaChef makes a new kind of inheritance easy
+-------------------------------------------------
 
 Method decorators do exactly what they look like they do: They are expressions that return a function that is then bound to a property in a prototype. Everything else we might say about "inheritance" and "classes" works exactly as it always works in JavaScript.
 
@@ -216,8 +244,32 @@ Method decorators make working with JavaScript's existing inheritance mechanism 
 
 YouAreDaChef treats methods as having advice and a *default* body. So in the `triggers` example above, `triggers` is *after advice* and the body of `recalculate` is the *default body*. If there is no inheritance involved, it works exactly like method decorators.
 
-But when we have inheritance, YouAreDaChef has a more complex model than JavaScript's baked-in protocol. With YouAreDaChef, the before, after, around, and guard advice is always inherited. Only the default body is overridden. Here's an example:
+But when we have inheritance, YouAreDaChef has a more complex model than JavaScript's baked-in protocol. With YouAreDaChef, the before, after, around, and guard advice is always inherited. Only the default body is overridden. Here's a contrived example:
 
+```coffeescript
+class ShowyModel extends SomeExampleModel
+               
+YouAreDaChef
+  .clazz(ShowyModel)
+    .method('setHeavyweightProperty')
+      .around displaysWait
+```
+
+This code says that a `ShowyModel` extends a `SomeExampleModel`, obviously. It also says that the `setHeavyweightProperty` of a `ShowyModel` has some around advice, `displaysWait`. But it also inherits `SomeExampleModel`'s default method body and its after advice of `triggers('cache:dirty')`. In YouAreDaChef, advice is additive.
+
+We could also change the default body without changing the after advice, like this:
+
+```coffeescript
+class DifferentPropertyImplementationModel extends SomeExampleModel
+               
+YouAreDaChef
+  .clazz(DifferentPropertyImplementationModel)
+    .method('setHeavyweightProperty')
+      .default (property, value) ->
+        # set some property in a different way
+```
+
+Our `DifferentPropertyImplementationModel` inherits the `after` advice from `SomeExampleModel` but overrides the default body. Default bodies are not additive, they override.
 
 Notes
 -----
