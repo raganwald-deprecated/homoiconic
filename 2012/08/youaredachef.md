@@ -1,8 +1,8 @@
 ![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
   
   
-What Does YouAreDaChef Make Easy?
-=================================
+What Aspect-Oriented Programming teaches us about Method Decorators
+===================================================================
 
 [Method Combinators in CoffeeScript][mcc] described method decorators, an elegant way of separating concerns in CoffeeScript methods. Here are some decorators:
 
@@ -49,7 +49,9 @@ I also wrote, more-or-less:
 
 [YouAreDaChef]: https://github.com/raganwald/YouAreDaChef "YouAreDaChef, AOP for JavaScript and CoffeeScript"
 
-And what is this [YouAreDaChef]? It's a library that appears to solve the same problem. Here's a look at how it works, starting with our advice. Note that these are not decorators, they don't modify a function:
+And what is this [YouAreDaChef]? It's an [Aspect-Oriented Programming] library that appears to solve the same problem. Here's a look at how it works, starting with our advice. Note that these are not decorators, they don't modify a function:
+
+[Aspect-Oriented Programming]: https://en.wikipedia.org/wiki/Aspect-oriented_programming
 
 ```coffeescript
 triggers = (eventStrings...) ->
@@ -90,25 +92,10 @@ YouAreDaChef
       .around displaysWait
 ```
 
-YouAreDaChef's design takes a very different approach to solving what appears to be the same problem that method decorators solve. The differences between method decorators and YouAreDaChef are deliberate, they're a consequence of each approach solving the same basic problem but also attempting to solve some other software development problems at the same time. The unstated problems represent a set of what you might call "hidden assumptions" about the challenges of software development.
+YouAreDaChef's design takes a very different approach to solving what appears to be the same problem that method decorators solve. The colloquial thing programmers often say is that a particular design choice "makes something easy." For example, many people believe that good automated test coverage makes refactoring easy. So, what does YouAreDaChef make easy?
 
-Ease
-----
-
-Software Development is all about satisfying requirements, which we can express as enabling user stories peopled by persona. Of course, we know that, those people are our software's "users." But everyone who interacts with our program is a user of sorts. That also includes the IT department who maintains the servers, the DBAs who optimize our queries, QA analysts, product managers, interns, documentation specialists, and (I've saved my favourite for last) the developers themselves. And yes, that means YOU.
-
-We developers are personas and have user stories. Although it has little to do with method decoration, here's one of my favourites courtesy of Joel Spolsky:
-
-> A developer should be able to compile and deploy the application in one step.
-
-Simple, easy to test. Can you do one thing (e.g. `cap deploy`) and push the latest changes to staging or production?
-
-We programmers don't usually talk about program designs in terms of "user stories," but we think about them. The jargon I usually hear from programmers is "Optimizing for \_\_\_\_\_\_\_." For example, we might say that we believe that polymorphism optimizes for creating or changing objects and their implementations. Or we might say that we believe that inheritance optimizes for easy sharing of implementations.
-
-A more colloquial thing to say is that a particular design choice "makes something easy." For example, many people believe that good automated test coverage makes refactoring easy. So, what does YouAreDaChef make easy? And what does that tell us about designing programs?
-
-YouAreDaChef makes testing easy
--------------------------------
+Does YouAreDaChef make testing easy?
+------------------------------------
 
 Let's look more closely at YouAreDaChef and see if we can glean some insights by looking at what it "makes easy." ([1](#Notes))
 
@@ -141,8 +128,8 @@ What does this make easy? Well, for one thing, it makes testing easy. You don't 
 
 YouAreDaChef's decoupling makes writing tests easy.
 
-YouAreDaChef makes working with cross-cutting concerns easy
------------------------------------------------------------
+Does YouAreDaChef makes working with cross-cutting concerns easy?
+-----------------------------------------------------------------
 
 YouAreDaChef does allow you to break things into three pieces, but you can also put them back into two pieces, but in a different way than method decorators.
 
@@ -176,14 +163,49 @@ class SomeExampleModel
 
 We've put the YouAreDaChef code binding the advice to the methods with the implementation of the advice. This makes it easy to look at a particular concern--like managing a cache--and know everything about its behaviour. The YouAreDaChef approach makes working with cross-cutting concerns easy: You never have to go hunting through the app to find out what classes and methods are advised by the concern.([2](#Notes))
 
-YouAreDaChef makes working with cross-cutting concerns easy when you have inheritance hierarchies
--------------------------------------------------------------------------------------------
+Anything you can do, I can do better
+------------------------------------
 
-Method decorators do exactly what they look like they do: They are expressions that return a function that is then bound to a property in a prototype. Everything else we might say about "inheritance" and "classes" works exactly as it always works in JavaScript.
+The JavaScript object model is extremely flexible. That's because it is extremely minimal but relatively unconstrained, so you can usually build whatever you want out of it. And in fact, if we want to decouple the method decorators from the declaration of methods, we can do it:
 
-Duh, one might say. That's how inheritance works. Actually, inheritance can work in a lot of different ways. Ruby inheritance is different from C++ inheritance. JavaScript inheritance is different from Java inheritance.
+```coffeescript
+class SomeExampleModel
 
-Method decorators make working with JavaScript's existing inheritance mechanism easy. What kind of inheritance does YouAreDaChef make easy?
+  setHeavyweightProperty: (property, value) ->
+    # set some property in a complicated way
+    
+  recalculate: ->
+    # Do something that takes a long time
+      
+# ...
+
+triggers = (eventStrings...) ->
+             for eventString in eventStrings
+               @trigger(eventString)
+
+displaysWait = do ->
+                 waitLevel = 0
+                 (yield) ->
+                   someDOMElement.show() if (waitLevel += 1) > 0
+                   yield()
+                   someDOMElement.hide() if (waitLevel -= 1) <= 0
+
+SomeExampleModel::setHeavyweightProperty = 
+  triggers('cache:dirty') \
+  SomeExampleModel::setHeavyweightProperty
+
+SomeExampleModel::recalculate =
+  displaysWait \
+  triggers('cache:dirty') \
+  SomeExampleModel::recalculate
+```
+
+Hah! If we wanted to make testing easy and work with cross-cutting concerns, we can do that with method decorators too. This is an important pattern.
+
+What is YouAreDaChef's special sauce?
+-------------------------------------
+
+So what does YouAreDaChef make easy that method decorators can't manage?
 
 YouAreDaChef treats methods as having advice and a *default* body. So in the `triggers` example above, `triggers` is *after advice* and the body of `recalculate` is the *default body*. If there is no inheritance involved, it works exactly like method decorators.
 
@@ -218,26 +240,16 @@ This style of inheritance looks very weird if you think in terms of the implemen
 
 If it didn't, we'd have to redeclare all of our advice every time we subclassed. And worse, it would be a maintenance nightmare. if you add a new piece of advice to `SomeExampleModel`, can you be sure you remembered to add it to all of its subclasses that might override its methods?
 
-YouAreDaChef makes working with cross-cutting concerns easy when you have inheritance hierarchies.
+Summary
+-------
 
-What does this tell us?
------------------------
+Is it worth using a library when method decorators are a simple design pattern arising from JavaScript's existing functional model? There's nothing wrong with taking a YAGNI approach. Don't worry about your decorators until you find yourself writing a lot of mocking and stubbing every time you write some new tests. When you do, consider refactoring your decorators to decouple them from your methods.
 
-YouAreDaChef:
+Don't worry about your decorators until you find that modifying cross-cutting concerns sends you on a chase across files and classes because its dependencies are scattered through the code. When you do, refactoring your decorators to couple them with the concerns so that everything to do with the concern is in one place.
 
-1. Makes testing easy
-2. Makes working with cross-cutting concerns easy
-3. Makes working with cross-cutting concerns easy when you have inheritance hierarchies
-
-Is it worth using a library when method decorators are a simple design pattern arising from JavaScript's existing functional model? Like anything, it depends on whether you really need help with your tests. It depends on whether your cross-cutting concerns are entangling your code, and whether you are already philosophically inclined to write deep inheritance hierarchies.
-
-There's nothing wrong with taking a YAGNI approach. Don't worry about YouAreDaChef until you find yourself writing a lot of mocking and stubbing every time you write some new tests. When you do, have another look. Don't worry about YouAreDaChef until you find that modifying cross-cutting concerns sends you on a chase across files and classes because its dependencies are scattered through the code. When you do, have another look. And don't worry about YouAreDaChef if your classes tend to be organized in shallow hierarchies with more composition than inheritance. Those of you who prefer [a more ontological approach][oop] already know who you are.
+And don't worry about your decorators if your classes tend to be organized in shallow hierarchies with more composition than inheritance. Those of you who prefer [a more ontological approach][oop] already know who you are. But if you find yourself doing some back flips to ensure that your decorators are applied consistently up and down a class hierarchy, it's time to take a closer look at [YouAreDaChef].
 
 [oop]: https://github.com/raganwald/homoiconic/blob/master/2010/12/oop.md#oop-practiced-backwards-is-poo
-
-In the end, software design decisions, including choosing how to handle cross-cutting concerns, are expressions of your beliefs about how the software will be used by other programmers. They are the consequences of your beliefs of what is likely to change frequently and what is unlikely to change. they are expressions of your belief in what needs to be well understood and what can be cursorily scanned.
-
-Should you use method decorators or YouAreDaChef? It all depends on what you believe is going to happen to your program.
 
 Notes
 -----
