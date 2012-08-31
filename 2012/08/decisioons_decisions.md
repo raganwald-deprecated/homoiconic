@@ -36,6 +36,8 @@ class SomeExampleModel
       # Do something that takes a long time
 ```
 
+![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
+
 I also wrote, more-or-less:
 
 [mcc]: https://github.com/raganwald/homoiconic/blob/master/2012/08/method-decorators-and-combinators-in-coffeescript.md#method-combinators-in-coffeescript
@@ -45,8 +47,6 @@ I also wrote, more-or-less:
 > In CoffeeScript, we rarely need all of YouAreDaChef's Architecture Astronautics.
 
 [YouAreDaChef]: https://github.com/raganwald/YouAreDaChef "YouAreDaChef, AOP for JavaScript and CoffeeScript"
-
-![Dos Equis Guy Endorses YouAreDaChef](http://i.minus.com/i3niTDYu2cbR1.jpg)
 
 And what is this YouAreDaChef? It's a library that appears to solve the same problem. Here's a look at how it works, starting with our advice. Note that these are not decorators, they don't modify a function:
 
@@ -199,11 +199,24 @@ The first one is organized such that the class being 'decorated' knows what does
 
 The first one, written with method decorators, makes it easy to look at a class--like `SomeExampleModel`--and know everything about that model's behaviour. The second one, written with YouAreDaChef, makes it easy to look at a particular concern--like managing a cache--and know everything about the concern's behaviour. They both make it easy to look at a model class and understand its primary responsibility, uncluttered by other concerns.
 
-The YouAreDaChef approach is thus superior when you want to make working with cross-cutting concerns easy. [Café au Life][Recursive Universe] demonstrates this approach with the knobs turned up to eleven: Concerns like caching and garbage collection are entirely separated from core classes, and you can learn how the code works a piece at a time.
+The YouAreDaChef approach is thus superior when you want to make working with cross-cutting concerns easy. If you're adding authorization or permissions to an application, you probably want all of the rules for who can do what located in one place, not "scattered" across the application.
+
+[Café au Life][Recursive Universe] demonstrates the YouAreDaChef approach with the knobs turned up to eleven: Concerns like caching and garbage collection are entirely separated from core classes, and you can learn how the code works one concern at a time.
 
 [Recursive Universe]: http://recursiveuniver.se
 
+One More Thing
+---
 
+Method decorators do exactly what they look like they do: They are expressions that return a function that is then bound to a property in a prototype. Everything else we might say about "inheritance" and "classes" works exactly as it always works in JavaScript.
+
+Duh, one might say. That's how inheritance works. Actually, inheritance can work in a lot of different ways. Ruby inheritance is different from C++ inheritance. JavaScript inheritance is different from Java inheritance.
+
+Method decorators make working with JavaScript's existing inheritance mechanism easy. What kind of inheritance does YouAreDaChef make easy?
+
+YouAreDaChef treats methods as having advice and a *default* body. So in the `triggers` example above, `triggers` is *after advice* and the body of `recalculate` is the *default body*. If there is no inheritance involved, it works exactly like method decorators.
+
+But when we have inheritance, YouAreDaChef has a more complex model than JavaScript's baked-in protocol. With YouAreDaChef, the before, after, around, and guard advice is always inherited. Only the default body is overridden. Here's an example:
 
 
 Notes
