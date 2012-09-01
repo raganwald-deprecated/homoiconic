@@ -180,12 +180,13 @@ class SomeExampleModel
 # ...
 
 triggers = (eventStrings...) ->
-             for eventString in eventStrings
-               @trigger(eventString)
+             after ->
+               for eventString in eventStrings
+                 @trigger(eventString)
 
 displaysWait = do ->
                  waitLevel = 0
-                 (yield) ->
+                 around (yield) ->
                    someDOMElement.show() if (waitLevel += 1) > 0
                    yield()
                    someDOMElement.hide() if (waitLevel -= 1) <= 0
@@ -200,7 +201,7 @@ SomeExampleModel::recalculate =
   SomeExampleModel::recalculate
 ```
 
-Hah! If we wanted to make testing easy and work with cross-cutting concerns, we can do that with method decorators too. This is an important pattern: Method decorators can be used to decouple code.
+Hah! If we wanted to make testing easy and work with cross-cutting concerns, we can do that with method decorators too. This is an important pattern: **Method decorators can be used to decouple code**.
 
 What is YouAreDaChef's special sauce?
 -------------------------------------
