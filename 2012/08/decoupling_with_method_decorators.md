@@ -254,6 +254,8 @@ And don't worry about your decorators if your classes tend to be organized in sh
 
 [oop]: https://github.com/raganwald/homoiconic/blob/master/2010/12/oop.md#oop-practiced-backwards-is-poo
 
+p.s. [Method combinators github repository](https://github.com/raganwald/method-combinators)
+
 Notes
 -----
 
