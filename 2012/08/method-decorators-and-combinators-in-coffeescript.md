@@ -262,10 +262,10 @@ Try using method combinators in your next project. You'll be "Thinking in Coffee
 More Reading
 ---
 
+* [Using Method Decorators to Decouple Code](https://github.com/raganwald/homoiconic/blob/master/2012/08/decoupling_with_method_decorators.md#using-method-decorators-to-decouple-code)
 * [Understanding Python Decorators](http://stackoverflow.com/questions/739654/understanding-python-decorators) on StackOverflow
 * [Introduction to Python Decorators](http://www.artima.com/weblogs/viewpost.jsp?thread=240808) by Bruce Eckel
 * [Aspect-Oriented programming using Combinator Birds](https://github.com/raganwald/homoiconic/blob/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#aspect-oriented-programming-in-ruby-using-combinator-birds)
-* Discuss this post on [Hacker News](http://news.ycombinator.com/item?id=4439352) or [Reddit](http://www.reddit.com/r/coffeescript/comments/ywnw2/method_combinators_in_coffeescript/)
 
 Notes
 ---

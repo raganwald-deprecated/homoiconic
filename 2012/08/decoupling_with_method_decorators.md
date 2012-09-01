@@ -253,8 +253,6 @@ And don't worry about your decorators if your classes tend to be organized in sh
 
 [oop]: https://github.com/raganwald/homoiconic/blob/master/2010/12/oop.md#oop-practiced-backwards-is-poo
 
-([discuss](http://news.ycombinator.com/item?id=4459775))
-
 Notes
 -----
 
