@@ -117,7 +117,7 @@ YouAreDaChef provides a mechanism for adding "advice" to each method, separating
 Decorating Methods
 ---
 
-In CoffeeScript, we rarely need all the Architecture Astronautics. Can we do untangle the concerns with a simpler mechanism? Yes. Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
+In CoffeeScript, we rarely need all the Architecture Astronautics. Can we untangle the concerns with a simpler mechanism? Yes. Python provides [a much simpler way to decorate methods][pyd] if you don't mind annotating the method definition itself.
 
 [pyd]: http://en.wikipedia.org/wiki/Python_syntax_and_semantics#Decorators "Python Method Decorators"
 
