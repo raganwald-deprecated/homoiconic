@@ -150,7 +150,7 @@ _.memoize = function(func, hasher) {
   };
 ```
 
-Underscore provides other useful functions that act as method decorators. Both 'memoize` and `once` can be used directly as decorators:
+Underscore provides other useful functions that act as method decorators. Both `memoize` and `once` can be used directly as decorators:
 
 [once]: http://underscorejs.org/#once
 
@@ -188,7 +188,7 @@ class AnotherUnderscoreEg
 Summary
 -------
 
-`memoized` is a practical method decorator you can use right away. If you use Underscore.js in your projects, you can use its `_.memoize` and `_.once` directly as decorators. You can make method decorators out of `_.throttle` and `_.debounce` with partial evaluation.
+`memoized` is a practical method decorator you can use right away. If you use Underscore.js in your projects, you can use its `_.memoize` and `_.once` directly as decorators. You can also make method decorators out of `_.throttle` and `_.debounce` with partial evaluation.
 
 More Reading
 ---
