@@ -159,7 +159,10 @@ UnderscoreEg = (function() {
 
   function UnderscoreEg() {}
 
-  UnderscoreEg.prototype.initialize = _.once(function() {});
+  UnderscoreEg.prototype.initialize = _.once(function() {
+    // Initialization that must not be performed
+    // more than once
+  });
 
   return UnderscoreEg;
 
