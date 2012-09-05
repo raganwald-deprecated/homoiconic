@@ -1,0 +1,195 @@
+Memoized, the *practical* method decorator
+=========================================
+
+> In computing, [memoization] is an optimization technique used primarily to speed up computer programs by having function calls avoid repeating the calculation of results for previously processed inputs.
+
+[memoization]: https://en.wikipedia.org/wiki/Memoization
+
+In other words, if you calculate something, save the result. The next time you need to perform the same calculation, you just look it up. This applies to any algorithm, and many time we can use it with methods on an object.
+
+Let's start with a naive fibonacci algorithm in CoffeeScript:
+
+```coffeescript
+fibonacci = (n) ->
+  if n < 2
+    n
+  else
+    fibonacci(n-2) + fibonacci(n-1)
+```
+
+Since this is a post about method decorators, we'll gratuitously rewrite this function into an object with a helper method:
+
+```coffeescript
+class Fibonacci
+
+  constructor: (@n) ->
+  
+  toInt: ->
+    @fibonacci(@n)
+  
+  fibonacci:
+    (n) ->
+      if n < 2
+        n
+      else
+        @fibonacci(n-2) + @fibonacci(n-1)
+```
+    
+And we'll time it:
+      
+```bash
+coffee> s = (new Date()).getTime(); new Fibonacci(45).toInt(); ( (new Date()).getTime() - s ) / 1000
+28.565
+```
+
+Yecch! There are other, faster and [more interesting][matrix] algorithms, of course. But this one is good precisely because it is almost maximally pessimum: Computing `fibonacci(n - 2)` is going to require computing `fibonacci(n - 3)`. Having done this, it computes `fibonacci(n - 1)`. But of course, computing `fibonacci(n - 1)` is going to require computing `fibonacci(n - 2)` and `fibonacci(n - 3)`, ignoring the work it has already done!
+
+[matrix]: https://github.com/raganwald/homoiconic/blob/master/2008-12-12/fibonacci.md "A program to compute the nth Fibonacci number"
+
+We can easily rewrite the algorithm in another form that doesn't do the same work twice, but let's stick with it and see what we get from memoization. 
+
+Introducing `memoized`, our method decorator
+--------------------------------------------
+
+Time to write a memoization decorator! If you aren't familiar with method decorators, [Method Combinators in CoffeeScript][mcc] explains that a method decorator is a function that adds functionality to a method. We're going to write one that memoizes the result of our fibonacci helper:
+
+[mcc]: https://github.com/raganwald/homoiconic/blob/master/2012/08/method-decorators-and-combinators-in-coffeescript.md#method-combinators-in-coffeescript
+
+```coffeescript
+memoized = (methodBody) ->
+  memos = {}
+    ->
+    key = JSON.stringify(arguments)
+    if memos[key]?
+      memos[key]
+    else
+      memos[key] = methodBody.apply(this, arguments)
+```
+
+Our decorator is a little limited: It can only handle methods that take zero or more arguments, each of which must be amenable to `JSON.stringify`. It works perfectly for our example, but you can build something more robust if you need more flexibility.
+
+Let's redo our class to use it:
+
+```coffeescript
+class FastFibonacci
+
+  constructor: (@n) ->
+  
+  toInt: ->
+    @fibonacci(@n)
+  
+  fibonacci:
+    memoized \
+    (n) ->
+      if n < 2
+        n
+      else
+        @fibonacci(n-2) + @fibonacci(n-1)
+```
+    
+And we'll time it again:
+      
+```bash
+coffee> s = (new Date()).getTime(); new FastFibonacci(45).toInt(); ( (new Date()).getTime() - s ) / 1000
+0.001
+```
+
+What does this get us?
+----------------------
+
+We can memoize any method we like with a single label, `memoized`. We don't have to write something like:
+
+```coffeescript
+  fibonacci:
+    do ->
+      memos = {}
+      (n) ->
+        if n < 2
+          n
+        else if memos[n]
+          memos[n]
+        else
+          memos[n] = @fibonacci(n-2) + @fibonacci(n-1)
+```
+
+This tangles the memoize implementation with the base logic of the fibonacci function, and it isn't reusable. And of course, it composes with other decorators we might use without tangling even more concerns and responsibilities in our code.
+
+Sounds good, but `memoized` seems familiar...
+--------------------------------------------
+
+Indeed it does. Jeremy Ashkenas' Underscore.js library has a [memoize] function that does this exact thing for any arbitrary function. It can also be used for methods.
+
+[memoize]: http://underscorejs.org/#memoize
+
+What's that? Methods are functions, so anything that works with a function must *necessarily* work with a method? Not exactly. Anything that works with a function also works with a method that never refers to JavaScript's `this` pseudo-variable. And that's the case with our `factorial` helper method above. But once you start referring to `this`, method decorators will break your methods unless they preserve the correct receiver object. That's why our `memoized` decorator invokes `.apply(this, arguments)`, to preserve the correct receiver. Perusing the source code for Underscore 1.3.1, we see that `memoize` preserves `this` and can be used as a method decorator:
+
+```coffeescript
+_.memoize = function(func, hasher) {
+    var memo = {};
+    hasher || (hasher = _.identity);
+    return function() {
+      var key = hasher.apply(this, arguments);
+      return _.has(memo, key) ? memo[key] : (memo[key] = func.apply(this, arguments));
+    };
+  };
+```
+
+Underscore provides other useful functions that act as method decorators. Both 'memoize` and `once` can be used directly as decorators:
+
+[once]: http://underscorejs.org/#once
+
+```coffeescript
+class UnderscoreEg
+
+  initialize:
+    _.once \
+    ->
+      # Do a lot of expensive initialization
+      # that should only be performed once
+```
+
+`throttle` and `debounce` have additional parameters you can handle with a little partial evaluation:
+
+[throttle]: http://underscorejs.org/#throttle
+[debounce]: http://underscorejs.org/#debounce
+
+```coffeescript
+throttled = 
+  (milliseconds) ->
+    (methodBody) ->
+      _.throttle(methodBody, milliseconds)
+    
+class AnotherUnderscoreEg
+
+  sayWhat:
+    throttled(10000) \
+    ->
+      alert('What!?')
+```
+
+Summary
+-------
+
+`memoized` is a practical method decorator you can use right away. If you use Underscore.js in your projects, you can use its `_.memozie` and `_.once` directly as decorators. You can make method decorators out of `_.throttle` and `_.debounce` with partial evaluation.
+
+More Reading
+---
+
+* [npm install method-combinators](https://github.com/raganwald/method-combinators)
+* [Using Method Decorators to Decouple Code](https://github.com/raganwald/homoiconic/blob/master/2012/08/decoupling_with_method_decorators.md#using-method-decorators-to-decouple-code)
+* [Understanding Python Decorators](http://stackoverflow.com/questions/739654/understanding-python-decorators) on StackOverflow
+* [Introduction to Python Decorators](http://www.artima.com/weblogs/viewpost.jsp?thread=240808) by Bruce Eckel
+* [Aspect-Oriented programming using Combinator Birds](https://github.com/raganwald/homoiconic/blob/master/2008-11-07/from_birds_that_compose_to_method_advice.markdown#aspect-oriented-programming-in-ruby-using-combinator-birds)
+
+---
+
+Recent work:
+
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators) and my [other books](http://leanpub.com/u/raganwald).
+* [Cafe au Life](http://recursiveuniver.se), a CoffeeScript implementation of Bill Gosper's HashLife written in the [Williams Style](https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md).
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [YouAreDaChef](http://github.com/raganwald/YouAreDaChef), a library for writing method combinations for CoffeeScript and JavaScript projects.
+
+---
+
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
