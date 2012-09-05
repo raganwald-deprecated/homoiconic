@@ -51,46 +51,58 @@ We can easily rewrite the algorithm in another form that doesn't do the same wor
 Introducing `memoized`, our method decorator
 --------------------------------------------
 
-Time to write a memoization decorator! If you aren't familiar with method decorators, [Method Combinators in CoffeeScript][mcc] explains that a method decorator is a function that adds functionality to a method. We're going to write one that memoizes the result of our fibonacci helper:
+Time to write a memoization decorator! If you aren't familiar with method decorators, [Method Combinators in CoffeeScript][mcc] explains that a method decorator is a function that adds functionality to a method. We're going to write one that memoizes the result of our fibonacci helper, this time in JavaScript:
 
 [mcc]: https://github.com/raganwald/homoiconic/blob/master/2012/08/method-decorators-and-combinators-in-coffeescript.md#method-combinators-in-coffeescript
 
-```coffeescript
-memoized = (methodBody) ->
-  memos = {}
-  ->
-    key = JSON.stringify(arguments)
-    if memos[key]?
-      memos[key]
-    else
-      memos[key] = methodBody.apply(this, arguments)
+```javascript
+memoized = function(methodBody) {
+  var memos;
+  memos = {};
+  return function() {
+    var key;
+    key = JSON.stringify(arguments);
+    if (memos[key] != null) {
+      return memos[key];
+    } else {
+      return memos[key] = methodBody.apply(this, arguments);
+    }
+  };
+};
 ```
 
 Our decorator is a little limited: It can only handle methods that take zero or more arguments, each of which must be amenable to `JSON.stringify`. It works perfectly for our example, but you can build something more robust if you need more flexibility.
 
 Let's redo our class to use it:
 
-```coffeescript
-class FastFibonacci
+```javascript
+FastFibonacci = (function() {
 
-  constructor: (@n) ->
-  
-  toInt: ->
-    @fibonacci(@n)
-  
-  fibonacci:
-    memoized \
-    (n) ->
-      if n < 2
-        n
-      else
-        @fibonacci(n-2) + @fibonacci(n-1)
+  function FastFibonacci(n) {
+    this.n = n;
+  }
+
+  FastFibonacci.prototype.toInt = function() {
+    return this.fibonacci(this.n);
+  };
+
+  FastFibonacci.prototype.fibonacci = memoized(function(n) {
+    if (n < 2) {
+      return n;
+    } else {
+      return this.fibonacci(n - 2) + this.fibonacci(n - 1);
+    }
+  });
+
+  return FastFibonacci;
+
+})();
 ```
     
 And we'll time it again:
       
 ```bash
-coffee> s = (new Date()).getTime(); new FastFibonacci(45).toInt(); ( (new Date()).getTime() - s ) / 1000
+js> s = (new Date()).getTime(); new FastFibonacci(45).toInt(); ( (new Date()).getTime() - s ) / 1000
 0.001
 ```
 
@@ -101,7 +113,7 @@ That makes quite the difference! Memoization isn't limited to mathematical compu
 What does a decorator get us?
 -----------------------------
 
-The `memoized` decorator is quite handy. We can memoize any method we like with a single label. We don't have to write something like:
+The `memoized` decorator is quite handy. We can memoize any method we like with a single label. We don't have to write something like this CoffeeScript snippet:
 
 ```coffeescript
   fibonacci:
@@ -127,7 +139,7 @@ Indeed it does. Jeremy Ashkenas' Underscore.js library has a [memoize] function 
 
 What's that? Methods are functions, so anything that works with a function must *necessarily* work with a method? Not exactly. Anything that works with a function also works with a method that never refers to JavaScript's `this` pseudo-variable. And that's the case with our `factorial` helper method above. But once you start referring to `this`, method decorators will break your methods unless they preserve the correct receiver object. That's why our `memoized` decorator invokes `.apply(this, arguments)`, to preserve the correct receiver. Perusing the source code for Underscore 1.3.1, we see that `memoize` preserves `this` and can be used as a method decorator:
 
-```coffeescript
+```javascript
 _.memoize = function(func, hasher) {
     var memo = {};
     hasher || (hasher = _.identity);
@@ -142,14 +154,16 @@ Underscore provides other useful functions that act as method decorators. Both '
 
 [once]: http://underscorejs.org/#once
 
-```coffeescript
-class UnderscoreEg
+```javascript
+UnderscoreEg = (function() {
 
-  initialize:
-    _.once \
-    ->
-      # Do a lot of expensive initialization
-      # that should only be performed once
+  function UnderscoreEg() {}
+
+  UnderscoreEg.prototype.initialize = _.once(function() {});
+
+  return UnderscoreEg;
+
+})();
 ```
 
 `throttle` and `debounce` have additional parameters you can handle with a little partial evaluation:
