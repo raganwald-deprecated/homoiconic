@@ -166,7 +166,7 @@ UnderscoreEg = (function() {
 })();
 ```
 
-`throttle` and `debounce` have additional parameters you can handle with a little partial evaluation:
+`throttle` and `debounce` have additional parameters you can handle with a little partial evaluation. Here's `throttled` in CoffeeScript:
 
 [throttle]: http://underscorejs.org/#throttle
 [debounce]: http://underscorejs.org/#debounce
