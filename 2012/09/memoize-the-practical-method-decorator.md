@@ -58,7 +58,7 @@ Time to write a memoization decorator! If you aren't familiar with method decora
 ```coffeescript
 memoized = (methodBody) ->
   memos = {}
-    ->
+  ->
     key = JSON.stringify(arguments)
     if memos[key]?
       memos[key]
@@ -94,10 +94,14 @@ coffee> s = (new Date()).getTime(); new FastFibonacci(45).toInt(); ( (new Date()
 0.001
 ```
 
-What does this get us?
-----------------------
+That makes quite the difference! Memoization isn't limited to mathematical computations or recursive algorithms. If you are careful about preserving [idempotence], memoization can be used to save superfluous database lookups, AJAX calls and almost anything else that takes time to resolve.
 
-We can memoize any method we like with a single label, `memoized`. We don't have to write something like:
+[idempotence]: https://en.wikipedia.org/wiki/Idempotence
+
+What does a decorator get us?
+-----------------------------
+
+The `memoized` decorator is quite handy. We can memoize any method we like with a single label. We don't have to write something like:
 
 ```coffeescript
   fibonacci:
