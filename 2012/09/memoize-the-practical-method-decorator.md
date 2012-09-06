@@ -62,7 +62,7 @@ memoized = function(methodBody) {
   return function() {
     var key;
     key = JSON.stringify(arguments);
-    if (memos[key] != null) {
+    if (memos.hasOwnProperty(key)) { 
       return memos[key];
     } else {
       return memos[key] = methodBody.apply(this, arguments);
