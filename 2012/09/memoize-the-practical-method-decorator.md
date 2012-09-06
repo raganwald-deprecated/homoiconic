@@ -86,13 +86,15 @@ FastFibonacci = (function() {
     return this.fibonacci(this.n);
   };
 
-  FastFibonacci.prototype.fibonacci = memoized(function(n) {
-    if (n < 2) {
-      return n;
-    } else {
-      return this.fibonacci(n - 2) + this.fibonacci(n - 1);
+  FastFibonacci.prototype.fibonacci = memoized(
+    function(n) {
+      if (n < 2) {
+        return n;
+      } else {
+        return this.fibonacci(n - 2) + this.fibonacci(n - 1);
+      }
     }
-  });
+  );
 
   return FastFibonacci;
 
@@ -157,10 +159,12 @@ UnderscoreEg = (function() {
 
   function UnderscoreEg() {}
 
-  UnderscoreEg.prototype.initialize = _.once(function() {
-    // Initialization that must not be performed
-    // more than once
-  });
+  UnderscoreEg.prototype.initialize = _.once(
+    function() {
+      // Initialization that must not be performed
+      // more than once
+    }
+  );
 
   return UnderscoreEg;
 
