@@ -120,12 +120,10 @@ The `memoized` decorator is quite handy. We can memoize any method we like with 
     do ->
       memos = {}
       (n) ->
-        if n < 2
-          n
-        else if memos[n]
-          memos[n]
-        else
-          memos[n] = @fibonacci(n-2) + @fibonacci(n-1)
+        memos[n] ?= if n < 2
+                      n
+                    else
+                      @fibonacci(n-2) + @fibonacci(n-1)
 ```
 
 This tangles the memoize implementation with the base logic of the fibonacci function, and it isn't reusable. And of course, it composes with other decorators we might use without tangling even more concerns and responsibilities in our code.
