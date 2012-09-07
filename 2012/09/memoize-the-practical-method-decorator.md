@@ -195,8 +195,6 @@ Summary
 
 `memoized` is a practical method decorator you can use right away. If you use Underscore.js in your projects, you can use its `_.memoize` and `_.once` directly as decorators. You can also make method decorators out of `_.throttle` and `_.debounce` with partial evaluation.
 
-(Discuss on [Hacker News](http://news.ycombinator.com/item?id=4481213) and [Reddit](http://www.reddit.com/r/javascript/comments/zesqd/memoized_the_practical_method_decorator/))
-
 More Reading
 ---
 

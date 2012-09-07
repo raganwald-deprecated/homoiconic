@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>2012/08/decisioons_decisions.md</string>
+	<string>2012/09/memoize-the-practical-method-decorator.md</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,6 +13,8 @@
 			<string>homoiconic</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|tmp|log|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>selected</key>
+			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -133,19 +135,79 @@
 			<key>firstVisibleLine</key>
 			<integer>31</integer>
 		</dict>
-		<key>2012/08/decisioons_decisions.md</key>
+		<key>2012/08/decoupling_with_method_decorators.md</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>15</integer>
+				<integer>200</integer>
 				<key>line</key>
-				<integer>180</integer>
+				<integer>203</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>126</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>150</integer>
+				<key>line</key>
+				<integer>203</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>200</integer>
+				<key>line</key>
+				<integer>203</integer>
+			</dict>
+		</dict>
+		<key>2012/08/method-decorators-and-combinators-in-coffeescript.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>85</integer>
+				<key>line</key>
+				<integer>286</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>254</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>256</integer>
+				<key>line</key>
+				<integer>259</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>85</integer>
+				<key>line</key>
+				<integer>286</integer>
+			</dict>
+		</dict>
+		<key>2012/09/memoize-the-practical-method-decorator.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>146</integer>
+			<integer>124</integer>
 		</dict>
 		<key>dumping_ground/coffeescript_and_underscore.md</key>
 		<dict>
@@ -178,7 +240,9 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>2012/08/decisioons_decisions.md</string>
+		<string>2012/08/decoupling_with_method_decorators.md</string>
+		<string>2012/08/method-decorators-and-combinators-in-coffeescript.md</string>
+		<string>2012/09/memoize-the-practical-method-decorator.md</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
