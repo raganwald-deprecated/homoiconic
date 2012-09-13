@@ -1,5 +1,5 @@
-More Practical Method Combinators: `precondition` and `postcondition`
-=====================================================================
+More Practical Method Combinators: Pre- and Post-conditions
+===========================================================
 
 Before we get into `precondition`, `postcondition`, and how useful they are from a practitioner's viewpoint, we're going to look at how they're implemented. `precondition` looks like this in CoffeeScript:
 
