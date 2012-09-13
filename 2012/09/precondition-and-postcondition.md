@@ -141,11 +141,11 @@ var Project = Backbone.Model.extend({
   },
   
   set: receiverMustStayValid(
-    function () { return Backbone.Model.prototype.set.call(this, arguments); }
+    function () { return Backbone.Model.prototype.set.apply(this, arguments); }
   ),
   
   unset: receiverMustStayValid(
-    function () { return Backbone.Model.prototype.unset.call(this, arguments); }
+    function () { return Backbone.Model.prototype.unset.apply(this, arguments); }
   ),
   
   contactArray: returnsElements(
