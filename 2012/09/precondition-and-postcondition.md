@@ -50,7 +50,7 @@ As mentioned above, precondition can be called in either of two ways:
 So what does precondition do? It throws an error if the condition function fails. Let's flesh out our example:
 
 ```coffeescript
-modelMustBeValid = precondition 'receiver is not valid', -> @isValid()
+receiverMustBeValid = precondition 'receiver is not valid', -> @isValid()
 
 class ChequingAccount extends BackboneModel 
 # Obviously one of the five (count 'em on one hand) Canadian banks
@@ -62,12 +62,12 @@ class ChequingAccount extends BackboneModel
     # method calls validate for you.
     
   processCreditTransfer:
-    modelMustBeValid \
+    receiverMustBeValid \
     (transferModel) ->
       # credit the account
   
   processDebitTransfer:
-    modelMustBeValid \
+    receiverMustBeValid \
     (transferModel) ->
       # debit the account
       
@@ -122,16 +122,41 @@ this.postcondition = function(throwable, condition) {
 
 A postcondition tests its condition function *after* the method returns a value. Because it's based on the after combinator, the condition is paramaterized by the *return value* rather than by the arguments (that's how `after` works). It's a great way to check that anything created or mutated meets specific conditions. For example, you can check that a model stays valid after executing a method:
 
-```coffeescript
-modelMustBeValid = postcondition 'receiver invalidated by method', -> @isValid()
-```
-
-Or assert something about the return value:
-
 ```javascript
-returnsElements = postcondition(
+var receiverMustRemainValid = postcondition(
+  'receiver invalidated by method',
+  function () { return this.isValid(); }
+);
+
+var returnsElements = postcondition(
   function (value) { return _.isArray(value) && !_.isEmpty(value); }
 ); 
+
+// ...
+
+var Project = Backbone.Model.extend({
+
+  validate: function (attrs) {
+    // ...
+  },
+  
+  set: receiverMustRemainValid(
+    function () { return Backbone.Model.prototype.set.call(this, arguments); }
+  ),
+  
+  unset: receiverMustRemainValid(
+    function () { return Backbone.Model.prototype.unset.call(this, arguments); }
+  ),
+  
+  contacts: returnsElements(
+    function () {
+      // ...
+    }
+  ),
+
+  # ...
+
+});
 ```
 
 The possibilities are endless. And don't restrict them to models. In views, postconditions can assert that DOM elements are correctly positioned and populated. Postconditions are a great way of documenting what view methods are supposed to accomplish.
