@@ -25,11 +25,11 @@ this.precondition = function(throwable, condition) {
 };
 ```
 
-It's a two-line function, where the first line is some argument handling so that you can write either `precondition 'backbone.js model is not valid', -> @isValid()` if you want to declare your own throwable or `precondition -> @isValid()` if you're the taciturn type.
+It's a two-line function, where the first line is some argument handling so that you can write either `precondition 'receiver is not valid', -> @isValid()` if you want to declare your own throwable or `precondition -> @isValid()` if you're the taciturn type.
 
 The second line does the actual work. As you can see, `precondition` combines your `condition` function with the `before` combinator. Yes, `precondition` is a combinator that combines a function with a combinator. That's how combinators work, they can be built into new combinators just as functions can call functions.
 
-This is a natural consequence of JavaScript's elegant first-class functional model. Making a function out of a function that itself is made out of a function is what JavaScript does. Our code just as elegant in JavaScript even if we did use a few more symbols to make the parser happy.[[1]] 
+This is a natural consequence of JavaScript's elegant first-class functional model. Making a function out of a function that itself is made out of a function is what JavaScript does. Our code just as elegant in JavaScript even if we did use a few more symbols to make the parser happy.[[note]] 
 
 [1]: https://github.com/raganwald/homoiconic/blob/master/2012/09/precondition-and-postcondition.md#notes
 
@@ -40,12 +40,15 @@ Let's look at how.
 `precondition`
 --------------
 
-As mentioned above, `precondition` can be called in either of two ways: `precondition 'backbone.js model is not valid', -> @isValid()` if you want to declare your own throwable or `precondition -> @isValid()`. The second form is equivalent to `precondition 'Failed precondition', -> @isValid()`.
+As mentioned above, `precondition` can be called in either of two ways:
+
+1. You can write `precondition 'receiver is not valid', -> @isValid()` if you want to declare your own throwable.
+2. You can write or `precondition -> @isValid()`, leaving out the throwable. This is equivalent to writing `precondition 'Failed precondition', -> @isValid()`.
 
 So what does `precondition` do? It throws an error if the condition function fails. Let's flesh out our example:
 
 ```coffeescript
-modelMustBeValid = precondition 'backbone.js model is not valid', -> @isValid()
+modelMustBeValid = precondition 'receiver is not valid', -> @isValid()
 
 class ChequingAccount extends BackboneModel 
 # Obviously one of the five (count 'em on one hand) Canadian banks
@@ -74,9 +77,13 @@ If a `ChequingAccount` model is not in a valid state, an error will be thrown wh
 Preconditions can also do more than examine the state of the object implementing the method. A precondition is passed the method's arguments, so you can check them too:
 
 ```javascript
-argumentMustBeValid = precondition(
-  'argument model is not valid',
-  function (modelArg) { return modelArg.isValid(); }
+noBlankArguments = precondition(
+  'null or undefined is not allowed as an argument',
+  function () { 
+    return _.all(arguments, function (arg) {
+      return !(_.isNull(arg) || _.isUndefined(arg));
+    });
+  }
 );
 ```
 
@@ -84,10 +91,10 @@ Preconditions can obviously be used in conjunction with error handling code to d
 
 Preconditions of that nature serve double duty: In development and staging, the help to find bugs. They also serve as executable documentation: Write as many as you can, programmers reading the code later will glean a wealth of information about what to expect.
 
-What about `postcondition`?
----------------------------
+`postcondition`
+---------------
 
-You've probably figured it out already:
+You've probably figured `postcondition` out. It looks like this:
 
 ```coffeescript
 this.postcondition =
@@ -111,10 +118,10 @@ this.postcondition = function(throwable, condition) {
 };
 ```
 
-A `postcondition` tests its condition function *after* the method returns a value. Because it's based on `after`, the condition is paramaterized by the *return value* rather than by the arguments. It's a great way to check that anything created or mutated meets specific conditions. For example, you can check that a model stays valid after executing a method:
+A `postcondition` tests its condition function *after* the method returns a value. Because it's based on `after`, the condition is paramaterized by the *return value* rather than by the arguments (that's how `after` works). It's a great way to check that anything created or mutated meets specific conditions. For example, you can check that a model stays valid after executing a method:
 
 ```coffeescript
-modelMustBeValid = postcondition 'backbone.js model invalidated by method', -> @isValid()
+modelMustBeValid = postcondition 'receiver invalidated by method', -> @isValid()
 ```
 
 Or assert something about the return value:
@@ -125,12 +132,22 @@ returnsElements = postcondition(
 ); 
 ```
 
-Notes
------
+The possibilities are endless. And don't restrict them to models. In views, postconditions can assert that DOM elements are correctly positioned and populated. Postconditions are a great way of documenting what view methods are supposed to accomplish.
 
-1. Compare and contrast our `precondition` to a [this ruby implementation][pr]. The Ruby implementation looks elegant to the OO-trained eye, but that's only because its `MethodDecorator` superclass is doing the heavy lifting. Have a look at  [method_decorators.rb][mds] for yourself! In my (anecdotal!) experience, this is often the way with OO languages like Ruby: You can make something appear very elegant at one level of abstraction, but if you peek behind the curtain at the abstraction's infrastructure, it's very messy and wild.
+Summary
+-------
 
-  The programmer is not at fault, far from it. It's just that some languages present a very arbitrary kind of API optimized for programming according to a specific model. When you come along to program to a different model, you end up greenspunning things in a way that cuts against the grain of the language.
+Preconditions and postconditions are simple method combinators that implement error-checking for methods. Their use and implementation are simple because they "cut with the grain" of JavaScript's functional model. They can be used in either of two ways:
+
+1. To implement expected error checking such as invalid user input, or;
+2. To act as assertions documenting the program's expected behaviour under all circumstances.
+
+Note
+----
+
+Compare and contrast our `precondition` to a [this ruby implementation][pr]. The Ruby implementation looks elegant to the OO-trained eye, but that's only because its `MethodDecorator` superclass is doing the heavy lifting. Have a look at  [method_decorators.rb][mds] for yourself! In my (anecdotal!) experience, this is often the way with OO languages like Ruby: You can make something appear very elegant at one level of abstraction, but if you peek behind the curtain at the abstraction's infrastructure, it's very messy and wild.
+
+The programmer is not at fault, far from it. It's just that some languages present a very arbitrary kind of API optimized for programming according to a specific model. When you come along to program to a different model, you end up greenspunning things in a way that cuts against the grain of the language.
 
 [pr]: https://github.com/michaelfairley/method_decorators/blob/master/lib/method_decorators/decorators/precondition.rb "precondition.rb"
 [mds]: https://github.com/michaelfairley/method_decorators/blob/master/lib/method_decorators.rb "method_decorators.rb"
