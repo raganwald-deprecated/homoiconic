@@ -126,7 +126,7 @@ var receiverMustStayValid = postcondition(
   function () { return this.isValid(); }
 );
 
-var returnsElements = postcondition(
+var mustReturnArrayWithElements = postcondition(
   function (value) { return _.isArray(value) && !_.isEmpty(value); }
 ); 
 
@@ -149,7 +149,7 @@ var Project = Backbone.Model.extend({
   ),
   
   // this method now throws an error if it doesn't return an non-empty array
-  contactArray: returnsElements(
+  contactArray: mustReturnArrayWithElements(
     function () {
       // ...
     }
