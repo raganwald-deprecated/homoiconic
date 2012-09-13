@@ -3,7 +3,7 @@ More Practical Method Combinators: Pre- and Post-conditions
 
 Today we're going to look at two more useful [method combinators]. Quick recap: A method combinator takes a function you write and turns it into a function that modifies a method's behaviour. For example, the before combinator takes your function and runs it before a method. Method combinators are great because they allow you to extract cross-cutting concerns like initialization, error checking, logging, firing events, and so forth from your core model code.
 
-Back to this post.Before we get into precondition, postcondition, and how useful they are from a practitioner's viewpoint, we're going to look at how they're implemented. Precondition looks like this in CoffeeScript:
+Back to this post. Almost! Before we get into precondition, postcondition, and how useful they are from a practitioner's viewpoint, we're going to look at how they're implemented. Precondition looks like this in CoffeeScript:
 
 [method combinators]: https://github.com/raganwald/method-combinators
 
@@ -33,11 +33,9 @@ It's a two-line function, where the first line is some argument handling so that
 
 The second line does the actual work. As you can see, precondition combines your `condition` function with the before combinator. Yes, precondition is a combinator that combines a function with a combinator. That's how combinators work, they can be built into new combinators just as functions can call functions.
 
-This is a natural consequence of JavaScript's elegant first-class functional model. Making a function out of a function that itself is made out of a function is what JavaScript does. Our code just as elegant in JavaScript even if we did use a few more symbols to make the parser happy.[[note]] 
+This is a natural consequence of JavaScript's first-class functional model. Making a function out of a function that itself is made out of a function is what JavaScript does. Our code just as elegant in JavaScript even if we did use a few more symbols to make the parser happy.
 
-[note]: https://github.com/raganwald/homoiconic/blob/master/2012/09/precondition-and-postcondition.md#note
-
-Method combinators cut with the grain of JavaScript's functional model, so they are naturally elegant and there're turtles all the way down: There is no messy greenspunned engine hiding behind a curtain. That's great, because method combinators combine with each other and can be used to build new combinators and decorators. Don't just use the ones that come in the module, write some new ones!
+Method combinators cut with the grain of JavaScript's functional model, so they are naturally elegant and there're turtles all the way down: There isn't any [complicated implementation][mds] hiding behind a curtain. That's great, because method combinators combine with each other and can be used to build new combinators and decorators. Don't just use the ones that come in the module, write some new ones!
 
 Let's look at how.
 
@@ -172,14 +170,17 @@ Summary
 Preconditions and postconditions are simple method combinators that implement error-checking for methods. Their use and implementation are simple because they "cut with the grain" of JavaScript's functional model. They can be used in either of two ways:
 
 1. To implement expected error checking such as invalid user input, or;
-2. To act as assertions documenting the program's expected behaviour under all circumstances.
+2. To act as assertions documenting the program's expected behaviour under all circumstances. "method_decorators.rb"
 
-Note
-----
+---
 
-Compare and contrast our precondition to a [this ruby implementation][pr]. The Ruby implementation looks elegant to the OO-trained eye, but that's only because its `MethodDecorator` superclass is doing the heavy lifting. Have a look at  [method_decorators.rb][mds] for yourself! In my (anecdotal!) experience, this is often the way with OO languages like Ruby: You can make something appear very elegant at one level of abstraction, but if you peek behind the curtain at the abstraction's infrastructure, it's very messy and wild.
+Recent work:
 
-The Ruby program's author has done an outstanding job of working with Ruby's OO model, hooking methods that act like event listeners to detect when a method is added to a class and modifying it in place. Likewise, he maintains a list of decorators to be added to the next method, creating the illusion that you are writing declarative code. That's how it goes: Some languages present a very specific kind of API optimized for programming according to a specific model. When you come along to program to a different model, you end up greenspunning a new abstraction.
+* [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators) and my [other books](http://leanpub.com/u/raganwald).
+* [Cafe au Life](http://recursiveuniver.se), a CoffeeScript implementation of Bill Gosper's HashLife written in the [Williams Style](https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md).
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [Method Combinators](https://github.com/raganwald/method-combinators), a CS/JS library for writing method decorators, simply and easily. 
 
-[pr]: https://github.com/michaelfairley/method_decorators/blob/master/lib/method_decorators/decorators/precondition.rb "precondition.rb"
-[mds]: https://github.com/michaelfairley/method_decorators/blob/master/lib/method_decorators.rb "method_decorators.rb"
+---
+
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>2012/09/memoize-the-practical-method-decorator.md</string>
+	<string>2012/01/captain-obvious-on-javascript.md</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,8 +13,6 @@
 			<string>homoiconic</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|tmp|log|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
-			<key>selected</key>
-			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -84,14 +82,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>185</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>150</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>112</integer>
+			<integer>115</integer>
 		</dict>
 		<key>2012/01/reuseable-abstractions.md</key>
 		<dict>
@@ -140,29 +138,29 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>200</integer>
+				<integer>139</integer>
 				<key>line</key>
-				<integer>203</integer>
+				<integer>243</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
-			<integer>0</integer>
+			<integer>103</integer>
 			<key>firstVisibleLine</key>
-			<integer>126</integer>
+			<integer>210</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>150</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>203</integer>
+				<integer>205</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>200</integer>
+				<integer>139</integer>
 				<key>line</key>
-				<integer>203</integer>
+				<integer>243</integer>
 			</dict>
 		</dict>
 		<key>2012/08/method-decorators-and-combinators-in-coffeescript.md</key>
@@ -200,14 +198,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>272</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>195</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>124</integer>
+			<integer>174</integer>
 		</dict>
 		<key>dumping_ground/coffeescript_and_underscore.md</key>
 		<dict>
@@ -241,6 +239,7 @@
 	<key>openDocuments</key>
 	<array>
 		<string>2012/08/decoupling_with_method_decorators.md</string>
+		<string>2012/01/captain-obvious-on-javascript.md</string>
 		<string>2012/08/method-decorators-and-combinators-in-coffeescript.md</string>
 		<string>2012/09/memoize-the-practical-method-decorator.md</string>
 	</array>
