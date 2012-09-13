@@ -29,7 +29,9 @@ It's a two-line function, where the first line is some argument handling so that
 
 The second line does the actual work. As you can see, `precondition` combines your `condition` function with the `before` combinator. Yes, `precondition` is a combinator that combines a function with a combinator. That's how combinators work, they can be built into new combinators just as functions can call functions.
 
-This is a natural consequence of JavaScript's elegant first-class functional model. Making a function out of a function that itself is made out of a function is what JavaScript does. Our code just as elegant in JavaScript even if we did use a few more symbols to make the parser happy.[1] 
+This is a natural consequence of JavaScript's elegant first-class functional model. Making a function out of a function that itself is made out of a function is what JavaScript does. Our code just as elegant in JavaScript even if we did use a few more symbols to make the parser happy.[[1]] 
+
+[1]: https://github.com/raganwald/homoiconic/blob/master/2012/09/precondition-and-postcondition.md#notes
 
 Method combinators cut with the grain of JavaScript's functional model, so they are naturally elegant and there're turtles all the way down: There is no messy greenspunned engine hiding behind a curtain. That's great, because method combinators combine with each other and can be used to build new combinators and decorators. Don't just use the ones that come in the module, write some new ones!
 
@@ -118,7 +120,9 @@ modelMustBeValid = postcondition 'backbone.js model invalidated by method', -> @
 Or assert something about the return value:
 
 ```javascript
-returnsElements = postcondition (value) -> _.isArray(value) and !_.isEmpty(value)
+returnsElements = postcondition(
+  function (value) { return _.isArray(value) && !_.isEmpty(value); }
+); 
 ```
 
 Notes
