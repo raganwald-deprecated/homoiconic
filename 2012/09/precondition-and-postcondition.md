@@ -29,7 +29,7 @@ this.precondition = function(throwable, condition) {
 };
 ```
 
-It's a two-line function, where the first line is some argument handling so that you can write either `precondition 'receiver is not valid', -> @isValid()` if you want to declare your own throwable or `precondition -> @isValid()` if you're the taciturn type.
+It's a two-line function, where the first line is some argument handling so that you can write either `precondition 'receiver is not valid', -> @isValid()` if you want to declare your own throwable or `precondition -> @isValid()` if you're the taciturn type. (In JavaScript, those would be: `precondition( 'receiver is not valid', function () { return this.isValid(); } )` and precondition( function () { return this.isValid(); } )` respectively).
 
 The second line does the actual work. As you can see, precondition combines your `condition` function with the before combinator. Yes, precondition is a combinator that combines a function with a combinator. That's how combinators work, they can be built into new combinators just as functions can call functions.
 
@@ -45,7 +45,7 @@ As mentioned above, precondition can be called in either of two ways:
 1. You can write `precondition 'receiver is not valid', -> @isValid()` if you want to declare your own throwable.
 2. You can write or `precondition -> @isValid()`, leaving out the throwable. This is equivalent to writing `precondition 'Failed precondition', -> @isValid()`.
 
-So what does precondition do? It throws an error if the condition function fails. Let's flesh out our example:
+So what does precondition do? It throws an error if the condition function fails. Let's flesh out our example in CoffeeScript:
 
 ```coffeescript
 receiverMustBeValid = precondition 'receiver is not valid', -> @isValid()
@@ -74,7 +74,7 @@ class ChequingAccount extends BackboneModel
 
 If a `ChequingAccount` model is not in a valid state, an error will be thrown when you try to process a transfer against it before actually doing the transfer.
 
-Preconditions can also do more than examine the state of the object implementing the method. A precondition is passed the method's arguments, so you can check them too:
+Preconditions can also do more than examine the state of the object implementing the method. A precondition is passed the method's arguments, so you can check them too. Here's a JavaScript example:
 
 ```javascript
 noBlankArguments = precondition(
