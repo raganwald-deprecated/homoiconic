@@ -168,7 +168,7 @@ Summary
 Preconditions and postconditions are simple method combinators that implement error-checking for methods. Their use and implementation are simple because they "cut with the grain" of JavaScript's functional model. They can be used in either of two ways:
 
 1. To implement expected error checking such as invalid user input, or;
-2. To act as assertions documenting the program's expected behaviour under all circumstances. "method_decorators.rb"
+2. To act as assertions documenting the program's expected behaviour under all circumstances.
 
 ---
 
