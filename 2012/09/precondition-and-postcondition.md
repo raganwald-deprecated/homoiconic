@@ -142,14 +142,17 @@ var Project = Backbone.Model.extend({
     // ...
   },
   
+  // this method now throws an error if the project is invalid after you set an attribute
   set: receiverMustStayValid(
     function () { return Backbone.Model.prototype.set.apply(this, arguments); }
   ),
   
+  // this method now throws an error if the project is invalid after you unset an attribute
   unset: receiverMustStayValid(
     function () { return Backbone.Model.prototype.unset.apply(this, arguments); }
   ),
   
+  // this method now throws an error if it doesn't return an non-empty array
   contactArray: returnsElements(
     function () {
       // ...
