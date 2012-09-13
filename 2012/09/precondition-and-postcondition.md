@@ -29,7 +29,15 @@ this.precondition = function(throwable, condition) {
 };
 ```
 
-It's a two-line function, where the first line is some argument handling so that you can write either `precondition 'receiver is not valid', -> @isValid()` if you want to declare your own throwable or `precondition -> @isValid()` if you're the taciturn type. (In JavaScript, those would be: `precondition( 'receiver is not valid', function () { return this.isValid(); } )` and precondition( function () { return this.isValid(); } )` respectively).
+It's a two-line function, where the first line is some argument handling so that you can write either:
+
+* `precondition 'receiver is not valid', -> @isValid()` if you want to declare your own throwable, or;
+* `precondition -> @isValid()` if you're the taciturn type.
+
+In JavaScript, those would be:
+
+* `precondition( 'receiver is not valid', function () { return this.isValid(); } )`, and;
+* `precondition( function () { return this.isValid(); }`
 
 The second line does the actual work. As you can see, precondition combines your `condition` function with the before combinator. Yes, precondition is a combinator that combines a function with a combinator. That's how combinators work, they can be built into new combinators just as functions can call functions.
 
