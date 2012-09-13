@@ -120,10 +120,10 @@ this.postcondition = function(throwable, condition) {
 };
 ```
 
-A postcondition tests its condition function *after* the method returns a value. Because it's based on the after combinator, the condition is paramaterized by the *return value* rather than by the arguments (that's how `after` works). It's a great way to check that anything created or mutated meets specific conditions. For example, you can check that a model stays valid after executing a method:
+A postcondition tests its condition function *after* the method returns a value. Because it's based on the after combinator, the condition is paramaterized by the *return value* rather than by the arguments (that's how `after` works). It's a great way to check that anything created or mutated meets specific conditions. For example, you can check that a model stays valid after executing a method or that it returns a non-empty array:
 
 ```javascript
-var receiverMustRemainValid = postcondition(
+var receiverMustStayValid = postcondition(
   'receiver invalidated by method',
   function () { return this.isValid(); }
 );
@@ -140,21 +140,21 @@ var Project = Backbone.Model.extend({
     // ...
   },
   
-  set: receiverMustRemainValid(
+  set: receiverMustStayValid(
     function () { return Backbone.Model.prototype.set.call(this, arguments); }
   ),
   
-  unset: receiverMustRemainValid(
+  unset: receiverMustStayValid(
     function () { return Backbone.Model.prototype.unset.call(this, arguments); }
   ),
   
-  contacts: returnsElements(
+  contactArray: returnsElements(
     function () {
       // ...
     }
   ),
 
-  # ...
+  // ...
 
 });
 ```
