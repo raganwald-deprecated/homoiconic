@@ -1,7 +1,9 @@
 More Practical Method Combinators: Pre- and Post-conditions
 ===========================================================
 
-Today we're going to look at two more useful [method combinators]. Before we get into precondition, postcondition, and how useful they are from a practitioner's viewpoint, we're going to look at how they're implemented. Precondition looks like this in CoffeeScript:
+Today we're going to look at two more useful [method combinators]. Quick recap: A method combinator takes a function you write and turns it into a function that modifies a method's behaviour. For example, the before combinator takes your function and runs it before a method. Method combinators are great because they allow you to extract cross-cutting concerns like initialization, error checking, logging, firing events, and so forth from your core model code.
+
+Back to this post.Before we get into precondition, postcondition, and how useful they are from a practitioner's viewpoint, we're going to look at how they're implemented. Precondition looks like this in CoffeeScript:
 
 [method combinators]: https://github.com/raganwald/method-combinators
 
