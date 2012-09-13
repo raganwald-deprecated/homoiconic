@@ -1,7 +1,9 @@
 More Practical Method Combinators: Pre- and Post-conditions
 ===========================================================
 
-Before we get into `precondition`, `postcondition`, and how useful they are from a practitioner's viewpoint, we're going to look at how they're implemented. `precondition` looks like this in CoffeeScript:
+Today we're going to look at two more useful [method combinators]. Before we get into precondition, postcondition, and how useful they are from a practitioner's viewpoint, we're going to look at how they're implemented. Precondition looks like this in CoffeeScript:
+
+[method combinators]: https://github.com/raganwald/method-combinators
 
 ```coffeescript
 this.precondition =
@@ -27,7 +29,7 @@ this.precondition = function(throwable, condition) {
 
 It's a two-line function, where the first line is some argument handling so that you can write either `precondition 'receiver is not valid', -> @isValid()` if you want to declare your own throwable or `precondition -> @isValid()` if you're the taciturn type.
 
-The second line does the actual work. As you can see, `precondition` combines your `condition` function with the `before` combinator. Yes, `precondition` is a combinator that combines a function with a combinator. That's how combinators work, they can be built into new combinators just as functions can call functions.
+The second line does the actual work. As you can see, precondition combines your `condition` function with the before combinator. Yes, precondition is a combinator that combines a function with a combinator. That's how combinators work, they can be built into new combinators just as functions can call functions.
 
 This is a natural consequence of JavaScript's elegant first-class functional model. Making a function out of a function that itself is made out of a function is what JavaScript does. Our code just as elegant in JavaScript even if we did use a few more symbols to make the parser happy.[[note]] 
 
@@ -40,12 +42,12 @@ Let's look at how.
 `precondition`
 --------------
 
-As mentioned above, `precondition` can be called in either of two ways:
+As mentioned above, precondition can be called in either of two ways:
 
 1. You can write `precondition 'receiver is not valid', -> @isValid()` if you want to declare your own throwable.
 2. You can write or `precondition -> @isValid()`, leaving out the throwable. This is equivalent to writing `precondition 'Failed precondition', -> @isValid()`.
 
-So what does `precondition` do? It throws an error if the condition function fails. Let's flesh out our example:
+So what does precondition do? It throws an error if the condition function fails. Let's flesh out our example:
 
 ```coffeescript
 modelMustBeValid = precondition 'receiver is not valid', -> @isValid()
@@ -94,7 +96,7 @@ Preconditions of that nature serve double duty: In development and staging, the 
 `postcondition`
 ---------------
 
-You've probably figured `postcondition` out. It looks like this:
+You've probably figured postcondition out. It looks like this:
 
 ```coffeescript
 this.postcondition =
@@ -118,7 +120,7 @@ this.postcondition = function(throwable, condition) {
 };
 ```
 
-A `postcondition` tests its condition function *after* the method returns a value. Because it's based on `after`, the condition is paramaterized by the *return value* rather than by the arguments (that's how `after` works). It's a great way to check that anything created or mutated meets specific conditions. For example, you can check that a model stays valid after executing a method:
+A postcondition tests its condition function *after* the method returns a value. Because it's based on the after combinator, the condition is paramaterized by the *return value* rather than by the arguments (that's how `after` works). It's a great way to check that anything created or mutated meets specific conditions. For example, you can check that a model stays valid after executing a method:
 
 ```coffeescript
 modelMustBeValid = postcondition 'receiver invalidated by method', -> @isValid()
@@ -145,9 +147,9 @@ Preconditions and postconditions are simple method combinators that implement er
 Note
 ----
 
-Compare and contrast our `precondition` to a [this ruby implementation][pr]. The Ruby implementation looks elegant to the OO-trained eye, but that's only because its `MethodDecorator` superclass is doing the heavy lifting. Have a look at  [method_decorators.rb][mds] for yourself! In my (anecdotal!) experience, this is often the way with OO languages like Ruby: You can make something appear very elegant at one level of abstraction, but if you peek behind the curtain at the abstraction's infrastructure, it's very messy and wild.
+Compare and contrast our precondition to a [this ruby implementation][pr]. The Ruby implementation looks elegant to the OO-trained eye, but that's only because its `MethodDecorator` superclass is doing the heavy lifting. Have a look at  [method_decorators.rb][mds] for yourself! In my (anecdotal!) experience, this is often the way with OO languages like Ruby: You can make something appear very elegant at one level of abstraction, but if you peek behind the curtain at the abstraction's infrastructure, it's very messy and wild.
 
-The programmer is not at fault, far from it. It's just that some languages present a very arbitrary kind of API optimized for programming according to a specific model. When you come along to program to a different model, you end up greenspunning things in a way that cuts against the grain of the language.
+The Ruby program's author has done an outstanding job of working with Ruby's OO model, hooking methods that act like event listeners to detect when a method is added to a class and modifying it in place. Likewise, he maintains a list of decorators to be added to the next method, creating the illusion that you are writing declarative code. That's how it goes: Some languages present a very specific kind of API optimized for programming according to a specific model. When you come along to program to a different model, you end up greenspunning a new abstraction.
 
 [pr]: https://github.com/michaelfairley/method_decorators/blob/master/lib/method_decorators/decorators/precondition.rb "precondition.rb"
 [mds]: https://github.com/michaelfairley/method_decorators/blob/master/lib/method_decorators.rb "method_decorators.rb"
