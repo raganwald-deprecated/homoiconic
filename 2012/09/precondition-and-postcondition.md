@@ -33,7 +33,7 @@ The second line does the actual work. As you can see, precondition combines your
 
 This is a natural consequence of JavaScript's elegant first-class functional model. Making a function out of a function that itself is made out of a function is what JavaScript does. Our code just as elegant in JavaScript even if we did use a few more symbols to make the parser happy.[[note]] 
 
-[note]: https://github.com/raganwald/homoiconic/blob/master/2012/09/precondition-and-postcondition.md#notes
+[note]: https://github.com/raganwald/homoiconic/blob/master/2012/09/precondition-and-postcondition.md#note
 
 Method combinators cut with the grain of JavaScript's functional model, so they are naturally elegant and there're turtles all the way down: There is no messy greenspunned engine hiding behind a curtain. That's great, because method combinators combine with each other and can be used to build new combinators and decorators. Don't just use the ones that come in the module, write some new ones!
 
