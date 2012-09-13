@@ -170,6 +170,8 @@ Preconditions and postconditions are simple method combinators that implement er
 1. To implement expected error checking such as invalid user input, or;
 2. To act as assertions documenting the program's expected behaviour under all circumstances.
 
+[mds]: https://github.com/michaelfairley/method_decorators/blob/master/lib/method_decorators.rb "method_decorators.rb"
+
 ---
 
 Recent work:
