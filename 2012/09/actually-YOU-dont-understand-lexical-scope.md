@@ -203,7 +203,7 @@ iAmNotAParameter = 'fubar'
             iAmNotAParameter = 'sanfu'
 ```
 
-You are working with the same `iAmNotAParameter` declared at the top level of the file. The destractors don't like this, because they think that if you write this JavaScript:
+You are working with the same `iAmNotAParameter` declared at the top level of the file. The detractors don't like this, because they think that if you write this JavaScript:
 
 ```JavaScript
 function (foo) {
