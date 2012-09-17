@@ -1,7 +1,7 @@
 Actually, YOU don't understand Lexical Scope!
 =============================================
 
-*Or at least, you don't understand how CoffeeScript implements it, and that's why you think it doesn't work.*
+*Or more realistically, you don't understand how CoffeeScript implements it, and that's why you think it doesn't work.*
 
 ---
 
