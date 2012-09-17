@@ -28,7 +28,7 @@ They may well be smart, experienced people, but their argument about CoffeeScrip
 The argument against CoffeeScript
 ---------------------------------
 
-JavaScript has lexical scoping for a parameters. Let's check it out.
+JavaScript has lexical scoping for parameters. Let's check it out.
 
 ```JavaScript
 (function (foo) { 
