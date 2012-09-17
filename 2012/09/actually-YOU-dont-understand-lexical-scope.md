@@ -234,9 +234,11 @@ In CoffeeScript, writing `bar = 'fubar'` when `bar` isn't a parameter invokes a 
 
 So, if you translate `var bar = 'fubar'` to `do (bar = 'fubar') ->`, your translated JavaScript works properly and can be copied and pasted at will.
 
-It's easy once you understand lexical Scoping and let go of weird leaky abstraction variable hoisting thingies. Honestly, it's as if JavaScript devs have [Stockholm Syndrome].
+It's easy once you understand Lexical Scoping and let go of weird leaky abstraction variable hoisting thingies. But some people love that kind of arbitrary accidental complexity. It's almost as if JavaScript devs have [Stockholm Syndrome], and it isn't enough to love their prison, they have to hate anyone who tries to leave the [village].
 
 --[Nickieben Bourbaki]
+
+[village]: https://en.wikipedia.org/wiki/The_Village_(The_Prisoner)
 
 ---
 
