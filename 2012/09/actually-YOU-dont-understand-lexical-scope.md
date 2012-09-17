@@ -249,6 +249,10 @@ It's easy to use CoffeeScript once you understand the One True Lexical Scoping a
 
 [village]: https://en.wikipedia.org/wiki/The_Village_(The_Prisoner)
 
+([discuss][hn])
+
+[hn]: http://news.ycombinator.com/item?id=4534408
+
 ---
 
 Recent work:
