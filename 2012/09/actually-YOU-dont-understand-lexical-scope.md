@@ -1,4 +1,4 @@
-Actually, YOU don't understand Lexical Scope!
+Actually, YOU don't understand lexical scope!
 =============================================
 
 *Or more realistically, you don't understand how CoffeeScript implements it, and that's why you think it doesn't work.*
@@ -100,7 +100,7 @@ Or is it? We'll come back to that later. The fourth one is this:
 var iAmLocalToMyEnclosingFunction = 'local';
 ```
 
-Before we talk about that third declaration, let's trot out the argument against CoffeeScript and the Ad Hominem attack against its "devs' whomever they might be. The argument is that the way CoffeeScript treats the third form isn't like the way JavaScript treats the fourth form, therefore CoffeeScript's devs don't understand Lexical Scope.
+Before we talk about that third declaration, let's trot out the argument against CoffeeScript and the Ad Hominem attack against its "devs" (whomever they might be). The argument is that *the way CoffeeScript treats the third form isn't like the way JavaScript treats the fourth form, therefore CoffeeScript's devs don't understand lexical scope*.
 
 Why that argument is hogwash
 ----------------------------
@@ -250,11 +250,11 @@ And they're wrong. We've established that the correct translation is actually:
     # ...
 ```
 
-And the problem is that *they* don't understand CoffeeScript's Lexical Scope. They complain that if you copy and paste what they wrote, it breaks under certain circumstances. Well of course! **It breaks because they translated it wrong!**
+And the problem is that *they* don't understand CoffeeScript's lexical scope. They complain that if you copy and paste what they wrote, it breaks under certain circumstances. Well of course! **It breaks because they translated it wrong!**
 
 So, if you translate `var bar = 'fubar'` to `do (bar = 'fubar') ->`, your translated JavaScript works properly and can be copied and pasted at will.
 
-It's easy to use CoffeeScript once you understand the One True Lexical Scoping and let go of weird leaky abstraction variable hoisting thingies. But some people love that kind of arbitrary accidental complexity. It's almost as if JavaScript devs have [Stockholm Syndrome], and it isn't enough to love their prison, they have to hate anyone who tries to leave the [village].
+It's easy to use CoffeeScript once you understand The-One-True-Lexical-Scope and let go of weird leaky-abstraction-variable-hoisting-thingies. But some people love that kind of arbitrary accidental complexity. It's almost as if JavaScript devs have [Stockholm Syndrome], and it isn't enough to love their prison, they have to hate anyone who tries to leave the [village].
 
 --[Nickieben Bourbaki]
 
