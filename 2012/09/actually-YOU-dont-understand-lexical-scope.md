@@ -11,6 +11,9 @@ Note: This post was transcribed from the words of my occasional guest and consta
 
 ---
 
+Introduction
+------------
+
 On Reddit, some folks have noticed that CoffeeScript differs from JavaScript. And they summarize one of the differences thusly:
 
 > Coffeescript devs don't understand lexical scope
