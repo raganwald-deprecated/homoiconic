@@ -147,7 +147,7 @@ for (var i=0; i<methods.length; i++) {
 }
 ```
 
-[Can you spot the bug]?
+[Can you spot the bug][bug]?
 
 [bug]: https://github.com/raganwald/homoiconic/blob/master/2010/10/let.md#lets-make-closures-easy "Let's make closures easy"
 
