@@ -84,7 +84,7 @@ var iAmLocalToMyEnclosingFunction = 'local';
 
 Before we talk about that third declaration, let's trot out the ridiculous argument against CoffeeScript and the Ad Hominem attack against its "devs' whomever they might be. The argument is that the way CoffeeScript treats the third form isn't like the way javaScrip treats the fourth form, therefore CoffeeScript's devs don't understand Lexical Scope.
 
-WHy that argument is hogwash
+Why that argument is hogwash
 ----------------------------
 
 This argument is 98 cents short of a dollar. It boils down to arguing that this CoffeeScript:
