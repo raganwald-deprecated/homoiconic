@@ -72,7 +72,7 @@ do (foo = 'outer') ->
 
 So obviously, both languages have the same kind of lexical scope everyone agrees on: A parameter to a function is its own thing even if the function is nested inside another function with a  parameter that has the same name. So where is the disagreement?
 
-Well, JavaScript has at least four different ways to declare a variable. A parameter is one. Nobody's talking about this one, (even though you'd think that anyone pointing fingers out to be thorough enough to bring it up):
+Well, JavaScript has at least four different ways to declare a variable. A parameter is one. A function declaration (as opposed to anonymous function expression) is another:
 
 ```JavaScript
 function howComeNamedFunctionsWereLeftOut (foo) {
