@@ -1,9 +1,15 @@
-Actually, YOU don't understand CoffeeScript's Lexical Scope!
-============================================================
+Actually, YOU don't understand Lexical Scope!
+=============================================
 
-Note: *This post was transcribed from the words of my occasional guest and constant critic, [Nickieben Bourbaki]. Therefore, where these words are wise and correct, he deserves the credit and admiration. And where these words are wrong, I deserve the blame for incorrectly transcribing them from an angry voice mail message.*--Reg "raganwald" Braithwaite
+*Or at least, you don't understand how CoffeeScript implements it, and that's why you think it doesn't work.*
+
+---
+
+Note: This post was transcribed from the words of my occasional guest and constant critic, [Nickieben Bourbaki]. Therefore, where these words are wise and correct, he deserves the credit and admiration. And where these words are wrong, I deserve the blame for incorrectly transcribing them from an angry voice mail message.--Reg "raganwald" Braithwaite
 
 [Nickieben Bourbaki]: http://www.dreamsongs.com/Nickieben.html
+
+---
 
 On Reddit, some folks have noticed that CoffeeScript differs from JavaScript. And they summarize one of the differences thusly:
 
