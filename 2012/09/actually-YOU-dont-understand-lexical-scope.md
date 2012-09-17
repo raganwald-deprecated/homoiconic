@@ -16,7 +16,8 @@ Introduction
 
 On Reddit, some folks have noticed that CoffeeScript differs from JavaScript. And they summarize one of the differences thusly:
 
-> Coffeescript devs don't understand lexical scope
+> Coffeescript devs don't understand lexical scope--[proggit](http://www.reddit.com/r/programming/comments/zx137/coffeescript_devs_dont_understand_lexical_scope/)
+
 
 By "devs," they appear to mean Jeremy Ashkenas, the language's creator. Although quite frankly, their vitriol is such that they may well mean anyone willingly using the language, for people with closed minds are often quick to assume that anyone who disagrees with them is uneducated or mentally deficient.
 
