@@ -1,5 +1,5 @@
-Actually, YOU don't understand Lexical Scope!
-=============================================
+Actually, YOU don't understand CoffeeScript's Lexical Scope!
+============================================================
 
 Note: *This post was transcribed from the words of my occasional guest and constant critic, [Nickieben Bourbaki]. Therefore, where these words are wise and correct, he deserves the credit and admiration. And where these words are wrong, I deserve the blame for incorrectly transcribing them from an angry voice mail message.*--Reg "raganwald" Braithwaite
 
@@ -11,7 +11,7 @@ On Reddit, some folks have noticed that CoffeeScript differs from JavaScript. An
 
 By "devs," they appear to mean Jeremy Ashkenas, the language's creator. Although quite frankly, their vitriol is such that they may well mean anyone willingly using the language, for people with closed minds are often quick to assume that anyone who disagrees with them is uneducated or mentally deficient.
 
-They may well be smart, experienced people, but their argument about CoffeeScript is wrong, and their Ad Hominem is both unfounded and [pessimistic].
+They may well be smart, experienced people, but their argument about CoffeeScript is mistaken, and their Ad Hominem is both unfounded and [pessimistic].
 
 [pessimistic]: https://github.com/raganwald/homoiconic/blob/master/2009-05-01/optimism.md#optimism
 
@@ -82,7 +82,7 @@ Or is it? We'll come back to that later. The fourth one is this:
 var iAmLocalToMyEnclosingFunction = 'local';
 ```
 
-Before we talk about that third declaration, let's trot out the ridiculous argument against CoffeeScript and the Ad Hominem attack against its "devs' whomever they might be. The argument is that the way CoffeeScript treats the third form isn't like the way JavaScript treats the fourth form, therefore CoffeeScript's devs don't understand Lexical Scope.
+Before we talk about that third declaration, let's trot out the argument against CoffeeScript and the Ad Hominem attack against its "devs' whomever they might be. The argument is that the way CoffeeScript treats the third form isn't like the way JavaScript treats the fourth form, therefore CoffeeScript's devs don't understand Lexical Scope.
 
 Why that argument is hogwash
 ----------------------------
@@ -176,7 +176,7 @@ do (methods = ['remove', 'show', 'hide', 'stop']) ->
         this[element][method]()
 ```
 
-Life is simpler and easier without `var`! But if you absolutely, positively must have some variables with funny hoisting rules because you're a Big Swinging Dick who likes leaky abstractions where you need to know the funny rules the transpiler follows to convert what you write into a sensible program, Jeremy let's you have something that's *just like var only different*.
+Life is simpler and easier without `var`! But if you absolutely, positively must have some variables with funny hoisting rules because you're a Big Swinging Dick who likes leaky abstractions where you need to know the funny rules the transpiler follows to convert what you write into a sensible program, CoffeeScript let's you have something that's *just like var only different*.
 
 Just like `var`, only different
 -------------------------------
@@ -187,9 +187,9 @@ In CoffeeScript, you can use a variable that hasn't been declared as a parameter
 iAmNotAParameter = 'fubar'
 ```
 
-Bold. Simple. And different than JavaScript. In JavaScript, it might be a global variable, it might be something local that has been hoisted to the nearest function. You need to look around and see if you can find a `var` declaration to know what it is.
+Bold. Simple to write. And different than JavaScript. In JavaScript, it might be a global variable, it might be something local that has been hoisted to the nearest function. You need to look around and see if you can find a `var` declaration or a parameter to know what it is.
 
-In CoffeeScript, there are no `var` declarations, so the CoffeeScript funny rule is that it is hoisted to the highest function level of use in the current file. If you write this:
+In CoffeeScript, there are no `var` declarations, so in CoffeeScript you have to look around to see if you can find a parameter declaration. If not, the CoffeeScript funny rule is that it is hoisted to the highest function level of use in the current file. If you write this:
 
 ```coffeescript
 # file starts
@@ -203,7 +203,9 @@ iAmNotAParameter = 'fubar'
             iAmNotAParameter = 'sanfu'
 ```
 
-You are working with the same `iAmNotAParameter` declared at the top level of the file. The detractors don't like this, because they think that if you write this JavaScript:
+You are working with the same `iAmNotAParameter` declared at the top level of the file. So what we have is one sound way to use lexical scope--parameters--that works the same in JavaScript, CoffeeScript, Lisp, and just about every other serious language. And another way that is quirky.
+
+JavaScript has two flavours of quirky: global variables and `var` declarations, and you have to look around to figure out which is which and where the `var` really goes. CoffeeScript has one flavour of quirky and you have to look around to figure out what is what, only the CoffeeScript quirky is different from both of the JavaScript quirkies. The haters don't like this, because they think that if you write this JavaScript:
 
 ```JavaScript
 function (foo) {
@@ -212,7 +214,7 @@ function (foo) {
 }
 ```
 
-That the correct 'translation' to CoffeeScript is:
+That the correct 'translation' to CoffeeScript ought to be:
 
 ```coffeescript
 (foo) ->
@@ -220,7 +222,7 @@ That the correct 'translation' to CoffeeScript is:
   # ...
 ```
 
-And they're wrong. We've established that the correct translation is:
+And they're wrong. We've established that the correct translation is actually:
 
 ```coffeescript
 (foo) ->
@@ -228,13 +230,11 @@ And they're wrong. We've established that the correct translation is:
     # ...
 ```
 
-And the problem is that *they* don't understand Lexical Scope. They complain that if you copy and paste what they wrote, it breaks under certain circumstances. Well of course! **It breaks because they translated it wrong!**
-
-In CoffeeScript, writing `bar = 'fubar'` when `bar` isn't a parameter invokes a leaky abstraction variable hoisting thingie. How are you supposed to know that? Well, if you try that in JavaScript, you know to look up the lexical chain of scopes until you find a `var` keyword or parameter. Failing all of those, it's a global variable. In CoffeeScript, you look up the lexical chain of scopes until you find a parameter. Failing all of those, it's a hoisted wingy-dingy.
+And the problem is that *they* don't understand CoffeeScript's Lexical Scope. They complain that if you copy and paste what they wrote, it breaks under certain circumstances. Well of course! **It breaks because they translated it wrong!**
 
 So, if you translate `var bar = 'fubar'` to `do (bar = 'fubar') ->`, your translated JavaScript works properly and can be copied and pasted at will.
 
-It's easy once you understand Lexical Scoping and let go of weird leaky abstraction variable hoisting thingies. But some people love that kind of arbitrary accidental complexity. It's almost as if JavaScript devs have [Stockholm Syndrome], and it isn't enough to love their prison, they have to hate anyone who tries to leave the [village].
+It's easy to use CoffeeScript once you understand the One True Lexical Scoping and let go of weird leaky abstraction variable hoisting thingies. But some people love that kind of arbitrary accidental complexity. It's almost as if JavaScript devs have [Stockholm Syndrome], and it isn't enough to love their prison, they have to hate anyone who tries to leave the [village].
 
 --[Nickieben Bourbaki]
 
