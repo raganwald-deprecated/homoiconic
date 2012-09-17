@@ -28,7 +28,7 @@ They may well be smart, experienced people, but their argument about CoffeeScrip
 The argument against CoffeeScript
 ---------------------------------
 
-JavaScript has lexical scoping for parameters. Let's check it out.
+JavaScript has lexical scoping for parameters:
 
 ```JavaScript
 (function (foo) { 
@@ -38,9 +38,11 @@ JavaScript has lexical scoping for parameters. Let's check it out.
   })();
   return foo;
 })();
+
+// => 'outer'
 ```
 
-Naturally, the output is "outer." And CoffeeScript works exactly the same way:
+CoffeeScript works exactly the same way:
 
 ```coffeescript
 ((foo) ->
@@ -50,6 +52,8 @@ Naturally, the output is "outer." And CoffeeScript works exactly the same way:
   )()
   foo
 )()
+
+# => 'outer'
 ```
 
 Or you can simplify it:
@@ -60,6 +64,8 @@ Or you can simplify it:
   )()
   foo
 )()
+
+# => 'outer'
 ```
 
 Or simplify it some more:
@@ -68,9 +74,11 @@ Or simplify it some more:
 do (foo = 'outer') ->
   do (foo = 'inner') ->
   foo
+
+# => 'outer'
 ```
 
-So obviously, both languages have the same kind of lexical scope everyone agrees on: A parameter to a function is its own thing even if the function is nested inside another function with a  parameter that has the same name. So where is the disagreement?
+Both languages have the same kind of lexical scope everyone agrees on: A parameter to a function is its own thing even if the function is nested inside another function with a parameter that has the same name. So where is the disagreement?
 
 Well, JavaScript has at least four different ways to declare a variable. A parameter is one. A function declaration (as opposed to anonymous function expression) is another:
 
@@ -126,6 +134,8 @@ do (foo = 'outer') ->
 ```
 
 It works just like it does in both JavaScript and in Lisp. Thank you, CoffeeScript has lexical scope, and CoffeeScript's devs understand lexical scope. So what about adding `var` to CoffeeScript? Wouldn't that indicate they understand how to make lexical scope even more wonderful that function parameters make it?
+
+> A parameter to a function is its own thing even if the function is nested inside another function with a parameter that has the same name.
 
 No. And wanting that indicates that you (I am speaking to the CoffeeScript haters) don't understand lexical scope. [Editor's note: Another possibility is that they forget what it is like to learn a new programming language--Reg Braithwaite].
 
