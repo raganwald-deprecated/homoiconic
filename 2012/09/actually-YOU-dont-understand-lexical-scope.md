@@ -20,7 +20,7 @@ The argument against CoffeeScript
 
 JavaScript has lexical scoping for a parameters. Let's check it out.
 
-```javascript
+```JavaScript
 (function (foo) { 
   foo = 'outer';
   (function (foo) { 
@@ -64,7 +64,7 @@ So obviously, both languages have the same kind of lexical scope everyone agrees
 
 Well, JavaScript has at least four different ways to declare a variable. A parameter is one. Nobody's talking about this one, (even though you'd think that anyone pointing fingers out to be thorough enough to bring it up):
 
-```javascript
+```JavaScript
 function howComeNamedFunctionsWereLeftOut (foo) {
   // ...
 }
@@ -72,19 +72,19 @@ function howComeNamedFunctionsWereLeftOut (foo) {
 
 The third one is this:
 
-```javascript
+```JavaScript
 iAmGlobalToAllFiles = 'global';
 ```
 
 Or is it? We'll come back to that later. The fourth one is this:
 
-```javascript
+```JavaScript
 var iAmLocalToMyEnclosingFunction = 'local';
 ```
 
-Before we talk about that third declaration, let's trot out the ridiculous argument against CoffeeScript and the Ad Hominem attack against its "devs' whomever they might be. The argument is that the way CoffeeScript treats the third form isn't like the way javaScrip treats the fourth form, therefore CoffeeScript's devs don't understand Lexical Scope.
+Before we talk about that third declaration, let's trot out the ridiculous argument against CoffeeScript and the Ad Hominem attack against its "devs' whomever they might be. The argument is that the way CoffeeScript treats the third form isn't like the way JavaScript treats the fourth form, therefore CoffeeScript's devs don't understand Lexical Scope.
 
-WHy that argument is hogwash
+Why that argument is hogwash
 ----------------------------
 
 This argument is 98 cents short of a dollar. It boils down to arguing that this CoffeeScript:
@@ -95,7 +95,7 @@ foo = 'bar'
 
 Ought to work like this JavaScript does:
 
-```javascript
+```JavaScript
 var foo = bar
 ```
 
@@ -121,7 +121,7 @@ No. And wanting that indicates that you (I am speaking to the CoffeeScript hater
 
 JavaScript's `var` keyword is ridiculously inelegant and confusing. It may not be a steaming turd, but it certainly smells that way when the wind is right on a hot August afternoon. What does this mean?
 
-```javascript
+```JavaScript
 localOrGlobal = 'global';
 
 // ... some code I write ...
@@ -135,7 +135,7 @@ After that code executes, is a global variable created or not? And if it is, wha
 
 Here's another wonderful use of var. I think that getting this wrong is a rite-of-passage for JavaScript programmers, and I accuse everyone who wants `var` added to CoffeeScript of trying to impose a sadistic hazing ritual on the people who read their code:
 
-```javascript
+```JavaScript
 var methods = ['remove', 'show', 'hide', 'stop'];
 for (var i=0; i<methods.length; i++) {
   var method = methods[i];
@@ -153,7 +153,7 @@ for (var i=0; i<methods.length; i++) {
 
 The `var` keyword cannot be local to a block in JavaScript, just a function. So it gets hoisted no matter where you declare it. To understand `var`, you have to do some mental backflips related to hoisting. The solution in JavaScript is to write this:
 
-```javascript:
+```JavaScript:
 var methods = ['remove', 'show', 'hide', 'stop'];
 for (var i=0; i<methods.length; i++) {
   (function (method) {
@@ -205,7 +205,7 @@ iAmNotAParameter = 'fubar'
 
 You are working with the same `iAmNotAParameter` declared at the top level of the file. The destractors don't like this, because they think that if you write this JavaScript:
 
-```javascript
+```JavaScript
 function (foo) {
   var bar = 'fubar'
   // ...
