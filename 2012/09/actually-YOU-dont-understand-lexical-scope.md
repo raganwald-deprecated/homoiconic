@@ -228,7 +228,7 @@ You are working with the same `iAmNotAParameter` declared at the top level of th
 JavaScript has two flavours of quirky: global variables and `var` declarations, and you have to look around to figure out which is which and where the `var` really goes. CoffeeScript has one flavour of quirky and you have to look around to figure out what is what, only the CoffeeScript quirky is different from both of the JavaScript quirkies. The haters don't like this, because they think that if you write this JavaScript:
 
 ```JavaScript
-function (foo) {
+function blitz (foo) {
   var bar = 'fubar'
   // ...
 }
@@ -237,15 +237,15 @@ function (foo) {
 That the correct 'translation' to CoffeeScript ought to be:
 
 ```coffeescript
-(foo) ->
+blitz = (foo) ->
   bar = 'fubar'
   # ...
 ```
 
-And they're wrong. We've established that the correct translation is actually:
+And they're wrong. We've established that the semantically correct translation is actually[1][#notes]:
 
 ```coffeescript
-(foo) ->
+blitz = (foo) ->
   do (bar = 'fubar') ->
     # ...
 ```
@@ -263,6 +263,23 @@ It's easy to use CoffeeScript once you understand The-One-True-Lexical-Scope and
 ([discuss][hn])
 
 [hn]: http://news.ycombinator.com/item?id=4534408
+
+---
+
+Notes
+---
+
+\1. Sharp-eyed readers have pointed out that this code is expensive in CoffeeScript. For PL wonks, `do` is equivalent to Scheme's `let`. The difference between CoffeeScript and Scheme is that any Scheme implementation longer than a single page of code will optimize the extra closure away when it is not needed for semantic purposes.
+
+Clever programmers can substitute this form in many cases:
+
+```coffeescript
+blitz = do (bar = 'fubar') ->
+  (foo) ->
+    # ...
+```
+
+Same effect and much cheaper!
 
 ---
 
