@@ -187,7 +187,7 @@ do ->
 
 [try it][5]
 
-[5]http://coffeescript.org/#try:do%20-%3E%0A%20%20x%20%7C%7C%20x%20%3D%20'thing%201'%0A%20%20console.log%20x%20%20%20%20%20%20%20%23%20%3D%3E%20'thing%201'
+[5]: http://coffeescript.org/#try:do%20-%3E%0A%20%20x%20%7C%7C%20x%20%3D%20'thing%201'%0A%20%20console.log%20x%20%20%20%20%20%20%20%23%20%3D%3E%20'thing%201'
 
 Now let's write:
 
