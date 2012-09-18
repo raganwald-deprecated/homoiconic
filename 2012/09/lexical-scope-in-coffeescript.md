@@ -101,6 +101,13 @@ We get a reference error for attempting to access `x` outside our little functio
 
 The scope of parameters, variables declared with `var`, and function declarations has this pleasant property of being resistant to non-local changes in the code. Most programmers value this property, as it avoids a problem where an edit in one part of a file can inadvertently change the meaning of another construct in the file. Like most design features, some programmers value it more than others when considering language design tradeoffs.
 
+Arguments against `var`
+-----------------------
+
+There are some disadvantages to JavaScript's approach. The most obvious is that using a variable without declaring it with `var` creates and/or clobbers a global variable. The feature isn't the problem so much as the default case. Some other languages reverse this, providing a mechanism when you wish to access the global environment and/or declare a new variable.
+
+Another is that variables can be declared anywhere within a scope. This can create the illusion of block scope even when the reality is otherwise. JavaScript programmers develop a habit of being free with declarations and use tools like JSLint that identify suspect references.
+
 CoffeeScript
 ------------
 
