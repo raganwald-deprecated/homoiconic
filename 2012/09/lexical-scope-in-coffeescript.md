@@ -238,6 +238,8 @@ On the other hand, CoffeeScript's lack of a `var` keyword can be seen as simplif
 
 CoffeeScript and JavaScript thus have designs that value slightly different use cases. Programmers choosing between the two on the basis of their handling of scope must evaluate their respective advantages and disadvantages and exercise judgment.
 
+([discuss](http://www.reddit.com/r/programming/comments/1039qh/lexical_scope_in_coffeescript/))
+
 ---
 
 (**addenda**)
