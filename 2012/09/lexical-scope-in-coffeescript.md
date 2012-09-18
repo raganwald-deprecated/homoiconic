@@ -238,8 +238,7 @@ CoffeeScript and JavaScript thus have designs that value slightly different use 
 
 ---
 
-Addenda
--------
+(**addenda**)
 
 With respect to working around the lack of a `var` keyword, it is possible to nest a `do` within a function. So whereas in JavaScript you might write:
 
