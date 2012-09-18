@@ -242,7 +242,7 @@ blitz = (foo) ->
   # ...
 ```
 
-And they're wrong. We've established that the semantically correct translation is actually[1][#notes]:
+And they're wrong. We've established that the semantically correct translation is actually[1](#notes):
 
 ```coffeescript
 blitz = (foo) ->
@@ -269,17 +269,17 @@ It's easy to use CoffeeScript once you understand The-One-True-Lexical-Scope and
 Notes
 ---
 
-\1. Sharp-eyed readers have pointed out that this code is expensive in CoffeeScript. For PL wonks, `do` is equivalent to Scheme's `let`. The difference between CoffeeScript and Scheme is that any Scheme implementation longer than a single page of code will optimize the extra closure away when it is not needed for semantic purposes.
+1. Sharp-eyed readers have pointed out that this code is expensive in CoffeeScript. For PL wonks, `do` is equivalent to Scheme's `let`. The difference between CoffeeScript and Scheme is that any Scheme implementation longer than a single page of code will optimize the extra closure away when it is not needed for semantic purposes.
 
-Clever programmers can substitute this form in many cases:
+  Clever programmers can substitute this form in many cases:
 
-```coffeescript
-blitz = do (bar = 'fubar') ->
-  (foo) ->
-    # ...
-```
+  ```coffeescript
+  blitz = do (bar = 'fubar') ->
+    (foo) ->
+      # ...
+  ```
 
-Same effect and much cheaper!
+  Same effect and much cheaper!
 
 ---
 
