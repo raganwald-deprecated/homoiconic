@@ -262,8 +262,9 @@ plusOne = (x) ->
 The disadvantage is that you need to create and invoke the inner `do` every time the function is called. There is a workaround when performance is an issue:
 
 ```coffeescript
-plusOne = do (one = 1) ->
+plusOne = do (one = undefined) ->
   (x) ->
+    one = 1
     x + one
 
 console.log plusOne(42)
@@ -271,7 +272,7 @@ console.log plusOne(42)
 
 [try it][7]
 
-[7]: http://coffeescript.org/#try:plusOne%20%3D%20do%20(one%20%3D%201)%20-%3E%0A%20%20(x)%20-%3E%0A%20%20%20%20x%20%2B%20one%0A%0Aconsole.log%20plusOne(42)
+[7]: http://coffeescript.org/#try:plusOne%20%3D%20do%20(one%20%3D%20undefined)%20-%3E%0A%20%20(x)%20-%3E%0A%20%20%20%20one%20%3D%201%0A%20%20%20%20x%20%2B%20one%0A%0Aconsole.log%20plusOne(42)
 
 Also, folks will refer to non-local effects sometimes as dynamic scope. Neither CoffeeScript nor JavaScript have dynamic scope, as can easily be tested with this code:
 
