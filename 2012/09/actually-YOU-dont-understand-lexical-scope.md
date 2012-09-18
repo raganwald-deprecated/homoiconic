@@ -190,9 +190,9 @@ And in CoffeeScript you write:
 
 ```coffeescript
 do (methods = ['remove', 'show', 'hide', 'stop']) ->
-  for method in methods do ->
+  for method in methods then do ->
     Frame.prototype[method] = ->
-      for element in elements do ->
+      for element in elements then do ->
         this[element][method]()
 ```
 
