@@ -238,6 +238,61 @@ CoffeeScript and JavaScript thus have designs that value slightly different use 
 
 ---
 
+Addenda
+-------
+
+With respect to working around the lack of a `var` keyword, it is possible to nest a `do` within a function. So whereas in JavaScript you might write:
+
+```javascript
+var plusOne = function (x) {
+  var one = 1;
+  return x + one;
+}
+```
+
+In CoffeeScript you can write:
+
+```coffeescript
+plusOne = (x) ->
+  do (one = 1) ->
+    x + one
+}
+```
+
+The disadvantage is that you need to create and invoke the inner `do` every time the function is called. There is a workaround when performance is an issue:
+
+```coffeescript
+plusOne = do (one = 1) ->
+  (x) ->
+    x + one
+
+console.log plusOne(42)
+```
+
+[try it][7]
+
+[7]: http://coffeescript.org/#try:plusOne%20%3D%20do%20(one%20%3D%201)%20-%3E%0A%20%20(x)%20-%3E%0A%20%20%20%20x%20%2B%20one%0A%0Aconsole.log%20plusOne(42)
+
+Also, folks will refer to non-local effects sometimes as dynamic scope. Neither CoffeeScript nor JavaScript have dynamic scope, as can easily be tested with this code:
+
+```coffeescript
+x = 'lexical'
+
+acid = ->
+  alert "#{x}ly scoped"
+
+test = (x) ->
+  acid()
+
+test('dynamic')
+```
+
+[try it][8]
+
+[8]: http://coffeescript.org/#try:x%20%3D%20'lexical'%0A%0Aacid%20%3D%20-%3E%0A%20%20alert%20%22%23%7Bx%7Dly%20scoped%22%0A%0Atest%20%3D%20(x)%20-%3E%0A%20%20acid()%0A%0Atest('dynamic')
+
+---
+
 Recent work:
 
 * [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators) and my [other books](http://leanpub.com/u/raganwald).
