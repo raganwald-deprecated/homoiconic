@@ -12,7 +12,7 @@ Note: Recently, I permitted my occasional guest and constant critic [Nickieben B
 Lexical Scope
 -------------
 
-CoffeeScript and JavaScript are lexically scoped languages. Meaning, you can determine the scope of a variable by examining the source code of the program. You may need to run the program to determine the actual value, but you can look at any variable reference--say an `i`--and say "That's the same as this other `i`` over here, and that one over there, and that one over there."
+CoffeeScript and JavaScript are lexically scoped languages. Meaning, you can determine the scope of a variable by examining the source code of the program. You may need to run the program to determine the actual value, but you can look at any variable reference--say an `i`--and say "That's the same as this other `i` over here, and that one over there, and that one over there."
 
 There are lots of ways to have lexical scope. I recall an ancient dialect of BASIC on my high school's Nova 1220 that only had global variables. This was lexically scoped in the most obvious degenerate sense. JavaScript is lexically scoped. There are interesting cases around what happens with things like variables bound when catching an throwable, but by and large variables are bound in the global scope, variables are bound in a scope by a function declaration, variables are bound in a scope using the `var` keyword, and variables are bound in a scope by dint of being parameters.
 
@@ -64,12 +64,14 @@ let x = 'function' {
 console.log(x);    // => 'global'
 ```
 
-My understanding is that it works just like the scoping trick of creating a function and invoking it immediately, with similar performance.  This idiom is so prevalent in languages like Lisp that their implementations use many clever tricks to optimize that cost away. But to my knowledge, these optimizations haven't made it into JavaScript yet.
+My understanding is that it works just like the scoping trick of creating a function and invoking it immediately, with similar performance.  This idiom is so prevalent in languages like Lisp that their implementations use many clever tricks to optimize that cost away. But to my knowledge, these optimizations haven't made it into JavaScript or CoffeeScript [yet][hoist].
+
+[hoist]: https://github.com/jashkenas/coffee-script/issues/2552 "Hoist variables declared with do"
 
 Non-Local Effects
 -----------------
 
-Function-level lexical scope as implemented with parameters and JavaScript's `var` keyword have the pleasant property of being resilient to non-local effects. Meaning, that variables declared as parameters or with `var` always have the same scope regardless of what you write elsewhere in the program.
+Function-level lexical scope as implemented with parameters and JavaScript's `var` keyword are resilient to non-local effects. Meaning, that variables declared as parameters or with `var` always have the same scope regardless of what you write elsewhere in the program.
 
 Take our example from above:
 
