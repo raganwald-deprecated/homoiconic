@@ -14,14 +14,15 @@ Lexical Scope
 
 CoffeeScript and JavaScript are lexically scoped languages. Meaning, you can determine the scope of a variable by examining the source code of the program. You may need to run the program to determine the actual value, but you can look at any variable reference--say an `i`--and say "That's the same as this other `i` over here, and that one over there, and that one over there."
 
-There are lots of ways to have lexical scope. I recall an ancient dialect of BASIC on my high school's Nova 1220 that only had global variables. This was lexically scoped in the most obvious degenerate sense. JavaScript is lexically scoped. There are interesting cases around what happens with things like variables bound when catching an throwable, but by and large variables are bound in the global scope, variables are bound in a scope by a function declaration, variables are bound in a scope using the `var` keyword, and variables are bound in a scope by dint of being parameters.
+There are lots of ways to have lexical scope. I recall an ancient dialect of BASIC on my high school's Nova 1220 that only had global variables. This was lexically scoped in the most obvious degenerate sense. JavaScript is lexically scoped. There are interesting cases around what happens with things like variables bound when catching a throwable, but by and large variables are bound in the global scope, variables are bound in a scope by a function declaration, variables are bound in a scope using the `var` keyword, and variables are bound in a scope by dint of being parameters.
 
 Besides the global scope, what other scopes are there in JavaScript? Eschewing edge cases again, the scopes are function bodies. `for` loops are not scopes. If statements are not scopes. Just function bodies. `var` and function declarations bind variables to the scope of the most immediately enclosing function body, or the global scope if none encloses them.
 
 I think most people agree on this, and the term most people agree on is that JavaScript has *function-level lexical scoping*. Other languages have "block-level" lexical scoping, you can bind a variable inside of an if statement or a for loop or create an entirely new block just for some variables. JavaScript does not work this way.
 
-Faking Lexical Scope
---------------------
+Faking Block Scope
+------------------
+
 JavaScript permits you to fake block-level lexical scope using an idiom that goes all the way back to Lisp and the lambda calculus: You can create a function and invoke it immediately just to manufacture a scope with some parameters:
 
 ```javascript
