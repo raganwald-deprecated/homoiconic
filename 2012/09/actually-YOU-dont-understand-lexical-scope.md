@@ -5,9 +5,13 @@ Actually, YOU don't understand lexical scope!
 
 ---
 
-Note: This post was transcribed from the words of my occasional guest and constant critic, [Nickieben Bourbaki]. Therefore, where these words are wise and correct, he deserves the credit and admiration. And where these words are wrong, I deserve the blame for incorrectly transcribing them from an angry voice mail message.--Reg "raganwald" Braithwaite
+Note: In this post, I permitted my occasional guest and constant critic [Nickieben Bourbaki] to write a post about CoffeeScript. Although he meant well, his tone and candid appraisal of the behaviour of others was not in the best traditions of this blog. I apologize for allowing my admiration for his intellect to overcome my better judgment. In the Tour de France, there is an award every day for the "Most Combative Rider." This award is handed out to recognize that while being combative makes for a more entertaining race, it rarely results in a win for the rider in question. Hopefully, both Nickie and I will take this lesson to heart for the future.--Reg "raganwald" Braithwaite
 
 [Nickieben Bourbaki]: http://www.dreamsongs.com/Nickieben.html
+
+I have written [a far better post explaining CoffeeScript's lexical scoping][lex]. I recommend it. I'm leaving this post up as a caution to others.
+
+[lex]: https://github.com/raganwald/homoiconic/blob/master/2012/09/lexical-scope-in-coffeescript.md "Lexical Scope in CoffeeScript"
 
 ---
 
