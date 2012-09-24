@@ -193,10 +193,11 @@ for (var i=0; i<methods.length; i++) {
 And in CoffeeScript you write:
 
 ```coffeescript
-do (methods = ['remove', 'show', 'hide', 'stop']) ->
-  for method in methods then do ->
+methods = ['remove', 'show', 'hide', 'stop']
+for method in methods
+  do (method) ->
     Frame.prototype[method] = ->
-      for element in elements then do ->
+      for element in elements
         this[element][method]()
 ```
 
