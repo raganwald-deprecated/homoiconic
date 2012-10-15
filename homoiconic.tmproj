@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>2012/01/captain-obvious-on-javascript.md</string>
+	<string>2012/09/actually-YOU-dont-understand-lexical-scope.md</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,6 +13,8 @@
 			<string>homoiconic</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|tmp|log|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>selected</key>
+			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -82,14 +84,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>185</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>150</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>115</integer>
+			<integer>132</integer>
 		</dict>
 		<key>2012/01/reuseable-abstractions.md</key>
 		<dict>
@@ -126,7 +128,7 @@
 				<key>column</key>
 				<integer>0</integer>
 				<key>line</key>
-				<integer>64</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -168,9 +170,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>85</integer>
+				<integer>648</integer>
 				<key>line</key>
-				<integer>286</integer>
+				<integer>273</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
@@ -181,16 +183,60 @@
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>256</integer>
+				<integer>85</integer>
 				<key>line</key>
-				<integer>259</integer>
+				<integer>286</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>85</integer>
+				<integer>648</integer>
 				<key>line</key>
-				<integer>286</integer>
+				<integer>273</integer>
+			</dict>
+		</dict>
+		<key>2012/09/actually-YOU-dont-understand-lexical-scope.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>110</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>2012/09/lexical-scope-in-coffeescript.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>5</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>62</integer>
+				<key>line</key>
+				<integer>7</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>5</integer>
 			</dict>
 		</dict>
 		<key>2012/09/memoize-the-practical-method-decorator.md</key>
@@ -198,14 +244,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>272</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>195</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>174</integer>
+		</dict>
+		<key>2012/09/precondition-and-postcondition.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>55</integer>
+				<key>line</key>
+				<integer>39</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>dumping_ground/coffeescript_and_underscore.md</key>
 		<dict>
@@ -238,10 +298,8 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>2012/08/decoupling_with_method_decorators.md</string>
-		<string>2012/01/captain-obvious-on-javascript.md</string>
-		<string>2012/08/method-decorators-and-combinators-in-coffeescript.md</string>
-		<string>2012/09/memoize-the-practical-method-decorator.md</string>
+		<string>2012/09/lexical-scope-in-coffeescript.md</string>
+		<string>2012/09/actually-YOU-dont-understand-lexical-scope.md</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
