@@ -109,7 +109,7 @@ StackMaker = ->
       isEmpty: ->
         index < 0
 
-stack = Stackmaker()
+stack = StackMaker()
 ```
 
 The stack maker is nothing more than a function that returns a new stack for us. Now we can make stacks freely, and we've hidden their internal data elements. We have methods and encapsulation, and we've built them out of CoffeeScript's fundamental functions and objects. No extra language support is required, because basic objects, functions, and closures are powerful features that can be combined to build almost any data structure we require.
