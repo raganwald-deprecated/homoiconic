@@ -6,7 +6,7 @@
 
 In CoffeeScript, an object is fundamentally the same thing as what other programming languages call (variously) maps, dictionaries, records, structs, frames, or what-have-you. Sure, there is some support for prototypes and there is some support for building what look like classes. But at their heart, CoffeeScript objects are simple yet flexible and powerful.
 
-As an example of how powerful they can be without the extra support for "classes," we're going to look at encapsulation using CoffeeScript's objects. We're not going to call it "object-oriented programming," mind you, because that would start a long debate. This is just plain encapsulation[1](#notes), with a dash of information-hiding.
+As an example of how powerful they can be without the extra support for "classes," we're going to look at encapsulation using CoffeeScript's objects. We're not going to call it "object-oriented programming," mind you, because that would start a long debate. This is just plain encapsulation([1](#notes)), with a dash of information-hiding.
 
 ### bundling functions with data
 
@@ -14,7 +14,7 @@ The key characteristic of encapsulation is bundling data with functions that ope
 
 [Stack]: https://en.wikipedia.org/wiki/Stack_(data_structure)
 
-We can a stack these quite easily with an object containing an array and an index[2](#notes):
+We can a stack these quite easily with an object containing an array and an index([2](#notes)):
 
 ```coffeescript
 stack =
@@ -122,7 +122,7 @@ So some would say "Yes," while others would say, "Perhaps technically, but not a
 
 So maybe we aren't missing much.
 
-(*This essay appears in slightly different form in the upcoming book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto)*)
+*(This essay appears in slightly different form in the upcoming book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto))*
 
 ---
 
