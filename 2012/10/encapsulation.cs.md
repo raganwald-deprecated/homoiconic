@@ -1,6 +1,6 @@
 # Encapsulating State in CoffeeScript
 
-(click [here](https://github.com/raganwald/homoiconic/blob/master/2012/10/encapsulation.js.md) for examples in CoffeeScript)
+(click [here](https://github.com/raganwald/homoiconic/blob/master/2012/10/encapsulation.js.md) for examples in JavaScript)
 
 > OOP to me means only messaging, local retention and protection and hiding of state-process, and extreme late-binding of all things.--[Alan Kay][oop]
 
