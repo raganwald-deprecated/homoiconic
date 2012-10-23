@@ -171,7 +171,7 @@ So some would say "Yes," while others would say, "Perhaps technically, but not a
 
 So maybe we aren't missing much.
 
-*(This essay appears in slightly different form in the upcoming book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto))*
+(Discuss on [r/javascript](http://www.reddit.com/r/javascript/comments/11ysd2/encapsulating_state_in_javascript/). This essay appears in slightly different form in the upcoming book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto).)
 
 ---
 

@@ -127,7 +127,7 @@ So some would say "Yes," while others would say, "Perhaps technically, but not a
 
 So maybe we aren't missing much.
 
-*(This essay appears in slightly different form in the upcoming book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto))*
+(Discuss on [/r/coffeescript](http://www.reddit.com/r/coffeescript/comments/11ysax/encapsulation_in_coffeescript/). This essay appears in slightly different form in the upcoming book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto).)
 
 ---
 
