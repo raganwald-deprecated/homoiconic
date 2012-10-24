@@ -72,16 +72,16 @@ stack.isEmpty()
 Our stack does bundle functions with data, but it doesn't hide its state. "Foreign" code could interfere with its array or index. So how do we hide these? We already have a closure, let's use it:
 
 ```coffeescript
-stack = do (obj = undefined, array = [], index = -1) ->
-  obj =
-    push: (value) ->
-      array[index += 1] = value
-    pop: ->
-      do (value = array[index]) ->
-        index -= 1 if index >= 0
-        value
-    isEmpty: ->
-      index < 0
+stack = do (array = [], index = -1) ->
+  push: (value) ->
+    array[index += 1] = value
+  pop: ->
+    do (value = array[index]) ->
+      array[index] = undefined
+      index -= 1 if index >= 0
+      value
+  isEmpty: ->
+    index < 0
 
 stack.isEmpty()
   #=> true
@@ -103,16 +103,16 @@ We don't want to repeat this code every time we want a stack, so let's make ours
 
 ```coffeescript
 StackMaker = ->
-  do (obj = undefined, array = [], index = -1) ->
-    obj =
-      push: (value) ->
-        array[index += 1] = value
-      pop: ->
-        do (value = array[index]) ->
-          index -= 1 if index >= 0
-          value
-      isEmpty: ->
-        index < 0
+  do (array = [], index = -1) ->
+    push: (value) ->
+      array[index += 1] = value
+    pop: ->
+      do (value = array[index]) ->
+        array[index] = undefined
+        index -= 1 if index >= 0
+        value
+    isEmpty: ->
+      index < 0
 
 stack = StackMaker()
 ```
