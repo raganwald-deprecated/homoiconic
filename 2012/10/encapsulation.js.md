@@ -131,31 +131,29 @@ stack.isEmpty()
   //=> true
 ```
 
-We don't want to repeat this code every time we want a stack, so let's make ourselves a "stack maker:"
+We don't want to repeat this code every time we want a stack, so let's bind it to a variable:
 
 ```javascript
 function StackMaker() {
-  return (function() {
-    var array = [];
-    var index = -1;
-    var obj = {
-      push: function(value) {
-        return array[index += 1] = value;
-      },
-      pop: function() {
-        return (function(value) {
-          if (index >= 0) {
-            index -= 1;
-          }
-          return value;
-        })(array[index]);
-      },
-      isEmpty: function() {
-        return index < 0;
-      }
-    };
-    return obj;
-  })();
+  var array = [];
+  var index = -1;
+  var obj = {
+    push: function(value) {
+      return array[index += 1] = value;
+    },
+    pop: function() {
+      return (function(value) {
+        if (index >= 0) {
+          index -= 1;
+        }
+        return value;
+      })(array[index]);
+    },
+    isEmpty: function() {
+      return index < 0;
+    }
+  };
+  return obj;
 }
 
 var stack = StackMaker();
