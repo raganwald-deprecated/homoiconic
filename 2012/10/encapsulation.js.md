@@ -22,29 +22,26 @@ The key characteristic of encapsulation is bundling data with functions that ope
 We can create a stack quite easily with an object containing an array and an index([2](#notes)):
 
 ```javascript
-var isEmpty, pop, push, stack;
-
-stack = {
+var stack = {
   array: [],
   index: -1
 };
 
-push = function(value) {
+function push(value) {
   return stack.array[stack.index += 1] = value;
-};
+}
 
-pop = function() {
-  return (function(value) {
-    if (stack.index >= 0) {
-      stack.index -= 1;
-    }
-    return value;
-  })(stack.array[stack.index]);
-};
+function pop() {
+  var value = stack.array[stack.index];
+  if (stack.index >= 0) {
+    stack.index -= 1;
+  }
+  return value;
+}
 
-isEmpty = function() {
+function isEmpty() {
   return stack.index < 0;
-};
+}
 ```
       
 Bundling the functions with the data does not require any special "magic" features. JavaScript objects can have elements of any type, including functions. We'll redo this, wrapping things in a closure to make sure the functions are pointing to the right object even if we shuffle things around.:
@@ -58,12 +55,11 @@ var stack = (function() {
       return obj.array[obj.index += 1] = value;
     },
     pop: function() {
-      return (function(value) {
-        if (obj.index >= 0) {
-          obj.index -= 1;
-        }
-        return value;
-      })(obj.array[obj.index]);
+      var value = obj.array[obj.index];
+      if (obj.index >= 0) {
+        obj.index -= 1;
+      }
+      return value;
     },
     isEmpty: function() {
       return obj.index < 0;
@@ -96,23 +92,21 @@ Our stack does bundle functions with data, but it doesn't hide its state. "Forei
 var stack = (function() {
   var array = [];
   var index = -1;
-  var obj = {
+  return {
     push: function(value) {
       return array[index += 1] = value;
     },
     pop: function() {
-      return (function(value) {
-        if (index >= 0) {
-          index -= 1;
-        }
-        return value;
-      })(array[index]);
+      var value = array[index];
+      if (index >= 0) {
+        index -= 1;
+      }
+      return value;
     },
     isEmpty: function() {
       return index < 0;
     }
   };
-  return obj;
 })();
 
 stack.isEmpty()
@@ -137,23 +131,21 @@ We don't want to repeat this code every time we want a stack, so let's bind it t
 function StackMaker() {
   var array = [];
   var index = -1;
-  var obj = {
+  return {
     push: function(value) {
       return array[index += 1] = value;
     },
     pop: function() {
-      return (function(value) {
-        if (index >= 0) {
-          index -= 1;
-        }
-        return value;
-      })(array[index]);
+      var value = array[index];
+      if (index >= 0) {
+        index -= 1;
+      }
+      return value;
     },
     isEmpty: function() {
       return index < 0;
     }
   };
-  return obj;
 }
 
 var stack = StackMaker();
