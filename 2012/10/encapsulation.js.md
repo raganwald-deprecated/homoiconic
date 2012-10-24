@@ -15,11 +15,11 @@ As an example of how powerful they can be without the extra support for "classes
 
 ### bundling functions with data
 
-The key characteristic of encapsulation is bundling data with functions that operate on the data. Consider a [Stack]. There are three basic operations: pushing a value on, popping a value off, and testing to see whether the stack is empty or not.
+The key characteristic of encapsulation is bundling data with functions that operate on the data. Consider a [stack]. There are three basic operations: pushing a value on, popping a value off, and testing to see whether the stack is empty or not.
 
-[Stack]: https://en.wikipedia.org/wiki/Stack_(data_structure)
+[stack]: https://en.wikipedia.org/wiki/Stack_(data_structure)
 
-We can a stack these quite easily with an object containing an array and an index([2](#notes)):
+We can create a stack quite easily with an object containing an array and an index([2](#notes)):
 
 ```javascript
 var isEmpty, pop, push, stack;
