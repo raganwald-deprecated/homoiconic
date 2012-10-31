@@ -9,7 +9,7 @@ I = (x) -> x
 
 In his rightfully famous [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422), Raymond Smullyan nicknamed it "The Idiot Bird" for its singlemindedness.
 
-`I` has some useful applications in CoffeeScript. Sometimes you have a function or method that takes an optional filter. You can use "an Idiot" to clean things up:
+`I` has some useful applications in CoffeeScript. Sometimes you have a function or method that takes an optional filter. You can use an "idiot" to clean things up:
 
 ```coffeescript
 class FiddleDeeDum
@@ -32,7 +32,18 @@ expr1 is evaluated first, then expr2, then expr3, then expr4. Always. Then the a
 begin = (ignored..., value) -> value
 ```
     
-Now, you can write `begin(x = 5, x = x + 1, x * 2)` and get `12`, just as if you used the comma operator in JavaScript, `begin...end` in Ruby, or the `begin` macro in Scheme. `begin` creates a block of expressions to be evaluated, and returns the last one just as if you had the body of an `if` statement or the body of a `do` statement, but deliberately doesn't create a new scope.
+Now, you can write:
+
+```coffeescript
+begin(
+  x = 5,
+  x = x + 1,
+  x * 2
+)
+  #=> 12
+```
+
+This is just the same as if you used the comma operator in JavaScript, `begin... end` in Ruby, or the `begin` macro in Scheme. `begin` creates a block of expressions to be evaluated, and returns the last one, but deliberately doesn't create a new scope.
 
 Hopefully you never write `begin` like this in CoffeeScript, because there is a simpler way to accomplish the same result:
 
@@ -54,7 +65,7 @@ Again, there's a simpler way to write `begin1` in CoffeeScript:
 begin1 = (value) -> value
 ```
 
-It's our "Idiot" again! Can we use it like `begin`? yes! Compare it to Underscore's  `_.tap(value, fn)`:
+It's our "idiot" again! Can we use it like `begin`? yes! Compare it to Underscore's  `_.tap(value, fn)`:
 
 ```coffeescript
     _.tap expr1, (value) ->
@@ -65,7 +76,7 @@ It's our "Idiot" again! Can we use it like `begin`? yes! Compare it to Underscor
 
 `_.tap` lets you use a function that takes the value of `expr1` as a parameter. That might be what you want, in which case use `_.tap`. But if you don't need it, `begin1( ...; ...; ... )` evaluates everything in the scope of the enclosing function. So you can create normal case variables, return from the enclosing function, and otherwise behave as if you were using `( ..., ..., ... )`.
 
-Here's an example of working with a simple `fluent interface`:
+Here's an example where we use the idiot to implement a simple `fluent interface`:
 
 ```coffeescript
 class Folderol
