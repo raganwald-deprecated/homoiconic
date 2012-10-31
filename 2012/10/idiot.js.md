@@ -8,7 +8,7 @@ var I = function (x) { return x }
 
 In his rightfully famous [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422), Raymond Smullyan nicknamed it "The Idiot Bird" for its singlemindedness.
 
-`I` has some useful applications in JavaScript. Sometimes you have a function or method that takes an optional filter, like this:
+`I`--so named because mathematicians (and many programmers) call it the [Identity Function](https://en.wikipedia.org/wiki/Identity_function)--has some useful applications in JavaScript. Sometimes you have a function or method that takes an optional filter, like this:
 
 ```javascript
 TheyMightBeGiants.prototype.all = function (fn) {
@@ -120,7 +120,7 @@ Folderol.prototype.aFluentMethod = function (arg1, arg2) {
 }
 ```
 
-`begin1` can make that go away as well. If you're using underscore, use `_.tap`, it's an idiot in upscle clothes. But if not, `I` or `begin1` is an easy one-liner you can pull out.
+`begin1` can make that go away as well. If you're using underscore, use `_.tap`, it's an idiot in upscale clothes. But if not, `I` or `begin1` is an easy one-liner you can pull out.
 
 The moral of the story? *Every JavaScript village ought to have its own idiot*. If yours is missing, write yourself a new one. The I Combinator isn't exactly a go-to function in the toolbox, but one to keep in mind for the odd time it can make things a little simpler.
 

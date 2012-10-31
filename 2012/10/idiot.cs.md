@@ -8,7 +8,7 @@ I = (x) -> x
 
 In his rightfully famous [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422), Raymond Smullyan nicknamed it "The Idiot Bird" for its singlemindedness.
 
-`I` has some useful applications in CoffeeScript. Sometimes you have a function or method that takes an optional filter, like this:
+`I`--so named because mathematicians (and many programmers) call it the [Identity Function](https://en.wikipedia.org/wiki/Identity_function)--has some useful applications in JavaScript. Sometimes you have a function or method that takes an optional filter, like this:
 
 ```coffeescript
 class TheyMightBeGiants
@@ -89,17 +89,36 @@ It's our "idiot" again! Can we use it like `begin`? yes! Compare it to Underscor
       # ... 
 ```
 
-`_.tap` lets you use a function that takes the value of `expr1` as a parameter. That might be what you want, in which case use `_.tap`. But if you don't need it, `begin1( ...; ...; ... )` evaluates everything in the scope of the enclosing function. So you can create normal case variables, return from the enclosing function, and otherwise behave as if you were using `( ..., ..., ... )`.
+`_.tap` lets you use a function that takes the value of `expr1` as a parameter. That might be what you want, in which case use `_.tap`. But if you don't need it, `begin1( ..., ..., ... )` evaluates everything in the scope of the enclosing function. So you can create normal case variables, return from the enclosing function, and otherwise behave as if you were using `( ...; ...; ... )`.
 
 Here's an example where we use the idiot to implement a simple [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface):
 
 ```coffeescript
-class Folderol
-  # ...
-  aFluentMethod: (arg1, arg2)
-    begin1 this,
-      @set({something: arg1, somethingElse: arg2})
+Folderol::aFluentMethod = (arg1, arg2) ->
+  begin1( this,
+    doSomethingImportant(),
+    this.set
+      something: arg1
+      somethingElse: arg2,
+    doSomethingElse(arg1),
+    finishWithThis(arg2)
+  )
 ```
+
+Why might you need this idiom? There are two answers. The first is that identifying that a function returns `this` but is being executed for side effects is nice to have at the top of the function rather than the bottom. And you won't forget to include `return this` and accidentally return `undefined`. 
+
+Other times, you want to do something after calculating a return value, and you end up with some awkward code and an extra variable:
+
+```javascript
+Folderol::aFluentMethod = (arg1, arg2) ->
+  value = ...some calculation...
+  # do something
+  # and something
+  # and something else
+  value
+```
+
+`begin1` can make that go away as well. If you're using underscore, use `_.tap`, it's an idiot in upscale clothes. But if not, `I` or `begin1` is an easy one-liner you can pull out.
 
 The moral of the story? *Every CoffeeScript village ought to have its own idiot*. If yours is missing, write yourself a new one. The I Combinator isn't exactly a go-to function in the toolbox, but one to keep in mind for the odd time it can make things a little simpler.
 
