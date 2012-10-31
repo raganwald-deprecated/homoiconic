@@ -1,5 +1,4 @@
-Somewhere, a CoffeeScript Village is Missing Its Idiot
-======================================================
+# Somewhere, a CoffeeScript Village is Missing Its Idiot
 
 In [Combinatory Logic](http://en.wikipedia.org/wiki/Combinatory_logic), the "I Combinator" is charming in its simplicity:
 
