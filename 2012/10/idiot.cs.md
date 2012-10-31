@@ -9,7 +9,7 @@ I = (x) -> x
 
 In his rightfully famous [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422), Raymond Smullyan nicknamed it "The Idiot Bird" for its singlemindedness.
 
-It has some useful applications in CoffeeScript. Sometimes you have a function or method that takes an optional filter. You can use "the idiot" to clean things up:
+`I` has some useful applications in CoffeeScript. Sometimes you have a function or method that takes an optional filter. You can use "an Idiot" to clean things up:
 
 ```coffeescript
 class FiddleDeeDum
@@ -46,7 +46,15 @@ Same thing. So why do we care about `begin`? Only an idiot would write that! Wel
 begin1 = (value, ignored...) -> value
 ```
     
-That executes a series of statements and returns the value of *the first one*. And yes, Scheme does have a [begin1](http://patricklogan.blogspot.ca/2005/08/when-to-create-syntax-in-lisp.html)  macro (old Lisps called it `PROG1`). Does `begin1` seem weird? Compare it to Underscore's  `_.tap(value, fn)`:
+That executes a series of statements and returns the value of *the first one*. And yes, Scheme does have a [begin1](http://patricklogan.blogspot.ca/2005/08/when-to-create-syntax-in-lisp.html)  macro (old Lisps called it `PROG1`).
+
+Again, there's a simpler way to write `begin1` in CoffeeScript:
+
+```coffeescript
+begin1 = (value) -> value
+```
+
+It's our "Idiot" again! Can we use it like `begin`? yes! Compare it to Underscore's  `_.tap(value, fn)`:
 
 ```coffeescript
     _.tap expr1, (value) ->
@@ -67,7 +75,7 @@ class Folderol
       @set({something: arg1, somethingElse: arg2})
 ```
 
-As you can see, there's a reason every CoffeeScript village needs its idiot. 
+The moral of the story? *Every CoffeeScript village ought to have its own idiot*. If yours is missing, write yourself a new one.
 
 ---
 
