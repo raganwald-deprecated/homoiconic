@@ -81,7 +81,7 @@ Here's an example where we use the idiot to implement a simple `fluent interface
 ```javascript
 Folderol.prototype.aFluentMethod = function (arg1, arg2) {
   return begin1( this,
-      @set({something: arg1, somethingElse: arg2})
+      this.set({something: arg1, somethingElse: arg2})
   )
 }
 ```
