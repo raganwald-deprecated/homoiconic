@@ -91,7 +91,7 @@ It's our "idiot" again! Can we use it like `begin`? yes! Compare it to Underscor
 
 `_.tap` lets you use a function that takes the value of `expr1` as a parameter. That might be what you want, in which case use `_.tap`. But if you don't need it, `begin1( ...; ...; ... )` evaluates everything in the scope of the enclosing function. So you can create normal case variables, return from the enclosing function, and otherwise behave as if you were using `( ..., ..., ... )`.
 
-Here's an example where we use the idiot to implement a simple `fluent interface`:
+Here's an example where we use the idiot to implement a simple [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface):
 
 ```coffeescript
 class Folderol
@@ -101,7 +101,7 @@ class Folderol
       @set({something: arg1, somethingElse: arg2})
 ```
 
-The moral of the story? *Every CoffeeScript village ought to have its own idiot*. If yours is missing, write yourself a new one.
+The moral of the story? *Every CoffeeScript village ought to have its own idiot*. If yours is missing, write yourself a new one. The I Combinator isn't exactly a go-to function in the toolbox, but one to keep in mind for the odd time it can make things a little simpler.
 
 p.s. It seems that [JavaScript villages have idiots too](https://github.com/raganwald/homoiconic/blob/master/2012/10/idiot.js.md). And if you like this article about functions and combinators, you'll love my book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto). You can check out a free sample PDF *and* there's a no-questions-asked money-back guarantee!
 

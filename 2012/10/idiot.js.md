@@ -93,7 +93,7 @@ It's our "idiot" again! Can we use it like `begin`? yes! Compare it to Underscor
 
 `_.tap` lets you use a function that takes the value of `expr1` as a parameter. That might be what you want, in which case use `_.tap`. But if you don't need it, `begin1( ..., ..., ... )` evaluates everything in the scope of the enclosing function. So you can return from the enclosing function or otherwise behave as if you were using `( ..., ..., ... )`.
 
-Here's an example where we use the idiot to implement a simple `fluent interface`:
+Here's an example where we use the idiot to implement a simple [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface):
 
 ```javascript
 Folderol.prototype.aFluentMethod = function (arg1, arg2) {
@@ -103,7 +103,7 @@ Folderol.prototype.aFluentMethod = function (arg1, arg2) {
 }
 ```
 
-The moral of the story? *Every JavaScript village ought to have its own idiot*. If yours is missing, write yourself a new one.
+The moral of the story? *Every JavaScript village ought to have its own idiot*. If yours is missing, write yourself a new one. The I Combinator isn't exactly a go-to function in the toolbox, but one to keep in mind for the odd time it can make things a little simpler.
 
 (discuss on [/r/javascript](http://www.reddit.com/r/javascript/comments/12eq0n/somewhere_a_javascript_village_is_missing_its/))
 
