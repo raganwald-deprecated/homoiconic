@@ -82,7 +82,7 @@ class Folderol
   # ...
   aFluentMethod: (arg1, arg2)
     begin1 this,
-      @set({something: arg1, somethingElse: arg2})
+      this.set({something: arg1, somethingElse: arg2})
 ```
 
 The moral of the story? *Every CoffeeScript village ought to have its own idiot*. If yours is missing, write yourself a new one.
