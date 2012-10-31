@@ -88,7 +88,7 @@ Folderol.prototype.aFluentMethod = function (arg1, arg2) {
 
 The moral of the story? *Every JavaScript village ought to have its own idiot*. If yours is missing, write yourself a new one.
 
-p.s. It seems that [CoffeeScript villages have idiots too](https://github.com/raganwald/homoiconic/blob/master/2012/10/idiot.cs.md). And if you like this article about functions and combinators, you'll love my book "[CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto)." You can check out a free sample PDF *and* there's a no-questions-asked money-back guarantee!
+p.s. It seems that [CoffeeScript villages have idiots too](https://github.com/raganwald/homoiconic/blob/master/2012/10/idiot.cs.md). And if you like this article about functions and combinators, you'll love my book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto). You can check out a free sample PDF *and* there's a no-questions-asked money-back guarantee!
 
 ---
 
