@@ -8,18 +8,34 @@ I = (x) -> x
 
 In his rightfully famous [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422), Raymond Smullyan nicknamed it "The Idiot Bird" for its singlemindedness.
 
-`I` has some useful applications in CoffeeScript. Sometimes you have a function or method that takes an optional filter. You can use an "idiot" to clean things up:
+`I` has some useful applications in CoffeeScript. Sometimes you have a function or method that takes an optional filter, like this:
 
 ```coffeescript
-class FiddleDeeDum
+class TheyMightBeGiants
+  # ...
+  all: (fn) ->
+  if fn?
+    fn(giant) for giant in giants
+  else
+    giants
+```
+
+Given:
+
+```coffeescript
+band = new TheyMightBeGiants(...)
+```
+
+You can call either `band.all()` or to get all the band members or `band( (x) -> x.name )` to get their names. An "idiot" will clean things up and get rid of the `if`:
+
+```coffeescript
+class TheyMightBeGiants
   # ...
   all: (fn = I) ->
     fn(giant) for giant in giants
 ```
 
-Now you can call either `fiddleDeeDum.all()` or `filldeDeeDum( (x) -> x.name )` or whatever. This is nicer than having an `if` test inside the method or fooling around with a method decorator of some kind.
-
-Another interesting application falls out of the fact that CoffeeScript's evaluation strategy is "strict, left-to-right, and call-by-sharing with loose matching of arguments to parameters." That means that when you write something like:
+Idiots can be used as default arguments in many different places. Another interesting application falls out of the fact that CoffeeScript's evaluation strategy is "strict, left-to-right, and call-by-sharing with loose matching of arguments to parameters." That means that when you write something like:
 
 ```coffeescript
 foo( expr1, expr2, expr3, expr4 )
