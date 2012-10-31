@@ -98,10 +98,29 @@ Here's an example where we use the idiot to implement a simple [fluent interface
 ```javascript
 Folderol.prototype.aFluentMethod = function (arg1, arg2) {
   return begin1( this,
-      this.set({something: arg1, somethingElse: arg2})
+    doSomethingImportant(),
+    this.set({something: arg1, somethingElse: arg2}),
+    doSomethingElse(arg1),
+    finishWithThis(arg2)
   )
 }
 ```
+
+Why might you need this idiom? There are two answers. The first is that identifying that a function returns `this` but is being executed for side effects is nice to have at the top of the function rather than the bottom. And you won't forget to include `return this` and accidentally return `undefined`. 
+
+Other times, you want to do something after calculating a return value, and you end up with some awkward code and an extra variable:
+
+```javascript
+Folderol.prototype.aFluentMethod = function (arg1, arg2) {
+  var value = ...some calculation...
+  // do something
+  // and something
+  // and something else
+  return value;
+}
+```
+
+`begin1` can make that go away as well. If you're using underscore, use `_.tap`, it's an idiot in upscle clothes. But if not, `I` or `begin1` is an easy one-liner you can pull out.
 
 The moral of the story? *Every JavaScript village ought to have its own idiot*. If yours is missing, write yourself a new one. The I Combinator isn't exactly a go-to function in the toolbox, but one to keep in mind for the odd time it can make things a little simpler.
 
