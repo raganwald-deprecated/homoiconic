@@ -8,16 +8,16 @@ I = (x) -> x
 
 In his rightfully famous [To Mock a Mockingbird](http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422), Raymond Smullyan nicknamed it "The Idiot Bird" for its singlemindedness.
 
-`I`--so named because mathematicians (and many programmers) call it the [Identity Function](https://en.wikipedia.org/wiki/Identity_function)--has some useful applications in JavaScript. Sometimes you have a function or method that takes an optional filter, like this:
+`I`--so named because mathematicians (and many programmers) call it the [Identity Function](https://en.wikipedia.org/wiki/Identity_function)--has some useful applications in JavaScript. Sometimes you have a function or method that takes an optional mapping function, like this:
 
 ```coffeescript
 class TheyMightBeGiants
   # ...
   all: (fn) ->
-  if fn?
-    fn(giant) for giant in giants
-  else
-    giants
+    if fn?
+      fn(giant) for giant in giants
+    else
+      giants
 ```
 
 Given:
@@ -26,7 +26,7 @@ Given:
 band = new TheyMightBeGiants(...)
 ```
 
-You can call either `band.all()` or to get all the band members or `band( (x) -> x.name )` to get their names. An "idiot" will clean things up and get rid of the `if`:
+You can call either `band.all()` or to get all the band members or `band.all( (x) -> x.name )` to get their names. An "idiot" will clean things up and get rid of the `if`:
 
 ```coffeescript
 class TheyMightBeGiants
