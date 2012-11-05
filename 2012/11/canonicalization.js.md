@@ -10,7 +10,7 @@ This is not the case for objects, arrays, and functions. When we create a new ob
 
 ```javascript
 { foo: 'bar' } === { foo: 'bar' }
-  #=> false
+  //=> false
 ```
 
 Sometimes, this is not what you want. A non-trivial example is the [HashLife] algorithm for computing the future of Conway's Game of Life. HashLife aggressively caches both patterns on the board and their futures, so that instead of iteratively simulating the cellular automaton a generation at a time, it executes in logarithmic time.
@@ -58,7 +58,7 @@ The instances are not canonicalized:
 
 ```javascript  
 new Card(4, 'S') === new Card(4, 'S')
-  #=> false
+  //=> false
 ```
        
 Nota Bene: *If a constructor function explicitly returns a value, that's what is returned. Otherwise, the newly constructed object is returned.*
@@ -91,21 +91,21 @@ Now the instances are canonicalized:
 
 ```javascript        
 new Card(4, 'S') === new Card(4, 'S')
-  #=> true
+  //=> true
 ```
        
 Wonderful! That being said, there is a caveat of canonicalizing instances of a class: JavaScript does not support [weak references](https://en.wikipedia.org/wiki/Weak_reference). If you wish to perform cache eviction for memory management purposes, you will have to implement your own reference management scheme. This may be non-trivial.
 
-(This note appears in slightly different form in the book [JavaScript Ristretto](http://leanpub.com/JavaScript-ristretto).)
+(This note appears in slightly different form in the book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto).)
 
 ---
 
 Recent work:
 
-* "[JavaScript Ristretto](http://leanpub.com/JavaScript-ristretto)", "[Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators)" and my [other books](http://leanpub.com/u/raganwald).
-* [Cafe au Life](http://recursiveuniver.se), a JavaScript implementation of Bill Gosper's HashLife written in the [Williams Style](https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md).
-* [Katy](http://github.com/raganwald/Katy), a library for writing fluent JavaScript and JavaScript using combinators.
-* [Method Combinators](https://github.com/raganwald/method-combinators), a JavaScript/JavaScript library for writing method decorators, simply and easily. 
+* "[CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto)", "[Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators)" and my [other books](http://leanpub.com/u/raganwald).
+* [Cafe au Life](http://recursiveuniver.se), a CoffeeScript implementation of Bill Gosper's HashLife written in the [Williams Style](https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md).
+pt* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [Method Combinators](https://github.com/raganwald/method-combinators), a CoffeeScript/JavaScript library for writing method decorators, simply and easily. 
 
 ---
 
