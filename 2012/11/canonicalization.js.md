@@ -98,7 +98,7 @@ new Card(4, 'S') === new Card(4, 'S')
        
 Wonderful! That being said, there is a caveat of canonicalizing instances of a class: JavaScript does not support [weak references](https://en.wikipedia.org/wiki/Weak_reference). If you wish to perform cache eviction for memory management purposes, you will have to implement your own reference management scheme. This may be non-trivial.
 
-(This note appears in slightly different form in the book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto).)
+(Discuss on [/r/javascript](http://www.reddit.com/r/javascript/comments/12nice/quick_tip_canonicalization_in_javascript/). This note appears in slightly different form in the book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto).)
 
 ---
 
