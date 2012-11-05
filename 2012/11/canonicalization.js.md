@@ -1,6 +1,6 @@
 # Canonicalization in JavaScript
 
-(click [here](https://github.com/raganwald/homoiconic/blob/master/2012/11/canonicalization.cs.md) for examples in CoffeeScript)
+(click [here](https://github.com/raganwald/homoiconic/blob/master/2012/11/canonicalization.cs.md#readme) for examples in CoffeeScript)
 
 ---
 
