@@ -26,13 +26,15 @@ This is the algorithm used by [recursiveuniver.se], an experimental implementati
 [recursiveuniver.se]: http://recursiveuniver.se
 [online]: http://recursiveuniver.se/docs/canonicalization.html
 
-    for: (quadrants, creator) ->
-      found = Square.cache.find(quadrants)
-      if found
-        found
-      else
-        {nw, ne, se, sw} = quadrants
-        Square.cache.add _for(quadrants, creator)
+```coffeescript
+for: (quadrants, creator) ->
+  found = Square.cache.find(quadrants)
+  if found
+    found
+  else
+    {nw, ne, se, sw} = quadrants
+    Square.cache.add _for(quadrants, creator)
+```
         
 Instead of enjoying a stimulating digression explaining CoffeeScript and how that method works, let's make our own. We're going to build a class for cards in a traditional deck. Without canonicalization, it looks like this:
 

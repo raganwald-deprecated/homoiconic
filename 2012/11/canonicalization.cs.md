@@ -8,8 +8,10 @@ In CoffeeScript, a few types of values--numbers, strings, `undefined`, `null`, `
 
 This is not the case for objects, arrays, and functions. When we create a new object, even if it appears to be the "same" as some other object, it is a different value, as we can tell when we test its identity with `is`:
 
-    { foo: 'bar' } is { foo: 'bar' }
-      #=> false
+```coffeescript
+{ foo: 'bar' } is { foo: 'bar' }
+  #=> false  
+```  
 
 Sometimes, this is not what you want. A non-trivial example is the [HashLife] algorithm for computing the future of Conway's Game of Life. HashLife aggressively caches both patterns on the board and their futures, so that instead of iteratively simulating the cellular automaton a generation at a time, it executes in logarithmic time.
 
@@ -24,49 +26,59 @@ This is the algorithm used by [recursiveuniver.se], an experimental implementati
 [recursiveuniver.se]: http://recursiveuniver.se
 [online]: http://recursiveuniver.se/docs/canonicalization.html
 
-    for: (quadrants, creator) ->
-      found = Square.cache.find(quadrants)
-      if found
-        found
-      else
-        {nw, ne, se, sw} = quadrants
-        Square.cache.add _for(quadrants, creator)
+```coffeescript
+for: (quadrants, creator) ->
+  found = Square.cache.find(quadrants)
+  if found
+    found
+  else
+    {nw, ne, se, sw} = quadrants
+    Square.cache.add _for(quadrants, creator)
+```
         
 Instead of enjoying a stimulating digression explaining how that works, let's make our own. We're going to build a class for cards in a traditional deck. Without canonicalization, it looks like this:
 
-    class Card
-      ranks = [2..10].concat ['J', 'Q', 'K', 'A']
-      suits = ['C', 'D', 'H', 'S']
-      constructor: ({@rank, @suit}) ->
-        throw "#{@rank} is a bad rank" unless @rank in ranks
-        throw "#{@suit} is a bad suit" unless @suit in suits
-      toString: ->
-        '' + @rank + @suit
+```coffeescript
+class Card
+  ranks = [2..10].concat ['J', 'Q', 'K', 'A']
+  suits = ['C', 'D', 'H', 'S']
+  constructor: ({@rank, @suit}) ->
+    throw "#{@rank} is a bad rank" unless @rank in ranks
+    throw "#{@suit} is a bad suit" unless @suit in suits
+  toString: ->
+    '' + @rank + @suit
+```
         
 The instances are not canonicalized:
-        
-     new Card({rank: 4, suit: 'S'}) is new Card({rank: 4, suit: 'S'})
-       #=> false
+
+```coffeescript        
+ new Card({rank: 4, suit: 'S'}) is new Card({rank: 4, suit: 'S'})
+   #=> false
+```
        
 Nota Bene: *If a constructor function explicitly returns a value, that's what is returned. Otherwise, the newly constructed object is returned. Unlike other functions and methods, the last evaluated value is not returned by default.*
 
 We can take advantage of that to canonicalize cards:
 
-    class Card
-      ranks = [2..10].concat ['J', 'Q', 'K', 'A']
-      suits = ['C', 'D', 'H', 'S']
-      cache = {}
-      constructor: ({@rank, @suit}) ->
-        throw "#{@rank} is a bad rank" unless @rank in ranks
-        throw "#{@suit} is a bad suit" unless @suit in suits
-        return cache[@toString()] or= this
-      toString: ->
-        '' + @rank + @suit
+```coffeescript
+class Card
+  ranks = [2..10].concat ['J', 'Q', 'K', 'A']
+  suits = ['C', 'D', 'H', 'S']
+  cache = {}
+  constructor: ({@rank, @suit}) ->
+    throw "#{@rank} is a bad rank" unless @rank in ranks
+    throw "#{@suit} is a bad suit" unless @suit in suits
+    return cache[@toString()] or= this
+  toString: ->
+    '' + @rank + @suit
+```
         
 Now the instances are canonicalized:
-        
-     new Card({rank: 4, suit: 'S'}) is new Card({rank: 4, suit: 'S'})
-       #=> true
+
+```coffeescript        
+ new Card({rank: 4, suit: 'S'}) is new Card({rank: 4, suit: 'S'})
+   #=> true
+```
        
 Wonderful! That being said, there is a caveat of canonicalizing instances of a class: The JavaScript engine that executes CoffeeScript at run time does not support [weak references](https://en.wikipedia.org/wiki/Weak_reference). If you wish to perform cache eviction for memory management purposes, you will have to implement your own reference management scheme. This may be non-trivial.
 
