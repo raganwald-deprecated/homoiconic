@@ -6,7 +6,7 @@
 
 In JavaScript, a few types of values--numbers, strings, `undefined`, `null`, `true`, and `false`--have *canonical* representations. In other words, every `true` is identical to every other `true`, every `42` is identical to every other `42`, &c.
 
-This is not the case for objects, arrays, and functions. When we create a new object, even if it appears to be the "same" as some other object, it is a different value, as we can tell when we test its identity with `is`:
+This is not the case for objects, arrays, and functions. When we create a new object, even if it appears to be the "same" as some other object, it is a different value, as we can tell when we test its identity with `===`:
 
     { foo: 'bar' } === { foo: 'bar' }
       #=> false
