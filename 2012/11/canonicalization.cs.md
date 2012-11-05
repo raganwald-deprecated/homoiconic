@@ -70,7 +70,7 @@ Now the instances are canonicalized:
        
 Wonderful! That being said, there is a caveat of canonicalizing instances of a class: The JavaScript engine that executes CoffeeScript at run time does not support [weak references](https://en.wikipedia.org/wiki/Weak_reference). If you wish to perform cache eviction for memory management purposes, you will have to implement your own reference management scheme. This may be non-trivial.
 
-(This essay appears in slightly different form in the book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto).)
+(This note appears in slightly different form in the book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto).)
 
 ---
 

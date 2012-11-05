@@ -8,8 +8,10 @@ In JavaScript, a few types of values--numbers, strings, `undefined`, `null`, `tr
 
 This is not the case for objects, arrays, and functions. When we create a new object, even if it appears to be the "same" as some other object, it is a different value, as we can tell when we test its identity with `===`:
 
-    { foo: 'bar' } === { foo: 'bar' }
-      #=> false
+```javascript
+{ foo: 'bar' } === { foo: 'bar' }
+  #=> false
+```
 
 Sometimes, this is not what you want. A non-trivial example is the [HashLife] algorithm for computing the future of Conway's Game of Life. HashLife aggressively caches both patterns on the board and their futures, so that instead of iteratively simulating the cellular automaton a generation at a time, it executes in logarithmic time.
 
@@ -34,59 +36,67 @@ This is the algorithm used by [recursiveuniver.se], an experimental implementati
         
 Instead of enjoying a stimulating digression explaining CoffeeScript and how that method works, let's make our own. We're going to build a class for cards in a traditional deck. Without canonicalization, it looks like this:
 
-    var ranks = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
-    var suits = ['C', 'D', 'H', 'S']
-    function Card(rank, suit) {
-      if (ranks.indexOf(rank) < 0) {
-        throw '' + rank + ' is a bad rank'
-      }
-      if (suits.indexOf(suit) < 0) {
-        throw suit + ' is a bad suit'
-      }
-      this.rank = rank;
-      this.suit = suit;
-    }
-    Card.prototype.toString = function () {
-      return '' + this.rank + this.suit
-    }
+```javascript
+var ranks = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
+var suits = ['C', 'D', 'H', 'S']
+function Card(rank, suit) {
+  if (ranks.indexOf(rank) < 0) {
+    throw '' + rank + ' is a bad rank'
+  }
+  if (suits.indexOf(suit) < 0) {
+    throw suit + ' is a bad suit'
+  }
+  this.rank = rank;
+  this.suit = suit;
+}
+Card.prototype.toString = function () {
+  return '' + this.rank + this.suit
+}
+```
         
 The instances are not canonicalized:
-        
-     new Card(4, 'S') === new Card(4, 'S')
-       #=> false
+
+```javascript  
+new Card(4, 'S') === new Card(4, 'S')
+  #=> false
+```
        
 Nota Bene: *If a constructor function explicitly returns a value, that's what is returned. Otherwise, the newly constructed object is returned.*
 
 We can take advantage of that to canonicalize cards:
 
-    var ranks = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
-    var suits = ['C', 'D', 'H', 'S']
-    function Card(rank, suit) {
-      if (ranks.indexOf(rank) < 0) {
-        throw '' + rank + ' is a bad rank'
-      }
-      if (suits.indexOf(suit) < 0) {
-        throw suit + ' is a bad suit'
-      }
-      this.rank = rank;
-      this.suit = suit;
-      var hash = this.toString();
-      var cache = this.constructor.cache;
-      return cache[hash] || (cache[hash] = this)
-    }
-    Card.prototype.toString = function () {
-      return '' + this.rank + this.suit
-    }
-    Card.cache = {};
+```javascript
+var ranks = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
+var suits = ['C', 'D', 'H', 'S']
+function Card(rank, suit) {
+  if (ranks.indexOf(rank) < 0) {
+    throw '' + rank + ' is a bad rank'
+  }
+  if (suits.indexOf(suit) < 0) {
+    throw suit + ' is a bad suit'
+  }
+  this.rank = rank;
+  this.suit = suit;
+  var hash = this.toString();
+  var cache = this.constructor.cache;
+  return cache[hash] || (cache[hash] = this)
+}
+Card.prototype.toString = function () {
+  return '' + this.rank + this.suit
+}
+Card.cache = {};
+```
         
 Now the instances are canonicalized:
-        
-     new Card(4, 'S') === new Card(4, 'S')
-       #=> true
+
+```javascript        
+new Card(4, 'S') === new Card(4, 'S')
+  #=> true
+```
        
 Wonderful! That being said, there is a caveat of canonicalizing instances of a class: JavaScript does not support [weak references](https://en.wikipedia.org/wiki/Weak_reference). If you wish to perform cache eviction for memory management purposes, you will have to implement your own reference management scheme. This may be non-trivial.
 
-(This essay appears in slightly different form in the book [JavaScript Ristretto](http://leanpub.com/JavaScript-ristretto).)
+(This note appears in slightly different form in the book [JavaScript Ristretto](http://leanpub.com/JavaScript-ristretto).)
 
 ---
 
