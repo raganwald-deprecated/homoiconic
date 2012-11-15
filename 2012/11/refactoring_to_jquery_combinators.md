@@ -65,7 +65,7 @@ built-in operations.
 [Here]: http://weblog.raganwald.com/JQuery-Combinators/life/index.html
 [code]: http://weblog.raganwald.com/JQuery-Combinators/life/life.html
 
-![Life with jQuery Combinators](http://min.us/lML7ClpU8FF2C)
+![Life with jQuery Combinators](http://i.minus.com/iML7ClpU8FF2C.png)
 
 The main loop that advances the universe a single generation is called `stepForwardOneGeneration`. It is written as a single fluent jQuery expression. Omitting comments, it looks like this:
 
