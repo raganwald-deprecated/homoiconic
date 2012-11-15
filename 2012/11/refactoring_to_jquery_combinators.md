@@ -252,7 +252,7 @@ jQuery Combinators allows us to take our own domain-specific traverses, filters,
 1. Is easier to read and understand, and;
 2. Is easier to modify or refactor.
 
-(Discuss on [/r/javascript](http://www.reddit.com/r/javascript/). This essay appears in slightly different form in the book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto).)
+(Discuss on [/r/javascript](http://www.reddit.com/r/javascript/comments/138snc/refactoring_to_jquery_combinators/). This essay appears in slightly different form in the book [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto).)
 
 ---
 
