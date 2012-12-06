@@ -56,6 +56,8 @@ The great truth is, it is necessary to be smart. It is necessary to get things d
 
 Speaking of which... Less blogging, more slogging. Thanks for listening!
 
+(discuss on [hacker news](http://news.ycombinator.com/item?id=4882428) or [proggit](http://www.reddit.com/r/programming/comments/14e0nh/smart_and_gets_things_done_is_necessary_but_not/))
+
 ---
 
 p.s. So what *does* happen when a proc attempt to return from a method that has already returned? Does this prove through reduction ad absurdum that it cannot return from that method? Does it create a continuation? No and no. It throws an exception. Kapow!
