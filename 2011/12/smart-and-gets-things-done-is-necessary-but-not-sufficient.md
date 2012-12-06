@@ -27,8 +27,9 @@ Why is this fucked up? Because programming is the art of having humans build thi
 
 Some programming tools attempt to stay very close to the behaviour of mathematics. They are a delight to use.... If you are a mathematician. It is not important to the thesis of this essay whether these tools are so much better than other tools that all programmers should become mathematicians.
 
-Perhaps programmers *should* HTFU and become mathematicians. But today, many or even most are not, and tools are built that cater to non-mathematicians, and languages are created where you cannot reason from facts how everything works, and these things become embedded in organizations, and it is non-trivial to it all out and reimplement everything using [Agda] compiling to JavaScript.
+Perhaps programmers should [HTFU] and become mathematicians. But today, many or even most are not, and tools are built that cater to non-mathematicians, and languages are created where you cannot reason from facts how everything works, and these things become embedded in organizations, and it is non-trivial to it all out and reimplement everything using [Agda] compiling to JavaScript.
 
+[HTFU]: http://www.youtube.com/watch?v=unkIVvjZc9Y
 [Agda]: http://en.wikipedia.org/wiki/Agda_(programming_language)
 
 So today, you must live with having to know how programming languages actually work, how the tools actually work, how the libraries actually work, and so forth.
