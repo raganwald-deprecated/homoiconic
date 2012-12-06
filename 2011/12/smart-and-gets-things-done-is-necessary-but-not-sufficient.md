@@ -41,7 +41,7 @@ Whereas what they are actually saying is that these messy things we work with ar
 
 [pwn]: http://experthuman.com/programming-with-nothing
 
-This conceit manifests itself in several ways. For starters, making unfounded claims about how Ruby procs and lambdas work over drinks. Another manifestation is the old chestnut, "No, I have no C++ experience, but I'm smart, I can learn on the job. I'd like $115K to start."
+This conceit manifests itself in several ways. For starters, making unfounded claims about how Ruby procs and lambdas work over drinks. Another manifestation is the old chestnut, "I don't have *any* C++ experience, but I'm smart, I can learn on the job. I'd like $115K to start."
 
 I'd like to say that this applies to the great demand for "Learn JavaScript in 21 Days" books, but I suspect that many of the people buying these books are not fooled into thinking they can learn as much in 21 days as [Peter Norvig learned in ten years][ten]. I think those folks have the far humbler goal of being good enough to get a job from someone who read "Learn to Interview Programmers in 21 Days."
 
