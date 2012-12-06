@@ -4,7 +4,7 @@
 
 ### a funny thing happened over drinks last night
 
-I was having a few drinks with Evan Light, Austin Zieglar, Sean Miller, and some other Toronto folken. At our end of the table, the subject of differences between procs and lambdas in Ruby came up. Someone piped up, "One difference is that `return` in a lambda returns from the lambda, but `return` in a proc returns from the enclosing method."
+I was having a few drinks with Evan Light, Austin Ziegler, Sean Miller, and some other Toronto folken. At our end of the table, the subject of differences between procs and lambdas in Ruby came up. Someone piped up, "One difference is that `return` in a lambda returns from the lambda, but `return` in a proc returns from the enclosing method."
 
 "That can't be right," I said.
 
