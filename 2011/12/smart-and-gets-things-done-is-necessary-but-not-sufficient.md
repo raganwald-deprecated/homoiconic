@@ -60,7 +60,7 @@ Speaking of which... Less blogging, more slogging. Thanks for listening!
 
 ---
 
-p.s. So what *does* happen when a proc attempt to return from a method that has already returned? Does this prove through reduction ad absurdum that it cannot return from that method? Does it create a continuation? No and no. It throws an exception. Kapow! Thanks go to [Yehuda Katz](https://plus.google.com/106300407679257154689/posts): He is an entire mining indurty of wisdom about the subtleties of exiting from blocks and procs.
+p.s. So what *does* happen when a proc attempt to return from a method that has already returned? Does this prove through reduction ad absurdum that it cannot return from that method? Does it create a continuation? No and no. It throws an exception. Kapow! Thanks go to [Yehuda Katz](https://plus.google.com/106300407679257154689/posts): He is an entire mining industry of wisdom about the subtleties of exiting from blocks and procs.
 
 ---
 
