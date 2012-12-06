@@ -12,6 +12,8 @@ I was having a few drinks with Evan Light, Austin Zieglar, Sean Miller, and some
 
 "Well," I explained, "Procs are objects. Say you create a proc with a return in a method *and return it from the method*. What happens when you call the proc now? How can it return from a method that has already returned? You'd have a continuation!"
 
+![In the long run, nobody cares](http://i.minus.com/iueb4lrtNpASx.png)
+
 We pondered this for a while and the conversation meandered elsewhere, no doubt because my companions were embarrassed on my behalf. I had committed one of the basic errors of inexperience with the state of programming: Assuming that you're smart and you can work things out from first principles.
 
 ### math is fucked up, man
