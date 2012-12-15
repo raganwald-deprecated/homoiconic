@@ -197,7 +197,9 @@ This maps the array, getting the name if there is a value.
 
 ## Summary of Part I
 
-We've seen four handy combinators: `get`, `splat`, `pluck`, and `maybe`. `get` and `maybe` play well together. `splat` and `pluck` are conveniences that help program in a functional rather than OO style. All are practical. In Part II, we'll look at some combinators that are specifically tuned for working with instance methods: `bound`, `send`, and `fluent`.
+We've seen four handy combinators: `get`, `splat`, `pluck`, and `maybe`.
+
+`get` and `maybe` play well together; `splat` and `pluck` are conveniences that help program in a functional rather than OO style. All are practical. In Part II, we'll look at some combinators that are specifically tuned for working with instance methods: `bound`, `send`, and `fluent`.
 
 ---
 
