@@ -16,7 +16,7 @@ If we were learning Combinatorial Logic, we'd start with the most basic combinat
 
 There are an infinite number of combinators, but in this article we will focus on combinators that are useful when working with Plain Old JavaScript Objects ("POJOs") and with instances.
 
-## Splat and Get
+## Splat
 
 In JavaScript, arrays have a `.map` method. Map takes a function as an argument, and applies it to each of the elements of the elements. Map then returns all of the results in an array. For example:
 
@@ -25,14 +25,14 @@ In JavaScript, arrays have a `.map` method. Map takes a function as an argument,
     })
       //=> [1, 4, 9, 16, 25]
       
-We say that `.map` *maps* its arguments over the receiver array's elements. Or if you prefer, that it defines a mapping between its receiver and its result. Libraries like [Underscore] provide a map *function*.[^why] It usually works like this:
+We say that `.map` *maps* its arguments over the receiver array's elements. Or if you prefer, that it defines a mapping between its receiver and its result. Libraries like [Underscore] provide a map *function*. It usually works like this:
 
     _.map([1, 2, 3, 4, 5], function (n) { 
       return n*n 
     })
       //=> [1, 4, 9, 16, 25]
       
-[^why]: Why provide a map function? well, JavaScript is an evolving language, and when you're writing code that runs in a web browser, you may want to support browsers using older versions of JavaScript that didn't provide the `.map` function. One way to do that is to "shim" the map method into the Array class, the other way is to use a map function. Most library implementations of map will default to the `.map` method if its available.
+> Why provide a map function? well, JavaScript is an evolving language, and when you're writing code that runs in a web browser, you may want to support browsers using older versions of JavaScript that didn't provide the `.map` function. One way to do that is to "shim" the map method into the Array class, the other way is to use a map function. Most library implementations of map will default to the `.map` method if its available.
 
 This recipe isn't for `map`: It's for `splat`, a function that wraps around `map` and turns any other function into a mapping. In concept, `splat` is very simple:
 
@@ -59,7 +59,7 @@ Here's the above code written using `splat`:
     squareMap([1, 2, 3, 4, 5])
       //=> [1, 4, 9, 16, 25]
       
-If we didn't use `splat`, we'd have written something like this:[^partial]
+If we didn't use `splat`, we'd have written something like this
 
     var squareMap = function (array) {
       return _.map(array, function (n) { 
@@ -67,12 +67,15 @@ If we didn't use `splat`, we'd have written something like this:[^partial]
       })
     };
     
+> Functional programming wonks will explain that something called *partial functional application* would be handy here. If JavaScript had it. Which it doesn't. Oh well.
+
 And we'd do that every time we wanted to construct a method that maps an array to some result. `splat` is a very convenient abstraction for a very common pattern.
 
-*`splat` was suggested by [ludicast](http://github.com/ludicast)*
+(`splat` *was suggested by [ludicast](http://github.com/ludicast)*)
     
 [Underscore]: http://underscorejs.org
-[^partial]: Functional programming wonks will explain that something called *partial functional application* would be handy here. If JavaScript had it. Which it doesn't. Oh well.
+
+## Get
 
 `get` is a very simple function. It takes the name of a property and returns a function that gets that property from an object:
 
