@@ -147,7 +147,7 @@ A common problem in programming is checking for `null` or `undefined` (hereafter
 This recipe concerns pattern that is very common: A function `fn` takes a value as a parameter, and its behaviour by design is to do nothing if the parameter is nothing:
 
     function isSomething (value) {
-      return value != null
+      return value !== null
     }
 
     function checksForSomething (value) {
