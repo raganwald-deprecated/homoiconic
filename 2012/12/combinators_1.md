@@ -185,7 +185,7 @@ Naturally, there's a recipe for that, borrowed from Haskell's [maybe monad][mayb
       // function's true logic
     });
     
-    var something = maybe(doesntCheckForSomething(value));
+    var something = maybe(doesntCheckForSomething)(value);
     
 Now let's look an an elegant use for `maybe`. You recall `get` from above? `get('name')` acts like `function (obj) { return obj.name }` You can use `get` with `.map`: `arrayOfObjects.map(get('name'))` or with `splat`: `splat(get('name))(arrayOfObjects)`. Now consider: What if `arrayOfObjects` is a sparse array? If some of its entries are `null`?
 
