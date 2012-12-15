@@ -172,7 +172,7 @@ Naturally, there's a recipe for that, borrowed from Haskell's [maybe monad][mayb
         }
         else {
           for (i = 0; i < arguments.length; ++i) {
-            if (arguments[i] == null) return arguments[i]
+            if (arguments[i] == null || arguments[i] == void 0) return arguments[i]
           }
           return fn.apply(this, arguments)
         }
