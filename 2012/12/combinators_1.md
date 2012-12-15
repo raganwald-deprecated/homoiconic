@@ -202,7 +202,7 @@ This maps the array, getting the name if there is a value.
 
 In Part II, we'll look at some combinators that are specifically tuned for working with instance methods: "bound," "send," and "fluent." (*cough*). The recipes in this post are from my book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
 
-[Feedback welcome](mailto:reg@braythwayt.com)!
+[Feedback welcome](mailto:reg@braythwayt.com), or discuss these ideas on [reddit](http://www.reddit.com/r/javascript/comments/14we7r/combinator_recipes_for_working_with_objects_in/) and [hacker news](http://news.ycombinator.com/item?id=4925658).
 
 ---
 
