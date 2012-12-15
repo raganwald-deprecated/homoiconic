@@ -110,6 +110,8 @@ That's nicer than writing things out "longhand:"
     splat(function (inventory) { return inventory.oranges })(inventories)
       //=> [ 144, 54, 12 ]
 
+Ruby users recognize `get`, it's equivalent to `Symbol#to_proc`, the method that allows them to write `inventory.map &:oranges` instead of using a block.
+
 ## Pluck
 
 This pattern of combining `splat` and `get` is very frequent in JavaScript code. So much so, that we can take it up another level:
@@ -213,3 +215,6 @@ Recent work:
 ---
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+
+[andand]: https://github.com/raganwald/andand
+[maybe]: https://en.wikipedia.org/wiki/Monad_(functional_programming)#The_Maybe_monad
