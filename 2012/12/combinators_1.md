@@ -200,7 +200,9 @@ This maps the array, getting the name if there is a value.
 * We've seen four handy combinators: `get`, `splat`, `pluck`, and `maybe`.
 * `get` and `maybe` play well together; `splat` and `pluck` are conveniences that help program in a functional rather than OO style.
 
-In Part II, we'll look at some combinators that are specifically tuned for working with instance methods: "bound," "send," and "fluent." (*cough*). The recipes in this post are from my book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf). [Feedback welcome](mailto:reg@braythwayt.com)!
+In Part II, we'll look at some combinators that are specifically tuned for working with instance methods: "bound," "send," and "fluent." (*cough*). The recipes in this post are from my book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
+
+[Feedback welcome](mailto:reg@braythwayt.com)!
 
 ---
 
