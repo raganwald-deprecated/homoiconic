@@ -1,5 +1,7 @@
 # Combinator Recipes for Working With Objects in JavaScript, Part I
 
+(This post is Part I of [II][Part II]. The recipes in this post are excerpted the book [JavaScript Allongé](http://leanpub.com/javascript-allonge).)
+
 ### combinators
 
 The word "combinator" has a precise technical meaning in mathematics:
@@ -8,7 +10,7 @@ The word "combinator" has a precise technical meaning in mathematics:
 
 [combinators]: https://en.wikipedia.org/wiki/Combinatory_logic "Combinatory Logic"
 
-In this book, we will be using a much looser definition of "combinator:" Pure functions that act on other functions to produce functions. If Objects are nouns and Methods are verbs, **Combinators are the adverbs of programming**.
+In this essay, we will be using a much looser definition of "combinator:" Pure functions that act on other functions to produce functions. If Objects are nouns and Methods are verbs, **Combinators are the adverbs of programming**.
 
 If we were learning Combinatorial Logic, we'd start with the most basic combinators like `S`, `K`, and `I`, and work up from there to practical combinators. We'd learn that the fundamental combinators are named after birds following the example of Raymond Smullyan's famous book [To Mock a Mockingbird][mock].
 
@@ -202,7 +204,7 @@ This maps the array, getting the name if there is a value.
 * We've seen four handy combinators: "get," "splat," "pluck," and "maybe."
 * "Get" and "maybe" play well together; "splat" and "pluck" are conveniences that help program in a functional rather than OO style.
 
-In Part II, we'll look at some combinators that are specifically tuned for working with instance methods: "bound," "send," and "fluent." (*cough*). The recipes in this post are from my book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
+In [Part II], we'll look at some combinators that are specifically tuned for working with instance methods: "bound," "send," and "fluent." (*cough*). The recipes in this post are from the book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
 
 [Feedback welcome](mailto:reg@braythwayt.com), or discuss these ideas on [reddit](http://www.reddit.com/r/javascript/comments/14we7r/combinator_recipes_for_working_with_objects_in/) and [hacker news](http://news.ycombinator.com/item?id=4925658).
 
@@ -221,3 +223,5 @@ Recent work:
 
 [andand]: https://github.com/raganwald/andand
 [maybe]: https://en.wikipedia.org/wiki/Monad_(functional_programming)#The_Maybe_monad
+
+[Part II]: http:./combinators_2.md
