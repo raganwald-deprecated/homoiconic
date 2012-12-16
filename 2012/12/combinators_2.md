@@ -212,12 +212,19 @@ A *method* decorator is even more specific in that it's a decorator carefully wr
 
 Fluent is one of the simpler method decorators. Others implement before and after advice, perform pre- and post-condition contract validation, or even handle asynchronous invocation and chaining.
 
+## Practical Considerations
+
+The recipes given all work well, and are surprisingly fast on most platforms (but not IE!). That being said, extensive use of `arguments` can be expensive. A production-class library might offer versions of some combinators tuned for a fixed number of arguments, such as `send0` for no arguments, `send1` for one argument, and `sendn` for a variable number of arguments.
+
+If you're using these in the browser and want the maximum amount of compatibility, be prepared to either shim methods like `.map` and `.bind` or write your own wrappers that default to the platform if the methods are available.
+
 ## Summary of Part II
 
 * We've seen three combinators for instance methods: "bound," "send," and "fluent."
 * "bound" has implications for callbacks. "send" is useful for mapping and folding. "fluent" simplifies the creation of fluent APIs.
+* The recipes are fine for most purposes but YMMV, especially if you want maximum backwards compatibility with browsers.
 
-The recipes in this post are from my book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
+The recipes in this post are from the book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
 
 [Feedback welcome](mailto:reg@braythwayt.com).
 
