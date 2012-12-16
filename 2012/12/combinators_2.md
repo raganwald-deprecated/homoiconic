@@ -96,7 +96,7 @@ Of course, these are unbound methods we're "getting" from each object. Here's a 
 
 ## Send
 
-We saw that `bound` can be used to get a bound method from an instance. Unfortunately, invoking such methods as a little messy:
+We saw that `bound` can be used to get a bound method from an instance. Unfortunately, invoking such methods is a little messy:
 
     splat(bound('eggs'))(inventories).map(
       function (boundmethod) { 
