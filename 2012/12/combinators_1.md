@@ -20,7 +20,7 @@ There are an infinite number of combinators, but in this article we will focus o
 
 ## Splat
 
-In JavaScript, arrays have a `.map` method. Map takes a function as an argument, and applies it to each of the elements of the elements. Map then returns all of the results in an array. For example:
+In recent versions of JavaScript, arrays have a `.map` method. Map takes a function as an argument, and applies it to each of the elements of the array, then returns the results in another array. For example:
 
     [1, 2, 3, 4, 5].map(function (n) { 
       return n*n 
