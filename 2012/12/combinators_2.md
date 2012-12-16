@@ -237,4 +237,4 @@ Recent work:
 [andand]: https://github.com/raganwald/andand
 [maybe]: https://en.wikipedia.org/wiki/Monad_(functional_programming)#The_Maybe_monad
 
-[Part I]: http:./combinators_1.md
+[Part I]: https://github.com/raganwald/homoiconic/blob/master/2012/12/combinators_1.md
