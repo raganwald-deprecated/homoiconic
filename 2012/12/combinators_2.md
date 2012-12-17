@@ -50,7 +50,7 @@ Now we can revisit [splat](https://github.com/raganwald/homoiconic/blob/master/2
       return _.map(list, fn)
     }
   }
-```javascript
+```
 
 This is really a partial application of `map` in disguise. Let's make it obvious:
 
@@ -58,7 +58,7 @@ This is really a partial application of `map` in disguise. Let's make it obvious
 function splat (fn) {
   return rpartial(_.map, fn)
 }
-```javascript
+```
 
 They work, but are cumbersome if we want to partially apply a function with a "hole" in the arguments, e.g. 
 
@@ -74,7 +74,7 @@ var hiMyNameIsPeter = rpartial(lpartial(formal,'Hi'), 'Peter');
 
 hiMyNameIsPeter('Stu')
   //=> 'Hi, Stu, my name is Peter'
-```javascript
+```
 
 The "partial" function in this recipe works with any function that does not expect any of its arguments to be `undefined`, and is also context-agnostic.
 
@@ -122,7 +122,7 @@ var hiMyNameIsPeter = partial(formal, 'Hi', undefined, 'Peter');
 
 hiMyNameIsPeter('Stu')
   //=> 'Hi, Stu, my name is Peter'
-```javascript
+```
 
 As you can see, `partial` takes a template of arguments and returns a function that applies all the arguments that aren't undefined. If there are still some undefined arguments, it returns a partial function again. The one caveat is that if the function supplied expects a variable number of arguments, you should supply the "template" arguments directly to `partial`.
 
@@ -133,7 +133,7 @@ var addAll = partial(function () {
 
 addAll(2)
   //=> 6
-```javascript
+```
 
 As noted above, our partial recipe allows us to create functions that are partial applications of functions that are context aware. We'd need a different recipe if we wish to create partial applications of object methods.
 
@@ -145,14 +145,14 @@ Which brings us to a question: Why can't we use `Function.prototype.bind`? Well,
 function hello (person) {
   return "Hello, " + person.name + ", my name is " + this.name
 }
-```javascript
+```
     
 We can write:
 
 ```javascript
 hello.call({ name: 'Fred' }, { name: 'Wilma' })
   //=> "hello, Wilma, my name is Fred"
-```javascript
+```
 
 And we can partially apply this function:
 
@@ -161,7 +161,7 @@ helloWilma = partial(hello, { name: 'Wilma' });
 
 helloWilma.call({ name: 'Fred' })
   //=> "hello, Wilma, my name is Fred"
-```javascript
+```
 
 This cannot be accomplished with `Function.prototype.bind`:
 
@@ -170,7 +170,7 @@ helloBetty = hello.bind({ name: 'Bjarne' }, { name: 'Betty' });
 
 helloBetty.call({ name: 'Bam Bam' })
   //=> 'Hello, Betty, my name is Bjarne'
-```javascript
+```
       
 The context has been forcibly bound and neither `.call` nor `.apply` will override this.
 
