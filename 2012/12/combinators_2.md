@@ -337,7 +337,7 @@ If you're using these in the browser and want the maximum amount of compatibilit
 
 The recipes in this post are from the book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
 
-[Feedback welcome](mailto:reg@braythwayt.com). Or discuss on [hacker news](http://news.ycombinator.com/item?id=4933207).
+[Feedback welcome](mailto:reg@braythwayt.com). Discuss on [hacker news](http://news.ycombinator.com/item?id=4933207) or [reddit](http://www.reddit.com/r/javascript/comments/150294/more_combinator_recipes_in_javascript_partial/).
 
 ---
 
