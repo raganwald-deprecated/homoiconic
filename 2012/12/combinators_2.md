@@ -60,7 +60,9 @@ function splat (fn) {
 }
 ```
 
-They work, but are cumbersome if we want to partially apply a function with a "hole" in the arguments, e.g. 
+### partial with template arguments
+
+`lpartial` and `rpartial` work, but are cumbersome if we want to partially apply a function with a "hole" in the arguments, e.g. 
 
 ```javascript   
 function formal (greeting, you, me) {
