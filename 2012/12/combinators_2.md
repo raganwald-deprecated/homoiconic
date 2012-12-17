@@ -6,7 +6,7 @@
 
 A basic function building block is *partial application*. When a function takes multiple arguments, we "apply" the function to the arguments by evaluating it with all of the arguments, producing a value. But what if we only supply some of the arguments? In that case, we can't get the final value, but we can get a function that represents *part* of our application.
 
-Partial application is such a common need that many libraries provide some form of partial application tool. You'll find examples in [Lemond](https://github.com/fogus/lemonad) from Michael Fogus, [Functional JavaScript](http://osteele.com/sources/javascript/functional/) from Oliver Steele and the terse but handy [node-ap](https://github.com/substack/node-ap) from James Halliday.
+Partial application is such a common need that many libraries provide some form of partial application tool. You'll find examples in [Lemonad](https://github.com/fogus/lemonad) from Michael Fogus, [Functional JavaScript](http://osteele.com/sources/javascript/functional/) from Oliver Steele and the terse but handy [node-ap](https://github.com/substack/node-ap) from James Halliday.
 
 The "partial" function in this recipe works with any function that has a fixed number of arguments, does not expect any of its arguments to be `undefined`, and is [context](#context)-agnostic.
 
