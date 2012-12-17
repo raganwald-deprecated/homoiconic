@@ -10,49 +10,51 @@ Partial application is such a common tool that many libraries provide some form 
 
 The "partial" function in this recipe works with any function that has a fixed number of arguments, does not expect any of its arguments to be `undefined`, and is [context](#context)-agnostic.
 
-    function partial (fn) {
-      var fn = arguments[0],
-          args = Array.prototype.slice.call(arguments, 1),
-          holes = [],
-          argIndex;
-        
-      if (arguments.length > 1) {
-        for (argIndex = 0; argIndex < args.length; ++argIndex) {
-          if (args[argIndex] === void 0) {
-            holes.push(argIndex)
-          }
-        }
-      }  
-      else if (fn.length > 0) {
-        for (argIndex = 0; argIndex < fn.length; ++argIndex) {
-          holes[argIndex] = argIndex;
-        }
+```javascript
+function partial (fn) {
+  var fn = arguments[0],
+      args = Array.prototype.slice.call(arguments, 1),
+      holes = [],
+      argIndex;
+    
+  if (arguments.length > 1) {
+    for (argIndex = 0; argIndex < args.length; ++argIndex) {
+      if (args[argIndex] === void 0) {
+        holes.push(argIndex)
       }
-      
-      function partial () {
-        var significant = (arguments.length > holes.length) ?
-              holes.length : arguments.length,
-            savedHoles = [],
-            argIndex;
-        for (argIndex = 0; argIndex < significant; ++argIndex) {
-          if (arguments[argIndex] === void 0) {
-            savedHoles.push(holes.shift())
-          }
-          else args[holes.shift()] = arguments[argIndex];
-        }
-        holes = savedHoles.concat(holes);
-        if (holes.length === 0) {
-          return fn.apply(this, args)
-        }
-        else return partial
-      }
-      return partial
     }
-    
-    var add = partial(function (a, b, c) { return a + b + c });
-    
-    add(1, undefined, 3)(2)
-      //=> 6
+  }  
+  else if (fn.length > 0) {
+    for (argIndex = 0; argIndex < fn.length; ++argIndex) {
+      holes[argIndex] = argIndex;
+    }
+  }
+  
+  function partial () {
+    var significant = (arguments.length > holes.length) ?
+          holes.length : arguments.length,
+        savedHoles = [],
+        argIndex;
+    for (argIndex = 0; argIndex < significant; ++argIndex) {
+      if (arguments[argIndex] === void 0) {
+        savedHoles.push(holes.shift())
+      }
+      else args[holes.shift()] = arguments[argIndex];
+    }
+    holes = savedHoles.concat(holes);
+    if (holes.length === 0) {
+      return fn.apply(this, args)
+    }
+    else return partial
+  }
+  return partial
+}
+
+var add = partial(function (a, b, c) { return a + b + c });
+
+add(1, undefined, 3)(2)
+  //=> 6
+```
 
 As you can see, `partial` takes a template of arguments and returns a function that applies all the arguments that aren't undefined. If there are still some undefined arguments, it returns a partial function again. The one caveat is that if the function supplied expects a variable number of arguments, you should supply the "template" arguments directly to `partial`.
 
