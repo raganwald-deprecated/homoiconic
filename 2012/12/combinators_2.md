@@ -134,6 +134,114 @@ So instead, we write a new recipe:
     splat(send('addApples', 24))(inventories)
       //=> [ 24, 264, 48 ]
       
+## Partial
+
+Another basic building block is *partial application*. When a function takes multiple arguments, we "apply" the function to the arguments by evaluating it with all of the arguments, producing a value. But what if we only supply some of the arguments? In that case, we can't get the final value, but we can get a function that represents *part* of our application.
+
+Partial application is such a common tool that many libraries provide some form of partial application tool. You'll find examples in [Functional JavaScript](http://osteele.com/sources/javascript/functional/) from Oliver Steele and the terse but handy [node-ap](https://github.com/substack/node-ap) from James Halliday.
+
+The "partial" function in this recipe works with any function that has a fixed number of arguments, does not expect any of its arguments to be `undefined`, and is [context](#context)-agnostic.
+
+    function partial (fn) {
+      var fn = arguments[0],
+          args = Array.prototype.slice.call(arguments, 1),
+          holes = [],
+          argIndex;
+        
+      if (arguments.length > 1) {
+        for (argIndex = 0; argIndex < args.length; ++argIndex) {
+          if (args[argIndex] === void 0) {
+            holes.push(argIndex)
+          }
+        }
+      }  
+      else if (fn.length > 0) {
+        for (argIndex = 0; argIndex < fn.length; ++argIndex) {
+          holes[argIndex] = argIndex;
+        }
+      }
+      
+      function partial () {
+        var significant = (arguments.length > holes.length) ?
+              holes.length : arguments.length,
+            savedHoles = [],
+            argIndex;
+        for (argIndex = 0; argIndex < significant; ++argIndex) {
+          if (arguments[argIndex] === void 0) {
+            savedHoles.push(holes.shift())
+          }
+          else args[holes.shift()] = arguments[argIndex];
+        }
+        holes = savedHoles.concat(holes);
+        if (holes.length === 0) {
+          return fn.apply(this, args)
+        }
+        else return partial
+      }
+      return partial
+    }
+    
+    var add = partial(function (a, b, c) { return a + b + c });
+    
+    add(1, undefined, 3)(2)
+      //=> 6
+
+As you can see, `partial` takes a template of arguments and returns a function that applies all the arguments that aren't undefined. If there are still some undefined arguments, it returns a partial function again. The one caveat is that if the function supplied expects a variable number of arguments, you should supply the "template" arguments directly to `partial`.
+
+    var addAll = partial(function () {
+      return Array.prototype.reduce.call(arguments, function (a, b) { return a + b})
+    }, 1, undefined, 3);
+    
+    addAll(2)
+      //=> 6
+
+Now we can revisit [splat](https://github.com/raganwald/homoiconic/blob/master/2012/12/combinators_1.md#splat). If we were using [Underscore] to ensure that we worked in older browsers, we could write:
+
+    function splat (fn) {
+      return function (list) {
+        return _.map(list, fn)
+      }
+    }
+    
+This is really a partial application of `map` in disguise. Let's make it obvious:
+
+    function splat (fn) {
+      return partial(_.map, undefined, fn)
+    }
+
+As noted above, our partial recipe allows us to create functions that are partial applications of functions that are context aware. We'd need a different recipe if we wish to create partial applications of object methods.
+
+### Function.prototype.bind
+
+Which brings us to a question: Why can't we use `Function.prototype.bind`? Well, it is opinionated about binding the context. Consider this awful code:
+
+    function hello (person) {
+      return "Hello, " + person.name + ", my name is " + this.name
+    }
+    
+We can write:
+
+    hello.call({ name: 'Fred' }, { name: 'Wilma' })
+      //=> "hello, Wilma, my name is Fred"
+
+And we can partially apply this function:
+
+    helloWilma = partial(hello, { name: 'Wilma' });
+    
+    helloWilma.call({ name: 'Fred' })
+      //=> "hello, Wilma, my name is Fred"
+
+This cannot be accomplished with `Function.prototype.bind`:
+
+    helloBetty = hello.bind({ name: 'Bjarne' }, { name: 'Betty' });
+    
+    helloBetty.call({ name: 'Bam Bam' })
+      //=> 'Hello, Betty, my name is Bjarne'
+      
+The context has been forcibly bound and neither `.call` nor `.apply` will override this.
+
+[Underscore]: http://underscorejs.org
+      
 ## And now, a decorator: Fluent
 
 Instance methods can be bifurcated into two classes: Those that query something, and those that update something. Most design philosophies arrange things such that update methods return the value being updated. For example:
@@ -221,6 +329,7 @@ If you're using these in the browser and want the maximum amount of compatibilit
 ## Summary of Part II
 
 * We've seen three combinators for instance methods: "bound," "send," and "fluent."
+* We've seen a combinator for partial application: "partial."
 * "bound" has implications for callbacks. "send" is useful for mapping and folding. "fluent" simplifies the creation of fluent APIs.
 * The recipes are fine for most purposes but YMMV, especially if you want maximum backwards compatibility with browsers.
 
