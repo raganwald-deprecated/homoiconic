@@ -8,62 +8,37 @@ A basic function building block is *partial application*. When a function takes 
 
 Partial application is such a common need that many libraries provide some form of partial application tool. You'll find examples in [Lemonad](https://github.com/fogus/lemonad) from Michael Fogus, [Functional JavaScript](http://osteele.com/sources/javascript/functional/) from Oliver Steele and the terse but handy [node-ap](https://github.com/substack/node-ap) from James Halliday.
 
-The "partial" function in this recipe works with any function that has a fixed number of arguments, does not expect any of its arguments to be `undefined`, and is [context](#context)-agnostic.
+These two recipes are for quickly and simply applying a single argument, either the leftmost or rightmost. If you want to bind more than one argument, or you want to leave a "hole" in the argument list, you will need to either use a [generalized partial recipe] or you will need to repeatedly apply arguments. It is context-agnostic.
 
-```javascript
-function partial (fn) {
-  var fn = arguments[0],
-      args = Array.prototype.slice.call(arguments, 1),
-      holes = [],
-      argIndex;
-    
-  if (arguments.length > 1) {
-    for (argIndex = 0; argIndex < args.length; ++argIndex) {
-      if (args[argIndex] === void 0) {
-        holes.push(argIndex)
+    function lpartial (fn, larg) {
+      var slice = Array.prototype.slice;
+      
+      return function () {
+        return fn.apply(this, [larg].concat(slice.call(arguments,0)))
       }
     }
-  }  
-  else if (fn.length > 0) {
-    for (argIndex = 0; argIndex < fn.length; ++argIndex) {
-      holes[argIndex] = argIndex;
-    }
-  }
-  
-  function partial () {
-    var significant = (arguments.length > holes.length) ?
-          holes.length : arguments.length,
-        savedHoles = [],
-        argIndex;
-    for (argIndex = 0; argIndex < significant; ++argIndex) {
-      if (arguments[argIndex] === void 0) {
-        savedHoles.push(holes.shift())
+
+    function rpartial (fn, rarg) {
+      var slice = Array.prototype.slice;
+      
+      return function () {
+        return fn.apply(this, slice.call(arguments,0).concat([rarg]))
       }
-      else args[holes.shift()] = arguments[argIndex];
     }
-    holes = savedHoles.concat(holes);
-    if (holes.length === 0) {
-      return fn.apply(this, args)
-    }
-    else return partial
-  }
-  return partial
-}
-
-var add = partial(function (a, b, c) { return a + b + c });
-
-add(1, undefined, 3)(2)
-  //=> 6
-```
-
-As you can see, `partial` takes a template of arguments and returns a function that applies all the arguments that aren't undefined. If there are still some undefined arguments, it returns a partial function again. The one caveat is that if the function supplied expects a variable number of arguments, you should supply the "template" arguments directly to `partial`.
-
-    var addAll = partial(function () {
-      return Array.prototype.reduce.call(arguments, function (a, b) { return a + b})
-    }, 1, undefined, 3);
     
-    addAll(2)
-      //=> 6
+    function greet (me, you) {
+      return "Hello, " + you + ", my name is " + me
+    }
+    
+    var heliosSaysHello = lpartial(greet, 'Helios');
+    
+    heliosSaysHello('Eartha')
+      //=> 'Hello, Eartha, my name is Helios'
+      
+    var sayHelloToCeline = rpartial(greet, 'Celine');
+    
+    sayHelloToCeline('Eartha')
+      //=> 'Hello, Celine, my name is Eartha'
 
 Now we can revisit [splat](https://github.com/raganwald/homoiconic/blob/master/2012/12/combinators_1.md#splat). If we were using [Underscore] to ensure that we worked in older browsers, we could write:
 
@@ -76,8 +51,77 @@ Now we can revisit [splat](https://github.com/raganwald/homoiconic/blob/master/2
 This is really a partial application of `map` in disguise. Let's make it obvious:
 
     function splat (fn) {
-      return partial(_.map, undefined, fn)
+      return rpartial(_.map, fn)
     }
+
+They work, but are cumbersome if we want to partially apply a function with a "hole" in the arguments, e.g. 
+    
+    function formal (greeting, you, me) {
+        return greeting + ", " + you + ", my name is " + me
+    }
+    
+    formal("Hello", "Thomas", "Clara")
+      //=> 'Hello, Thomas, my name is Clara'
+    
+    var hiMyNameIsPeter = rpartial(lpartial(formal,'Hi'), 'Peter');
+    
+    hiMyNameIsPeter('Stu')
+      //=> 'Hi, Stu, my name is Peter'
+
+The "partial" function in this recipe works with any function that does not expect any of its arguments to be `undefined`, and is also context-agnostic.
+
+    function partial (fn) {
+      var fn = arguments[0],
+          args = Array.prototype.slice.call(arguments, 1),
+          holes = [],
+          argIndex;
+        
+      if (arguments.length > 1) {
+        for (argIndex = 0; argIndex < args.length; ++argIndex) {
+          if (args[argIndex] === void 0) {
+            holes.push(argIndex)
+          }
+        }
+      }  
+      else if (fn.length > 0) {
+        for (argIndex = 0; argIndex < fn.length; ++argIndex) {
+          holes[argIndex] = argIndex;
+        }
+      }
+      
+      function partial () {
+        var significant = (arguments.length > holes.length) ?
+              holes.length : arguments.length,
+            savedHoles = [],
+            argIndex;
+        for (argIndex = 0; argIndex < significant; ++argIndex) {
+          if (arguments[argIndex] === void 0) {
+            savedHoles.push(holes.shift())
+          }
+          else args[holes.shift()] = arguments[argIndex];
+        }
+        holes = savedHoles.concat(holes);
+        if (holes.length === 0) {
+          return fn.apply(this, args)
+        }
+        else return partial
+      }
+      return partial
+    }
+    
+    var hiMyNameIsPeter = partial(formal, 'Hi', undefined, 'Peter');
+    
+    hiMyNameIsPeter('Stu')
+      //=> 'Hi, Stu, my name is Peter'
+
+As you can see, `partial` takes a template of arguments and returns a function that applies all the arguments that aren't undefined. If there are still some undefined arguments, it returns a partial function again. The one caveat is that if the function supplied expects a variable number of arguments, you should supply the "template" arguments directly to `partial`.
+
+    var addAll = partial(function () {
+      return Array.prototype.reduce.call(arguments, function (a, b) { return a + b})
+    }, 1, undefined, 3);
+    
+    addAll(2)
+      //=> 6
 
 As noted above, our partial recipe allows us to create functions that are partial applications of functions that are context aware. We'd need a different recipe if we wish to create partial applications of object methods.
 
@@ -356,3 +400,5 @@ Recent work:
 [maybe]: https://en.wikipedia.org/wiki/Monad_(functional_programming)#The_Maybe_monad
 
 [Part I]: https://github.com/raganwald/homoiconic/blob/master/2012/12/combinators_1.md
+
+[Underscore]: http://underscorejs.org
