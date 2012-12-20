@@ -1,6 +1,6 @@
 # The End of Days: Implementing a CoffeeScript Feature in Pure JavaScript
 
-(*This kind of thing normally wouldn't merit a full blog post all by itself, but just in case today really is the end of the world, I'm taking no chances and sharing the idea while I can.*)
+*This kind of thing normally wouldn't merit a full blog post all by itself, but just in case today really is the end of the world, I'm taking no chances and sharing the idea while I can.*
 
 The CoffeeScript programming language has a useful feature: If a parameter of a method is written with trailing ellipses, it collects a list of parameters into an array. It can be used in various ways, and the CoffeeScript transpiler does some pattern matching to sort things out, but 80% of the use is to collect a variable number of arguments without using the `arguments` pseudo-variable, and 19% of the uses are to collect a trailing list of arguments. Here's what it looks like collecting a variable number of arguments
 
@@ -127,7 +127,7 @@ You be the judge.
 
 p.s. "Ellipses" and "leftPartial" can be found in the book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
 
-[Feedback welcome](mailto:reg@braythwayt.com). Discuss on [hacker news](http://news.ycombinator.com/item?id=4933207) or [reddit](http://www.reddit.com/r/javascript/comments/150294/more_combinator_recipes_in_javascript_partial/).
+[Feedback welcome](mailto:reg@braythwayt.com). Discuss on [reddit](http://www.reddit.com/r/javascript/comments/1568w0/the_end_of_days_implementing_a_coffeescript/).
 
 ---
 
