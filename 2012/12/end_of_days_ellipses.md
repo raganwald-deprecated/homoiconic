@@ -2,36 +2,7 @@
 
 *This kind of thing normally wouldn't merit a full blog post all by itself, but just in case today really is the end of the world, I'm taking no chances and sharing the idea while I can.*
 
-The CoffeeScript programming language has a useful feature: If a parameter of a method is written with trailing ellipses, it collects a list of parameters into an array. It can be used in various ways, and the CoffeeScript transpiler does some pattern matching to sort things out, but 80% of the use is to collect a variable number of arguments without using the `arguments` pseudo-variable, and 19% of the uses are to collect a trailing list of arguments. Here's what it looks like collecting a variable number of arguments
-
-```coffeescript
-sequence = (fns...) ->
-  (value) ->
-    value = fn(value) for fn in fns
-    value
-```
-
-That translates into:
-
-```javascript
-var sequence,
-  __slice = [].slice;
-
-sequence = function() {
-  var fns;
-  fns = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-  return function(value) {
-    var fn, _i, _len;
-    for (_i = 0, _len = fns.length; _i < _len; _i++) {
-      fn = fns[_i];
-      value = fn(value);
-    }
-    return value;
-  };
-};
-```
-
-The other common case is collecting trailing arguments:
+The CoffeeScript programming language has a useful feature: If a parameter of a method is written with trailing ellipses, it collects a list of parameters into an array. It can be used in various ways, and the CoffeeScript transpiler does some pattern matching to sort things out, but 80% of the use is to collect a variable number of arguments without using the `arguments` pseudo-variable, and 19% of the uses are to collect a trailing list of arguments. Here's what it looks like collecting a variable number of arguments and trailing arguments:
 
 ```coffeescript
 leftPartial = (fn, args...) ->
@@ -56,7 +27,22 @@ leftPartial = function() {
 };
 ```
 
-These are very handy features. It's true we can always manipulate the `arguments` thingummy variable by hand every time we want to collect a variable number of arguments into an array, but what if we don't want to constantly inject boilerplate noise into what ought to be simple functions? What if we are concerned that we'll end up making some fencepost error at four in the morning when fixing a critical bug?
+These are very handy features. Here's our bogus, made-up attempt to write our own mapper function:
+
+```coffeescript
+mapper = (fn, elements...) ->
+  elements.map(fn)
+
+mapper ((x) -> x*x), 1, 2, 3
+  #=> [1, 4, 9]
+
+squarer = leftPartial mapper, (x) -> x*x
+
+squarer 1, 2, 3
+  #=> [1, 4, 9]
+```
+
+It's true we can always manipulate the `arguments` thingummy variable by hand every time we want to collect a variable number of arguments into an array, but what if we don't want to constantly inject boilerplate noise into what ought to be simple functions? What if we are concerned that we'll end up making some fencepost error at four in the morning when fixing a critical bug?
 
 It's good to have tools do this for us. So, should we switch to CoffeeScript?
 
@@ -104,17 +90,20 @@ var leftPartial = ellipses( function (fn, args) {
 
 // Let's try it!
 
-var greeting = function (you, me, dupree) {
-  return "Hello, " + you + ", my name is " + me + ". Have you met my friend " + dupree + "?"
-}
+var mapper = ellipses( function (fn, elements) {
+  return elements.map(fn)
+});
 
-var thomasAndClara = leftPartial(greeting, 'Thomas', 'Clara');
+mapper(function (x) { return x * x }, 1, 2, 3)
+  //=> [1, 4, 9]
 
-thomasAndClara('Cassandra')
-  //=> 'Hello, Thomas, my name is Clara. Have you met my friend Cassandra?'
+var squarer = leftPartial(mapper, function (x) { return x * x });
+
+squarer(1, 2, 3)
+  #=> [1, 4, 9]
 ```
 
-Works like a charm. So what have we seen?
+Works like a charm! So what have we seen?
 
 1. CoffeeScript has a nice feature.
 2. That nice feature can be emulated in JavaScript using JavaScript's existing strength: Programming with first-class functions.
