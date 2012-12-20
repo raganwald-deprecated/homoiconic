@@ -2,7 +2,9 @@
 
 *This kind of thing normally wouldn't merit a full blog post all by itself, but just in case today really is the end of the world, I'm taking no chances and sharing the idea while I can.*
 
-The CoffeeScript programming language has a useful feature: If a parameter of a method is written with trailing ellipses, it collects a list of parameters into an array. It can be used in various ways, and the CoffeeScript transpiler does some pattern matching to sort things out, but 80% of the use is to collect a variable number of arguments without using the `arguments` pseudo-variable, and 19% of the uses are to collect a trailing list of arguments. Here's what it looks like collecting a variable number of arguments and trailing arguments:
+The CoffeeScript programming language has a useful feature: If a parameter of a method is written with trailing ellipses, it collects a list of parameters into an array. It can be used in various ways, and the CoffeeScript transpiler does some pattern matching to sort things out, but 80% of the use is to collect a variable number of arguments without using the `arguments` pseudo-variable, and 19% of the uses are to collect a trailing list of arguments.
+
+Here's what it looks like collecting a variable number of arguments and trailing arguments:
 
 ```coffeescript
 leftPartial = (fn, args...) ->
@@ -100,7 +102,7 @@ mapper(function (x) { return x * x }, 1, 2, 3)
 var squarer = leftPartial(mapper, function (x) { return x * x });
 
 squarer(1, 2, 3)
-  #=> [1, 4, 9]
+  //=> [1, 4, 9]
 ```
 
 Works like a charm! So what have we seen?
