@@ -118,7 +118,7 @@ You be the judge.
 
 p.s. "Ellipses" and "leftPartial" can be found in the book [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
 
-[Feedback welcome](mailto:reg@braythwayt.com). Discuss on [reddit](http://www.reddit.com/r/javascript/comments/1568w0/the_end_of_days_implementing_a_coffeescript/).
+[Feedback welcome](mailto:reg@braythwayt.com). Discuss on [hacker news](http://news.ycombinator.com/item?id=4948606) or [reddit](http://www.reddit.com/r/javascript/comments/1568w0/the_end_of_days_implementing_a_coffeescript/).
 
 ---
 
