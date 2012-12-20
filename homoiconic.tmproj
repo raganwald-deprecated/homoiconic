@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>2012/10/idiot.cs.md</string>
+	<string>2012/12/combinators_2.md</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -307,36 +307,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>2012/10/idiot.cs.md</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>16</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>12</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>16</integer>
-			</dict>
-		</dict>
 		<key>2012/10/idiot.js.md</key>
 		<dict>
 			<key>caret</key>
@@ -366,6 +336,20 @@
 				<key>line</key>
 				<integer>10</integer>
 			</dict>
+		</dict>
+		<key>2012/12/combinators_2.md</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>64</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>78</integer>
 		</dict>
 		<key>dumping_ground/coffeescript_and_underscore.md</key>
 		<dict>
@@ -398,14 +382,7 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>2012/09/lexical-scope-in-coffeescript.md</string>
-		<string>2012/09/actually-YOU-dont-understand-lexical-scope.md</string>
-		<string>2012/10/encapsulation.cs.md</string>
-		<string>2012/09/memoize-the-practical-method-decorator.md</string>
-		<string>2012/10/idiot.cs.md</string>
-		<string>2012/10/idiot.js.md</string>
-		<string>2008-10-29/kestrel.markdown</string>
-		<string>2012/10/encapsulation.js.md</string>
+		<string>2012/12/combinators_2.md</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
