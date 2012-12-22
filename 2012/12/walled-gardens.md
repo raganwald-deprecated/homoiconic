@@ -52,11 +52,11 @@ When it comes to frameworks, I often see an entire framework built around what r
 
 In my own case, I have a particular weakness for a subtle form of walled garden. I like meta-programming. I like writing libraries that help me write code. Sometimes these are just libraries that help me write code. Sometimes these are walled gardens.
 
-Obviously, every time we build an abstraction of some kind, there are the same economics of investment as walled gardens in some sense. There's a cost to learning the abstraction, a benefit to employing it, and a cost to maintain the abstraction.
+Obviously, every time we build an abstraction of some kind, there are the same economics of investment as walled gardens in some sense. There's a cost to learning the abstraction, a benefit to employing it, and a cost to maintain the abstraction. (Martin Fowler has made this point repeatedly.)
 
-All abstractions are subject to obsolescence. For example, in JavaScript your code may be littered with `var that = this;`, which you are using to fix the context for callbacks. That was once very fine style and is still needed in some cases where you must manage older browsers. But in most cases `Function.prototype.bind` is now the right way to solve the problem. (If you program in JavaScript and have no idea what I'm talking about, may I recommend an [excellent book](http://leanpub.com/javascript-allonge) that covers function contexts in detail?)
+In JavaScript your code may be littered with `var that = this;`, which you are using to fix the context for callbacks. That was once very fine style and is still needed in some cases where you must manage older browsers. But in most cases `Function.prototype.bind` is now the right way to solve the problem. (If you program in JavaScript and have no idea what I'm talking about, may I recommend an [excellent book](http://leanpub.com/javascript-allonge) that covers function contexts in detail?) The point being, every abstraction is subject to obsolescence.
 
-The point being, every abstraction is subject to obsolescence.  What makes some abstractions walled gardens and others not? One of the things we identify about the walled garden is the wall itself. Things inside the garden do not interoperate smoothly with things outside of the garden. An idiom like `var that = this;` may no longer be ideal, but it doesn't break any behaviour of functions in JavaScript.
+So what makes some abstractions walled gardens and others not? One of the things we identify about the walled garden is the wall itself. Things inside the garden do not interoperate smoothly with things outside of the garden. An idiom like `var that = this;` may no longer be ideal, but it doesn't break any behaviour of functions in JavaScript.
 
 ![Code from recusiveuniver.se](http://i.minus.com/iU6Re7cxuZNjZ.png)
 
