@@ -109,7 +109,7 @@ Works like a charm! So what have we seen?
 
 1. CoffeeScript has a nice feature.
 2. That nice feature can be emulated in JavaScript using JavaScript's existing strength: Programming with first-class functions.
-3. When people suggest that you have to choose between JavaScript an expressive code, they are offering a false dichotomy.
+3. When people suggest that you have to choose between JavaScript and expressive code, they are offering a false dichotomy.
 4. If today isn't the end of the world, it may instead be the day hell froze over.
 
 Fine print: Of course, `ellipses` introduces an extra function call and may not be the best choice in a highly performance-critical piece of code. Then again, using `arguments` is considerably slower than directly accessing argument bindings, so if the performance is that critical, maybe you shouldn't be using a variable number of arguments in that section.
