@@ -62,7 +62,7 @@ The point being, every abstraction is subject to obsolescence.  What makes some 
 
 ### case study: youaredachef
 
-Consider a library I wrote called [YouAreDaChef](https://github.com/raganwald/YouAreDaChef). I wrote it to implement aspect-oriented programming. My requirement was that I wanted to write [a HashLife implementation of Conway's Game of Life](https://recursiveuniver.se). The special design feature was that I wanted to write it in a series of files, where each file depended only on the preceding file, like this: "A" depends on "B" which depends on "C" which depends on "D" which depends on "E" and so forth. In other words, the dependency graph was to be a list.
+Consider a library I wrote called [YouAreDaChef](https://github.com/raganwald/YouAreDaChef). I wrote it to implement aspect-oriented programming. My requirement was that I wanted to write [a HashLife implementation of Conway's Game of Life](http://recursiveuniver.se). The special design feature was that I wanted to write it in a series of files, where each file depended only on the preceding file, like this: "A" depends on "B" which depends on "C" which depends on "D" which depends on "E" and so forth. In other words, the dependency graph was to be a list.
 
 My implementation used objects, and each file "monkey-patched" the existing set of classes and methods to add new functionality. Therefore, no file new anything about the files "downstream" and in fact would function just fine without them. For example, you can run the engine just fine without garbage collection. It will be faster but not work for patterns with high runtime complexity.
 
