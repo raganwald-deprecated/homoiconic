@@ -56,13 +56,15 @@ Obviously, every time we build an abstraction of some kind, there are the same e
 
 In JavaScript your code may be littered with `var that = this;`, which you are using to fix the context for callbacks. That was once very fine style and is still needed in some cases where you must manage older browsers. But in most cases `Function.prototype.bind` is now the right way to solve the problem. (If you program in JavaScript and have no idea what I'm talking about, may I recommend an [excellent book](http://leanpub.com/javascript-allonge) that covers function contexts in detail?) The point being, every abstraction is subject to obsolescence.
 
-So what makes some abstractions walled gardens and others not? One of the things we identify about the walled garden is the wall itself. Things inside the garden do not interoperate smoothly with things outside of the garden. An idiom like `var that = this;` may no longer be ideal, but it doesn't break any behaviour of functions in JavaScript.
+So what makes some abstractions walled gardens and others not? One of the things we identify about the walled garden is the wall itself. Things inside the garden do not interoperate smoothly with things outside of the garden. An idiom like `var that = this;` may no longer be ideal, but it doesn't break any behaviour of functions in JavaScript. It isn't a walled garden.
 
 ![Code from recusiveuniver.se](http://i.minus.com/iU6Re7cxuZNjZ.png)
 
 ### case study: youaredachef
 
-Consider a library I wrote called [YouAreDaChef](https://github.com/raganwald/YouAreDaChef). I wrote it to implement aspect-oriented programming. My requirement was that I wanted to write [a HashLife implementation of Conway's Game of Life](http://recursiveuniver.se). The special design feature was that I wanted to write it in a series of files, where each file depended only on the preceding file, like this: "A" depends on "B" which depends on "C" which depends on "D" which depends on "E" and so forth. In other words, the dependency graph was to be a list.
+Let's look at an abstraction that evolved from an idiosyncratic piece of meta programming into a walled garden, a library I wrote called [YouAreDaChef](https://github.com/raganwald/YouAreDaChef)
+
+I wrote YouAreDaChef to implement [aspect-oriented programming](https://en.wikipedia.org/wiki/Aspect-oriented_programming) in the style of [Lisp Flavors](https://en.wikipedia.org/wiki/Flavors_(programming_language)). My requirement was that I wanted to write [a HashLife implementation of Conway's Game of Life](http://recursiveuniver.se). The special design feature was that I wanted to write it in a series of files, where each file depended only on the preceding file, like this: "A" depends on "B" which depends on "C" which depends on "D" which depends on "E" and so forth. In other words, the dependency graph was to be a list.
 
 My implementation used objects, and each file "monkey-patched" the existing set of classes and methods to add new functionality. Therefore, no file knew anything about the files "downstream" and in fact would function just fine without them. For example, you can run the engine just fine without garbage collection. It will be faster but not work for patterns with high runtime complexity.
 
