@@ -20,9 +20,9 @@ Rumour has it that the largest ecosystem for programmers is Microsoft Excel. Acc
 
 These commercial walled gardens are easy to spot. It's difficult to call them an anti-pattern: They help people make things people like. Eventually the free market catches up to these things, but in 1988 it was no good sticking your nose up in the air and telling everyone to write classified advertising software in C++.
 
-So you have to, as Sean Kelly would say, "Make the calculation," and decide for yourself if the ease of use today trumps the eventual dead end your software will fall into. If so, you may choose to build for the walled garden. The calculation is plain, and one of the reasons most people stop to at least think about the consequences of developing for a walled garden is that it is very clear that you are developing for someone else's walled garden. You may decide it's a good idea, you may decide to do something else, but you're keenly aware that you are adding a dependency on some other organization to your software.
-
 ![Modify Style in Tableau](http://i.minus.com/iobFOZr9kZLZ9.gif)
+
+So you have to, as Sean Kelly would say, "Make the calculation," and decide for yourself if the ease of use today trumps the eventual dead end your software will fall into. If so, you may choose to build for the walled garden. The calculation is plain, and one of the reasons most people stop to at least think about the consequences of developing for a walled garden is that it is very clear that you are developing for someone else's walled garden. You may decide it's a good idea, you may decide to do something else, but you're keenly aware that you are adding a dependency on some other organization to your software.
 
 > ### digression: the economics of a walled garden
 
@@ -57,6 +57,8 @@ Obviously, every time we build an abstraction of some kind, there are the same e
 All abstractions are subject to obsolescence. For example, in JavaScript your code may be littered with `var that = this;`, which you are using to fix the context for callbacks. That was once very fine style and is still needed in some cases where you must manage older browsers. But in most cases `Function.prototype.bind` is now the right way to solve the problem. (If you program in JavaScript and have no idea what I'm talking about, may I recommend an [excellent book](http://leanpub.com/javascript-allonge) that covers function contexts in detail?)
 
 The point being, every abstraction is subject to obsolescence.  What makes some abstractions walled gardens and others not? One of the things we identify about the walled garden is the wall itself. Things inside the garden do not interoperate smoothly with things outside of the garden. An idiom like `var that = this;` may no longer be ideal, but it doesn't break any behaviour of functions in JavaScript.
+
+![Code from recusiveuniver.se](http://i.minus.com/iU6Re7cxuZNjZ.png)
 
 ### case study: youaredachef
 
