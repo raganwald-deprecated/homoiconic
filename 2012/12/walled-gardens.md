@@ -105,6 +105,8 @@ Summing this up is easy: Walled gardens exist in programming. Some are commercia
 
 Writing your own libraries is great. But stop and think very hard when you are tempted to extend some standard functionality in a way that breaks interoperability with other tools.
 
+(Discuss on [hacker news](http://news.ycombinator.com/item?id=4957225) or [proggit](http://www.reddit.com/r/programming/comments/15ahmy/programmings_walled_gardens/))
+
 ### postscript to youaredachef
 
 I learned from YouAreDaChef, and I wrote [Method Combinators](https://github.com/raganwald/method-combinators). You don't need the library, the concept is so simple you can roll your own. Combinators are functions that decorate other functions, including adding functionality after another function.
