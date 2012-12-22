@@ -64,7 +64,7 @@ So what makes some abstractions walled gardens and others not? One of the things
 
 Let's look at an abstraction that evolved from an idiosyncratic piece of meta programming into a walled garden, a library I wrote called [YouAreDaChef](https://github.com/raganwald/YouAreDaChef)
 
-I wrote YouAreDaChef to implement [aspect-oriented programming](https://en.wikipedia.org/wiki/Aspect-oriented_programming) in the style of [Lisp Flavors](https://en.wikipedia.org/wiki/Flavors_(programming_language)). My requirement was that I wanted to write [a HashLife implementation of Conway's Game of Life](http://recursiveuniver.se). The special design feature was that I wanted to write it in a series of files, where each file depended only on the preceding file, like this: "A" depends on "B" which depends on "C" which depends on "D" which depends on "E" and so forth. In other words, the dependency graph was to be a list.
+I wrote YouAreDaChef to implement [aspect-oriented programming](https://en.wikipedia.org/wiki/Aspect-oriented_programming) in the style of [Lisp Flavors]. My requirement was that I wanted to write [a HashLife implementation of Conway's Game of Life](http://recursiveuniver.se). The special design feature was that I wanted to write it in a series of files, where each file depended only on the preceding file, like this: "A" depends on "B" which depends on "C" which depends on "D" which depends on "E" and so forth. In other words, the dependency graph was to be a list.
 
 My implementation used objects, and each file "monkey-patched" the existing set of classes and methods to add new functionality. Therefore, no file knew anything about the files "downstream" and in fact would function just fine without them. For example, you can run the engine just fine without garbage collection. It will be faster but not work for patterns with high runtime complexity.
 
@@ -131,3 +131,4 @@ Recent work:
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [mock]: http://www.amazon.com/gp/product/0192801422?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0192801422
+[Lisp Flavors]: https://en.wikipedia.org/wiki/Flavors_(programming_language)
