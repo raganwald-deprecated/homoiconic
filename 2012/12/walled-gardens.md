@@ -12,8 +12,6 @@ But it's just a moment in time, or perhaps a window. In time, the open, free alt
 
 Proprietary walled gardens in software development are easy to spot. In the 1980s, there was a huge category of development environments called "4GLs." They were integrated systems that included a database of some sort, a visual designer, a proprietary scripting language, and some kind of distribution runtime or compiler mechanism. They were very good for putting together small business applications.
 
-![Modify Style in Tableau](http://i.minus.com/iobFOZr9kZLZ9.gif)
-
 I used one called [4th Dimension](http://www.4d.com) to create software that managed classified advertising for desktop publishers. Apple's HyperCard was discontinued, but now lives on as [Runtime Revolution](http://www.runrev.com) in mobile devices. I remember building a configuration wizard for some shrink-wrapped software with it. I had a cross-platform desktop app with a GUI running in less than an hour.
 
 Rumour has it that the largest ecosystem for programmers is Microsoft Excel. Access probably isn't far behind. And there's some thingummy called Flash that people seem to like when they want to break your browser, make undeletable tracking cookies, or inject a virus into your operating system.
@@ -23,6 +21,8 @@ Rumour has it that the largest ecosystem for programmers is Microsoft Excel. Acc
 These commercial walled gardens are easy to spot. It's difficult to call them an anti-pattern: They help people make things people like. Eventually the free market catches up to these things, but in 1988 it was no good sticking your nose up in the air and telling everyone to write classified advertising software in C++.
 
 So you have to, as Sean Kelly would say, "Make the calculation," and decide for yourself if the ease of use today trumps the eventual dead end your software will fall into. If so, you may choose to build for the walled garden. The calculation is plain, and one of the reasons most people stop to at least think about the consequences of developing for a walled garden is that it is very clear that you are developing for someone else's walled garden. You may decide it's a good idea, you may decide to do something else, but you're keenly aware that you are adding a dependency on some other organization to your software.
+
+![Modify Style in Tableau](http://i.minus.com/iobFOZr9kZLZ9.gif)
 
 > ### digression: the economics of a walled garden
 
@@ -68,26 +68,28 @@ To simplify all this "monkey-patching," I wrote YouAreDaChef. Instead of writing
 
 ```javascript
 var __oldInitialzie = Square.RecursivelyComputable.prototype.initialize;
- Square.RecursivelyComputable.prototype.initialize = function () {
-   var value = __oldInitialize.apply(this, arguments);
-   @references = 0;
-   return value
- }
- ```
- I wrote things like:
+
+Square.RecursivelyComputable.prototype.initialize = function () {
+  var value = __oldInitialize.apply(this, arguments);
+  this.references = 0;
+  return value
+}
+```
+I wrote things like:
  
- ```javascript
- YouAreDaChef(
-   Square.RecursivelyComputable.prototype.initialize
- ).after('initialize', function () { @references = 0 });
- ```
+```javascript
+YouAreDaChef(
+  Square.RecursivelyComputable.prototype.initialize
+).after('initialize', function () { this.references = 0 });
+```
+ 
 This actually worked well in the code, and so far I had written myself a meta-programming tool of sorts. Although it looks weird and we can debate the benefits of AOP all day long, everything it did was still 100% JavaScript. There was no wall. The acid test is, I could have taken that code and mixed it with other tools like [Method Combinators](https://github.com/raganwald/method-combinators) just fine.
 
 But then I became possessed with a desire for some kind of intellectual purity. I decided that in order to be "correct," YouAreDaChef had to handle inheritance.  Let's say some method had some after advice, like we saw above. What happens if we inherit from the class and attempt to override the method?
 
 If YouAreDaChef worked as shown above, you would override the method's original body and the advice at the same time. That's the JavaScript way, you override whatever is sitting in the prototype. Before, after, these are just ways to rewrite a single property that contains a single function.
 
-But the intellectually pure approach to AOP is that I should be able to override the original body but keep the advice. So any class that inherits from `Square.RecursivelyComputable` can implement their own `inherit` and automagically get `@references = 0` executed after their implementation. This is a very powerful way to structure inheritance, and I wish more languages revisited AOP.
+But the intellectually pure approach to AOP is that I should be able to override the original body but keep the advice. So any class that inherits from `Square.RecursivelyComputable` can implement their own `inherit` and automagically get `this.references = 0` executed after their implementation. This is a very powerful way to structure inheritance, and I wish more languages revisited AOP.
 
 But, it's not how JavaScript works. Nevertheless, I Greenspunned it into YouAreDaChef. I rewrote YouAreDaChef so that it maintained various data structures containing the advice and looked things up at runtime. So if you looked at the code for a method, you'd see a little stub that called back to YouAreDaChef. If you overrode a method with anything except YouAreDaChef, everything would work in unpredictable ways. Unpredictable, that is, unless you were intimately familiar with YouAreDaChef's implementation.
 
@@ -95,7 +97,7 @@ But you could override the method body using YouAreDaChef and still inherit advi
 
 In this case, the line between abstraction and walled garden is easy to see: The moment at which I changed a fundamental language feature and broke interoperability with other tools and techniques.
 
-## summary
+## Summary
 
 Summing this up is easy: Walled gardens exist in programming. Some are commercial platforms for development like Flash. Some are internal, one-off platforms. And some are libraries or tools. The defining characteristic of all of these walled gardens is the wall, the extent to which they make it difficult for you to interoperate smoothly with other programming tools and approaches.
 
