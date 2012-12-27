@@ -91,6 +91,8 @@ However, there might be some other circumstances where a weak binding is more ap
 
 Strong binding is more appropriate when working directly on "business logic" where we know the intent of every function, and weak binding is more appropriate when working on combinators or library functions that are designed to be composed into larger solutions.
 
+(Discuss on [reddit/r/javascript](http://www.reddit.com/r/javascript/comments/15ix7s/weak_binding_in_javascript/))
+
 p.s. "weaklyBind" and many more combinators and function decorators can be found in [JavaScript Allongé](http://leanpub.com/javascript-allonge), a book focused on working with functions in JavaScript, including combinators, constructors, methods, and decorators. You can download a [free sample PDF](http://samples.leanpub.com/javascript-allonge-sample.pdf).
 
 [walled garden]: https://github.com/raganwald/homoiconic/blob/master/2012/12/walled-gardens.md#programmings-walled-gardens
