@@ -2,28 +2,31 @@
 
 Imagine we wished to write our own `bind` function that emulated `Function.prototype.bind` (When we say "bind" and "re-bind," we mean, "create new functions that act like the old function, but with a  particular context bound to it." None of the techniques discussed here actually mutate functions.):
 
-    function bind (fn, context) {
-      return function () {
-        return fn.apply(context, arguments)
-      }
-    }
+```javascript
+function bind (fn, context) {
+  return function () {
+    return fn.apply(context, arguments)
+  }
+}
+
+function myName () { return this.name }
+
+var harpo   = { name: 'Harpo' },
+    chico   = { name: 'Chico' },
+    groucho = { name: 'Groucho' };
     
-    function myName () { return this.name }
-    
-    var harpo   = { name: 'Harpo' },
-        chico   = { name: 'Chico' },
-        groucho = { name: 'Groucho' };
-        
-    var fh = bind(myName, harpo);
-    fh()
-      //=> 'Harpo'
-    
-    var fc = bind(myName, chico);
-    fc()
-      //=> 'Chico'
+var fh = bind(myName, harpo);
+fh()
+  //=> 'Harpo'
+
+var fc = bind(myName, chico);
+fc()
+  //=> 'Chico'
+```
 
 This looks great. But what happens if we **re**-bind a bound function, either with `bind` or `.call`?
 
+```javascript
     var fhg = bind(fh, groucho);
     fhg()
       //=> 'Harpo'
@@ -33,6 +36,7 @@ This looks great. But what happens if we **re**-bind a bound function, either wi
       
     fh.apply(groucho, [])
       //=> 'Harpo'
+```
       
 Bzzt! You cannot bind a context to a function that has already been bound. Well, you can, but our 'bound' function is just a wrapper around the original function, and binding the wrapper doesn't change its behaviour. In essence, a bound function cannot be re-bound.
 
@@ -44,36 +48,40 @@ That's a bad idea, we'd be creating a [walled garden] where all of our code woul
 
 If we want to create a way to bind and rebind functions, we can use a new set of semantics that are sufficiently different from `bind` that we won't confuse the two:
 
-    function weaklyBind (fn, context) {
-      var thisContext = this;
-  
-      return function () {
-        if (this === thisContext) {
-          return fn.apply(context, arguments)
-        }
-        else return fn.apply(this, arguments)
-      }
+```javascript
+function weaklyBind (fn, context) {
+  var thisContext = this;
+
+  return function () {
+    if (this === thisContext) {
+      return fn.apply(context, arguments)
     }
+    else return fn.apply(this, arguments)
+  }
+}
+```
    
 `weaklyBind` only binds its argument if it's evaluated in the same context where `weaklyBind` was evaluated. That's usually the global or window context. If you strongly or weakly bind the function it returns, you override its context. Thus, a weakly bound function can be "rebound."
 
-    var fh = weaklyBind(myName, harpo);
-    fh()
-      //=> 'Harpo'
-    
-    var fc = weaklyBind(myName, chico);
-    fc()
-      //=> 'Chico'
+```javascript
+var fh = weaklyBind(myName, harpo);
+fh()
+  //=> 'Harpo'
 
-    var fhg = weaklyBind(fh, groucho);
-    fhg()
-      //=> 'Groucho'
-      
-    fc.call(groucho)
-      //=> 'Groucho'
-      
-    fh.apply(groucho, [])
-      //=> 'Groucho'
+var fc = weaklyBind(myName, chico);
+fc()
+  //=> 'Chico'
+
+var fhg = weaklyBind(fh, groucho);
+fhg()
+  //=> 'Groucho'
+  
+fc.call(groucho)
+  //=> 'Groucho'
+  
+fh.apply(groucho, [])
+  //=> 'Groucho'
+```
       
 ### applications
 
