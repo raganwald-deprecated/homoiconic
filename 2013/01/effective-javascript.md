@@ -26,9 +26,9 @@ She didn't ask about the [Immediately Invoked Function Expression][iife], so we 
 
 [iife]: http://www.benalman.com/news/2010/11/immediately-invoked-function-expression/
 
-*Item 6, "Learn the Limits of Semicolon Insertion,"* mostly repeated back to me what I thought I knew about Automatic Semicolon Insertion ("ASI"), such as the rule that ASI is error correction, so semicolons are only ever inserted when the next input token cannot be parsed.
+*Item 6, "Learn the Limits of Semicolon Insertion,"* began with what I thought I knew about Automatic Semicolon Insertion ("ASI"), such as the rule that ASI is error correction, so semicolons are only ever inserted when the next input token cannot be parsed.
 
-But it also explained some of the *implications* of what I already knew: That there are five problematic characters `(`, `[`, `+`, `-`, and`/`. That each of these characters can acts either as an expression operator or as the prefix of a statement, and therefore that any statement beginning with one of these characters could be trouble if you are depending on ASI.
+But it also explained some of the *implications* of what I thought I knew: That there are five problematic characters `(`, `[`, `+`, `-`, and`/`. That each of these characters can acts either as an expression operator or as the prefix of a statement, and therefore that any statement beginning with one of these characters could be trouble if you are depending on ASI.
 
 ### Implications
 
