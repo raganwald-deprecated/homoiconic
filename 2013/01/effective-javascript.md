@@ -97,11 +97,17 @@ Instead of two IIFEs, you now have one function expression being called with `jQ
 })(jQuery);
 ```
 
-And that works fine. *Effective JavaScript* told me something I already knew, namely the rules for ASI, but then it explained the implications of those rules that I didn't know, enlightening me about a practice that I'd been blindly following out of... I can't think of a better word than *faith*.
+And that works fine. *Effective JavaScript* told me a few things I already thought I knew:
+
+1. The rules for Automatic Semicolon Insertion.
+2. How to manage scope with an Immediately Invoked Function Expression.
+3. The mechanics of minifying multiple JavaScript files.
+
+But much more crucially, it discussed the implications arising from the interactions between these three things , enlightening me about a practice that I'd been blindly following out of... I can't think of a better word than *faith*. This is the kind thing that I value highly in a book, lecture or course.
 
 ## Whoa, That's Important
 
-That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce," but I wanted to provide a taste of what it felt like for me to read David Herman's book.
+That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce when you minify files," but I wanted to provide a taste of what it felt like for me to read David Herman's book.
 
 I was constantly saying to myself, "Of course, of course, I know that, well that follows from that, and yes, therefore that follows from that," and then suddenly: *"Whoa! That's important!"*
 
