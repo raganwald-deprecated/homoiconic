@@ -18,7 +18,7 @@ Some time ago I was asymmetrically pairing with a colleague, and I begun a new J
 })(jQuery);
 ```
 
-"What," she asked, "is the purpose of the opening semi-colon?"
+"What," she asked, "is the purpose of the opening semicolon?"
 
 The truth is, I didn't really know. I'd read *somewhere* that when JavaScript loads your files, if you had  some buggy code in file A, then file B could be corrupted by whatever was last in file A if the environment loaded A before B. In other words, the environment behaved as if all the code was catenated together.
 
@@ -87,7 +87,7 @@ No problem. But one day you add catenation to your asset streaming, and now the 
 	// ... B
 })(jQuery);
 ```
-Instead of two IIFEs, you now have one function expression being called with `jQuery` as its argument. You then call the result it returns with a bug function expression as its argument. You then call what that returns with `jQuery` as its argument. That's a bug. It wouldn't have been a bug if every file included was terminated with a semicolon, but you can only control the code you write, so you terminate yours with a semicolon and prefix it with a semicolon, so that after catenation you end up with:
+Instead of two IIFEs, you now have one function expression being called with `jQuery` as its argument. You then call the result it returns with a big function expression as its argument. You then call what that returns with `jQuery` as its argument. That's a bug. It wouldn't have been a bug if every file included was terminated with a semicolon, but you can only control the code you write, so you terminate yours with a semicolon and prefix it with a semicolon, so that after catenation you end up with:
 
 ```javascript
 ;(function ($) {
@@ -101,7 +101,7 @@ And that works fine. *Effective JavaScript* told me something I already knew, na
 
 ## The Bottom Line
 
-That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce," but I wanted to provide a taste of what it felt like for me to read David Herman's book. I was constantly saying to myself, "Of course, of course, I know that, well that follows from that, and yes, therefore that follows from that," and then suddenly: "*Whoa! That's important!*"
+That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce," but I wanted to provide a taste of what it felt like for me to read David Herman's book. I was constantly saying to myself, "Of course, of course, I know that, well that follows from that, and yes, therefore that follows from that," and then suddenly: *"Whoa! That's important!"*
 
 Whether it was insights into writing constructors that worked with or without the `new` keyword, the perils of the Array Constructor, or repeated forays into iteration and its subtleties, I was pleased by the fine balance David Herman struck between familiarity and surprise. I felt like I knew more than half of what he wrote. But the other half... Solid gold. And the half I knew helped me understand the value of the half I didn't know.
 
