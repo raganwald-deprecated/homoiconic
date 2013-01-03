@@ -85,7 +85,7 @@ It wouldn't have been a bug if every file included was terminated with a semicol
 })(jQuery);
 ```
 
-And that works fine. Now, *this is not the only way to solve this problem*. JavaScript has moved along since I first saw that idiom, and there are plenty of magnification libraries and module management libraries that solve this problem for you whether you include an extra semicolon or not. Some of them solve the scoping issues that the IIFE is intended to solve.
+And that works fine. Now, *this is not the only way to solve this problem*. JavaScript has moved along since I first saw that idiom, and there are plenty of minification libraries and module management libraries that solve this problem for you whether you include an extra semicolon or not. Some of them solve the scoping issues that the IIFE is intended to solve.
 
 *Effective JavaScript* didn't tell me this is a "best practice," it told me how told me a few things I already thought I knew interacted in such a way that some programmer at some time in the past recommended the leading semicolon and IIFE as sensible given the tools of the day. Now that I understand the issue properly, I'm no longer blindly using the idiom out of... I can't think of a better word than *faith*.
 
