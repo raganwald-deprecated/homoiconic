@@ -128,6 +128,8 @@ But with that experience in hand, Effective JavaScript's approach of picking a t
 
 Recent work:
 
+[![JavaScript Allonge](http://i.minus.com/iTeArnPx8NrbG.jpeg)](http://leanpub.com/javascript-allonge "JavaScript Allongé") [![CoffeeScript Ristretto](http://i.minus.com/ixnH5BGKUwi9b.jpeg)](http://leanpub.com/coffeescript-ristretto "CoffeeScript Ristretto") [![Kestrels, Quirky Birds, and Hopeless Egocentricity](http://i.minus.com/ifN7VFpRXkRQW.jpeg)](http//leanpub.com/combinators "estrels, Quirky Birds, and Hopeless Egocentricity")
+
 * [JavaScript Allonge](http://leanpub.com/javascript-allonge), [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto), and my [other books](http://leanpub.com/u/raganwald).
 * [Method Combinators](https://github.com/raganwald/method-combinators), a CoffeeScript/JavaScript library for writing method decorators, simply and easily.
 * [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
