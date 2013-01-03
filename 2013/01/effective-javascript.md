@@ -97,15 +97,23 @@ Instead of two IIFEs, you now have one function expression being called with `jQ
 })(jQuery);
 ```
 
-And that works fine. *Effective JavaScript* told me something I already knew, namely the rules for ASI, but then it explained the implications of those rules that I didn't know, enlightening me about a practice that I'd been blindly following out of... I can't think of a better word than *faith*.
+And that works fine. *Effective JavaScript* told me something I already knew, namely the rules for ASI, but then it explained the implications of those rules that I didn't know, enlightening me about a practice that I'd been blindly following out of... I can't think of a better word than *faith*.delivered in other books or courses.
 
-## The Bottom Line
+## Whoa, That's Important
 
 That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce," but I wanted to provide a taste of what it felt like for me to read David Herman's book. I was constantly saying to myself, "Of course, of course, I know that, well that follows from that, and yes, therefore that follows from that," and then suddenly: *"Whoa! That's important!"*
 
 Whether it was insights into writing constructors that worked with or without the `new` keyword, the perils of the Array Constructor, or repeated forays into iteration and its subtleties, I was pleased by the fine balance David Herman struck between familiarity and surprise. I felt like I knew more than half of what he wrote. But the other half... Solid gold. And the half I knew helped me understand the value of the half I didn't know.
 
-My bottom line is that *Effective JavaScript* feels like more than just a good read, it feels like a book I'll dip into again and again. If you're working with JavaScript and feel like you have a good grasp of the language, I recommend that you [buy it][buy], read it, and keep it as a reference work.
+Of course, what is surprising to Bob may be familiar to Carol. And what Ted thinks is useless language trivia may be a pearl of wisdom to Alice. So one can reasonably ask, should every JavaScript programmer own a copy of *Effective JavaScript*?
+
+I think Effective JavaScript is going to be a good read for all but the complete neophyte. That being said, beginners may find that the more experience they obtain writing JavaScript software, the more value they obtain from the book. While it touches on functional programming, objects and so-called classes in JavaScript, and even writing good APIs in JavaScript, each of these topics is also well-served by a more didactic book presenting the subject matter within the context of a larger framework or approach to programming.
+
+But with that experience in hand, Effective JavaScript's approach of picking a topic and explaining the crucial implications and consequences adds enormous value to the reader's hands-on experience and to the knowledge 
+
+## My Bottom Line
+
+*Effective JavaScript* feels like more than just a good read, it feels like a book I'll dip into again and again. If you're working with JavaScript and feel like you have a good grasp of the language, I recommend that you [buy it][buy], read it, and keep it as a reference work.
 
 [buy]: http://www.amazon.com/gp/product/0321812182/ref=as_li_ss_tl?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0321812182 "Buy on Amazon.com"
 ---
