@@ -2,7 +2,7 @@
 
 **The Book**: David Herman's [Effective JavaScript](http://effectivejs.com) is an in-depth look at the JavaScript programming language and how to use it effectively to write more portable, robust, and maintainable applications and libraries. Using the concise, scenario-driven style of the [Effective Software Development Series](http://www.informit.com/esds), this book brings together tips, techniques, and realistic code examples to explain the important concepts in JavaScript.
 
-**My Recommendation**: Buy, read, and hold for future reference.
+**My Recommendation**: [Buy it][buy], read it, and keep it as a reference work.
 
 **Disclosure**: I have asked the author to write a foreword for my own JavaScript book, [JavaScript Allongé](http://leanpub.com/javascript-allonge).
 
@@ -105,10 +105,9 @@ That is an awful lot of words for, "Effective JavaScript explained why prefacing
 
 Whether it was insights into writing constructors that worked with or without the `new` keyword, the perils of the Array Constructor, or repeated forays into iteration and its subtleties, I was pleased by the fine balance David Herman struck between familiarity and surprise. I felt like I knew more than half of what he wrote. But the other half... Solid gold. And the half I knew helped me understand the value of the half I didn't know.
 
-My bottom line is that *Effective JavaScript* feels like more than just a good read, it feels like a book I'll dip into again and again. If you're working with JavaScript and feel like you have a good grasp of the language, I recommend that you buy it, read it, and keep it as a reference work.
+My bottom line is that *Effective JavaScript* feels like more than just a good read, it feels like a book I'll dip into again and again. If you're working with JavaScript and feel like you have a good grasp of the language, I recommend that you [buy it][buy], read it, and keep it as a reference work.
 
-<iframe src="http://rcm.amazon.com/e/cm?t=raganwald001-20&o=1&p=8&l=as4&ref=ss_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
-
+[buy]: http://www.amazon.com/gp/product/0321812182/ref=as_li_ss_tl?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0321812182 "Buy on Amazon.com"
 ---
 
 Recent work:
