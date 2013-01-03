@@ -1,0 +1,124 @@
+# Effective JavaScript, the Raganwald review
+
+**The Book**: David Herman's [Effective JavaScript](http://effectivejs.com) is an in-depth look at the JavaScript programming language and how to use it effectively to write more portable, robust, and maintainable applications and libraries. Using the concise, scenario-driven style of the [Effective Software Development Series](http://www.informit.com/esds), this book brings together tips, techniques, and realistic code examples to explain the important concepts in JavaScript.
+
+**My Recommendation**: Buy, read, and hold for future reference.
+
+**Disclosure**: I have asked the author to write a foreword for my own JavaScript book, [JavaScript Allongé](http://leanpub.com/javascript-allonge).
+
+And now, my experience reading *Effective JavaScript*.
+
+## When ASI met IIFE
+
+Some time ago I was asymmetrically pairing with a colleague, and I begun a new JavaScript file like this:
+
+```javascript
+;(function ($) {
+	// ...
+})(jQuery);
+```
+
+"What," she asked, "is the purpose of the opening semi-colon?"
+
+The truth is, I didn't really know. I'd read *somewhere* that when JavaScript loads your files, if you had  some buggy code in file A, then file B could be corrupted by whatever was last in file A if the environment loaded A before B. In other words, the environment behaved as if all the code was catenated together.
+
+But I was hazy on the details, and admitted as much. She may have felt she learned something, then again she's rather bright and productivity focused, so perhaps she knew what was going on but didn't want to take time out to discuss it.
+
+She didn't ask about what I call a `let` and what everybody else calls an [Immediately Invoked Function Expression][iife], so we moved along and I don't think I've thought about that opening semicolon since. Until the other day, when I was reading *Effective JavaScript*.
+
+[iife]: http://www.benalman.com/news/2010/11/immediately-invoked-function-expression/
+
+Item 6, "Learn the Limits of Semicolon Insertion," mostly repeated back to me what I thought I knew about Automatic Semicolon Insertion ("ASI"), such as the rule that ASI is error correction, so semicolons are only ever inserted when the next input token cannot be parsed.
+
+But it also explained some of the *implications* of what I already knew: That there are five problematic characters (`(`, `[`, `+`, `-`, and`/`). That each of these characters can acts either as an expression operator or as the prefix of a statement, and therefore that any statement beginning with one of these characters could be trouble if you are depending on ASI.
+
+### Implications
+
+This is the crux of the value that *Effective JavaScript* provides. The behaviour of programming languages and environments is a little like mathematics or physics. There are certain axioms, facts if you will, that are freely available to all for free. It is not difficult to find out what the rules are for ASI. And the specification for valid sequences of tokens in JavaScript is also easy to discover, for free, with a web browser.
+
+And so it goes for everything, the rules about how functions are expressed, about how names are bound, about prototypes, about the context for a function that is extracted from an array  with `arr[3]`, and so on. These axioms are all known.
+
+> "Genius is an African who dreams up snow."--Vladimir Nabokov
+
+But like mathematics or physics, it is the interactions between the axioms that gives rise to an extraordinarily complex set of behaviours. From quantum physics arise all sorts of physical behaviours, but can you really "dream up snow" from the Standard Model on first principles alone?
+
+What we get from *Effective JavaScript* is a brief explanation of the base principles, and then a curated set of implications. What makes one such book brilliant and another pedestrian is the balance it strikes between two opposing qualities: *Familiarity* and *Surprise*.  The topics discussed must be familiar to us, they must cover problems we encounter and can recognise. And there must be some surprises, some "Whoa, I never thought of that" moments.
+
+When a book is too familiar, it fails to add value. "Yes, yes," we say, "I know all about prototypes. Tell me something I don't know." When a book is too surprising,it also fails to add value. We say, "A richly entertaining exercise in [theoretrics]."
+
+[theoretrics]:https://twitter.com/raganwald/status/286670901905342464 "Portmanteau of 'Theory' and 'Theatrics,' a highly entertaining explanation of theory with little practical value."
+
+For this reason, what we need from a book is not just a knowledgable author able to dive deeply into the subject matter, but also someone able to carefully choose when to briefly explain, secure that we grasp the point, and when to dive into implications that are sure to surprise us.
+
+Without expert curation, we either get a brief book that fails to strike the proper balance, or we get a book that runs to 600 pages and still fails to strike the proper balance because in his zeal to include everything, the text lurches from obvious to arcane without rhyme or reason.
+
+### Back to the Leading Semicolon
+
+As you by now expect, *Effective JavaScript* explained the purpose of the leading semicolon. When file A and file B both use an IIFE, they look like this:
+
+```javascript
+(function ($) {
+	// ... A
+})(jQuery)
+
+(function ($) {
+	// ... B
+})(jQuery)
+```
+
+As it happens, when each file is loaded separately, a semicolon is automatically inserted at the end, so they look like this to the interpreter:
+
+```javascript
+(function ($) {
+	// ... A
+})(jQuery);
+
+(function ($) {
+	// ... B
+})(jQuery);
+```
+
+No problem. But one day you add catenation to your asset streaming, and now the code is all in one big file (probably with minification):
+
+```javascript
+(function ($) {
+	// ... A
+})(jQuery)(function ($) {
+	// ... B
+})(jQuery);
+```
+Instead of two IIFEs, you now have one function expression being called with `jQuery` as its argument. You then call the result it returns with a bug function expression as its argument. You then call what that returns with `jQuery` as its argument. That's a bug. It wouldn't have been a bug if every file included was terminated with a semicolon, but you can only control the code you write, so you terminate yours with a semicolon and prefix it with a semicolon, so that after catenation you end up with:
+
+```javascript
+;(function ($) {
+	// ... A
+})(jQuery);;(function ($) {
+	// ... B
+})(jQuery);
+```
+
+And that works fine. *Effective JavaScript* told me something I already knew, namely the rules for ASI, but then it explained the implications of those rules that I didn't know, enlightening me about a practice that I'd been blindly following out of... I can't think of a better word than *faith*.
+
+## The Bottom Line
+
+That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce," but I wanted to provide a taste of what it felt like for me to read David Herman's book. I was constantly saying to myself, "Of course, of course, I know that, well that follows from that, and yes, therefore that follows from that," and then suddenly: "*Whoa! That's important!*"
+
+Whether it was insights into writing constructors that worked with or without the `new` keyword, the perils of the Array Constructor, or repeated forays into iteration and its subtleties, I was pleased by the fine balance David Herman struck between familiarity and surprise. I felt like I knew more than half of what he wrote. But the other half... Solid gold. And the half I knew helped me understand the value of the half I didn't know.
+
+My bottom line is that *Effective JavaScript* feels like more than just a good read, it feels like a book I'll dip into again and again. If you're working with JavaScript and feel like you have a good grasp of the language, I recommend that you buy it, read it, and keep it as a reference work.
+
+<iframe src="http://rcm.amazon.com/e/cm?t=raganwald001-20&o=1&p=8&l=as4&ref=ss_til&fc1=000000&IS2=1&lt1=_blank&m=amazon&lc1=0000FF&bc1=000000&bg1=FFFFFF&f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+
+---
+
+Recent work:
+
+* [JavaScript Allonge](http://leanpub.com/javascript-allonge), [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto), and my [other books](http://leanpub.com/u/raganwald).
+* [Method Combinators](https://github.com/raganwald/method-combinators), a CoffeeScript/JavaScript library for writing method decorators, simply and easily.
+* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
+* [jQuery Combinators](http://githiub.com/raganwald/jquery-combinators), what else? A jQuery plugin for writing your own fluent, jQuery-like code. 
+
+---
+
+[Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
+
