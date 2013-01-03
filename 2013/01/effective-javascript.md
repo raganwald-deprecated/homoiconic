@@ -44,7 +44,7 @@ But like mathematics or physics, it is the interactions between the axioms that 
 
 What we get from *Effective JavaScript* is a brief explanation of the base principles, and then a curated set of implications. What makes one such book brilliant and another pedestrian is the balance it strikes between two opposing qualities: *Familiarity* and *Surprise*.  The topics discussed must be familiar to us, they must cover problems we encounter and can recognise. And there must be some surprises, some "Whoa, I never thought of that" moments.
 
-When a book is too familiar, it fails to add value. "Yes, yes," we say, "I know all about prototypes. Tell me something I don't know." When a book is too surprising, it also fails to add value. We say, "A richly entertaining exercise in [theoretrics]."
+When a book is too familiar, it fails to add value. "Yes, yes," we say, "I know all about prototypes. Tell me something I don't know." When a book is too surprising, it also fails to add value. We say, "It's a richly entertaining exercise in [theoretrics], nothing more."
 
 [theoretrics]:https://twitter.com/raganwald/status/286670901905342464 "Portmanteau of 'Theory' and 'Theatrics,' a highly entertaining explanation of theory with little practical value."
 
