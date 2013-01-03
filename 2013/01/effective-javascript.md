@@ -113,11 +113,13 @@ Whether it was insights into writing constructors that worked with or without th
 
 Of course, what is surprising to Bob may be familiar to Carol. And what Ted thinks is useless language trivia may be a pearl of wisdom to Alice. So one can reasonably ask, should every JavaScript programmer own a copy of *Effective JavaScript*?
 
-I think Effective JavaScript is going to be a good read for all but the complete neophyte. That being said, beginners may find that the more experience they obtain writing JavaScript software, the more value they obtain from the book. While it touches on functional programming, objects and so-called classes in JavaScript, and even writing good APIs in JavaScript, each of these topics is also well-served by a more didactic book presenting the subject matter within the context of a larger framework or approach to programming.
+> I think Effective JavaScript is going to be an important text for all but the complete neophyte
+
+I think Effective JavaScript is going to be an important text for all but the complete neophyte. That being said, beginners may find that the more experience they obtain writing JavaScript software, the more value they obtain from the book. While it touches on functional programming, objects and so-called classes in JavaScript, and even writing good APIs in JavaScript, each of these topics is also well-served by a more didactic book presenting the subject matter within the context of a larger framework or approach to programming.
 
 But with that experience in hand, Effective JavaScript's approach of picking a topic and explaining the crucial implications and consequences adds enormous value to the reader's hands-on experience and to the knowledge delivered in other books or courses.
 
-And there are sixty-eight topics!This is not a couple of blog posts fleshed out, formatted into chapters, and reprinted as a book. It's a substantial work covering the entire JavaScript language from functions and closures to asynchronous programming. The coverage of asynchronous JavaScript would justify buying and reading this book on its own, it's that good.
+And there are sixty-eight topics! This is not a couple of blog posts fleshed out, formatted into chapters, and reprinted as a book. It's a substantial work covering the entire JavaScript language from functions and closures to asynchronous programming. The coverage of asynchronous JavaScript would justify buying and reading this book on its own, it's that good.
 
 ## My Bottom Line
 
