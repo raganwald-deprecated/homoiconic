@@ -4,6 +4,8 @@
 
 **My Recommendation**: [Buy it][buy], read it, and keep it as a reference work.
 
+[![Effective JavaScript](http://effectivejs.com/img/book-thumbnail.jpg)](http://effectivejs.com)
+
 ## When ASI met IIFE
 
 Some time ago I was asymmetrically pairing with a colleague, and I begun a new JavaScript file like this:
@@ -125,11 +127,12 @@ And there are sixty-eight topics! This is not a couple of blog posts fleshed out
 
 *Effective JavaScript* feels like more than just a good read, it feels like a book I'll dip into again and again. If you're working with JavaScript and feel like you have a good grasp of the language, I recommend it.
 
-[Effective JavaScript][buy], 200 pages.
+[Effective JavaScript][buy], 200 pages. This review is based on the [Kindle Edition][kindle] on iOS and OS X.
 
 (Discuss this review on [hacker news](http://news.ycombinator.com/item?id=5002439) and [r/javascript](http://www.reddit.com/r/javascript/comments/15w0ab/effective_javascript_reviewed/))
 
 [buy]: http://www.amazon.com/gp/product/0321812182/ref=as_li_ss_tl?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0321812182 "Buy on Amazon.com"
+[kindle]: http://www.amazon.com/gp/product/B00AC1RP14/ref=as_li_ss_tl?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B00AC1RP14
 ---
 
 My recent work:
