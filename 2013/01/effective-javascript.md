@@ -126,7 +126,7 @@ But with that experience in hand, Effective JavaScript's approach of picking a t
 [buy]: http://www.amazon.com/gp/product/0321812182/ref=as_li_ss_tl?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0321812182 "Buy on Amazon.com"
 ---
 
-Recent work:
+My recent work:
 
 ![](http://i.minus.com/iL337yTdgFj7.png)[![JavaScript Allonge](http://i.minus.com/iTeArnPx8NrbG.jpeg)](http://leanpub.com/javascript-allonge "JavaScript Allongé")![](http://i.minus.com/iL337yTdgFj7.png)[![CoffeeScript Ristretto](http://i.minus.com/iuYNUrU0MAR59.jpeg)](http://leanpub.com/coffeescript-ristretto "CoffeeScript Ristretto")![](http://i.minus.com/iL337yTdgFj7.png)[![Kestrels, Quirky Birds, and Hopeless Egocentricity](http://i.minus.com/ifN7VFpRXkRQW.jpeg)](http//leanpub.com/combinators "Kestrels, Quirky Birds, and Hopeless Egocentricity")
 
