@@ -4,10 +4,6 @@
 
 **My Recommendation**: [Buy it][buy], read it, and keep it as a reference work.
 
-**Disclosure**: I have asked the author to write a foreword for my own JavaScript book, [JavaScript Allongé](http://leanpub.com/javascript-allonge).
-
-And now, my experience reading *Effective JavaScript*.
-
 ## When ASI met IIFE
 
 Some time ago I was asymmetrically pairing with a colleague, and I begun a new JavaScript file like this:
