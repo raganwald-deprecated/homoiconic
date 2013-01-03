@@ -52,19 +52,7 @@ Without expert curation, we either get a brief book that fails to strike the pro
 
 ### Back to the Leading Semicolon
 
-As you by now expect, *Effective JavaScript* explained the purpose of the leading semicolon. When file A and file B both use an IIFE, they look like this:
-
-```javascript
-(function ($) {
-	// ... A
-})(jQuery)
-
-(function ($) {
-	// ... B
-})(jQuery)
-```
-
-As it happens, when each file is loaded separately, a semicolon is automatically inserted at the end, so they look like this to the interpreter:
+As you by now expect, *Effective JavaScript* explained why I was inserting that leading semicolon. When file A and file B both use an IIFE, and when each file is loaded separately, a semicolon is automatically inserted at the end. So they look like this to the interpreter:
 
 ```javascript
 (function ($) {
@@ -76,7 +64,7 @@ As it happens, when each file is loaded separately, a semicolon is automatically
 })(jQuery);
 ```
 
-No problem. But one day you add catenation to your asset streaming, and now the code is all in one big file (probably with minification):
+No problem. But one day you add naïve catenation to your asset streaming, and now the code is all in one big file:
 
 ```javascript
 (function ($) {
@@ -97,25 +85,21 @@ It wouldn't have been a bug if every file included was terminated with a semicol
 })(jQuery);
 ```
 
-And that works fine. *Effective JavaScript* told me a few things I already thought I knew:
+And that works fine. Now, *this is not the only way to solve this problem*. JavaScript has moved along since I first saw that idiom, and there are plenty of magnification libraries and module management libraries that solve this problem for you whether you include an extra semicolon or not. Some of them solve the scoping issues that the IIFE is intended to solve.
 
-1. The rules for Automatic Semicolon Insertion.
-2. How to manage scope with an Immediately Invoked Function Expression.
-3. The mechanics of minifying multiple JavaScript files.
+*Effective JavaScript* didn't tell me this is a "best practice," it told me how told me a few things I already thought I knew interacted in such a way that some programmer at some time in the past recommended the leading semicolon and IIFE as sensible given the tools of the day. Now that I understand the issue properly, I'm no longer blindly using the idiom out of... I can't think of a better word than *faith*.
 
-But much more crucially, it discussed the implications arising from the interactions between these three things , enlightening me about a practice that I'd been blindly following out of... I can't think of a better word than *faith*. This is the kind thing that I value highly in a book, lecture or course.
+I value this kind of enlightenment from a book, a lecture or a course. I'm now in a much better position to evaluate alternate approaches to breaking JavaScript into multiple files. I now know something I didn't really know I didn't know.
 
 ## Whoa, That's Important
 
-That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce when you minify files," but I wanted to provide a taste of what it felt like for me to read David Herman's book.
+That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce when you catenate files with old-school tools," but I wanted to provide a taste of what it felt like for me to read David Herman's book.
 
 I was constantly saying to myself, "Of course, of course, I know that, well that follows from that, and yes, therefore that follows from that," and then suddenly: *"Whoa! That's important!"*
 
 Whether it was insights into writing constructors that worked with or without the `new` keyword, the perils of the Array Constructor, or repeated forays into iteration and its subtleties, I was pleased by the fine balance David Herman struck between familiarity and surprise. I felt like I knew more than half of what he wrote. But the other half... Solid gold. And the half I knew helped me understand the value of the half I didn't know.
 
 Of course, what is surprising to Bob may be familiar to Carol. And what Ted thinks is useless language trivia may be a pearl of wisdom to Alice. So one can reasonably ask, should every JavaScript programmer own a copy of *Effective JavaScript*?
-
-> I think Effective JavaScript is going to be an important text for all but the complete neophyte
 
 I think Effective JavaScript is going to be an important text for all but the complete neophyte. That being said, beginners may find that the more experience they obtain writing JavaScript software, the more value they obtain from the book. While it touches on functional programming, objects and so-called classes in JavaScript, and even writing good APIs in JavaScript, each of these topics is also well-served by a more didactic book presenting the subject matter within the context of a larger framework or approach to programming.
 
