@@ -117,7 +117,9 @@ But with that experience in hand, Effective JavaScript's approach of picking a t
 
 ## My Bottom Line
 
-*Effective JavaScript* feels like more than just a good read, it feels like a book I'll dip into again and again. If you're working with JavaScript and feel like you have a good grasp of the language, I recommend that you [buy it][buy], read it, and keep it as a reference work.
+*Effective JavaScript* feels like more than just a good read, it feels like a book I'll dip into again and again. If you're working with JavaScript and feel like you have a good grasp of the language, I recommend it.
+
+[Effective JavaScript][buy], 200 pages.
 
 [buy]: http://www.amazon.com/gp/product/0321812182/ref=as_li_ss_tl?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0321812182 "Buy on Amazon.com"
 ---
