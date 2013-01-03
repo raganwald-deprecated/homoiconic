@@ -115,6 +115,8 @@ I think Effective JavaScript is going to be a good read for all but the complete
 
 But with that experience in hand, Effective JavaScript's approach of picking a topic and explaining the crucial implications and consequences adds enormous value to the reader's hands-on experience and to the knowledge delivered in other books or courses.
 
+And there are sixty-eight topics!This is not a couple of blog posts fleshed out, formatted into chapters, and reprinted as a book. It's a substantial work covering the entire JavaScript language from functions and closures to asynchronous programming. The coverage of asynchronous JavaScript would justify buying and reading this book on its own, it's that good.
+
 ## My Bottom Line
 
 *Effective JavaScript* feels like more than just a good read, it feels like a book I'll dip into again and again. If you're working with JavaScript and feel like you have a good grasp of the language, I recommend it.
