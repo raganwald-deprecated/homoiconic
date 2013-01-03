@@ -48,7 +48,7 @@ When a book is too familiar, it fails to add value. "Yes, yes," we say, "I know 
 
 For this reason, what we need from a book is not just a knowledgable author able to dive deeply into the subject matter, but also someone able to carefully choose when to briefly explain, secure that we grasp the point, and when to dive into implications that are sure to surprise us.
 
-Without expert curation, we either get a brief book that fails to strike the proper balance, or we get a book that runs to 600 pages and still fails to strike the proper balance because in his zeal to include everything, the text lurches from obvious to arcane without rhyme or reason.
+Without expert curation, we either get a brief book that fails to strike the proper balance, or we get a book that runs to 600 pages and still fails to strike the proper balance because in his zeal, the writer lurches from obvious to arcane without rhyme or reason.
 
 ### Back to the Leading Semicolon
 
