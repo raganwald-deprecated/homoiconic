@@ -4,7 +4,7 @@
 
 **My Recommendation**: [Buy it][buy], read it, and keep it as a reference work.
 
-[![Effective JavaScript](http://effectivejs.com/img/book-thumbnail.jpg)](http://effectivejs.com)
+[![Effective JavaScript](http://i.minus.com/ibjveCleaJzli1.png)](http://effectivejs.com)
 
 ## When ASI met IIFE
 
