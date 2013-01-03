@@ -83,12 +83,14 @@ No problem. But one day you add catenation to your asset streaming, and now the 
 	// ... B
 })(jQuery);
 ```
-Instead of two IIFEs, you now have one function expression being called with `jQuery` as its argument. You then call the result it returns with a big function expression as its argument. You then call what that returns with `jQuery` as its argument. That's a bug. It wouldn't have been a bug if every file included was terminated with a semicolon, but you can only control the code you write, so you terminate yours with a semicolon and prefix it with a semicolon, so that after catenation you end up with:
+Instead of two IIFEs, you now have one function expression being called with `jQuery` as its argument. You then call the result it returns with a big function expression as its argument. You then call what that returns with `jQuery` as its argument. That's a bug.
+
+It wouldn't have been a bug if every file included was terminated with a semicolon, but you can only control the code you write. Let's say you wrote B, and you terminated yours with a semicolon and prefixed it with a semicolon defensively. After catenation, you end up with:
 
 ```javascript
-;(function ($) {
+(function ($) {
 	// ... A
-})(jQuery);;(function ($) {
+})(jQuery);(function ($) {
 	// ... B
 })(jQuery);
 ```
