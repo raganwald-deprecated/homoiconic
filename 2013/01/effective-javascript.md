@@ -121,6 +121,8 @@ But with that experience in hand, Effective JavaScript's approach of picking a t
 
 [Effective JavaScript][buy], 200 pages.
 
+(Discuss this review on [hacker news](http://news.ycombinator.com/item?id=5002439) and [r/javascript](http://www.reddit.com/r/javascript/comments/15w0ab/effective_javascript_reviewed/))
+
 [buy]: http://www.amazon.com/gp/product/0321812182/ref=as_li_ss_tl?ie=UTF8&tag=raganwald001-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0321812182 "Buy on Amazon.com"
 ---
 
