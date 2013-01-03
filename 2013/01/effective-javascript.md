@@ -1,10 +1,10 @@
 # Effective JavaScript Reviewed
 
+[![Effective JavaScript](http://i.minus.com/ibjveCleaJzli1.png)](http://effectivejs.com)
+
 **The Book**: David Herman's [Effective JavaScript](http://effectivejs.com) is an in-depth look at the JavaScript programming language and how to use it effectively to write more portable, robust, and maintainable applications and libraries. Using the concise, scenario-driven style of the [Effective Software Development Series](http://www.informit.com/esds), this book brings together tips, techniques, and realistic code examples to explain the important concepts in JavaScript.
 
 **My Recommendation**: [Buy it][buy], read it, and keep it as a reference work.
-
-[![Effective JavaScript](http://i.minus.com/ibjveCleaJzli1.png)](http://effectivejs.com)
 
 ## When ASI met IIFE
 
