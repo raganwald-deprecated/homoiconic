@@ -24,13 +24,13 @@ The truth is, I didn't really know. I'd read *somewhere* that when JavaScript lo
 
 But I was hazy on the details, and admitted as much. She may have felt she learned something, then again she's rather bright and productivity focused, so perhaps she knew what was going on but didn't want to take time out to discuss it.
 
-She didn't ask about what I call a `let` and what everybody else calls an [Immediately Invoked Function Expression][iife], so we moved along and I don't think I've thought about that opening semicolon since. Until the other day, when I was reading *Effective JavaScript*.
+She didn't ask about the [Immediately Invoked Function Expression][iife], so we moved along and I don't think I've thought about why I start files with an opening semicolon since. Until the other day, when I was reading *Effective JavaScript*.
 
 [iife]: http://www.benalman.com/news/2010/11/immediately-invoked-function-expression/
 
-Item 6, "Learn the Limits of Semicolon Insertion," mostly repeated back to me what I thought I knew about Automatic Semicolon Insertion ("ASI"), such as the rule that ASI is error correction, so semicolons are only ever inserted when the next input token cannot be parsed.
+*Item 6, "Learn the Limits of Semicolon Insertion,"* mostly repeated back to me what I thought I knew about Automatic Semicolon Insertion ("ASI"), such as the rule that ASI is error correction, so semicolons are only ever inserted when the next input token cannot be parsed.
 
-But it also explained some of the *implications* of what I already knew: That there are five problematic characters (`(`, `[`, `+`, `-`, and`/`). That each of these characters can acts either as an expression operator or as the prefix of a statement, and therefore that any statement beginning with one of these characters could be trouble if you are depending on ASI.
+But it also explained some of the *implications* of what I already knew: That there are five problematic characters `(`, `[`, `+`, `-`, and`/`. That each of these characters can acts either as an expression operator or as the prefix of a statement, and therefore that any statement beginning with one of these characters could be trouble if you are depending on ASI.
 
 ### Implications
 
