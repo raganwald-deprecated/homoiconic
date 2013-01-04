@@ -64,7 +64,7 @@ As you by now expect, *Effective JavaScript* explained why I was inserting that 
 })(jQuery);
 ```
 
-No problem. But one day you add naïve catenation to your asset streaming, and now the code is all in one big file:
+No problem. But one day you add naïve concatenation to your asset streaming, and now the code is all in one big file:
 
 ```javascript
 (function ($) {
@@ -75,7 +75,7 @@ No problem. But one day you add naïve catenation to your asset streaming, and n
 ```
 Instead of two IIFEs, you now have one function expression being called with `jQuery` as its argument. You then call the result it returns with a big function expression as its argument. You then call what that returns with `jQuery` as its argument. That's a bug.
 
-It wouldn't have been a bug if every file included was terminated with a semicolon, but you can only control the code you write. Let's say you wrote B, and you terminated yours with a semicolon and prefixed it with a semicolon defensively. After catenation, you end up with:
+It wouldn't have been a bug if every file included was terminated with a semicolon, but you can only control the code you write. Let's say you wrote B, and you terminated yours with a semicolon and prefixed it with a semicolon defensively. After concatenation, you end up with:
 
 ```javascript
 (function ($) {
