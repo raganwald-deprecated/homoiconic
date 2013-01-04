@@ -18,7 +18,7 @@ Some time ago I was asymmetrically pairing with a colleague, and I begun a new J
 
 "What," she asked, "is the purpose of the opening semicolon?"
 
-The truth is, I didn't really know. I'd read *somewhere* that when JavaScript loads your files, if you had  some buggy code in file A, then file B could be corrupted by whatever was last in file A if the environment loaded A before B. In other words, the environment behaved as if all the code was catenated together.
+The truth is, I didn't really know. I'd read *somewhere* that when JavaScript loads your files, if you had  some buggy code in file A, then file B could be corrupted by whatever was last in file A if the environment loaded A before B. In other words, the environment behaved as if all the code was concatenated together.
 
 But I was hazy on the details, and admitted as much. She may have felt she learned something, then again she's rather bright and productivity focused, so perhaps she knew what was going on but didn't want to take time out to discuss it.
 
@@ -93,7 +93,7 @@ I value this kind of enlightenment from a book, a lecture or a course. I'm now i
 
 ## Whoa, That's Important
 
-That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce when you catenate files with old-school tools," but I wanted to provide a taste of what it felt like for me to read David Herman's book.
+That is an awful lot of words for, "Effective JavaScript explained why prefacing files that contain an IIFE with a semicolon fixes a problem that ASI could introduce when you concatenate files with old-school tools," but I wanted to provide a taste of what it felt like for me to read David Herman's book.
 
 I was constantly saying to myself, "Of course, of course, I know that, well that follows from that, and yes, therefore that follows from that," and then suddenly: *"Whoa! That's important!"*
 
