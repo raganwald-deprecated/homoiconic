@@ -87,7 +87,7 @@ It wouldn't have been a bug if every file included was terminated with a semicol
 
 And that works fine. Now, *this is not the only way to solve this problem*. JavaScript has moved along since I first saw that idiom, and there are plenty of minification libraries and module management libraries that solve this problem for you whether you include an extra semicolon or not. Some of them solve the scoping issues that the IIFE is intended to solve.
 
-*Effective JavaScript* didn't tell me this is a "best practice," it told me how told me a few things I already thought I knew interacted in such a way that some programmer at some time in the past recommended the leading semicolon and IIFE as sensible given the tools of the day. Now that I understand the issue properly, I'm no longer blindly using the idiom out of... I can't think of a better word than *faith*.
+*Effective JavaScript* didn't tell me this is a "best practice." It told me how a few things (that I thought I already knew) interacted in an unusual way. And thus some programmer, at some time in the past, recommended the leading semicolon and IIFE as sensible given the tools of the day. Now that I understand the issue properly, I'm no longer blindly using the idiom out of... I can't think of a better word than *faith*.
 
 I value this kind of enlightenment from a book, a lecture or a course. I'm now in a much better position to evaluate alternate approaches to breaking JavaScript into multiple files. I now know something I didn't really know I didn't know.
 
