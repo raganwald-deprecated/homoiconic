@@ -173,7 +173,7 @@ heliosGreets('Eartha')
 
 In essence, we have split one function (greet) into two pieces, one taking the first argument when we called `applyFirst(greet, 'Helios')`, and one taking  the rest, which we put in the variable `heliosGreets` and indeed when we called it with `'Eartha'`, we got back the completed application of the greet function.
 
-To summarize, Partial application lets us split the application of a function into two pieces, one of which we apply now with an argument, and one of which we can apply elsewhere and later with the remaining argument(s).
+To summarize, partial application splits the application of a function into two pieces, one of which we apply now with an argument, and one of which we can apply elsewhere and later with the remaining argument(s).
 
 This "splitting into two" has another name in programming, it's called *decomposition*. Normally we decompose functions by extracting sub-functions manually, or perhaps with the assistance of a refactoring editor. Refactoring and decomposition are deeply related. Refactoring is the process of decomposing a program and then recombining the parts along different lines.
 
