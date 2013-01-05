@@ -91,7 +91,72 @@ Partial application allows us to break that single operation into two applicatio
 
 But for our purposes, we understand partial application to be an operation that takes a polyadic function and applies some of the arguments and produces a function to be executed elsewhere and/or later. A fully generalized partial application operation permits us to apply one or more arguments in any position (possibly leaving holes to be filled), but let's consider the simplest of all possible partial applications: Given a polyadic function and a single value, it applies the value to the first argument and returns a function representing the rest of the application.
 
-Here it is. Don't worry about the code for `applyFirst` unless you're keen on writing your own library functions, understanding what it does and how to use it is paramount:
+Let's do it by hand. Working backwards, we want a function that looks like this:
+
+```javascript
+var heliosGreets = function (you) {
+  var me = 'Helios';
+  
+  return greet(me, you)
+};
+
+heliosGreets('Eartha')
+  //=> 'Hello, Eartha, my name is Helios'
+```
+
+We can't have `'Helios'` hard-coded, so we'll hoist it out into an Immediately Invoked Function Expression:
+
+```javascript
+var heliosGreets = (function (me) {
+  return function (you) {
+    return greet(me, you)
+  }
+})('Helios');
+
+heliosGreets('Eartha')
+  //=> 'Hello, Eartha, my name is Helios'
+```
+
+Let's hoist the `greet` function too, and genericize the names a bit:
+
+```javascript
+var heliosGreets = (function (fn, first) {
+  return function (second) {
+    return fn(first, second);
+  }
+})(greet, 'Helios');
+
+heliosGreets('Eartha')
+  //=> 'Hello, Eartha, my name is Helios'
+```
+
+Now our inner function is a bit generalized. Some of the functions it may use might require the current context. Let's preserve it:
+
+```javascript
+var heliosGreets = (function (fn, first) {
+  return function (second) {
+    return fn.apply(this, [first].concat([second]));
+  }
+})(greet, 'Helios');
+
+heliosGreets('Eartha')
+  //=> 'Hello, Eartha, my name is Helios'
+```
+
+And you know what else? Some functions we might apply have more than two arguments. Let's make the inner function variadic:
+
+```javascript
+var heliosGreets = (function (fn, first) {
+  return variadic( function (args) {
+    return fn.apply(this, [first].concat(args));
+  })
+})(greet, 'Helios');
+
+heliosGreets('Eartha')
+  //=> 'Hello, Eartha, my name is Helios'
+```
+
+There's only one thing left to do, extract our IIFE and give it a name:
 
 ```javascript
 function applyFirst (fn, first) {
@@ -99,23 +164,14 @@ function applyFirst (fn, first) {
     return fn.apply(this, [first].concat(args))
   })
 }
-```
 
-We use it like this:
+var heliosGreets = applyFirst(greet, 'Helios');
 
-```javascript
-var elsewhereAndLater = applyFirst(greet, 'Helios');
-```
-
-We've said we are applying `'Helios'` as the first argument of our function `greet`. That's only half of the application we need, so `applyFirst` gives us back a function that expects the second half. We can test it:
-
-
-```javascript
-elsewhereAndLater('Eartha')
+heliosGreets('Eartha')
   //=> 'Hello, Eartha, my name is Helios'
 ```
 
-In essence, we have split one function (greet) into two pieces, one taking the first argument when we called `applyFirst(greet, 'Helios')`, and one taking  the rest, which we put in the variable `elsewhereAndLater` and indeed when we called it with `'Eartha'`, we got back the completed application of the greet function.
+In essence, we have split one function (greet) into two pieces, one taking the first argument when we called `applyFirst(greet, 'Helios')`, and one taking  the rest, which we put in the variable `heliosGreets` and indeed when we called it with `'Eartha'`, we got back the completed application of the greet function.
 
 To summarize, Partial application lets us split the application of a function into two pieces, one of which we apply now with an argument, and one of which we can apply elsewhere and later with the remaining argument(s).
 
