@@ -112,13 +112,15 @@ elsewhereAndLater('Eartha')
   //=> 'Hello, Eartha, my name is Helios'
 ```
 
-Before we look at some practical implications, let's stop and review for emphasis: Partial application lets us split the application of a function into two pieces, one of which we apply now with an argument, and one of which we can apply elsewhere and later with the remaining argument(s).
+Partial application lets us split the application of a function into two pieces, one of which we apply now with an argument, and one of which we can apply elsewhere and later with the remaining argument(s).
 
 This "splitting into two" has another name in programming, it's called *decomposition*. Normally we decompose functions by extracting sub-functions manually, or perhaps with the assistance of a refactoring editor. Refactoring and decomposition are deeply related. Refactoring is the process of decomposing a program and then recombining the parts along different lines.
 
 If we think of partial application as a kind of decomposition, something interesting emerges. We're decomposing along the lines of the arguments a function takes. This is often congruent to something in the domain, because different arguments tend to represent different things.
 
-before we go further, here is a more general version of `applyFirst` that takes a variable number of arguments. `applyFirst` is simpler and executes faster when you only need one argument.
+### applyleft
+
+Before we go further, here is a more general version of `applyFirst` that takes a variable number of arguments. `applyFirst` is simpler and executes faster when you only need one argument, but `applyLeft` allows you to partially apply any number of arguments.
 
 ```javascript
 var applyLeft = variadic( function (fnAndLeftArguments) {
@@ -130,6 +132,8 @@ var applyLeft = variadic( function (fnAndLeftArguments) {
   })
 });
 ```
+
+JavaScript's `.bind` function looks a lot like `applyLeft`, however `.bind` forces you to bind the context, `applyLeft` allows you to skip binding the context. It's useful when writing combinators and other higher-order functions.
 
 [![Switchboard](http://i.minus.com/ibxLN2qmaDYNnz.jpg)](http://www.flickr.com/photos/nix-pix/2529018779/)
 
