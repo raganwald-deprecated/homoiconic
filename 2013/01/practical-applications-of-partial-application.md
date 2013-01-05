@@ -2,8 +2,6 @@
 
 What is *partial application*? And most importantly, why do we care about it?
 
-![What are the applications?](http://i.minus.com/ibweUTQ6MzlKIm.png)
-
 ## Recap
 
 First, a quick recap (You can skip this if you're familiar with functions in JavaScript). Just about everything here applies to CoffeeScript as well, except for some folderol about handling multiple arguments. And everything except `this` applies to just about any programming language that supports functions as first class objects.
@@ -74,7 +72,7 @@ function ellipses (fn) {
 var variadic = ellipses;
 ```
 
-[![Sockets](http://farm2.staticflickr.com/1130/543773066_643e383c66_z.jpg)](http://www.flickr.com/photos/oskay/543773066/)
+[![Nixie Clock Case]http://farm5.staticflickr.com/4043/4259022251_43edf87308_z.jpg](http://www.flickr.com/photos/randomskk/4259022251/)
 
 ## What is Partial Application?
 
@@ -220,6 +218,8 @@ Reference.prototype.decrementReferenceCount = function () {
 
 We still have two functions, but one of them is now a general decrementer that can be used elsewhere. Is this important? Possibly! Is it handy? Very much so when DRYing up code. And you can use this technique with filter/select, with reduce, and anything else working over collections.
 
+[![Innards of telephone at the station on the Gwili Railway](http://farm7.staticflickr.com/6136/5990961019_892e10aa2d_z.jpg)](http://www.flickr.com/photos/nox_noctis_silentium/5990961019/)
+
 ## Another Partial Application with Binding Semantics
 
 Languages that don't do anything special with `this` are quite happy with a few forms of partial application. JavaScript needs a few more in very large part because of the importance of managing `this` when working with objects. This function, `send`, is useful for mapping over objects by sending them a message. It emulates Ruby's `Symbol#to_proc` with some extra partial application goodness. For our purposes, the implementation is:
@@ -271,6 +271,8 @@ Which leads us to:
 ```javascript
 Reference.decrementCounts = splat(send('decrementReferenceCount'));
 ```
+
+![What are the applications?](http://i.minus.com/ibweUTQ6MzlKIm.png)
 
 ## Conclusion
 
