@@ -72,7 +72,7 @@ function ellipses (fn) {
 var variadic = ellipses;
 ```
 
-[![Nixie Clock Case]http://farm5.staticflickr.com/4043/4259022251_43edf87308_z.jpg](http://www.flickr.com/photos/randomskk/4259022251/)
+[![Nixie Clock Case](http://farm5.staticflickr.com/4043/4259022251_43edf87308_z.jpg)](http://www.flickr.com/photos/randomskk/4259022251/)
 
 ## What is Partial Application?
 
