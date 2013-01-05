@@ -91,7 +91,7 @@ Partial application allows us to break that single operation into two applicatio
 
 But for our purposes, we understand partial application to be an operation that takes a polyadic function and applies some of the arguments and produces a function to be executed elsewhere and/or later. A fully generalized partial application operation permits us to apply one or more arguments in any position (possibly leaving holes to be filled), but let's consider the simplest of all possible partial applications: Given a polyadic function and a single value, it applies the value to the first argument and returns a function representing the rest of the application.
 
-Here it is:
+Here it is. Don't worry about the code for `applyFirst` unless you're keen on writing your own library functions, understanding what it does and how to use it is paramount:
 
 ```javascript
 function applyFirst (fn, first) {
@@ -99,16 +99,25 @@ function applyFirst (fn, first) {
     return fn.apply(this, [first].concat(args))
   })
 }
+```
 
+We use it like this:
+
+```javascript
 var elsewhereAndLater = applyFirst(greet, 'Helios');
+```
 
-// ...
+We've said we are applying `'Helios'` as the first argument of our function `greet`. That's only half of the application we need, so `applyFirst` gives us back a function that expects the second half. We can test it:
 
+
+```javascript
 elsewhereAndLater('Eartha')
   //=> 'Hello, Eartha, my name is Helios'
 ```
 
-Partial application lets us split the application of a function into two pieces, one of which we apply now with an argument, and one of which we can apply elsewhere and later with the remaining argument(s).
+In essence, we have split one function (greet) into two pieces, one taking the first argument when we called `applyFirst(greet, 'Helios')`, and one taking  the rest, which we put in the variable `elsewhereAndLater` and indeed when we called it with `'Eartha'`, we got back the completed application of the greet function.
+
+To summarize, Partial application lets us split the application of a function into two pieces, one of which we apply now with an argument, and one of which we can apply elsewhere and later with the remaining argument(s).
 
 This "splitting into two" has another name in programming, it's called *decomposition*. Normally we decompose functions by extracting sub-functions manually, or perhaps with the assistance of a refactoring editor. Refactoring and decomposition are deeply related. Refactoring is the process of decomposing a program and then recombining the parts along different lines.
 
@@ -129,7 +138,7 @@ var applyLeft = variadic( function (fnAndLeftArguments) {
 });
 ```
 
-JavaScript's `.bind` function looks a lot like `applyLeft`, however `.bind` forces you to bind the context, `applyLeft` allows you to skip binding the context. It's useful when writing combinators and other higher-order functions.
+JavaScript's `.bind` function looks a lot like `applyLeft`, however `.bind` forces you to bind the context, `applyLeft` allows you to skip binding the context. It's useful when writing combinators and other higher-order functions. Again, these are function that could very well live in a library, it's how to use them that matters.
 
 [![Switchboard](http://i.minus.com/ibxLN2qmaDYNnz.jpg)](http://www.flickr.com/photos/nix-pix/2529018779/)
 
