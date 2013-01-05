@@ -278,7 +278,7 @@ Reference.decrementCounts = splat(send('decrementReferenceCount'));
 
 **Partial application is what allows us to abstract away a lot of function scaffolding, in large part because it's a compact way to decompose functions**.
 
-(discuss on [lobste.rs](https://lobste.rs/s/u2oed1/practical_applications_of_partial_application), [/r/programming](http://www.reddit.com/r/programming/comments/160mtu/practical_applications_of_partial_application_js/) or  [/r/javascript](http://www.reddit.com/r/javascript/comments/160ls5/practical_applications_of_partial_application/)
+(discuss on [lobste.rs](https://lobste.rs/s/u2oed1/practical_applications_of_partial_application), [/r/programming](http://www.reddit.com/r/programming/comments/160mtu/practical_applications_of_partial_application_js/) or  [/r/javascript](http://www.reddit.com/r/javascript/comments/160ls5/practical_applications_of_partial_application/))
 
 Notes:
 
