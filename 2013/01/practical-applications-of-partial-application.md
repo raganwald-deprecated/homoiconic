@@ -1,6 +1,6 @@
 # Practical Applications of Partial Application
 
-What is *partial application*? And most importantly, why do we care about it?
+What is [partial application](http://en.wikipedia.org/wiki/Partial_application)? And most importantly, why do we care about it?
 
 ## Recap
 
@@ -278,7 +278,7 @@ Reference.decrementCounts = splat(send('decrementReferenceCount'));
 
 **Partial application is what allows us to abstract away a lot of function scaffolding, in large part because it's a compact way to decompose functions**.
 
-(discuss on [lobste.rs](https://lobste.rs/s/u2oed1/practical_applications_of_partial_application), [/r/javascript](http://www.reddit.com/r/javascript/comments/160ls5/practical_applications_of_partial_application/) or [hacker news](http://news.ycombinator.com/item?id=5013458))
+(discuss on [lobste.rs](https://lobste.rs/s/u2oed1/practical_applications_of_partial_application), [/r/programming](http://www.reddit.com/r/programming/comments/160mtu/practical_applications_of_partial_application_js/) or  [/r/javascript](http://www.reddit.com/r/javascript/comments/160ls5/practical_applications_of_partial_application/)
 
 Notes:
 
