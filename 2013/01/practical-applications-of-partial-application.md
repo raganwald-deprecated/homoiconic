@@ -8,8 +8,6 @@ What is *partial application*? And most importantly, why do we care about it?
 
 First, a quick recap (You can skip this if you're familiar with functions in JavaScript). Just about everything here applies to CoffeeScript as well, except for some folderol about handling multiple arguments. And everything except `this` applies to just about any programming language that supports functions as first class objects.
 
-> Ruby has seven different ways to instantiate three different constructs that look like functions (blocks, procs, and lambdas). It also has methods, unbound methods, and bound methods. All are objects, much like JavaScript. Topic for Debate: Does Ruby have first-class functions? If not, why not?
-
 The functions we're going to discuss look like this:
 
 ```javascript
