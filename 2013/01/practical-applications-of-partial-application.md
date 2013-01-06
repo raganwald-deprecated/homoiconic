@@ -135,7 +135,7 @@ Now our inner function is a bit generalized. Some of the functions it may use mi
 ```javascript
 var heliosGreets = (function (fn, first) {
   return function (second) {
-    return fn.apply(this, [first].concat([second]));
+    return fn.apply(this, [first, second]);
   }
 })(greet, 'Helios');
 
@@ -208,7 +208,7 @@ var results = map(array, function (element) {
 }, this);
 ```
 
-Note the second parameter that specifies the context for the function applications. If you don't supply it, the function being applied to each element cannot access anything in the current context. This is especially important if we're using a map inside of a method. Depending on how `map` is written, the context will be the global context, `null`, or even some array (yecch!).
+Note the third parameter (`this`) that specifies the context for the function applications. If you don't supply it, the function being applied to each element cannot access anything in the current context. This is especially important if we're using a map inside of a method. Depending on how `map` is written, the context will be the global context, `null`, or even some array (yecch!).
 
 Before we go any further, let's get rid of `this`. We can bind our function to `this` so that it always evaluates in the current context:
 
@@ -316,7 +316,7 @@ We write:
 Reference.decrementCounts = applyLast(map, send('decrementReferenceCount'));
 ```
 
-And people complain JavaScript is verbose. JavaScript is not verbose, attempting to write Java code in JavaScript is verbose. People sometimes complain this is "clever." Well, the techniques we are discussing here are all familiar to undergraduate Computer Science majors, they are elementary applications of Combinatory Logic and the lambda Calculus. It seems to be that if a degree is the bronze standard for employability in the industry, we ought to at least use what we are taught.
+And people complain JavaScript is verbose. *JavaScript is not verbose, attempting to write Java code in JavaScript is verbose*. JavaScript is a functional language. When you use functional programming idioms in JavaScript, you are "cutting with the grain."
 
 Speaking of which... When you're holding the partial application hammer, every piece of code begins to look like a function to be decomposed nail. The third time you write `applyLast(map, ...)`, you ought to ask yourself, "Can I extract this?"
 
