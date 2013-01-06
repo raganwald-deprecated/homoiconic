@@ -266,7 +266,7 @@ Reference.prototype.decrementDependentCounts = function () {
 We use our `applyLast` function on `map`:
 
 ```javascript
-Reference.decrementCounts = applyRight(map, function (ref) {
+Reference.decrementCounts = applyLast(map, function (ref) {
   ref.decrementReferenceCount();
 });
 ```
@@ -305,7 +305,7 @@ var send = variadic( function (nameAndArgs) {
 We use `send` like this. Instead of:
 
 ```javascript
-Reference.decrementCounts = applyRight(map, function (ref) {
+Reference.decrementCounts = applyLast(map, function (ref) {
   ref.decrementReferenceCount();
 });
 ```
@@ -318,7 +318,7 @@ Reference.decrementCounts = applyLast(map, send('decrementReferenceCount'));
 
 And people complain JavaScript is verbose. JavaScript is not verbose, attempting to write Java code in JavaScript is verbose. People sometimes complain this is "clever." Well, the techniques we are discussing here are all familiar to undergraduate Computer Science majors, they are elementary applications of Combinatory Logic and the lambda Calculus. It seems to be that if a degree is the bronze standard for employability in the industry, we ought to at least use what we are taught.
 
-Speaking of which... When you're holding the partial application hammer, every piece of code begins to look like a function to be decomposed nail. The third time you write `applyRight(map, ...)`, you ought to ask yourself, "Can I extract this?"
+Speaking of which... When you're holding the partial application hammer, every piece of code begins to look like a function to be decomposed nail. The third time you write `applyLast(map, ...)`, you ought to ask yourself, "Can I extract this?"
 
 Yes you can:
 
