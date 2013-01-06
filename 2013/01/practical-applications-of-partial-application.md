@@ -71,15 +71,25 @@ function ellipsis (fn) {
 
 var variadic = ellipsis;
 
-function I (something) {
-  return something
+function unary (first) {
+  return first
 }
 
-I('why', 'hello', 'there')
+unary('why', 'hello', 'there')
   //=> 'why'
   
-variadic(I)('why', 'hello', 'there')
+variadic(unary)('why', 'hello', 'there')
   //=> [ 'why', 'hello', 'there' ]
+  
+function binary (first, rest) {
+  return [first, rest]
+}
+
+binary('why', 'hello', 'there')
+  //=> [ 'why', 'hello' ]
+
+variadic(binary)('why', 'hello', 'there')
+  //=> [ 'why', [ 'hello', 'there' ] ]
 ```
 
 Variadic is a *function decorator*, it "decorates" a function with some additional functionality while remaining true to its underlying purpose.
