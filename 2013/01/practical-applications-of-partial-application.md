@@ -57,15 +57,13 @@ function ellipsis (fn) {
   if (fn.length < 1) return fn;
 
   return function () {
-    var originalArgs = 1 <= arguments.length ? 
-      __slice.call(arguments, 0, fn.length - 1) : [];
+    var ordinaryArgs = (1 <= arguments.length ? 
+          __slice.call(arguments, 0, fn.length - 1) : []),
+        restOfTheArgsList = __slice.call(arguments, fn.length - 1),
+        args = (fn.length <= arguments.length ?
+          ordinaryArgs.concat([restOfTheArgsList]) : []);
     
-    var ellipsoidArgs = fn.length <= arguments.length ?
-      originalArgs.concat([
-        __slice.call(arguments, fn.length - 1)
-      ]) : [];
-    
-    return fn.apply(this, ellipsoidArgs);
+    return fn.apply(this, args);
   }
 };
 
