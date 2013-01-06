@@ -2,7 +2,7 @@
 
 *This kind of thing normally wouldn't merit a full blog post all by itself, but just in case today really is the end of the world, I'm taking no chances and sharing the idea while I can.*
 
-The CoffeeScript programming language has a useful feature: If a parameter of a method is written with trailing ellipses, it collects a list of parameters into an array. It can be used in various ways, and the CoffeeScript transpiler does some pattern matching to sort things out, but 80% of the use is to collect a variable number of arguments without using the `arguments` pseudo-variable, and 19% of the uses are to collect a trailing list of arguments.
+The CoffeeScript programming language has a useful feature: If a parameter of a method is written with trailing ellipsis, it collects a list of parameters into an array. It can be used in various ways, and the CoffeeScript transpiler does some pattern matching to sort things out, but 80% of the use is to collect a variable number of arguments without using the `arguments` pseudo-variable, and 19% of the uses are to collect a trailing list of arguments.
 
 Here's what it looks like collecting a variable number of arguments and trailing arguments:
 
@@ -69,7 +69,7 @@ The missing piece is that JavaScript doesn't support [ellipses](http://en.wikipe
 ```javascript
 var __slice = [].slice;  
   
-function ellipses (fn) {
+function ellipsis (fn) {
   if (fn.length < 1) return fn;
   
   return function () {
@@ -81,18 +81,18 @@ function ellipses (fn) {
 }
 ```
 
-And now, we have a function that adds ellipses to a function. Here's what we write:
+And now, we have a function that adds an ellipsis to a function. Here's what we write:
 
 ```javascript
-var leftPartial = ellipses( function (fn, args) {
-  return ellipses( function (remainingArgs) {
+var leftPartial = ellipsis( function (fn, args) {
+  return ellipsis( function (remainingArgs) {
     return fn.apply(this, args.concat(remainingArgs))
   })
 })
 
 // Let's try it!
 
-var mapper = ellipses( function (fn, elements) {
+var mapper = ellipsis( function (fn, elements) {
   return elements.map(fn)
 });
 
@@ -112,7 +112,7 @@ Works like a charm! So what have we seen?
 3. When people suggest that you have to choose between JavaScript an expressive code, they are offering a false dichotomy.
 4. If today isn't the end of the world, it may instead be the day hell froze over.
 
-Fine print: Of course, `ellipses` introduces an extra function call and may not be the best choice in a highly performance-critical piece of code. Then again, using `arguments` is considerably slower than directly accessing argument bindings, so if the performance is that critical, maybe you shouldn't be using a variable number of arguments in that section.
+Fine print: Of course, `ellipsis` introduces an extra function call and may not be the best choice in a highly performance-critical piece of code. Then again, using `arguments` is considerably slower than directly accessing argument bindings, so if the performance is that critical, maybe you shouldn't be using a variable number of arguments in that section.
 
 You be the judge.
 

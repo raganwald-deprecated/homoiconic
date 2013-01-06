@@ -53,7 +53,7 @@ For the purposes of this article, assume the presence of the helper function `va
 ```javascript
 var __slice = Array.prototype.slice;
 
-function ellipses (fn) {
+function ellipsis (fn) {
   if (fn.length < 1) return fn;
 
   return function () {
@@ -69,8 +69,20 @@ function ellipses (fn) {
   }
 };
 
-var variadic = ellipses;
+var variadic = ellipsis;
+
+function I (something) {
+  return something
+}
+
+I('why', 'hello', 'there')
+  //=> 'why'
+  
+variadic(I)('why', 'hello', 'there')
+  //=> [ 'why', 'hello', 'there' ]
 ```
+
+Variadic is a *function decorator*, it "decorates" a function with some additional functionality while remaining true to its underlying purpose.
 
 [![Nixie Clock Case](http://farm5.staticflickr.com/4043/4259022251_43edf87308_z.jpg)](http://www.flickr.com/photos/randomskk/4259022251/)
 
