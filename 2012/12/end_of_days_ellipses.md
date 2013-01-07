@@ -81,6 +81,8 @@ function ellipsis (fn) {
 }
 ```
 
+(This is an extremely simple version. For a more robust implementation, see the [Oscines](http://oscin.es) library.)
+
 And now, we have a function that adds an ellipsis to a function. Here's what we write:
 
 ```javascript
