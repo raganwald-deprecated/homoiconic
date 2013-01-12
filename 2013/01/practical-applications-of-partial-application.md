@@ -367,6 +367,7 @@ Reference.decrementCounts = splat(send('decrementReferenceCount'));
 
 Notes:
 
+* `variadic`/`ellipsis`, `applyFirst` and `applyLast` are just a few of the utility functions in the [oscin.es](http://oscin.es) library.
 * `applyFirst` and `applyLast` were inspired by Michael Fogus' [Lemonad](https://github.com/fogus/lemonad). Thanks!
 * The ideas in this post are shamelessly extracted from my book [JavaScript Allongé](http://leanpub.com/javascript-allonge). Yes I am pimping it out! Please consider downloading the free sample PDF. It comes with a no questions asked, 100% money-back guarantee.
 
@@ -377,8 +378,8 @@ My recent work:
 ![](http://i.minus.com/iL337yTdgFj7.png)[![JavaScript Allongé](http://i.minus.com/iW2E1A8M5UWe6.jpeg)][ja]![](http://i.minus.com/iL337yTdgFj7.png)[![CoffeeScript Ristretto](http://i.minus.com/iMmGxzIZkHSLD.jpeg)](http://leanpub.com/coffeescript-ristretto "CoffeeScript Ristretto")![](http://i.minus.com/iL337yTdgFj7.png)[![Kestrels, Quirky Birds, and Hopeless Egocentricity](http://i.minus.com/ibw1f1ARQ4bhi1.jpeg)](http://leanpub.com/combinators "Kestrels, Quirky Birds, and Hopeless Egocentricity")
 
 * [JavaScript Allongé](http://leanpub.com/javascript-allonge), [CoffeeScript Ristretto](http://leanpub.com/coffeescript-ristretto), and my [other books](http://leanpub.com/u/raganwald).
+* [oscin.es](http://oscin.es), practical function combinators and decorators for JavaScript.
 * [Method Combinators](https://github.com/raganwald/method-combinators), a CoffeeScript/JavaScript library for writing method decorators, simply and easily.
-* [Katy](http://github.com/raganwald/Katy), a library for writing fluent CoffeeScript and JavaScript using combinators.
 * [jQuery Combinators](http://github.com/raganwald/jquery-combinators), what else? A jQuery plugin for writing your own fluent, jQuery-like code. 
 
 [ja]: http://leanpub.com/javascript-allonge "JavaScript Allongé"
