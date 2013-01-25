@@ -462,11 +462,6 @@ queue.pushTail('Hello')
   //=> TypeError: Cannot set property 'NaN' of undefined
 ```
 
-> Now the obvious question is, why do we want to do that? And if we do want to do that, why use compose? Well, we're working with a blog post and it's easier to work with the methods in front of us than introduce an entirely new use case. But if you look at libraries like [Underscore][u] or [allong.es], you'll see plenty of m functions designed to be composed with methods, like `once`, `debounce`, `throttle`, `fluent`, and so forth.
-
-[u]:http://underscorejs.org
-[allong.es]: http://allong.es
-
 The problem with our `compose` method is that it took functions that expected a context and called them without a context. We can rewrite it:
 
 ```javascript
@@ -487,9 +482,16 @@ queue.pushTail('Hello')
 
 Now it works. In Part II, we'll take a much closer look at writing functions that are "context-agnostic" like our second version of `compose`, and we'll take a closer look at objects and methods.
 
+> Now the obvious question is, why did we want to do that? And if we did want to do that, why did we use compose? Well, we're working with a blog post and it's easier to work with the methods in front of us than introduce an entirely new use case. But if you look at libraries like [Underscore][u] or [allong.es], you'll see plenty of functions designed to be composed with methods, like `once`, `debounce`, `throttle`, `fluent`, and so forth.
+
+[u]:http://underscorejs.org
+[allong.es]: http://allong.es
+
 ## Summary of Part I
 
 You don't strictly *need* "this" to encapsulate data in objects, but "this" gives you the flexibility to share functions between objects. "this" is automatically set by JavaScript when you call a function in a method-calling style, or when you use `.call` or `.apply` to call a function. This can be used to force the context for a function, which is called *binding* the context to a function. In some cases, you want to write helper functions and combinators in a context-agnostic style.
+
+Thanks for being patient enough to read the whole thing!
 
 ---
 
