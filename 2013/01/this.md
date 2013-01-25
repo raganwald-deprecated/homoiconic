@@ -185,7 +185,7 @@ fn(...)
 
 Watch out!
 
-## What conext applies when we call a function?
+## What context applies when we call a function?
 
 We just learned that when a function is called as an object method, the name `this` is bound in its environment to the object acting as a "receiver." For example:
 
@@ -424,7 +424,7 @@ var collatz = compose(add1, times3)
 
 collatz(5)
   //=> 16
-```javascript
+```
 
 Works just fine with "pure" functions. Let's try it with something a little more complicated, our queue. Let's say we have a wonderful, brilliant, amazing idea. We want to leave queues working just fine, but we're going to modify one queue to always return the size of the queue after pushing or pulling things. And while we're engaging in our flight of fancy, we'll use `compose` to do it:
 
