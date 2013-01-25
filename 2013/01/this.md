@@ -163,7 +163,7 @@ banksQueue.pullHead()
 
 copyOfQueue.pullHead()
   //=> 'Hello'
-```javascript
+```
 
 Presto, we now have a way to copy arrays. By getting rid of the closure and taking advantage of `this`, we have functions that are more easily portable between objects, and the code is simpler as well.
 
