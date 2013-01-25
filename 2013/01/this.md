@@ -493,6 +493,8 @@ You don't strictly *need* "this" to encapsulate data in objects, but "this" give
 
 Thanks for being patient enough to read the whole thing!
 
+([discuss](http://www.reddit.com/r/javascript/comments/179j51/more_than_you_ever_wanted_to_know_about_this_in/))
+
 ---
 
 My recent work:
