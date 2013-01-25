@@ -32,7 +32,7 @@ There's plenty of opportunity to debate those positions, but if you have chosen 
 
 ### use a safer mapping construct
 
-There's nothing wrong with rolling your own mapper. I'm a big fan of combinators, so I use `.splat` from the [allomng.es] library. Splat looks like this:
+There's nothing wrong with rolling your own mapper. I'm a big fan of combinators, so I use `.splat` from the [allong.es] library. Splat looks like this:
 
 ```javascript
 function splat (fn) {
