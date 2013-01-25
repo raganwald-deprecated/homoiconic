@@ -56,7 +56,7 @@ Splat look a little different than map because instead of operating directly on 
 
 ### use a safer function
 
-The [allong.es] library includes a very handy "variadic" function for turning a function that takes one argument into a function that takes more than one argument. It also includes `unary` for turning a function that takes more than one argument into a function that takes one argument, it look slike this:
+The [allong.es] library includes a very handy "variadic" function for turning a function that takes one argument into a function that takes more than one argument. It also includes `unary` for turning a function that takes more than one argument into a function that takes one argument, it looks like this:
 
 ```javascript
 function unary (fn) {
@@ -81,7 +81,7 @@ unary = require('oscin.es').unary
   //=> [ 1, 2, 3 ]
 ```
 
-JavaScript can have some surprises for us, but it has an inherent functional flexibility that allows us to make our own snadpaper to smooth out its knots and whorls.
+JavaScript can have some surprises for us, but it has an inherent functional flexibility that allows us to make our own sandpaper to smooth out its knots and whorls.
 
 ---
 
