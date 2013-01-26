@@ -29,17 +29,17 @@ function QueueMaker () {
       }
     },
     size: function () {
-      return 1 + queue.tail - queue.head
+      return 1 + queue.tail - queue.head;
     }
   };
-  return queue
+  return queue;
 };
 
-queue = QueueMaker()
-queue.pushTail('Hello')
-queue.pushTail('JavaScript')
-queue.pushTail('Lovers')
-queue.pullHead()
+queue = QueueMaker();
+queue.pushTail('Hello');
+queue.pushTail('JavaScript');
+queue.pushTail('Lovers');
+queue.pullHead();
   //=> 'Hello'
 ```
 
@@ -48,7 +48,7 @@ Let's make a shallow copy of our queue using Underscore's `_.extend`:
 ```javascript
 copyOfQueue = extend({}, queue);
 
-queue !== copyOfQueue
+queue !== copyOfQueue;
   //=> true
 ```
     
@@ -57,21 +57,21 @@ Wait a second. We know that array values are references. So it probably copied a
 ```javascript
 copyOfQueue.array = [];
 for (var i = 0; i < 2; ++i) {
-  copyOfQueue.array[i] = queue.array[i]
+  copyOfQueue.array[i] = queue.array[i];
 }
 ```
 
 Now let's pull the head off the original:
 
 ```javascript
-queue.pullHead()
+queue.pullHead();
   //=> 'JavaScript'
 ```
       
 If we've copied everything properly, we should get the exact same result when we pull the head off the copy:
    
 ```javascript   
-copyOfQueue.pullHead()
+copyOfQueue.pullHead();
   //=> 'Lovers'
 ```
       
@@ -88,7 +88,7 @@ function AmnesiacQueueMaker () {
     head: 0, 
     tail: -1,
     pushTail: function (myself, value) {
-      return myself.array[myself.tail += 1] = value
+      return myself.array[myself.tail += 1] = value;
     },
     pullHead: function (myself) {
       var value;
@@ -97,18 +97,18 @@ function AmnesiacQueueMaker () {
         value = myself.array[myself.head];
         myself.array[myself.head] = void 0;
         myself.head += 1;
-        return value
+        return value;
       }
     },
     size: function (myself) {
-      return 1 + myself.tail - myself.head
+      return 1 + myself.tail - myself.head;
     }
   }
 };
 
 queueWithAmnesia = AmnesiacQueueMaker();
 queueWithAmnesia.pushTail(queueWithAmnesia, 'Hello');
-queueWithAmnesia.pushTail(queueWithAmnesia, 'JavaScript')
+queueWithAmnesia.pushTail(queueWithAmnesia, 'JavaScript');
 ```
     
 The `AmnesiacQueueMaker` makes queues with amnesia: They don't know who they are, so every time we invoke one of their functions, we have to tell them who they are. You can work out the implications for copying queues as a thought experiment: We don't have to worry about environments, because every function operates on the queue you pass in.
@@ -126,7 +126,7 @@ function BanksQueueMaker () {
     head: 0, 
     tail: -1,
     pushTail: function (value) {
-      return this.array[this.tail += 1] = value
+      return this.array[this.tail += 1] = value;
     },
     pullHead: function () {
       var value;
@@ -135,33 +135,33 @@ function BanksQueueMaker () {
         value = this.array[this.head];
         this.array[this.head] = void 0;
         this.head += 1;
-        return value
+        return value;
       }
     },
     size: function () {
-      return 1 + this.tail - this.head
+      return 1 + this.tail - this.head;
     }
   }
 };
 
 banksQueue = BanksQueueMaker();
 banksQueue.pushTail('Hello');
-banksQueue.pushTail('JavaScript')
+banksQueue.pushTail('JavaScript');
 ```
 
 Every time you invoke a function that is a member of an object, JavaScript binds that object to the name `this` in the environment of the function just as if it was an argument. Now we can easily make copies:
 
 ```javascript
-copyOfQueue = _.extend({}, banksQueue)
-copyOfQueue.array = []
+copyOfQueue = _.extend({}, banksQueue);
+copyOfQueue.array = [];
 for (var i = 0; i < 2; ++i) {
-  copyOfQueue.array[i] = banksQueue.array[i]
+  copyOfQueue.array[i] = banksQueue.array[i];
 }
   
-banksQueue.pullHead()
+banksQueue.pullHead();
   //=> 'Hello'
 
-copyOfQueue.pullHead()
+copyOfQueue.pullHead();
   //=> 'Hello'
 ```
 
@@ -173,14 +173,14 @@ JavaScript binds "this" whenever you do this: `object.foo(...)`, or this: `objec
 
 ```javascript
 var fn = object.foo;
-fn(...)
+fn(...);
 ```
 
 Or this:
 
 ```javascript
 var fn = object['foo'];
-fn(...)
+fn(...);
 ```
 
 Watch out!
@@ -196,7 +196,7 @@ var someObject = {
   }
 };
 
-someObject.returnMyThis() === someObject
+someObject.returnMyThis() === someObject;
   //=> true
 ```
       
@@ -219,7 +219,7 @@ var someObject = {
   }
 };
 
-someObject.someFunction() === someObject
+someObject.someFunction() === someObject;
   //=> true
 ```
     
@@ -228,10 +228,10 @@ What is the context of the function `someObject.someFunction`? Don't say `someOb
 ```javascript
 var someFunction = someObject.someFunction;
 
-someFunction === someObject.someFunction
+someFunction === someObject.someFunction;
   //=> true
 
-someFunction() === someObject
+someFunction() === someObject;
   //=> false
 ```
       
@@ -239,31 +239,31 @@ It gets weirder:
 
 ```javascript
 var anotherObject = {
-  someFunction: someObject.someFunction
+  someFunction: someObject.someFunction;
 }
 
-anotherObject.someFunction === someObject.someFunction
+anotherObject.someFunction === someObject.someFunction;
   //=> true
   
-anotherObject.someFunction() === anotherObject
+anotherObject.someFunction() === anotherObject;
   //=> true
   
-anotherObject.someFunction() === someObject
+anotherObject.someFunction() === someObject;
   //=> false
 ```
       
 So it amounts to this: The exact same function can be called in two different ways, and you end up with two different contexts. If you call it using `someObject.someFunction()` syntax, the context is set to the receiver. If you call it using any other expression for resolving the function's value (such as `someFunction()`), you get something else. Let's investigate:
 
 ```javascript
-(someObject.someFunction)() == someObject
+(someObject.someFunction)() == someObject;
   //=> true
   
-someObject['someFunction']() === someObject
+someObject['someFunction']() === someObject;
   //=> true
   
 var name = 'someFunction';
 
-someObject[name]() === someObject
+someObject[name]() === someObject;
   //=> true
 ```
 
@@ -272,7 +272,7 @@ Interesting!
 ```javascript
 var baz;
 
-(baz = someObject.someFunction)() === this
+(baz = someObject.someFunction)() === this;
   //=> true
 ```
       
@@ -281,25 +281,25 @@ How about:
 ```javascript
 var arr = [ someObject.someFunction ];
 
-arr[0]() == arr
+arr[0]() === arr;
   //=> true
 ```
     
 It seems that whether you use `a.b()` or `a['b']()` or `a[n]()` or `(a.b)()`, you get context `a`. 
 
 ```javascript
-var returnThis = function () { return this };
+var returnThis = function () { return this; };
 
 var aThirdObject = {
   someFunction: function () {
-    return returnThis()
+    return returnThis();
   }
 }
 
-returnThis() === this
+returnThis() === this;
   //=> true
 
-aThirdObject.someFunction() === this
+aThirdObject.someFunction() === this;
   //=> true
 ```
       
@@ -312,13 +312,13 @@ There are actually two other ways to set the context of a function. And once aga
 Here's `call` in action:
 
 ```javascript
-returnThis() === aThirdObject
+returnThis() === aThirdObject;
   //=> false
 
-returnThis.call(aThirdObject) === aThirdObject
+returnThis.call(aThirdObject) === aThirdObject;
   //=> true
   
-anotherObject.someFunction.call(someObject) === someObject
+anotherObject.someFunction.call(someObject) === someObject;
   //=> true
 ```
       
@@ -328,10 +328,10 @@ When You call a function with `call`, you set the context by passing it in as th
 var a = [1,2,3],
     b = [4,5,6];
     
-a.concat([2,1])
+a.concat([2,1]);
   //=> [1,2,3,2,1]
   
-a.concat.call(b,[2,1])
+a.concat.call(b,[2,1]);
   //=> [4,5,6,2,1]
 ```
       
@@ -345,20 +345,20 @@ For example:
 
 ```javascript
 var third = function () {
-  return arguments[2]
+  return arguments[2];
 }
 
-third(77, 76, 75, 74, 73)
+third(77, 76, 75, 74, 73);
   //=> 75
 ```
 
 Hold that thought for a moment. JavaScript also provides a fourth way to set the context for a function. `apply` is a method implemented by every function that takes a context as its first argument, and it takes an array or array-like thing of arguments as its second argument. That's a mouthful, let's look at an example:
 
 ```javascript
-third.call(this, 1,2,3,4,5)
+third.call(this, 1,2,3,4,5);
   //=> 3
 
-third.apply(this, [1,2,3,4,5])
+third.apply(this, [1,2,3,4,5]);
   //=> 3
 ```
       
@@ -368,7 +368,7 @@ Now let's put the two together. Here's another travesty:
 var a = [1,2,3],
     accrete = a.concat;
     
-accrete([4,5])
+accrete([4,5]);
   //=> Gobbledygook!
 ```
 
@@ -377,12 +377,12 @@ We get the result of concatenating `[4,5]` onto an array containing the global e
 ```javascript
 var contextualize = function (fn, context) {
   return function () {
-    return fn.apply(context, arguments)
+    return fn.apply(context, arguments);
   }
-}
+};
 
 accrete = contextualize(a.concat, a);
-accrete([4,5])
+accrete([4,5]);
   //=> [ 1, 2, 3, 4, 5 ]
 ```
       
@@ -391,19 +391,19 @@ Our `contextualize` function returns a new function that calls a function with a
 ```javascript
 var aFourthObject = {
       uncontextualized: function () {
-        return this
+        return this;
       }
       contextualized: contextualize(function () {
-        return this
+        return this;
       })
     },
     a = aFourthObject.uncontextualized,
     b = aFourthObject.contextualized;
     
-a() === aFourthObject
+a() === aFourthObject;
   //=> false
 
-b() === aFourthObject
+b() === aFourthObject;
   //=> true
 ```
       
@@ -412,17 +412,17 @@ Wrapping a function so that it has a fixed context is called *binding* a functio
 ```javascript
 function compose (fn1, fn2) {
   return function compose_ (something) {
-    return fn1(fn2(something))
+    return fn1(fn2(something));
   }
 }
 
-function add1 (n) { return n + 1 }
+function add1 (n) { return n + 1 };
 
-function times3 (n) { return n * 3 }
+function times3 (n) { return n * 3 };
 
-var collatz = compose(add1, times3)
+var collatz = compose(add1, times3);
 
-collatz(5)
+collatz(5);
   //=> 16
 ```
 
@@ -435,7 +435,7 @@ function BanksQueueMaker () {
     head: 0, 
     tail: -1,
     pushTail: function (value) {
-      return this.array[this.tail += 1] = value
+      return this.array[this.tail += 1] = value;
     },
     pullHead: function () {
       var value;
@@ -444,11 +444,11 @@ function BanksQueueMaker () {
         value = this.array[this.head];
         this.array[this.head] = void 0;
         this.head += 1;
-        return value
+        return value;
       }
     },
     size: function () {
-      return 1 + this.tail - this.head
+      return 1 + this.tail - this.head;
     }
   }
 };
@@ -458,7 +458,7 @@ var queue = BanksQueueMaker();
 queue.pushTail = compose(queue.size, queue.pushTail);
 queue.pullHead = compose(queue.size, queue.pullHead);
 
-queue.pushTail('Hello')
+queue.pushTail('Hello');
   //=> TypeError: Cannot set property 'NaN' of undefined
 ```
 
@@ -467,7 +467,7 @@ The problem with our `compose` method is that it took functions that expected a 
 ```javascript
 function compose (fn1, fn2) {
   return function compose_ (something) {
-    return fn1.call(this, fn2.call(this, something))
+    return fn1.call(this, fn2.call(this, something));
   }
 }
 
@@ -476,7 +476,7 @@ queue = BanksQueueMaker();
 queue.pushTail = compose(queue.size, queue.pushTail);
 queue.pullHead = compose(queue.size, queue.pullHead);
 
-queue.pushTail('Hello')
+queue.pushTail('Hello');
   //=> 1
 ```
 
