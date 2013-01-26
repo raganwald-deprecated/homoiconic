@@ -4,12 +4,12 @@ The Madness of King JavaScript
 From time to time, people notice something is very wrong with functional-style programming in JavaScript. For example:
 
 ```javascript
-['1', '2', '3'].map(parseFloat)
+['1', '2', '3'].map(parseFloat);
   //=> [1, 2, 3]
   
 // HOWEVER:
 
-['1', '2', '3'].map(parseInt)
+['1', '2', '3'].map(parseInt);
   //=> [ 1, NaN, NaN ]
 ```
 
@@ -38,17 +38,17 @@ There's nothing wrong with rolling your own mapper. I'm a big fan of combinators
 function splat (fn) {
   fn = functionalize(fn);
   return function (list) {
-    return __map.call(list, function (something) { return fn(something) })
-  }
+    return __map.call(list, function (something) { return fn(something) });
+  };
 };
 ```
 
 And we use it like this:
 
 ```javascript
-splat = require('allong.es').splat
+splat = require('allong.es').splat;
 
-splat(parseInt)(['1', '2', '3'])
+splat(parseInt)(['1', '2', '3']);
   //=> [1, 2, 3]
 ```
 
@@ -65,20 +65,20 @@ function unary (fn) {
   fn = functionalize(fn);
 
 	if (fn.length == 1) {
-		return fn
+		return fn;
 	}
 	else return function (something) {
-		return fn.call(this, something)
-	}
+		return fn.call(this, something);
+	};
 } 
 ```
 
 We use it like this:
 
 ```javascript
-unary = require('allong.es').unary
+unary = require('allong.es').unary;
 
-['1', '2', '3'].map(unary(parseInt))
+['1', '2', '3'].map(unary(parseInt));
   //=> [ 1, 2, 3 ]
 ```
 
@@ -87,7 +87,7 @@ unary = require('allong.es').unary
 ```javascript
 unary = require('allong.es').unary
 
-['1', '2', '3'].map(applyRight(parseInt, 10))
+['1', '2', '3'].map(applyRight(parseInt, 10));
   //=> [ 1, 2, 3 ]
 ```
 
