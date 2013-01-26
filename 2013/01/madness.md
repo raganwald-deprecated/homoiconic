@@ -46,7 +46,7 @@ function splat (fn) {
 And we use it like this:
 
 ```javascript
-splat = require('oscin.es').splat
+splat = require('allong.es').splat
 
 splat(parseInt)(['1', '2', '3'])
   //=> [1, 2, 3]
@@ -76,11 +76,22 @@ function unary (fn) {
 We use it like this:
 
 ```javascript
-unary = require('oscin.es').unary
+unary = require('allong.es').unary
 
 ['1', '2', '3'].map(unary(parseInt))
   //=> [ 1, 2, 3 ]
 ```
+
+[allong.es] also includes the `applyLast` function for partial application. It takes any function and lets you bind a value to the last parameter it expects. We can use this with functions like `parseInt` like so:
+
+```javascript
+unary = require('allong.es').unary
+
+['1', '2', '3'].map(applyRight(parseInt, 10))
+  //=> [ 1, 2, 3 ]
+```
+
+This works because we've bound `10` to the radix parameter, so the additional parameters that `map` supplies are ignored.
 
 JavaScript can have some surprises for us, but it has an inherent functional flexibility that allows us to make our own sandpaper to smooth out its knots and whorls.
 
