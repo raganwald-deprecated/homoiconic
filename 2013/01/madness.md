@@ -19,7 +19,7 @@ Shouts of "William-Thomas-Fredrick" ensue. The strange behaviour of `.map(parseI
 2. `.map` is designed such that it passes *three* parameters to the mapper function. The first is the element, the second is the index of the element, and the third is the context (the array, in this case).
 3. `.parseInt` works just fine with one parameter, but [you can also pass an additional parameter to define the radix](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/parseInt).
 
-So what happens here? Well, the `.map` method is passing in a string and a number on each call, and `porseInt` is interpreting that number as a radix. Boom.
+So what happens here? Well, the `.map` method is passing in a string and a number on each call, and `parseInt` is interpreting that number as a radix. Boom.
 
 Okay. So?
 
@@ -85,7 +85,7 @@ unary = require('allong.es').unary;
 [allong.es] also includes the `applyLast` function for partial application. It takes any function and lets you bind a value to the last parameter it expects. We can use this with functions like `parseInt` like so:
 
 ```javascript
-unary = require('allong.es').unary
+applyRight = require('allong.es').applyRight;
 
 ['1', '2', '3'].map(applyRight(parseInt, 10));
   //=> [ 1, 2, 3 ]
