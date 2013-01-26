@@ -28,11 +28,11 @@ Well, reasonable people can take either or both of the following two positions:
 1. You need to know your language and libraries. If you don't, you're at fault.
 2. Libraries should be designed to avoid suprises. `.map` being so "helpful" with the extra parameters is not helpful and contrary to practice elsewhere. This is a design problem, not a programmer problem. (There should be a `.map` and a `.mapWithIndex` in the library, not one function trying to do too many jobs)
 
-There's plenty of opportunity to debate those positions, but if you have chosen to use JavaScript because on the whole it's a good thing for a particular project, here are two different things you can do to avoid surprising yourself or colleagues who haven't read this blog post.
+There's plenty of opportunity to debate those positions, but if you have chosen to use JavaScript because "On the whole it's a good thing for a particular project," here are two different things you can do to avoid surprising yourself or colleagues who haven't read this blog post.
 
-### use a safer mapping construct
+### first, use a safer mapping construct
 
-There's nothing wrong with rolling your own mapper. I'm a big fan of combinators, so I use `.splat` from the [allong.es] library. Splat looks like this:
+There's nothing wrong with rolling your own mapper. I'm a big fan of combinators, so I use `.splat` from the [allong.es] library. Splat looks something like this:
 
 ```javascript
 function splat (fn) {
@@ -52,16 +52,17 @@ splat(parseInt)(['1', '2', '3'])
   //=> [1, 2, 3]
 ```
 
-Splat look a little different than map because instead of operating directly on an array, it turns a function expecting one argument into a "splatter" expecting an array. And of course, there's a `splatWithIndex` if that's what you need, although your shoudl probably just use `.map` for that.
+Splat looks a little different than map because instead of operating directly on an array, it turns a function expecting one argument into a "splatter" expecting an array. And of course, there's a `splatWithIndex` if that's what you need, although your should probably just use `.map` for that.
 
-### use a safer function
+> WHy the crazy idea of using a splatter instead of a mapping method or function? This is a bit of a digression, but when you have a  function that takes a single argument, you can combine it with almost any other function that takes one argument, like `fluent` or `maybe` from the [allong.es] library, or perhaps `debounce` from the Underscore library.
+
+### second, use a safer function
 
 The [allong.es] library includes a very handy "variadic" function for turning a function that takes one argument into a function that takes more than one argument. It also includes `unary` for turning a function that takes more than one argument into a function that takes one argument, it looks like this:
 
 ```javascript
 function unary (fn) {
   fn = functionalize(fn);
-  var fnLength = fn.length;
 
 	if (fn.length == 1) {
 		return fn
