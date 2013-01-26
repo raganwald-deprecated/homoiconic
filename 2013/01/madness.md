@@ -19,7 +19,7 @@ Shouts of "William-Thomas-Fredrick" ensue. The strange behaviour of `.map(parseI
 2. `.map` is designed such that it passes *three* parameters to the mapper function. The first is the element, the second is the index of the element, and the third is the context (the array, in this case).
 3. `.parseInt` works just fine with one parameter, but [you can also pass an additional parameter to define the radix](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/parseInt).
 
-So what happens here? Well, the `.map` method is passing in a string and a number on each call, and `porseInt` is interpreting that number as a radix. Boom.
+So what happens here? Well, the `.map` method is passing in a string and a number on each call, and `parseInt` is interpreting that number as a radix. Boom.
 
 Okay. So?
 
@@ -52,7 +52,7 @@ splat(parseInt)(['1', '2', '3'])
   //=> [1, 2, 3]
 ```
 
-Splat look a little different than map because instead of operating directly on an array, it turns a function expecting one argument into a "splatter" expecting an array. And of course, there's a `splatWithIndex` if that's what you need, although your shoudl probably just use `.map` for that.
+Splat look a little different than map because instead of operating directly on an array, it turns a function expecting one argument into a "splatter" expecting an array. And of course, there's a `splatWithIndex` if that's what you need, although your should probably just use `.map` for that.
 
 ### use a safer function
 
