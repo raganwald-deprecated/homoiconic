@@ -39,7 +39,7 @@ queue = QueueMaker()
 queue.pushTail('Hello')
 queue.pushTail('JavaScript')
 queue.pushTail('Lovers')
-queue.popHead()
+queue.pullHead()
   //=> 'Hello'
 ```
 
