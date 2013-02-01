@@ -7,7 +7,7 @@
 [ja]: http://leanpub.com/javascript-allonge
 [I]: https://github.com/raganwald/homoiconic/blob/master/2013/01/this.md#more-than-you-ever-wanted-to-know-about-this-in-javascript-part-i "More than you ever wanted to know about "this" in JavaScript, Part I"
 [proggit_i]: http://www.reddit.com/r/javascript/comments/179j51/more_than_you_ever_wanted_to_know_about_this_in/
-
+[allong.es]: http://allong.es
 [u]:http://underscorejs.org
 
 In Part I, we compared and contrasted two versions of function composition. The first version is more-or-less a direct port of `compose` in functional languages that don't have any notion of a context:
