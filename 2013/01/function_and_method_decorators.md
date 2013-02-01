@@ -47,7 +47,7 @@ The second version of compose is *context-agnostic*. It doesn't interfere with t
 
 ### the function decorator pattern
 
-A "function decorator" is a function that consumes a function and returns a decorated version of the function it consumes. for example, the [Underscore][u] and [allong.es] libraries both include the "once" function decorator. Here's a function you might want to call:
+A "function decorator" is a function that consumes a function and returns a decorated version of the function it consumes. For example, the [Underscore][u] and [allong.es] libraries both include the "once" function decorator. Here's a function you might want to call:
 
 ```javascript
 function preloadLotsOfStuff () {
@@ -172,8 +172,8 @@ The key is to always write function decorators so that they are context agnostic
 
 Although we're working with one-liners to keep things compact, here's what we get:
 
-1. We *untangled* the concerns to counting the number of attempts (the core function logic) and logging the result;
-2. We created a reusable way to log the result of functions. We can use that to DRY up various logging calls *scattered* across our code.
+1. We *untangle* concerns central to a method (like whether a user is an administrator) from cross-cutting concerns (like what we want to log).
+2. We extract the cross-cutting functionality into a function. We can use that to DRY up functions and methods *scattered* across our code.
 
 (I've emphasized the words "tangled" and "scattered" because a big part of good coding comes down to reducing tangling and scattering.)
 
