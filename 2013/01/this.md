@@ -1,7 +1,7 @@
 More than you ever wanted to know about "this" in JavaScript, Part I
 ====================================================================
 
-*This is the first in a series of excerpts from the book [JavaScript Allongé][ja] on the common theme of "this," also known as "function context." The posts are intended to stand alone: There's no need to read the entire book to benefit from reading this material.*
+*This is the first in a series of excerpts from the book [JavaScript Allongé][ja] on the common theme of "this," also known as "function context." [Part II is here](https://github.com/raganwald/homoiconic/blob/master/2013/01/function_and_method_decorators.md#function-and-method-decorators). The posts are intended to stand alone: There's no need to read the entire book to benefit from reading this material.*
 
 [ja]: http://leanpub.com/javascript-allonge
 
@@ -322,7 +322,7 @@ anotherObject.someFunction.call(someObject) === someObject;
   //=> true
 ```
       
-When You call a function with `call`, you set the context by passing it in as the first parameter. Other arguments are passed to the function in the normal manner. Much hilarity can result from `call` shenanigans like this:
+When you invoke a function with `call`, you set the context by passing it in as the first parameter. Other arguments are passed to the function in the normal manner. Much hilarity can result from `call` shenanigans like this:
 
 ```javascript
 var a = [1,2,3],

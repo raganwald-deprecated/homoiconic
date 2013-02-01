@@ -10,7 +10,7 @@
 [allong.es]: http://allong.es
 [u]:http://underscorejs.org
 
-In Part I, we compared and contrasted two versions of function composition. The first version is more-or-less a direct port of `compose` in functional languages that don't have any notion of a context:
+In [Part I][I], we compared and contrasted two versions of function composition. The first version is more-or-less a direct port of `compose` in functional languages that don't have any notion of a context:
 
 ```javascript
 function compose (fn1, fn2) {
@@ -180,6 +180,8 @@ Although we're working with one-liners to keep things compact, here's what we ge
 Writing context-agnostic function decorators makes them work equally well with ordinary functions and with methods. As a rule-of-thumb, if you don't have a good reason not to be context-agnostic, you should write all higher-order functions in a context-agnostic fashion.
 
 Thanks for being patient enough to read the whole thing!
+
+([discuss](http://www.reddit.com/r/javascript/comments/17pqjh/function_and_method_decorators/))
 
 ---
 
