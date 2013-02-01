@@ -10,6 +10,8 @@
 [allong.es]: http://allong.es
 [u]:http://underscorejs.org
 
+---
+
 In [Part I][I], we compared and contrasted two versions of function composition. The first version is more-or-less a direct port of `compose` in functional languages that don't have any notion of a context:
 
 ```javascript
