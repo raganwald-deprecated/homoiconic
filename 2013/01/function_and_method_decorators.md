@@ -1,6 +1,6 @@
 # Function and Method Decorators
 
-## (a/k/a More than you ever wanted to know about "this" in JavaScript, Part II)
+(a/k/a **"More than you ever wanted to know about "this" in JavaScript, Part II"**)
 
 *This is the second of two excerpts from the book [JavaScript Allongé][ja] on the common theme of "this," also known as "function context." The posts are intended to stand alone: There's no need to read the entire book to benefit from reading this material. [Part I is here][I], along with discussion [here][proggit_i].*
 
