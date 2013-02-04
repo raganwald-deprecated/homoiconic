@@ -29,7 +29,7 @@ That's different from a true classical language, where the class is a special ki
 
 ### javascript has prototypes
 
-What about prototypes? Well, again JavaScript differs from a "classical" system like Ruby. In Ruby, classes are objects, but they're special objects. For example, here are the methods associated with the Ruby class `String`:
+What about prototypes? Well, again JavaScript differs from a "classical" system like Ruby. In Ruby, classes are objects, but they're special objects. For example, here are some of the methods associated with the Ruby class `String`:
 
     String.methods
       #=> [:try_convert, :allocate, :new, :superclass, :freeze, :===, :==,
@@ -45,7 +45,7 @@ What about prototypes? Well, again JavaScript differs from a "classical" system 
            # ...
            :!=, :instance_eval, :instance_exec, :__send__, :__id__] 
 
-And here are the methods associated with an instance of a string:
+And here are some of the methods associated with an instance of a string:
 
     String.new.methods
       #=> [:<=>, :==, :===, :eql?, :hash, :casecmp, :+, :*, :%, :[],
