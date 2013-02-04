@@ -79,7 +79,9 @@ There is special sntax for defining a class, and special syntax for defining the
 
 ### javascript has constructors
 
-JavaScript objects don't have a class. There's a constructor and there's a prototype. The constructor of an object is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
+JavaScript objects don't have a formal class, and thus there's no special syntax for defining how to create an instance or define its behaviour.
+
+JavaScript instances are created witha *constructor*. The constructor of an instance is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
 
 ```javascript
 function square (n) { return n * n; }
@@ -98,11 +100,7 @@ As you can see, the `square` function will act as a constructor if you call it w
 
 That's different from a true classical language, where the class is a special kind of object that creates new instances.
 
-### javascript has prototypes
-
-What about prototypes? Well, again JavaScript differs from a "classical" system like Ruby. 
-
-In JavaScript, prototypes are also objects, but unlike a classical system, there are no special methods or properties associated with a prototype. Any object can be a prototype, even an empty object. In fact, that's exactly what is associated with a constructor by default:
+How does JavaScript define the bahaviour of instances? JavaScript doesn't have a special syntax or special kind of object for that, it has "prototypes." Prototypes are objects, but unlike a classical system, there are no special methods or properties associated with a prototype. Any object can be a prototype, even an empty object. In fact, that's exactly what is associated with a constructor by default:
 
 ```javascript
 function Nullo () {};
@@ -146,7 +144,7 @@ The first way a prototype in JavaScript is different from a class in Ruby is tha
 
 The second way is that *any* object can be a prototype. It can have functions (which act like methods), it can have other values (like numbers, booleans, objects, or strings). It can be an object you're using for something else: An account, a view, a DOM object if you're in the browser, anything.
 
-"Classes" are objects in most "classical" languages, but they are a special kind of object. IN JavaScript, prototypes are not a special kind of object, they're just objects.
+"Classes" are objects in most "classical" languages, but they are a special kind of object. In JavaScript, prototypes are not a special kind of object, they're just objects.
 
 ### summary of the difference between classes and prototypes
 
