@@ -1,6 +1,6 @@
 # Classes vs. Prototypes in JavaScript
 
-*From time to time people mention that they're heard that JavaScript doesn't have classes, that it uses "prototypical inheritance," and what is the difference between class-based inheritance and prototype-based inheritance?*
+*From time to time people mention that they've heard that JavaScript doesn't have classes, that it uses "prototypical inheritance," and what is the difference between class-based inheritance and prototype-based inheritance?*
 
 ---
 
@@ -81,7 +81,7 @@ There is special syntax for defining a class, and special syntax for defining th
 
 JavaScript objects don't have a formal class, and thus there's no special syntax for defining how to create an instance or define its behaviour.
 
-JavaScript instances are created witha *constructor*. The constructor of an instance is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
+JavaScript instances are created with a *constructor*. The constructor of an instance is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
 
 ```javascript
 function square (n) { return n * n; }
