@@ -10,7 +10,7 @@ That sounds tautological, until we look at JavaScript.
 
 ### javascript has constructors
 
-JavaScript objects don't have a class. There's a "type" you can query with `typeof` and there's a `constructor`. The constructor of an object is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
+JavaScript objects don't have a class. There's a constructor and there's a prototype. The constructor of an object is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
 
     function square (n) { return n * n; }
       //=> undefined
