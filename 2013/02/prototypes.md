@@ -117,9 +117,15 @@ The second way is that *any* object can be a prototype. It can have functions (w
 
 ### summary of the difference between classes and prototypes
 
-A class in a formal classist language can be an object, but if it is it's a special kind of object with special properties and methods. For example, if you're allowed to dynamically define a new method, you do so by calling a method on the class.
+A class in a formal classist language can be an object, but it's a special kind of object with special properties and methods. It is responsible for creating new instances and for defining the behaviour of instances.
 
-A constructor in JavaScript is any function. A prototype in JavaScript is any object, any object whatsoever. It can be something you're using elsewhere or a new object just for working with this constructor. You can change it by assigning a new object to the constructor's `prototype` property. You add and remove properties or methods by assigning them to the object just like any other object--because it is any other object.
+Instance behaviour in a classist language is defined with special syntax. If changes are allowed dynamically, they are done with special syntax and/or special methods invoked on the class.
+
+JavaScript splits the responsibility for instances into a constructor and a prototype. A constructor in JavaScript can be any function. Constructors are responible for creating new instances.
+
+A prototype in JavaScript can be any object. Prototypes are responsible for defining the behaviour of instances. prototypes don't have special methods or properties.
+
+Instance behaviour in JavaScript is defined by modifying the prototype directly, e.g. by adding functions to it as properties. There is no special syntax for defining a class or modifying a class.
 
 ### so why do some people say that javascript has "classes" for some definition of "class?"
 
