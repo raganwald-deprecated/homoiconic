@@ -4,11 +4,13 @@
 
 ---
 
-Although each "object-oriented" programming language has its own particular set of semantics, the majority in popular use have "classes." A class is an entity responsible for creating objects and defining the behaviour of objects. Classes may be objects in their own right, but if they are, they're different from other types of objects. For example, the `String` class in Ruby is not itself a string, it's an object whose class is `Class`.
+Although each "object-oriented" programming language has its own particular set of semantics, the majority in popular use have "classes." A class is an entity responsible for creating objects and defining the behaviour of objects. Classes may be objects in their own right, but if they are, they're different from other types of objects. For example, the `String` class in Ruby is not itself a string, it's an object whose class is `Class`. All objects in a "classical" system have a class, and their class is a "class."
 
-All objects in a "classical" system have a class, and their class is a class. That sounds tautological, until we look at JavaScript. JavaScript objects don't have a class. There's a "type" you can query with `typeof` and there's a `constructor`.
+That sounds tautological, until we look at JavaScript.
 
-The constructor of an object, as we've learned, is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
+### javascript has constructors
+
+JavaScript objects don't have a class. There's a "type" you can query with `typeof` and there's a `constructor`. The constructor of an object is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
 
     function square (n) { return n * n; }
       //=> undefined
@@ -21,7 +23,11 @@ The constructor of an object, as we've learned, is a function that was invoked w
     new square(2).constructor
       //=> [Function: square]
 
-As you can see, the `square` function will act as a constructor if you call it with `new`. There is no special kind of thing that constructs new objects, every function is (potentially) a constructor.
+As you can see, the `square` function will act as a constructor if you call it with `new`. *There is no special kind of thing that constructs new objects, every function is (potentially) a constructor*.
+
+That's different from a true classical language, where the class is a special kind of object that creates new instances.
+
+### javascript has prototypes
 
 What about prototypes? Well, again JavaScript differs from a "classical" system like Ruby. In Ruby, classes are objects, but they're special objects. For example, here are the methods associated with the Ruby class `String`:
 
@@ -55,26 +61,49 @@ And here are the methods associated with an instance of a string:
            # ...
            :instance_eval, :instance_exec, :__send__, :__id__]
 
+As you can see, a "class" in Ruby is very different from an "instance of that class." And the methods of a class are very different from the methods of an instance of that class.
+
 In JavaScript, prototypes are also objects, but unlike a classical system, there are no special methods or properties associated with a prototype. Any object can be a prototype, even an empty object. In fact, that's exactly what is associated with a constructor by default:
 
     function Nullo () {};
     Nullo.prototype
       //=> {}
       
-There's absolutely nothing special about a prototype object. No special class methods, no special constructor of its own, nothing. Here's some proof that *anything* can be a prototype:
+There's absolutely nothing special about a prototype object. No special class methods, no special constructor of its own, nothing. Let's look at a simple Queue in JavaScript:
 
-    function Weird (name) {
-      if (name) {
-        this.name = name;
+    var Queue = function () {
+      this.array = [];
+      this.head = 0;
+      this.tail = -1;
+    };
+      
+    Queue.prototype.pushTail = function (value) {
+      return this.array[this.tail += 1] = value;
+    };
+    Queue.prototype.pullHead = function () {
+      var value;
+      
+      if (!this.isEmpty()) {
+        value = this.array[this.head];
+        this.array[this.head] = void 0;
+        this.head += 1;
+        return value;
       }
     };
-    Weird.prototype = new Weird('Arthur');
-    var empty = new Weird();
-      //=> {}
-    empty.name;
-      //=> 'Arthur'
+    Queue.prototype.isEmpty = function () {
+      return this.tail < this.head;
+    };
+    
+    Queue.prototype
+      //=>  { pushTail: [Function],
+              pullHead: [Function],
+              isEmpty: [Function] }
 
-Yes, we just made a constructor and used it to make its own prototype. You can't do that in Ruby.
+The first way a prototype in JavaScript is different from a class in Ruby is that the prototype is an ordinary object with exactly the same properties that we expect to find in an instance: Methods `pushTail`, `pullHead`, and `isEmpty`.
+
+The second way is that *any* object can be a prototype. It can have functions (which act like methods), it can have other values (like numbers, booleans, objects, or strings). It can be an object you're using for something else: An account, a view, a DOM object if you're in the browser, anything.
+
+"Classes" are objects in most "classical" languages, but they are a special kind of object. IN JavaScript, prototypes are not a special kind of object, they're just objects.
 
 ### summary of the difference between classes and prototypes
 
