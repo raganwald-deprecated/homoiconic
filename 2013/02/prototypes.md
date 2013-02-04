@@ -1,4 +1,4 @@
-# Classes vs Prototypes in JavaScript
+# Classes vs. Prototypes in JavaScript
 
 *From time to time people mention that they're heard that JavaScript doesn't have classes, that it uses "prototypical inheritance," and what is the difference between class-based inheritance and prototype-based inheritance?*
 
@@ -139,6 +139,8 @@ My recent work:
 * [jQuery Combinators](http://github.com/raganwald/jquery-combinators), what else? A jQuery plugin for writing your own fluent, jQuery-like code. 
 
 [ja]: http://leanpub.com/javascript-allonge "JavaScript Allongé"
+
+(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
 
 ---
 
