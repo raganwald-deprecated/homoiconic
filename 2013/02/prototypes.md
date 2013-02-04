@@ -6,32 +6,11 @@
 
 Although each "object-oriented" programming language has its own particular set of semantics, the majority in popular use have "classes." A class is an entity responsible for creating objects and defining the behaviour of objects. Classes may be objects in their own right, but if they are, they're different from other types of objects. For example, the `String` class in Ruby is not itself a string, it's an object whose class is `Class`. All objects in a "classical" system have a class, and their class is a "class."
 
-That sounds tautological, until we look at JavaScript.
+That sounds tautological, until we look at JavaScript. But let's start with a quick review of a popular classist language, Ruby.
 
-### javascript has constructors
+### ruby
 
-JavaScript objects don't have a class. There's a constructor and there's a prototype. The constructor of an object is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
-
-```javascript
-function square (n) { return n * n; }
-  //=> undefined
-square(2)
-  //=> 4
-square(2).constructor
-  //=> [Function: Number]
-new square(2)
-  //=> {}
-new square(2).constructor
-  //=> [Function: square]
-```
-
-As you can see, the `square` function will act as a constructor if you call it with `new`. *There is no special kind of thing that constructs new objects, every function is (potentially) a constructor*.
-
-That's different from a true classical language, where the class is a special kind of object that creates new instances.
-
-### javascript has prototypes
-
-What about prototypes? Well, again JavaScript differs from a "classical" system like Ruby. In Ruby, classes are objects, but they're special objects. For example, here are some of the methods associated with the Ruby class `String`:
+In Ruby, classes are objects, but they're special objects. For example, here are some of the methods associated with the Ruby class `String`:
 
 ```ruby
 String.methods
@@ -68,6 +47,60 @@ String.new.methods
 ```
 
 As you can see, a "class" in Ruby is very different from an "instance of that class." And the methods of a class are very different from the methods of an instance of that class.
+
+Here's how you define a Queue in Ruby:
+
+```ruby
+class Queue
+  def initialize
+    @array, @head, @tail = [], 0, -1
+  end
+  
+  def pushTail value
+    @array[@tail += 1] = value
+  end
+  
+  def pullHead
+    if !@isEmpty
+      @array[@head]).tap { |value|
+        @array[@head] = null
+        @head += 1
+      }
+    end
+  end
+  
+  def isEmpty
+    !!(@tail < @head)
+  end
+end
+```
+
+There is special sntax for defining a class, and special syntax for defining the behaviour of instances. There are different ways of defining the way new instances are created in classist languages. Ruby uses a "magic method" called `initialize`. Now let's look at JavaScript.
+
+### javascript has constructors
+
+JavaScript objects don't have a class. There's a constructor and there's a prototype. The constructor of an object is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
+
+```javascript
+function square (n) { return n * n; }
+  //=> undefined
+square(2)
+  //=> 4
+square(2).constructor
+  //=> [Function: Number]
+new square(2)
+  //=> {}
+new square(2).constructor
+  //=> [Function: square]
+```
+
+As you can see, the `square` function will act as a constructor if you call it with `new`. *There is no special kind of thing that constructs new objects, every function is (potentially) a constructor*.
+
+That's different from a true classical language, where the class is a special kind of object that creates new instances.
+
+### javascript has prototypes
+
+What about prototypes? Well, again JavaScript differs from a "classical" system like Ruby. 
 
 In JavaScript, prototypes are also objects, but unlike a classical system, there are no special methods or properties associated with a prototype. Any object can be a prototype, even an empty object. In fact, that's exactly what is associated with a constructor by default:
 
