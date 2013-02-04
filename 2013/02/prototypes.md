@@ -123,7 +123,15 @@ A constructor in JavaScript is any function. A prototype in JavaScript is any ob
 
 ### so why do some people say that javascript has "classes" for some definition of "class?"
 
-Because if you are disciplined and assign only functions to a prototype object, and if those functions use `this` to work with an instance, and if you set up a prototype chain when you want inheritance, you have something that works just like a simple class-based system.
+Because, **if**:
+
+1. You use a function as a constructor, and;
+2. You use a prototype for defining instance methods, and;
+3. The prototype is used strictly for defining the instance methods and nothing else;
+
+**Then**:
+
+You will have something that works just like a simple class-based system, with the constructor function and its prototype acting as the "class."
 
 But if you want more, you have a flexible system that does allow you to do more. It's up to you.
 
