@@ -135,6 +135,8 @@ You will have something that works just like a simple class-based system, with t
 
 But if you want more, you have a flexible system that does allow you to do more. It's up to you.
 
+([discuss](http://www.reddit.com/r/javascript/comments/17v813/classes_vs_prototypes_in_js/))
+
 ---
 
 My recent work:
