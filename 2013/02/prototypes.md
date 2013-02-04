@@ -77,7 +77,7 @@ end
 
 There is special sntax for defining a class, and special syntax for defining the behaviour of instances. There are different ways of defining the way new instances are created in classist languages. Ruby uses a "magic method" called `initialize`. Now let's look at JavaScript.
 
-### javascript has constructors
+### javascript has constructors and prototypes
 
 JavaScript objects don't have a formal class, and thus there's no special syntax for defining how to create an instance or define its behaviour.
 
