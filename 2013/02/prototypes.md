@@ -1,6 +1,6 @@
 # Classes vs. Prototypes in JavaScript
 
-*From time to time people mention that they're heard that JavaScript doesn't have classes, that it uses "prototypical inheritance," and what is the difference between class-based inheritance and prototype-based inheritance?*
+*From time to time people mention that they've heard that JavaScript doesn't have classes, that it uses "prototypical inheritance," and what is the difference between class-based inheritance and prototype-based inheritance?*
 
 ---
 
@@ -75,13 +75,13 @@ class Queue
 end
 ```
 
-There is special sntax for defining a class, and special syntax for defining the behaviour of instances. There are different ways of defining the way new instances are created in classist languages. Ruby uses a "magic method" called `initialize`. Now let's look at JavaScript.
+There is special syntax for defining a class, and special syntax for defining the behaviour of instances. There are different ways of defining the way new instances are created in classist languages. Ruby uses a "magic method" called `initialize`. Now let's look at JavaScript.
 
 ### javascript has constructors and prototypes
 
 JavaScript objects don't have a formal class, and thus there's no special syntax for defining how to create an instance or define its behaviour.
 
-JavaScript instances are created witha *constructor*. The constructor of an instance is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
+JavaScript instances are created with a *constructor*. The constructor of an instance is a function that was invoked with the `new` operator. In JavaScript, any function can be a constructor, even if it doesn't look like one:
 
 ```javascript
 function square (n) { return n * n; }
@@ -100,7 +100,7 @@ As you can see, the `square` function will act as a constructor if you call it w
 
 That's different from a true classical language, where the class is a special kind of object that creates new instances.
 
-How does JavaScript define the bahaviour of instances? JavaScript doesn't have a special syntax or special kind of object for that, it has "prototypes." Prototypes are objects, but unlike a classical system, there are no special methods or properties associated with a prototype. Any object can be a prototype, even an empty object. In fact, that's exactly what is associated with a constructor by default:
+How does JavaScript define the behaviour of instances? JavaScript doesn't have a special syntax or special kind of object for that, it has "prototypes." Prototypes are objects, but unlike a classical system, there are no special methods or properties associated with a prototype. Any object can be a prototype, even an empty object. In fact, that's exactly what is associated with a constructor by default:
 
 ```javascript
 function Nullo () {};
