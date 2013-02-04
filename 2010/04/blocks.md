@@ -119,9 +119,9 @@ It's perfectly valid to avoid the built-in blocks in a program, or to choose a l
   
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
-(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
-
 ---
+
+(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 

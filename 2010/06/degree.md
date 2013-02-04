@@ -19,9 +19,9 @@ So I'm genuinely puzzled... Why is it a bad idea to call my jQuery plugin "jQuer
   
 Discuss this post on [Hacker News][hn], NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
-(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
-
 ---
+
+(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 

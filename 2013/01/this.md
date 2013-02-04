@@ -7,7 +7,7 @@ More than you ever wanted to know about "this" in JavaScript, Part I
 
 ### what is "this" and why do we need it?
 
-In JavaScript, it's easy to make things that look and behave like objects without using function prototypes or "this." Here's a Queue:
+In JavaScript, it's easy to make things that look and behave like object without using function prototypes or "this." Here's a Queue:
 
 ```javascript
 function QueueMaker () {
@@ -46,7 +46,7 @@ queue.pullHead();
 Let's make a shallow copy of our queue using Underscore's `_.extend`:
 
 ```javascript
-copyOfQueue = _.extend({}, queue);
+copyOfQueue = extend({}, queue);
 
 queue !== copyOfQueue;
   //=> true
@@ -392,15 +392,13 @@ Our `contextualize` function returns a new function that calls a function with a
 var aFourthObject = {
       uncontextualized: function () {
         return this;
-      },
-      contextualized: function(context) {
-        return contextualize(function (context) {
-            return this;
-        }, context)
       }
+      contextualized: contextualize(function () {
+        return this;
+      })
     },
     a = aFourthObject.uncontextualized,
-    b = aFourthObject.contextualized(aFourthObject);
+    b = aFourthObject.contextualized;
     
 a() === aFourthObject;
   //=> false
@@ -510,8 +508,8 @@ My recent work:
 
 [ja]: http://leanpub.com/javascript-allonge "JavaScript Allongé"
 
-(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
-
 ---
+
+(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)

@@ -43,8 +43,8 @@ My recent work:
 * [Method Combinators](https://github.com/raganwald/method-combinators), a CoffeeScript/JavaScript library for writing method decorators, simply and easily.
 * [jQuery Combinators](http://github.com/raganwald/jquery-combinators), what else? A jQuery plugin for writing your own fluent, jQuery-like code.  
 
-(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
-
 ---
+
+(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)

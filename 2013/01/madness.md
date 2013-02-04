@@ -108,9 +108,9 @@ My recent work:
 
 [ja]: http://leanpub.com/javascript-allonge "JavaScript Allongé"
 
-(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
-
 ---
+
+(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
