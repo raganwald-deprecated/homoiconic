@@ -86,6 +86,8 @@ The [README][igreadme] explains how all these gestures are supported with essent
   
 NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/combinators), all of my writing about combinators, collected into one conevnient and inexpensive e-book!
 
+(Spot a bug or a spelling mistake? This is a Github repo, fork it and send me a pull request!)
+
 ---
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
