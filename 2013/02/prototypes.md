@@ -170,9 +170,11 @@ Because, **if**:
 
 You will have something that works just like a simple class-based system, with the constructor function and its prototype acting as the "class."
 
-But if you want more, you have a flexible system that does allow you to do more. It's up to you.
+But if you want more, you have a flexible system that does allow you to do [much much more][fd]. It's up to you.
 
 ([discuss](http://www.reddit.com/r/javascript/comments/17v813/classes_vs_prototypes_in_js/))
+
+[fd]: https://github.com/raganwald/homoiconic/blob/master/2013/01/function_and_method_decorators.md#function-and-method-decorators "Function and Method Decorators"
 
 ---
 
