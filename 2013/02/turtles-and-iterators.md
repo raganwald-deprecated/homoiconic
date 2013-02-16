@@ -1,7 +1,7 @@
 Tortoises, Teleporting Turtles, and Iterators
 =============================================
 
-(The code examples are in CoffeeScript. [Click here](./turtles-and-iterators.md) for code examples in JavaScript.)
+(The code examples are in CoffeeScript. [Click here](./turtles-and-iterators.js.md) for code examples in JavaScript.)
 
 A good long while ago (The First Age of Internet Startups), someone asked me one of those pet algorithm questions. It was, "Write an algorithm to detect a loop in a linked list, in constant space."
 
