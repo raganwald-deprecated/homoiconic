@@ -224,7 +224,7 @@ sum ArrayIterator [1..5]
 ```
 
 ```javascript
-var ArrayIterator, LinkedList, ListIterator, list, sum;
+var LinkedList, list;
 
 LinkedList = (function() {
 
@@ -238,15 +238,15 @@ LinkedList = (function() {
   };
 
   LinkedList.prototype.tailNode = function() {
-    var _ref;
-    return ((_ref = this.next) != null ? _ref.tailNode() : void 0) || this;
+    var nextThis;
+    return ((nextThis = this.next) != null ? nextThis.tailNode() : void 0) || this;
   };
 
   return LinkedList;
 
 })();
 
-ListIterator = function(list) {
+function ListIterator (list) {
   return function() {
     var node;
     node = list != null ? list.content : void 0;
@@ -255,7 +255,7 @@ ListIterator = function(list) {
   };
 };
 
-sum = function(iter) {
+function sum (iter) {
   var number, total;
   total = 0;
   number = iter();
@@ -271,7 +271,7 @@ list = new LinkedList(5).appendTo(4).appendTo(3).appendTo(2).appendTo(1);
 sum(ListIterator(list));
   //=> 15
 
-ArrayIterator = function(array) {
+function ArrayIterator (array) {
   var index;
   index = 0;
   return function() {
@@ -312,6 +312,40 @@ sum LeafIterator [1, [2, [3, 4]], [5]]
   #=> 15
 ```
 
+```javascript
+function LeafIterator (array) {
+  var index, myself, state;
+  index = 0;
+  state = [];
+  myself = function() {
+    var element, tempState;
+    element = array[index++];
+    if (element instanceof Array) {
+      state.push({
+        array: array,
+        index: index
+      });
+      array = element;
+      index = 0;
+      return myself();
+    } else if (element === void 0) {
+      if (state.length > 0) {
+        tempState = state.pop(), array = tempState.array, index = tempState.index;
+        return myself();
+      } else {
+        return void 0;
+      }
+    } else {
+      return element;
+    }
+  };
+  return myself;
+};
+
+sum(LeafIterator([1, [2, [3, 4]], [5]]));
+  //=> 15
+```
+
 We've successfully separated the issue of what one does with data from how one traverses over the elements.
 
 **folding**
@@ -330,6 +364,29 @@ fold = (iter, binaryFn, seed) ->
 foldingSum = (iter) -> fold iter, ((x, y) -> x + y), 0
 
 foldingSum LeafIterator [1, [2, [3, 4]], [5]]
+  #=> 15
+```
+
+```javascript
+function fold (iter, binaryFn, seed) {
+  var acc, element;
+  acc = seed;
+  element = iter();
+  while (element != null) {
+    acc = binaryFn.call(element, acc, element);
+    element = iter();
+  }
+  return acc;
+};
+
+function foldingSum (iter) {
+  return fold(iter, (function(x, y) {
+    return x + y;
+  }), 0);
+};
+
+foldingSum(LeafIterator([1, [2, [3, 4]], [5]]));
+  #=> 15
 ```
 
 Fold turns an iterator over a finite data structure into an accumulator. And once again, it works with any data structure. You don't need a different kind of fold for each kind of data structure you use.
@@ -343,7 +400,22 @@ NumberIterator = (base = 0) ->
   number = base
   ->
     number++
-    
+```
+
+```javascript
+function NumberIterator (base) {
+  var number;
+  if (base == null) {
+    base = 0;
+  }
+  number = base;
+  return function() {
+    return number++;
+  };
+};
+```
+
+```
 fromOne = NumberIterator(1)
 
 fromOne()
@@ -368,7 +440,23 @@ FibonacciIterator = ->
     value = current
     [previous, current] = [current, current + previous]
     value
-    
+```
+
+```javascript
+function FibonacciIterator () {
+  var current, previous;
+  previous = 0;
+  current = 1;
+  return function() {
+    var value, tempValues;
+    value = current;
+    tempValues = [current, current + previous], previous = tempValues[0], current = tempValues[1];
+    return value;
+  };
+};
+```
+
+```
 fib = FibonacciIterator()
 
 fib()
@@ -395,7 +483,23 @@ take = (iter, numberToTake) ->
       iter()
     else
       undefined
+```
 
+```javascript
+take = function(iter, numberToTake) {
+  var count;
+  count = 0;
+  return function() {
+    if (++count <= numberToTake) {
+      return iter();
+    } else {
+      return void 0;
+    }
+  };
+};
+```
+
+```
 oneToFive = take NumberIterator(1), 5
 
 oneToFive()
@@ -416,6 +520,13 @@ With `take`, we can do things like return the squares of the first five numbers:
 
 ```coffeescript
 square take NumberIterator(1), 5
+```
+
+```javascript
+square(take(NumberIterator(1), 5))
+```
+
+```
   #=> [ 1,
   #     4,
   #     9,
@@ -427,13 +538,27 @@ How about the squares of the odd numbers from the first five numbers?
 
 ```coffeescript
 square odds take NumberIterator(1), 5
+```
+
+```javascript
+square(odds(take(NumberIterator(1), 5)))
+```
+
+```
   #=> TypeError: object is not a function
 ```
 
 Bzzzt! Our `odds` function returns an array, not an iterator.
 
 ```coffeescript
-square  take odds(NumberIterator(1)), 5
+square take odds(NumberIterator(1)), 5
+```
+
+```javascript
+square(take(odds(NumberIterator(1)), 5))
+```
+
+```
   #=> RangeError: Maximum call stack size exceeded
 ```
 
