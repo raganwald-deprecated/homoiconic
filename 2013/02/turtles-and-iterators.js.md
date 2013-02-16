@@ -1,6 +1,8 @@
 Tortoises, Teleporting Turtles, and Iterators
 =============================================
 
+(The ode examples are in JavaScript. [Click Here](http:./turtles-and-iterators.md) to see teh code exampels in CoffeeScript)
+
 A good long while ago (The First Age of Internet Startups), someone asked me one of those pet algorithm questions. It was, "Write an algorithm to detect a loop in a linked list, in constant space."
 
 I'm not particularly surprised that I couldn't think up an answer in a few minutes at the time. And to the interviewer's credit, he didn't terminate the interview on the spot, he asked me to describe the kinds of things going through my head.
@@ -12,35 +14,6 @@ I went home and pondered the problem. I wanted to solve it. Eventually, I came u
 ![Turtles all the way down](http://i.minus.com/i04jwKF6lLEDt.jpg)
 
 Some time later, I was told that the correct solution was:
-
-```coffeescript
-class LinkedList
-  constructor: (@content, @next = undefined) ->
-  appendTo: (content) ->
-    new LinkedList(content, this)
-  tailNode: ->
-    @next?.tailNode() or this
-      
-tortoiseAndHareLoopDetector = (list) ->
-  tortoise = list
-  hare = list.next
-  while tortoise? and hare?
-    return true if tortoise is hare
-    tortoise = tortoise.next
-    hare = hare.next?.next
-  false
-  
-list = new LinkedList(5).appendTo(4).appendTo(3).appendTo(2).appendTo(1)
-
-tortoiseAndHareLoopDetector(list)
-  #=> false
-
-list.tailNode().next = list.next
-# five now points to two
-
-tortoiseAndHareLoopDetector list
-  #=> true
-```
 
 ```javascript
 var LinkedList, list, tortoiseAndHareLoopDetector;
@@ -94,32 +67,6 @@ This algorithm is called "The Tortoise and the Hare," and was discovered by Robe
 
 At the time, I couldn't think of any way to use hashing to solve the problem, so I gave up and tried to fit this into a powers-of-two algorithm. My first pass at it was clumsy, but it was roughly equivalent to this:
 
-```coffeescript
-teleportingTurtleLoopDetector = (list) ->
-  speed = 1
-  turtle = rabbit = list
-  # tortoise is now the first element, hare the second (if there is one)
-  while true
-    for i in [0..speed] by 1
-      rabbit = rabbit.next
-      return false unless rabbit?
-      return true if rabbit is turtle
-    turtle = rabbit 
-    speed *=2
-  false
-  
-list = new LinkedList(5).appendTo(4).appendTo(3).appendTo(2).appendTo(1)
-
-teleportingTurtleLoopDetector(list)
-  #=> false
-
-list.tailNode().next = list.next
-# five now points to two
-
-teleportingTurtleLoopDetector list
-  #=> true
-```
-
 ```javascript
 var list, teleportingTurtleLoopDetector;
 
@@ -162,13 +109,6 @@ Reading about these algorithms today reminded me of a separation of concerns iss
 
 Let's consider a remarkably simple problem: Finding the sum of the elements of an array. In iterative style, it looks like this:
 
-```coffeescript
-sum = (array) ->
-  total = 0
-  total += number for number in array
-  total
-```
-
 ```javascript
 function sum (array) {
   var number, total, _i, len;
@@ -186,42 +126,6 @@ What's the sum of a linked list of numbers? How about the sum of a tree of numbe
 There are two roads ahead. One involves a generalized `reduce` or `fold` method for each data structure. The other involves writing an [Iterator](https://developer.mozilla.org/en-US/docs/JavaScript/New_in_JavaScript/1.7#Iterators) for each data structure and writing our `sum` to take an iterator as its argument. Let's use iterators, especially since we need two different iterators for the same data structure, so a single object method is inconvenient.
 
 Since we don't have iterators baked into the underlying JavaScript engine yet, we'll write our iterators as functions:
-
-```coffeescript
-class LinkedList
-  constructor: (@content, @next = undefined) ->
-  appendTo: (content) ->
-    new LinkedList(content, this)
-  tailNode: ->
-    @next?.tailNode() or this
-    
-ListIterator = (list) ->
-  ->
-    node = list?.content
-    list = list?.next
-    node
-      
-sum = (iter) ->
-  total = 0
-  number = iter()
-  while number?
-    total += number
-    number = iter()
-  total  
-    
-list = new LinkedList(5).appendTo(4).appendTo(3).appendTo(2).appendTo(1)
-
-sum ListIterator list
-  #=> 15
-  
-ArrayIterator = (array) ->
-  index = 0;
-  ->
-    array[index++]
-
-sum ArrayIterator [1..5]
-  #=> 15
-```
 
 ```javascript
 var LinkedList, list;
@@ -287,31 +191,6 @@ Summing an array that can contain nested arrays adds a degree of complexity. Wri
 
 > This business of managing your own stack may seem weird to anyone born after 1970, but old fogeys fondly remember that after walking barefoot to and from University uphill in a blizzard both ways, the interview question brain teaser of the day was to write a "Towers of Hanoi" solver in a language like BASIC that didn't have reentrant subroutines.
 
-```coffeescript
-LeafIterator = (array) ->
-  index = 0
-  state = []
-  myself = ->
-    element = array[index++]
-    if element instanceof Array
-      state.push({array, index})
-      array = element
-      index = 0
-      myself()
-    else if element is undefined
-      if state.length > 0
-        {array, index} = state.pop()
-        myself()
-      else
-        undefined
-    else
-      element
-  myself
-  
-sum LeafIterator [1, [2, [3, 4]], [5]]
-  #=> 15
-```
-
 ```javascript
 function LeafIterator (array) {
   var index, myself, state;
@@ -352,21 +231,6 @@ We've successfully separated the issue of what one does with data from how one t
 
 Just as pure functional programmers love to talk monads, newcomers to functional programming in multi-paradigm languages often drool over [folding](https://en.wikipedia.org/wiki/Fold_(higher-order_function)) a/k/a mapping/injecting/reducing. We're just a level of abstraction away:
 
-```coffeescript
-fold = (iter, binaryFn, seed) ->
-  acc = seed
-  element = iter()
-  while element?
-    acc = binaryFn.call(element, acc, element)
-    element = iter()
-  acc
-
-foldingSum = (iter) -> fold iter, ((x, y) -> x + y), 0
-
-foldingSum LeafIterator [1, [2, [3, 4]], [5]]
-  #=> 15
-```
-
 ```javascript
 function fold (iter, binaryFn, seed) {
   var acc, element;
@@ -395,13 +259,6 @@ Fold turns an iterator over a finite data structure into an accumulator. And onc
 
 Iterators are functions. When they iterate over an array or linked list, they are traversing something that is already there. But they could, in principle, manufacture the data as they go. Let's consider the simplest example:
 
-```coffeescript
-NumberIterator = (base = 0) ->
-  number = base
-  ->
-    number++
-```
-
 ```javascript
 function NumberIterator (base) {
   var number;
@@ -413,21 +270,19 @@ function NumberIterator (base) {
     return number++;
   };
 };
-```
 
-```
-fromOne = NumberIterator(1)
+fromOne = NumberIterator(1);
 
-fromOne()
-  #=> 1
-fromOne()
-  #=> 2
-fromOne()
-  #=> 3
-fromOne()
-  #=> 4
-fromOne()
-  #=> 5
+fromOne();
+  //=> 1
+fromOne();
+  //=> 2
+fromOne();
+  //=> 3
+fromOne();
+  //=> 4
+fromOne();
+  //=> 5
 ```
 
 And here's another one:
@@ -475,16 +330,6 @@ A function that starts with a seed and expands it into a data structure is calle
 
 This business of going on forever has some drawbacks. Let's introduce an idea: A function that takes an Iterator and returns another iterator. We can start with `take`, an easy function that returns an iterator that only returns a fixed number of elements:
 
-```coffeescript
-take = (iter, numberToTake) ->
-  count = 0
-  ->
-    if ++count <= numberToTake
-      iter()
-    else
-      undefined
-```
-
 ```javascript
 take = function(iter, numberToTake) {
   var count;
@@ -497,69 +342,47 @@ take = function(iter, numberToTake) {
     }
   };
 };
-```
 
-```
-oneToFive = take NumberIterator(1), 5
+oneToFive = take(NumberIterator(1), 5);
 
-oneToFive()
-  #=> 1
-oneToFive()
-  #=> 2
-oneToFive()
-  #=> 3
-oneToFive()
-  #=> 4
-oneToFive()
-  #=> 5
-oneToFive()
-  #=> undefined
+oneToFive();
+  //=> 1
+oneToFive();
+  //=> 2
+oneToFive();
+  //=> 3
+oneToFive();
+  //=> 4
+oneToFive();
+  //=> 5
+oneToFive();
+  //=> undefined
 ```
 
 With `take`, we can do things like return the squares of the first five numbers:
 
-```coffeescript
-square take NumberIterator(1), 5
-```
-
 ```javascript
 square(take(NumberIterator(1), 5))
-```
 
-```
-  #=> [ 1,
-  #     4,
-  #     9,
-  #     16,
-  #     25 ]
+  //=> [ 1,
+  //     4,
+  //     9,
+  //     16,
+  //     25 ]
 ```
 
 How about the squares of the odd numbers from the first five numbers?
 
-```coffeescript
-square odds take NumberIterator(1), 5
-```
-
 ```javascript
 square(odds(take(NumberIterator(1), 5)))
-```
-
-```
-  #=> TypeError: object is not a function
+  //=> TypeError: object is not a function
 ```
 
 Bzzzt! Our `odds` function returns an array, not an iterator.
 
-```coffeescript
-square take odds(NumberIterator(1)), 5
-```
-
 ```javascript
 square(take(odds(NumberIterator(1)), 5))
-```
-
-```
-  #=> RangeError: Maximum call stack size exceeded
+  //=> RangeError: Maximum call stack size exceeded
 ```
 
 You can't take the first five odd numbers at all, because `odds` tries to get the entire set of numbers and accumulate the odd ones in an array. This can be fixed. For unfolds and other infinite iterators, we need more functions that transform one iterator into another:
@@ -626,11 +449,6 @@ function oddsFilter (iter) {
 ```
 
 Now we can do things like take the sum of the first five odd squares of fibonacci numbers:
-
-```coffeescript
-foldingSum take (oddsFilter squaresIterator FibonacciIterator()), 5
-  #=> 205
-```
 
 ```javascript
 foldingSum(take(oddsFilter(squaresIterator(FibonacciIterator())), 5))
