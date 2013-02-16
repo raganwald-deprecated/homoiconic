@@ -111,7 +111,7 @@ Let's consider a remarkably simple problem: Finding the sum of the elements of a
 
 ```javascript
 function sum (array) {
-  var number, total, _i, len;
+  var number, total, len;
   total = 0;
   for (i = 0, len = array.length; i < len; i++) {
     number = array[i];
@@ -250,7 +250,7 @@ function foldingSum (iter) {
 };
 
 foldingSum(LeafIterator([1, [2, [3, 4]], [5]]));
-  #=> 15
+  //=> 15
 ```
 
 Fold turns an iterator over a finite data structure into an accumulator. And once again, it works with any data structure. You don't need a different kind of fold for each kind of data structure you use.
@@ -317,15 +317,15 @@ function FibonacciIterator () {
 fib = FibonacciIterator()
 
 fib()
-  #=> 1
+  //=> 1
 fib()
-  #=> 1
+  //=> 1
 fib()
-  #=> 2
+  //=> 2
 fib()
-  #=> 3
+  //=> 3
 fib()
-  #=> 5
+  //=> 5
 ```
 
 A function that starts with a seed and expands it into a data structure is called an *unfold*. It's the opposite of a fold. It's possible to write a generic unfold mechanism, but let's pass on to what we can do with unfolded iterators.
