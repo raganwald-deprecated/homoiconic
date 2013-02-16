@@ -164,7 +164,7 @@ We've successfully separated the issue of what one does with data from how one t
 
 **folding**
 
-Just as pure functional programmers love to talk monads, newcomers to functional programming in multi-paradigm languages often drool over [folding](https://en.wikipedia.org/wiki/Fold_(higher-order_function)) a/k/a mapping/injecting/reducing. We're just a level of abstraction away:
+Just as pure functional programmers love to talk monads, newcomers to functional programming in multi-paradigm languages often drool over [folding] a/k/a mapping/injecting/reducing. We're just a level of abstraction away:
 
 ```coffeescript
 fold = (iter, binaryFn, seed) ->
@@ -181,6 +181,8 @@ foldingSum LeafIterator [1, [2, [3, 4]], [5]]
 ```
 
 Fold turns an iterator over a finite data structure into an accumulator. And once again, it works with any data structure. You don't need a different kind of fold for each kind of data structure you use.
+
+[folding]: https://en.wikipedia.org/wiki/Fold_(higher-order_function)
 
 **unfolding and laziness**
 
