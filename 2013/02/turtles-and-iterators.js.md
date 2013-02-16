@@ -289,16 +289,6 @@ fromOne();
 
 And here's another one:
 
-```coffeescript
-FibonacciIterator = ->
-  previous = 0
-  current = 1
-  ->
-    value = current
-    [previous, current] = [current, current + previous]
-    value
-```
-
 ```javascript
 function FibonacciIterator () {
   var current, previous;
@@ -388,28 +378,6 @@ square(take(odds(NumberIterator(1)), 5))
 ```
 
 You can't take the first five odd numbers at all, because `odds` tries to get the entire set of numbers and accumulate the odd ones in an array. This can be fixed. For unfolds and other infinite iterators, we need more functions that transform one iterator into another:
-
-```coffeescript
-iteratorMap = (iter, unaryFn) ->
-  ->
-    element = iter()
-    if element?
-      unaryFn.call(element, element)
-    else
-      undefined
-      
-squaresIterator = (iter) -> iteratorMap iter, (n) -> n * n
-
-iteratorFilter = (iter, unaryPredicateFn) ->
-  ->
-    element = iter()
-    while element?
-      return element if unaryPredicateFn.call(element, element)
-      element = iter()
-    undefined
-
-oddsFilter = (iter) -> iteratorFilter iter, odd
-```
 
 ```javascript
 
