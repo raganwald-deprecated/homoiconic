@@ -1,6 +1,6 @@
 # String#to_proc
 #
-# See http://weblog.raganwald.com/2007/10/stringtoproc.html
+# See http://raganwald.com/2007/10/stringtoproc.html
 #
 # Ported from the String Lambdas in Oliver Steele's Functional JavaScript
 # http://osteele.com/sources/javascript/functional/

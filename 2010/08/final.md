@@ -298,11 +298,11 @@ NEW! [Kestrels, Quirky Birds, and Hopeless Egocentricity](http://leanpub.com/com
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
 [p2p]: http://www.yes-minister.com/ypmseas2b.htm
-[raf]: http://weblog.raganwald.com/2006/05/ready-aim-final.html
+[raf]: http://raganwald.com/2006/05/ready-aim-final.html
 [leaks]: http://steve-yegge.blogspot.com/2010/07/wikileaks-to-leak-5000-open-source-java.html
 [clothes]: http://scifac.ru.ac.za/cspt/hoare.htm
 [template]: http://en.wikipedia.org/wiki/Template_method_pattern "Template method pattern - Wikipedia, the free encyclopedia"
-[liskov]: http://weblog.raganwald.com/2008/04/is-strictly-equivalent-to.html "IS-STRICTLY-EQUIVALENT-TO-A"
+[liskov]: http://raganwald.com/2008/04/is-strictly-equivalent-to.html "IS-STRICTLY-EQUIVALENT-TO-A"
 [inference]: http://en.wikipedia.org/wiki/Type_inference "Type inference - Wikipedia, the free encyclopedia"
 [elharo]: http://www.elharo.com/ "Elliotte Rusty Harold"
 [hn]: http://news.ycombinator.com/item?id=1592556

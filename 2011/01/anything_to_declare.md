@@ -232,8 +232,8 @@ My recent work:
 
 [Reg Braithwaite](http://braythwayt.com) | [@raganwald](http://twitter.com/raganwald)
 
-[q]: http://weblog.raganwald.com/2006/06/my-favourite-interview-question.html
-[ww]: http://weblog.raganwald.com/2007/03/why-why-functional-programming-matters.html
+[q]: http://raganwald.com/2006/06/my-favourite-interview-question.html
+[ww]: http://raganwald.com/2007/03/why-why-functional-programming-matters.html
 [f]: https://github.com/unspace/faux
 [jg]: https://github.com/jamiebikies
 [b]: http://documentcloud.github.com/backbone/

@@ -27,7 +27,7 @@ Whither Rewrite?
 
 So, the Rewrite Gem broke when ParseTree and Ruby2Ruby changed some of their representations. I thought about either freezing the versions Rewrite needed or upgrading the gem, but then I had a remarkably stupid idea: Why not try to make it a little more useful than a proof-of-concept?
 
-So, I started [RewriteRails](https://github.com/raganwald-deprecated/rewrite_rails/tree). The idea is remarkably simple: You are writing a Rails project. You want to use things like [`andand`](http://weblog.raganwald.com/2008/01/objectandand-objectme-in-ruby.html "Object#andand & Object#me in Ruby") and [`String#to_proc`](http://weblog.raganwald.com/2007/10/stringtoproc.html "String#to_proc"). But you either have a fastidious disdain for opening core classes and slinging proxy objects around, a fanatical need for speed, or you want to be able to rip all that stuff out if you grow bored with it.
+So, I started [RewriteRails](https://github.com/raganwald-deprecated/rewrite_rails/tree). The idea is remarkably simple: You are writing a Rails project. You want to use things like [`andand`](http://raganwald.com/2008/01/objectandand-objectme-in-ruby.html "Object#andand & Object#me in Ruby") and [`String#to_proc`](http://raganwald.com/2007/10/stringtoproc.html "String#to_proc"). But you either have a fastidious disdain for opening core classes and slinging proxy objects around, a fanatical need for speed, or you want to be able to rip all that stuff out if you grow bored with it.
 
 RewriteRails solves all of these problems I invented that nobody is complaining about.
 

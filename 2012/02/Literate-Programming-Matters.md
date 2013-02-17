@@ -16,7 +16,7 @@ What this suggests to me is that while David presents the concepts of literate p
 
 Of late, I've been working on a completely useless project: [Conway's Game of Life][life]. My implementation is called [Cafe au Life][cafe], and the interesting thing here is that it uses Bill Gosper's [HashLife][hl] algorithm to compute the future of a life pattern. This matters greatly to the question of writing readable code.
 
-> An easy question: How well does the design document the actual game of Monopoly? If someone were to read the source code, do you think they could learn how to play the actual game?--[My favourite interview question](http://weblog.raganwald.com/2006/06/my-favourite-interview-question.html)
+> An easy question: How well does the design document the actual game of Monopoly? If someone were to read the source code, do you think they could learn how to play the actual game?--[My favourite interview question](http://raganwald.com/2006/06/my-favourite-interview-question.html)
 
 Life is an extraordinarily simple zero-player game. Quoting Wikipedia verbatim:
 
@@ -221,7 +221,7 @@ I don't know whether we need a literate programming tool that transforms the sou
 
 [YouAreDaChef]: https://github.com/raganwald/YouAreDaChef
 [1]: https://github.com/raganwald/homoiconic/blob/master/2010/12/oop.md "OOP practiced backwards is "POO""
-[2]: http://weblog.raganwald.com/2007/10/too-much-of-good-thing-not-all.html "Too much of a good thing: not all functions should be object methods"
+[2]: http://raganwald.com/2007/10/too-much-of-good-thing-not-all.html "Too much of a good thing: not all functions should be object methods"
 [docco]: http://jashkenas.github.com/docco/
 [ll]: http://www.conwaylife.com/wiki/Cellular_automaton#Well-known_Life-like_cellular_automata
 [williams]: https://github.com/raganwald/homoiconic/blob/master/2011/11/COMEFROM.md

@@ -172,7 +172,7 @@ So that's it: When you want to convert a block to a `Proc`, define an extra para
 
 When you want to convert any object to a block, pass it to a method expecting a block and preface it with an ampersand. Ruby will call the `#to_proc` method if need be, then convert the `Proc` into a block.
 
-p.s. *This post originally appeared on [weblog.raganwald.com](http://weblog.raganwald.com/2008/06/what-does-do-when-used-as-unary.html "The unary ampersand in Ruby")*
+p.s. *This post originally appeared on [raganwald.com](http://raganwald.com/2008/06/what-does-do-when-used-as-unary.html "The unary ampersand in Ruby")*
 
 ---
 

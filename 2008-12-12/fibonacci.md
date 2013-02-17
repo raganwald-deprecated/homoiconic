@@ -1,7 +1,7 @@
 A program to compute the nth Fibonacci number
 ===
 
-Since [I'm looking for a job](http://braythwayt.com/reginald/RegBraithwaite20120423.pdf "Reginald Braithwaite's Resume") and people often like to ask for a [fizzbuzz](http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html "Don't Overthink FizzBuzz") program to weed out the folks who can't string together a few lines of code, I thought I'd write up a program to compute the nth Fibonacci number. There's an intriguing bit of matrix math involved, so I learned something while implementing it.
+Since [I'm looking for a job](http://braythwayt.com/reginald/RegBraithwaite20120423.pdf "Reginald Braithwaite's Resume") and people often like to ask for a [fizzbuzz](http://raganwald.com/2007/01/dont-overthink-fizzbuzz.html "Don't Overthink FizzBuzz") program to weed out the folks who can't string together a few lines of code, I thought I'd write up a program to compute the nth Fibonacci number. There's an intriguing bit of matrix math involved, so I learned something while implementing it.
 
 *Reminder: This was written in 2008, it does not necessarily reflect my employment situation today.*
 

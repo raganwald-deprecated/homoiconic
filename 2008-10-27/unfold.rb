@@ -1,10 +1,10 @@
 # unfold.rb
 #
 # see Really simple anamorphisms in Ruby:
-# http://weblog.raganwald.com/2007/11/really-simple-anamorphisms-in-ruby.html, and:
+# http://raganwald.com/2007/11/really-simple-anamorphisms-in-ruby.html, and:
 #
 # Really useful anamorphisms in Ruby:
-# http://weblog.raganwald.com/2007/11/really-useful-anamorphisms-in-ruby.html
+# http://raganwald.com/2007/11/really-useful-anamorphisms-in-ruby.html
 #
 # The MIT License
 # 

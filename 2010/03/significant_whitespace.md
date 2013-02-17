@@ -145,7 +145,7 @@ This isn't exactly what I want but I'll take it. The final two calls to `end` ar
 
 It may seem like perhaps I should break this up into smaller methods to make it easier to understand. I am thinking that we want to break long functions up into short functions *because our languages don't give us a good way to express a verbose idea clearly in a single function*. We are not talking about 20+ lines of conditional execution here, we are talking about manipulating something that can naturally be expressed as a tree. Why not express the idea in code that looks like a tree?
 
-I like [writing programs for people to read](http://weblog.raganwald.com/2007/04/writing-programs-for-people-to-read.html). Code that resembles what it consumes (sass), what it produces (haml), or what it manipulates (my hypothetical significant whitespace variation of JavaScript) is easy to read.
+I like [writing programs for people to read](http://raganwald.com/2007/04/writing-programs-for-people-to-read.html). Code that resembles what it consumes (sass), what it produces (haml), or what it manipulates (my hypothetical significant whitespace variation of JavaScript) is easy to read.
 
 As it happens, [the last time I asked about a language feature](http://github.com/raganwald/homoiconic/blob/master/2010/01/beautiful_failure.markdown "Beautiful Failure"), I was told that Smalltalk did it in 1981. Well, this time I happen to know that Smalltalk already does this. In Smalltalk, you can write:
 

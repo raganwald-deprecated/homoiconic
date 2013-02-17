@@ -30,8 +30,8 @@ As a user, I had this experience looking at a Macintosh in 1985. The GUI seems o
 
 Speaking of drawing things, when I started to learn object-oriented programming, I bought a book that walked me step-by-step through writing a vector drawing program using Object Pascal. I won't say that Objects were an Aha! for me: I grokked the style and my response leaned towards "Oh, fine, that's how we'll do it." Polymorphism was more of a "Neat-o" than an "I must be dreaming." To this day, I'm [reserved][6] [about][7] [OOP][8]. But something else blew my mind: The book explained how to implement an Undo Stack using what is now called the [Command Pattern][9].
 
-[6]: http://weblog.raganwald.com/2007/10/too-much-of-good-thing-not-all.html
-[7]: http://weblog.raganwald.com/2008/04/is-strictly-equivalent-to.html
+[6]: http://raganwald.com/2007/10/too-much-of-good-thing-not-all.html
+[7]: http://raganwald.com/2008/04/is-strictly-equivalent-to.html
 [8]: https://github.com/raganwald/homoiconic/blob/master/2010/12/oop.md
 [9]: http://en.wikipedia.org/wiki/Command_pattern
 

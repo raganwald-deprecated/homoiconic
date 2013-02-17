@@ -88,7 +88,7 @@ The other way is to say that I want to compose `.inject` and `+` together. Witho
 
 	".inject(&'+')"
 	
-Meaning "*I want a new lambda that does an inject using plus*." Point-free style does require a new way of thinking about some things, but it is a clear win for simple cases. Proof positive of this is the fact that Ruby on Rails and Ruby 1.9 have both embraced point-free style with `Symbol#to_proc`. That's exactly how [`(1..100).inject(&:+)`](http://weblog.raganwald.com/2008/02/1100inject.html "(1..100).inject(&:+)") works!
+Meaning "*I want a new lambda that does an inject using plus*." Point-free style does require a new way of thinking about some things, but it is a clear win for simple cases. Proof positive of this is the fact that Ruby on Rails and Ruby 1.9 have both embraced point-free style with `Symbol#to_proc`. That's exactly how [`(1..100).inject(&:+)`](http://raganwald.com/2008/02/1100inject.html "(1..100).inject(&:+)") works!
 
 `String#to_proc` supports fairly simple cases where you are sending a message or using a binary operator. So if we wanted to go all out, we could write our example as:
 

@@ -1,7 +1,7 @@
 Some writing about writing "raganwald"
 ===
 
-When I was writing [weblog.raganwald.com](http://weblog.raganwald.com), I kept a list of ideas for blog posts. That way, when I needed to write a post and I didn't have any inspiration, I could go to my list and write something. Why, you may ask, did I do this? Why didn't I simply write a post when I had an idea, and not write a post when I didn't have an idea?
+When I was writing [raganwald.com](http://raganwald.com), I kept a list of ideas for blog posts. That way, when I needed to write a post and I didn't have any inspiration, I could go to my list and write something. Why, you may ask, did I do this? Why didn't I simply write a post when I had an idea, and not write a post when I didn't have an idea?
 
 The answer, of course, is that I had heard that writing on a schedule is important for building an audience. If you have four ideas one day, you shouldn't write four posts on that day, you should spread them out. And if you don't have an idea on a particular day, you should write a post anyways, that's how you build an audience. Or so the story goes. That's what Jeff Atwood seems to do, and it works for him.
 

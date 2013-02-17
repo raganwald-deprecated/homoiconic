@@ -117,7 +117,7 @@ Dubious, but let's go with it. If this makes sense, we ought to be able to write
     "Mister " + person.name
       => TypeError: can't convert nil into String
 
-[Why is this an error?](http://weblog.raganwald.com/2007/10/too-much-of-good-thing-not-all.html "Too much of a good thing: not all functions should be object methods") Things don't get any better using a hopelessly egocentric nil to handle UNKNOWN. Even if we can get past the issue of update methods, we have another problem that is much more difficult to resolve. UNKNOWN introduces tri-value logic:
+[Why is this an error?](http://raganwald.com/2007/10/too-much-of-good-thing-not-all.html "Too much of a good thing: not all functions should be object methods") Things don't get any better using a hopelessly egocentric nil to handle UNKNOWN. Even if we can get past the issue of update methods, we have another problem that is much more difficult to resolve. UNKNOWN introduces tri-value logic:
 
     UNKNOWN == Object.new
       => UNKNOWN

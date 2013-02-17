@@ -18,7 +18,7 @@ Of course, you can simply read the archives. They're organized by date, so the m
 
 **is there anything else to read?**
 
-When I want to write about something that doesn't have any code in it, I try to resist the temptation. When resistance is futile, my words appear on [posterous](http://raganwald.posterous.com). I used to write a traditional blog called [raganwald](http://weblog.raganwald.com).
+When I want to write about something that doesn't have any code in it, I try to resist the temptation. When resistance is futile, my words appear on [posterous](http://raganwald.posterous.com). I used to write a traditional blog called [raganwald](http://raganwald.com).
 
 **can I subscribe?**
 

@@ -62,8 +62,8 @@ built-in operations.
 [Here] is an implementation of [Conway's Game of Life][life] written with jQuery Combinators (and here's the [annotated source code][code]). 
 
 [life]: https://en.wikipedia.org/wiki/Conway's_Game_of_Life
-[Here]: http://weblog.raganwald.com/JQuery-Combinators/life/index.html
-[code]: http://weblog.raganwald.com/JQuery-Combinators/life/life.html
+[Here]: http://raganwald.com/JQuery-Combinators/life/index.html
+[code]: http://raganwald.com/JQuery-Combinators/life/life.html
 
 ![Life with jQuery Combinators](http://i.minus.com/ibt7pqptCtmRHb.png)
 

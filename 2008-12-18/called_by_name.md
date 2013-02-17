@@ -311,7 +311,7 @@ Now, `called_by_name` is not a replacement for macros. There are lots of things 
 
 Of course, `called_by_name` does so with lots of anonymous functions, and that is a much more expensive implementation than using a hygienic macro to rewrite code inline. But it feels like a move in an interesting direction: if it is a win to sometimes meta-program Ruby's syntax with DSLs, it ought to also be a win to sometimes meta-program Ruby's semantics with call-by-name functions.
 
-*(This material was originally published [June, 2008](http://weblog.raganwald.com/2008/06/macros-hygiene-and-call-by-name-in-ruby.html "Macros, Hygiene, and Call By Name in Ruby on raganwald.com"))*
+*(This material was originally published [June, 2008](http://raganwald.com/2008/06/macros-hygiene-and-call-by-name-in-ruby.html "Macros, Hygiene, and Call By Name in Ruby on raganwald.com"))*
 
 Update (December 18, 2008)
 ---

@@ -298,7 +298,7 @@ Anaphora allow us to abbreviate code, hiding parameters and temporary variables 
 
 ## More to read
 
-* [String#to\_proc](http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You can't be serious!?") and its original [blog post](http://weblog.raganwald.com/2007/10/stringtoproc.html "String#to_proc").
+* [String#to\_proc](http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You can't be serious!?") and its original [blog post](http://raganwald.com/2007/10/stringtoproc.html "String#to_proc").
 * [Methodphitamine](http://github.com/jicksta/methodphitamine "jicksta's methodphitamine at master - GitHub") and its original [blog post](http://jicksta.com/posts/the-methodphitamine "The Methodphitamine at Adhearsion Blog by Jay Phillips")
 * [Anaphoric macros](http://www.bookshelf.jp/texi/onlisp/onlisp_15.html "Onlisp:  Anaphoric Macros")
 * [rewrite_rails](http://github.com/raganwald-deprecated/rewrite_rails "raganwald's rewrite_rails at master - GitHub") contains an improved implementation of String#to\_proc.

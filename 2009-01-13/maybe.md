@@ -90,7 +90,7 @@ One of the most provocative implementations suggested for handling `nil` objects
 
 Now you can write things like `@person.name` and know that if `@person` is `nil`, you will always get `nil`. Always. Everywhere. Interesting! In fact, it's another implementation of the Maybe Monad, only in a very clever, OO way. That being said, here's why it doesn't work for me.
 
-Right off the bat, [semantics like this really should not be implemented as methods](http://weblog.raganwald.com/2007/10/too-much-of-good-thing-not-all.html "Too much of a good thing: not all functions should be object methods"). Why does `nil + 1` produce `nil`, but `1 + nil` produce `TypeError: coerce must return [x, y]`? There's a real problem trying to make anything involving `nil` commutative.
+Right off the bat, [semantics like this really should not be implemented as methods](http://raganwald.com/2007/10/too-much-of-good-thing-not-all.html "Too much of a good thing: not all functions should be object methods"). Why does `nil + 1` produce `nil`, but `1 + nil` produce `TypeError: coerce must return [x, y]`? There's a real problem trying to make anything involving `nil` commutative.
 
 In fact, I would go so far as to say that `:foo == nil` should be `nil`, as should `:foo != nil`. That makes sense, because as given:
 

@@ -298,7 +298,7 @@ First, we need a helper function that can map a simple function over a hash of v
  
 We'll also need some translations that transform a map with one structure to a map with another. If we were Java programmers we'd [break out the XSLT][mousetrap], but we'll keep them simple:
 
-[mousetrap]: http://weblog.raganwald.com/2008/02/mouse-trap.html?showComment=1203629040000
+[mousetrap]: http://raganwald.com/2008/02/mouse-trap.html?showComment=1203629040000
 
   
 ```coffeescript

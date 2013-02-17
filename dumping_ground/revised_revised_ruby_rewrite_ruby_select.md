@@ -13,7 +13,7 @@ I'm writing today to share some of my ideas in writing for those who weren't the
       ]
     ]
 
-The most important thing I am asking you to do is to **Think about Thinking about Programming**. Programming may sometimes seem like a [clerk's job](http://weblog.raganwald.com/2008/01/no-disrespect.html "No Disrespect"). But whether you are writing tests for loan state flow or writing infrastructure to distribute computation across thousands of machines, you are engaging almost all of the planning and analysis and problem solving parts of our brains that make us human, that distinguish us from other organisms on this planet.
+The most important thing I am asking you to do is to **Think about Thinking about Programming**. Programming may sometimes seem like a [clerk's job](http://raganwald.com/2008/01/no-disrespect.html "No Disrespect"). But whether you are writing tests for loan state flow or writing infrastructure to distribute computation across thousands of machines, you are engaging almost all of the planning and analysis and problem solving parts of our brains that make us human, that distinguish us from other organisms on this planet.
 
 Thinking about programming is being human. And thus "thinking about thinking about programming" is examining what makes us human and why. I am about to explain why studying programming languages is a very fruitful way of thinking about what makes us human, but I really think that all areas of thinking about programming are interesting ways to think about being human. Debating BDUF vs. Agile methodologies is really a way of analyzing human behaviour. Debating the organization of components and modules into an architecture is a way of discussing the way our minds make sense of complicated things. 
 

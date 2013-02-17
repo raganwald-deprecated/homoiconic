@@ -172,7 +172,7 @@ My recent work:
 [kestrel]: http://github.com/raganwald/homoiconic/blob/master/2008-10-29/kestrel.markdown "Kestrels"
 [ls]: http://www.asana.com/luna
 [matz]: http://casperfabricius.com/site/2008/04/02/ruby-fools-matzs-keynote/ "Matz’s keynote"
-[mousetrap]: http://weblog.raganwald.com/2008/02/mouse-trap.html "The Mouse Trap"
+[mousetrap]: http://raganwald.com/2008/02/mouse-trap.html "The Mouse Trap"
 [mp]: http://jicksta.com/posts/the-methodphitamine "The Mthodphitamine"
 [node]: http://nodejs.org/
 [proggit]: http://www.reddit.com/r/programming/comments/ay2bn/a_difficult_distraction_my_experience_creating_a/
@@ -180,7 +180,7 @@ My recent work:
 [returning]: http://github.com/raganwald-deprecated/rewrite_rails/blob/master/doc/returning.md#readme
 [rewrite]: http://rewrite.rubyforge.org/
 [rf]: http://www.infoq.com/presentations/braithwaite-rewrite-ruby "Video of the Ruby.rewrite(Ruby) presentation"
-[rhino]: http://weblog.raganwald.com/2007/07/javascript-on-jvm-in-fifteen-minutes.html "How to Run JavaScript on the JVM in Just Fifteen Minutes"
+[rhino]: http://raganwald.com/2007/07/javascript-on-jvm-in-fifteen-minutes.html "How to Run JavaScript on the JVM in Just Fifteen Minutes"
 [rr]: http://github.com/raganwald-deprecated/rewrite_rails
 [s2p]: http://github.com/raganwald/homoiconic/blob/master/2008-11-28/you_cant_be_serious.md "You Can't be Serious!"
 [source]: http://github.com/raganwald-deprecated/rewrite_rails/blob/master/lib/rewrite_rails/block_anaphora.rb "block_anaphora.rb"
