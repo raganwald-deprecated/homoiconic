@@ -145,7 +145,7 @@ function User (name, passwordHash, salt) {
   }
   this.name = name;
   this.passwordHash = passwordHash;
-  this.salt = sale;
+  this.salt = salt;
 };
 
 User.prototype.isAnAdministrator = function () {
