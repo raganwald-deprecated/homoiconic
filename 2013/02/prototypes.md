@@ -70,7 +70,7 @@ class Queue
   end
   
   def isEmpty
-    !!(@tail < @head)
+    @tail < @head
   end
 end
 ```
