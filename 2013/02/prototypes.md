@@ -136,8 +136,8 @@ Queue.prototype.isEmpty = function () {
 
 Queue.prototype
   //=>  { pushTail: [Function],
-          pullHead: [Function],
-          isEmpty: [Function] }
+  //=>    pullHead: [Function],
+  //=>    isEmpty: [Function] }
 ```
 
 The first way a prototype in JavaScript is different from a class in Ruby is that the prototype is an ordinary object with exactly the same properties that we expect to find in an instance: Methods `pushTail`, `pullHead`, and `isEmpty`.
