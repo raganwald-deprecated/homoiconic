@@ -64,7 +64,7 @@ If you're going to get [personal, general, and permanent](http://github.com/raga
 
 **credit where credit is due**
 
-I originally set up a blog at homoiconic.com, but I spotted [David Baldwin's blog](http://github.com/bilson/blog/tree/master), and I knew right away that a blog that is about the how of code ought to be hosted on Github.
+I originally set up a blog at homoiconic.com, but I spotted [David Baldwin's blog](https://github.com/baldwindavid/blog/tree/master), and I knew right away that a blog that is about the how of code ought to be hosted on Github.
 
 I am [Reg Braithwaite](http://braythwayt.com/). You can reach me by email. My first name is `reg`, and that works fine for sending email to `braythwayt.com`. I look forward to hearing from you.
 
