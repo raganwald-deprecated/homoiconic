@@ -42,7 +42,7 @@ I've written software products and I've also written concept software. To give t
 
 To me, andand is a very small software product. It has users, it has a very well defined path for adoption, even its name was chosen to ease adoption by giving a hint of how to use it.
 
-After andand, I became curious about monads and about modifying the way Ruby invoked methods on objects. I wondered to myself, *If andand was imply a specific case of a more general things, what would that thing look like?*. That question, you will note, has no "why" in it, no transition from what came before to what will come after. Answering that question creates concept software, not a software product.
+After andand, I became curious about monads and about modifying the way Ruby invoked methods on objects. I wondered to myself, *If andand implies a specific case of a more general thing, what would that thing look like?* That question, you will note, has no "why" in it, no transition from what came before to what will come after. Answering that question creates concept software, not a software product.
 
 And indeed, I created the [Invocation Control Kit](http://github.com/raganwald-deprecated/ick "raganwald's ick at master - GitHub"), "an ad hoc, informally-specified, bug-ridden, slow implementation of half of Monads" to answer the question. If you listen carefully, you can hear the crickets chirping around its download link.
 
