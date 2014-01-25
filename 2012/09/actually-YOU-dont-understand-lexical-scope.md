@@ -118,7 +118,7 @@ foo = 'bar'
 Ought to work like this JavaScript does:
 
 ```JavaScript
-var foo = bar
+var foo = 'bar'
 ```
 
 Or, perhaps, the argument is that CoffeeScript needs a `var` keyword. Or that CoffeeScript needs something that works like a var keyword, maybe:
