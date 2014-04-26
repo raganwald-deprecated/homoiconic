@@ -137,7 +137,7 @@ Indeed it does. Jeremy Ashkenas' Underscore.js library has a [memoize] function 
 
 [memoize]: http://underscorejs.org/#memoize
 
-What's that? Methods are functions, so anything that works with a function must *necessarily* work with a method? Not exactly. Anything that works with a function also works with a method that never refers to JavaScript's `this` pseudo-variable. And that's the case with our `factorial` helper method above. But once you start referring to `this`, method decorators will break your methods unless they preserve the correct receiver object. That's why our `memoized` decorator invokes `.apply(this, arguments)`, to preserve the correct receiver. Perusing the source code for Underscore 1.3.1, we see that `memoize` preserves `this` and can be used as a method decorator:
+What's that? Methods are functions, so anything that works with a function must *necessarily* work with a method? Not exactly. Anything that works with a function also works with a method that never refers to JavaScript's `this` pseudo-variable. And that's the case with our `fibonacci` helper method above. But once you start referring to `this`, method decorators will break your methods unless they preserve the correct receiver object. That's why our `memoized` decorator invokes `.apply(this, arguments)`, to preserve the correct receiver. Perusing the source code for Underscore 1.3.1, we see that `memoize` preserves `this` and can be used as a method decorator:
 
 ```javascript
 _.memoize = function(func, hasher) {
