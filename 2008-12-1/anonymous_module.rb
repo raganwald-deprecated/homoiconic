@@ -1,1 +1,0 @@
-# This item was incorrectly categorized. Please update links and bookmarks to http://github.com/raganwald/homoiconic/tree/master/2008-12-01/anonymous_module.rb
