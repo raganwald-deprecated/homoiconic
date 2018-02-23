@@ -431,7 +431,7 @@ This solution composes the parts we already have, rather than writing a tricky b
 
 Untangling the concerns of how to iterate over data from what to do with data leads us to thinking of iterators and working directly with iterators. For example, we can map and filter iterators rather than trying to write separate map and filter functions or methods for each type of data structure. This leads to the possibility of working with lazy or infinite iterators.
 
-*This material will be added to [JavaScript Allongé][ja], [CoffeeScript Ristretto][cr], and/or [allong.es](http://allong.es) after feedback and review*.
+*This material will be added to [JavaScript Allongé][ja], [CoffeeScript Ristretto][cr], and/or [allong.es](https://github.com/raganwald/allong.es) after feedback and review*.
 
 ---
 
@@ -440,7 +440,7 @@ My recent work:
 ![](http://i.minus.com/iL337yTdgFj7.png)[![JavaScript Allongé](http://i.minus.com/iW2E1A8M5UWe6.jpeg)][ja]![](http://i.minus.com/iL337yTdgFj7.png)[![CoffeeScript Ristretto](http://i.minus.com/iMmGxzIZkHSLD.jpeg)][cr]![](http://i.minus.com/iL337yTdgFj7.png)[![Kestrels, Quirky Birds, and Hopeless Egocentricity](http://i.minus.com/ibw1f1ARQ4bhi1.jpeg)](http://leanpub.com/combinators "Kestrels, Quirky Birds, and Hopeless Egocentricity")
 
 * [JavaScript Allongé][ja], [CoffeeScript Ristretto][ja], and my [other books](http://leanpub.com/u/raganwald).
-* [allong.es](http://allong.es), practical function combinators and decorators for JavaScript.
+* [allong.es](https://github.com/raganwald/allong.es), practical function combinators and decorators for JavaScript.
 * [Method Combinators](https://github.com/raganwald/method-combinators), a CoffeeScript/JavaScript library for writing method decorators, simply and easily.
 * [jQuery Combinators](http://github.com/raganwald/jquery-combinators), what else? A jQuery plugin for writing your own fluent, jQuery-like code. 
 
