@@ -32,7 +32,7 @@ My goal is to be able to say that thinking about the code and ideas presented he
 
 **credit where credit is due**
 
-I originally set up a blog at homoiconic.com, but I spotted [David Baldwin's blog](http://github.com/bilson/blog/tree/master), and I knew right away that a blog that is about the how of code ought to be hosted on Github.
+I originally set up a blog at homoiconic.com, but I spotted [David Baldwin's blog](https://github.com/baldwindavid/blog/tree/master), and I knew right away that a blog that is about the how of code ought to be hosted on Github.
 
 ---
 
